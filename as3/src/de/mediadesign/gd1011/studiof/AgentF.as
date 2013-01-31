@@ -1,15 +1,30 @@
-package de.mediadesign.gd1011.studiof {
+package de.mediadesign.gd1011.studiof
+{
 
 	import flash.display.Sprite;
 
-	import starling.core.Starling;
+    import robotlegs.bender.bundles.mvcs.MVCSBundle;
 
-	public class AgentF extends Sprite {
+    import robotlegs.bender.framework.api.IContext;
+    import robotlegs.bender.framework.impl.Context;
+    import robotlegs.extensions.starlingViewMap.StarlingViewMapExtension;
 
-	private var _starling:Starling;
-    public function AgentF() {
-        _starling = new Starling(Game, stage);
-		_starling.start();
+    import starling.core.Starling;
+
+	public class AgentF extends Sprite
+    {
+
+        private var _starling:Starling;
+
+        public function AgentF()
+        {
+            const starling:Starling = new Starling(Game, stage);
+
+            const context:IContext = new Context()
+                    .install( MVCSBundle, StarlingViewMapExtension )
+                    .configure( StarlingConfig, this, starling );
+
+            starling.start();
+        }
     }
-}
 }
