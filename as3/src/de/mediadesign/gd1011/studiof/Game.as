@@ -18,16 +18,7 @@ package de.mediadesign.gd1011.studiof
 	{
 		public function Game()
 		{
-
-            var file:File = File.applicationDirectory.resolvePath("config.json");
-            var stream:FileStream = new FileStream();
-
-            stream.open(file,  FileMode.READ);
-            var jObj:String = stream.readUTFBytes(stream.bytesAvailable);
-            var config:Object = JSON.parse(jObj);
-            stream.close();
-
-            var t:TextField = new TextField(300,300,config["testtext"]);
+	        var t:TextField = new TextField(300,300,"Test:");
             addChild(t);
 		}
 	}
