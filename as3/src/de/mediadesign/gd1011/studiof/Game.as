@@ -18,8 +18,7 @@ package de.mediadesign.gd1011.studiof
 	{
 		public function Game()
 		{
-			var t:TextField = new TextField(300,300,"Hallo Max!!!");
-			addChild(t);
+
             var file:File = File.applicationDirectory.resolvePath("config.json");
             var stream:FileStream = new FileStream();
 
@@ -27,7 +26,9 @@ package de.mediadesign.gd1011.studiof
             var jObj:String = stream.readUTFBytes(stream.bytesAvailable);
             var config:Object = JSON.parse(jObj);
             stream.close();
-            trace(config["testtext"]);
+
+            var t:TextField = new TextField(300,300,config["testtext"]);
+            addChild(t);
 		}
 	}
 }
