@@ -7,7 +7,11 @@
  */
 package de.mediadesign.gd1011.studiof
 {
-	import starling.display.Sprite;
+    import flash.filesystem.File;
+    import flash.filesystem.FileMode;
+    import flash.filesystem.FileStream;
+
+    import starling.display.Sprite;
 	import starling.text.TextField;
 
 	public class Game extends Sprite
@@ -16,6 +20,14 @@ package de.mediadesign.gd1011.studiof
 		{
 			var t:TextField = new TextField(300,300,"Hallo Max!!!");
 			addChild(t);
+            var file:File = File.applicationDirectory.resolvePath("config.json");
+            var stream:FileStream = new FileStream();
+
+            stream.open(file,  FileMode.READ);
+            var jObj:String = stream.readUTFBytes(stream.bytesAvailable);
+            var config:Object = JSON.parse(jObj);
+            stream.close();
+            trace(config["testtext"]);
 		}
 	}
 }
