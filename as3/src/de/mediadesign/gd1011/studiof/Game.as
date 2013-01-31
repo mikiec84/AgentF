@@ -14,7 +14,7 @@ package de.mediadesign.gd1011.studiof
 	{
 		public function Game()
 		{
-			var t:TextField = new TextField(300,300,"Hallo Max!");
+			var t:TextField = new TextField(300,300,"Hallo Max!!!");
 			addChild(t);
 		}
 	}
