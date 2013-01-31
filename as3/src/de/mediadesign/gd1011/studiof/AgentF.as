@@ -1,6 +1,6 @@
 package de.mediadesign.gd1011.studiof {
 
-    import starlingViewMap.StarlingViewMapExtension;
+    import robotlegs.extensions.starlingViewMap.StarlingViewMapExtension;
 
     import flash.display.Sprite;
 
