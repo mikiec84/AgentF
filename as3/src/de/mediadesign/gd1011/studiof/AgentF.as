@@ -1,28 +1,32 @@
 package de.mediadesign.gd1011.studiof
 {
 
-	import flash.display.Sprite;
+    import de.mediadesign.gd1011.studiof.robotlegs.extensions.starlingViewMap.StarlingViewMapExtension;
+
+    import flash.display.Sprite;
 
     import robotlegs.bender.bundles.mvcs.MVCSBundle;
+    import robotlegs.bender.extensions.contextView.ContextView;
 
     import robotlegs.bender.framework.api.IContext;
     import robotlegs.bender.framework.impl.Context;
-    import robotlegs.extensions.starlingViewMap.StarlingViewMapExtension;
 
     import starling.core.Starling;
 
 	public class AgentF extends Sprite
     {
 
-        private var _starling:Starling;
+        private var starling:Starling;
+        private var context:IContext;
 
         public function AgentF()
         {
-            const starling:Starling = new Starling(Game, stage);
+            starling = new Starling(Game, stage);
 
-            const context:IContext = new Context()
+            context = new Context()
                     .install( MVCSBundle, StarlingViewMapExtension )
-                    .configure( StarlingConfig, this, starling );
+                    .configure( StarlingConfig, this, starling)
+                    .configure(new ContextView(this));
 
             starling.start();
         }

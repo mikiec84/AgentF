@@ -7,26 +7,47 @@
  */
 package de.mediadesign.gd1011.studiof
 {
-    import mediators.StarlingContextViewMediator;
-    import mediators.StarlingStageMediator;
-    import mediators.StarlingSubViewMediator;
+    import de.mediadesign.gd1011.studiof.mediators.StarlingContextViewMediator;
 
+    import flash.events.IEventDispatcher;
+
+    import org.swiftsuspenders.Injector;
+
+    import robotlegs.bender.extensions.eventCommandMap.api.IEventCommandMap;
     import robotlegs.bender.extensions.mediatorMap.api.IMediatorMap;
-
-    import starling.display.Stage;
-
-    import views.StarlingSubView;
 
     public class StarlingConfig
     {
         [Inject]
+        public var modelMap:Injector;
+        [Inject]
         public var mediatorMap:IMediatorMap;
+        [Inject]
+        public var commandMap:IEventCommandMap;
+        [Inject]
+        public var dispatcher:IEventDispatcher;
 
-        public function configure() : void
+        [PostConstruct]
+        public function configure():void
+        {
+            initModels();
+            initCommands();
+            initMediators();
+        }
+
+        private function initModels():void
+        {
+        }
+
+        private function initCommands():void
+        {
+        }
+
+        public function initMediators() : void
         {
             mediatorMap.map( Game ).toMediator(StarlingContextViewMediator);
-            mediatorMap.map( Stage ).toMediator(StarlingStageMediator);
-            mediatorMap.map( StarlingSubView ).toMediator(StarlingSubViewMediator);
         }
+
+
     }
 }

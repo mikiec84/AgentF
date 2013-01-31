@@ -20,6 +20,7 @@ package de.mediadesign.gd1011.studiof
 		{
 	        var t:TextField = new TextField(300,300,"Test:");
             addChild(t);
+
 		}
 	}
 }
