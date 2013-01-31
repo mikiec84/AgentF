@@ -7,16 +7,14 @@
  */
 package de.mediadesign.gd1011.studiof
 {
-    import de.mediadesign.gd1011.studiof.mediators.StarlingContextViewMediator;
+	import flash.events.IEventDispatcher;
 
-    import flash.events.IEventDispatcher;
+	import org.swiftsuspenders.Injector;
 
-    import org.swiftsuspenders.Injector;
+	import robotlegs.bender.extensions.eventCommandMap.api.IEventCommandMap;
+	import robotlegs.bender.extensions.mediatorMap.api.IMediatorMap;
 
-    import robotlegs.bender.extensions.eventCommandMap.api.IEventCommandMap;
-    import robotlegs.bender.extensions.mediatorMap.api.IMediatorMap;
-
-    public class StarlingConfig
+	public class StarlingConfig
     {
         [Inject]
         public var modelMap:Injector;
