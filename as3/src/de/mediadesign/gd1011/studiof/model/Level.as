@@ -9,8 +9,11 @@ package de.mediadesign.gd1011.studiof.model
 {
     public class Level
     {
+        public var enemies:Vector.<Unit>;
+
         public function Level()
         {
+
         }
     }
 }

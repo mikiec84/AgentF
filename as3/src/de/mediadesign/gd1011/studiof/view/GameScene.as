@@ -7,12 +7,17 @@
  */
 package de.mediadesign.gd1011.studiof.view
 {
+    import de.mediadesign.gd1011.studiof.model.Level;
+
     import starling.display.Sprite;
 
-    public class UserInterface extends Sprite
+    public class GameScene extends Sprite
     {
-        public function UserInterface()
+        private var currentLevel:Level;
+
+        public function GameScene(level:Level = null)
         {
+            currentLevel = level;
         }
     }
 }

@@ -16,11 +16,11 @@ package de.mediadesign.gd1011.studiof.model
     {
         private var _movement:Movement;
         private var _weapon:Weapon;
-        private var _heathPoints:int;
+        private var _healthPoints:int;
         private var _position:Point;
         private var _platform:uint;
 
-        public function Unit(platform:uint = 2, heathpoints:int = 1, weapon:Weapon = null, movement:Movement = null)
+        public function Unit(platform:uint = 2, healthPoints:int = 1, weapon:Weapon = null, movement:Movement = null)
         {
 
         }
@@ -45,14 +45,14 @@ package de.mediadesign.gd1011.studiof.model
             _weapon = value;
         }
 
-        public function get heathPoints():int
+        public function get healthPoints():int
         {
-            return _heathPoints;
+            return _healthPoints;
         }
 
-        public function set heathPoints(value:int):void
+        public function set healthPoints(value:int):void
         {
-            _heathPoints = value;
+            _healthPoints = value;
         }
 
         public function get position():Point

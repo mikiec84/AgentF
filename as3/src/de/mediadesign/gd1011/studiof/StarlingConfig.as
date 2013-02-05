@@ -37,6 +37,7 @@ package de.mediadesign.gd1011.studiof
 
         private function initModels():void
         {
+
         }
 
         private function initCommands():void

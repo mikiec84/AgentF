@@ -7,12 +7,18 @@
  */
 package de.mediadesign.gd1011.studiof.services
 {
-	import starling.display.Sprite;
+    import de.mediadesign.gd1011.studiof.model.Unit;
+
+    import starling.display.Sprite;
 	import starling.events.Event;
 
 	public class Game extends Sprite
 	{
-		public function Game()
+		public var currentScore:int;
+
+        private var player:Unit;
+
+        public function Game()
 		{
 			if(stage)
 				init();
@@ -23,6 +29,9 @@ package de.mediadesign.gd1011.studiof.services
 		public function init(e:Event = null):void
 		{
 			removeEventListener(Event.ADDED_TO_STAGE, init);
+
+            // menu init ???
+
             gameLoop();
 //			var myFile:File = File.applicationDirectory.resolvePath("config.json");
 //			var myFileStream:FileStream = new FileStream();

@@ -9,8 +9,8 @@ package de.mediadesign.gd1011.studiof.model
 {
     public class Score
     {
-        private var user:User;
-        private var users:Vector;
+        private var currentUser:User;
+        private var users:Vector.<User>;
 
         public function Score()
         {

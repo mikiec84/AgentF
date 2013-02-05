@@ -2,15 +2,12 @@
  * Created with IntelliJ IDEA.
  * User: maxfrank
  * Date: 05.02.13
- * Time: 09:59
+ * Time: 09:49
  * To change this template use File | Settings | File Templates.
  */
-package de.mediadesign.gd1011.studiof.view
+package de.mediadesign.gd1011.studiof.manager
 {
-    public class Scene
+    public interface IMovementManager
     {
-        public function Scene()
-        {
-        }
     }
 }

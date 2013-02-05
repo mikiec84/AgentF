@@ -15,18 +15,19 @@ package de.mediadesign.gd1011.studiof.services
         {
             if (unit1.platform == unit2.platform && unit1.position.x == unit2.position.y)
             {
-
+                unit1.healthPoints--;
+                unit2.healthPoints--;
             }
         }
 
-//      public static function winning():Boolean
-//      {
-//
-//      }
-
-        public static function loose(health:int):Boolean
+        public static function isDead(unit:Unit):Boolean
         {
-            return (health <= 0);
+            return (unit.healthPoints <= 0);
+        }
+
+        public static function loose(player:Unit):Boolean
+        {
+            return isDead(player);
         }
     }
 }
