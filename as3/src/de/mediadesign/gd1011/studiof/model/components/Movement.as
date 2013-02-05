@@ -9,6 +9,8 @@ package de.mediadesign.gd1011.studiof.model.components
 {
     public class Movement
     {
+        private var velocity:Number;
+
         public function Movement()
         {
         }

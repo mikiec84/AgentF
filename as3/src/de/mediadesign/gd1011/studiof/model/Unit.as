@@ -18,10 +18,11 @@ package de.mediadesign.gd1011.studiof.model
         private var _weapon:Weapon;
         private var _heathPoints:int;
         private var _position:Point;
+        private var _platform:uint;
 
-
-        public function Unit()
+        public function Unit(platform:uint = 2, heathpoints:int = 1, weapon:Weapon = null, movement:Movement = null)
         {
+
         }
 
         public function get movement():Movement
@@ -62,6 +63,16 @@ package de.mediadesign.gd1011.studiof.model
         public function set position(value:Point):void
         {
             _position = value;
+        }
+
+        public function get platform():uint
+        {
+            return _platform;
+        }
+
+        public function set platform(value:uint):void
+        {
+            _platform = value;
         }
     }
 }

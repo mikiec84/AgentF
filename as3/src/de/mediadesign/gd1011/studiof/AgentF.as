@@ -35,9 +35,9 @@ package de.mediadesign.gd1011.studiof {
         }
 		
 
-	private function init(e:Event = null):void
-	{
-		_starling.start();
-	}
-}
+        private function init(e:Event = null):void
+        {
+            _starling.start();
+        }
+    }
 }

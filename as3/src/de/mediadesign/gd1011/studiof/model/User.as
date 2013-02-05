@@ -12,8 +12,10 @@ package de.mediadesign.gd1011.studiof.model
         private var name:String;
         private var points:int;
 
-        public function User()
+        public function User(name:String)
         {
+            this.name = name;
+            points = 0;
         }
     }
 }

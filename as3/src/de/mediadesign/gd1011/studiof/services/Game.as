@@ -7,13 +7,8 @@
  */
 package de.mediadesign.gd1011.studiof.services
 {
-    import flash.filesystem.File;
-    import flash.filesystem.FileMode;
-    import flash.filesystem.FileStream;
-
 	import starling.display.Sprite;
 	import starling.events.Event;
-	import starling.text.TextField;
 
 	public class Game extends Sprite
 	{

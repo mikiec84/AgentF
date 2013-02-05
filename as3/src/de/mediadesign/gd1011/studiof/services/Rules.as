@@ -13,17 +13,20 @@ package de.mediadesign.gd1011.studiof.services
     {
         public static function collisionDetection(unit1:Unit, unit2:Unit):void
         {
+            if (unit1.platform == unit2.platform && unit1.position.x == unit2.position.y)
+            {
 
+            }
         }
 
-        public static function winning():Boolean
+//      public static function winning():Boolean
+//      {
+//
+//      }
+
+        public static function loose(health:int):Boolean
         {
-
-        }
-
-        public static function loose():Boolean
-        {
-
+            return (health <= 0);
         }
     }
 }
