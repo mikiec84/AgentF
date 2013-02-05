@@ -9,6 +9,9 @@ package de.mediadesign.gd1011.studiof.model
 {
     public class User
     {
+        private var name:String;
+        private var points:int;
+
         public function User()
         {
         }

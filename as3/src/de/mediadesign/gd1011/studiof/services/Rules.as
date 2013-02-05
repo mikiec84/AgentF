@@ -7,10 +7,23 @@
  */
 package de.mediadesign.gd1011.studiof.services
 {
+    import de.mediadesign.gd1011.studiof.model.Unit;
+
     public class Rules
     {
-        public function Rules()
+        public static function collisionDetection(unit1:Unit, unit2:Unit):void
         {
+
+        }
+
+        public static function winning():Boolean
+        {
+
+        }
+
+        public static function loose():Boolean
+        {
+
         }
     }
 }

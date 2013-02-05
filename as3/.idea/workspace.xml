@@ -2,28 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9d5af888-79aa-45bf-94bc-b57803b7fbdf" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/controller/IMovementManager.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/model/Level.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/controller/LevelManager.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/model/components/Movement.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/controller/MovementManager.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/services/Render.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/services/Rules.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/view/Scene.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/model/Score.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/model/Unit.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/model/User.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/view/UserInterface.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/model/components/Weapon.as" />
-      <change type="MOVED" beforePath="C:\Users\maxfrank\Documents\GitHub\AgentF\as3\src\de\mediadesign\gd1011\studiof\Game.as" afterPath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/services/Game.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/AgentF.as" afterPath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/AgentF.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/StarlingConfig.as" afterPath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/StarlingConfig.as" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/services/Rules.as" afterPath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/services/Rules.as" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/model/Score.as" afterPath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/model/Score.as" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/model/Unit.as" afterPath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/model/Unit.as" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/model/User.as" afterPath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/model/User.as" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="AgentF.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1360055003766" ignored="false" />
-    <file path="/fragment.js2" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1360054752784" ignored="false" />
+    <file path="/Dummy.txt" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1360055039827" ignored="false" />
+    <file path="/fragment.js2" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1360056070728" ignored="false" />
     <file path="/AgentF.as" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1359635910403" ignored="false" />
     <file path="/AgentF-app.xml" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1359622409363" ignored="false" />
     <file path="/Game.as" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1360054453847" ignored="false" />
@@ -34,6 +22,11 @@
     <file path="/Board.as" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1359636094442" ignored="false" />
     <file path="/IMovementManager.as" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1360054163134" ignored="false" />
     <file path="/MovementManager.as" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1360054228759" ignored="false" />
+    <file path="/Rules.as" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1360056420470" ignored="false" />
+    <file path="/Unit.as" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1360056406940" ignored="false" />
+    <file path="/User.as" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1360056391197" ignored="false" />
+    <file path="/Score.as" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1360056558455" ignored="false" />
+    <file path="/Assets.as" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1360056732222" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,12 +85,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Game.as" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Game.as" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/services/Game.as">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="30" column="23" selection-start="691" selection-end="691" vertical-scroll-proportion="0.4684271">
+            <state line="30" column="23" selection-start="691" selection-end="691" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="e#207#236#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Assets.as" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/assets/Assets.as">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="44" selection-start="44" selection-end="44" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="e#51#79#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -121,22 +125,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/StarlingConfig.as" />
         <option value="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/controller/LevelManager.as" />
         <option value="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/controller/IMovementManagerImpl.as" />
         <option value="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/controller/IMovementManager.as" />
         <option value="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/controller/MovementManager.as" />
         <option value="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/Game.as" />
-        <option value="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/model/Unit.as" />
-        <option value="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/model/User.as" />
         <option value="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/model/Level.as" />
-        <option value="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/model/Score.as" />
         <option value="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/model/components/Movement.as" />
         <option value="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/model/components/Weapon.as" />
-        <option value="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/services/Rules.as" />
         <option value="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/services/Render.as" />
         <option value="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/view/Scene.as" />
         <option value="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/view/UserInterface.as" />
+        <option value="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/model/User.as" />
+        <option value="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/model/Unit.as" />
+        <option value="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/services/Rules.as" />
+        <option value="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/model/Score.as" />
+        <option value="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/assets/Assets.as" />
       </list>
     </option>
   </component>
@@ -314,13 +318,35 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AgentF" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="as3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="studiof" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="GoToFile.includeJavaFiles" value="false" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.lastSelected" value="editor.preferences.appearance" />
@@ -616,12 +642,16 @@
       <created>1359629542165</created>
       <updated>1359629542165</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="alle bisher notwendigen Klassen erstellt">
+      <created>1360055052500</created>
+      <updated>1360055052500</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -715,13 +745,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/StarlingContextViewMediator.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="28" selection-start="482" selection-end="482" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/StarlingConfig.as">
       <provider selected="true" editor-type-id="text-editor">
         <state line="15" column="0" selection-start="414" selection-end="414" vertical-scroll-proportion="0.0">
@@ -771,13 +794,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/services/Rules.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="17" selection-start="221" selection-end="221" vertical-scroll-proportion="0.058553386">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/model/components/Weapon.as">
       <provider selected="true" editor-type-id="text-editor">
         <state line="9" column="17" selection-start="229" selection-end="229" vertical-scroll-proportion="0.058553386">
@@ -792,13 +808,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/model/Score.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="17" selection-start="218" selection-end="218" vertical-scroll-proportion="0.058553386">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/model/Level.as">
       <provider selected="true" editor-type-id="text-editor">
         <state line="9" column="17" selection-start="218" selection-end="218" vertical-scroll-proportion="0.058553386">
@@ -808,23 +817,48 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/model/User.as">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="17" selection-start="218" selection-end="218" vertical-scroll-proportion="0.058553386">
+        <state line="13" column="0" selection-start="294" selection-end="294" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/model/Unit.as">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="17" selection-start="218" selection-end="218" vertical-scroll-proportion="0.058553386">
+        <state line="19" column="35" selection-start="540" selection-end="540" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#205#268#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/model/Score.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="12" selection-start="477" selection-end="477" vertical-scroll-proportion="0.3903559">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/services/Rules.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="46" selection-start="505" selection-end="505" vertical-scroll-proportion="0.33180252">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/services/Game.as">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="23" selection-start="691" selection-end="691" vertical-scroll-proportion="0.4684271">
+        <state line="30" column="23" selection-start="691" selection-end="691" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="e#207#236#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/assets/Assets.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="44" selection-start="44" selection-end="44" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#51#79#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -882,12 +916,11 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>AgentF</last-edited>
+          <last-edited>AgentF|AgentF</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
                 <option value="0.2" />
-                <option value="0.5" />
               </list>
             </option>
           </splitter-proportions>

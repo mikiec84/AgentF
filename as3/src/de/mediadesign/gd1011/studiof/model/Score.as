@@ -9,8 +9,22 @@ package de.mediadesign.gd1011.studiof.model
 {
     public class Score
     {
+        private var user:User;
+        private var users:Vector;
+
         public function Score()
         {
+
+        }
+
+        public function loadScore():void
+        {
+
+        }
+
+        public  function saveScore():void
+        {
+
         }
     }
 }
