@@ -2,16 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9d5af888-79aa-45bf-94bc-b57803b7fbdf" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/assets/Assets.as" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/model/Unit.as" afterPath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/model/Unit.as" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="AgentF.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1360056740502" ignored="false" />
+    <file path="/Dummy.txt" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1360056947097" ignored="false" />
     <file path="/fragment.js2" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1360056070728" ignored="false" />
     <file path="/AgentF.as" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1359635910403" ignored="false" />
     <file path="/AgentF-app.xml" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1359622409363" ignored="false" />
-    <file path="/Game.as" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1360054453847" ignored="false" />
+    <file path="/Game.as" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1360057119646" ignored="false" />
     <file path="/StarlingConfig.as" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1359634187208" ignored="false" />
     <file path="/InitBoardEvent.as" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1359630089314" ignored="false" />
     <file path="/StarlingViewMapExtension.as" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1359634025870" ignored="false" />
@@ -85,7 +85,7 @@
       <file leaf-file-name="Game.as" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/services/Game.as">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="30" column="23" selection-start="691" selection-end="691" vertical-scroll-proportion="0.0">
+            <state line="29" column="60" selection-start="667" selection-end="667" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="e#207#236#0" expanded="true" />
               </folding>
@@ -93,7 +93,18 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Assets.as" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Unit.as" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/model/Unit.as">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="19" column="8" selection-start="516" selection-end="516" vertical-scroll-proportion="0.25373134">
+              <folding>
+                <element signature="e#205#268#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Assets.as" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/assets/Assets.as">
           <provider selected="true" editor-type-id="text-editor">
             <state line="0" column="44" selection-start="44" selection-end="44" vertical-scroll-proportion="0.0">
@@ -122,7 +133,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/controller/LevelManager.as" />
         <option value="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/controller/IMovementManagerImpl.as" />
         <option value="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/controller/IMovementManager.as" />
         <option value="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/controller/MovementManager.as" />
@@ -134,10 +144,11 @@
         <option value="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/view/Scene.as" />
         <option value="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/view/UserInterface.as" />
         <option value="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/model/User.as" />
-        <option value="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/model/Unit.as" />
         <option value="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/services/Rules.as" />
         <option value="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/model/Score.as" />
         <option value="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/assets/Assets.as" />
+        <option value="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/services/Game.as" />
+        <option value="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/model/Unit.as" />
       </list>
     </option>
   </component>
@@ -647,12 +658,16 @@
       <created>1360056752911</created>
       <updated>1360056752911</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="alle bisher notwendigen Klassen erstellt">
+      <created>1360056953775</created>
+      <updated>1360056953775</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -671,7 +686,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2497332" sideWeight="0.67112595" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2497332" sideWeight="0.67112595" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32998884" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -816,22 +831,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/model/User.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="0" selection-start="294" selection-end="294" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/model/Unit.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="35" selection-start="540" selection-end="540" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#205#268#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/model/Score.as">
       <provider selected="true" editor-type-id="text-editor">
         <state line="26" column="12" selection-start="477" selection-end="477" vertical-scroll-proportion="0.3903559">
@@ -846,20 +845,36 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/assets/Assets.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="44" selection-start="44" selection-end="44" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#51#79#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/services/Game.as">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="23" selection-start="691" selection-end="691" vertical-scroll-proportion="0.0">
+        <state line="29" column="60" selection-start="667" selection-end="667" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="e#207#236#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/assets/Assets.as">
+    <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/model/User.as">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="44" selection-start="44" selection-end="44" vertical-scroll-proportion="0.0">
+        <state line="13" column="0" selection-start="294" selection-end="294" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/model/Unit.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="8" selection-start="516" selection-end="516" vertical-scroll-proportion="0.25373134">
           <folding>
-            <element signature="e#51#79#0" expanded="true" />
+            <element signature="e#205#268#0" expanded="true" />
           </folding>
         </state>
       </provider>
