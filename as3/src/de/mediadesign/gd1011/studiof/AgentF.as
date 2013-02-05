@@ -2,7 +2,11 @@ package de.mediadesign.gd1011.studiof {
 
     import de.mediadesign.gd1011.studiof.services.Game;
 
-    import robotlegs.extensions.starlingViewMap.StarlingViewMapExtension;
+	import flash.display.StageAlign;
+
+	import flash.display.StageScaleMode;
+
+	import robotlegs.extensions.starlingViewMap.StarlingViewMapExtension;
 
     import flash.display.Sprite;
 
@@ -24,8 +28,11 @@ package de.mediadesign.gd1011.studiof {
 
         public function AgentF()
         {
-            _starling = new Starling(Game, stage);
+			stage.scaleMode = StageScaleMode.NO_SCALE;
+			stage.align = StageAlign.TOP_LEFT;
 
+			Starling.handleLostContext = true;
+            _starling = new Starling(Game, stage);
             _context = new Context()
                     .install( MVCSBundle, StarlingViewMapExtension )
                     .configure( StarlingConfig, this, _starling)
