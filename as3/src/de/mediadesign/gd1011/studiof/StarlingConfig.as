@@ -7,7 +7,9 @@
  */
 package de.mediadesign.gd1011.studiof
 {
-	import flash.events.IEventDispatcher;
+    import de.mediadesign.gd1011.studiof.services.Game;
+
+    import flash.events.IEventDispatcher;
 
 	import org.swiftsuspenders.Injector;
 
