@@ -10,6 +10,7 @@ package de.mediadesign.gd1011.studiof.model.components {
 
         private var _x:int;
         private var _y:int;
+        private var _currentRotation:int;
 
         public function PositionComponent() {
         }
@@ -28,6 +29,14 @@ package de.mediadesign.gd1011.studiof.model.components {
 
         public function set y(value:int):void {
             _y = value;
+        }
+
+        public function get currentRotation():int {
+            return _currentRotation;
+        }
+
+        public function set currentRotation(value:int):void {
+            _currentRotation = value;
         }
     }
 }

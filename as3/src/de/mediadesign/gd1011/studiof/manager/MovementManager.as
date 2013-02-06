@@ -14,7 +14,10 @@ package de.mediadesign.gd1011.studiof.manager
         }
 
         public function execute(allRelevantUnits:Array):void{
-
+            for (var index:int = 0; index<allRelevantUnits.length; index++) {
+                allRelevantUnits[index].movement.pos.x += allRelevantUnits[index].movement.directionVector[0];
+                allRelevantUnits[index].movement.pos.y += allRelevantUnits[index].movement.directionVector[1];
+            }
         }
     }
 }

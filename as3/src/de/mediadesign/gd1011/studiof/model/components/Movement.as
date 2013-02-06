@@ -10,7 +10,7 @@ package de.mediadesign.gd1011.studiof.model.components
     public class Movement
     {
         private var _pos:PositionComponent;
-        private var _direction:Array;
+        private var _directionVector:Array;
 
         public function Movement()
         {
@@ -24,12 +24,12 @@ package de.mediadesign.gd1011.studiof.model.components
             _pos = value;
         }
 
-        public function get direction():Array {
-            return _direction;
+        public function get directionVector():Array {
+            return _directionVector;
         }
 
-        public function set direction(value:Array):void {
-            _direction = value;
+        public function set directionVector(value:Array):void {
+            _directionVector = value;
         }
     }
 }
