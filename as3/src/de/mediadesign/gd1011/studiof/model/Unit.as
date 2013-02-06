@@ -21,9 +21,17 @@ package de.mediadesign.gd1011.studiof.model
         private var _healthPoints:int;
         private var _platform:uint;
 
-        public function Unit(platform:uint = 2, healthPoints:int = 1, weapon:String = null, movement:String = null)
-        {
-
+        public function Unit(unitType:String = null){
+            platform = 2;
+            healthPoints = 3;
+            weapon = new Weapon();
+            weapon.weaponType = "Kanone";
+            movement = new Movement();
+            if (unitType == "Player" || unitType == "Boss") {
+                movement.horizontalVelocityEnabled = false;
+            }   else    {
+                movement.horizontalVelocityEnabled = true;
+            }
         }
 
         public function get movement():Movement
