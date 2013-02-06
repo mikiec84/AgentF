@@ -5,6 +5,8 @@ package de.mediadesign.gd1011.studiof {
 	import flash.display.Sprite;
 	import flash.display.StageAlign;
 	import flash.display.StageScaleMode;
+	import flash.geom.Rectangle;
+	import flash.system.Capabilities;
 
 	import robotlegs.bender.bundles.mvcs.MVCSBundle;
 	import robotlegs.bender.extensions.contextView.ContextView;
@@ -27,7 +29,7 @@ package de.mediadesign.gd1011.studiof {
 			stage.align = StageAlign.TOP_LEFT;
 
 			Starling.handleLostContext = true;
-            _starling = new Starling(MainView, stage);
+            _starling = new Starling(MainView, stage, new Rectangle(0, 0, stage.fullScreenWidth, stage.fullScreenHeight));
             _context = new Context()
                     .install( MVCSBundle, StarlingViewMapExtension )
                     .configure( StarlingConfig, this, _starling)

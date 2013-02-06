@@ -26,7 +26,7 @@ package de.mediadesign.gd1011.studiof.view
 		{
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 
-			var test:Flussbett_texture = new Flussbett_texture(0,0);
+			var test:Flussbett_texture = new Flussbett_texture(1280,880);
 			var img:Image = new Image(Texture.fromBitmapData(test));
 			img.scaleX = img.scaleY = 2;
 			addChild(img);

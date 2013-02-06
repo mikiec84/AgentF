@@ -26,6 +26,8 @@ package de.mediadesign.gd1011.studiof.view
 		{
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 
+
+
 			var gameView:GameView = new GameView();
 			addChild(gameView);
 
