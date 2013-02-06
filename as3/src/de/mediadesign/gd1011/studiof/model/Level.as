@@ -16,7 +16,7 @@ package de.mediadesign.gd1011.studiof.model
 
 
         public function Level()
-        {
+        {   _currentLevel = new Currentlevel("default");
 
 
         }

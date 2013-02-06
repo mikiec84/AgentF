@@ -11,10 +11,24 @@ package de.mediadesign.gd1011.studiof.model.components {
         private var _currentLevel:int;
         private var _currentLevelLength:int;
         private var _enemyCount:int;
-        //und weitere besonderheiten des levels hierhin
+        //und weitere leveleigenschaften
 
-        public function Currentlevel() {
-
+        public function Currentlevel(initMode:String = null) {
+            switch (initMode){
+                case "default":
+                    _currentLevel       = 0;
+                    _currentLevelLength = 0;
+                    _enemyCount         = 0;
+                    break;
+                case "Level1":
+                    _currentLevel       = 1;
+                    _currentLevelLength = 7;
+                    _enemyCount         = 20;
+                    break;
+                case null:
+                    trace("initMode Parameter in CurrentLevel component = null.");
+                    break;
+            }
         }
 
         public function get currentLevel():int {
