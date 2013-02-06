@@ -7,10 +7,17 @@
  */
 package de.mediadesign.gd1011.studiof.manager
 {
+    import de.mediadesign.gd1011.studiof.model.Level;
+
     public class LevelManager
     {
+        [Inject]
+        public var levelModel:Level;
+
+        [PostConstruct]
         public function LevelManager()
         {
+
         }
     }
 }
