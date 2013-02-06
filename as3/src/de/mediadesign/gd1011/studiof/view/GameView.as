@@ -28,6 +28,7 @@ package de.mediadesign.gd1011.studiof.view
 
 			var test:Flussbett_texture = new Flussbett_texture(0,0);
 			var img:Image = new Image(Texture.fromBitmapData(test));
+			img.scaleX = img.scaleY = 2;
 			addChild(img);
 		}
 
