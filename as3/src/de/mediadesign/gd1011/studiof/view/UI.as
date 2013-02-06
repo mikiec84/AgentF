@@ -9,9 +9,9 @@ package de.mediadesign.gd1011.studiof.view
 {
     import starling.display.Sprite;
 
-    public class UserInterface extends Sprite
+    public class UI extends Sprite
     {
-        public function UserInterface()
+        public function UI()
         {
         }
     }

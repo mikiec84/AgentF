@@ -7,6 +7,10 @@
  */
 package de.mediadesign.gd1011.studiof
 {
+	import de.mediadesign.gd1011.studiof.view.GameView;
+	import de.mediadesign.gd1011.studiof.view.MainView;
+	import de.mediadesign.gd1011.studiof.view.mediators.GameViewMediator;
+	import de.mediadesign.gd1011.studiof.view.mediators.MainViewMediator;
     import de.mediadesign.gd1011.studiof.model.Level;
     import de.mediadesign.gd1011.studiof.model.Score;
     import de.mediadesign.gd1011.studiof.model.User;
@@ -62,7 +66,8 @@ package de.mediadesign.gd1011.studiof
 
         public function initMediators() : void
         {
-            mediatorMap.map( Game ).toMediator(StarlingContextViewMediator);
+            mediatorMap.map(MainView).toMediator(MainViewMediator);
+			mediatorMap.map(GameView).toMediator(GameViewMediator);
         }
 
 

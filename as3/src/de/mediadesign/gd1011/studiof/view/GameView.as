@@ -5,20 +5,16 @@
  * Time: 09:55
  * To change this template use File | Settings | File Templates.
  */
-package de.mediadesign.gd1011.studiof.services
+package de.mediadesign.gd1011.studiof.view
 {
-    import de.mediadesign.gd1011.studiof.model.Unit;
-
-    import starling.display.Sprite;
+	import starling.display.Image;
+	import starling.display.Sprite;
 	import starling.events.Event;
+	import starling.textures.Texture;
 
-	public class Game extends Sprite
+	public class GameView extends Sprite
 	{
-		public var currentScore:int;
-
-        private var player:Unit;
-
-        public function Game()
+        public function GameView()
 		{
 			if(stage)
 				init();
@@ -30,15 +26,10 @@ package de.mediadesign.gd1011.studiof.services
 		{
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 
-            // menu init ???
-
-            gameLoop();
+			var test:Flussbett_texture = new Flussbett_texture(0,0);
+			var img:Image = new Image(Texture.fromBitmapData(test));
+			addChild(img);
 		}
-
-        public function gameLoop():void
-        {
-
-        }
 
 	}
 }
