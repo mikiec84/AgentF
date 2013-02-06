@@ -11,7 +11,10 @@ package de.mediadesign.gd1011.studiof.manager
     {
         public function MovementManager()
         {
-            
+        }
+
+        public function execute(allRelevantUnits:Array):void{
+
         }
     }
 }
