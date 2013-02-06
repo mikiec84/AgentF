@@ -8,22 +8,18 @@
 package de.mediadesign.gd1011.studiof.manager
 {
     import de.mediadesign.gd1011.studiof.model.Unit;
-    import de.mediadesign.gd1011.studiof.model.components.Movement;
-    import de.mediadesign.gd1011.studiof.model.components.Weapon;
-    import de.mediadesign.gd1011.studiof.model.components.Weapon;
 
     public class UnitManager
     {
         private var enemies:Vector.<Unit>;
-        private var player:Unit;
 
-        public function addEnemy(platform:uint, healthPoints:int,  weapon:Weapon, movement:Movement):void
+        public function addEnemy(platform:uint, healthPoints:int,  weapon:String, movement:String):void
         {
             var enemy:Unit = new Unit(platform, healthPoints, weapon, movement);
             enemies.push(enemy)
         }
 
-        public function addPlayer(platform:uint, healthPoints:int, weapon:Weapon, movement:Movement):Unit
+        public function addPlayer(platform:uint, healthPoints:int, weapon:String, movement:String):Unit
         {
             var player:Unit = new Unit(platform,  healthPoints, weapon, movement);
             return player;

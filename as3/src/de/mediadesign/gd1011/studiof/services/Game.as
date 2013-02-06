@@ -33,15 +33,6 @@ package de.mediadesign.gd1011.studiof.services
             // menu init ???
 
             gameLoop();
-//			var myFile:File = File.applicationDirectory.resolvePath("config.json");
-//			var myFileStream:FileStream = new FileStream();
-//			myFileStream.open(myFile, FileMode.READ);
-//			var yourJSONdata:String = myFileStream.readUTFBytes(myFileStream.bytesAvailable);
-//			var config:Object = JSON.parse(yourJSONdata);
-//			myFileStream.close();
-//
-//			var t:TextField = new TextField(300, 300, "Test:" + config["testtext"]);
-//			addChild(t);
 		}
 
         public function gameLoop():void

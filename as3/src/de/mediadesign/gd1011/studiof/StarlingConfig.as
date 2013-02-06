@@ -7,7 +7,12 @@
  */
 package de.mediadesign.gd1011.studiof
 {
+    import de.mediadesign.gd1011.studiof.commands.InitPlayer;
+    import de.mediadesign.gd1011.studiof.consts.GameConsts;
+    import de.mediadesign.gd1011.studiof.events.GameEvent;
+    import de.mediadesign.gd1011.studiof.manager.UnitManager;
     import de.mediadesign.gd1011.studiof.services.Game;
+    import de.mediadesign.gd1011.studiof.services.JsonReader;
 
     import flash.events.IEventDispatcher;
 
@@ -33,15 +38,20 @@ package de.mediadesign.gd1011.studiof
             initModels();
             initCommands();
             initMediators();
+
+            // Weitere Parameter müssen übergeben werden
+            var playerEvent:GameEvent = new GameEvent(GameConsts.INIT_PLAYER, GameConsts.INIT_PLAYER, JsonReader.readJSON("player") );
+            dispatcher.dispatchEvent(playerEvent);  //WTF ?? cast to Event
         }
 
         private function initModels():void
         {
-
+            modelMap.map(UnitManager).asSingleton();
         }
 
         private function initCommands():void
         {
+            commandMap.map(GameConsts.INIT_PLAYER).toCommand(InitPlayer);
         }
 
         public function initMediators() : void
