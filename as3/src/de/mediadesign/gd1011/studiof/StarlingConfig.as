@@ -7,6 +7,9 @@
  */
 package de.mediadesign.gd1011.studiof
 {
+    import de.mediadesign.gd1011.studiof.model.Level;
+    import de.mediadesign.gd1011.studiof.model.Score;
+    import de.mediadesign.gd1011.studiof.model.User;
     import de.mediadesign.gd1011.studiof.commands.InitPlayer;
     import de.mediadesign.gd1011.studiof.consts.GameConsts;
     import de.mediadesign.gd1011.studiof.events.GameEvent;
@@ -46,6 +49,9 @@ package de.mediadesign.gd1011.studiof
 
         private function initModels():void
         {
+            modelMap.map(Level).asSingleton();
+            modelMap.map(Score).asSingleton();
+            modelMap.map(User).asSingleton();
             modelMap.map(UnitManager).asSingleton();
         }
 

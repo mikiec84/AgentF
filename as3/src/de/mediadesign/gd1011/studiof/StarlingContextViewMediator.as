@@ -1,27 +1,36 @@
 package de.mediadesign.gd1011.studiof {
+	import de.mediadesign.gd1011.studiof.services.Game;
+
 	import robotlegs.extensions.starlingViewMap.impl.StarlingMediator;
 
-	/**
-	 * @author jamieowen
-	 */
+	import starling.display.Quad;
+
+	import starling.events.TouchEvent;
+
 	public class StarlingContextViewMediator extends StarlingMediator
 	{
-		
-		public function StarlingContextViewMediator()
+		[Inject]
+		public var contextView:Game;
+
+		private function handleTouch(e:TouchEvent):void
 		{
-			
+			trace("Funktioniert");
 		}
 		
 		override public function initialize():void
 		{
-			super.initialize();
-			trace( "rl2 initialise : " + this );
+			var quad:Quad = new Quad(1000,1000,0x000000);
+			quad.x = 100;
+			quad.y = 100;
+
+
+			contextView.addChild(quad);
+			contextView.addEventListener(TouchEvent.TOUCH,handleTouch);
 		}
 
 		override public function destroy():void
 		{
-			super.initialize();
-			trace( "rl2 destroy " + this );
+
 		}
 	}
 }
