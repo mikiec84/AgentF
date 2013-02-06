@@ -11,6 +11,7 @@ package de.mediadesign.gd1011.studiof.model.components
     {
         private var _pos:PositionComponent;
         private var _directionVector:Array;
+        private var _horizontalVelocityEnabled:Boolean;
 
         public function Movement()
         {
@@ -30,6 +31,14 @@ package de.mediadesign.gd1011.studiof.model.components
 
         public function set directionVector(value:Array):void {
             _directionVector = value;
+        }
+
+        public function get horizontalVelocityEnabled():Boolean {
+            return _horizontalVelocityEnabled;
+        }
+
+        public function set horizontalVelocityEnabled(value:Boolean):void {
+            _horizontalVelocityEnabled = value;
         }
     }
 }
