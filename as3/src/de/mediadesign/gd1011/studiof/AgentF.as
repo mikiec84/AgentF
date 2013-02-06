@@ -1,24 +1,19 @@
 package de.mediadesign.gd1011.studiof {
 
-    import de.mediadesign.gd1011.studiof.services.Game;
+	import de.mediadesign.gd1011.studiof.view.MainView;
 
+	import flash.display.Sprite;
 	import flash.display.StageAlign;
-
 	import flash.display.StageScaleMode;
 
+	import robotlegs.bender.bundles.mvcs.MVCSBundle;
+	import robotlegs.bender.extensions.contextView.ContextView;
+	import robotlegs.bender.framework.api.IContext;
+	import robotlegs.bender.framework.impl.Context;
 	import robotlegs.extensions.starlingViewMap.StarlingViewMapExtension;
 
-    import flash.display.Sprite;
-
-    import robotlegs.bender.bundles.mvcs.MVCSBundle;
-    import robotlegs.bender.extensions.contextView.ContextView;
 	import starling.core.Starling;
 	import starling.events.Event;
-
-    import robotlegs.bender.framework.api.IContext;
-    import robotlegs.bender.framework.impl.Context;
-
-    import starling.core.Starling;
 
 	public class AgentF extends Sprite
     {
@@ -32,7 +27,7 @@ package de.mediadesign.gd1011.studiof {
 			stage.align = StageAlign.TOP_LEFT;
 
 			Starling.handleLostContext = true;
-            _starling = new Starling(Game, stage);
+            _starling = new Starling(MainView, stage);
             _context = new Context()
                     .install( MVCSBundle, StarlingViewMapExtension )
                     .configure( StarlingConfig, this, _starling)
