@@ -20,7 +20,7 @@ package de.mediadesign.gd1011.studiof.model
         private var _position:Point;
         private var _platform:uint;
 
-        public function Unit(platform:uint = 2, healthPoints:int = 1, weapon:Weapon = null, movement:Movement = null)
+        public function Unit(platform:uint = 2, healthPoints:int = 1, weapon:String = null, movement:String = null)
         {
 
         }

@@ -9,13 +9,16 @@ package de.mediadesign.gd1011.studiof.model.components
 {
     import de.mediadesign.gd1011.studiof.model.Unit;
 
+
     public class Weapon
     {
         public var ammunition:Vector.<Unit>;
+        private var weaponType:String;
 
         public function Weapon()
         {
 
         }
+
     }
 }
