@@ -10,6 +10,7 @@ package de.mediadesign.gd1011.studiof.model.components {
 
         private var _currentLevel:int;
         private var _currentLevelLength:int;
+        private var _enemyCount:int;
         //und weitere besonderheiten des levels hierhin
 
         public function Currentlevel() {
@@ -30,6 +31,14 @@ package de.mediadesign.gd1011.studiof.model.components {
 
         public function set currentLevelLength(value:int):void {
             _currentLevelLength = value;
+        }
+
+        public function get enemyCount():int {
+            return _enemyCount;
+        }
+
+        public function set enemyCount(value:int):void {
+            _enemyCount = value;
         }
     }
 }
