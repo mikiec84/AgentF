@@ -20,18 +20,23 @@ package de.mediadesign.gd1011.studiof.model
         private var _weapon:Weapon;
         private var _healthPoints:int;
         private var _platform:uint;
+        private var _playerJumpSpeed:int;
+        private var _unitType:String;
 
         public function Unit(unitType:String = null){
-            platform = 2;
-            healthPoints = 3;
-            weapon = new Weapon();
+            _playerJumpSpeed = 2;
+            _platform = 2;
+            _healthPoints = 3;
+            _weapon = new Weapon();
             weapon.weaponType = "Kanone";
-            movement = new Movement();
+            _movement = new Movement();
             if (unitType == "Player" || unitType == "Boss") {
                 movement.horizontalVelocityEnabled = false;
             }   else    {
                 movement.horizontalVelocityEnabled = true;
             }
+           this._unitType = unitType;
+            _renderInfo = new RenderInfo(_movement.pos);
         }
 
         public function get movement():Movement
@@ -80,6 +85,22 @@ package de.mediadesign.gd1011.studiof.model
 
         public function set renderInfo(value:RenderInfo):void {
             _renderInfo = value;
+        }
+
+        public function get playerJumpSpeed():int {
+            return _playerJumpSpeed;
+        }
+
+        public function set playerJumpSpeed(value:int):void {
+            _playerJumpSpeed = value;
+        }
+
+        public function get unitType():String {
+            return _unitType;
+        }
+
+        public function set unitType(value:String):void {
+            _unitType = value;
         }
     }
 }

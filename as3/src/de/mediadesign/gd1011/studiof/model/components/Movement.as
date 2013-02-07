@@ -12,9 +12,10 @@ package de.mediadesign.gd1011.studiof.model.components
         private var _pos:PositionComponent;
         private var _directionVector:Array;
         private var _horizontalVelocityEnabled:Boolean;
+        private var _verticalVelocityEnabled:Boolean;
 
         public function Movement()
-        {
+        {   _pos = new PositionComponent();
         }
 
         public function get pos():PositionComponent {
@@ -39,6 +40,14 @@ package de.mediadesign.gd1011.studiof.model.components
 
         public function set horizontalVelocityEnabled(value:Boolean):void {
             _horizontalVelocityEnabled = value;
+        }
+
+        public function get verticalVelocityEnabled():Boolean {
+            return _verticalVelocityEnabled;
+        }
+
+        public function set verticalVelocityEnabled(value:Boolean):void {
+            _verticalVelocityEnabled = value;
         }
     }
 }
