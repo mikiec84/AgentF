@@ -20,7 +20,7 @@ package de.mediadesign.gd1011.studiof.model
         private var _weapon:Weapon;
         private var _healthPoints:int;
         private var _platform:uint;
-        private var _playerJumpSpeed:int;
+        private var _playerJumpSpeed:Number;
         private var _unitType:String;
 
         public function Unit(unitType:String = null){
