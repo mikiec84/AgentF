@@ -18,7 +18,6 @@ package de.mediadesign.gd1011.studiof
     import de.mediadesign.gd1011.studiof.consts.GameConsts;
     import de.mediadesign.gd1011.studiof.events.GameEvent;
     import de.mediadesign.gd1011.studiof.manager.UnitManager;
-    import de.mediadesign.gd1011.studiof.services.Game;
     import de.mediadesign.gd1011.studiof.services.JsonReader;
 
     import flash.events.IEventDispatcher;
