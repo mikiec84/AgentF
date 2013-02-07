@@ -8,6 +8,7 @@
 package de.mediadesign.gd1011.studiof.model
 {
     import de.mediadesign.gd1011.studiof.model.components.Movement;
+    import de.mediadesign.gd1011.studiof.model.components.RenderInfo;
     import de.mediadesign.gd1011.studiof.model.components.Weapon;
 
     import flash.geom.Point;
@@ -15,14 +16,22 @@ package de.mediadesign.gd1011.studiof.model
     public class Unit
     {
         private var _movement:Movement;
+        private var _renderInfo:RenderInfo;
         private var _weapon:Weapon;
         private var _healthPoints:int;
-        private var _position:Point;
         private var _platform:uint;
 
-        public function Unit(platform:uint = 2, healthPoints:int = 1, weapon:String = null, movement:String = null)
-        {
-
+        public function Unit(unitType:String = null){
+            platform = 2;
+            healthPoints = 3;
+            weapon = new Weapon();
+            weapon.weaponType = "Kanone";
+            movement = new Movement();
+            if (unitType == "Player" || unitType == "Boss") {
+                movement.horizontalVelocityEnabled = false;
+            }   else    {
+                movement.horizontalVelocityEnabled = true;
+            }
         }
 
         public function get movement():Movement
@@ -55,16 +64,6 @@ package de.mediadesign.gd1011.studiof.model
             _healthPoints = value;
         }
 
-        public function get position():Point
-        {
-            return _position;
-        }
-
-        public function set position(value:Point):void
-        {
-            _position = value;
-        }
-
         public function get platform():uint
         {
             return _platform;
@@ -73,6 +72,14 @@ package de.mediadesign.gd1011.studiof.model
         public function set platform(value:uint):void
         {
             _platform = value;
+        }
+
+        public function get renderInfo():RenderInfo {
+            return _renderInfo;
+        }
+
+        public function set renderInfo(value:RenderInfo):void {
+            _renderInfo = value;
         }
     }
 }

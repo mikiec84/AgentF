@@ -13,12 +13,19 @@ package de.mediadesign.gd1011.studiof.model.components
     public class Weapon
     {
         public var ammunition:Vector.<Unit>;
-        private var weaponType:String;
+        private var _weaponType:String;
 
         public function Weapon()
         {
 
         }
 
+        public function get weaponType():String {
+            return _weaponType;
+        }
+
+        public function set weaponType(value:String):void {
+            _weaponType = value;
+        }
     }
 }

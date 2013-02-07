@@ -9,5 +9,6 @@ package de.mediadesign.gd1011.studiof.manager
 {
     public interface IMovementManager
     {
+        function tick(allRelevantUnits:Array):void;
     }
 }
