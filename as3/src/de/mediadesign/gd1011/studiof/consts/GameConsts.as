@@ -7,13 +7,12 @@
  */
 package de.mediadesign.gd1011.studiof.consts
 {
+    import flash.utils.getQualifiedClassName;
+
     public class GameConsts
     {
-        public static var GAME_WIDTH:int = 1280;
-        public static var GAME_HEIGHT:int = 800;
-
-        public static var INIT_PLAYER:String = "INIT_PLAYER";
-        public static var INIT_GAME:String = "INIT_GAME";
+        public static var INIT_PLAYER:String = getQualifiedClassName(this)+"INIT_PLAYER";
+        public static var INIT_GAME:String = getQualifiedClassName(this)+"INIT_GAME";
 
         public static var MAX_PLATFORM:uint = 6;
 

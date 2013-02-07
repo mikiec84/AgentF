@@ -2,17 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9d5af888-79aa-45bf-94bc-b57803b7fbdf" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/view/UnitView.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/view/mediators/UnitViewMediator.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/view/BackgroundView.as" afterPath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/view/BackgroundView.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/view/GameView.as" afterPath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/view/GameView.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/view/MainView.as" afterPath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/view/MainView.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/manager/UnitManager.as" afterPath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/manager/UnitManager.as" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/consts/GameConsts.as" afterPath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/consts/GameConsts.as" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="AgentF.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1360234097861" ignored="false" />
+    <file path="/Dummy.txt" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1360240215328" ignored="false" />
     <file path="/fragment.js2" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1360239996421" ignored="false" />
     <file path="/AgentF.as" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1359635910403" ignored="false" />
     <file path="/AgentF-app.xml" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1359622409363" ignored="false" />
@@ -39,7 +34,7 @@
     <file path="/InitGame.as" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1360162157675" ignored="false" />
     <file path="/MainViewMediator.as" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1360162867742" ignored="false" />
     <file path="/Render.as" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1360231516496" ignored="false" />
-    <file path="/GameConsts.as" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1360167566535" ignored="false" />
+    <file path="/GameConsts.as" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1360240292732" ignored="false" />
     <file path="/BackgroundView.as" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1360239445251" ignored="false" />
     <file path="/BackgroundViewMediator.as" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1360231030403" ignored="false" />
     <file path="/IRenderable.as" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1360226988766" ignored="false" />
@@ -124,13 +119,22 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="UnitViewMediator.as" pinned="false" current="true" current-in-tab="true">
+          <file leaf-file-name="UnitViewMediator.as" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/view/mediators/UnitViewMediator.as">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="30" column="9" selection-start="711" selection-end="711" vertical-scroll-proportion="0.4684271">
+                <state line="30" column="9" selection-start="711" selection-end="711" vertical-scroll-proportion="0.0">
                   <folding>
                     <element signature="e#214#267#0" expanded="true" />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="GameConsts.as" pinned="false" current="true" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/consts/GameConsts.as">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="14" column="73" selection-start="446" selection-end="446" vertical-scroll-proportion="0.15850815">
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -190,7 +194,6 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/model/components/CurrentLevel.as" />
-        <option value="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/consts/GameConsts.as" />
         <option value="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/view/mediators/GameViewMediator.as" />
         <option value="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/view/mediators/MainViewMediator.as" />
         <option value="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/view/IRenderable.as" />
@@ -205,6 +208,7 @@
         <option value="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/view/UnitView.as" />
         <option value="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/view/BackgroundView.as" />
         <option value="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/view/mediators/UnitViewMediator.as" />
+        <option value="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/consts/GameConsts.as" />
       </list>
     </option>
   </component>
@@ -979,7 +983,11 @@
       <created>1360234102547</created>
       <updated>1360234102547</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="UnitView/Mediator create">
+      <created>1360240221841</created>
+      <updated>1360240221841</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1070,7 +1078,7 @@
     <option name="MAXIMUM_HISTORY_ROWS" value="1000" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value=" backgroundView" />
+    <option name="LAST_COMMIT_MESSAGE" value="UnitView/Mediator create" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -1091,6 +1099,7 @@
     <MESSAGE value="BackgroundMediator, render-interface were create" />
     <MESSAGE value="BackgroundMediator, backgroundView" />
     <MESSAGE value=" backgroundView" />
+    <MESSAGE value="UnitView/Mediator create" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1107,11 +1116,6 @@
         <state line="2" column="0" selection-start="47" selection-end="338" vertical-scroll-proportion="0.039170507">
           <folding />
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/consts/GameConsts.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="1" selection-start="513" selection-end="513" vertical-scroll-proportion="0.2767442" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/view/IRenderable.as">
@@ -1218,10 +1222,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/view/mediators/UnitViewMediator.as">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="9" selection-start="711" selection-end="711" vertical-scroll-proportion="0.4684271">
+        <state line="30" column="9" selection-start="711" selection-end="711" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="e#214#267#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/consts/GameConsts.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="73" selection-start="446" selection-end="446" vertical-scroll-proportion="0.15850815">
+          <folding />
         </state>
       </provider>
     </entry>
