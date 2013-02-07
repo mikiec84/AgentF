@@ -1,27 +1,31 @@
 /**
  * Created with IntelliJ IDEA.
  * User: maxfrank
- * Date: 06.02.13
- * Time: 09:42
+ * Date: 07.02.13
+ * Time: 13:50
  * To change this template use File | Settings | File Templates.
  */
 package de.mediadesign.gd1011.studiof.commands
 {
-    import de.mediadesign.gd1011.studiof.events.GameEvent;
     import de.mediadesign.gd1011.studiof.manager.UnitManager;
+    import de.mediadesign.gd1011.studiof.model.Unit;
+
+    import flash.geom.Point;
 
     import robotlegs.bender.bundles.mvcs.Command;
 
-    public class InitPlayer extends Command
+    public class GetUnitPosition extends Command
     {
-        [Inject]
-        public var event:GameEvent;
         [Inject]
         public var units:UnitManager;
 
         override public function execute():void
         {
-            units.addPlayer(event.dataObj["platform"], event.dataObj["healthPoints"], event.dataObj["weapon"], event.dataObj["movement"]);
+            for each (var unit:Unit in units.enemies)
+            {
+                var xy:Point = (unit.renderInfo.pos.x, unit.renderInfo.pos.y);
+            }
+
         }
     }
 }

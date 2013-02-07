@@ -11,7 +11,7 @@ package de.mediadesign.gd1011.studiof.manager
 
     public class UnitManager
     {
-        private var enemies:Vector.<Unit>;
+        public var enemies:Vector.<Unit>;
 
         public function addEnemy(platform:uint, healthPoints:int,  weapon:String, movement:String):void
         {

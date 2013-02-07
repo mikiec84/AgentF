@@ -10,6 +10,7 @@ package de.mediadesign.gd1011.studiof.model
     import de.mediadesign.gd1011.studiof.model.components.Movement;
     import de.mediadesign.gd1011.studiof.model.components.RenderInfo;
     import de.mediadesign.gd1011.studiof.model.components.Weapon;
+    import de.mediadesign.gd1011.studiof.view.Renderable;
 
     import flash.geom.Point;
 
@@ -23,20 +24,30 @@ package de.mediadesign.gd1011.studiof.model
         private var _playerJumpSpeed:Number;
         private var _unitType:String;
 
-        public function Unit(unitType:String = null){
+        public var renderData:Renderable;
+
+        public function Unit(unitType:String = null)
+        {
             _playerJumpSpeed = 2;
             _platform = 2;
             _healthPoints = 3;
             _weapon = new Weapon();
             weapon.weaponType = "Kanone";
+
             _movement = new Movement();
-            if (unitType == "Player" || unitType == "Boss") {
+            if (unitType == "Player" || unitType == "Boss")
+            {
                 movement.horizontalVelocityEnabled = false;
-            }   else    {
+            }
+            else
+            {
                 movement.horizontalVelocityEnabled = true;
             }
-           this._unitType = unitType;
+
+            this._unitType = unitType;
             _renderInfo = new RenderInfo(_movement.pos);
+
+            var renderData = new Renderable();
         }
 
         public function get movement():Movement

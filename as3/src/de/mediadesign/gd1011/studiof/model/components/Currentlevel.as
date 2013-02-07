@@ -5,16 +5,20 @@
  * Time: 11:22
  * To change this template use File | Settings | File Templates.
  */
-package de.mediadesign.gd1011.studiof.model.components {
-    public class Currentlevel {
+package de.mediadesign.gd1011.studiof.model.components
+{
+    public class Currentlevel
+    {
 
         private var _currentLevel:int;
         private var _currentLevelLength:int;
         private var _enemyCount:int;
         //und weitere leveleigenschaften
 
-        public function Currentlevel(initMode:String = null) {
-            switch (initMode){
+        public function Currentlevel(initMode:String = null)
+        {
+            switch (initMode)
+            {
                 case "default":
                     _currentLevel       = 0;
                     _currentLevelLength = 0;
@@ -34,32 +38,39 @@ package de.mediadesign.gd1011.studiof.model.components {
                     trace("initMode Parameter in CurrentLevel component = null.");
                     break;
             }
-            if (initMode != null) {
-                trace("----------------------------------->>>>>>>   initMode ="+initMode);
-            }
+//            if (initMode != null)
+//            {
+//                trace("----------------------------------->>>>>>>   initMode ="+initMode);
+//            }
         }
 
-        public function get currentLevel():int {
+        public function get currentLevel():int
+        {
             return _currentLevel;
         }
 
-        public function set currentLevel(value:int):void {
+        public function set currentLevel(value:int):void
+        {
             _currentLevel = value;
         }
 
-        public function get currentLevelLength():int {
+        public function get currentLevelLength():int
+        {
             return _currentLevelLength;
         }
 
-        public function set currentLevelLength(value:int):void {
+        public function set currentLevelLength(value:int):void
+        {
             _currentLevelLength = value;
         }
 
-        public function get enemyCount():int {
+        public function get enemyCount():int
+        {
             return _enemyCount;
         }
 
-        public function set enemyCount(value:int):void {
+        public function set enemyCount(value:int):void
+        {
             _enemyCount = value;
         }
     }
