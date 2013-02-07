@@ -6,7 +6,6 @@ package de.mediadesign.gd1011.studiof {
 	import flash.display.StageAlign;
 	import flash.display.StageScaleMode;
 	import flash.geom.Rectangle;
-	import flash.system.Capabilities;
 
 	import robotlegs.bender.bundles.mvcs.MVCSBundle;
 	import robotlegs.bender.extensions.contextView.ContextView;
