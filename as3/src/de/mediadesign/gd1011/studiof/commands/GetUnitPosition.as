@@ -23,7 +23,7 @@ package de.mediadesign.gd1011.studiof.commands
         {
             for each (var unit:Unit in units.enemies)
             {
-                var xy:Point = unit.position;
+                var xy:Point = (unit.renderInfo.pos.x, unit.renderInfo.pos.y);
             }
 
         }
