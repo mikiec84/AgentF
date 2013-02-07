@@ -11,7 +11,8 @@ package de.mediadesign.gd1011.studiof.model.components {
         private var _pos:PositionComponent;
         private var _textureLocation:String;
 
-        public function RenderInfo() {
+        public function RenderInfo(thePos:PositionComponent) {
+            this._pos = thePos;
         }
 
         public function get pos():PositionComponent {

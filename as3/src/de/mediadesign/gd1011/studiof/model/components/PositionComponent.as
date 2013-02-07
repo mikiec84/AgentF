@@ -13,6 +13,9 @@ package de.mediadesign.gd1011.studiof.model.components {
         private var _currentRotation:int;
 
         public function PositionComponent() {
+            _x = 0;
+            _y = 0;
+            _currentRotation = 0;
         }
 
         public function get x():int {
