@@ -32,6 +32,9 @@ package de.mediadesign.gd1011.studiof.view
 			trace(Starling.contentScaleFactor);
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 
+            var backgroundView:BackgroundView = new BackgroundView();
+            addChild(backgroundView);
+
 			var q:Quad = new Quad(1710,870,0x00ff00);
 			addChild(q);
 

@@ -53,10 +53,6 @@ package de.mediadesign.gd1011.studiof.view
 			gameView.y = appTopOffset;
 			addChild(gameView);
 
-
-            var backgroundView:BackgroundView = new BackgroundView();
-            addChild(backgroundView);
-
 			var userInterface:UI = new UI();
 			addChild(userInterface);
 		}
