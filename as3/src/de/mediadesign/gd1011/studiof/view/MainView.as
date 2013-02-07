@@ -46,7 +46,7 @@ package de.mediadesign.gd1011.studiof.view
 			}
 
 
-
+			trace("scale game view with scale factor "+appScale);
 			var gameView:GameView = new GameView();
 			gameView.scaleX = gameView.scaleY = appScale;
 			gameView.x = appLeftOffset;
