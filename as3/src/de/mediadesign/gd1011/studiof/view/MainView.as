@@ -29,6 +29,9 @@ package de.mediadesign.gd1011.studiof.view
 			var gameView:GameView = new GameView();
 			addChild(gameView);
 
+            var backgroundView:BackgroundView = new BackgroundView();
+            addChild(backgroundView);
+
 			var userInterface:UI = new UI();
 			addChild(userInterface);
 		}
