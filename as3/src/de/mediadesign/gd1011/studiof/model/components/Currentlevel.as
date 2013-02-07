@@ -25,9 +25,17 @@ package de.mediadesign.gd1011.studiof.model.components {
                     _currentLevelLength = 7;
                     _enemyCount         = 20;
                     break;
+                case "Level2":
+                    _currentLevel       = 2;
+                    _currentLevelLength = 7;
+                    _enemyCount         = 20;
+                    break;
                 case null:
                     trace("initMode Parameter in CurrentLevel component = null.");
                     break;
+            }
+            if (initMode != null) {
+                trace("----------------------------------->>>>>>>   initMode ="+initMode);
             }
         }
 

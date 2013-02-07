@@ -7,7 +7,12 @@
  */
 package de.mediadesign.gd1011.studiof.view
 {
+	import flash.display.BitmapData;
+
+	import starling.core.Starling;
+
 	import starling.display.Image;
+	import starling.display.Quad;
 	import starling.display.Sprite;
 	import starling.events.Event;
 	import starling.textures.Texture;
@@ -24,12 +29,16 @@ package de.mediadesign.gd1011.studiof.view
 
 		public function init(e:Event = null):void
 		{
+			trace(Starling.contentScaleFactor);
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 
-			var test:Flussbett_texture = new Flussbett_texture(0,0);
+			var q:Quad = new Quad(1710,870,0x00ff00);
+			addChild(q);
+
+			var test:BitmapData = new Wirt_texture(0,0);
 			var img:Image = new Image(Texture.fromBitmapData(test));
-			img.scaleX = img.scaleY = 2;
 			addChild(img);
+
 		}
 
 	}

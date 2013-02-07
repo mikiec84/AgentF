@@ -15,8 +15,8 @@ package de.mediadesign.gd1011.studiof.model
         private var _currentLevel:Currentlevel;
 
 
-        public function Level()
-        {   _currentLevel = new Currentlevel("default");
+        public function Level(desiredLevel:String = null)
+        {   _currentLevel = new Currentlevel(desiredLevel);
 
 
         }
