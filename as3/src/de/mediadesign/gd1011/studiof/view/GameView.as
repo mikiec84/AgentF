@@ -29,7 +29,6 @@ package de.mediadesign.gd1011.studiof.view
 
 		public function init(e:Event = null):void
 		{
-			trace(Starling.contentScaleFactor);
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 
             var backgroundView:BackgroundView = new BackgroundView();
