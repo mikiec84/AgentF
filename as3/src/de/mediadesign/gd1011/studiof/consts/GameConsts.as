@@ -11,10 +11,10 @@ package de.mediadesign.gd1011.studiof.consts
 
     public class GameConsts
     {
-        public static var INIT_PLAYER:String = getQualifiedClassName(this)+"INIT_PLAYER";
-        public static var INIT_GAME:String = getQualifiedClassName(this)+"INIT_GAME";
+        public static const INIT_PLAYER:String = /*getQualifiedClassName(this)+*/"INIT_PLAYER";
+        public static const INIT_GAME:String = /*getQualifiedClassName(this)+*/"INIT_GAME";
 
-        public static var MAX_PLATFORM:uint = 6;
+        public static const MAX_PLATFORM:uint = 6;
 
     }
 }

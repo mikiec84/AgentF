@@ -22,6 +22,7 @@ package de.mediadesign.gd1011.studiof.model
         private var _platform:uint;
         private var _playerJumpSpeed:Number;
         private var _unitType:String;
+        private var _position:Point;
 
         public function Unit(unitType:String = null){
             _playerJumpSpeed = 2;
@@ -101,6 +102,16 @@ package de.mediadesign.gd1011.studiof.model
 
         public function set unitType(value:String):void {
             _unitType = value;
+        }
+
+        public function get position():Point
+        {
+            return _position;
+        }
+
+        public function set position(value:Point):void
+        {
+            _position = value;
         }
     }
 }

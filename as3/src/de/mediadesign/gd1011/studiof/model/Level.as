@@ -16,9 +16,8 @@ package de.mediadesign.gd1011.studiof.model
 
 
         public function Level(desiredLevel:String = null)
-        {   _currentLevel = new Currentlevel(desiredLevel);
-
-
+        {
+            _currentLevel = new Currentlevel(desiredLevel);
         }
 
         public function get enemies():Vector.<Unit> {

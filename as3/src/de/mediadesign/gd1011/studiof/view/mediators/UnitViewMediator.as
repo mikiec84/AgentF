@@ -17,9 +17,6 @@ package de.mediadesign.gd1011.studiof.view.mediators
         [Inject]
         public var unitView:UnitView;
 
-        [Inject]
-        public var render:Render;
-
         override public function initialize():void
         {
 
