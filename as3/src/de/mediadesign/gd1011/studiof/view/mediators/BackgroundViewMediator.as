@@ -10,7 +10,9 @@ package de.mediadesign.gd1011.studiof.view.mediators
     import de.mediadesign.gd1011.studiof.services.Render;
     import de.mediadesign.gd1011.studiof.view.BackgroundView;
 
-    public class BackgroundViewMediator
+    import robotlegs.extensions.starlingViewMap.impl.StarlingMediator;
+
+    public class BackgroundViewMediator extends StarlingMediator
     {
         [Inject]
         public var bgView:BackgroundView;
@@ -20,6 +22,16 @@ package de.mediadesign.gd1011.studiof.view.mediators
 
         public function BackgroundViewMediator()
         {
+        }
+
+        override public function initialize():void
+        {
+
+        }
+
+        override public function destroy():void
+        {
+
         }
     }
 }
