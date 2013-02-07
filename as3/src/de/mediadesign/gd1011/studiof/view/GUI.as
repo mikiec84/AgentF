@@ -7,13 +7,11 @@
  */
 package de.mediadesign.gd1011.studiof.view
 {
-	import de.mediadesign.gd1011.studiof.services.JSONReader;
+    import de.mediadesign.gd1011.studiof.services.JSONReader;
 
-	import starling.display.Sprite;
-	import starling.utils.HAlign;
-	import starling.utils.VAlign;
+    import starling.display.Sprite;
 
-	public class GUI extends Sprite
+    public class GUI extends Sprite
     {
 		private var _config:Object;
 
