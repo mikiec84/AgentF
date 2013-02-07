@@ -38,10 +38,10 @@ package de.mediadesign.gd1011.studiof.model.components
                     trace("initMode Parameter in CurrentLevel component = null.");
                     break;
             }
-            if (initMode != null)
-            {
-                trace("----------------------------------->>>>>>>   initMode ="+initMode);
-            }
+//            if (initMode != null)
+//            {
+//                trace("----------------------------------->>>>>>>   initMode ="+initMode);
+//            }
         }
 
         public function get currentLevel():int
