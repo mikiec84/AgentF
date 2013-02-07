@@ -15,7 +15,7 @@
         <packaging-air-desktop />
         <packaging-android enabled="true" use-generated-descriptor="false" custom-descriptor-path="$MODULE_DIR$/AgentF-app.xml" package-file-name="AgentF">
           <files-to-package>
-            <FilePathAndPathInPackage file-path="$MODULE_DIR$/src/config.json" path-in-package="config.json" />
+            <FilePathAndPathInPackage file-path="$MODULE_DIR$/src/config" path-in-package="config" />
           </files-to-package>
         </packaging-android>
         <packaging-ios package-file-name="AgentF" />

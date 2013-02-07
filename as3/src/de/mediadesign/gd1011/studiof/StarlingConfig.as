@@ -9,10 +9,12 @@ package de.mediadesign.gd1011.studiof
 {
     import de.mediadesign.gd1011.studiof.services.Render;
     import de.mediadesign.gd1011.studiof.view.BackgroundView;
-    import de.mediadesign.gd1011.studiof.view.GameView;
+	import de.mediadesign.gd1011.studiof.view.GUI;
+	import de.mediadesign.gd1011.studiof.view.GameView;
 	import de.mediadesign.gd1011.studiof.view.MainView;
     import de.mediadesign.gd1011.studiof.view.mediators.BackgroundViewMediator;
-    import de.mediadesign.gd1011.studiof.view.mediators.GameViewMediator;
+	import de.mediadesign.gd1011.studiof.view.mediators.GUIMediator;
+	import de.mediadesign.gd1011.studiof.view.mediators.GameViewMediator;
 	import de.mediadesign.gd1011.studiof.view.mediators.MainViewMediator;
     import de.mediadesign.gd1011.studiof.model.Level;
     import de.mediadesign.gd1011.studiof.model.Score;
@@ -21,7 +23,7 @@ package de.mediadesign.gd1011.studiof
     import de.mediadesign.gd1011.studiof.consts.GameConsts;
     import de.mediadesign.gd1011.studiof.events.GameEvent;
     import de.mediadesign.gd1011.studiof.manager.UnitManager;
-    import de.mediadesign.gd1011.studiof.services.JsonReader;
+    import de.mediadesign.gd1011.studiof.services.JSONReader;
 
     import flash.events.IEventDispatcher;
 
@@ -49,8 +51,8 @@ package de.mediadesign.gd1011.studiof
             initMediators();
 
             // Weitere Parameter müssen übergeben werden
-            var playerEvent:GameEvent = new GameEvent(GameConsts.INIT_PLAYER, GameConsts.INIT_PLAYER, JsonReader.readJSON("player") );
-            dispatcher.dispatchEvent(playerEvent);  //WTF ?? cast to Event
+//            var playerEvent:GameEvent = new GameEvent(GameConsts.INIT_PLAYER, GameConsts.INIT_PLAYER, JSONReader.read("player") );
+//            dispatcher.dispatchEvent(playerEvent);  //WTF ?? cast to Event
         }
 
         private function initModels():void
@@ -71,6 +73,7 @@ package de.mediadesign.gd1011.studiof
         {
             mediatorMap.map(MainView).toMediator(MainViewMediator);
 			mediatorMap.map(GameView).toMediator(GameViewMediator);
+			mediatorMap.map(GUI).toMediator(GUIMediator);
             mediatorMap.map(BackgroundView).toMediator(BackgroundViewMediator);
         }
 
