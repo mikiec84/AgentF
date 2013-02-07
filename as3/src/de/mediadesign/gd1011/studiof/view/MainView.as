@@ -35,16 +35,14 @@ package de.mediadesign.gd1011.studiof.view
 			var appLeftOffset:Number = 0;
 			var appTopOffset:Number = 0;
 
-			//if device is wider than the game bounds
-			if ((deviceSize.width/deviceSize.height) > (gameBounds.width/gameBounds.height)) {
-				appScale = deviceSize.height / gameBounds.height;
-				appLeftOffset = deviceSize.width-gameBounds.width*appScale;
-
-			}
-			//else if it's taller
-			else {
+			//if game bounds are wider than device
+			if ((deviceSize.width/deviceSize.height) < (gameBounds.width/gameBounds.height)) {
 				appScale = deviceSize.width / gameBounds.width;
 				appTopOffset = (deviceSize.height-gameBounds.height*appScale)*0.9;
+			}
+			else {
+				appScale = deviceSize.height / gameBounds.height;
+				appLeftOffset = deviceSize.width-gameBounds.width*appScale;
 			}
 
 
