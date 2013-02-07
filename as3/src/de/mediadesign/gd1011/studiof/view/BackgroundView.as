@@ -19,7 +19,7 @@ package de.mediadesign.gd1011.studiof.view
 
         public function BackgroundView():void
         {
-            var debugQuad:Quad = new Quad(7529, 800, 0x00FF00);
+            var debugQuad:Quad = new Quad(7529, 800, 0xFFFF00);
             addChild(debugQuad);
             //var image = new Image(Assets.getTexture());
         }
