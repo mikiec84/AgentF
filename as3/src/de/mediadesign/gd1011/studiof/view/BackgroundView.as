@@ -7,7 +7,7 @@
  */
 package de.mediadesign.gd1011.studiof.view
 {
-    import de.mediadesign.gd1011.studiof.assets.Assets;
+    //import de.mediadesign.gd1011.studiof.assets.Assets;
 
     import flash.geom.Point;
 

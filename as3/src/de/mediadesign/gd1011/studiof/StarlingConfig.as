@@ -7,9 +7,12 @@
  */
 package de.mediadesign.gd1011.studiof
 {
-	import de.mediadesign.gd1011.studiof.view.GameView;
+    import de.mediadesign.gd1011.studiof.services.Render;
+    import de.mediadesign.gd1011.studiof.view.BackgroundView;
+    import de.mediadesign.gd1011.studiof.view.GameView;
 	import de.mediadesign.gd1011.studiof.view.MainView;
-	import de.mediadesign.gd1011.studiof.view.mediators.GameViewMediator;
+    import de.mediadesign.gd1011.studiof.view.mediators.BackgroundViewMediator;
+    import de.mediadesign.gd1011.studiof.view.mediators.GameViewMediator;
 	import de.mediadesign.gd1011.studiof.view.mediators.MainViewMediator;
     import de.mediadesign.gd1011.studiof.model.Level;
     import de.mediadesign.gd1011.studiof.model.Score;
@@ -56,6 +59,7 @@ package de.mediadesign.gd1011.studiof
             modelMap.map(Score).asSingleton();
             modelMap.map(User).asSingleton();
             modelMap.map(UnitManager).asSingleton();
+            modelMap.map(Render).asSingleton();
         }
 
         private function initCommands():void
@@ -67,6 +71,7 @@ package de.mediadesign.gd1011.studiof
         {
             mediatorMap.map(MainView).toMediator(MainViewMediator);
 			mediatorMap.map(GameView).toMediator(GameViewMediator);
+            mediatorMap.map(BackgroundView).toMediator(BackgroundViewMediator);
         }
 
 

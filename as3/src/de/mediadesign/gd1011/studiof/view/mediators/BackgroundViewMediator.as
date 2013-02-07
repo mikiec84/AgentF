@@ -20,10 +20,6 @@ package de.mediadesign.gd1011.studiof.view.mediators
         [Inject]
         public var render:Render;
 
-        public function BackgroundViewMediator()
-        {
-        }
-
         override public function initialize():void
         {
 
