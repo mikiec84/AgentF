@@ -7,25 +7,14 @@
  */
 package de.mediadesign.gd1011.studiof.view
 {
-    import de.mediadesign.gd1011.studiof.services.JsonReader;
+	import starling.display.Sprite;
 
-    import starling.display.Sprite;
-
-    public class GUI extends Sprite
+	public class GUI extends Sprite
     {
-		private var _config:Object;
 
 		public function GUI()
         {
-			_config=JsonReader.read("viewconfig")["GUI"];
+
         }
-
-		public function addElement(element:GUIElement):void
-		{
-		}
-
-		public function removeElement(element:GUIElement):void
-		{
-		}
     }
 }

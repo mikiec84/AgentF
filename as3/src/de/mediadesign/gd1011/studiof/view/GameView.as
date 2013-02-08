@@ -37,9 +37,24 @@ package de.mediadesign.gd1011.studiof.view
 			var q:Quad = new Quad(1710,870,0x00ff00);
 			addChild(q);
 
-			var test:BitmapData = new Wirt_texture(0,0);
+			var test:BitmapData = new E1_texture(0,0);
 			var img:Image = new Image(Texture.fromBitmapData(test));
 			addChild(img);
+
+			var test2:BitmapData = new E2_texture(0,0);
+			var img2:Image = new Image(Texture.fromBitmapData(test2));
+			addChild(img2);
+			img2.x = 200;
+
+			var test3:BitmapData = new E3_texture(0,0);
+			var img3:Image = new Image(Texture.fromBitmapData(test3));
+			addChild(img3);
+			img3.x = 400;
+
+			var test4:BitmapData = new AgentF_texture(0,0);
+			var img4:Image = new Image(Texture.fromBitmapData(test4));
+			addChild(img4);
+			img4.x = 600;
 
 		}
 

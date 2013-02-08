@@ -8,11 +8,43 @@
 package de.mediadesign.gd1011.studiof.manager
 {
     import de.mediadesign.gd1011.studiof.model.Unit;
+    import de.mediadesign.gd1011.studiof.consts.GameConsts;
+
+    import flash.geom.Point;
+
+    import starling.animation.Transitions;
+
+    import starling.animation.Tween;
+    import starling.core.Starling;
+    import starling.events.Event;
+    import starling.events.Touch;
+    import starling.events.TouchPhase;
 
     public class MovementManager implements IMovementManager
-    {
+    {   // config inhalt //
+        private var einpendelStaerke:Number        = 30;      // Wie viele pixel tief er ins wasser klatscht wenn er unten aufkommt
+        private var speedTowardsMouse:int          = 20;      // Wie schnell der player sich auf die maus zubewegt während geklickt ist
+        private var jumpSpeedBeimSprung:Number     = 2;       // Wie lange der tween für das hochfliegen braucht um vollständig abgespielt zu werden in sekunden
+        private var jumpSpeedBeimFall:Number       = 2;       // Wie lange der tween für den fall braucht um vollständig abgespielt zu werden in sekunden
+        private var jumpSpeedBeimEinpendeln:Number = 3;       // Wie lange der tween für das einpendeln braucht um vollständig abgespielt zu werden in sekunden
+        ////////////////////////////
+        private var _player:Unit;
+        private var hoch:Tween;
+        private var runter:Tween;
+        private var aufkommen:Tween;
+        private var derKommRunterTweenIstNochNichtAmLaufen:Boolean;
+        private var derPendelEinTweenIstNochNichtAmLaufen:Boolean;
+        private var aufkommenWurdeNochNichtVomJugglerRemoved:Boolean;
+        private var areAnyUnfinishedTweensInMotionRightNow:Boolean;
+        private var kommMausSollAusgeführtWerden:Boolean;
+        private var mouseY:int = 0;
+
         public function MovementManager()
-        {
+        {   derKommRunterTweenIstNochNichtAmLaufen = true;
+            derPendelEinTweenIstNochNichtAmLaufen = true;
+            areAnyUnfinishedTweensInMotionRightNow = false;
+            kommMausSollAusgeführtWerden = false;
+            _player = null;
         }
 
         public function tick(allRelevantUnits:Array):void
@@ -26,14 +58,111 @@ package de.mediadesign.gd1011.studiof.manager
                 }
                 else if (allRelevantUnits[index].movement.verticalVelocityEnabled)
                 {
-                    //Falls die Vertikale Bewegung der Unit erlaubt ist sollt dieser Block ausgeführt werden
+                    if (allRelevantUnits[index].unitType == "Player" && _player == null) {
+                        _player = allRelevantUnits[index];
+                    }
+                }
+            }
+            handlePlayerJumps();
+        }
+
+        public function handlePlayerJumps():void
+        {
+            if (hoch != null && hoch.isComplete && derKommRunterTweenIstNochNichtAmLaufen) {
+                derKommRunterTweenIstNochNichtAmLaufen = false;
+                kommRunter();
+            }
+            if (runter != null && runter.isComplete && derPendelEinTweenIstNochNichtAmLaufen) {
+                derPendelEinTweenIstNochNichtAmLaufen = false;
+                pendelEin();
+            }
+            if (aufkommen != null && aufkommen.isComplete && aufkommenWurdeNochNichtVomJugglerRemoved) {
+                aufkommenWurdeNochNichtVomJugglerRemoved = false;
+                Starling.juggler.remove(aufkommen);
+                areAnyUnfinishedTweensInMotionRightNow = false;
+            }
+
+            if (kommMausSollAusgeführtWerden) {
+                if (_player.movement.pos.y+60<mouseY) {
+                    _player.movement.pos.y+=speedTowardsMouse;
+                } else {
+                    _player.movement.pos.y=mouseY-60;
+                }
+            }
+
+        }
+
+        private function checkWelcheEbene():int
+        {
+            var newEbene:int = null;
+            if (_player.movement.pos.y>0)                                          {newEbene = 0;}
+            if (_player.movement.pos.y+GameConsts.PLAYER_HEIGHT/2>GameConsts.STAGE_HEIGHT/6)     {newEbene = 1;}
+            if (_player.movement.pos.y+GameConsts.PLAYER_HEIGHT/2>GameConsts.STAGE_HEIGHT/3)     {newEbene = 2;}
+            if (_player.movement.pos.y+GameConsts.PLAYER_HEIGHT/2>GameConsts.STAGE_HEIGHT/2)     {newEbene = 3;}
+            if (_player.movement.pos.y+GameConsts.PLAYER_HEIGHT/2>GameConsts.STAGE_HEIGHT*(2/3)) {newEbene = 4;}
+            if (_player.movement.pos.y+GameConsts.PLAYER_HEIGHT/2>GameConsts.STAGE_HEIGHT*(5/6)) {newEbene = 5;}
+            return newEbene;
+        }
+
+
+        public function handleTouch(touch:Touch,  location:Point):void
+        {   //var touch:Touch = e.getTouch(stage);
+            if (checkWelcheEbene()>1) {
+                if(touch && touch.phase == TouchPhase.BEGAN){
+                    mouseY = location.y;
+                    Starling.juggler.purge();
+                    areAnyUnfinishedTweensInMotionRightNow = false;
+                    kommMausSollAusgeführtWerden = true;
+                }
+                if(touch && touch.phase == TouchPhase.MOVED){
+                    if (location.y >GameConsts.STAGE_HEIGHT/3 && _player.y+1>GameConsts.STAGE_HEIGHT/3) {
+                        mouseY = location.y;
+                    }
+                }
+                if (touch && touch.phase == TouchPhase.ENDED && !areAnyUnfinishedTweensInMotionRightNow) {
+                    kommMausSollAusgeführtWerden = false;
+                    sprungProzess();
                 }
             }
         }
 
-        public function handlePlayerMovement(yKoord:int, Player:Unit)
-        {
+        public function sprungProzess():void
+        {   areAnyUnfinishedTweensInMotionRightNow = true;
+            if (Starling.juggler.contains(hoch)) {
+                Starling.juggler.remove(hoch)
+            }
+            hoch = new Tween(_player, jumpSpeedBeimSprung, Transitions.EASE_OUT);
+            if (checkWelcheEbene() > 2)
+            {
+                hoch.moveTo(_player.movement.pos.x, GameConsts.STAGE_HEIGHT - (GameConsts.STAGE_HEIGHT/6) * (checkWelcheEbene() + 1) );
+                Starling.juggler.add(hoch);
+                derKommRunterTweenIstNochNichtAmLaufen = true;
+            }
+            if (checkWelcheEbene() == 2)
+            {
+                hoch.moveTo(_player.movement.pos.x, 240);
+                Starling.juggler.add(hoch);
+                derKommRunterTweenIstNochNichtAmLaufen = true;
+            }
+        }
 
+        public function kommRunter():void{
+            if (Starling.juggler.contains(runter)) {
+                Starling.juggler.remove(runter)
+            }
+            runter  = new  Tween(_player, jumpSpeedBeimFall, Transitions.EASE_IN);
+            if (checkWelcheEbene() < 2) {
+                runter.moveTo(_player.movement.pos.x, GameConsts.STAGE_HEIGHT/3+einpendelStaerke);
+                Starling.juggler.add(runter);
+                derPendelEinTweenIstNochNichtAmLaufen = true;
+            }
+        }
+
+        private function pendelEin():void {
+            aufkommen = new Tween(_player, jumpSpeedBeimEinpendeln, Transitions.EASE_OUT_ELASTIC);
+            aufkommen.moveTo(_player.movement.pos.x,  GameConsts.STAGE_HEIGHT/3);
+            Starling.juggler.add(aufkommen);
+            aufkommenWurdeNochNichtVomJugglerRemoved = true;
         }
     }
 }

@@ -20,7 +20,7 @@ package de.mediadesign.gd1011.studiof.model
         private var _renderInfo:RenderInfo;
         private var _weapon:Weapon;
         private var _healthPoints:int;
-        private var _platform:uint;
+        private var _ebene:int;
         private var _playerJumpSpeed:Number;
         private var _unitType:String;
 
@@ -29,7 +29,7 @@ package de.mediadesign.gd1011.studiof.model
         public function Unit(unitType:String = null)
         {
             _playerJumpSpeed = 2;
-            _platform = 2;
+            _ebene = 2;
             _healthPoints = 3;
             _weapon = new Weapon();
             weapon.weaponType = "Kanone";
@@ -82,12 +82,12 @@ package de.mediadesign.gd1011.studiof.model
 
         public function get platform():uint
         {
-            return _platform;
+            return _ebene;
         }
 
         public function set platform(value:uint):void
         {
-            _platform = value;
+            _ebene = value;
         }
 
         public function get renderInfo():RenderInfo {
