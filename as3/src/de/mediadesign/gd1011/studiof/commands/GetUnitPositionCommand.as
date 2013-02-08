@@ -21,7 +21,7 @@ package de.mediadesign.gd1011.studiof.commands
 
         override public function execute():void
         {
-            for each (var unit:Unit in units.enemies)
+            for each (var unit:Unit in units.units)
             {
                 var xy:Point = (unit.renderInfo.pos.x, unit.renderInfo.pos.y);
             }

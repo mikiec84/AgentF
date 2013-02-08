@@ -17,7 +17,6 @@ package de.mediadesign.gd1011.studiof.model
     public class Unit
     {
         private var _movement:Movement;
-        private var _renderInfo:RenderInfo;
         private var _weapon:Weapon;
         private var _healthPoints:int;
         private var _ebene:int;
@@ -45,9 +44,8 @@ package de.mediadesign.gd1011.studiof.model
             }
 
             this._unitType = unitType;
-            _renderInfo = new RenderInfo(_movement.pos);
 
-            var renderData = new Renderable();
+            var renderData = new Renderable(_movement.pos);
         }
 
         public function get movement():Movement
@@ -88,14 +86,6 @@ package de.mediadesign.gd1011.studiof.model
         public function set platform(value:uint):void
         {
             _ebene = value;
-        }
-
-        public function get renderInfo():RenderInfo {
-            return _renderInfo;
-        }
-
-        public function set renderInfo(value:RenderInfo):void {
-            _renderInfo = value;
         }
 
         public function get playerJumpSpeed():int {
