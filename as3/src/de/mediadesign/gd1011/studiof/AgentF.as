@@ -25,19 +25,25 @@ package de.mediadesign.gd1011.studiof {
 
         public function AgentF()
         {
+			Starling.handleLostContext = true;
+
 			stage.scaleMode = StageScaleMode.NO_SCALE;
 			stage.align = StageAlign.TOP_LEFT;
-
-			Starling.handleLostContext = true;
-            _starling = new Starling(MainView, stage, new Rectangle(0, 0, stage.fullScreenWidth, stage.fullScreenHeight));
-            _context = new Context()
-                    .install( MVCSBundle, StarlingViewMapExtension )
-                    .configure( StarlingConfig, this, _starling)
-                    .configure(new ContextView(this));
-
-            _starling.addEventListener(starling.events.Event.ROOT_CREATED,init);
-            stage.addEventListener(flash.events.Event.DEACTIVATE, stage_deactivateHandler, false, 0, true);
+			stage.addEventListener(flash.events.Event.RESIZE, onResize);
         }
+
+		private function onResize(e:flash.events.Event):void
+		{
+			stage.removeEventListener(flash.events.Event.RESIZE, onResize);
+			_starling = new Starling(MainView, stage, new Rectangle(0, 0, stage.fullScreenWidth, stage.fullScreenHeight));
+			_context = new Context()
+					.install( MVCSBundle, StarlingViewMapExtension )
+					.configure( StarlingConfig, this, _starling)
+					.configure(new ContextView(this));
+
+			_starling.addEventListener(starling.events.Event.ROOT_CREATED,init);
+			stage.addEventListener(flash.events.Event.DEACTIVATE, stage_deactivateHandler, false, 0, true);
+		}
 		
 
         private function init(e:starling.events.Event = null):void
