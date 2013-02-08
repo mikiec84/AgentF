@@ -20,7 +20,7 @@ package de.mediadesign.gd1011.studiof.view
             var debugQuad:Quad = new Quad(7529, 1070, 0xFFFF00);
             debugQuad.y = -180;
             addChild(debugQuad);
-            //var image = new Image(Assets.getTexture());
+//            var image = new Image(Assets.getTexture());
         }
 
 

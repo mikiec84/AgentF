@@ -151,7 +151,7 @@ package feathers.themes
 
 		protected var scale:Number = 1;
 
-//		protected var primaryBackground:TiledImage;
+		protected var primaryBackground:TiledImage;
 
 		protected var headerTextFormat:TextFormat;
 
@@ -175,7 +175,7 @@ package feathers.themes
 
 		protected var atlas:TextureAtlas;
 		protected var atlasBitmapData:BitmapData;
-//		protected var primaryBackgroundTexture:Texture;
+		protected var primaryBackgroundTexture:Texture;
 		protected var backgroundSkinTextures:Scale9Textures;
 		protected var backgroundDisabledSkinTextures:Scale9Textures;
 		protected var backgroundFocusedSkinTextures:Scale9Textures;
@@ -224,13 +224,13 @@ package feathers.themes
 			if(this.root)
 			{
 				this.root.removeEventListener(Event.ADDED_TO_STAGE, root_addedToStageHandler);
-//				if(this.primaryBackground)
-//				{
-//					this.root.stage.removeEventListener(ResizeEvent.RESIZE, stage_resizeHandler);
-//					this.root.removeEventListener(Event.REMOVED_FROM_STAGE, root_removedFromStageHandler);
-//					this.root.removeChild(this.primaryBackground, true);
-//					this.primaryBackground = null;
-//				}
+				if(this.primaryBackground)
+				{
+					this.root.stage.removeEventListener(ResizeEvent.RESIZE, stage_resizeHandler);
+					this.root.removeEventListener(Event.REMOVED_FROM_STAGE, root_removedFromStageHandler);
+					this.root.removeChild(this.primaryBackground, true);
+					this.primaryBackground = null;
+				}
 			}
 			if(this.atlas)
 			{
@@ -247,10 +247,10 @@ package feathers.themes
 
 		protected function initializeRoot():void
 		{
-//			this.primaryBackground = new TiledImage(this.primaryBackgroundTexture);
-//			this.primaryBackground.width = root.stage.stageWidth;
-//			this.primaryBackground.height = root.stage.stageHeight;
-//			this.root.addChildAt(this.primaryBackground, 0);
+			this.primaryBackground = new TiledImage(this.primaryBackgroundTexture);
+			this.primaryBackground.width = root.stage.stageWidth;
+			this.primaryBackground.height = root.stage.stageHeight;
+			this.root.addChildAt(this.primaryBackground, 0);
 			this.root.stage.addEventListener(ResizeEvent.RESIZE, stage_resizeHandler);
 			this.root.addEventListener(Event.REMOVED_FROM_STAGE, root_removedFromStageHandler);
 		}
@@ -313,7 +313,7 @@ package feathers.themes
 				atlasBitmapData.dispose();
 			}
 
-//			this.primaryBackgroundTexture = this.atlas.getTexture("primary-background");
+			this.primaryBackgroundTexture = this.atlas.getTexture("primary-background");
 
 			const backgroundSkinTexture:Texture = this.atlas.getTexture("background-skin");
 			const backgroundDownSkinTexture:Texture = this.atlas.getTexture("background-down-skin");
@@ -1063,8 +1063,8 @@ package feathers.themes
 
 		protected function stage_resizeHandler(event:ResizeEvent):void
 		{
-//			this.primaryBackground.width = event.width;
-//			this.primaryBackground.height = event.height;
+			this.primaryBackground.width = event.width;
+			this.primaryBackground.height = event.height;
 		}
 
 		protected function root_addedToStageHandler(event:Event):void
@@ -1077,8 +1077,8 @@ package feathers.themes
 		{
 			this.root.removeEventListener(Event.REMOVED_FROM_STAGE, root_removedFromStageHandler);
 			this.root.stage.removeEventListener(ResizeEvent.RESIZE, stage_resizeHandler);
-//			this.root.removeChild(this.primaryBackground, true);
-//			this.primaryBackground = null;
+			this.root.removeChild(this.primaryBackground, true);
+			this.primaryBackground = null;
 		}
 
 	}
