@@ -5,7 +5,7 @@
  * Time: 11:32
  * To change this template use File | Settings | File Templates.
  */
-package de.mediadesign.gd1011.studiof.view
+package de.mediadesign.gd1011.studiof.services
 {
     import de.mediadesign.gd1011.studiof.model.components.PositionComponent;
 
@@ -19,7 +19,8 @@ package de.mediadesign.gd1011.studiof.view
         public var position:PositionComponent;
         public var rotation:Number;
 
-        public function Renderable(pos:PositionComponent){
+        public function Renderable(pos:PositionComponent)
+        {
             position = pos;
         }
         public function render():void

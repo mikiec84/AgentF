@@ -5,7 +5,7 @@
  * Time: 09:49
  * To change this template use File | Settings | File Templates.
  */
-package de.mediadesign.gd1011.studiof.view
+package de.mediadesign.gd1011.studiof.services
 {
     public interface IRenderable
     {

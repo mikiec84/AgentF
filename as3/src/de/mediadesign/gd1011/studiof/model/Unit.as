@@ -10,7 +10,7 @@ package de.mediadesign.gd1011.studiof.model
     import de.mediadesign.gd1011.studiof.model.components.Movement;
     import de.mediadesign.gd1011.studiof.model.components.RenderInfo;
     import de.mediadesign.gd1011.studiof.model.components.Weapon;
-    import de.mediadesign.gd1011.studiof.view.Renderable;
+    import de.mediadesign.gd1011.studiof.services.Renderable;
 
     import flash.geom.Point;
 

@@ -7,7 +7,7 @@
  */
 package de.mediadesign.gd1011.studiof.services
 {
-    import de.mediadesign.gd1011.studiof.view.IRenderable;
+    import de.mediadesign.gd1011.studiof.services.IRenderable;
 
     public class Render implements IProcess
     {
