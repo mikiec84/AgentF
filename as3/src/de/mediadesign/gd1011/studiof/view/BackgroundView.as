@@ -7,10 +7,12 @@
  */
 package de.mediadesign.gd1011.studiof.view
 {
-    //import de.mediadesign.gd1011.studiof.assets.Assets;
+    //import flash.display.BitmapData;
 
+    //import starling.display.Image;
     import starling.display.Quad;
     import starling.display.Sprite;
+    //import starling.textures.Texture;
 
     public class BackgroundView extends Sprite
     {
@@ -20,7 +22,10 @@ package de.mediadesign.gd1011.studiof.view
             var debugQuad:Quad = new Quad(7529, 1070, 0xFFFF00);
             debugQuad.y = -180;
             addChild(debugQuad);
-//            var image = new Image(Assets.getTexture());
+
+//            var bgTest:BitmapData = new BG_textures(0,0);
+//            var bgImage:Image = new Image(Texture.fromBitmapData(bgTest));
+//            addChild(bgImage);
         }
 
 

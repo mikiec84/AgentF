@@ -13,7 +13,7 @@ package de.mediadesign.gd1011.studiof.services
     {
         public static function collisionDetection(unit1:Unit, unit2:Unit):void
         {
-            if (unit1.platform == unit2.platform && unit1.position.x == unit2.position.y)
+            if (unit1.platform == unit2.platform && unit1.movement.pos.x == unit2..movement.pos.y)
             {
                 unit1.healthPoints--;
                 unit2.healthPoints--;
