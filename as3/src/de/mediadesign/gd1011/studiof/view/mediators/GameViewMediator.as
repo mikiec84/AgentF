@@ -1,14 +1,20 @@
 package de.mediadesign.gd1011.studiof.view.mediators {
-	import de.mediadesign.gd1011.studiof.view.GameView;
+    import de.mediadesign.gd1011.studiof.model.Game;
+    import de.mediadesign.gd1011.studiof.view.GameView;
 
 	import robotlegs.extensions.starlingViewMap.impl.StarlingMediator;
 
-	import starling.events.TouchEvent;
+    import starling.events.EnterFrameEvent;
+
+    import starling.events.TouchEvent;
 
 	public class GameViewMediator extends StarlingMediator
 	{
 		[Inject]
 		public var contextView:GameView;
+
+        [Inject]
+        public var game:Game;
 
 		private function handleTouch(e:TouchEvent):void
 		{
@@ -18,6 +24,7 @@ package de.mediadesign.gd1011.studiof.view.mediators {
 		override public function initialize():void
 		{
 			contextView.addEventListener(TouchEvent.TOUCH,handleTouch);
+            contextView.addEventListener(EnterFrameEvent.ENTER_FRAME, game.update);
 		}
 
 		override public function destroy():void

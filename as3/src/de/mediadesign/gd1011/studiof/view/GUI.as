@@ -7,7 +7,7 @@
  */
 package de.mediadesign.gd1011.studiof.view
 {
-    import de.mediadesign.gd1011.studiof.services.JSONReader;
+    import de.mediadesign.gd1011.studiof.services.JsonReader;
 
     import starling.display.Sprite;
 
@@ -17,7 +17,7 @@ package de.mediadesign.gd1011.studiof.view
 
 		public function GUI()
         {
-			_config=JSONReader.read("viewconfig")["GUI"];
+			_config=JsonReader.read("viewconfig")["GUI"];
         }
 
 		public function addElement(element:GUIElement):void

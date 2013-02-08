@@ -13,7 +13,7 @@ package de.mediadesign.gd1011.studiof.services
     import flash.filesystem.FileMode;
     import flash.filesystem.FileStream;
 
-    public class JSONReader
+    public class JsonReader
     {
         public static function read(filename:String):Object
         {

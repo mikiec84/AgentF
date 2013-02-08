@@ -7,9 +7,11 @@
  */
 package de.mediadesign.gd1011.studiof
 {
-    import de.mediadesign.gd1011.studiof.commands.InitPlayer;
+    import de.mediadesign.gd1011.studiof.commands.InitPlayerCommand;
     import de.mediadesign.gd1011.studiof.consts.GameConsts;
     import de.mediadesign.gd1011.studiof.manager.UnitManager;
+    import de.mediadesign.gd1011.studiof.model.Game;
+    import de.mediadesign.gd1011.studiof.services.JsonReader;
     import de.mediadesign.gd1011.studiof.model.Level;
     import de.mediadesign.gd1011.studiof.model.Score;
     import de.mediadesign.gd1011.studiof.model.User;
@@ -60,11 +62,12 @@ package de.mediadesign.gd1011.studiof
             modelMap.map(User).asSingleton();
             modelMap.map(UnitManager).asSingleton();
             modelMap.map(Render).asSingleton();
+            modelMap.map(Game).asSingleton();
         }
 
         private function initCommands():void
         {
-            commandMap.map(GameConsts.INIT_PLAYER).toCommand(InitPlayer);
+            commandMap.map(GameConsts.INIT_PLAYER).toCommand(InitPlayerCommand);
         }
 
         public function initMediators() : void

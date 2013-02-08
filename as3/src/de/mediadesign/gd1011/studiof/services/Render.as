@@ -9,7 +9,7 @@ package de.mediadesign.gd1011.studiof.services
 {
     import de.mediadesign.gd1011.studiof.view.IRenderable;
 
-    public class Render
+    public class Render implements IProcess
     {
         private var targets:Vector.<IRenderable>;
 
@@ -18,7 +18,7 @@ package de.mediadesign.gd1011.studiof.services
             return true;
         }
 
-        public function update(time:Number):void
+        public function update(time:Number)
         {
             for each ( var target:IRenderable in targets)
             {

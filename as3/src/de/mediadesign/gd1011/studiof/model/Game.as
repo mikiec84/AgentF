@@ -8,10 +8,9 @@
 package de.mediadesign.gd1011.studiof.model
 {
 	import de.mediadesign.gd1011.studiof.assets.Assets;
+    import de.mediadesign.gd1011.studiof.services.IProcess;
 
-
-	import starling.display.Image;
-	import starling.textures.Texture;
+    import starling.events.EnterFrameEvent;
 
 	public class Game
 	{
@@ -19,15 +18,19 @@ package de.mediadesign.gd1011.studiof.model
 
         private var player:Unit;
 
+        public var objectsThatHaveToBeUpdated:Vector.<IProcess>;
+
 		public function Game():void
 		{
 
-			gameLoop();
 		}
 
-        public function gameLoop():void
+        public function update(e:EnterFrameEvent):void
         {
-
+            for each (var target:IProcess in objectsThatHaveToBeUpdated)
+            {
+                target.update(e.passedTime);
+            }
         }
 
 	}
