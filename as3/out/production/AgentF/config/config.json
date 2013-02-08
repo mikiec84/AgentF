@@ -1,0 +1,10 @@
+{
+    "player":{
+            "UnitType":"player",
+            "platform":2,
+            "healthPoints":3,
+            "weapon":"MACHINE_GUN",
+            "movement":"MANUAL"
+           }
+
+}

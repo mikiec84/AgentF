@@ -9,6 +9,7 @@ package de.mediadesign.gd1011.studiof.manager
 {
     import de.mediadesign.gd1011.studiof.model.Unit;
     import de.mediadesign.gd1011.studiof.consts.GameConsts;
+    import de.mediadesign.gd1011.studiof.model.components.PositionComponent;
 
     import flash.geom.Point;
 
@@ -16,7 +17,6 @@ package de.mediadesign.gd1011.studiof.manager
 
     import starling.animation.Tween;
     import starling.core.Starling;
-    import starling.events.Event;
     import starling.events.Touch;
     import starling.events.TouchPhase;
 
@@ -28,7 +28,7 @@ package de.mediadesign.gd1011.studiof.manager
         private var jumpSpeedBeimFall:Number       = 2;       // Wie lange der tween für den fall braucht um vollständig abgespielt zu werden in sekunden
         private var jumpSpeedBeimEinpendeln:Number = 3;       // Wie lange der tween für das einpendeln braucht um vollständig abgespielt zu werden in sekunden
         ////////////////////////////
-        private var _player:Unit;
+        private var _player:PositionComponent;
         private var hoch:Tween;
         private var runter:Tween;
         private var aufkommen:Tween;
@@ -47,7 +47,7 @@ package de.mediadesign.gd1011.studiof.manager
             _player = null;
         }
 
-        public function tick(allRelevantUnits:Array):void
+        public function tick(allRelevantUnits:Vector.<Unit>):void
         {
             for (var index:int = 0; index<allRelevantUnits.length; index++)
             {
@@ -59,7 +59,7 @@ package de.mediadesign.gd1011.studiof.manager
                 else if (allRelevantUnits[index].movement.verticalVelocityEnabled)
                 {
                     if (allRelevantUnits[index].unitType == "Player" && _player == null) {
-                        _player = allRelevantUnits[index];
+                        _player = allRelevantUnits[index].movement.pos;
                     }
                 }
             }
@@ -83,10 +83,10 @@ package de.mediadesign.gd1011.studiof.manager
             }
 
             if (kommMausSollAusgeführtWerden) {
-                if (_player.movement.pos.y+60<mouseY) {
-                    _player.movement.pos.y+=speedTowardsMouse;
+                if (_player.y+60<mouseY) {
+                    _player.y+=speedTowardsMouse;
                 } else {
-                    _player.movement.pos.y=mouseY-60;
+                    _player.y=mouseY-60;
                 }
             }
 
@@ -94,13 +94,13 @@ package de.mediadesign.gd1011.studiof.manager
 
         private function checkWelcheEbene():int
         {
-            var newEbene:int = null;
-            if (_player.movement.pos.y>0)                                          {newEbene = 0;}
-            if (_player.movement.pos.y+GameConsts.PLAYER_HEIGHT/2>GameConsts.STAGE_HEIGHT/6)     {newEbene = 1;}
-            if (_player.movement.pos.y+GameConsts.PLAYER_HEIGHT/2>GameConsts.STAGE_HEIGHT/3)     {newEbene = 2;}
-            if (_player.movement.pos.y+GameConsts.PLAYER_HEIGHT/2>GameConsts.STAGE_HEIGHT/2)     {newEbene = 3;}
-            if (_player.movement.pos.y+GameConsts.PLAYER_HEIGHT/2>GameConsts.STAGE_HEIGHT*(2/3)) {newEbene = 4;}
-            if (_player.movement.pos.y+GameConsts.PLAYER_HEIGHT/2>GameConsts.STAGE_HEIGHT*(5/6)) {newEbene = 5;}
+            var newEbene:int = 10;
+            if (_player.y>0)                                                        {newEbene = 0;}
+            if (_player.y+GameConsts.PLAYER_HEIGHT/2>GameConsts.STAGE_HEIGHT/6)     {newEbene = 1;}
+            if (_player.y+GameConsts.PLAYER_HEIGHT/2>GameConsts.STAGE_HEIGHT/3)     {newEbene = 2;}
+            if (_player.y+GameConsts.PLAYER_HEIGHT/2>GameConsts.STAGE_HEIGHT/2)     {newEbene = 3;}
+            if (_player.y+GameConsts.PLAYER_HEIGHT/2>GameConsts.STAGE_HEIGHT*(2/3)) {newEbene = 4;}
+            if (_player.y+GameConsts.PLAYER_HEIGHT/2>GameConsts.STAGE_HEIGHT*(5/6)) {newEbene = 5;}
             return newEbene;
         }
 
@@ -134,13 +134,13 @@ package de.mediadesign.gd1011.studiof.manager
             hoch = new Tween(_player, jumpSpeedBeimSprung, Transitions.EASE_OUT);
             if (checkWelcheEbene() > 2)
             {
-                hoch.moveTo(_player.movement.pos.x, GameConsts.STAGE_HEIGHT - (GameConsts.STAGE_HEIGHT/6) * (checkWelcheEbene() + 1) );
+                hoch.moveTo(_player.x, GameConsts.STAGE_HEIGHT - (GameConsts.STAGE_HEIGHT/6) * (checkWelcheEbene() + 1) );
                 Starling.juggler.add(hoch);
                 derKommRunterTweenIstNochNichtAmLaufen = true;
             }
             if (checkWelcheEbene() == 2)
             {
-                hoch.moveTo(_player.movement.pos.x, 240);
+                hoch.moveTo(_player.x, 240);
                 Starling.juggler.add(hoch);
                 derKommRunterTweenIstNochNichtAmLaufen = true;
             }
@@ -152,7 +152,7 @@ package de.mediadesign.gd1011.studiof.manager
             }
             runter  = new  Tween(_player, jumpSpeedBeimFall, Transitions.EASE_IN);
             if (checkWelcheEbene() < 2) {
-                runter.moveTo(_player.movement.pos.x, GameConsts.STAGE_HEIGHT/3+einpendelStaerke);
+                runter.moveTo(_player.x, GameConsts.STAGE_HEIGHT/3+einpendelStaerke);
                 Starling.juggler.add(runter);
                 derPendelEinTweenIstNochNichtAmLaufen = true;
             }
@@ -160,7 +160,7 @@ package de.mediadesign.gd1011.studiof.manager
 
         private function pendelEin():void {
             aufkommen = new Tween(_player, jumpSpeedBeimEinpendeln, Transitions.EASE_OUT_ELASTIC);
-            aufkommen.moveTo(_player.movement.pos.x,  GameConsts.STAGE_HEIGHT/3);
+            aufkommen.moveTo(_player.x,  GameConsts.STAGE_HEIGHT/3);
             Starling.juggler.add(aufkommen);
             aufkommenWurdeNochNichtVomJugglerRemoved = true;
         }
