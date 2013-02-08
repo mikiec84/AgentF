@@ -2,130 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9d5af888-79aa-45bf-94bc-b57803b7fbdf" name="Default" comment="Merge remote-tracking branch 'origin/master'&#10;&#10;Conflicts:&#10;&#9;as3/.idea/workspace.xml&#10;">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/layout/AnchorLayout.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/layout/AnchorLayoutData.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/data/ArrayChildrenHierarchicalCollectionDataDescriptor.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/data/ArrayListCollectionDataDescriptor.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/controls/renderers/BaseDefaultItemRenderer.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/text/BitmapFontTextFormat.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/controls/text/BitmapFontTextRenderer.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/controls/Button.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/controls/ButtonGroup.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/controls/Callout.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/controls/popups/CalloutPopUpContentManager.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/controls/Check.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/events/CollectionEventType.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/controls/renderers/DefaultGroupedListHeaderOrFooterRenderer.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/controls/renderers/DefaultGroupedListItemRenderer.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/controls/renderers/DefaultListItemRenderer.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/system/DeviceCapabilities.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/core/DisplayListWatcher.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/dragDrop/DragData.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/events/DragDropEvent.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/dragDrop/DragDropManager.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/controls/popups/DropDownPopUpContentManager.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/core/FeathersControl.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/events/FeathersEventType.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/controls/GroupedList.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/controls/supportClasses/GroupedListDataViewPort.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/controls/Header.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/data/HierarchicalCollection.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/layout/HorizontalLayout.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/dragDrop/IDragSource.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/dragDrop/IDropTarget.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/core/IFeathersControl.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/core/IFeathersDisplayObject.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/core/IFeathersEventDispatcher.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/controls/renderers/IGroupedListHeaderOrFooterRenderer.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/controls/renderers/IGroupedListItemRenderer.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/core/IGroupedToggle.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/data/IHierarchicalCollectionDataDescriptor.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/layout/ILayout.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/layout/ILayoutData.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/layout/ILayoutDisplayObject.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/data/IListCollectionDataDescriptor.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/controls/renderers/IListItemRenderer.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/controls/popups/IPopUpContentManager.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/controls/IScreen.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/controls/IScrollBar.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/core/ITextEditor.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/core/ITextRenderer.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/core/IToggle.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/layout/IVariableVirtualLayout.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/controls/supportClasses/IViewPort.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/layout/IVirtualLayout.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/controls/ImageLoader.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/skins/ImageStateValueSelector.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/controls/Label.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/layout/LayoutBoundsResult.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/controls/supportClasses/LayoutViewPort.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/controls/List.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/data/ListCollection.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/controls/supportClasses/ListDataViewPort.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/motion/transitions/OldFadeNewSlideTransitionManager.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/controls/PageIndicator.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/controls/Panel.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/controls/PanelScreen.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/controls/PickerList.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/core/PopUpManager.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/controls/ProgressBar.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/core/PropertyProxy.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/controls/Radio.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/display/Scale3Image.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/textures/Scale3Textures.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/display/Scale9Image.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/skins/Scale9ImageStateValueSelector.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/textures/Scale9Textures.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/controls/Screen.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/motion/transitions/ScreenFadeTransitionManager.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/controls/ScreenNavigator.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/controls/ScreenNavigatorItem.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/motion/transitions/ScreenSlidingStackTransitionManager.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/controls/ScrollBar.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/controls/ScrollContainer.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/controls/ScrollText.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/controls/Scroller.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/controls/SimpleScrollBar.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/controls/Slider.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/text/StageTextField.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/controls/text/StageTextTextEditor.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/skins/StandardIcons.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/skins/StateValueSelector.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/skins/StateWithToggleValueSelector.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/controls/TabBar.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/motion/transitions/TabBarSlideTransitionManager.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/controls/text/TextFieldTextEditor.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/controls/text/TextFieldTextRenderer.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/controls/supportClasses/TextFieldViewPort.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/controls/TextInput.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/layout/TiledColumnsLayout.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/display/TiledImage.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/layout/TiledRowsLayout.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/core/ToggleGroup.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/controls/ToggleSwitch.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/core/TokenList.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/core/ValidationQueue.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/data/VectorIntListCollectionDataDescriptor.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/data/VectorListCollectionDataDescriptor.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/data/VectorNumberListCollectionDataDescriptor.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/data/VectorUintListCollectionDataDescriptor.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/controls/popups/VerticalCenteredPopUpContentManager.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/layout/VerticalLayout.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/layout/ViewPortBounds.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/data/XMLListListCollectionDataDescriptor.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/utils/display/calculateScaleRatioToFill.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/utils/display/calculateScaleRatioToFit.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/utils/math/clamp.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/utils/math/roundDownToNearest.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/utils/math/roundToNearest.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/utils/math/roundToPrecision.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/feathers/utils/math/roundUpToNearest.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/commands/RegisterServiceCommand.as" afterPath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/commands/RegisterServiceCommand.as" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="AgentF.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1360319219805" ignored="false" />
+    <file path="/Dummy.txt" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1360319279285" ignored="false" />
     <file path="/fragment.js2" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1360314213577" ignored="false" />
     <file path="/AgentF.as" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1359635910403" ignored="false" />
     <file path="/AgentF-app.xml" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1359622409363" ignored="false" />
@@ -255,7 +136,7 @@
       <file leaf-file-name="RegisterServiceCommand.as" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/commands/RegisterServiceCommand.as">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="0" selection-start="530" selection-end="530" vertical-scroll-proportion="0.33180252">
+            <state line="24" column="0" selection-start="558" selection-end="558" vertical-scroll-proportion="0.35132033">
               <folding>
                 <element signature="e#208#261#0" expanded="true" />
               </folding>
@@ -754,7 +635,11 @@
       <created>1360319153254</created>
       <updated>1360319153254</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Merge remote-tracking branch 'origin/master'&#10;&#10;Conflicts:&#10;&#9;as3/.idea/workspace.xml&#10;">
+      <created>1360319322507</created>
+      <updated>1360319322507</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -778,7 +663,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3263506" sideWeight="0.497552" order="7" side_tool="false" content_ui="tabs" />
@@ -845,7 +730,7 @@
     <option name="MAXIMUM_HISTORY_ROWS" value="1000" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="render" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge remote-tracking branch 'origin/master'&#10;&#10;Conflicts:&#10;&#9;as3/.idea/workspace.xml&#10;" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -874,6 +759,7 @@
     <MESSAGE value="CODE CONVENTION" />
     <MESSAGE value="comment traces" />
     <MESSAGE value="render" />
+    <MESSAGE value="Merge remote-tracking branch 'origin/master'&#10;&#10;Conflicts:&#10;&#9;as3/.idea/workspace.xml&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1004,7 +890,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/commands/RegisterServiceCommand.as">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="0" selection-start="530" selection-end="530" vertical-scroll-proportion="0.33180252">
+        <state line="24" column="0" selection-start="558" selection-end="558" vertical-scroll-proportion="0.35132033">
           <folding>
             <element signature="e#208#261#0" expanded="true" />
           </folding>
