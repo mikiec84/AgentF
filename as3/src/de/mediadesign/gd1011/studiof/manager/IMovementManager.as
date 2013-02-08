@@ -7,8 +7,13 @@
  */
 package de.mediadesign.gd1011.studiof.manager
 {
+    import flash.geom.Point;
+
+    import starling.events.Touch;
+
     public interface IMovementManager
     {
-        function tick(allRelevantUnits:Array):void;
+        function tick(allRelevantUnits:Array):void;                 // muss auf jeder frame aufgerufen werden, bewegt und managed alles
+        function handleTouch(touch:Touch,  location:Point):void;    // notwendig für die kontrolle über den player
     }
 }
