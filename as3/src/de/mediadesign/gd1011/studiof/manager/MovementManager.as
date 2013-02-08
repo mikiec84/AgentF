@@ -40,7 +40,10 @@ package de.mediadesign.gd1011.studiof.manager
         private var mouseY:int = 0;
 
         public function MovementManager()
-        {   derKommRunterTweenIstNochNichtAmLaufen = true;
+        {   _player = new PositionComponent();
+            _player.x = 0;
+            _player.y = GameConsts.PLAYER_START_HEIGHT;
+            derKommRunterTweenIstNochNichtAmLaufen = true;
             derPendelEinTweenIstNochNichtAmLaufen = true;
             areAnyUnfinishedTweensInMotionRightNow = false;
             kommMausSollAusgeführtWerden = false;
@@ -58,9 +61,7 @@ package de.mediadesign.gd1011.studiof.manager
                 }
                 else if (allRelevantUnits[index].movement.verticalVelocityEnabled)
                 {
-                    if (allRelevantUnits[index].unitType == "Player" && _player == null) {
-                        _player = allRelevantUnits[index].movement.pos;
-                    }
+
                 }
             }
             handlePlayerJumps();
@@ -164,5 +165,11 @@ package de.mediadesign.gd1011.studiof.manager
             Starling.juggler.add(aufkommen);
             aufkommenWurdeNochNichtVomJugglerRemoved = true;
         }
+
+        public function getCurrentPlayerPosition():int
+        {
+            return _player.y;
+        }
+
     }
 }
