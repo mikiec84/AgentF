@@ -21,7 +21,7 @@ package de.mediadesign.gd1011.studiof.commands
 
         override public function execute():void
         {
-
+            //machWasCooles
         }
     }
 }
