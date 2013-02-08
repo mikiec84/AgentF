@@ -17,9 +17,9 @@ package de.mediadesign.gd1011.studiof {
 	import starling.events.Event;
     import flash.events.Event;
 
+	[SWF(backgroundColor="#000000")]
 	public class AgentF extends Sprite
     {
-
         private var _starling:Starling;
         private var _context:IContext;
 
@@ -35,7 +35,8 @@ package de.mediadesign.gd1011.studiof {
 		private function onResize(e:flash.events.Event):void
 		{
 			stage.removeEventListener(flash.events.Event.RESIZE, onResize);
-			_starling = new Starling(MainView, stage, new Rectangle(0, 0, stage.fullScreenWidth, stage.fullScreenHeight));
+			var deviceSize:Rectangle = new Rectangle(0, 0,Math.max(stage.fullScreenWidth, stage.fullScreenHeight),Math.min(stage.fullScreenWidth, stage.fullScreenHeight));
+			_starling = new Starling(MainView, stage, deviceSize);
 			_context = new Context()
 					.install( MVCSBundle, StarlingViewMapExtension )
 					.configure( StarlingConfig, this, _starling)
