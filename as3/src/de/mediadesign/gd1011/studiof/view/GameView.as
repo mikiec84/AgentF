@@ -41,7 +41,7 @@ package de.mediadesign.gd1011.studiof.view
 			var img:Image = new Image(Texture.fromBitmapData(test));
 			addChild(img);
 
-			var test2:BitmapData = new E2_texture(0,0);
+			var test2:BitmapData = new E2_textures(0,0);
 			var img2:Image = new Image(Texture.fromBitmapData(test2));
 			addChild(img2);
 			img2.x = 200;
