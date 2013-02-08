@@ -7,23 +7,28 @@
  */
 package de.mediadesign.gd1011.studiof.services
 {
-    import de.mediadesign.gd1011.studiof.services.IRenderable;
+    import de.mediadesign.gd1011.studiof.model.components.IRenderable;
+    import de.mediadesign.gd1011.studiof.model.components.Renderable;
 
     public class Render implements IProcess
     {
-        private var targets:Vector.<IRenderable>;
+        private var targets:Vector.<Renderable>;
 
         public function start():Boolean
         {
             return true;
         }
 
-        public function update(time:Number)
+        public function update():void
         {
             for each ( var target:IRenderable in targets)
             {
                 target.render();
             }
+        }
+
+        public function addEntity(target:Renderable):void{
+            targets.push(target);
         }
     }
 }

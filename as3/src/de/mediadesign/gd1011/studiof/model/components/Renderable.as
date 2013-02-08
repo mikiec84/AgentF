@@ -5,8 +5,9 @@
  * Time: 11:32
  * To change this template use File | Settings | File Templates.
  */
-package de.mediadesign.gd1011.studiof.services
+package de.mediadesign.gd1011.studiof.model.components
 {
+    import de.mediadesign.gd1011.studiof.services.*;
     import de.mediadesign.gd1011.studiof.model.components.PositionComponent;
 
     import flash.geom.Point;
@@ -15,19 +16,19 @@ package de.mediadesign.gd1011.studiof.services
 
     public class Renderable implements IRenderable
     {
-        public var view:Sprite;
         public var position:PositionComponent;
-        public var rotation:Number;
+        public var display:DisplayComponent;
 
         public function Renderable(pos:PositionComponent)
         {
             position = pos;
+            display = new DisplayComponent();
         }
         public function render():void
         {
-            view.x = position.x;
-            view.y = position.y;
-            view.rotation = rotation;
+            display.view.x = position.x;
+            display.view.y = position.y;
+            display.view.rotation = position.currentRotation;
         }
     }
 }

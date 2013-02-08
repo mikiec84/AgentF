@@ -9,12 +9,15 @@ package de.mediadesign.gd1011.studiof
 {
 	import de.mediadesign.gd1011.studiof.commands.InitPlayerCommand;
 	import de.mediadesign.gd1011.studiof.consts.GameConsts;
-	import de.mediadesign.gd1011.studiof.manager.UnitManager;
-	import de.mediadesign.gd1011.studiof.model.Game;
+    import de.mediadesign.gd1011.studiof.manager.Game;
+    import de.mediadesign.gd1011.studiof.manager.LevelManager;
+    import de.mediadesign.gd1011.studiof.manager.MovementManager;
+    import de.mediadesign.gd1011.studiof.manager.UnitManager;
 	import de.mediadesign.gd1011.studiof.model.Level;
 	import de.mediadesign.gd1011.studiof.model.Score;
 	import de.mediadesign.gd1011.studiof.model.User;
-	import de.mediadesign.gd1011.studiof.services.Render;
+    import de.mediadesign.gd1011.studiof.services.MoveProcess;
+    import de.mediadesign.gd1011.studiof.services.Render;
 	import de.mediadesign.gd1011.studiof.view.BackgroundView;
 	import de.mediadesign.gd1011.studiof.view.GUI;
 	import de.mediadesign.gd1011.studiof.view.GameView;
@@ -62,6 +65,11 @@ package de.mediadesign.gd1011.studiof
             modelMap.map(UnitManager).asSingleton();
             modelMap.map(Render).asSingleton();
             modelMap.map(Game).asSingleton();
+            modelMap.map(MovementManager).asSingleton();
+            modelMap.map(LevelManager).asSingleton();
+            modelMap.map(UnitManager).asSingleton();
+            modelMap.map(MoveProcess).asSingleton();
+            modelMap.map(Render).asSingleton();
         }
 
         private function initCommands():void

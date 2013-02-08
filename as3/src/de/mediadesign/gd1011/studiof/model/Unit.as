@@ -7,23 +7,26 @@
  */
 package de.mediadesign.gd1011.studiof.model
 {
-    import de.mediadesign.gd1011.studiof.model.components.Movement;
-    import de.mediadesign.gd1011.studiof.model.components.RenderInfo;
     import de.mediadesign.gd1011.studiof.model.components.Weapon;
-    import de.mediadesign.gd1011.studiof.services.Renderable;
+    import de.mediadesign.gd1011.studiof.model.components.IMoveable;
+    import de.mediadesign.gd1011.studiof.model.components.IRenderable;
+    import de.mediadesign.gd1011.studiof.model.components.Moveable;
+    import de.mediadesign.gd1011.studiof.model.components.Renderable;
 
     import flash.geom.Point;
 
     public class Unit
     {
-        private var _movement:Movement;
+        public var _movement:Moveable;
+        public var renderData:Renderable;
+
+
         private var _weapon:Weapon;
         private var _healthPoints:int;
         private var _ebene:int;
         private var _playerJumpSpeed:Number;
         private var _unitType:String;
 
-        public var renderData:Renderable;
 
         public function Unit(unitType:String = null)
         {
@@ -33,29 +36,20 @@ package de.mediadesign.gd1011.studiof.model
             _weapon = new Weapon();
             weapon.weaponType = "Kanone";
 
-            _movement = new Movement();
+            _movement = new Moveable();
+            renderData = new Renderable(_movement.position);
+
             if (unitType == "Player" || unitType == "Boss")
             {
-                movement.horizontalVelocityEnabled = false;
+                _movement.horizontalVelocityEnabled = false;
             }
             else
             {
-                movement.horizontalVelocityEnabled = true;
+                _movement.horizontalVelocityEnabled = true;
             }
 
             this._unitType = unitType;
 
-            var renderData = new Renderable(_movement.pos);
-        }
-
-        public function get movement():Movement
-        {
-            return _movement;
-        }
-
-        public function set movement(value:Movement):void
-        {
-            _movement = value;
         }
 
         public function get weapon():Weapon
