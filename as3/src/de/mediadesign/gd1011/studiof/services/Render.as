@@ -7,8 +7,12 @@
  */
 package de.mediadesign.gd1011.studiof.services
 {
+    import de.mediadesign.gd1011.studiof.events.GameEvent;
+    import de.mediadesign.gd1011.studiof.manager.MovementManager;
     import de.mediadesign.gd1011.studiof.model.components.IRenderable;
     import de.mediadesign.gd1011.studiof.model.components.Renderable;
+
+    import flash.events.IEventDispatcher;
 
     public class Render implements IProcess
     {
@@ -24,11 +28,11 @@ package de.mediadesign.gd1011.studiof.services
             return true;
         }
 
-        public function update(passedTime:Number):void
+        public function update(passedTime:Number, MM:MovementManager, dispatcher:IEventDispatcher):void
         {
             for each ( var target:IRenderable in targets)
             {
-                target.render();
+                target.render(dispatcher);
             }
         }
 

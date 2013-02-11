@@ -12,6 +12,7 @@ package de.mediadesign.gd1011.studiof.manager
     public class UnitManager
     {
         private var _enemies:Vector.<Unit>;
+        public var player:Unit;
 
         public function addEnemy(platform:uint, healthPoints:int,  weapon:String, movement:String):void
         {
@@ -19,10 +20,9 @@ package de.mediadesign.gd1011.studiof.manager
             _enemies.push(enemy)
         }
 
-        public function addPlayer(platform:uint, healthPoints:int, weapon:String, movement:String):Unit
+        public function addPlayer(U:Unit):void
         {
-            var player:Unit = new Unit("Player");
-            return null;
+            player = U;
         }
 
         public function get enemies():Vector.<Unit> {

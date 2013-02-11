@@ -7,14 +7,14 @@
  */
 package de.mediadesign.gd1011.studiof.view.mediators
 {
-    import de.mediadesign.gd1011.studiof.view.UnitView;
+    import de.mediadesign.gd1011.studiof.view.GameView;
 
     import robotlegs.extensions.starlingViewMap.impl.StarlingMediator;
 
     public class UnitViewMediator extends StarlingMediator
     {
         [Inject]
-        public var unitView:UnitView;
+        public var unitView:GameView;
 
         override public function initialize():void
         {
@@ -24,6 +24,13 @@ package de.mediadesign.gd1011.studiof.view.mediators
         override public function destroy():void
         {
 
+        }
+
+        public function updateUnitView(s:String, x:int, y:int):void
+        {
+            if(s == "Player"){
+                unitView.moveThePlayer(x, y);
+            }
         }
     }
 }

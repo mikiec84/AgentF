@@ -21,7 +21,7 @@ package de.mediadesign.gd1011.studiof.commands
 
         override public function execute():void
         {
-            units.addPlayer(event.dataObj["platform"], event.dataObj["healthPoints"], event.dataObj["weapon"], event.dataObj["movement"]);
+            //units.addPlayer(event.dataObj["platform"], event.dataObj["healthPoints"], event.dataObj["weapon"], event.dataObj["movement"]);
         }
     }
 }
