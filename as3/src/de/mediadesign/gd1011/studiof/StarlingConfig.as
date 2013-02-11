@@ -7,7 +7,8 @@
  */
 package de.mediadesign.gd1011.studiof
 {
-	import de.mediadesign.gd1011.studiof.commands.InitPlayerCommand;
+    import de.mediadesign.gd1011.studiof.commands.InitGameCommand;
+    import de.mediadesign.gd1011.studiof.commands.InitPlayerCommand;
 	import de.mediadesign.gd1011.studiof.consts.GameConsts;
 	import de.mediadesign.gd1011.studiof.manager.UnitManager;
 	import de.mediadesign.gd1011.studiof.model.Game;
@@ -51,7 +52,7 @@ package de.mediadesign.gd1011.studiof
 
             // Weitere Parameter müssen übergeben werden
 //            var playerEvent:GameEvent = new GameEvent(GameConsts.INIT_PLAYER, GameConsts.INIT_PLAYER, JSONReader.read("player") );
-//            dispatcher.dispatchEvent(playerEvent);  //WTF ?? cast to Event
+//            dispatcher.dispatchEvent(playerEvent);
         }
 
         private function initModels():void
@@ -66,6 +67,8 @@ package de.mediadesign.gd1011.studiof
 
         private function initCommands():void
         {
+            commandMap.map(GameConsts.INIT_GAME).toCommand(InitGameCommand);
+
             commandMap.map(GameConsts.INIT_PLAYER).toCommand(InitPlayerCommand);
         }
 

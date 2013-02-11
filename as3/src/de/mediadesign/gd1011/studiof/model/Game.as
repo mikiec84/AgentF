@@ -16,7 +16,7 @@ package de.mediadesign.gd1011.studiof.model
 	{
 		public var currentScore:int;
 
-        private var player:Unit;
+        //private var player:Unit;
 
         public var objectsThatHaveToBeUpdated:Vector.<IProcess>;
 
