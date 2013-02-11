@@ -23,7 +23,8 @@ package de.mediadesign.gd1011.studiof.manager
         public var alleMoveableProzesse:MoveProcess;
         [Inject]
         public var alleRenderableProzesse:Render;
-
+        [Inject]
+        public var MM:MovementManager;
 
         public var playerPos:PositionComponent;
         public var currentScore:int;
@@ -36,8 +37,8 @@ package de.mediadesign.gd1011.studiof.manager
         [PostConstruct]
         public function execute():void
         {
-
-            var player = new Unit("Player");
+            playerPos = new PositionComponent();
+            var player = new Unit();
             playerPos = player._movement.position;
             alleMoveableProzesse.addEntity(player._movement);
             alleRenderableProzesse.addEntity(player.renderData);
