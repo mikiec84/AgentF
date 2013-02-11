@@ -7,12 +7,12 @@
  */
 package de.mediadesign.gd1011.studiof.view
 {
-    //import flash.display.BitmapData;
+    import flash.display.BitmapData;
 
-    //import starling.display.Image;
+    import starling.display.Image;
     import starling.display.Quad;
     import starling.display.Sprite;
-    //import starling.textures.Texture;
+    import starling.textures.Texture;
 
     public class BackgroundView extends Sprite
     {

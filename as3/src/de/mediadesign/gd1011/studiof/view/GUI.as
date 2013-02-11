@@ -44,15 +44,15 @@ package de.mediadesign.gd1011.studiof.view
 
 		private function init(e:Event=null):void
 		{
-			_guiConfig = JSONReader.read("viewconfig")["GUI"];
+			//_guiConfig = JSONReader.read("viewconfig")["GUI"];
 
-			_topLeft.x = _centerLeft.x = _bottomLeft.x = _guiConfig["padding"];
+			_topLeft.x = _centerLeft.x = _bottomLeft.x = 20;//_guiConfig["padding"];
 			_topCenter.x = _centerCenter.x = _bottomCenter.x = stage.stageWidth/2;
-			_topRight.x = _centerRight.x = _bottomRight.x = stage.stageWidth-_guiConfig["padding"];
+			_topRight.x = _centerRight.x = _bottomRight.x = stage.stageWidth-20;//_guiConfig["padding"];
 
-			_topLeft.y = _topCenter.y = _topRight.y = _guiConfig["padding"];
+			_topLeft.y = _topCenter.y = _topRight.y = 20; // _guiConfig["padding"];
 			_centerLeft.y = _centerCenter.y = _centerRight.y = stage.stageHeight/2;
-			_bottomLeft.y = _bottomCenter.y = _bottomRight.y = stage.stageHeight-_guiConfig["padding"];
+			_bottomLeft.y = _bottomCenter.y = _bottomRight.y = stage.stageHeight-20;//_guiConfig["padding"];
 
 			addChild(_topLeft);
 			addChild(_topCenter);

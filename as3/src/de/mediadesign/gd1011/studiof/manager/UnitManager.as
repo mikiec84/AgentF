@@ -11,26 +11,26 @@ package de.mediadesign.gd1011.studiof.manager
 
     public class UnitManager
     {
-        private var _units:Vector.<Unit>;
+        private var _enemies:Vector.<Unit>;
 
         public function addEnemy(platform:uint, healthPoints:int,  weapon:String, movement:String):void
         {
-//            var enemy:Unit = new Unit(platform, healthPoints, weapon, movement);
-//            enemies.push(enemy)
+            var enemy:Unit = new Unit("Enemy");
+            _enemies.push(enemy)
         }
 
         public function addPlayer(platform:uint, healthPoints:int, weapon:String, movement:String):Unit
         {
-//            var player:Unit = new Unit(platform,  healthPoints, weapon, movement);
-             return null;
+            var player:Unit = new Unit("Player");
+            return null;
         }
 
-        public function get units():Vector.<Unit> {
-            return _units;
+        public function get enemies():Vector.<Unit> {
+            return _enemies;
         }
 
-        public function set units(value:Vector.<Unit>):void {
-            _units = value;
+        public function set enemies(value:Vector.<Unit>):void {
+            _enemies = value;
         }
     }
 }

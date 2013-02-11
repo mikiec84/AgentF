@@ -7,7 +7,6 @@
  */
 package de.mediadesign.gd1011.studiof.view.mediators
 {
-    import de.mediadesign.gd1011.studiof.services.Render;
     import de.mediadesign.gd1011.studiof.view.UnitView;
 
     import robotlegs.extensions.starlingViewMap.impl.StarlingMediator;
