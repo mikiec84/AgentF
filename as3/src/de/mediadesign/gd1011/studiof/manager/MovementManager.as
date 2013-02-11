@@ -9,6 +9,8 @@ package de.mediadesign.gd1011.studiof.manager
 {
     import de.mediadesign.gd1011.studiof.model.Unit;
     import de.mediadesign.gd1011.studiof.consts.GameConsts;
+    import de.mediadesign.gd1011.studiof.model.components.IMoveable;
+    import de.mediadesign.gd1011.studiof.model.components.Moveable;
     import de.mediadesign.gd1011.studiof.model.components.PositionComponent;
 
     import flash.geom.Point;
@@ -50,20 +52,13 @@ package de.mediadesign.gd1011.studiof.manager
             _player = null;
         }
 
-        public function tick(allRelevantUnits:Vector.<Unit>):void
+        public function update(relevantUnit:Moveable):void
         {
-            for (var index:int = 0; index<allRelevantUnits.length; index++)
+            if (relevantUnit.horizontalVelocityEnabled)
             {
-                if (allRelevantUnits[index].movement.horizontalVelocityEnabled)
-                {
-                    allRelevantUnits[index].movement.pos.x += allRelevantUnits[index].movement.directionVector[0];
-                    allRelevantUnits[index].movement.pos.y += allRelevantUnits[index].movement.directionVector[1];//falls sie sich nicht in einer absolut geraden linie bewegen
-                }
-                else if (allRelevantUnits[index].movement.verticalVelocityEnabled)
-                {
-
-                }
-            }
+                relevantUnit.position.x += relevantUnit.velocity.velocityX;
+                relevantUnit.position.y += relevantUnit.velocity.velocityY;//falls sie sich nicht in einer absolut geraden linie bewegen
+            }   else if (relevantUnit.verticalVelocityEnabled){}
             handlePlayerJumps();
         }
 
@@ -83,7 +78,7 @@ package de.mediadesign.gd1011.studiof.manager
                 areAnyUnfinishedTweensInMotionRightNow = false;
             }
 
-            if (kommMausSollAusgeführtWerden) {
+            if (kommMausSollAusgeführtWerden) { //soll auf enterframe ausgeführt werden!
                 if (_player.y+60<mouseY) {
                     _player.y+=speedTowardsMouse;
                 } else {
@@ -95,14 +90,17 @@ package de.mediadesign.gd1011.studiof.manager
 
         private function checkWelcheEbene():int
         {
-            var newEbene:int = 10;
-            if (_player.y>0)                                                        {newEbene = 0;}
-            if (_player.y+GameConsts.PLAYER_HEIGHT/2>GameConsts.STAGE_HEIGHT/6)     {newEbene = 1;}
-            if (_player.y+GameConsts.PLAYER_HEIGHT/2>GameConsts.STAGE_HEIGHT/3)     {newEbene = 2;}
-            if (_player.y+GameConsts.PLAYER_HEIGHT/2>GameConsts.STAGE_HEIGHT/2)     {newEbene = 3;}
-            if (_player.y+GameConsts.PLAYER_HEIGHT/2>GameConsts.STAGE_HEIGHT*(2/3)) {newEbene = 4;}
-            if (_player.y+GameConsts.PLAYER_HEIGHT/2>GameConsts.STAGE_HEIGHT*(5/6)) {newEbene = 5;}
-            return newEbene;
+            if (_player != null) {
+                var newEbene:int = 10;
+                if (_player.y>0)                                                        {newEbene = 0;}
+                if (_player.y+GameConsts.PLAYER_HEIGHT/2>GameConsts.STAGE_HEIGHT/6)     {newEbene = 1;}
+                if (_player.y+GameConsts.PLAYER_HEIGHT/2>GameConsts.STAGE_HEIGHT/3)     {newEbene = 2;}
+                if (_player.y+GameConsts.PLAYER_HEIGHT/2>GameConsts.STAGE_HEIGHT/2)     {newEbene = 3;}
+                if (_player.y+GameConsts.PLAYER_HEIGHT/2>GameConsts.STAGE_HEIGHT*(2/3)) {newEbene = 4;}
+                if (_player.y+GameConsts.PLAYER_HEIGHT/2>GameConsts.STAGE_HEIGHT*(5/6)) {newEbene = 5;}
+                return newEbene;
+            }
+            return 2;
         }
 
 
@@ -141,7 +139,7 @@ package de.mediadesign.gd1011.studiof.manager
             }
             if (checkWelcheEbene() == 2)
             {
-                hoch.moveTo(_player.x, 240);
+                hoch.moveTo(_player.x, GameConsts.PLAYER_START_HEIGHT);
                 Starling.juggler.add(hoch);
                 derKommRunterTweenIstNochNichtAmLaufen = true;
             }
