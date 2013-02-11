@@ -9,6 +9,8 @@ package de.mediadesign.gd1011.studiof.manager
 {
     import de.mediadesign.gd1011.studiof.model.*;
 	import de.mediadesign.gd1011.studiof.assets.Assets;
+    import de.mediadesign.gd1011.studiof.model.components.PositionComponent;
+    import de.mediadesign.gd1011.studiof.model.components.Renderable;
     import de.mediadesign.gd1011.studiof.services.IProcess;
     import de.mediadesign.gd1011.studiof.services.MoveProcess;
     import de.mediadesign.gd1011.studiof.services.Render;
@@ -17,19 +19,29 @@ package de.mediadesign.gd1011.studiof.manager
 
 	public class Game
 	{
-		public var currentScore:int;
         [Inject]
         public var alleMoveableProzesse:MoveProcess;
         [Inject]
         public var alleRenderableProzesse:Render;
-        [PostConstruct]
+
+
+        public var playerPos:PositionComponent;
+        public var currentScore:int;
 
 		public function Game():void
 		{
+
+		}
+
+        [PostConstruct]
+        public function execute():void
+        {
+
             var player = new Unit("Player");
+            playerPos = player._movement.position;
             alleMoveableProzesse.addEntity(player._movement);
             alleRenderableProzesse.addEntity(player.renderData);
-		}
+        }
 
         public function update(e:EnterFrameEvent):void
         {

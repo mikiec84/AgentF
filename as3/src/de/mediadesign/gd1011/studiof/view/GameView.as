@@ -7,7 +7,10 @@
  */
 package de.mediadesign.gd1011.studiof.view
 {
-	import flash.display.BitmapData;
+    import de.mediadesign.gd1011.studiof.model.Unit;
+    import de.mediadesign.gd1011.studiof.model.components.PositionComponent;
+
+    import flash.display.BitmapData;
 
 	import starling.core.Starling;
 
@@ -19,6 +22,11 @@ package de.mediadesign.gd1011.studiof.view
 
 	public class GameView extends Sprite
 	{
+        private var _player:PositionComponent;
+        private var oldX:int = 0;
+        private var oldY:int = 0;
+        private var agentF:Image;
+
         public function GameView()
 		{
 			if(stage)
@@ -33,8 +41,9 @@ package de.mediadesign.gd1011.studiof.view
 
             var backgroundView:BackgroundView = new BackgroundView();
             addChild(backgroundView);
-
-			var q:Quad = new Quad(1710,870,0x00ff00);
+            
+            addEventListener(Event.ENTER_FRAME, updateVisuals);
+			/*var q:Quad = new Quad(1710,870,0x00ff00);
 			addChild(q);
 
 			var test:BitmapData = new E1_texture(0,0);
@@ -49,14 +58,25 @@ package de.mediadesign.gd1011.studiof.view
 			var test3:BitmapData = new E3_texture(0,0);
 			var img3:Image = new Image(Texture.fromBitmapData(test3));
 			addChild(img3);
-			img3.x = 400;
+			img3.x = 400;*/
 
 			var test4:BitmapData = new AgentF_texture(0,0);
-			var img4:Image = new Image(Texture.fromBitmapData(test4));
-			addChild(img4);
-			img4.x = 600;
-
+			agentF = new Image(Texture.fromBitmapData(test4));
+			addChild(agentF);
+			agentF.x = 600;
 		}
 
+        private function updateVisuals(event:Event):void
+        {
+            if (_player.y != oldY) {
+                agentF.y = _player.y;
+                oldY = _player.y;
+            }
+        }
+
+        public function givePlayer(player:PositionComponent):void
+        {
+            _player = player;
+        }
 	}
 }

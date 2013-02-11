@@ -78,7 +78,7 @@ package de.mediadesign.gd1011.studiof.manager
                 areAnyUnfinishedTweensInMotionRightNow = false;
             }
 
-            if (kommMausSollAusgeführtWerden) {
+            if (kommMausSollAusgeführtWerden) { //soll auf enterframe ausgeführt werden!
                 if (_player.y+60<mouseY) {
                     _player.y+=speedTowardsMouse;
                 } else {
@@ -90,14 +90,17 @@ package de.mediadesign.gd1011.studiof.manager
 
         private function checkWelcheEbene():int
         {
-            var newEbene:int = 10;
-            if (_player.y>0)                                                        {newEbene = 0;}
-            if (_player.y+GameConsts.PLAYER_HEIGHT/2>GameConsts.STAGE_HEIGHT/6)     {newEbene = 1;}
-            if (_player.y+GameConsts.PLAYER_HEIGHT/2>GameConsts.STAGE_HEIGHT/3)     {newEbene = 2;}
-            if (_player.y+GameConsts.PLAYER_HEIGHT/2>GameConsts.STAGE_HEIGHT/2)     {newEbene = 3;}
-            if (_player.y+GameConsts.PLAYER_HEIGHT/2>GameConsts.STAGE_HEIGHT*(2/3)) {newEbene = 4;}
-            if (_player.y+GameConsts.PLAYER_HEIGHT/2>GameConsts.STAGE_HEIGHT*(5/6)) {newEbene = 5;}
-            return newEbene;
+            if (_player != null) {
+                var newEbene:int = 10;
+                if (_player.y>0)                                                        {newEbene = 0;}
+                if (_player.y+GameConsts.PLAYER_HEIGHT/2>GameConsts.STAGE_HEIGHT/6)     {newEbene = 1;}
+                if (_player.y+GameConsts.PLAYER_HEIGHT/2>GameConsts.STAGE_HEIGHT/3)     {newEbene = 2;}
+                if (_player.y+GameConsts.PLAYER_HEIGHT/2>GameConsts.STAGE_HEIGHT/2)     {newEbene = 3;}
+                if (_player.y+GameConsts.PLAYER_HEIGHT/2>GameConsts.STAGE_HEIGHT*(2/3)) {newEbene = 4;}
+                if (_player.y+GameConsts.PLAYER_HEIGHT/2>GameConsts.STAGE_HEIGHT*(5/6)) {newEbene = 5;}
+                return newEbene;
+            }
+            return 2;
         }
 
 

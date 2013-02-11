@@ -16,6 +16,8 @@ package de.mediadesign.gd1011.studiof
 	import de.mediadesign.gd1011.studiof.model.Level;
 	import de.mediadesign.gd1011.studiof.model.Score;
 	import de.mediadesign.gd1011.studiof.model.User;
+    import de.mediadesign.gd1011.studiof.model.components.Moveable;
+    import de.mediadesign.gd1011.studiof.model.components.Renderable;
     import de.mediadesign.gd1011.studiof.services.MoveProcess;
     import de.mediadesign.gd1011.studiof.services.Render;
 	import de.mediadesign.gd1011.studiof.view.BackgroundView;
@@ -58,18 +60,17 @@ package de.mediadesign.gd1011.studiof
         }
 
         private function initModels():void
-        {
+        {   modelMap.map(Moveable);
+            modelMap.map(Renderable);
             modelMap.map(Level).asSingleton();
             modelMap.map(Score).asSingleton();
             modelMap.map(User).asSingleton();
             modelMap.map(UnitManager).asSingleton();
-            modelMap.map(Render).asSingleton();
-            modelMap.map(Game).asSingleton();
             modelMap.map(MovementManager).asSingleton();
             modelMap.map(LevelManager).asSingleton();
-            modelMap.map(UnitManager).asSingleton();
             modelMap.map(MoveProcess).asSingleton();
             modelMap.map(Render).asSingleton();
+            modelMap.map(Game).asSingleton();
         }
 
         private function initCommands():void

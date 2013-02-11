@@ -8,12 +8,17 @@
 package de.mediadesign.gd1011.studiof.model.components
 {
     import starling.display.DisplayObject;
+    import starling.display.Sprite;
 
     public class DisplayComponent
     {
 
-        public var view:DisplayObject;
+        public var view:Sprite;
 
+        public function DisplayComponent()
+        {
+            view = new Sprite();
+        }
 
     }
 }

@@ -14,23 +14,27 @@ package de.mediadesign.gd1011.studiof.model.components
     public class Moveable implements IMoveable
     {
         [Inject]
-        public var MM:MovementManager;
+        public var MoMa:MovementManager;
         [PostConstruct]
         public var position:PositionComponent;
         public var velocity:VelocityComponent;
         public var horizontalVelocityEnabled:Boolean;
         public var verticalVelocityEnabled:Boolean;
+        private var MM:MovementManager;
 
 
-        public function Moveable()
+        public function execute():void
         {
+            MM = MoMa;
             position = new PositionComponent();
             velocity = new VelocityComponent();
         }
 
         public function move():void
         {
-            MM.update(this);
+            if (MM != null) {
+                MM.update(this);
+            } else trace("MovementManager in Moveable = null.");
         }
     }
 }

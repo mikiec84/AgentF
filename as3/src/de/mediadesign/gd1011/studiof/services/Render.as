@@ -14,6 +14,11 @@ package de.mediadesign.gd1011.studiof.services
     {
         private var targets:Vector.<Renderable>;
 
+        public function Render()
+        {
+            targets = new Vector.<Renderable>();
+        }
+
         public function start():Boolean
         {
             return true;
@@ -29,6 +34,11 @@ package de.mediadesign.gd1011.studiof.services
 
         public function addEntity(target:Renderable):void{
             targets.push(target);
+        }
+
+
+        public function execute():void
+        {
         }
     }
 }

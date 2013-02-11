@@ -12,6 +12,16 @@ package de.mediadesign.gd1011.studiof.services {
     {
         private var targets:Vector.<Moveable>;
 
+        public function MoveProcess()
+        {
+            targets = new Vector.<Moveable>();
+        }
+
+        public function execute():void
+        {
+
+        }
+
         public function update():void
         {
             for each(var target:Moveable in targets)
