@@ -18,17 +18,20 @@ package de.mediadesign.gd1011.studiof.model.components
     {
         public var position:PositionComponent;
         public var display:DisplayComponent;
+        public var check:Boolean = false;
 
         public function Renderable(pos:PositionComponent)
-        {
+        {   check = true;
             position = pos;
             display = new DisplayComponent();
         }
         public function render():void
         {
-            display.view.x = position.x;
-            display.view.y = position.y;
-            display.view.rotation = position.currentRotation;
+            if (check) {
+                display.view.x = position.x;
+                display.view.y = position.y;
+                display.view.rotation = position.currentRotation;
+            }
         }
     }
 }
