@@ -7,10 +7,8 @@
  */
 package de.mediadesign.gd1011.studiof.model.components
 {
-    import flash.events.IEventDispatcher;
-
     public interface IRenderable
     {
-        function render(dispatcher:IEventDispatcher):void;
+        function render():void;
     }
 }

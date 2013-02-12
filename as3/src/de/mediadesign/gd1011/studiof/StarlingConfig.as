@@ -84,7 +84,7 @@ package de.mediadesign.gd1011.studiof
         {
             commandMap.map(GameConsts.INIT_GAME).toCommand(InitGameCommand);
             commandMap.map(GameConsts.INIT_PLAYER).toCommand(InitPlayerCommand);
-            commandMap.map("PositionAbgleich").toCommand(ChangeUnitPositionCommand);
+            commandMap.map(GameConsts.MOVE_POS).toCommand(ChangeUnitPositionCommand);
             commandMap.map("Dispatcher").toCommand(dispatcherReferenceCommand);
         }
 

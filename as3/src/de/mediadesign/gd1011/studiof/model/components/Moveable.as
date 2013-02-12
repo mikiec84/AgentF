@@ -14,6 +14,8 @@ package de.mediadesign.gd1011.studiof.model.components
 
     public class Moveable implements IMoveable
     {
+        public var MoMa:MovementManager;
+        [PostConstruct]
         public var position:PositionComponent;
         public var velocity:VelocityComponent;
         public var horizontalVelocityEnabled:Boolean;
@@ -35,12 +37,11 @@ package de.mediadesign.gd1011.studiof.model.components
 //            velocity = new VelocityComponent();
 //        }
 
-        public function move(MM:MovementManager):void
+        public function move():void
         {
             if (MM != null)
             {
                 MM.update(this);
-
             }
                 else trace("MovementManager in Moveable = null.");
         }

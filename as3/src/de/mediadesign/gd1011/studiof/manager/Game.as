@@ -29,8 +29,6 @@ package de.mediadesign.gd1011.studiof.manager
         public var alleRenderableProzesse:Render;
         [Inject]
         public var MM:MovementManager;
-        [Inject]
-        public var UM:UnitManager;
 
         public var currentScore:int;
         private var _dispatcher:IEventDispatcher;
@@ -45,29 +43,23 @@ package de.mediadesign.gd1011.studiof.manager
             objectsThatHaveToBeUpdated = new Vector.<IProcess>();
             movePosEvent = new GameEvent("MPE", "MPE");
 
-            player = new Unit("Player");
-
-            objectsThatHaveToBeUpdated.push(alleRenderableProzesse);
-            objectsThatHaveToBeUpdated.push(alleMoveableProzesse);
-
-            alleMoveableProzesse.addEntity(player.moveData);
-            alleRenderableProzesse.addEntity(player.renderData);
-
-            UM.addPlayer(player);
+//            player = new Unit("Player");
+//            objectsThatHaveToBeUpdated.push(new Render());
+//            objectsThatHaveToBeUpdated.push(new MoveProcess());
         }
 
         public function update(e:EnterFrameEvent):void
-        {   if(_dispatcher == null) return;
-
+        {
             for each (var target:IProcess in objectsThatHaveToBeUpdated)
             {
-                target.update(e.passedTime, MM, _dispatcher);
+                target.update(e.passedTime);
             }
-
-            _dispatcher.dispatchEvent(movePosEvent);
+            if(_dispatcher != null) _dispatcher.dispatchEvent(movePosEvent);
 //            playerPos = new PositionComponent();
 //            var player = new Unit();
 //            playerPos = player._movement.position;
+            alleMoveableProzesse.addEntity(player.moveData);
+            alleRenderableProzesse.addEntity(player.renderData);
         }
 
         public function gibMirDispatcher(dis:IEventDispatcher):void

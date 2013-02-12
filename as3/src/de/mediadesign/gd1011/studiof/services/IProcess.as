@@ -7,12 +7,8 @@
  */
 package de.mediadesign.gd1011.studiof.services
 {
-    import de.mediadesign.gd1011.studiof.manager.MovementManager;
-
-    import flash.events.IEventDispatcher;
-
     public interface IProcess
     {
-        function update(passedTime:Number, MM:MovementManager, dispatcher:IEventDispatcher):void;
+        function update(passedTime:Number):void;
     }
 }

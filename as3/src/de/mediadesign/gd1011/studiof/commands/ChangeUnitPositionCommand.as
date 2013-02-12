@@ -10,20 +10,24 @@ package de.mediadesign.gd1011.studiof.commands
     import de.mediadesign.gd1011.studiof.manager.UnitManager;
     import de.mediadesign.gd1011.studiof.model.Unit;
     import de.mediadesign.gd1011.studiof.model.components.PositionComponent;
-    import de.mediadesign.gd1011.studiof.view.mediators.UnitViewMediator;
 
     import robotlegs.bender.bundles.mvcs.Command;
 
     public class ChangeUnitPositionCommand extends Command
     {
         [Inject]
-        public var units:UnitManager;
+        public var positionComponent:PositionComponent;
+
         [Inject]
-        public var UVM:UnitViewMediator
+        public var units:UnitManager;
 
         override public function execute():void
         {
-            UVM.updateUnitView("Player", units.player.renderData.position.x, units.player.renderData.position.y);
+            for each (var enemy:Unit in units.enemies)
+            {
+                enemy.moveData.move();
+            }
+
         }
 
     }

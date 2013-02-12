@@ -11,9 +11,8 @@ package de.mediadesign.gd1011.studiof.view
     import de.mediadesign.gd1011.studiof.model.components.PositionComponent;
 
     import flash.display.BitmapData;
-    import flash.utils.ByteArray;
 
-    import starling.core.Starling;
+	import starling.core.Starling;
 
 	import starling.display.Image;
 	import starling.display.Quad;
@@ -67,10 +66,6 @@ package de.mediadesign.gd1011.studiof.view
 			agentF.x = 600;
 		}
 
-        public function moveThePlayer(x:int, y:int):void
-        {
-            agentF.y = y;
-        }
 //        private function updateVisuals(event:Event):void
 //        {
 //            if (_player.y != oldY) {

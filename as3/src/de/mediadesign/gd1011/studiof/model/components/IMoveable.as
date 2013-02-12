@@ -7,10 +7,8 @@
  */
 package de.mediadesign.gd1011.studiof.model.components
 {
-    import de.mediadesign.gd1011.studiof.manager.MovementManager;
-
     public interface IMoveable
     {
-        function move(MM:MovementManager):void;
+        function move():void;
     }
 }
