@@ -1,5 +1,6 @@
 package de.mediadesign.gd1011.studiof.view.mediators {
-    import de.mediadesign.gd1011.studiof.services.GameLoop;
+	import de.mediadesign.gd1011.studiof.model.Level;
+	import de.mediadesign.gd1011.studiof.services.GameLoop;
     import de.mediadesign.gd1011.studiof.services.JSONReader;
     import de.mediadesign.gd1011.studiof.view.GameView;
 
@@ -15,9 +16,11 @@ package de.mediadesign.gd1011.studiof.view.mediators {
 		[Inject]
 		public var contextView:GameView;
 
-
         [Inject]
         public var game:GameLoop;
+
+		[Inject]
+		public var level:Level;
 
 		private var _touchConfig:Object;
 		private var _validTouchID:int = -1;
@@ -32,9 +35,13 @@ package de.mediadesign.gd1011.studiof.view.mediators {
 					var vTouchPos:Number = initTouches[i].getLocation(contextView).y;
 					var platform:int = getVTouchzone(vTouchPos);
 					if(platform>=0 && _touchConfig["vTouch"][platform]<=vTouchPos && _touchConfig["vTouch"][platform+1]>=vTouchPos)
+					{
 						_validTouchID = initTouches[i].id;
-
-					trace("Zone"+platform);
+						if(level.player != null && platform >=0 && platform != level.player.targetPlatform)
+						{
+							level.player.targetPlatform = platform;
+						}
+					}
 				}
 			}
 
@@ -47,7 +54,10 @@ package de.mediadesign.gd1011.studiof.view.mediators {
 				{
 					var vTouchPos:Number = touches[j].getLocation(contextView).y;
 					var platform:int = getVTouchzone(vTouchPos);
-					trace("move "+platform);
+					if(level.player != null && platform >=0 && platform != level.player.targetPlatform)
+					{
+						level.player.targetPlatform = platform;
+					}
 				}
 
 			//Handle end touch
@@ -55,7 +65,6 @@ package de.mediadesign.gd1011.studiof.view.mediators {
 			for (var k:int = 0; k < endingTouches.length; k++)
 				if (endingTouches[k].id == _validTouchID)
 				{
-					trace("Ende mit aldente");
 					_validTouchID = -1;
 				}
 		}
