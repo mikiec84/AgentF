@@ -7,21 +7,22 @@
  */
 package de.mediadesign.gd1011.studiof.model.components
 {
+    import starling.display.Sprite;
+
     public class Renderable
     {
-//        public var position:PositionComponent;
-//        public var display:DisplayComponent;
-//
-//        public function Renderable(pos:PositionComponent)
-//        {
-//            position = pos;
-//            display = new DisplayComponent();
-//        }
-//        public function render():void
-//        {
-//            display.view.x = position.x;
-//            display.view.y = position.y;
-//            display.view.rotation = position.currentRotation;
-//        }
+        private var position:PositionComponent;
+        private var view:Sprite;
+
+        public function Renderable(view:Sprite)
+        {
+            this.view = view;
+        }
+
+        public function render(time:Number):void
+        {
+            view.x = position.x;
+            view.y = position.y;
+        }
     }
 }

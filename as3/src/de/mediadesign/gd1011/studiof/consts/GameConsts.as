@@ -13,6 +13,8 @@ package de.mediadesign.gd1011.studiof.consts
     {
         public static const INIT_PLAYER:String = /*getQualifiedClassName(this)+*/"INIT_PLAYER";
         public static const INIT_GAME:String   = /*getQualifiedClassName(this)+*/"INIT_GAME";
+        public static const ADD_ENEMY:String = "ADD_ENEMY";
+
         public static const STAGE_HEIGHT:int   = 720;
         public static const STAGE_WIDTH:int    = 1280;
         public static const EBENE_HEIGHT:int    = 120;

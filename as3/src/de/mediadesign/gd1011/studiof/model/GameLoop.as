@@ -13,14 +13,18 @@ package de.mediadesign.gd1011.studiof.model
 
     public class GameLoop
 	{
-        private var player:Unit;
-
         public var processes:Vector.<IProcess>;
 
 		public function GameLoop():void
 		{
+            processes = new Vector.<IProcess>();
 
 		}
+
+        public function registerProcess(process:IProcess):void
+        {
+            processes.push(process);
+        }
 
         public function update(e:EnterFrameEvent):void
         {
@@ -29,6 +33,5 @@ package de.mediadesign.gd1011.studiof.model
                 target.update(e.passedTime);
             }
         }
-
 	}
 }

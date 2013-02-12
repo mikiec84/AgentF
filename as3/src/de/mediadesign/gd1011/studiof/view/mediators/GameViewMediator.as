@@ -1,5 +1,5 @@
 package de.mediadesign.gd1011.studiof.view.mediators {
-    import de.mediadesign.gd1011.studiof.model.Game;
+    import de.mediadesign.gd1011.studiof.model.GameLoop;
     import de.mediadesign.gd1011.studiof.view.GameView;
 
     import robotlegs.extensions.starlingViewMap.impl.StarlingMediator;
@@ -14,7 +14,7 @@ package de.mediadesign.gd1011.studiof.view.mediators {
 
 
         [Inject]
-        public var game:Game;
+        public var game:GameLoop;
 
 		private function handleTouch(e:TouchEvent):void
 		{

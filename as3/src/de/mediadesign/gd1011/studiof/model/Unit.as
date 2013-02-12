@@ -20,17 +20,21 @@ package de.mediadesign.gd1011.studiof.model
 
 
         public function Unit(healthpoints:int, startingPlatform:int)
-        {   _weapon = "default";
+        {
+            _weapon = "default";
             _currentPlatform = startingPlatform;
             _healthPoints = healthpoints;
             _position = new PositionComponent();
             _velocity = new VelocityComponent();
         }
 
-        public function move(time:Number):void {
-            if (assertCorrectInitialization()) {
-                _position.x += _velocity.velocityX*time;
-            } else trace("----------Function Move failed, because Unit not correctly initialized: "+_position.x+","+_position.y+","+_velocity+","+_currentPlatform+","+this);
+        public function move(time:Number):void
+        {
+            if (assertCorrectInitialization())
+            {
+                position.x += velocity.velocityX*time;
+            }
+            else trace("----------Function Move failed, because Unit not correctly initialized: "+position.x+","+position.y+","+velocity+","+currentPlatform+","+this);
         }
 
         public function assertCorrectInitialization():Boolean
@@ -39,41 +43,51 @@ package de.mediadesign.gd1011.studiof.model
             return !(_velocity == null);
         }
 
-        public function get healthPoints():int {
+        public function get healthPoints():int
+        {
             return _healthPoints;
         }
 
-        public function set healthPoints(value:int):void {
+        public function set healthPoints(value:int):void
+        {
             if (value<0)
             {
                 trace("Trying to set healthpoints below 0. Value "+value+" not accepted.");
-            }   else _healthPoints = value;
+            }
+            else _healthPoints = value;
         }
 
-        public function get currentPlatform():int {
+        public function get currentPlatform():int
+        {
             return _currentPlatform;
         }
 
-        public function set currentPlatform(value:int):void {
+        public function set currentPlatform(value:int):void
+        {
             if (value<0 || value>5)
             {
                 trace("Trying to set currentPlatform below 0 or beyond 5. Value "+value+" not accepted.");
-            }   else _currentPlatform = value;
+            }
+            else _currentPlatform = value;
         }
 
-        public function get position():PositionComponent {
+        public function get position():PositionComponent
+        {
             return _position;
         }
 
-        public function get velocity():VelocityComponent {
+        public function get velocity():VelocityComponent
+        {
             return _velocity;
         }
 
-        public function get weapon():String {
+        public function get weapon():String
+        {
             return _weapon;
         }
 
-        public function set weapon(value:String):void {
+        public function set weapon(value:String):void
+        {
             _weapon = value;
         }
     }

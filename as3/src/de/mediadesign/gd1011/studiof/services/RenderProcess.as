@@ -18,26 +18,17 @@ package de.mediadesign.gd1011.studiof.services
             targets = new Vector.<Renderable>();
         }
 
-        public function start():Boolean
+        public function registerRenderable(render:Renderable):void
         {
-            return true;
+            targets.push(render);
         }
 
         public function update(time:Number):void
         {
             for each ( var target:Renderable in targets)
             {
-                //target.render();
+                target.render(time);
             }
-        }
-
-        public function addEntity(target:Renderable):void{
-            targets.push(target);
-        }
-
-
-        public function execute():void
-        {
         }
     }
 }

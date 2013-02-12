@@ -7,7 +7,11 @@
  */
 package de.mediadesign.gd1011.studiof
 {
-    import de.mediadesign.gd1011.studiof.model.Game;
+    import de.mediadesign.gd1011.studiof.command.AddEnemyCommand;
+    import de.mediadesign.gd1011.studiof.command.InitGameCommand;
+    import de.mediadesign.gd1011.studiof.consts.GameConsts;
+    import de.mediadesign.gd1011.studiof.events.GameEvent;
+    import de.mediadesign.gd1011.studiof.model.GameLoop;
     import de.mediadesign.gd1011.studiof.model.Level;
     import de.mediadesign.gd1011.studiof.model.Score;
     import de.mediadesign.gd1011.studiof.model.User;
@@ -47,6 +51,9 @@ package de.mediadesign.gd1011.studiof
             initModels();
             initCommands();
             initMediators();
+
+            var initGameEvent:GameEvent = new GameEvent(GameConsts.INIT_GAME, GameConsts.INIT_GAME);
+            dispatcher.dispatchEvent(initGameEvent);
         }
 
         private function initModels():void
@@ -57,11 +64,13 @@ package de.mediadesign.gd1011.studiof
             modelMap.map(User).asSingleton();
             modelMap.map(MoveProcess).asSingleton();
             modelMap.map(RenderProcess).asSingleton();
-            modelMap.map(Game).asSingleton();
+            modelMap.map(GameLoop).asSingleton();
         }
 
         private function initCommands():void
         {
+            commandMap.map(GameConsts.INIT_GAME).toCommand(InitGameCommand);
+            commandMap.map(GameConsts.ADD_ENEMY).toCommand(AddEnemyCommand);
         }
 
         public function initMediators() : void
