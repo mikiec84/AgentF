@@ -1,8 +1,12 @@
 package de.mediadesign.gd1011.studiof.view.mediators {
-	import de.mediadesign.gd1011.studiof.model.Level;
-	import de.mediadesign.gd1011.studiof.services.GameLoop;
+    import de.mediadesign.gd1011.studiof.consts.GameConsts;
+    import de.mediadesign.gd1011.studiof.events.GameEvent;
+    import de.mediadesign.gd1011.studiof.model.Level;
+    import de.mediadesign.gd1011.studiof.services.GameLoop;
     import de.mediadesign.gd1011.studiof.services.JSONReader;
     import de.mediadesign.gd1011.studiof.view.GameView;
+
+    import flash.events.IEventDispatcher;
 
     import robotlegs.extensions.starlingViewMap.impl.StarlingMediator;
 
@@ -21,6 +25,9 @@ package de.mediadesign.gd1011.studiof.view.mediators {
 
 		[Inject]
 		public var level:Level;
+
+        [Inject]
+        public var dispatcher:IEventDispatcher;
 
 		private var _touchConfig:Object;
 		private var _validTouchID:int = -1;
@@ -91,7 +98,17 @@ package de.mediadesign.gd1011.studiof.view.mediators {
 			_touchConfig = JSONReader.read("viewconfig")["game"];
 			contextView.addEventListener(TouchEvent.TOUCH, handleTouch);
             contextView.addEventListener(EnterFrameEvent.ENTER_FRAME, game.update);
+            addContextListener(GameConsts.ADD_SPRITE_TO_GAME, add);
+
+            var initGameEvent:GameEvent = new GameEvent(GameConsts.INIT_GAME, GameConsts.INIT_GAME);
+            dispatcher.dispatchEvent(initGameEvent);
 		}
+
+        private function add(event:GameEvent):void
+        {
+            trace(event.dataObj);
+            contextView.addChild(event.dataObj);
+        }
 
 		override public function destroy():void
 		{
