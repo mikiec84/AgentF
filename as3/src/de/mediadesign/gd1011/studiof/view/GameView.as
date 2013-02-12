@@ -7,15 +7,9 @@
  */
 package de.mediadesign.gd1011.studiof.view
 {
-    import de.mediadesign.gd1011.studiof.model.Unit;
-    import de.mediadesign.gd1011.studiof.model.components.PositionComponent;
-
-    import flash.display.BitmapData;
-
-	import starling.core.Starling;
+	import flash.display.BitmapData;
 
 	import starling.display.Image;
-	import starling.display.Quad;
 	import starling.display.Sprite;
 	import starling.events.Event;
 	import starling.textures.Texture;

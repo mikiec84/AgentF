@@ -7,34 +7,34 @@
  */
 package de.mediadesign.gd1011.studiof
 {
-    import de.mediadesign.gd1011.studiof.command.RegisterEnemyCommand;
-    import de.mediadesign.gd1011.studiof.command.InitGameCommand;
-    import de.mediadesign.gd1011.studiof.consts.GameConsts;
-    import de.mediadesign.gd1011.studiof.events.GameEvent;
-    import de.mediadesign.gd1011.studiof.model.GameLoop;
-    import de.mediadesign.gd1011.studiof.model.Level;
-    import de.mediadesign.gd1011.studiof.model.Score;
-    import de.mediadesign.gd1011.studiof.model.User;
-    import de.mediadesign.gd1011.studiof.model.Renderable;
-    import de.mediadesign.gd1011.studiof.services.MoveProcess;
-    import de.mediadesign.gd1011.studiof.services.RenderProcess;
-    import de.mediadesign.gd1011.studiof.view.BackgroundView;
-    import de.mediadesign.gd1011.studiof.view.GUI;
-    import de.mediadesign.gd1011.studiof.view.GameView;
-    import de.mediadesign.gd1011.studiof.view.MainView;
-    import de.mediadesign.gd1011.studiof.view.mediators.BackgroundViewMediator;
-    import de.mediadesign.gd1011.studiof.view.mediators.GUIMediator;
-    import de.mediadesign.gd1011.studiof.view.mediators.GameViewMediator;
-    import de.mediadesign.gd1011.studiof.view.mediators.MainViewMediator;
+	import de.mediadesign.gd1011.studiof.command.InitGameCommand;
+	import de.mediadesign.gd1011.studiof.command.RegisterEnemyCommand;
+	import de.mediadesign.gd1011.studiof.consts.GameConsts;
+	import de.mediadesign.gd1011.studiof.events.GameEvent;
+	import de.mediadesign.gd1011.studiof.model.GameLoop;
+	import de.mediadesign.gd1011.studiof.model.Level;
+	import de.mediadesign.gd1011.studiof.model.Renderable;
+	import de.mediadesign.gd1011.studiof.model.Score;
+	import de.mediadesign.gd1011.studiof.model.User;
+	import de.mediadesign.gd1011.studiof.services.MoveProcess;
+	import de.mediadesign.gd1011.studiof.services.RenderProcess;
+	import de.mediadesign.gd1011.studiof.view.BackgroundView;
+	import de.mediadesign.gd1011.studiof.view.GUI;
+	import de.mediadesign.gd1011.studiof.view.GameView;
+	import de.mediadesign.gd1011.studiof.view.MainView;
+	import de.mediadesign.gd1011.studiof.view.mediators.BackgroundViewMediator;
+	import de.mediadesign.gd1011.studiof.view.mediators.GUIMediator;
+	import de.mediadesign.gd1011.studiof.view.mediators.GameViewMediator;
+	import de.mediadesign.gd1011.studiof.view.mediators.MainViewMediator;
 
-    import flash.events.IEventDispatcher;
+	import flash.events.IEventDispatcher;
 
-    import org.swiftsuspenders.Injector;
+	import org.swiftsuspenders.Injector;
 
-    import robotlegs.bender.extensions.eventCommandMap.api.IEventCommandMap;
-    import robotlegs.bender.extensions.mediatorMap.api.IMediatorMap;
+	import robotlegs.bender.extensions.eventCommandMap.api.IEventCommandMap;
+	import robotlegs.bender.extensions.mediatorMap.api.IMediatorMap;
 
-    public class StarlingConfig
+	public class StarlingConfig
     {
         [Inject]
         public var modelMap:Injector;

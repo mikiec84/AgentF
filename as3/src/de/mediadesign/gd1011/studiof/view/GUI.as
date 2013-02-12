@@ -44,7 +44,7 @@ package de.mediadesign.gd1011.studiof.view
 
 		private function init(e:Event=null):void
 		{
-			_guiConfig = JSONReader.read("viewconfig")["GUI"];
+			_guiConfig = JSONReader.read("viewconfig")["gui"];
 
 			_topLeft.x = _centerLeft.x = _bottomLeft.x = _guiConfig["padding"];
 			_topCenter.x = _centerCenter.x = _bottomCenter.x = stage.stageWidth/2;
