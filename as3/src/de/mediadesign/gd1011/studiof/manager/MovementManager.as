@@ -81,7 +81,6 @@ package de.mediadesign.gd1011.studiof.manager
             if (kommMausSollAusgeführtWerden) { //soll auf enterframe ausgeführt werden!
                 if (_player.y+60<mouseY) {
                     _player.y+=speedTowardsMouse;
-                    trace("komm Maus wird ausgeführt");
                 } else {
                     _player.y=mouseY-60;
                 }
@@ -93,7 +92,7 @@ package de.mediadesign.gd1011.studiof.manager
         {
             if (_player != null) {
                 var newEbene:int = 10;
-                if (_player.y>=0)                                                       {newEbene = 0;}
+                if (_player.y>0)                                                        {newEbene = 0;}
                 if (_player.y+GameConsts.PLAYER_HEIGHT/2>GameConsts.STAGE_HEIGHT/6)     {newEbene = 1;}
                 if (_player.y+GameConsts.PLAYER_HEIGHT/2>GameConsts.STAGE_HEIGHT/3)     {newEbene = 2;}
                 if (_player.y+GameConsts.PLAYER_HEIGHT/2>GameConsts.STAGE_HEIGHT/2)     {newEbene = 3;}
@@ -104,17 +103,9 @@ package de.mediadesign.gd1011.studiof.manager
             return 2;
         }
 
-        private function makeNewPlayer():void
-        {
-            _player = new PositionComponent();
-            _player.y = 240;
-        }
 
         public function handleTouch(touch:Touch,  location:Point):void
-        {
-            if (_player == null) {
-                makeNewPlayer();
-            }
+        {   //var touch:Touch = e.getTouch(stage);
             if (checkWelcheEbene()>1) {
                 if(touch && touch.phase == TouchPhase.BEGAN){
                     mouseY = location.y;
@@ -135,11 +126,7 @@ package de.mediadesign.gd1011.studiof.manager
         }
 
         public function sprungProzess():void
-        {
-            if (_player == null) {
-                makeNewPlayer();
-            }
-            areAnyUnfinishedTweensInMotionRightNow = true;
+        {   areAnyUnfinishedTweensInMotionRightNow = true;
             if (Starling.juggler.contains(hoch)) {
                 Starling.juggler.remove(hoch)
             }

@@ -61,7 +61,8 @@ package de.mediadesign.gd1011.studiof
         }
 
         private function initModels():void
-        {
+        {   modelMap.map(Moveable);
+            modelMap.map(Renderable);
             modelMap.map(Level).asSingleton();
             modelMap.map(Score).asSingleton();
             modelMap.map(User).asSingleton();

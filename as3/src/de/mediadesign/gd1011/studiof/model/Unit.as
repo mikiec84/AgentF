@@ -16,8 +16,9 @@ package de.mediadesign.gd1011.studiof.model
     import flash.geom.Point;
 
     public class Unit
-    {
+    {   [Inject]
         public var _movement:Moveable;
+        [Inject]
         public var renderData:Renderable;
 
 
@@ -29,13 +30,14 @@ package de.mediadesign.gd1011.studiof.model
 
 
         public function Unit(unitType:String = null)
-        {   _movement = new Moveable();
-            renderData = new Renderable(_movement.position);
+        {
             _playerJumpSpeed = 2;
             _ebene = 2;
             _healthPoints = 3;
             _weapon = new Weapon();
             weapon.weaponType = "Kanone";
+
+            renderData.position = _movement.position;
 
             if (unitType == "Player" || unitType == "Boss")
             {
