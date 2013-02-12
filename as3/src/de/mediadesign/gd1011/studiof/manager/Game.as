@@ -13,7 +13,7 @@ package de.mediadesign.gd1011.studiof.manager
     import de.mediadesign.gd1011.studiof.model.components.Renderable;
     import de.mediadesign.gd1011.studiof.services.IProcess;
     import de.mediadesign.gd1011.studiof.services.MoveProcess;
-    import de.mediadesign.gd1011.studiof.services.Render;
+    import de.mediadesign.gd1011.studiof.services.RenderProcess;
 
     import starling.events.EnterFrameEvent;
 
@@ -22,7 +22,7 @@ package de.mediadesign.gd1011.studiof.manager
         [Inject]
         public var alleMoveableProzesse:MoveProcess;
         [Inject]
-        public var alleRenderableProzesse:Render;
+        public var alleRenderableProzesse:RenderProcess;
 
 
         public var playerPos:PositionComponent;

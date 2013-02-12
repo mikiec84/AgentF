@@ -19,7 +19,7 @@ package de.mediadesign.gd1011.studiof
     import de.mediadesign.gd1011.studiof.model.components.Moveable;
     import de.mediadesign.gd1011.studiof.model.components.Renderable;
     import de.mediadesign.gd1011.studiof.services.MoveProcess;
-    import de.mediadesign.gd1011.studiof.services.Render;
+    import de.mediadesign.gd1011.studiof.services.RenderProcess;
 	import de.mediadesign.gd1011.studiof.view.BackgroundView;
 	import de.mediadesign.gd1011.studiof.view.GUI;
 	import de.mediadesign.gd1011.studiof.view.GameView;
@@ -69,7 +69,7 @@ package de.mediadesign.gd1011.studiof
             modelMap.map(MovementManager).asSingleton();
             modelMap.map(LevelManager).asSingleton();
             modelMap.map(MoveProcess).asSingleton();
-            modelMap.map(Render).asSingleton();
+            modelMap.map(RenderProcess).asSingleton();
             modelMap.map(Game).asSingleton();
         }
 

@@ -22,7 +22,7 @@ package de.mediadesign.gd1011.studiof.services {
 
         }
 
-        public function update():void
+        public function update(time:Number):void
         {
             for each(var target:Moveable in targets)
             {

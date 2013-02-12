@@ -1,6 +1,6 @@
 package de.mediadesign.gd1011.studiof.view.mediators {
     import de.mediadesign.gd1011.studiof.manager.Game;
-    import de.mediadesign.gd1011.studiof.services.Render;
+    import de.mediadesign.gd1011.studiof.services.RenderProcess;
     import de.mediadesign.gd1011.studiof.view.MainView;
 
 	import robotlegs.extensions.starlingViewMap.impl.StarlingMediator;

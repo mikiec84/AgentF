@@ -7,14 +7,14 @@
  */
 package de.mediadesign.gd1011.studiof.commands
 {
-    import de.mediadesign.gd1011.studiof.services.Render;
+    import de.mediadesign.gd1011.studiof.services.RenderProcess;
 
     import robotlegs.bender.bundles.mvcs.Command;
 
     public class RegisterServiceCommand extends Command
     {
         [Inject]
-        public var render:Render;
+        public var render:RenderProcess;
 
         //[Inject]
         // das movement
