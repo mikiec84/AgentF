@@ -30,7 +30,8 @@ package de.mediadesign.gd1011.studiof.view
 		{
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 
-            var q:Quad = new Quad(1710,870,0x00ff00);
+            var q:Quad = new Quad(1710,1200,0x00ff00);
+			q.y = -200;
 			addChildAt(q, 0);
 
             var backgroundView:BackgroundView = new BackgroundView();
