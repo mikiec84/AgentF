@@ -54,7 +54,7 @@ package de.mediadesign.gd1011.studiof.model {
         override public function move(time:Number):void
         {
             if (assertCorrectInitialization())
-            {   trace(currentPlatform);
+            {   if(currentPlatform == 2 || currentPlatform == 3) trace(currentPlatform);
                 currentPlatform = observePlatform(position.y);
                 //trace(currentPlatform+","+position.y);
                 if (_up != null && _up.isComplete && _comeDownIsntRunning)
@@ -112,7 +112,7 @@ package de.mediadesign.gd1011.studiof.model {
 
         public function startJump():void
         {                _targetPlatform = 2;
-            if (!_anyTweensInMotion && currentPlatform>2)
+            if (!_anyTweensInMotion && currentPlatform>3)
             {
 
                 _anyTweensInMotion = true;
