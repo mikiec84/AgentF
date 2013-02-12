@@ -15,8 +15,7 @@ package de.mediadesign.gd1011.studiof.model.components {
 
 
         public function VelocityComponent()
-        {
-            velocityX = 0;
+        {   velocityX = 0;
             velocityY = 0;
         }
     }

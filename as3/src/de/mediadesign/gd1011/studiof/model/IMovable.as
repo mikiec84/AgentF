@@ -9,6 +9,6 @@ package de.mediadesign.gd1011.studiof.model
 {
     public interface IMovable
     {
-        function move():void;
+        function move(time:Number):void;
     }
 }
