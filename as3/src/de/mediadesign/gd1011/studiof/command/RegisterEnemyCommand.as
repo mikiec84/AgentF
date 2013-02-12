@@ -15,7 +15,7 @@ package de.mediadesign.gd1011.studiof.command
 
     import starling.events.Event;
 
-    public class AddEnemyCommand extends Command
+    public class RegisterEnemyCommand extends Command
     {
         [Inject]
         public var moveProcess:MoveProcess;
@@ -28,8 +28,8 @@ package de.mediadesign.gd1011.studiof.command
 
         override public function execute():void
         {
-//            moveProcess.registerMovable();
-//            renderProcess.registerRenderable();
+//            moveProcess.registerMovable(event.unit);
+//            renderProcess.registerRenderable(event.unit);
         }
     }
 }

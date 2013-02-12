@@ -5,8 +5,10 @@
  * Time: 11:32
  * To change this template use File | Settings | File Templates.
  */
-package de.mediadesign.gd1011.studiof.model.components
+package de.mediadesign.gd1011.studiof.model
 {
+    import de.mediadesign.gd1011.studiof.model.components.PositionComponent;
+
     import starling.display.Sprite;
 
     public class Renderable
@@ -14,8 +16,9 @@ package de.mediadesign.gd1011.studiof.model.components
         private var position:PositionComponent;
         private var view:Sprite;
 
-        public function Renderable(view:Sprite)
+        public function Renderable(pos:PositionComponent, view:Sprite)
         {
+            this.position = pos;
             this.view = view;
         }
 

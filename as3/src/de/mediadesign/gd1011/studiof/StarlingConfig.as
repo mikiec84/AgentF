@@ -7,7 +7,7 @@
  */
 package de.mediadesign.gd1011.studiof
 {
-    import de.mediadesign.gd1011.studiof.command.AddEnemyCommand;
+    import de.mediadesign.gd1011.studiof.command.RegisterEnemyCommand;
     import de.mediadesign.gd1011.studiof.command.InitGameCommand;
     import de.mediadesign.gd1011.studiof.consts.GameConsts;
     import de.mediadesign.gd1011.studiof.events.GameEvent;
@@ -15,7 +15,7 @@ package de.mediadesign.gd1011.studiof
     import de.mediadesign.gd1011.studiof.model.Level;
     import de.mediadesign.gd1011.studiof.model.Score;
     import de.mediadesign.gd1011.studiof.model.User;
-    import de.mediadesign.gd1011.studiof.model.components.Renderable;
+    import de.mediadesign.gd1011.studiof.model.Renderable;
     import de.mediadesign.gd1011.studiof.services.MoveProcess;
     import de.mediadesign.gd1011.studiof.services.RenderProcess;
     import de.mediadesign.gd1011.studiof.view.BackgroundView;
@@ -70,7 +70,7 @@ package de.mediadesign.gd1011.studiof
         private function initCommands():void
         {
             commandMap.map(GameConsts.INIT_GAME).toCommand(InitGameCommand);
-            commandMap.map(GameConsts.ADD_ENEMY).toCommand(AddEnemyCommand);
+            commandMap.map(GameConsts.ADD_ENEMY).toCommand(RegisterEnemyCommand);
         }
 
         public function initMediators() : void
