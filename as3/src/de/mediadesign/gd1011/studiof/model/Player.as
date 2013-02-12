@@ -32,7 +32,7 @@ package de.mediadesign.gd1011.studiof.model {
         private var _landIsntRunning:Boolean         = true;
         private var _landStillInJuggler:Boolean      = false;
         private var _anyTweensInMotion:Boolean       = false;
-        private var _targetPlatform:int              = 0;
+        private var _targetPlatform:int              = 2;
         private var _tweenedPosition:PositionComponent;
 
 
@@ -54,8 +54,9 @@ package de.mediadesign.gd1011.studiof.model {
         override public function move(time:Number):void
         {
             if (assertCorrectInitialization())
-            {
+            {   trace(currentPlatform);
                 currentPlatform = observePlatform(position.y);
+                //trace(currentPlatform+","+position.y);
                 if (_up != null && _up.isComplete && _comeDownIsntRunning)
                 {
                     _comeDownIsntRunning = false;
@@ -77,9 +78,15 @@ package de.mediadesign.gd1011.studiof.model {
                 {
                     Starling.juggler.purge();
                     if (currentPlatform<_targetPlatform)
-                    {
-                        position.y+=speedTowardsMouse*time;
-                    } else {
+                    { //trace(observePlatform(speedTowardsMouse*time*6+position.y));
+                        //trace(_targetPlatform);
+                        if(observePlatform(speedTowardsMouse*time*20+position.y)<=_targetPlatform)
+                        {
+                            position.y+=speedTowardsMouse*time*20;
+                        }
+                    }
+                    else
+                    {   trace("Guten Tag");
                         position.y=_targetPlatform*GameConsts.EBENE_HEIGHT;
                     }
                 } else {
@@ -93,20 +100,21 @@ package de.mediadesign.gd1011.studiof.model {
         {
             var newEbene:int = 10;
             if (y>=0)                                                          {newEbene = 0;}
-            if (y>GameConsts.STAGE_HEIGHT/6)                                   {newEbene = 1;}
-            if (y>GameConsts.STAGE_HEIGHT/3)                                   {newEbene = 2;}
-            if (y>GameConsts.STAGE_HEIGHT/2)                                   {newEbene = 3;}
-            if (y>GameConsts.STAGE_HEIGHT*(2/3))                               {newEbene = 4;}
-            if (y>GameConsts.STAGE_HEIGHT*(5/6) && y<=GameConsts.STAGE_HEIGHT) {newEbene = 5;}
+            if (y+1>GameConsts.STAGE_HEIGHT/6)                                   {newEbene = 1;}
+            if (y+1>GameConsts.STAGE_HEIGHT/3)                                   {newEbene = 2;}
+            if (y+1>GameConsts.STAGE_HEIGHT/2)                                   {newEbene = 3;}
+            if (y+1>GameConsts.STAGE_HEIGHT*(2/3))                               {newEbene = 4;}
+            if (y+1>GameConsts.STAGE_HEIGHT*(5/6) && y<=GameConsts.STAGE_HEIGHT) {newEbene = 5;}
             if (newEbene == 10) trace("observePlatform hat folgende unzulässige Eingabe erhalten: "+y);
+            //trace(newEbene+","+y);
             return newEbene;
         }
 
         public function startJump():void
-        {
+        {                _targetPlatform = 2;
             if (!_anyTweensInMotion && currentPlatform>2)
             {
-                _targetPlatform = 2;
+
                 _anyTweensInMotion = true;
                 _tweenedPosition.y = position.y;
                 _tweenedPosition.x = position.x;
@@ -116,9 +124,10 @@ package de.mediadesign.gd1011.studiof.model {
                     Starling.juggler.remove(_up)
                 }
                 _up = new Tween(_tweenedPosition, jumpSpeedBeimSprung, Transitions.EASE_OUT);
+                //trace(currentPlatform);
                 _up.moveTo(_tweenedPosition.x, GameConsts.STAGE_HEIGHT - (GameConsts.STAGE_HEIGHT/6) * (currentPlatform + 1) );
                 Starling.juggler.add(_up);
-            } else trace("startJump in Player has been used but there are Tweens in Motion right now, or currentPlatform is bigger than 2. Request Denied.");
+            } else trace("startJump in Player has been used but there are Tweens in Motion right now, or currentPlatform is smaller/equal than 2. Request Denied.");
         }
 
         public function comeDown():void

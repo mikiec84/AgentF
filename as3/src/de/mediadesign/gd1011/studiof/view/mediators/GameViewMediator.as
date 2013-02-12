@@ -96,8 +96,10 @@ package de.mediadesign.gd1011.studiof.view.mediators {
 		override public function initialize():void
 		{
 			_touchConfig = JSONReader.read("viewconfig")["game"];
+
 			contextView.addEventListener(TouchEvent.TOUCH, handleTouch);
             contextView.addEventListener(EnterFrameEvent.ENTER_FRAME, game.update);
+
             addContextListener(GameConsts.ADD_SPRITE_TO_GAME, add);
 
             var initGameEvent:GameEvent = new GameEvent(GameConsts.INIT_GAME, GameConsts.INIT_GAME);
@@ -106,7 +108,6 @@ package de.mediadesign.gd1011.studiof.view.mediators {
 
         private function add(event:GameEvent):void
         {
-            trace(event.dataObj);
             contextView.addChild(event.dataObj);
         }
 
