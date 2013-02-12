@@ -9,6 +9,6 @@ package de.mediadesign.gd1011.studiof.services
 {
     public interface IProcess
     {
-        function update(passedTime:Number):void;
+        function update():void;
     }
 }

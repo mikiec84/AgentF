@@ -17,35 +17,35 @@ package de.mediadesign.gd1011.studiof.model
 
     public class Unit
     {
+        public var _movement:Moveable;
+        public var renderData:Renderable;
+
+
         private var _weapon:Weapon;
         private var _healthPoints:int;
         private var _ebene:int;
+        private var _playerJumpSpeed:Number;
         private var _unitType:String;
-
-        // kann auf werte nicht zugreifen, wenn Interface
-        public var renderData:Renderable;
-        public var moveData:Moveable;
 
 
         public function Unit(unitType:String = null)
-        {
+        {   _movement = new Moveable();
+            renderData = new Renderable(_movement.position);
+            _playerJumpSpeed = 2;
             _ebene = 2;
             _healthPoints = 3;
             _weapon = new Weapon();
             weapon.weaponType = "Kanone";
-            moveData = new Moveable();
-            renderData = new Renderable(moveData.position);
 
-
-//            if (unitType == "Player" || unitType == "Boss")
-//            {
-//                movement.horizontalVelocityEnabled = false;
-//                movement.position.y = 240;
-//            }
-//            else
-//            {
-//                movement.horizontalVelocityEnabled = true;
-//            }
+            if (unitType == "Player" || unitType == "Boss")
+            {
+                _movement.horizontalVelocityEnabled = false;
+                _movement.position.y = 240;
+            }
+            else
+            {
+                _movement.horizontalVelocityEnabled = true;
+            }
 
             this._unitType = unitType;
 
@@ -81,13 +81,19 @@ package de.mediadesign.gd1011.studiof.model
             _ebene = value;
         }
 
-        public function get unitType():String
-        {
+        public function get playerJumpSpeed():int {
+            return _playerJumpSpeed;
+        }
+
+        public function set playerJumpSpeed(value:int):void {
+            _playerJumpSpeed = value;
+        }
+
+        public function get unitType():String {
             return _unitType;
         }
 
-        public function set unitType(value:String):void
-        {
+        public function set unitType(value:String):void {
             _unitType = value;
         }
     }

@@ -9,6 +9,7 @@ package de.mediadesign.gd1011.studiof.model.components
 {
     public class PositionComponent
     {
+
         public var x:int;
         public var y:int;
         public var currentRotation:int;

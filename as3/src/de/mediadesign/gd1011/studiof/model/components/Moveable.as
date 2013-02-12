@@ -11,10 +11,12 @@ package de.mediadesign.gd1011.studiof.model.components
     import de.mediadesign.gd1011.studiof.services.*;
     import de.mediadesign.gd1011.studiof.model.components.PositionComponent;
 
+    import org.swiftsuspenders.Injector;
 
     public class Moveable implements IMoveable
     {
-        public var MoMa:MovementManager;
+        [Inject]
+        public var MoMa:Injector;
         [PostConstruct]
         public var position:PositionComponent;
         public var velocity:VelocityComponent;
@@ -22,28 +24,24 @@ package de.mediadesign.gd1011.studiof.model.components
         public var verticalVelocityEnabled:Boolean;
         private var MM:MovementManager;
 
-
         public function Moveable()
         {
+
+            //MM = MoMa.getInstance(MovementManager);
+            MM = new MovementManager();
             position = new PositionComponent();
             velocity = new VelocityComponent();
-
         }
 
-//        public function execute():void
-//        {
-//            MM = MoMa;
-//            position = new PositionComponent();
-//            velocity = new VelocityComponent();
-//        }
+        public function execute():void
+        {
+        }
 
         public function move():void
         {
-            if (MM != null)
-            {
+            if (MM != null) {
                 MM.update(this);
-            }
-                else trace("MovementManager in Moveable = null.");
+            } else trace("MovementManager in Moveable = null.");
         }
     }
 }

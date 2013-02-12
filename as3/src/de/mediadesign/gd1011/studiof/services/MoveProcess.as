@@ -17,7 +17,12 @@ package de.mediadesign.gd1011.studiof.services {
             targets = new Vector.<Moveable>();
         }
 
-        public function update(passedTime:Number):void
+        public function execute():void
+        {
+
+        }
+
+        public function update():void
         {
             for each(var target:Moveable in targets)
             {

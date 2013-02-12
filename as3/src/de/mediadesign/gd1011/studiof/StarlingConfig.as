@@ -7,17 +7,14 @@
  */
 package de.mediadesign.gd1011.studiof
 {
-    import de.mediadesign.gd1011.studiof.commands.ChangeUnitPositionCommand;
     import de.mediadesign.gd1011.studiof.commands.InitGameCommand;
     import de.mediadesign.gd1011.studiof.commands.InitPlayerCommand;
-    import de.mediadesign.gd1011.studiof.commands.dispatcherReferenceCommand;
-    import de.mediadesign.gd1011.studiof.consts.GameConsts;
-    import de.mediadesign.gd1011.studiof.events.GameEvent;
+	import de.mediadesign.gd1011.studiof.consts.GameConsts;
+    import de.mediadesign.gd1011.studiof.manager.Game;
     import de.mediadesign.gd1011.studiof.manager.LevelManager;
     import de.mediadesign.gd1011.studiof.manager.MovementManager;
     import de.mediadesign.gd1011.studiof.manager.UnitManager;
-    import de.mediadesign.gd1011.studiof.manager.Game;
-    import de.mediadesign.gd1011.studiof.model.Level;
+	import de.mediadesign.gd1011.studiof.model.Level;
 	import de.mediadesign.gd1011.studiof.model.Score;
 	import de.mediadesign.gd1011.studiof.model.User;
     import de.mediadesign.gd1011.studiof.model.components.Moveable;
@@ -28,14 +25,12 @@ package de.mediadesign.gd1011.studiof
 	import de.mediadesign.gd1011.studiof.view.GUI;
 	import de.mediadesign.gd1011.studiof.view.GameView;
 	import de.mediadesign.gd1011.studiof.view.MainView;
-    import de.mediadesign.gd1011.studiof.view.UnitView;
-    import de.mediadesign.gd1011.studiof.view.mediators.BackgroundViewMediator;
+	import de.mediadesign.gd1011.studiof.view.mediators.BackgroundViewMediator;
 	import de.mediadesign.gd1011.studiof.view.mediators.GUIMediator;
 	import de.mediadesign.gd1011.studiof.view.mediators.GameViewMediator;
 	import de.mediadesign.gd1011.studiof.view.mediators.MainViewMediator;
-    import de.mediadesign.gd1011.studiof.view.mediators.UnitViewMediator;
 
-    import flash.events.IEventDispatcher;
+	import flash.events.IEventDispatcher;
 
 	import org.swiftsuspenders.Injector;
 
@@ -60,11 +55,9 @@ package de.mediadesign.gd1011.studiof
             initCommands();
             initMediators();
 
-//            Weitere Parameter müssen übergeben werden
+            // Weitere Parameter müssen übergeben werden
 //            var playerEvent:GameEvent = new GameEvent(GameConsts.INIT_PLAYER, GameConsts.INIT_PLAYER, JSONReader.read("player") );
 //            dispatcher.dispatchEvent(playerEvent);
-            var a:GameEvent = new GameEvent("Dispatcher", "DISPATCHER", dispatcher );
-            dispatcher.dispatchEvent(a);
         }
 
         private function initModels():void
@@ -83,9 +76,8 @@ package de.mediadesign.gd1011.studiof
         private function initCommands():void
         {
             commandMap.map(GameConsts.INIT_GAME).toCommand(InitGameCommand);
+
             commandMap.map(GameConsts.INIT_PLAYER).toCommand(InitPlayerCommand);
-            commandMap.map(GameConsts.MOVE_POS).toCommand(ChangeUnitPositionCommand);
-            commandMap.map("Dispatcher").toCommand(dispatcherReferenceCommand);
         }
 
         public function initMediators() : void
@@ -94,7 +86,6 @@ package de.mediadesign.gd1011.studiof
 			mediatorMap.map(GameView).toMediator(GameViewMediator);
 			mediatorMap.map(GUI).toMediator(GUIMediator);
             mediatorMap.map(BackgroundView).toMediator(BackgroundViewMediator);
-            mediatorMap.map(UnitView).toMediator(UnitViewMediator);
         }
 
 

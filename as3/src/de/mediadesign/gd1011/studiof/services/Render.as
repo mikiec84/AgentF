@@ -24,7 +24,7 @@ package de.mediadesign.gd1011.studiof.services
             return true;
         }
 
-        public function update(passedTime:Number):void
+        public function update():void
         {
             for each ( var target:IRenderable in targets)
             {
@@ -32,10 +32,13 @@ package de.mediadesign.gd1011.studiof.services
             }
         }
 
-        public function addEntity(target:Renderable):void
-        {
+        public function addEntity(target:Renderable):void{
             targets.push(target);
         }
 
+
+        public function execute():void
+        {
+        }
     }
 }
