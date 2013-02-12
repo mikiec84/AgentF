@@ -11,25 +11,23 @@ package de.mediadesign.gd1011.studiof.model
 
     import starling.events.EnterFrameEvent;
 
-    public class Game
+    public class GameLoop
 	{
-//		public var currentScore:int;
-//
-//        private var player:Unit;
-//
-//        public var objectsThatHaveToBeUpdated:Vector.<IProcess>;
+        private var player:Unit;
 
-		public function Game():void
+        public var processes:Vector.<IProcess>;
+
+		public function GameLoop():void
 		{
 
 		}
 
         public function update(e:EnterFrameEvent):void
         {
-//            for each (var target:IProcess in objectsThatHaveToBeUpdated)
-//            {
-//                target.update(e.passedTime);
-//            }
+            for each (var target:IProcess in processes)
+            {
+                target.update(e.passedTime);
+            }
         }
 
 	}
