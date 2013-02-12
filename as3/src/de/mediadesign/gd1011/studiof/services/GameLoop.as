@@ -5,7 +5,7 @@
  * Time: 09:55
  * To change this template use File | Settings | File Templates.
  */
-package de.mediadesign.gd1011.studiof.model
+package de.mediadesign.gd1011.studiof.services
 {
     import de.mediadesign.gd1011.studiof.services.IProcess;
 

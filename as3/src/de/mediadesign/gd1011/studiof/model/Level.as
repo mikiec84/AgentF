@@ -12,6 +12,11 @@ package de.mediadesign.gd1011.studiof.model
         private var _enemies:Vector.<Unit>;
         private var _player:Player;
 
+        public function Level()
+        {
+            _enemies = new Vector.<Unit>();
+        }
+
         public function get enemies():Vector.<Unit>
         {
             return _enemies;
@@ -24,12 +29,29 @@ package de.mediadesign.gd1011.studiof.model
 
         public function removeEnemy(value:Unit):void
         {
+            var unitIndex:int = -1;
             for (var index:int=0; index<_enemies.length; index++)
             {
                 if (_enemies[index] == value) {
-                    _enemies.slice(index, 1)
+                    unitIndex = index;
                 }
             }
+            if (unitIndex == -1) {
+                trace("removeEnemy in Level could not find the Unit. Unit was not removed.");
+            } else {
+                var a:Array = new Array();
+                a[0] = _enemies.slice(0, unitIndex);
+                a[1] = _enemies.slice(unitIndex+1, _enemies.length)
+                _enemies = null;
+                _enemies = new Vector.<Unit>();
+                for (var i:int = 0; i<a[0].length; i++) {
+                    _enemies.push(a[0][i]);
+                }
+                for (var ii:int = 0; ii<a[1].length; ii++) {
+                    _enemies.push(a[1][ii]);
+                }
+            }
+
         }
 
         public function get player():Player
@@ -37,7 +59,7 @@ package de.mediadesign.gd1011.studiof.model
             return _player;
         }
 
-        public function set player(value:Player):void
+        public function setPlayer(value:Player):void
         {
             if (value != null) {
                 _player = value;

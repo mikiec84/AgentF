@@ -1,18 +1,16 @@
 package de.mediadesign.gd1011.studiof.view.mediators {
-	import de.mediadesign.gd1011.studiof.model.GameLoop;
-	import de.mediadesign.gd1011.studiof.services.JSONReader;
-	import de.mediadesign.gd1011.studiof.view.GameView;
+    import de.mediadesign.gd1011.studiof.services.GameLoop;
+    import de.mediadesign.gd1011.studiof.services.JSONReader;
+    import de.mediadesign.gd1011.studiof.view.GameView;
 
-	import flash.geom.Point;
+    import robotlegs.extensions.starlingViewMap.impl.StarlingMediator;
 
-	import robotlegs.extensions.starlingViewMap.impl.StarlingMediator;
+    import starling.events.EnterFrameEvent;
+    import starling.events.Touch;
+    import starling.events.TouchEvent;
+    import starling.events.TouchPhase;
 
-	import starling.events.EnterFrameEvent;
-	import starling.events.Touch;
-	import starling.events.TouchEvent;
-	import starling.events.TouchPhase;
-
-	public class GameViewMediator extends StarlingMediator
+    public class GameViewMediator extends StarlingMediator
 	{
 		[Inject]
 		public var contextView:GameView;

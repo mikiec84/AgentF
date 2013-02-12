@@ -5,8 +5,7 @@
  * Time: 14:51
  * To change this template use File | Settings | File Templates.
  */
-package de.mediadesign.gd1011.studiof.services
-{
+package de.mediadesign.gd1011.studiof.services {
     import de.mediadesign.gd1011.studiof.model.IMovable;
 
     public class MoveProcess implements IProcess
@@ -18,9 +17,9 @@ package de.mediadesign.gd1011.studiof.services
             targets = new Vector.<IMovable>();
         }
 
-        public function registerMovable(move:IMovable):void
+        public function execute():void
         {
-            targets.push(move);
+
         }
 
         public function update(time:Number):void
@@ -29,6 +28,10 @@ package de.mediadesign.gd1011.studiof.services
             {
                 target.move(time);
             }
+        }
+
+        public function addEntity(target:IMovable):void{
+            targets.push(target);
         }
     }
 }
