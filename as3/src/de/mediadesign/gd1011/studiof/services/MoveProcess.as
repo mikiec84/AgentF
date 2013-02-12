@@ -6,15 +6,15 @@
  * To change this template use File | Settings | File Templates.
  */
 package de.mediadesign.gd1011.studiof.services {
-    import de.mediadesign.gd1011.studiof.model.components.Moveable;
+    import de.mediadesign.gd1011.studiof.model.IMovable;
 
     public class MoveProcess implements IProcess
     {
-        private var targets:Vector.<Moveable>;
+        private var targets:Vector.<IMovable>;
 
         public function MoveProcess()
         {
-            targets = new Vector.<Moveable>();
+            targets = new Vector.<IMovable>();
         }
 
         public function execute():void
@@ -24,13 +24,13 @@ package de.mediadesign.gd1011.studiof.services {
 
         public function update(time:Number):void
         {
-            for each(var target:Moveable in targets)
+            for each(var target:IMovable in targets)
             {
                 target.move();
             }
         }
 
-        public function addEntity(target:Moveable):void{
+        public function addEntity(target:IMovable):void{
             targets.push(target);
         }
     }

@@ -7,34 +7,32 @@
  */
 package de.mediadesign.gd1011.studiof.model
 {
-    import de.mediadesign.gd1011.studiof.model.components.Currentlevel;
-
     public class Level
     {
-        private var _enemies:Vector.<Unit>;
-        private var _currentLevel:Currentlevel;
-
-
-        public function Level(desiredLevel:String = null)
-        {
-            _currentLevel = new Currentlevel(desiredLevel);
-        }
-
-        public function get enemies():Vector.<Unit> {
-            return _enemies;
-        }
-
-        public function set enemies(value:Vector.<Unit>):void {
-            _enemies = value;
-        }
-
-        public function get currentLevel():Currentlevel {
-            return _currentLevel;
-        }
-
-        public function set currentLevel(value:Currentlevel):void {
-            _currentLevel = value;
-        }
+//        private var _enemies:Vector.<Unit>;
+//        private var _currentLevel:Currentlevel;
+//
+//
+//        public function Level(desiredLevel:String = null)
+//        {
+//            _currentLevel = new Currentlevel(desiredLevel);
+//        }
+//
+//        public function get enemies():Vector.<Unit> {
+//            return _enemies;
+//        }
+//
+//        public function set enemies(value:Vector.<Unit>):void {
+//            _enemies = value;
+//        }
+//
+//        public function get currentLevel():Currentlevel {
+//            return _currentLevel;
+//        }
+//
+//        public function set currentLevel(value:Currentlevel):void {
+//            _currentLevel = value;
+//        }
     }
 }
 

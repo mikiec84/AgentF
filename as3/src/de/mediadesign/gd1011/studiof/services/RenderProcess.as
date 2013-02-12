@@ -7,7 +7,6 @@
  */
 package de.mediadesign.gd1011.studiof.services
 {
-    import de.mediadesign.gd1011.studiof.model.components.IRenderable;
     import de.mediadesign.gd1011.studiof.model.components.Renderable;
 
     public class RenderProcess implements IProcess
@@ -26,9 +25,9 @@ package de.mediadesign.gd1011.studiof.services
 
         public function update(time:Number):void
         {
-            for each ( var target:IRenderable in targets)
+            for each ( var target:Renderable in targets)
             {
-                target.render();
+                //target.render();
             }
         }
 

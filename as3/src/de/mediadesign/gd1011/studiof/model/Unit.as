@@ -7,22 +7,9 @@
  */
 package de.mediadesign.gd1011.studiof.model
 {
-    import de.mediadesign.gd1011.studiof.model.components.Weapon;
-    import de.mediadesign.gd1011.studiof.model.components.IMoveable;
-    import de.mediadesign.gd1011.studiof.model.components.IRenderable;
-    import de.mediadesign.gd1011.studiof.model.components.Moveable;
-    import de.mediadesign.gd1011.studiof.model.components.Renderable;
-
-    import flash.geom.Point;
-
     public class Unit
-    {   [Inject]
-        public var _movement:Moveable;
-        [Inject]
-        public var renderData:Renderable;
-
-
-        private var _weapon:Weapon;
+    {
+//        private var _weapon:Weapon;
         private var _healthPoints:int;
         private var _ebene:int;
         private var _playerJumpSpeed:Number;
@@ -34,34 +21,34 @@ package de.mediadesign.gd1011.studiof.model
             _playerJumpSpeed = 2;
             _ebene = 2;
             _healthPoints = 3;
-            _weapon = new Weapon();
-            weapon.weaponType = "Kanone";
+//            _weapon = new Weapon();
+//            weapon.weaponType = "Kanone";
 
-            renderData.position = _movement.position;
-
-            if (unitType == "Player" || unitType == "Boss")
-            {
-                _movement.horizontalVelocityEnabled = false;
-                _movement.position.y = 240;
-            }
-            else
-            {
-                _movement.horizontalVelocityEnabled = true;
-            }
-
-            this._unitType = unitType;
+//            renderData.position = _movement.position;
+//
+//            if (unitType == "Player" || unitType == "Boss")
+//            {
+//                _movement.horizontalVelocityEnabled = false;
+//                _movement.position.y = 240;
+//            }
+//            else
+//            {
+//                _movement.horizontalVelocityEnabled = true;
+//            }
+//
+//            this._unitType = unitType;
 
         }
 
-        public function get weapon():Weapon
-        {
-            return _weapon;
-        }
-
-        public function set weapon(value:Weapon):void
-        {
-            _weapon = value;
-        }
+//        public function get weapon():Weapon
+//        {
+//            return _weapon;
+//        }
+//
+//        public function set weapon(value:Weapon):void
+//        {
+//            _weapon = value;
+//        }
 
         public function get healthPoints():int
         {

@@ -5,9 +5,9 @@
  * Time: 11:58
  * To change this template use File | Settings | File Templates.
  */
-package de.mediadesign.gd1011.studiof.model.components
+package de.mediadesign.gd1011.studiof.model
 {
-    public interface IMoveable
+    public interface IMovable
     {
         function move():void;
     }

@@ -7,18 +7,17 @@
  */
 package de.mediadesign.gd1011.studiof.model
 {
-	import de.mediadesign.gd1011.studiof.assets.Assets;
     import de.mediadesign.gd1011.studiof.services.IProcess;
 
     import starling.events.EnterFrameEvent;
 
-	public class Game
+    public class Game
 	{
-		public var currentScore:int;
-
-        private var player:Unit;
-
-        public var objectsThatHaveToBeUpdated:Vector.<IProcess>;
+//		public var currentScore:int;
+//
+//        private var player:Unit;
+//
+//        public var objectsThatHaveToBeUpdated:Vector.<IProcess>;
 
 		public function Game():void
 		{
@@ -27,10 +26,10 @@ package de.mediadesign.gd1011.studiof.model
 
         public function update(e:EnterFrameEvent):void
         {
-            for each (var target:IProcess in objectsThatHaveToBeUpdated)
-            {
-                target.update(e.passedTime);
-            }
+//            for each (var target:IProcess in objectsThatHaveToBeUpdated)
+//            {
+//                target.update(e.passedTime);
+//            }
         }
 
 	}

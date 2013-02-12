@@ -22,10 +22,6 @@ package de.mediadesign.gd1011.studiof.view
 
 	public class GameView extends Sprite
 	{
-        private var _player:PositionComponent;
-        private var oldX:int = 0;
-        private var oldY:int = 0;
-        private var agentF:Image;
 
         public function GameView()
 		{
@@ -41,8 +37,7 @@ package de.mediadesign.gd1011.studiof.view
 
             var backgroundView:BackgroundView = new BackgroundView();
             addChild(backgroundView);
-            
-            addEventListener(Event.ENTER_FRAME, updateVisuals);
+
 			/*var q:Quad = new Quad(1710,870,0x00ff00);
 			addChild(q);
 
@@ -61,22 +56,9 @@ package de.mediadesign.gd1011.studiof.view
 			img3.x = 400;*/
 
 			var test4:BitmapData = new AgentF_texture(0,0);
-			agentF = new Image(Texture.fromBitmapData(test4));
+			var agentF:Image = new Image(Texture.fromBitmapData(test4));
 			addChild(agentF);
 			agentF.x = 600;
 		}
-
-        private function updateVisuals(event:Event):void
-        {
-            if (_player.y != oldY) {
-                agentF.y = _player.y;
-                oldY = _player.y;
-            }
-        }
-
-        public function givePlayer(player:PositionComponent):void
-        {
-            _player = player;
-        }
 	}
 }
