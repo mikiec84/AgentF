@@ -17,11 +17,6 @@ package de.mediadesign.gd1011.studiof.services {
             targets = new Vector.<IMovable>();
         }
 
-        public function execute():void
-        {
-
-        }
-
         public function update(time:Number):void
         {
             for each(var target:IMovable in targets)

@@ -51,9 +51,6 @@ package de.mediadesign.gd1011.studiof
             initModels();
             initCommands();
             initMediators();
-
-            var initGameEvent:GameEvent = new GameEvent(GameConsts.INIT_GAME, GameConsts.INIT_GAME);
-            dispatcher.dispatchEvent(initGameEvent);
         }
 
         private function initModels():void

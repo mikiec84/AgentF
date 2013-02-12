@@ -48,6 +48,7 @@ package de.mediadesign.gd1011.studiof.model {
             jumpSpeedBeimFall = JSONExtractedInformation["jumpSpeedBeimFall"];
             jumpSpeedBeimEinpendeln = JSONExtractedInformation["jumpSpeedBeimEinpendeln"];
             _tweenedPosition = new PositionComponent();
+            position.y = currentPlatform * GameConsts.EBENE_HEIGHT;
         }
 
         override public function move(time:Number):void
