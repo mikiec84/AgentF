@@ -65,7 +65,12 @@ package de.mediadesign.gd1011.studiof.view.mediators {
 			for (var k:int = 0; k < endingTouches.length; k++)
 				if (endingTouches[k].id == _validTouchID)
 				{
-					_validTouchID = -1;
+					if(level.player != null)
+					{
+						level.player.startJump();
+						_validTouchID = -1;
+					}
+
 				}
 		}
 
