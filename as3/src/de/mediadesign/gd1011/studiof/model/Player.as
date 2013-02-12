@@ -7,13 +7,13 @@
  */
 package de.mediadesign.gd1011.studiof.model {
     import de.mediadesign.gd1011.studiof.consts.GameConsts;
+    import de.mediadesign.gd1011.studiof.model.components.PositionComponent;
     import de.mediadesign.gd1011.studiof.services.JSONReader;
 
     import starling.animation.Transitions;
 
     import starling.animation.Tween;
     import starling.core.Starling;
-    import starling.events.TouchPhase;
 
     public class Player extends Unit implements IMovable
     {
@@ -32,8 +32,8 @@ package de.mediadesign.gd1011.studiof.model {
         private var _landIsntRunning:Boolean         = true;
         private var _landStillInJuggler:Boolean      = false;
         private var _anyTweensInMotion:Boolean       = false;
-        private var _movePlayerTowardsMouse:Boolean  = false;
         private var _targetPlatform:int              = 0;
+        private var _tweenedPosition:PositionComponent;
 
 
         public function Player()
@@ -47,34 +47,45 @@ package de.mediadesign.gd1011.studiof.model {
             jumpSpeedBeimSprung = JSONExtractedInformation["jumpSpeedBeimSprung"];
             jumpSpeedBeimFall = JSONExtractedInformation["jumpSpeedBeimFall"];
             jumpSpeedBeimEinpendeln = JSONExtractedInformation["jumpSpeedBeimEinpendeln"];
+            _tweenedPosition = new PositionComponent();
         }
 
         override public function move(time:Number):void
         {
-            if (assertCorrectInitialization()) {
+            if (assertCorrectInitialization())
+            {
                 currentPlatform = observePlatform(position.y);
-                if (_up != null && _up.isComplete && _comeDownIsntRunning) {
+                if (_up != null && _up.isComplete && _comeDownIsntRunning)
+                {
                     _comeDownIsntRunning = false;
                     comeDown();
                 }
-                if (_down != null && _down.isComplete && _landIsntRunning) {
+                if (_down != null && _down.isComplete && _landIsntRunning)
+                {
                     _landIsntRunning = false;
                     land();
                 }
-                if (_landing != null && _landing.isComplete && _landStillInJuggler) {
+                if (_landing != null && _landing.isComplete && _landStillInJuggler)
+                {
                     _landStillInJuggler = false;
                     Starling.juggler.remove(_landing);
                     _anyTweensInMotion = false;
                 }
 
-                if (_movePlayerTowardsMouse) {
-                    if (currentPlatform<_targetPlatform) {
+                if (!_anyTweensInMotion)
+                {
+                    Starling.juggler.purge();
+                    if (currentPlatform<_targetPlatform)
+                    {
                         position.y+=speedTowardsMouse*time;
                     } else {
                         position.y=_targetPlatform*GameConsts.EBENE_HEIGHT;
                     }
+                } else {
+                    position.y = _tweenedPosition.y;
+                    position.x = _tweenedPosition.x;
                 }
-            } else trace("----------Function Move failed, because Player not correctly initialized: "+position.x+","+position.y+","+velocity+","+currentPlatform+","+this);
+            } else trace("----------Function Move failed, because Player not correctly initialized: "+position.x+","+position.y+","+velocity+","+currentPlatform+","+this+","+_tweenedPosition.x+","+_tweenedPosition.y);
         }
 
         private function observePlatform(y:int):int
@@ -90,63 +101,58 @@ package de.mediadesign.gd1011.studiof.model {
             return newEbene;
         }
 
-        public function handleTouch(currentTouchPhase:String,  directionPlatform:int):void
+        public function startJump():void
         {
-            if(currentTouchPhase == TouchPhase.BEGAN){
-                _targetPlatform = directionPlatform*GameConsts.EBENE_HEIGHT;
-                Starling.juggler.purge();
-                _anyTweensInMotion = false;
-                _movePlayerTowardsMouse = true;
-            }
-            if(currentTouchPhase == TouchPhase.MOVED){
-                if (directionPlatform*GameConsts.EBENE_HEIGHT >GameConsts.STAGE_HEIGHT/3 && position.y+1>GameConsts.STAGE_HEIGHT/3) {
-                    _targetPlatform = directionPlatform;
+            if (!_anyTweensInMotion && currentPlatform>2)
+            {
+                _targetPlatform = 2;
+                _anyTweensInMotion = true;
+                _tweenedPosition.y = position.y;
+                _tweenedPosition.x = position.x;
+                _comeDownIsntRunning = true;
+                if (Starling.juggler.contains(_up))
+                {
+                    Starling.juggler.remove(_up)
                 }
-            }
-            if (currentTouchPhase == TouchPhase.ENDED && !_anyTweensInMotion) {
-                _movePlayerTowardsMouse = false;
-                sprungProzess();
-            }
+                _up = new Tween(_tweenedPosition, jumpSpeedBeimSprung, Transitions.EASE_OUT);
+                _up.moveTo(_tweenedPosition.x, GameConsts.STAGE_HEIGHT - (GameConsts.STAGE_HEIGHT/6) * (currentPlatform + 1) );
+                Starling.juggler.add(_up);
+            } else trace("startJump in Player has been used but there are Tweens in Motion right now, or currentPlatform is bigger than 2. Request Denied.");
         }
 
-        public function sprungProzess():void
+        public function comeDown():void
         {
-            _anyTweensInMotion = true;
-            if (Starling.juggler.contains(_up)) {
-                Starling.juggler.remove(_up)
-            }
-            _up = new Tween(position, jumpSpeedBeimSprung, Transitions.EASE_OUT);
-            if (currentPlatform > 2)
+            if (Starling.juggler.contains(_down))
             {
-                _up.moveTo(position.x, GameConsts.STAGE_HEIGHT - (GameConsts.STAGE_HEIGHT/6) * (currentPlatform + 1) );
-                Starling.juggler.add(_up);
-                _comeDownIsntRunning = true;
-            }
-            if (currentPlatform == 2)
-            {
-                _up.moveTo(position.x, GameConsts.PLAYER_START_HEIGHT);
-                Starling.juggler.add(_up);
-                _comeDownIsntRunning = true;
-            }
-        }
-
-        public function comeDown():void{
-            if (Starling.juggler.contains(_down)) {
                 Starling.juggler.remove(_down)
             }
-            _down  = new  Tween(position, jumpSpeedBeimFall, Transitions.EASE_IN);
-            if (currentPlatform < 2) {
-                _down.moveTo(position.x, GameConsts.STAGE_HEIGHT/3+einpendelStaerke);
+            _down  = new  Tween(_tweenedPosition, jumpSpeedBeimFall, Transitions.EASE_IN);
+            if (currentPlatform < 2)
+            {
+                _down.moveTo(_tweenedPosition.x, GameConsts.STAGE_HEIGHT/3+einpendelStaerke);
                 Starling.juggler.add(_down);
                 _landIsntRunning = true;
             }
         }
 
-        private function land():void {
-            _landing = new Tween(position, jumpSpeedBeimEinpendeln, Transitions.EASE_OUT_ELASTIC);
-            _landing.moveTo(position.x,  GameConsts.STAGE_HEIGHT/3);
+        private function land():void
+        {
+            _landing = new Tween(_tweenedPosition, jumpSpeedBeimEinpendeln, Transitions.EASE_OUT_ELASTIC);
+            _landing.moveTo(_tweenedPosition.x,  GameConsts.STAGE_HEIGHT/3);
             Starling.juggler.add(_landing);
             _landStillInJuggler = true;
+        }
+
+        public function get targetPlatform():int
+        {
+            return _targetPlatform;
+        }
+
+        public function set targetPlatform(value:int):void
+        {
+            if (value<2 || value>5) {
+                trace("Trying to set Player targetPlatform to "+value+". Value not accepted.");
+            } else _targetPlatform = value;
         }
     }
 }

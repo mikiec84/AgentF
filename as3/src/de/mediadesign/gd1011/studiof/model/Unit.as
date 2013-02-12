@@ -12,33 +12,69 @@ package de.mediadesign.gd1011.studiof.model
 
     public class Unit implements IMovable
     {
-        public var healthPoints:int;
-        public var currentPlatform:int;
-        public var position:PositionComponent;
-        public var velocity:VelocityComponent;
-        public var weapon:String;
+        private var _healthPoints:int;
+        private var _currentPlatform:int;
+        private var _position:PositionComponent;
+        private var _velocity:VelocityComponent;
+        private var _weapon:String;
 
 
         public function Unit(healthpoints:int, startingPlatform:int)
-        {   weapon = "default";
-            currentPlatform = startingPlatform;
-            healthPoints = healthpoints;
-            position = new PositionComponent();
-            velocity = new VelocityComponent();
+        {   _weapon = "default";
+            _currentPlatform = startingPlatform;
+            _healthPoints = healthpoints;
+            _position = new PositionComponent();
+            _velocity = new VelocityComponent();
         }
 
         public function move(time:Number):void {
             if (assertCorrectInitialization()) {
-                position.x += velocity.velocityX*time;
-            } else trace("----------Function Move failed, because Unit not correctly initialized: "+position.x+","+position.y+","+velocity+","+currentPlatform+","+this);
+                _position.x += _velocity.velocityX*time;
+            } else trace("----------Function Move failed, because Unit not correctly initialized: "+_position.x+","+_position.y+","+_velocity+","+_currentPlatform+","+this);
         }
 
         public function assertCorrectInitialization():Boolean
         {
-            if(position == null) return false;
-            if(velocity == null) return false;
-            if(healthPoints < 1) return false;
-            return !(currentPlatform > 5 || currentPlatform < 0);
+            if(_position == null) return false;
+            return !(_velocity == null);
+        }
+
+        public function get healthPoints():int {
+            return _healthPoints;
+        }
+
+        public function set healthPoints(value:int):void {
+            if (value<0)
+            {
+                trace("Trying to set healthpoints below 0. Value "+value+" not accepted.");
+            }   else _healthPoints = value;
+        }
+
+        public function get currentPlatform():int {
+            return _currentPlatform;
+        }
+
+        public function set currentPlatform(value:int):void {
+            if (value<0 || value>5)
+            {
+                trace("Trying to set currentPlatform below 0 or beyond 5. Value "+value+" not accepted.");
+            }   else _currentPlatform = value;
+        }
+
+        public function get position():PositionComponent {
+            return _position;
+        }
+
+        public function get velocity():VelocityComponent {
+            return _velocity;
+        }
+
+        public function get weapon():String {
+            return _weapon;
+        }
+
+        public function set weapon(value:String):void {
+            _weapon = value;
         }
     }
 }
