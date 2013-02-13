@@ -55,8 +55,12 @@ package de.mediadesign.gd1011.studiof.model {
         override public function move(time:Number):void
         {
             if (assertCorrectInitialization())
-            {   trace(_anyTweensInMotion);
+            {
                 currentPlatform = observePlatform(position.y);
+                if (position.y<0) {
+                    position.y = GameConsts.EBENE_HEIGHT*2;
+                    currentPlatform = 2;
+                }
 
                 administerTweens();
 
