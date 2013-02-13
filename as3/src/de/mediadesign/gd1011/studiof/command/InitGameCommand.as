@@ -66,7 +66,6 @@ package de.mediadesign.gd1011.studiof.command
             a.addChild(img3);
 
             renderProcesses.registerRenderable(new Renderable(level.player.position, a));
-
             var ab:GameEvent = new GameEvent(GameConsts.ADD_SPRITE_TO_GAME, GameConsts.ADD_SPRITE_TO_GAME, a);
             dispatcher.dispatchEvent(ab);
         }

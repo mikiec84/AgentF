@@ -7,6 +7,8 @@
  */
 package de.mediadesign.gd1011.studiof.view.mediators
 {
+    import de.mediadesign.gd1011.studiof.model.components.PositionComponent;
+
     import flash.display.BitmapData;
 
     import starling.display.Image;

@@ -28,13 +28,14 @@ package de.mediadesign.gd1011.studiof.model {
         private var _up:Tween;
         private var _down:Tween;
         private var _landing:Tween;
-        private var _comeDownIsntRunning:Boolean     = true;
-        private var _landIsntRunning:Boolean         = true;
-        private var _landStillInJuggler:Boolean      = false;
-        private var _anyTweensInMotion:Boolean       = false;
-        private var _targetPlatform:int              = 2;
+        private var _comeDownIsntRunning:Boolean      = true;
+        private var _landIsntRunning:Boolean          = true;
+        private var _landStillInJuggler:Boolean       = false;
+        private var _anyTweensInMotion:Boolean        = false;
+        private var _targetPlatform:int               = 2;
         private var _tweenedPosition:PositionComponent;
-        private var _checkTargetPlatform:int         = 2;
+        private var _checkTargetPlatform:int          = 2;
+        private var _pleaseMoveTowardsMouseAsSoonAsYouCan:Boolean = false;
         private var _currentLevel:Level;
 
         private var ammunition:Vector.<Unit>;
@@ -63,7 +64,7 @@ package de.mediadesign.gd1011.studiof.model {
         override public function move(time:Number):void
         {
             if (assertCorrectInitialization())
-            {trace("Target Platform: "+_targetPlatform);
+            {//trace(_checkTargetPlatform+", "+_targetPlatform);
                 currentPlatform = observePlatform(position.y);
 
                 checkPlayerPosition();
@@ -129,15 +130,22 @@ package de.mediadesign.gd1011.studiof.model {
                 _landIsntRunning = false;
                 land();
             }
-            if ((_landing != null && _landing.isComplete && _landStillInJuggler) || (_landing != null && _landStillInJuggler && _checkTargetPlatform != _targetPlatform))
+            if ((_landing != null && _landing.isComplete && _landStillInJuggler)    //landing complete
+                    //|| (_landing != null && _landStillInJuggler && _checkTargetPlatform != _targetPlatform)
+                    || (_landing != null && _landStillInJuggler && _pleaseMoveTowardsMouseAsSoonAsYouCan))
             {
-                _landStillInJuggler = false;
-                Starling.juggler.remove(_landing);
-                _landing = null;
-                _anyTweensInMotion = false;
+                    _landStillInJuggler = false;
+                    Starling.juggler.remove(_landing);
+                    _landing = null;
+                    _anyTweensInMotion = false;
+                _pleaseMoveTowardsMouseAsSoonAsYouCan = false;
             }
 
-            _checkTargetPlatform = _targetPlatform;
+
+            if (_checkTargetPlatform != _targetPlatform) {
+                _pleaseMoveTowardsMouseAsSoonAsYouCan = true;
+                _checkTargetPlatform = _targetPlatform;
+            }
         }
 
         public function shootBullet(time:Number):void
@@ -152,6 +160,8 @@ package de.mediadesign.gd1011.studiof.model {
 
         public function startJump():void
         {                _targetPlatform = 2;
+                        _checkTargetPlatform = 2;
+            _pleaseMoveTowardsMouseAsSoonAsYouCan = false;
             if (!_anyTweensInMotion && currentPlatform>3)
             {
 

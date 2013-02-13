@@ -7,8 +7,10 @@
  */
 package de.mediadesign.gd1011.studiof.command
 {
+
     import de.mediadesign.gd1011.studiof.consts.GameConsts;
     import de.mediadesign.gd1011.studiof.events.GameEvent;
+    import de.mediadesign.gd1011.studiof.model.Level;
     import de.mediadesign.gd1011.studiof.model.Renderable;
     import de.mediadesign.gd1011.studiof.model.Unit;
     import de.mediadesign.gd1011.studiof.services.MoveProcess;
@@ -18,6 +20,7 @@ package de.mediadesign.gd1011.studiof.command
     import flash.events.IEventDispatcher;
 
     import robotlegs.bender.bundles.mvcs.Command;
+    import robotlegs.bender.framework.api.LogLevel;
 
     import starling.display.Sprite;
 
@@ -34,6 +37,9 @@ package de.mediadesign.gd1011.studiof.command
 
         [Inject]
         public var dispatcher:IEventDispatcher;
+
+        [Inject]
+        public var level:Level;
 
         override public function execute():void
         {
