@@ -63,7 +63,7 @@ package de.mediadesign.gd1011.studiof.model {
         override public function move(time:Number):void
         {
             if (assertCorrectInitialization())
-            {
+            {trace("Target Platform: "+_targetPlatform);
                 currentPlatform = observePlatform(position.y);
 
                 checkPlayerPosition();
@@ -106,7 +106,7 @@ package de.mediadesign.gd1011.studiof.model {
                 else
                 {
                     if (currentPlatform>=_targetPlatform) {
-                        trace("currentPlatform ist größer als targetPlatform");
+                        //trace("currentPlatform ist größer als targetPlatform");
                         if(observePlatform(position.y-speedTowardsMouse*time)>=_targetPlatform)
                         {
                            setNewPosition(position.y-speedTowardsMouse*time);
