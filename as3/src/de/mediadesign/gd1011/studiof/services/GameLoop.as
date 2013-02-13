@@ -18,8 +18,6 @@ package de.mediadesign.gd1011.studiof.services
 
         public var currentLevel:Level;
 
-        private var bullet:Unit;
-
 		public function GameLoop(currentLevel:Level):void
 		{
             processes = new Vector.<IProcess>();
