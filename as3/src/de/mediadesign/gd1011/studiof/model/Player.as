@@ -34,6 +34,7 @@ package de.mediadesign.gd1011.studiof.model {
         private var _anyTweensInMotion:Boolean       = false;
         private var _targetPlatform:int              = 2;
         private var _tweenedPosition:PositionComponent;
+        private var _checkTargetPlatform:int         = 2;
 
 
         public function Player()
@@ -54,46 +55,67 @@ package de.mediadesign.gd1011.studiof.model {
         override public function move(time:Number):void
         {
             if (assertCorrectInitialization())
-            {   if(currentPlatform == 2 || currentPlatform == 3) trace(currentPlatform);
+            {   trace(_anyTweensInMotion);
                 currentPlatform = observePlatform(position.y);
-                //trace(currentPlatform+","+position.y);
-                if (_up != null && _up.isComplete && _comeDownIsntRunning)
-                {
-                    _comeDownIsntRunning = false;
-                    comeDown();
-                }
-                if (_down != null && _down.isComplete && _landIsntRunning)
-                {
-                    _landIsntRunning = false;
-                    land();
-                }
-                if (_landing != null && _landing.isComplete && _landStillInJuggler)
-                {
-                    _landStillInJuggler = false;
-                    Starling.juggler.remove(_landing);
-                    _anyTweensInMotion = false;
-                }
+
+                administerTweens();
 
                 if (!_anyTweensInMotion)
                 {
-                    Starling.juggler.purge();
-                    if (currentPlatform<_targetPlatform)
-                    { //trace(observePlatform(speedTowardsMouse*time*6+position.y));
-                        //trace(_targetPlatform);
-                        if(observePlatform(speedTowardsMouse*time+position.y)<=_targetPlatform)
-                        {
-                            position.y+=speedTowardsMouse*time;
-                        }
-                    }
-                    else
-                    {   trace("Guten Tag");
-                        position.y=_targetPlatform*GameConsts.EBENE_HEIGHT;
-                    }
-                } else {
+                    administerPlayerTowardsMouseMovement(time);
+                }
+                else
+                {
                     position.y = _tweenedPosition.y;
                     position.x = _tweenedPosition.x;
                 }
-            } else trace("----------Function Move failed, because Player not correctly initialized: "+position.x+","+position.y+","+velocity+","+currentPlatform+","+this+","+_tweenedPosition.x+","+_tweenedPosition.y);
+            }
+            else trace("----------Function Move failed, because Player not correctly initialized: "+position.x+","+position.y+","+velocity+","+currentPlatform+","+this+","+_tweenedPosition.x+","+_tweenedPosition.y);
+        }
+
+        private function administerPlayerTowardsMouseMovement(time:Number):void
+        {   //trace("MOVE");
+            Starling.juggler.purge();
+            if (currentPlatform<_targetPlatform)
+            { //trace(observePlatform(speedTowardsMouse*time*6+position.y));
+                //trace(_targetPlatform);
+                if(observePlatform(speedTowardsMouse*time+position.y)<=_targetPlatform)
+                {
+                    position.y+=speedTowardsMouse*time;
+                }
+            }
+            else
+            {   //trace("Guten Tag");
+                //position.y=_targetPlatform*GameConsts.EBENE_HEIGHT;
+                if (currentPlatform>=_targetPlatform && _targetPlatform>1) {
+                    if(observePlatform(position.y-speedTowardsMouse*time)>=_targetPlatform)
+                    {
+                        position.y-=speedTowardsMouse*time;
+                    } //else trace("Sollte nicht höher gehen");
+                }
+            }
+        }
+
+        private function administerTweens():void
+        {
+            if (_up != null && _up.isComplete && _comeDownIsntRunning)
+            {
+                _comeDownIsntRunning = false;
+                comeDown();
+            }
+            if (_down != null && _down.isComplete && _landIsntRunning)
+            {
+                _landIsntRunning = false;
+                land();
+            }
+            if ((_landing != null && _landing.isComplete && _landStillInJuggler) || (_landing != null && _landStillInJuggler && _checkTargetPlatform != _targetPlatform))
+            {
+                _landStillInJuggler = false;
+                Starling.juggler.remove(_landing);
+                _anyTweensInMotion = false;
+            }
+
+            _checkTargetPlatform = _targetPlatform;
         }
 
         private function observePlatform(y:int):int
