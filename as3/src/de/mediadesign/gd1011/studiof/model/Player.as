@@ -38,7 +38,7 @@ package de.mediadesign.gd1011.studiof.model {
 
 
         public function Player()
-        {   super(1, 1);
+        {   super(1, 1, 1);
             JSONExtractedInformation = JSONReader.read("config")["PLAYER"];
             currentPlatform = JSONExtractedInformation["platform"];
             healthPoints = JSONExtractedInformation["healthPoints"];
@@ -57,10 +57,8 @@ package de.mediadesign.gd1011.studiof.model {
             if (assertCorrectInitialization())
             {
                 currentPlatform = observePlatform(position.y);
-                if (position.y<0) {
-                    position.y = GameConsts.EBENE_HEIGHT*2;
-                    currentPlatform = 2;
-                }
+
+                checkPlayerPosition();
 
                 administerTweens();
 
@@ -77,25 +75,32 @@ package de.mediadesign.gd1011.studiof.model {
             else trace("----------Function Move failed, because Player not correctly initialized: "+position.x+","+position.y+","+velocity+","+currentPlatform+","+this+","+_tweenedPosition.x+","+_tweenedPosition.y);
         }
 
+        private function checkPlayerPosition():void
+        {
+            if (position.y<0)
+            {
+                position.y = GameConsts.EBENE_HEIGHT*2;
+                currentPlatform = 2;
+            }
+        }
+
         private function administerPlayerTowardsMouseMovement(time:Number):void
-        {   //trace("MOVE");
+        {
             Starling.juggler.purge();
             if (currentPlatform<_targetPlatform)
-            { //trace(observePlatform(speedTowardsMouse*time*6+position.y));
-                //trace(_targetPlatform);
+            {
                 if(observePlatform(speedTowardsMouse*time+position.y)<=_targetPlatform)
                 {
-                    position.y+=speedTowardsMouse*time;
-                }
+                    setNewPosition(speedTowardsMouse*time+position.y);
+                } else position.y = GameConsts.EBENE_HEIGHT*_targetPlatform;
             }
             else
-            {   //trace("Guten Tag");
-                //position.y=_targetPlatform*GameConsts.EBENE_HEIGHT;
+            {
                 if (currentPlatform>=_targetPlatform && _targetPlatform>1) {
                     if(observePlatform(position.y-speedTowardsMouse*time)>=_targetPlatform)
                     {
-                        position.y-=speedTowardsMouse*time;
-                    } //else trace("Sollte nicht höher gehen");
+                       setNewPosition(position.y-speedTowardsMouse*time);
+                    } else position.y = GameConsts.EBENE_HEIGHT*_targetPlatform;
                 }
             }
         }
@@ -174,7 +179,7 @@ package de.mediadesign.gd1011.studiof.model {
         private function land():void
         {
             _landing = new Tween(_tweenedPosition, jumpSpeedBeimEinpendeln, Transitions.EASE_OUT_ELASTIC);
-            _landing.moveTo(_tweenedPosition.x,  GameConsts.STAGE_HEIGHT/3);
+            _landing.moveTo(_tweenedPosition.x,  GameConsts.STAGE_HEIGHT/3+1);//+1 weil ansonsten der player in ebene 1 endet aus welchem grund auch immer. da current 1 ist aber target 2 wird er ~20pixel nach oben gezogen, und dann wieder auf ebene 2 hochkorrigiert, wodurch er auf der stelle zu springen scheint. +1 verhindert das.
             Starling.juggler.add(_landing);
             _landStillInJuggler = true;
         }

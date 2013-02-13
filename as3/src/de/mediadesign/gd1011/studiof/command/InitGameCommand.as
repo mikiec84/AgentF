@@ -12,6 +12,7 @@ package de.mediadesign.gd1011.studiof.command
     import de.mediadesign.gd1011.studiof.model.Level;
     import de.mediadesign.gd1011.studiof.model.Player;
     import de.mediadesign.gd1011.studiof.model.Renderable;
+    import de.mediadesign.gd1011.studiof.services.Assets;
     import de.mediadesign.gd1011.studiof.services.GameLoop;
     import de.mediadesign.gd1011.studiof.services.MoveProcess;
     import de.mediadesign.gd1011.studiof.services.RenderProcess;
@@ -57,14 +58,11 @@ package de.mediadesign.gd1011.studiof.command
             level.setPlayer(new Player());
             moveProcesses.addEntity(level.player);
 
-            var q:Quad = new Quad(120, 120, 0x0F00F00, false);
 
 
-//            var test3:BitmapData = new AgentF_texture(0,0);
-//            var img3:Image = new Image(Texture.fromBitmapData(test3));
+            var img3:Image = Assets.getImage("AgentF_texture");
             var a:Sprite = new Sprite();
-            a.addChild(q);
-//            a.addChild(img3);
+            a.addChild(img3);
 
             renderProcesses.registerRenderable(new Renderable(level.player.position, a));
 

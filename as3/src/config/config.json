@@ -7,7 +7,7 @@
             "speedTowardsMouse":900,
             "jumpSpeedBeimSprung":1,
             "jumpSpeedBeimFall":1,
-            "jumpSpeedBeimEinpendeln":1
+            "jumpSpeedBeimEinpendeln":4
            }
 
 }

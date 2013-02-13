@@ -7,6 +7,7 @@
  */
 package de.mediadesign.gd1011.studiof.model
 {
+    import de.mediadesign.gd1011.studiof.consts.GameConsts;
     import de.mediadesign.gd1011.studiof.model.components.PositionComponent;
     import de.mediadesign.gd1011.studiof.model.Renderable;
     import de.mediadesign.gd1011.studiof.model.components.VelocityComponent;
@@ -20,13 +21,14 @@ package de.mediadesign.gd1011.studiof.model
         private var _weapon:String;
 
 
-        public function Unit(healthpoints:int, startingPlatform:int)
+        public function Unit(healthpoints:int, startingPlatform:int, xVel:int)
         {
             _weapon = "default";
             _currentPlatform = startingPlatform;
             _healthPoints = healthpoints;
             _position = new PositionComponent();
             _velocity = new VelocityComponent();
+            _velocity.velocityX = xVel;
         }
 
         public function move(time:Number):void
@@ -90,6 +92,13 @@ package de.mediadesign.gd1011.studiof.model
         public function set weapon(value:String):void
         {
             _weapon = value;
+        }
+
+        public function setNewPosition(y:int):void
+        {
+            if (y>=GameConsts.EBENE_HEIGHT*2 && y<=GameConsts.EBENE_HEIGHT*5) {
+                _position.y = y;
+            }
         }
     }
 }
