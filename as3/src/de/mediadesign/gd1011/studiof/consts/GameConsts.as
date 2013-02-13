@@ -14,7 +14,7 @@ package de.mediadesign.gd1011.studiof.consts
         public static const INIT_PLAYER:String = /*getQualifiedClassName(this)+*/"INIT_PLAYER";
         public static const INIT_GAME:String   = /*getQualifiedClassName(this)+*/"INIT_GAME";
         public static const ADD_ENEMY:String = "ADD_ENEMY";
-        public static const REGISTER_ENEMY:String = "REGISTER_ENEMY";
+        public static const REGISTER_UNIT:String = "REGISTER_UNIT";
         public static const ADD_SPRITE_TO_GAME:String = "ADD_SPRITE_TO_GAME";
 
         public static const STAGE_HEIGHT:int   = 720;

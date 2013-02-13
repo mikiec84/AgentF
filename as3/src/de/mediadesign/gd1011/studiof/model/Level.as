@@ -7,8 +7,16 @@
  */
 package de.mediadesign.gd1011.studiof.model
 {
+    import de.mediadesign.gd1011.studiof.consts.GameConsts;
+    import de.mediadesign.gd1011.studiof.events.GameEvent;
+
+    import flash.events.IEventDispatcher;
+
     public class Level
     {
+        [Inject]
+        public var dispatcher:IEventDispatcher;
+
         private var _enemies:Vector.<Unit>;
         private var _player:Player;
 
@@ -70,6 +78,13 @@ package de.mediadesign.gd1011.studiof.model
         {
             _player = null;
         }
+
+        public function register(unit:Unit):void
+        {
+            var registerUnitEvent:GameEvent = new GameEvent(GameConsts.REGISTER_UNIT, GameConsts.REGISTER_UNIT, unit);
+            dispatcher.dispatchEvent(registerUnitEvent);
+        }
+
     }
 }
 

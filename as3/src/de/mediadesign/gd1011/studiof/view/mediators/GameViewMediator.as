@@ -54,7 +54,7 @@ package de.mediadesign.gd1011.studiof.view.mediators {
 
 		private function add(event:GameEvent):void
 		{
-			contextView.addChild(event.dataObj);
+			contextView.addChildAt(event.dataObj, contextView.numChildren);
 		}
 
 		private function handleTouch(e:TouchEvent):void

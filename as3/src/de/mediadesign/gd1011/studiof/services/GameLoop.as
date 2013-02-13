@@ -7,7 +7,8 @@
  */
 package de.mediadesign.gd1011.studiof.services
 {
-    import de.mediadesign.gd1011.studiof.services.IProcess;
+    import de.mediadesign.gd1011.studiof.model.Level;
+    import de.mediadesign.gd1011.studiof.model.Unit;
 
     import starling.events.EnterFrameEvent;
 
@@ -15,10 +16,14 @@ package de.mediadesign.gd1011.studiof.services
 	{
         public var processes:Vector.<IProcess>;
 
-		public function GameLoop():void
+        public var currentLevel:Level;
+
+        private var bullet:Unit;
+
+		public function GameLoop(currentLevel:Level):void
 		{
             processes = new Vector.<IProcess>();
-
+            this.currentLevel = currentLevel;
 		}
 
         public function registerProcess(process:IProcess):void
@@ -32,6 +37,14 @@ package de.mediadesign.gd1011.studiof.services
             {
                 target.update(e.passedTime);
             }
+
+            bullet = currentLevel.player.shoot(e.passedTime);
+
+            if (bullet != null)
+            {
+                currentLevel.register(bullet);
+            }
+
         }
 	}
 }

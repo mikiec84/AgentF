@@ -58,6 +58,7 @@ package de.mediadesign.gd1011.studiof.command
             level.setPlayer(new Player());
             moveProcesses.addEntity(level.player);
 
+            var q:Quad = new Quad(120, 120, 0x0F00F00, false);
 
 
             var img3:Image = Assets.getImage("AgentF_texture");

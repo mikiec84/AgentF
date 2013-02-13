@@ -17,6 +17,11 @@ package de.mediadesign.gd1011.studiof.services {
             targets = new Vector.<IMovable>();
         }
 
+//        public function registerMovable(movable:Mov):void
+//        {
+//            targets.push(movable);
+//        }
+
         public function update(time:Number):void
         {
             for each(var target:IMovable in targets)
@@ -25,7 +30,8 @@ package de.mediadesign.gd1011.studiof.services {
             }
         }
 
-        public function addEntity(target:IMovable):void{
+        public function addEntity(target:IMovable):void
+        {
             targets.push(target);
         }
     }

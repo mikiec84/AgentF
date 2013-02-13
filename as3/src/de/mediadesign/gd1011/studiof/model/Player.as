@@ -36,13 +36,19 @@ package de.mediadesign.gd1011.studiof.model {
         private var _tweenedPosition:PositionComponent;
         private var _checkTargetPlatform:int         = 2;
 
+        private var ammunition:Vector.<Unit>;
+        private var cooldown:Number = 0;
+        private var fireRate:Number = 5;        // Sollte später von JSON eingelesen werden !!!
+
 
         public function Player()
         {   super(1, 1, 1);
+            ammunition = new Vector.<Unit>();
+
             JSONExtractedInformation = JSONReader.read("config")["PLAYER"];
             currentPlatform = JSONExtractedInformation["platform"];
             healthPoints = JSONExtractedInformation["healthPoints"];
-            weapon = JSONExtractedInformation["weapon"];
+            //weapon = JSONExtractedInformation["weapon"];
             einpendelStaerke = JSONExtractedInformation["einpendelStaerke"];
             speedTowardsMouse = JSONExtractedInformation["speedTowardsMouse"];
             jumpSpeedBeimSprung = JSONExtractedInformation["jumpSpeedBeimSprung"];
@@ -85,7 +91,7 @@ package de.mediadesign.gd1011.studiof.model {
         }
 
         private function administerPlayerTowardsMouseMovement(time:Number):void
-        {
+        {   trace(targetPlatform);
             Starling.juggler.purge();
             if (currentPlatform<_targetPlatform)
             {
@@ -127,19 +133,6 @@ package de.mediadesign.gd1011.studiof.model {
             _checkTargetPlatform = _targetPlatform;
         }
 
-        private function observePlatform(y:int):int
-        {
-            var newEbene:int = 10;
-            if (y>=0)                                                          {newEbene = 0;}
-            if (y+1>GameConsts.STAGE_HEIGHT/6)                                   {newEbene = 1;}
-            if (y+1>GameConsts.STAGE_HEIGHT/3)                                   {newEbene = 2;}
-            if (y+1>GameConsts.STAGE_HEIGHT/2)                                   {newEbene = 3;}
-            if (y+1>GameConsts.STAGE_HEIGHT*(2/3))                               {newEbene = 4;}
-            if (y+1>GameConsts.STAGE_HEIGHT*(5/6) && y<=GameConsts.STAGE_HEIGHT) {newEbene = 5;}
-            if (newEbene == 10) trace("observePlatform hat folgende unzulässige Eingabe erhalten: "+y);
-            //trace(newEbene+","+y);
-            return newEbene;
-        }
 
         public function startJump():void
         {                _targetPlatform = 2;
@@ -195,5 +188,20 @@ package de.mediadesign.gd1011.studiof.model {
                 trace("Trying to set Player targetPlatform to "+value+". Value not accepted.");
             } else _targetPlatform = value;
         }
+
+        public function shoot(time:Number):Unit
+        {
+            cooldown += time;
+            if (cooldown >= (1 / fireRate))
+            {
+                var bullet:Unit = new Unit(1, currentPlatform, 600);
+                bullet.position.y += 100;
+                ammunition.push(bullet);
+                cooldown = 0;
+                return bullet;
+            }
+            else return null;
+        }
+
     }
 }

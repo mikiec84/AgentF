@@ -7,6 +7,8 @@
  */
 package de.mediadesign.gd1011.studiof.model.components
 {
+    import de.mediadesign.gd1011.studiof.consts.GameConsts;
+
     public class PositionComponent
     {
 
@@ -17,7 +19,7 @@ package de.mediadesign.gd1011.studiof.model.components
         public function PositionComponent()
         {
             x = 0;
-            y = 0;
+            y = GameConsts.EBENE_HEIGHT*2+100;
             currentRotation = 0;
         }
     }

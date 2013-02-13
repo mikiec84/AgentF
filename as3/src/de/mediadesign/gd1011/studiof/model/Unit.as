@@ -8,6 +8,7 @@
 package de.mediadesign.gd1011.studiof.model
 {
     import de.mediadesign.gd1011.studiof.consts.GameConsts;
+    import de.mediadesign.gd1011.studiof.consts.GameConsts;
     import de.mediadesign.gd1011.studiof.model.components.PositionComponent;
     import de.mediadesign.gd1011.studiof.model.Renderable;
     import de.mediadesign.gd1011.studiof.model.components.VelocityComponent;
@@ -29,12 +30,15 @@ package de.mediadesign.gd1011.studiof.model
             _position = new PositionComponent();
             _velocity = new VelocityComponent();
             _velocity.velocityX = xVel;
+
+            _position.y = currentPlatform * GameConsts.EBENE_HEIGHT;
         }
 
         public function move(time:Number):void
         {
             if (assertCorrectInitialization())
             {
+                currentPlatform = observePlatform(position.y);
                 position.x += velocity.velocityX*time;
             }
             else trace("----------Function Move failed, because Unit not correctly initialized: "+position.x+","+position.y+","+velocity+","+currentPlatform+","+this);
@@ -44,6 +48,20 @@ package de.mediadesign.gd1011.studiof.model
         {
             if(_position == null) return false;
             return !(_velocity == null);
+        }
+
+        public function observePlatform(y:int):int
+        {
+            var newEbene:int = 10;
+            if (y>=0)                                                          {newEbene = 0;}
+            if (y+1>GameConsts.STAGE_HEIGHT/6)                                   {newEbene = 1;}
+            if (y+1>GameConsts.STAGE_HEIGHT/3)                                   {newEbene = 2;}
+            if (y+1>GameConsts.STAGE_HEIGHT/2)                                   {newEbene = 3;}
+            if (y+1>GameConsts.STAGE_HEIGHT*(2/3))                               {newEbene = 4;}
+            if (y+1>GameConsts.STAGE_HEIGHT*(5/6) && y<=GameConsts.STAGE_HEIGHT) {newEbene = 5;}
+            if (newEbene == 10) trace("observePlatform hat folgende unzulässige Eingabe erhalten: "+y);
+            //trace(newEbene+","+y);
+            return newEbene;
         }
 
         public function get healthPoints():int
