@@ -7,13 +7,8 @@
  */
 package de.mediadesign.gd1011.studiof.view
 {
-	import flash.display.BitmapData;
-
-	import starling.display.Image;
-    import starling.display.Quad;
-    import starling.display.Sprite;
-	import starling.events.Event;
-	import starling.textures.Texture;
+	import starling.display.Quad;
+	import starling.display.Sprite;
 
 	public class GameView extends Sprite
 	{

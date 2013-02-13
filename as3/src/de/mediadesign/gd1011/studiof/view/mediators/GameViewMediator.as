@@ -59,14 +59,17 @@ package de.mediadesign.gd1011.studiof.view.mediators {
 
 		private function handleTouch(e:TouchEvent):void
 		{
+			var vTouchPos:Number;
+			var platform:int;
+
 			//Handle starting touches
 			var initTouches:Vector.<Touch> = e.getTouches(contextView, TouchPhase.BEGAN);
 			for (var i:int = 0; i < initTouches.length; i++)
 			{
 				if (initTouches[i].getLocation(contextView).x <= _touchConfig["hTouch"])
 				{
-					var vTouchPos:Number = initTouches[i].getLocation(contextView).y;
-					var platform:int = getVTouchzone(vTouchPos);
+					vTouchPos = initTouches[i].getLocation(contextView).y;
+					platform = getVTouchzone(vTouchPos);
 					if(platform>=0 && _touchConfig["vTouch"][platform]<=vTouchPos && _touchConfig["vTouch"][platform+1]>=vTouchPos)
 					{
 						_validTouchID = initTouches[i].id;
@@ -85,8 +88,8 @@ package de.mediadesign.gd1011.studiof.view.mediators {
 			for (var j:int = 0; j < touches.length; j++)
 				if (touches[j].id == _validTouchID)
 				{
-					var vTouchPos:Number = touches[j].getLocation(contextView).y;
-					var platform:int = getVTouchzone(vTouchPos);
+					vTouchPos = touches[j].getLocation(contextView).y;
+					platform = getVTouchzone(vTouchPos);
 					if(level.player != null && platform >=0 && platform != level.player.targetPlatform)
 					{
 						level.player.targetPlatform = platform;

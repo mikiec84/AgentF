@@ -14,8 +14,8 @@ package de.mediadesign.gd1011.studiof.view
 
 	public class GUIElement extends Sprite
 	{
-		private var _hAlign = HAlign.LEFT;
-		private var _vAlign = VAlign.TOP;
+		private var _hAlign:String = HAlign.LEFT;
+		private var _vAlign:String = VAlign.TOP;
 
 		public var previousElement:GUIElement = null;
 		public var nextElement:GUIElement = null;
