@@ -23,6 +23,7 @@ package de.mediadesign.gd1011.studiof.view.mediators
         {
             var q:Quad = new Quad(50,10,0xFFFFFF);
             q.y += 5;
+            alpha = 0;
             addChildAt(q, 0);
 
 //            var bmd:BitmapData = new E1_texture(0,0);

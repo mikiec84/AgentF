@@ -23,7 +23,7 @@ package de.mediadesign.gd1011.studiof.model
         }
 
         public function render(time:Number):void
-        {
+        {   view.alpha = 1;
             view.x = position.x;
             view.y = position.y;
         }
