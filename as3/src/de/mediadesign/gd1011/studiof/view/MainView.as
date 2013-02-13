@@ -73,7 +73,7 @@ package de.mediadesign.gd1011.studiof.view
 
 		private function setGUIScale():void
 		{
-			_guiScale = 1/SystemInfo.getDP();
+			_guiScale = JSONReader.read("viewconfig")["gui"]["scale"]/SystemInfo.getDP();
 		}
 
 
