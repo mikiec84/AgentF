@@ -111,7 +111,11 @@ package de.mediadesign.gd1011.studiof.model {
                         if(observePlatform(position.y-speedTowardsMouse*time)>=_targetPlatform)
                         {
                            setNewPosition(position.y-speedTowardsMouse*time);
-                        }//else position.y = GameConsts.EBENE_HEIGHT*_targetPlatform;
+                        } else {
+                            if (currentPlatform == 2) {
+                                position.y = GameConsts.EBENE_HEIGHT*_targetPlatform;
+                            }
+                        }
                     }
                 }
             }
@@ -130,9 +134,7 @@ package de.mediadesign.gd1011.studiof.model {
                 _landIsntRunning = false;
                 land();
             }
-            if ((_landing != null && _landing.isComplete && _landStillInJuggler)    //landing complete
-                    //|| (_landing != null && _landStillInJuggler && _checkTargetPlatform != _targetPlatform)
-                    || (_landing != null && _landStillInJuggler && _pleaseMoveTowardsMouseAsSoonAsYouCan))
+            if ((_landing != null && _landing.isComplete && _landStillInJuggler) || (_landing != null && _landStillInJuggler && _pleaseMoveTowardsMouseAsSoonAsYouCan))
             {
                     _landStillInJuggler = false;
                     Starling.juggler.remove(_landing);
