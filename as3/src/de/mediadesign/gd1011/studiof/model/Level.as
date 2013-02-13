@@ -19,10 +19,12 @@ package de.mediadesign.gd1011.studiof.model
 
         private var _enemies:Vector.<Unit>;
         private var _player:Player;
+        public var scrBG:ScrollableBG;
 
         public function Level()
         {
             _enemies = new Vector.<Unit>();
+            scrBG = new ScrollableBG();
         }
 
         public function get enemies():Vector.<Unit>
@@ -84,6 +86,13 @@ package de.mediadesign.gd1011.studiof.model
             var registerUnitEvent:GameEvent = new GameEvent(GameConsts.REGISTER_UNIT, GameConsts.REGISTER_UNIT, unit);
             dispatcher.dispatchEvent(registerUnitEvent);
         }
+
+        public function initScrollBG(bgScroll:ScrollableBG):void
+        {
+            var registerBGEvent:GameEvent = new GameEvent(GameConsts.IMPL_BG, GameConsts.IMPL_BG, bgScroll);
+            dispatcher.dispatchEvent(registerBGEvent);
+        }
+
 
     }
 }

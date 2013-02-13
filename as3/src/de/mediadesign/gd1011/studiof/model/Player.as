@@ -159,7 +159,6 @@ package de.mediadesign.gd1011.studiof.model {
             }
         }
 
-
         public function startJump():void
         {                _targetPlatform = 2;
                         _checkTargetPlatform = 2;

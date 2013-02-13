@@ -5,7 +5,7 @@
  * Time: 09:21
  * To change this template use File | Settings | File Templates.
  */
-package de.mediadesign.gd1011.studiof.view.mediators
+package de.mediadesign.gd1011.studiof.view
 {
     import de.mediadesign.gd1011.studiof.model.components.PositionComponent;
 

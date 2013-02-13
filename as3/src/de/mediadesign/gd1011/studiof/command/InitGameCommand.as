@@ -43,18 +43,14 @@ package de.mediadesign.gd1011.studiof.command
         public var level:Level;
 
         [Inject]
-        public var moveProcesses:MoveProcess;
-
-        [Inject]
-        public var renderProcesses:RenderProcess;
-
-        [Inject]
         public var dispatcher:IEventDispatcher;
 
         override public function execute():void
         {
             gameLoop.registerProcess(moveProcess);
             gameLoop.registerProcess(renderProcess);
+            level.setPlayer(new Player());
+            moveProcess.addEntity(level.player);
             level.setPlayer(new Player(level));
             moveProcesses.addEntity(level.player);
 
@@ -64,6 +60,8 @@ package de.mediadesign.gd1011.studiof.command
             var img3:Image = Assets.getImage("AgentF_texture");
             var a:Sprite = new Sprite();
             a.addChild(img3);
+
+            renderProcess.registerRenderable(new Renderable(level.player.position, a));
 
             renderProcesses.registerRenderable(new Renderable(level.player.position, a));
             var ab:GameEvent = new GameEvent(GameConsts.ADD_SPRITE_TO_GAME, GameConsts.ADD_SPRITE_TO_GAME, a);

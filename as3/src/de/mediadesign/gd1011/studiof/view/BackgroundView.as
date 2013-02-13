@@ -17,6 +17,7 @@ package de.mediadesign.gd1011.studiof.view
 
     public class BackgroundView extends Sprite
     {
+        public var scrBackground:ScrollBackground;
 
         public function BackgroundView():void
         {

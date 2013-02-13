@@ -2,6 +2,7 @@ package de.mediadesign.gd1011.studiof.view.mediators {
     import de.mediadesign.gd1011.studiof.consts.GameConsts;
     import de.mediadesign.gd1011.studiof.events.GameEvent;
     import de.mediadesign.gd1011.studiof.model.Level;
+    import de.mediadesign.gd1011.studiof.model.Unit;
     import de.mediadesign.gd1011.studiof.services.GameLoop;
     import de.mediadesign.gd1011.studiof.services.JSONReader;
     import de.mediadesign.gd1011.studiof.view.GameView;
@@ -54,7 +55,7 @@ package de.mediadesign.gd1011.studiof.view.mediators {
 
 		private function add(event:GameEvent):void
 		{
-			contextView.addChildAt(event.dataObj, contextView.numChildren);
+            contextView.addChildAt(event.dataObj, contextView.numChildren);
 		}
 
 		private function handleTouch(e:TouchEvent):void

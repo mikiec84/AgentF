@@ -7,6 +7,7 @@
  */
 package de.mediadesign.gd1011.studiof
 {
+    import de.mediadesign.gd1011.studiof.command.ImplementBackgroundCommand;
     import de.mediadesign.gd1011.studiof.command.InitGameCommand;
     import de.mediadesign.gd1011.studiof.command.RegisterUnitCommand;
     import de.mediadesign.gd1011.studiof.consts.GameConsts;
@@ -67,6 +68,7 @@ package de.mediadesign.gd1011.studiof
         private function initCommands():void
         {
             commandMap.map(GameConsts.INIT_GAME).toCommand(InitGameCommand);
+            commandMap.map(GameConsts.IMPL_BG).toCommand(ImplementBackgroundCommand);
             commandMap.map(GameConsts.REGISTER_UNIT).toCommand(RegisterUnitCommand);
         }
 

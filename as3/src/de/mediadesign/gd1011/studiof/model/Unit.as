@@ -8,9 +8,7 @@
 package de.mediadesign.gd1011.studiof.model
 {
     import de.mediadesign.gd1011.studiof.consts.GameConsts;
-    import de.mediadesign.gd1011.studiof.consts.GameConsts;
     import de.mediadesign.gd1011.studiof.model.components.PositionComponent;
-    import de.mediadesign.gd1011.studiof.model.Renderable;
     import de.mediadesign.gd1011.studiof.model.components.VelocityComponent;
 
     public class Unit implements IMovable

@@ -18,11 +18,21 @@ package de.mediadesign.gd1011.studiof.services
 
         public var currentLevel:Level;
 
+        private var bullet:Unit;
+
+        [Inject]
+        public var moveProcess:MoveProcess;
+
 		public function GameLoop(currentLevel:Level):void
 		{
             processes = new Vector.<IProcess>();
             this.currentLevel = currentLevel;
 		}
+
+        public function initScroll():void
+        {
+            currentLevel.initScrollBG(currentLevel.scrBG);
+        }
 
         public function registerProcess(process:IProcess):void
         {
@@ -39,6 +49,7 @@ package de.mediadesign.gd1011.studiof.services
             if (currentLevel.player.shootNow()) {
                 currentLevel.player.shootBullet(e.passedTime);
             }
+
         }
 	}
 }
