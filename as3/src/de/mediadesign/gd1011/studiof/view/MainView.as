@@ -7,13 +7,20 @@
  */
 package de.mediadesign.gd1011.studiof.view
 {
-	import flash.geom.Rectangle;
+	import de.mediadesign.gd1011.studiof.SystemInfo;
+	import de.mediadesign.gd1011.studiof.services.JSONReader;
 
 	import starling.display.Sprite;
 	import starling.events.Event;
 
 	public class MainView extends Sprite
 	{
+		private var _appScale:Number = 1;
+		private var _appLeftOffset:Number = 0;
+		private var _appTopOffset:Number = 0;
+
+		private var _guiScale:Number = 1;
+
 	    public function MainView()
 		{
 			if(stage)
@@ -26,37 +33,50 @@ package de.mediadesign.gd1011.studiof.view
 		{
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 
-			var gameBounds:Rectangle = new Rectangle(0, 0, 1710, 870);
-			var deviceSize:Rectangle = new Rectangle(0, 0,
-					Math.max(stage.stageWidth, stage.stageHeight),
-					Math.min(stage.stageWidth, stage.stageHeight));
+			var gameBounds:Object = JSONReader.read("config")["gamebounds"];
+			setAppScale(gameBounds["width"],gameBounds["height"]);
+			trace("scale game view with scale factor "+_appScale);
 
-			var appScale:Number = 1;
-			var appLeftOffset:Number = 0;
-			var appTopOffset:Number = 0;
+			setGUIScale();
+			trace("scale GUI with scale factor "+_guiScale);
 
-			//if game bounds are wider than device
-			if ((deviceSize.width/deviceSize.height) < (gameBounds.width/gameBounds.height)) {
-				appScale = deviceSize.width / gameBounds.width;
-				appTopOffset = (deviceSize.height-gameBounds.height*appScale)*0.9;
-			}
-			else {
-				appScale = deviceSize.height / gameBounds.height;
-				appLeftOffset = deviceSize.width-gameBounds.width*appScale;
-			}
-
-
-			trace("scale game view with scale factor "+appScale);
 			var gameView:GameView = new GameView();
-			gameView.scaleX = gameView.scaleY = appScale;
-			gameView.x = appLeftOffset;
-			gameView.y = appTopOffset;
+			gameView.scaleX = gameView.scaleY = _appScale;
+			gameView.x = _appLeftOffset;
+			gameView.y = _appTopOffset;
 			addChild(gameView);
 
 
 			var userInterface:GUI = new GUI();
+			userInterface.scaleX = userInterface.scaleY = _guiScale;
 			addChild(userInterface);
 		}
+
+		private function setAppScale(gameWidth:Number, gameHeight:Number):void
+		{
+			var deviceWidth:Number = Math.max(stage.stageWidth, stage.stageHeight);
+			var deviceHeight:Number = Math.min(stage.stageWidth, stage.stageHeight);
+
+
+			//if game bounds are wider than device
+			if ((deviceWidth / deviceHeight) < (gameWidth / gameHeight))
+			{
+				_appScale = deviceWidth /gameWidth;
+				_appTopOffset = (deviceHeight - gameHeight * _appScale) * 0.9;
+			}
+			else
+			{
+				_appScale = deviceHeight / gameHeight;
+				_appLeftOffset = deviceWidth - gameWidth * _appScale;
+			}
+		}
+
+		private function setGUIScale():void
+		{
+			_guiScale = 1/SystemInfo.getDP();
+		}
+
+
 
 	}
 }
