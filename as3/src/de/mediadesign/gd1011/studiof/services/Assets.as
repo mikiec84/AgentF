@@ -16,7 +16,6 @@ package de.mediadesign.gd1011.studiof.services
 
     public class Assets
     {
-        private static var sContentScaleFactor:int = 1;
         private static var sTextures:Dictionary = new Dictionary();
         private static var sSounds:Dictionary = new Dictionary();
         private static var sTextureAtlas:TextureAtlas;
@@ -34,11 +33,11 @@ package de.mediadesign.gd1011.studiof.services
                 var data:Object = create(name);
                 
                 if (data is Bitmap)
-                    sTextures[name] = Texture.fromBitmap(data as Bitmap, true, false, sContentScaleFactor);
+                    sTextures[name] = Texture.fromBitmap(data as Bitmap, true, false);
 				else if (data is BitmapData)
-					sTextures[name] = Texture.fromBitmapData(data as BitmapData, true, false, sContentScaleFactor);
+					sTextures[name] = Texture.fromBitmapData(data as BitmapData, true, false);
                 else if (data is ByteArray)
-                    sTextures[name] = Texture.fromAtfData(data as ByteArray, sContentScaleFactor);
+                    sTextures[name] = Texture.fromAtfData(data as ByteArray);
             }
             
             return sTextures[name];
@@ -74,14 +73,8 @@ package de.mediadesign.gd1011.studiof.services
             }
         }
         
-        public static function prepareSounds():void
-        {
-            //sSounds["Step"] = new StepSound();   
-        }
-        
         private static function create(name:String):Object
         {
-            //var textureClass:Class = sContentScaleFactor == 1 ? AssetEmbeds_1x : AssetEmbeds_2x;
 			var textureClass:Class = Assets[name];
 			if(textureClass != null)
 			{
@@ -91,16 +84,6 @@ package de.mediadesign.gd1011.studiof.services
 			var classDefinition:Class = getDefinitionByName(name) as Class;
 			data = new classDefinition(0,0);
 			return data;
-        }
-        
-        public static function get contentScaleFactor():Number { return sContentScaleFactor; }
-        public static function set contentScaleFactor(value:Number):void 
-        {
-            for each (var texture:Texture in sTextures)
-                texture.dispose();
-            
-            sTextures = new Dictionary();
-            sContentScaleFactor = value < 1.5 ? 1 : 2; // assets are available for factor 1 and 2 
         }
     }
 }

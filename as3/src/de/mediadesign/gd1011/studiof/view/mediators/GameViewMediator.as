@@ -31,6 +31,32 @@ package de.mediadesign.gd1011.studiof.view.mediators {
 
 		private var _touchConfig:Object;
 		private var _validTouchID:int = -1;
+
+		
+		override public function initialize():void
+		{
+			_touchConfig = JSONReader.read("viewconfig")["game"];
+
+			contextView.addEventListener(TouchEvent.TOUCH, handleTouch);
+            contextView.addEventListener(EnterFrameEvent.ENTER_FRAME, game.update);
+
+            addContextListener(GameConsts.ADD_SPRITE_TO_GAME, add);
+
+            var initGameEvent:GameEvent = new GameEvent(GameConsts.INIT_GAME, GameConsts.INIT_GAME);
+            dispatcher.dispatchEvent(initGameEvent);
+		}
+
+		override public function destroy():void
+		{
+            contextView.removeEventListener(TouchEvent.TOUCH, handleTouch);
+            contextView.removeEventListener(EnterFrameEvent.ENTER_FRAME, game.update);
+		}
+
+		private function add(event:GameEvent):void
+		{
+			contextView.addChild(event.dataObj);
+		}
+
 		private function handleTouch(e:TouchEvent):void
 		{
 			//Handle starting touches
@@ -91,30 +117,6 @@ package de.mediadesign.gd1011.studiof.view.mediators {
 				}
 			}
 			return -1;
-		}
-		
-		override public function initialize():void
-		{
-			_touchConfig = JSONReader.read("viewconfig")["game"];
-
-			contextView.addEventListener(TouchEvent.TOUCH, handleTouch);
-            contextView.addEventListener(EnterFrameEvent.ENTER_FRAME, game.update);
-
-            addContextListener(GameConsts.ADD_SPRITE_TO_GAME, add);
-
-            var initGameEvent:GameEvent = new GameEvent(GameConsts.INIT_GAME, GameConsts.INIT_GAME);
-            dispatcher.dispatchEvent(initGameEvent);
-		}
-
-        private function add(event:GameEvent):void
-        {
-            contextView.addChild(event.dataObj);
-        }
-
-		override public function destroy():void
-		{
-            contextView.removeEventListener(TouchEvent.TOUCH, handleTouch);
-            contextView.removeEventListener(EnterFrameEvent.ENTER_FRAME, game.update);
 		}
 	}
 }
