@@ -1,5 +1,10 @@
 {
-    "GUI":{
+    "gui":{
         "padding":20
+    },
+    "game":{
+        "hTouch":300,
+        "vTouch":[0,145,290,435,580,725,870],
+        "defaultZone":2
     }
 }

@@ -1,10 +1,13 @@
 {
-    "player":{
-            "UnitType":"player",
+    "PLAYER":{
             "platform":2,
             "healthPoints":3,
             "weapon":"MACHINE_GUN",
-            "movement":"MANUAL"
+            "einpendelStaerke":30,
+            "speedTowardsMouse":900,
+            "jumpSpeedBeimSprung":1,
+            "jumpSpeedBeimFall":1,
+            "jumpSpeedBeimEinpendeln":4
            }
 
 }
