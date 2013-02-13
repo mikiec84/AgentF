@@ -1,11 +1,15 @@
 package de.mediadesign.gd1011.studiof.services
 {
     import flash.display.Bitmap;
-    import flash.media.Sound;
+	import flash.display.BitmapData;
+	import flash.media.Sound;
     import flash.utils.ByteArray;
     import flash.utils.Dictionary;
-    
-    import starling.text.BitmapFont;
+	import flash.utils.getDefinitionByName;
+
+	import starling.display.Image;
+
+	import starling.text.BitmapFont;
     import starling.text.TextField;
     import starling.textures.Texture;
     import starling.textures.TextureAtlas;
@@ -17,7 +21,12 @@ package de.mediadesign.gd1011.studiof.services
         private static var sSounds:Dictionary = new Dictionary();
         private static var sTextureAtlas:TextureAtlas;
         private static var sBitmapFontsLoaded:Boolean;
-        
+
+		public static function getImage(name:String):Image
+		{
+			return new Image(getTexture(name));
+		}
+
         public static function getTexture(name:String):Texture
         {
             if (sTextures[name] == undefined)
@@ -26,6 +35,8 @@ package de.mediadesign.gd1011.studiof.services
                 
                 if (data is Bitmap)
                     sTextures[name] = Texture.fromBitmap(data as Bitmap, true, false, sContentScaleFactor);
+				else if (data is BitmapData)
+					sTextures[name] = Texture.fromBitmapData(data as BitmapData, true, false, sContentScaleFactor);
                 else if (data is ByteArray)
                     sTextures[name] = Texture.fromAtfData(data as ByteArray, sContentScaleFactor);
             }
@@ -71,8 +82,15 @@ package de.mediadesign.gd1011.studiof.services
         private static function create(name:String):Object
         {
             //var textureClass:Class = sContentScaleFactor == 1 ? AssetEmbeds_1x : AssetEmbeds_2x;
-			var textureClass:Class = Assets;
-            return new textureClass[name];
+			var textureClass:Class = Assets[name];
+			if(textureClass != null)
+			{
+				var data:Object = new textureClass;
+				return data;
+			}
+			var classDefinition:Class = getDefinitionByName(name) as Class;
+			data = new classDefinition(0,0);
+			return data;
         }
         
         public static function get contentScaleFactor():Number { return sContentScaleFactor; }

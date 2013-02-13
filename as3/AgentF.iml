@@ -8,6 +8,9 @@
             <entry library-name="libs" library-level="project">
               <dependency linkage="Merged" />
             </entry>
+            <entry library-name="assetlibs" library-level="project">
+              <dependency linkage="Include" />
+            </entry>
           </entries>
           <sdk name="flexsdk" />
         </dependencies>
@@ -31,6 +34,7 @@
     <orderEntry type="jdk" jdkName="flexsdk" jdkType="Flex SDK Type (new)" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" exported="" name="libs" level="project" />
+    <orderEntry type="library" exported="" name="assetlibs" level="project" />
   </component>
 </module>
 
