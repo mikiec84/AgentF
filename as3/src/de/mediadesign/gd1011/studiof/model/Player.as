@@ -95,20 +95,23 @@ package de.mediadesign.gd1011.studiof.model {
         private function administerPlayerTowardsMouseMovement(time:Number):void
         {   //trace(targetPlatform, currentPlatform);
             Starling.juggler.purge();
-            if (currentPlatform<_targetPlatform)
-            {
-                if(observePlatform(speedTowardsMouse*time+position.y)<_targetPlatform)
+            if (_targetPlatform>1) {
+                if (currentPlatform<_targetPlatform)
                 {
-                    setNewPosition(speedTowardsMouse*time+position.y);
-                } else position.y = GameConsts.EBENE_HEIGHT*_targetPlatform;
-            }
-            else
-            {
-                if (currentPlatform>=_targetPlatform && _targetPlatform>1) {
-                    if(observePlatform(position.y-speedTowardsMouse*time)>_targetPlatform)
+                    if(observePlatform(speedTowardsMouse*time+position.y)<_targetPlatform)
                     {
-                       setNewPosition(position.y-speedTowardsMouse*time);
+                        setNewPosition(speedTowardsMouse*time+position.y);
                     } else position.y = GameConsts.EBENE_HEIGHT*_targetPlatform;
+                }
+                else
+                {
+                    if (currentPlatform>=_targetPlatform) {
+                        trace("currentPlatform ist größer als targetPlatform");
+                        if(observePlatform(position.y-speedTowardsMouse*time)>=_targetPlatform)
+                        {
+                           setNewPosition(position.y-speedTowardsMouse*time);
+                        }//else position.y = GameConsts.EBENE_HEIGHT*_targetPlatform;
+                    }
                 }
             }
         }
