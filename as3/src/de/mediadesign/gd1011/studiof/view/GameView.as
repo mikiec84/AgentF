@@ -9,8 +9,9 @@ package de.mediadesign.gd1011.studiof.view
 {
 	import starling.display.Quad;
 	import starling.display.Sprite;
+    import starling.events.Event;
 
-	public class GameView extends Sprite
+    public class GameView extends Sprite
 	{
 
         public function GameView()
