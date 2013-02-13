@@ -38,13 +38,9 @@ package de.mediadesign.gd1011.studiof.services
                 target.update(e.passedTime);
             }
 
-            bullet = currentLevel.player.shoot(e.passedTime);
-
-            if (bullet != null)
-            {
-                currentLevel.register(bullet);
+            if (currentLevel.player.shootNow()) {
+                currentLevel.player.shootBullet(e.passedTime);
             }
-
         }
 	}
 }

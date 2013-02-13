@@ -35,14 +35,16 @@ package de.mediadesign.gd1011.studiof.model {
         private var _targetPlatform:int              = 2;
         private var _tweenedPosition:PositionComponent;
         private var _checkTargetPlatform:int         = 2;
+        private var _currentLevel:Level;
 
         private var ammunition:Vector.<Unit>;
         private var cooldown:Number = 0;
         private var fireRate:Number = 5;        // Sollte später von JSON eingelesen werden !!!
 
 
-        public function Player()
+        public function Player(currentLevel:Level)
         {   super(1, 1, 1);
+            this._currentLevel = currentLevel;
             ammunition = new Vector.<Unit>();
 
             JSONExtractedInformation = JSONReader.read("config")["PLAYER"];
@@ -66,7 +68,7 @@ package de.mediadesign.gd1011.studiof.model {
 
                 checkPlayerPosition();
 
-                administerTweens();
+                administerTweens(time);
 
                 if (!_anyTweensInMotion)
                 {
@@ -91,11 +93,11 @@ package de.mediadesign.gd1011.studiof.model {
         }
 
         private function administerPlayerTowardsMouseMovement(time:Number):void
-        {   trace(targetPlatform);
+        {   //trace(targetPlatform, currentPlatform);
             Starling.juggler.purge();
             if (currentPlatform<_targetPlatform)
             {
-                if(observePlatform(speedTowardsMouse*time+position.y)<=_targetPlatform)
+                if(observePlatform(speedTowardsMouse*time+position.y)<_targetPlatform)
                 {
                     setNewPosition(speedTowardsMouse*time+position.y);
                 } else position.y = GameConsts.EBENE_HEIGHT*_targetPlatform;
@@ -103,7 +105,7 @@ package de.mediadesign.gd1011.studiof.model {
             else
             {
                 if (currentPlatform>=_targetPlatform && _targetPlatform>1) {
-                    if(observePlatform(position.y-speedTowardsMouse*time)>=_targetPlatform)
+                    if(observePlatform(position.y-speedTowardsMouse*time)>_targetPlatform)
                     {
                        setNewPosition(position.y-speedTowardsMouse*time);
                     } else position.y = GameConsts.EBENE_HEIGHT*_targetPlatform;
@@ -111,10 +113,11 @@ package de.mediadesign.gd1011.studiof.model {
             }
         }
 
-        private function administerTweens():void
+        private function administerTweens(time:Number):void
         {
             if (_up != null && _up.isComplete && _comeDownIsntRunning)
             {
+                shootBullet(time);
                 _comeDownIsntRunning = false;
                 comeDown();
             }
@@ -127,10 +130,20 @@ package de.mediadesign.gd1011.studiof.model {
             {
                 _landStillInJuggler = false;
                 Starling.juggler.remove(_landing);
+                _landing = null;
                 _anyTweensInMotion = false;
             }
 
             _checkTargetPlatform = _targetPlatform;
+        }
+
+        public function shootBullet(time:Number):void
+        {
+            var bullet = shoot(time);
+            if (bullet != null)
+            {
+                _currentLevel.register(bullet);
+            }
         }
 
 
@@ -192,9 +205,15 @@ package de.mediadesign.gd1011.studiof.model {
         public function shoot(time:Number):Unit
         {
             cooldown += time;
-            if (cooldown >= (1 / fireRate))
+            if (cooldown >= (1 / fireRate) || (_up != null && _up.isComplete && _comeDownIsntRunning))
             {
-                var bullet:Unit = new Unit(1, currentPlatform, 600);
+                if (currentPlatform == 1 && (_landing != null && !_landIsntRunning && !_landing.isComplete)) {
+                    var bullet:Unit = new Unit(1, 2, 600);
+                }
+                else
+                {
+                    var bullet:Unit = new Unit(1, currentPlatform, 600);
+                }
                 bullet.position.y += 100;
                 ammunition.push(bullet);
                 cooldown = 0;
@@ -203,5 +222,9 @@ package de.mediadesign.gd1011.studiof.model {
             else return null;
         }
 
+        public function shootNow():Boolean
+        {
+            return (!_anyTweensInMotion || (_landing != null && !_landIsntRunning && !_landing.isComplete));
+        }
     }
 }

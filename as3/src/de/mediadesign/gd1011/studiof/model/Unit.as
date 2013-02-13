@@ -53,7 +53,7 @@ package de.mediadesign.gd1011.studiof.model
         public function observePlatform(y:int):int
         {
             var newEbene:int = 10;
-            if (y>=0)                                                          {newEbene = 0;}
+            if (y>=0)                                                            {newEbene = 0;}
             if (y+1>GameConsts.STAGE_HEIGHT/6)                                   {newEbene = 1;}
             if (y+1>GameConsts.STAGE_HEIGHT/3)                                   {newEbene = 2;}
             if (y+1>GameConsts.STAGE_HEIGHT/2)                                   {newEbene = 3;}

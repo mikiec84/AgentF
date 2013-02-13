@@ -55,7 +55,7 @@ package de.mediadesign.gd1011.studiof.command
         {
             gameLoop.registerProcess(moveProcess);
             gameLoop.registerProcess(renderProcess);
-            level.setPlayer(new Player());
+            level.setPlayer(new Player(level));
             moveProcesses.addEntity(level.player);
 
             var q:Quad = new Quad(120, 120, 0x0F00F00, false);
