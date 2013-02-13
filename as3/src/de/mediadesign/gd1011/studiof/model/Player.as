@@ -18,7 +18,8 @@ package de.mediadesign.gd1011.studiof.model {
     public class Player extends Unit implements IMovable
     {
         // config inhalt //
-        private var einpendelStaerke:Number;              // Wie viele pixel tief er ins wasser klatscht wenn er unten aufkommt
+        private var einpendelStaerkeKlein:Number;         // Wie viele pixel tief er ins wasser klatscht wenn er unten aufkommt von ebene 1 fallend
+        private var einpendelStaerkeGross:Number;         // Wie viele pixel tief er ins wasser klatscht wenn er unten aufkommt von ebene 0 fallend
         private var speedTowardsMouse:int;                // Wie schnell der player sich auf die maus zubewegt während geklickt ist
         private var jumpSpeedBeimSprung:Number;           // Wie lange der tween für das hochfliegen braucht um vollständig abgespielt zu werden in sekunden
         private var jumpSpeedBeimFall:Number;             // Wie lange der tween für den fall braucht um vollständig abgespielt zu werden in sekunden
@@ -40,7 +41,8 @@ package de.mediadesign.gd1011.studiof.model {
 
         private var ammunition:Vector.<Unit>;
         private var cooldown:Number = 0;
-        private var fireRate:Number = 5;        // Sollte später von JSON eingelesen werden !!!
+        private var fireRate:Number = 5;
+        // Sollte später von JSON eingelesen werden !!!
 
 
         public function Player(currentLevel:Level)
@@ -52,7 +54,8 @@ package de.mediadesign.gd1011.studiof.model {
             currentPlatform = JSONExtractedInformation["platform"];
             healthPoints = JSONExtractedInformation["healthPoints"];
             //weapon = JSONExtractedInformation["weapon"];
-            einpendelStaerke = JSONExtractedInformation["einpendelStaerke"];
+            einpendelStaerkeKlein = JSONExtractedInformation["einpendelStaerkeKlein"];
+            einpendelStaerkeGross = JSONExtractedInformation["einpendelStaerkeGross"];
             speedTowardsMouse = JSONExtractedInformation["speedTowardsMouse"];
             jumpSpeedBeimSprung = JSONExtractedInformation["jumpSpeedBeimSprung"];
             jumpSpeedBeimFall = JSONExtractedInformation["jumpSpeedBeimFall"];
@@ -191,7 +194,13 @@ package de.mediadesign.gd1011.studiof.model {
             _down  = new  Tween(_tweenedPosition, jumpSpeedBeimFall, Transitions.EASE_IN);
             if (currentPlatform < 2)
             {
-                _down.moveTo(_tweenedPosition.x, GameConsts.STAGE_HEIGHT/3+einpendelStaerke);
+                if (currentPlatform == 1) {
+                    _down.moveTo(_tweenedPosition.x, GameConsts.STAGE_HEIGHT/3+einpendelStaerkeKlein);
+                }
+                else
+                {
+                    _down.moveTo(_tweenedPosition.x, GameConsts.STAGE_HEIGHT/3+einpendelStaerkeGross);
+                }
                 Starling.juggler.add(_down);
                 _landIsntRunning = true;
             }
@@ -199,7 +208,13 @@ package de.mediadesign.gd1011.studiof.model {
 
         private function land():void
         {
-            _landing = new Tween(_tweenedPosition, jumpSpeedBeimEinpendeln, Transitions.EASE_OUT_ELASTIC);
+            if (_tweenedPosition.x-GameConsts.STAGE_HEIGHT/3 == einpendelStaerkeKlein) {
+                _landing = new Tween(_tweenedPosition, jumpSpeedBeimEinpendeln*0.2, Transitions.EASE_OUT_ELASTIC);
+            }
+            else
+            {
+                _landing = new Tween(_tweenedPosition, jumpSpeedBeimEinpendeln*3, Transitions.EASE_OUT_ELASTIC);
+            }
             _landing.moveTo(_tweenedPosition.x,  GameConsts.STAGE_HEIGHT/3+1);//+1 weil ansonsten der player in ebene 1 endet aus welchem grund auch immer. da current 1 ist aber target 2 wird er ~20pixel nach oben gezogen, und dann wieder auf ebene 2 hochkorrigiert, wodurch er auf der stelle zu springen scheint. +1 verhindert das.
             Starling.juggler.add(_landing);
             _landStillInJuggler = true;
