@@ -1,4 +1,4 @@
-package de.mediadesign.gd1011.studiof.assets
+package de.mediadesign.gd1011.studiof.services
 {
     import flash.display.Bitmap;
     import flash.media.Sound;

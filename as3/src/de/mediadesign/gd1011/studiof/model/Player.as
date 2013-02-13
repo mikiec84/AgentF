@@ -80,9 +80,9 @@ package de.mediadesign.gd1011.studiof.model {
                     if (currentPlatform<_targetPlatform)
                     { //trace(observePlatform(speedTowardsMouse*time*6+position.y));
                         //trace(_targetPlatform);
-                        if(observePlatform(speedTowardsMouse*time*20+position.y)<=_targetPlatform)
+                        if(observePlatform(speedTowardsMouse*time+position.y)<=_targetPlatform)
                         {
-                            position.y+=speedTowardsMouse*time*20;
+                            position.y+=speedTowardsMouse*time;
                         }
                     }
                     else

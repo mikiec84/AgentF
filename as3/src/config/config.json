@@ -4,7 +4,7 @@
             "healthPoints":3,
             "weapon":"MACHINE_GUN",
             "einpendelStaerke":30,
-            "speedTowardsMouse":20,
+            "speedTowardsMouse":900,
             "jumpSpeedBeimSprung":1,
             "jumpSpeedBeimFall":1,
             "jumpSpeedBeimEinpendeln":1
