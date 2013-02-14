@@ -70,6 +70,7 @@ package de.mediadesign.gd1011.studiof.view.mediators {
 				{
 					vTouchPos = initTouches[i].getLocation(contextView).y;
 					platform = getVTouchzone(vTouchPos);
+					trace(platform);
 					if(platform>=0 && _touchConfig["vTouch"][platform]<=vTouchPos && _touchConfig["vTouch"][platform+1]>=vTouchPos)
 					{
 						_validTouchID = initTouches[i].id;
@@ -90,6 +91,7 @@ package de.mediadesign.gd1011.studiof.view.mediators {
 				{
 					vTouchPos = touches[j].getLocation(contextView).y;
 					platform = getVTouchzone(vTouchPos);
+					trace(platform);
 					if(level.player != null && platform >=0 && platform != level.player.targetPlatform)
 					{
 						level.player.targetPlatform = platform;
@@ -112,9 +114,9 @@ package de.mediadesign.gd1011.studiof.view.mediators {
 
 		private function getVTouchzone(vTouchPos:Number):int
 		{
-			for(var i:int = 0;i<_touchConfig["vTouch"].length-1;i++)
+			for(var i:int = _touchConfig["vTouch"].length-1 ;i>=0;i--)
 			{
-				if(_touchConfig["vTouch"][i]<=vTouchPos && _touchConfig["vTouch"][i+1]>=vTouchPos)
+				if(vTouchPos>=_touchConfig["vTouch"][i])
 				{
 					return i;
 				}
