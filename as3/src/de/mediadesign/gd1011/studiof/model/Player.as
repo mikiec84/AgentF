@@ -70,7 +70,7 @@ package de.mediadesign.gd1011.studiof.model {
         override public function move(time:Number):void
         {
             if (assertCorrectInitialization())
-            {  //trace(currentPlatform+", "+_targetPlatform);
+            {
                 currentPlatform = observePlatform(position.y);
 
                 checkPlayerPosition();
@@ -79,7 +79,7 @@ package de.mediadesign.gd1011.studiof.model {
 
                 if (!_anyTweensInMotion)
                 {
-                    administerPlayerTowardsMouseMovement(time); //trace(_targetPlatform);
+                    administerPlayerTowardsMouseMovement(time);
                 }
                 else
                 {
@@ -92,6 +92,7 @@ package de.mediadesign.gd1011.studiof.model {
                     {*/
                         position.y = _tweenedPosition.y;
                     //}
+                    if (_targetPlatform == 6) _targetPlatform = 2;
                 }
             }
             else trace("----------Function Move failed, because Player not correctly initialized: "+position.x+","+position.y+","+velocity+","+currentPlatform+","+this+","+_tweenedPosition.x+","+_tweenedPosition.y);
@@ -112,7 +113,7 @@ package de.mediadesign.gd1011.studiof.model {
             if (_targetPlatform>1) {
                 if (currentPlatform<_targetPlatform)
                 {
-                    if((observePlatform(speedTowardsMouse*time+position.y)<_targetPlatform))// || (currentPlatform == 4 && targetPlatform == 6))
+                    if((observePlatform(speedTowardsMouse*time+position.y)<_targetPlatform))
                     {
                         setNewPosition(speedTowardsMouse*time+position.y);
                     }
@@ -125,7 +126,6 @@ package de.mediadesign.gd1011.studiof.model {
                 else
                 {
                     if (currentPlatform>=_targetPlatform) {
-                        //trace("currentPlatform ist größer als targetPlatform");
                         if(observePlatform(position.y-speedTowardsMouse*time)>=_targetPlatform)
                         {
                            setNewPosition(position.y-speedTowardsMouse*time);
@@ -174,7 +174,7 @@ package de.mediadesign.gd1011.studiof.model {
 
         public function shootBullet(time:Number):void
         {
-            var bullet = shoot(time);
+            var bullet:Unit = shoot(time);
             if (bullet != null)
             {
                 _currentLevel.register(bullet);
