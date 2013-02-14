@@ -5,7 +5,7 @@
             "weapon":"MACHINE_GUN",
             "einpendelStaerkeKlein":30,
             "einpendelStaerkeGross":90,
-            "speedTowardsMouse":900,
+            "speedTowardsMouse":1200,
             "jumpSpeedBeimSprung":1,
             "jumpSpeedBeimFall":1,
             "jumpSpeedBeimEinpendeln":4,

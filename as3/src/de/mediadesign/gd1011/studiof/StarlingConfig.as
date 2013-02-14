@@ -22,12 +22,14 @@ package de.mediadesign.gd1011.studiof
     import de.mediadesign.gd1011.studiof.view.GUI;
     import de.mediadesign.gd1011.studiof.view.GameView;
     import de.mediadesign.gd1011.studiof.view.MainView;
-    import de.mediadesign.gd1011.studiof.view.mediators.BackgroundViewMediator;
+	import de.mediadesign.gd1011.studiof.view.StartScreenView;
+	import de.mediadesign.gd1011.studiof.view.mediators.BackgroundViewMediator;
     import de.mediadesign.gd1011.studiof.view.mediators.GUIMediator;
     import de.mediadesign.gd1011.studiof.view.mediators.GameViewMediator;
     import de.mediadesign.gd1011.studiof.view.mediators.MainViewMediator;
+	import de.mediadesign.gd1011.studiof.view.mediators.StartScreenViewMediator;
 
-    import flash.events.IEventDispatcher;
+	import flash.events.IEventDispatcher;
 
     import org.swiftsuspenders.Injector;
 
@@ -73,6 +75,7 @@ package de.mediadesign.gd1011.studiof
         public function initMediators() : void
         {
             mediatorMap.map(MainView).toMediator(MainViewMediator);
+			mediatorMap.map(StartScreenView).toMediator(StartScreenViewMediator);
 			mediatorMap.map(GameView).toMediator(GameViewMediator);
 			mediatorMap.map(GUI).toMediator(GUIMediator);
             mediatorMap.map(BackgroundView).toMediator(BackgroundViewMediator);

@@ -20,6 +20,10 @@ package de.mediadesign.gd1011.studiof.view
 		private var _appTopOffset:Number = 0;
 
 		private var _guiScale:Number = 1;
+		private var _guiWidth:Number = 0;
+		private var _guiHeight:Number = 0;
+
+		private var _startScreen:StartScreenView;
 
 	    public function MainView()
 		{
@@ -29,7 +33,7 @@ package de.mediadesign.gd1011.studiof.view
 				addEventListener(Event.ADDED_TO_STAGE, init);
 		}
 
-		public function init(e:Event = null):void
+		private function init(e:Event = null):void
 		{
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 
@@ -40,16 +44,24 @@ package de.mediadesign.gd1011.studiof.view
 			setGUIScale();
 			trace("scale GUI with scale factor "+_guiScale);
 
+			_startScreen = new StartScreenView(_guiWidth,_guiHeight);
+			_startScreen.scaleX = _startScreen.scaleY = _guiScale;
+			addChild(_startScreen);
+		}
+
+		public function initGameView():void
+		{
 			var gameView:GameView = new GameView();
 			gameView.scaleX = gameView.scaleY = _appScale;
 			gameView.x = _appLeftOffset;
 			gameView.y = _appTopOffset;
-			addChild(gameView);
-
 
 			var userInterface:GUI = new GUI();
 			userInterface.scaleX = userInterface.scaleY = _guiScale;
+
+			addChild(gameView);
 			addChild(userInterface);
+			removeChild(_startScreen);
 		}
 
 		private function setAppScale(gameWidth:Number, gameHeight:Number):void
@@ -74,6 +86,8 @@ package de.mediadesign.gd1011.studiof.view
 		private function setGUIScale():void
 		{
 			_guiScale = JSONReader.read("viewconfig")["gui"]["scale"]/SystemInfo.getDP();
+			_guiWidth = stage.stageWidth/_guiScale;
+			_guiHeight = stage.stageHeight/_guiScale;
 		}
 
 

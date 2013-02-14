@@ -7,8 +7,10 @@ package de.mediadesign.gd1011.studiof.view.mediators {
     import de.mediadesign.gd1011.studiof.view.GameView;
 
     import flash.events.IEventDispatcher;
+	import flash.geom.Point;
+	import flash.utils.Timer;
 
-    import robotlegs.extensions.starlingViewMap.impl.StarlingMediator;
+	import robotlegs.extensions.starlingViewMap.impl.StarlingMediator;
 
     import starling.events.EnterFrameEvent;
     import starling.events.Touch;
@@ -31,7 +33,8 @@ package de.mediadesign.gd1011.studiof.view.mediators {
 
 		private var _touchConfig:Object;
 		private var _validTouchID:int = -1;
-
+		private var _startTouchPos:Point;
+		private var _timeStamp:Number;
 		
 		override public function initialize():void
 		{
@@ -70,10 +73,12 @@ package de.mediadesign.gd1011.studiof.view.mediators {
 				{
 					vTouchPos = initTouches[i].getLocation(contextView).y;
 					platform = getVTouchzone(vTouchPos);
-					//trace(platform);
+
 					if(platform>=0 && _touchConfig["vTouch"][platform]<=vTouchPos && _touchConfig["vTouch"][platform+1]>=vTouchPos)
 					{
 						_validTouchID = initTouches[i].id;
+						_startTouchPos = initTouches[i].getLocation(contextView);
+						_timeStamp = e.timestamp;
 						if(level.player != null && platform >=0 && platform != level.player.targetPlatform)
 						{
 							level.player.targetPlatform = platform;
@@ -91,25 +96,52 @@ package de.mediadesign.gd1011.studiof.view.mediators {
 				{
 					vTouchPos = touches[j].getLocation(contextView).y;
 					platform = getVTouchzone(vTouchPos);
-					//trace(platform);
+
+					//Move-down
+					if(touches[j].getMovement(contextView).y>0 && platform < _touchConfig["defaultZone"])
+					{
+						if(level.player != null)
+						{
+
+						}
+					}
+
+					//Switch platform
 					if(level.player != null && platform >=0 && platform != level.player.targetPlatform)
 					{
 						level.player.targetPlatform = platform;
 					}
 				}
 
+
+
 			//Handle end touch
 			var endingTouches:Vector.<Touch> = e.getTouches(contextView, TouchPhase.ENDED);
 			for (var k:int = 0; k < endingTouches.length; k++)
 				if (endingTouches[k].id == _validTouchID)
 				{
+					//Interpret if its a tap
+					if(e.timestamp-_timeStamp < _touchConfig["max-tap-duration"] &&
+						_startTouchPos.x == endingTouches[k].getLocation(contextView).x &&
+					   	_startTouchPos.y == endingTouches[k].getLocation(contextView).y)
+					{
+						onTap(_startTouchPos.clone());
+					}
+
+					//On-release-event for the player
 					if(level.player != null)
 					{
 						level.player.startJump();
 						_validTouchID = -1;
 					}
+					_startTouchPos = null;
 
 				}
+		}
+
+		private function onTap(tapPosition:Point = null):void
+		{
+
 		}
 
 		private function getVTouchzone(vTouchPos:Number):int

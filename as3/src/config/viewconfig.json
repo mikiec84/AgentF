@@ -6,6 +6,7 @@
     "game":{
         "hTouch":300,
         "vTouch":[0,145,290,435,580,725,850],
-        "defaultZone":2
+        "defaultZone":2,
+        "max-tap-duration":0.2
     }
 }
