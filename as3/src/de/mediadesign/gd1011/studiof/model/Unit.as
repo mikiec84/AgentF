@@ -114,7 +114,7 @@ package de.mediadesign.gd1011.studiof.model
 
         public function setNewPosition(y:int):void
         {
-            if (y>=GameConsts.EBENE_HEIGHT*2 && y<=GameConsts.EBENE_HEIGHT*5) {
+            if (y>=GameConsts.EBENE_HEIGHT*2 && y<=GameConsts.EBENE_HEIGHT*6) {
                 _position.y = y;
             }
         }
