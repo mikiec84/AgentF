@@ -7,8 +7,9 @@
  */
 package de.mediadesign.gd1011.studiof.services
 {
+    import de.mediadesign.gd1011.studiof.consts.GameConsts;
     import de.mediadesign.gd1011.studiof.model.Level;
-    import de.mediadesign.gd1011.studiof.model.Unit;
+    import de.mediadesign.gd1011.studiof.model.ScrollableBG;
 
     import starling.events.EnterFrameEvent;
 
@@ -17,8 +18,6 @@ package de.mediadesign.gd1011.studiof.services
         public var processes:Vector.<IProcess>;
 
         public var currentLevel:Level;
-
-        private var bullet:Unit;
 
         [Inject]
         public var moveProcess:MoveProcess;
@@ -31,7 +30,8 @@ package de.mediadesign.gd1011.studiof.services
 
         public function initScroll():void
         {
-            currentLevel.initScrollBG(currentLevel.scrBG);
+            currentLevel.scrollBGs.push(new ScrollableBG());
+            currentLevel.initScrollBG(currentLevel.scrollBGs[currentLevel.scrollBGs.length-1]);
         }
 
         public function registerProcess(process:IProcess):void
@@ -46,8 +46,18 @@ package de.mediadesign.gd1011.studiof.services
                 target.update(e.passedTime);
             }
 
-            if (currentLevel.player.shootNow()) {
+            if (currentLevel.player.shootNow())
+            {
                 currentLevel.player.shootBullet(e.passedTime);
+            }
+            //trace(currentLevel.scrollBGs.length);
+            if (currentLevel.scrollBGs[0].position.x < 0 && currentLevel.scrollBGs.length < 4 )
+            {
+                initScroll();
+            }
+            if (currentLevel.scrollBGs[0].position.x < -844)
+            {
+                currentLevel.scrollBGs.shift();
             }
 
         }

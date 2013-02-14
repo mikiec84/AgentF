@@ -82,8 +82,6 @@ package de.mediadesign.gd1011.studiof.view.mediators {
 				}
 			}
 
-
-
 			//Handle moves
 			var touches:Vector.<Touch> = e.getTouches(contextView, TouchPhase.MOVED);
 			for (var j:int = 0; j < touches.length; j++)

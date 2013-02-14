@@ -9,6 +9,7 @@ package de.mediadesign.gd1011.studiof.model
 {
     import de.mediadesign.gd1011.studiof.consts.GameConsts;
     import de.mediadesign.gd1011.studiof.events.GameEvent;
+    import de.mediadesign.gd1011.studiof.view.ScrollBackgroundView;
 
     import flash.events.IEventDispatcher;
 
@@ -19,12 +20,13 @@ package de.mediadesign.gd1011.studiof.model
 
         private var _enemies:Vector.<Unit>;
         private var _player:Player;
-        public var scrBG:ScrollableBG;
+
+        public var scrollBGs:Vector.<ScrollableBG> = new Vector.<ScrollableBG>();
 
         public function Level()
         {
             _enemies = new Vector.<Unit>();
-            scrBG = new ScrollableBG();
+            scrollBGs = new Vector.<ScrollableBG>;
         }
 
         public function get enemies():Vector.<Unit>
@@ -61,7 +63,6 @@ package de.mediadesign.gd1011.studiof.model
                     _enemies.push(a[1][ii]);
                 }
             }
-
         }
 
         public function get player():Player

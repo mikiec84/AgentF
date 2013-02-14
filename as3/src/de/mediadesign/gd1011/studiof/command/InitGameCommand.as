@@ -49,10 +49,8 @@ package de.mediadesign.gd1011.studiof.command
         {
             gameLoop.registerProcess(moveProcess);
             gameLoop.registerProcess(renderProcess);
-            level.setPlayer(new Player());
-            moveProcess.addEntity(level.player);
             level.setPlayer(new Player(level));
-            moveProcesses.addEntity(level.player);
+            moveProcess.addEntity(level.player);
 
             var q:Quad = new Quad(120, 120, 0x0F00F00, false);
 
@@ -63,7 +61,7 @@ package de.mediadesign.gd1011.studiof.command
 
             renderProcess.registerRenderable(new Renderable(level.player.position, a));
 
-            renderProcesses.registerRenderable(new Renderable(level.player.position, a));
+            renderProcess.registerRenderable(new Renderable(level.player.position, a));
             var ab:GameEvent = new GameEvent(GameConsts.ADD_SPRITE_TO_GAME, GameConsts.ADD_SPRITE_TO_GAME, a);
             dispatcher.dispatchEvent(ab);
         }

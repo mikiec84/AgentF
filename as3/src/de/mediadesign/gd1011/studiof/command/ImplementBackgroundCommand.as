@@ -9,11 +9,12 @@ package de.mediadesign.gd1011.studiof.command
 {
     import de.mediadesign.gd1011.studiof.consts.GameConsts;
     import de.mediadesign.gd1011.studiof.events.GameEvent;
+    import de.mediadesign.gd1011.studiof.model.Level;
     import de.mediadesign.gd1011.studiof.model.Renderable;
     import de.mediadesign.gd1011.studiof.model.ScrollableBG;
     import de.mediadesign.gd1011.studiof.services.MoveProcess;
     import de.mediadesign.gd1011.studiof.services.RenderProcess;
-    import de.mediadesign.gd1011.studiof.view.ScrollBackground;
+    import de.mediadesign.gd1011.studiof.view.ScrollBackgroundView;
 
     import flash.events.IEventDispatcher;
 
@@ -35,10 +36,17 @@ package de.mediadesign.gd1011.studiof.command
         [Inject]
         public var dispatcher:IEventDispatcher;
 
+        [Inject]
+        public var level:Level;
+
         override public function execute():void
         {
-            var view:Sprite = new ScrollBackground();
+            var view:Sprite = new ScrollBackgroundView();
             var scrBG:ScrollableBG = event.dataObj;
+
+            // location of creation
+            scrBG.position.x = (level.scrollBGs.length - 1) * (GameConsts.STAGE_WIDTH / 2 -15);
+            scrBG.position.y = + 180;
 
             moveProcess.addEntity(event.dataObj);
             renderProcess.registerRenderable(new Renderable(scrBG.position, view));

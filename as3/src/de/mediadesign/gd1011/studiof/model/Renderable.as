@@ -14,7 +14,7 @@ package de.mediadesign.gd1011.studiof.model
     public class Renderable
     {
         private var position:PositionComponent;
-        private var view:Sprite;
+        public var view:Sprite;
 
         public function Renderable(pos:PositionComponent, view:Sprite)
         {

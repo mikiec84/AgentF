@@ -23,7 +23,7 @@ package de.mediadesign.gd1011.studiof.model
 
         public function move(time:Number):void
         {
-            _position.x -= 10;
+            _position.x -= 8;
         }
 
         public function get position():PositionComponent
