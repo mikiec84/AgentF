@@ -3,6 +3,7 @@
             "platform":2,
             "healthPoints":3,
             "weapon":"MACHINE_GUN",
+            "einpendelStaerkeWinzig":15,
             "einpendelStaerkeKlein":30,
             "einpendelStaerkeGross":90,
             "speedTowardsMouse":1200,
