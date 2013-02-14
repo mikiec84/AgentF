@@ -22,7 +22,7 @@ package de.mediadesign.gd1011.studiof.consts
         public static const STAGE_WIDTH:int    = 1710;
         public static const EBENE_HEIGHT:int    = 120;
 
-        public static const MAX_PLATFORM:uint = 6;
+		public static const EBENE_HEIGHT:int    = 120;
 
     }
 }

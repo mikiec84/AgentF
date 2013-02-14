@@ -18,11 +18,13 @@ package de.mediadesign.gd1011.studiof.model {
     public class Player extends Unit implements IMovable
     {
         // config inhalt //
-        private var einpendelStaerke:Number;              // Wie viele pixel tief er ins wasser klatscht wenn er unten aufkommt
+        private var einpendelStaerkeKlein:Number;         // Wie viele pixel tief er ins wasser klatscht wenn er unten aufkommt von ebene 1 fallend
+        private var einpendelStaerkeGross:Number;         // Wie viele pixel tief er ins wasser klatscht wenn er unten aufkommt von ebene 0 fallend
         private var speedTowardsMouse:int;                // Wie schnell der player sich auf die maus zubewegt während geklickt ist
         private var jumpSpeedBeimSprung:Number;           // Wie lange der tween für das hochfliegen braucht um vollständig abgespielt zu werden in sekunden
         private var jumpSpeedBeimFall:Number;             // Wie lange der tween für den fall braucht um vollständig abgespielt zu werden in sekunden
         private var jumpSpeedBeimEinpendeln:Number;       // Wie lange der tween für das einpendeln braucht um vollständig abgespielt zu werden in sekunden
+        private var accelerationSpeed:int;                // Die zusätzliche Anzahl an Pixel die der Spieler nach unten bewegt wird wenn er im fall nach unten gezogen wird
         ////////////////////////////
         private var JSONExtractedInformation:Object;
         private var _up:Tween;
@@ -37,10 +39,12 @@ package de.mediadesign.gd1011.studiof.model {
         private var _checkTargetPlatform:int          = 2;
         private var _pleaseMoveTowardsMouseAsSoonAsYouCan:Boolean = false;
         private var _currentLevel:Level;
+        private var _accelerateTowardsFinger:Boolean = false;
 
         private var ammunition:Vector.<Unit>;
         private var cooldown:Number = 0;
-        private var fireRate:Number = 5;        // Sollte später von JSON eingelesen werden !!!
+        private var fireRate:Number = 5;
+        // Sollte später von JSON eingelesen werden !!!
 
 
         public function Player(currentLevel:Level)
@@ -52,11 +56,13 @@ package de.mediadesign.gd1011.studiof.model {
             currentPlatform = JSONExtractedInformation["platform"];
             healthPoints = JSONExtractedInformation["healthPoints"];
             //weapon = JSONExtractedInformation["weapon"];
-            einpendelStaerke = JSONExtractedInformation["einpendelStaerke"];
+            einpendelStaerkeKlein = JSONExtractedInformation["einpendelStaerkeKlein"];
+            einpendelStaerkeGross = JSONExtractedInformation["einpendelStaerkeGross"];
             speedTowardsMouse = JSONExtractedInformation["speedTowardsMouse"];
             jumpSpeedBeimSprung = JSONExtractedInformation["jumpSpeedBeimSprung"];
             jumpSpeedBeimFall = JSONExtractedInformation["jumpSpeedBeimFall"];
             jumpSpeedBeimEinpendeln = JSONExtractedInformation["jumpSpeedBeimEinpendeln"];
+            accelerationSpeed = JSONExtractedInformation["accelerationSpeed"];
             _tweenedPosition = new PositionComponent();
             position.y = currentPlatform * GameConsts.EBENE_HEIGHT;
         }
@@ -64,7 +70,7 @@ package de.mediadesign.gd1011.studiof.model {
         override public function move(time:Number):void
         {
             if (assertCorrectInitialization())
-            {//trace(_checkTargetPlatform+", "+_targetPlatform);
+            {
                 currentPlatform = observePlatform(position.y);
 
                 checkPlayerPosition();
@@ -77,8 +83,21 @@ package de.mediadesign.gd1011.studiof.model {
                 }
                 else
                 {
-                    position.y = _tweenedPosition.y;
-                    position.x = _tweenedPosition.x;
+                    /*if (_accelerateTowardsFinger)
+                    {
+                        position.y = _tweenedPosition.y+accelerationSpeed;
+                        _tweenedPosition.y+=accelerationSpeed;
+                    }
+                    else
+                    {*/
+                        position.y = _tweenedPosition.y;
+                    //}
+                    if (_targetPlatform == 6)
+                    {
+                        _targetPlatform = 2;
+                        _checkTargetPlatform = 2;
+                        _pleaseMoveTowardsMouseAsSoonAsYouCan = false;
+                    }
                 }
             }
             else trace("----------Function Move failed, because Player not correctly initialized: "+position.x+","+position.y+","+velocity+","+currentPlatform+","+this+","+_tweenedPosition.x+","+_tweenedPosition.y);
@@ -94,20 +113,24 @@ package de.mediadesign.gd1011.studiof.model {
         }
 
         private function administerPlayerTowardsMouseMovement(time:Number):void
-        {   //trace(targetPlatform, currentPlatform);
+        {
             Starling.juggler.purge();
             if (_targetPlatform>1) {
                 if (currentPlatform<_targetPlatform)
                 {
-                    if(observePlatform(speedTowardsMouse*time+position.y)<_targetPlatform)
+                    if((observePlatform(speedTowardsMouse*time+position.y)<_targetPlatform))
                     {
                         setNewPosition(speedTowardsMouse*time+position.y);
-                    } else position.y = GameConsts.EBENE_HEIGHT*_targetPlatform;
+                    }
+                    else
+                    {
+                        position.y = GameConsts.EBENE_HEIGHT*_targetPlatform;
+                        trace("Player.y wurde beim Runterziehen auf targetplatform gesetzt.");
+                    }
                 }
                 else
                 {
                     if (currentPlatform>=_targetPlatform) {
-                        //trace("currentPlatform ist größer als targetPlatform");
                         if(observePlatform(position.y-speedTowardsMouse*time)>=_targetPlatform)
                         {
                            setNewPosition(position.y-speedTowardsMouse*time);
@@ -117,6 +140,9 @@ package de.mediadesign.gd1011.studiof.model {
                             }
                         }
                     }
+                }
+                if (currentPlatform == 5 && targetPlatform == 6) {
+                    startJump();
                 }
             }
         }
@@ -136,11 +162,12 @@ package de.mediadesign.gd1011.studiof.model {
             }
             if ((_landing != null && _landing.isComplete && _landStillInJuggler) || (_landing != null && _landStillInJuggler && _pleaseMoveTowardsMouseAsSoonAsYouCan))
             {
-                    _landStillInJuggler = false;
-                    Starling.juggler.remove(_landing);
-                    _landing = null;
-                    _anyTweensInMotion = false;
+                _landStillInJuggler = false;
+                Starling.juggler.remove(_landing);
+                _landing = null;
+                _anyTweensInMotion = false;
                 _pleaseMoveTowardsMouseAsSoonAsYouCan = false;
+                _accelerateTowardsFinger = false;
             }
 
 
@@ -152,7 +179,7 @@ package de.mediadesign.gd1011.studiof.model {
 
         public function shootBullet(time:Number):void
         {
-            var bullet = shoot(time);
+            var bullet:Unit = shoot(time);
             if (bullet != null)
             {
                 _currentLevel.register(bullet);
@@ -160,25 +187,32 @@ package de.mediadesign.gd1011.studiof.model {
         }
 
         public function startJump():void
-        {                _targetPlatform = 2;
-                        _checkTargetPlatform = 2;
-            _pleaseMoveTowardsMouseAsSoonAsYouCan = false;
-            if (!_anyTweensInMotion && currentPlatform>3)
+        {
+            if (_targetPlatform == 6 && currentPlatform != 5) {
+                trace("startJump wird nicht ausgeführt weil targetplatform == 6 aber currentplatform != 5. currentPlatform: "+currentPlatform);
+            }
+            else
             {
-
-                _anyTweensInMotion = true;
-                _tweenedPosition.y = position.y;
-                _tweenedPosition.x = position.x;
-                _comeDownIsntRunning = true;
-                if (Starling.juggler.contains(_up))
+                _targetPlatform = 2;
+                _checkTargetPlatform = 2;
+                _pleaseMoveTowardsMouseAsSoonAsYouCan = false;
+                if (!_anyTweensInMotion && currentPlatform>3)
                 {
-                    Starling.juggler.remove(_up)
-                }
-                _up = new Tween(_tweenedPosition, jumpSpeedBeimSprung, Transitions.EASE_OUT);
-                //trace(currentPlatform);
-                _up.moveTo(_tweenedPosition.x, GameConsts.STAGE_HEIGHT - (GameConsts.STAGE_HEIGHT/6) * (currentPlatform + 1) );
-                Starling.juggler.add(_up);
-            } else trace("startJump in Player has been used but there are Tweens in Motion right now, or currentPlatform is smaller/equal than 2. Request Denied.");
+
+                    _anyTweensInMotion = true;
+                    _tweenedPosition.y = position.y;
+                    _tweenedPosition.x = position.x;
+                    _comeDownIsntRunning = true;
+                    if (Starling.juggler.contains(_up))
+                    {
+                        Starling.juggler.remove(_up)
+                    }
+                    _up = new Tween(_tweenedPosition, jumpSpeedBeimSprung, Transitions.EASE_OUT);
+                    //trace(currentPlatform);
+                    _up.moveTo(_tweenedPosition.x, GameConsts.STAGE_HEIGHT - (GameConsts.STAGE_HEIGHT/6) * (currentPlatform + 1) );
+                    Starling.juggler.add(_up);
+                } else trace("startJump in Player has been used but there are Tweens in Motion right now, or currentPlatform is smaller/equal than 2. Request Denied.");
+            }
         }
 
         public function comeDown():void
@@ -190,7 +224,13 @@ package de.mediadesign.gd1011.studiof.model {
             _down  = new  Tween(_tweenedPosition, jumpSpeedBeimFall, Transitions.EASE_IN);
             if (currentPlatform < 2)
             {
-                _down.moveTo(_tweenedPosition.x, GameConsts.STAGE_HEIGHT/3+einpendelStaerke);
+                if (currentPlatform == 1) {
+                    _down.moveTo(_tweenedPosition.x, GameConsts.STAGE_HEIGHT/3+einpendelStaerkeKlein);
+                }
+                else
+                {
+                    _down.moveTo(_tweenedPosition.x, GameConsts.STAGE_HEIGHT/3+einpendelStaerkeGross);
+                }
                 Starling.juggler.add(_down);
                 _landIsntRunning = true;
             }
@@ -198,7 +238,13 @@ package de.mediadesign.gd1011.studiof.model {
 
         private function land():void
         {
-            _landing = new Tween(_tweenedPosition, jumpSpeedBeimEinpendeln, Transitions.EASE_OUT_ELASTIC);
+            if (_tweenedPosition.x-GameConsts.STAGE_HEIGHT/3 == einpendelStaerkeKlein) {
+                _landing = new Tween(_tweenedPosition, jumpSpeedBeimEinpendeln, Transitions.EASE_OUT_ELASTIC);
+            }
+            else
+            {
+                _landing = new Tween(_tweenedPosition, jumpSpeedBeimEinpendeln, Transitions.EASE_OUT_ELASTIC);
+            }
             _landing.moveTo(_tweenedPosition.x,  GameConsts.STAGE_HEIGHT/3+1);//+1 weil ansonsten der player in ebene 1 endet aus welchem grund auch immer. da current 1 ist aber target 2 wird er ~20pixel nach oben gezogen, und dann wieder auf ebene 2 hochkorrigiert, wodurch er auf der stelle zu springen scheint. +1 verhindert das.
             Starling.juggler.add(_landing);
             _landStillInJuggler = true;
@@ -211,9 +257,14 @@ package de.mediadesign.gd1011.studiof.model {
 
         public function set targetPlatform(value:int):void
         {
-            if (value<2 || value>5) {
+            if (value<2 || value>6) {
                 trace("Trying to set Player targetPlatform to "+value+". Value not accepted.");
-            } else _targetPlatform = value;
+            }
+            else
+            {
+                _targetPlatform = value;
+                trace("targetPlatform wurde auf "+targetPlatform+" gesetzt.");
+            }
         }
 
         public function shoot(time:Number):Unit
@@ -239,6 +290,10 @@ package de.mediadesign.gd1011.studiof.model {
         public function shootNow():Boolean
         {
             return (!_anyTweensInMotion || (_landing != null && !_landIsntRunning && !_landing.isComplete));
+        }
+
+        public function set accelerateTowardsFinger(value:Boolean):void {
+            _accelerateTowardsFinger = value;
         }
     }
 }
