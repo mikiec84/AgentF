@@ -24,6 +24,7 @@ package de.mediadesign.gd1011.studiof.model {
         private var jumpSpeedBeimSprung:Number;           // Wie lange der tween für das hochfliegen braucht um vollständig abgespielt zu werden in sekunden
         private var jumpSpeedBeimFall:Number;             // Wie lange der tween für den fall braucht um vollständig abgespielt zu werden in sekunden
         private var jumpSpeedBeimEinpendeln:Number;       // Wie lange der tween für das einpendeln braucht um vollständig abgespielt zu werden in sekunden
+        private var accelerationSpeed:int;                // Die zusätzliche Anzahl an Pixel die der Spieler nach unten bewegt wird wenn er im fall nach unten gezogen wird
         ////////////////////////////
         private var JSONExtractedInformation:Object;
         private var _up:Tween;
@@ -38,6 +39,7 @@ package de.mediadesign.gd1011.studiof.model {
         private var _checkTargetPlatform:int          = 2;
         private var _pleaseMoveTowardsMouseAsSoonAsYouCan:Boolean = false;
         private var _currentLevel:Level;
+        private var _accelerateTowardsFinger:Boolean = false;
 
         private var ammunition:Vector.<Unit>;
         private var cooldown:Number = 0;
@@ -60,6 +62,7 @@ package de.mediadesign.gd1011.studiof.model {
             jumpSpeedBeimSprung = JSONExtractedInformation["jumpSpeedBeimSprung"];
             jumpSpeedBeimFall = JSONExtractedInformation["jumpSpeedBeimFall"];
             jumpSpeedBeimEinpendeln = JSONExtractedInformation["jumpSpeedBeimEinpendeln"];
+            accelerationSpeed = JSONExtractedInformation["accelerationSpeed"];
             _tweenedPosition = new PositionComponent();
             position.y = currentPlatform * GameConsts.EBENE_HEIGHT;
         }
@@ -80,8 +83,15 @@ package de.mediadesign.gd1011.studiof.model {
                 }
                 else
                 {
-                    position.y = _tweenedPosition.y;
-                    position.x = _tweenedPosition.x;
+                    if (_accelerateTowardsFinger)
+                    {
+                        position.y = _tweenedPosition.y+accelerationSpeed;
+                        _tweenedPosition.y+=accelerationSpeed;
+                    }
+                    else
+                    {
+                        position.y = _tweenedPosition.y;
+                    }
                 }
             }
             else trace("----------Function Move failed, because Player not correctly initialized: "+position.x+","+position.y+","+velocity+","+currentPlatform+","+this+","+_tweenedPosition.x+","+_tweenedPosition.y);
@@ -139,11 +149,12 @@ package de.mediadesign.gd1011.studiof.model {
             }
             if ((_landing != null && _landing.isComplete && _landStillInJuggler) || (_landing != null && _landStillInJuggler && _pleaseMoveTowardsMouseAsSoonAsYouCan))
             {
-                    _landStillInJuggler = false;
-                    Starling.juggler.remove(_landing);
-                    _landing = null;
-                    _anyTweensInMotion = false;
+                _landStillInJuggler = false;
+                Starling.juggler.remove(_landing);
+                _landing = null;
+                _anyTweensInMotion = false;
                 _pleaseMoveTowardsMouseAsSoonAsYouCan = false;
+                _accelerateTowardsFinger = false;
             }
 
 
@@ -255,6 +266,10 @@ package de.mediadesign.gd1011.studiof.model {
         public function shootNow():Boolean
         {
             return (!_anyTweensInMotion || (_landing != null && !_landIsntRunning && !_landing.isComplete));
+        }
+
+        public function set accelerateTowardsFinger(value:Boolean):void {
+            _accelerateTowardsFinger = value;
         }
     }
 }

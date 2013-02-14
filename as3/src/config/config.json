@@ -8,7 +8,8 @@
             "speedTowardsMouse":900,
             "jumpSpeedBeimSprung":1,
             "jumpSpeedBeimFall":1,
-            "jumpSpeedBeimEinpendeln":4
+            "jumpSpeedBeimEinpendeln":4,
+            "accelerationSpeed":20
            },
     "gamebounds":{
             "width":1710,
