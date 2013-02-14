@@ -92,7 +92,12 @@ package de.mediadesign.gd1011.studiof.model {
                     {*/
                         position.y = _tweenedPosition.y;
                     //}
-                    if (_targetPlatform == 6) _targetPlatform = 2;
+                    if (_targetPlatform == 6)
+                    {
+                        _targetPlatform = 2;
+                        _checkTargetPlatform = 2;
+                        _pleaseMoveTowardsMouseAsSoonAsYouCan = false;
+                    }
                 }
             }
             else trace("----------Function Move failed, because Player not correctly initialized: "+position.x+","+position.y+","+velocity+","+currentPlatform+","+this+","+_tweenedPosition.x+","+_tweenedPosition.y);
