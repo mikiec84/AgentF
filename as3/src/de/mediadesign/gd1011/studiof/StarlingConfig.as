@@ -13,8 +13,7 @@ package de.mediadesign.gd1011.studiof
     import de.mediadesign.gd1011.studiof.consts.GameConsts;
     import de.mediadesign.gd1011.studiof.events.GameEvent;
     import de.mediadesign.gd1011.studiof.model.Level;
-	import de.mediadesign.gd1011.studiof.model.LevelConfiguration;
-	import de.mediadesign.gd1011.studiof.model.Renderable;
+    import de.mediadesign.gd1011.studiof.model.Renderable;
     import de.mediadesign.gd1011.studiof.model.Score;
     import de.mediadesign.gd1011.studiof.model.ScrollableBG;
     import de.mediadesign.gd1011.studiof.model.User;
@@ -67,7 +66,6 @@ package de.mediadesign.gd1011.studiof
             modelMap.map(MoveProcess).asSingleton();
             modelMap.map(RenderProcess).asSingleton();
             modelMap.map(GameLoop).asSingleton();
-			modelMap.map(LevelConfiguration).asSingleton();
         }
 
         private function initCommands():void

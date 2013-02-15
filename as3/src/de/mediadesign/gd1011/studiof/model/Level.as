@@ -20,9 +20,6 @@ package de.mediadesign.gd1011.studiof.model
         [Inject]
         public var dispatcher:IEventDispatcher;
 
-		[Inject]
-		public var lvlConfig:LevelConfiguration;
-
         private var _enemies:Vector.<Unit>;
         private var _player:Player;
 
@@ -32,8 +29,7 @@ package de.mediadesign.gd1011.studiof.model
         public var collisionTolerance:int;
 
         public function Level()
-        {
-			enemyPositions = new Vector.<int>;
+        {   enemyPositions = new Vector.<int>;
             _enemies = new Vector.<Unit>();
             scrollBGs = new Vector.<ScrollableBG>();
             JSONExtractedInformation = JSONReader.read("enemy")["ENEMY"];
@@ -47,16 +43,7 @@ package de.mediadesign.gd1011.studiof.model
                 }
             }
             collisionTolerance = JSONExtractedInformation["collisionTolerance"];
-
         }
-
-		[PostConstruct]
-		public function onCreated():void
-		{
-//			trace(lvlConfig.numLevelPacks);
-//			trace(lvlConfig.getLevelCount(0));
-//			trace(lvlConfig.getEnemySequence(0,0));
-		}
 
         public function get enemies():Vector.<Unit>
         {
