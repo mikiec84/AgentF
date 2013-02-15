@@ -8,6 +8,7 @@
 package de.mediadesign.gd1011.studiof.model
 {
     import de.mediadesign.gd1011.studiof.consts.GameConsts;
+    import de.mediadesign.gd1011.studiof.consts.ViewConsts;
     import de.mediadesign.gd1011.studiof.events.GameEvent;
     import de.mediadesign.gd1011.studiof.view.ScrollBackgroundView;
     import de.mediadesign.gd1011.studiof.services.JSONReader;
@@ -91,10 +92,12 @@ package de.mediadesign.gd1011.studiof.model
         }
 
         public function collisionDetection():void
-        {
+        {   var ab:GameEvent = new GameEvent(ViewConsts.UPDATE_LIFEPOINTS, GameConsts.ADD_SPRITE_TO_GAME, player.healthPoints);
+            dispatcher.dispatchEvent(ab);
+
             for (var index:int =  0; index<enemies.length; index++) {
                 for (var index2:int = 0; index2<enemies[index].ammunition.length; index2++) {
-                    if (player.healthPoints>0 && (player.observePlatform(enemies[index].ammunition[index2].position.y)== player.currentPlatform) && (enemies[index].ammunition[index2].position.x == player.position.x ||  (enemies[index].ammunition[index2].position.x>player.position.x && enemies[index].ammunition[index2].position.x-20<player.position.x))) {
+                    if (player.healthPoints>0 && (player.observePlatform(enemies[index].ammunition[index2].position.y)== player.currentPlatform) && (enemies[index].ammunition[index2].position.x == player.position.x ||  (enemies[index].ammunition[index2].position.x>player.position.x && enemies[index].ammunition[index2].position.x-24<player.position.x))) {
                         enemies[index].ammunition[index2].healthPoints -= 1;
                         player.healthPoints -= 1;
                     }
@@ -102,7 +105,7 @@ package de.mediadesign.gd1011.studiof.model
             }
             for (var index3:int = 0; index3<player.ammunition.length; index3++) {
                 for (var index4:int = 0; index4<enemies.length; index4++) {
-                    if (player.healthPoints>0 && (player.ammunition[index3].position.x < GameConsts.STAGE_WIDTH &&  player.observePlatform(enemies[index4].position.y)== player.observePlatform(player.ammunition[index3].position.y)) && (player.ammunition[index3].position.x == enemies[index4].position.x || (player.ammunition[index3].position.x<enemies[index4].position.x && player.ammunition[index3].position.x+20>enemies[index4].position.x))) {
+                    if (player.healthPoints>0 && (player.ammunition[index3].position.x < GameConsts.STAGE_WIDTH &&  player.observePlatform(enemies[index4].position.y)== player.observePlatform(player.ammunition[index3].position.y)) && (player.ammunition[index3].position.x == enemies[index4].position.x || (player.ammunition[index3].position.x<enemies[index4].position.x && player.ammunition[index3].position.x+24>enemies[index4].position.x))) {
                         enemies[index4].healthPoints -= 1;
                         player.ammunition[index3].healthPoints -= 1;
                     }
