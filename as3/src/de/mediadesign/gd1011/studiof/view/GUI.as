@@ -38,5 +38,10 @@ package de.mediadesign.gd1011.studiof.view
 		{
 			_lifepoints.text=points.toString();
 		}
+
+		public function showLostGame():void
+		{
+			_lifepoints.text="Verloren!";
+		}
     }
 }
