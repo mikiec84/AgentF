@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9d5af888-79aa-45bf-94bc-b57803b7fbdf" name="Default" comment="speed up and change assets directory">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/consts/ViewConsts.as" afterPath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/consts/ViewConsts.as" />
+    <list default="true" id="9d5af888-79aa-45bf-94bc-b57803b7fbdf" name="Default" comment="">
+      <change type="DELETED" beforePath="C:\Users\anlicht\Documents\GitHub\AgentF\as3\src\de\mediadesign\gd1011\studiof\view\GUIElement.as" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/view/GUI.as" afterPath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/view/GUI.as" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/view/mediators/GUIMediator.as" afterPath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/view/mediators/GUIMediator.as" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="AgentF.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1360932700764" ignored="false" />
+    <file path="/Dummy.txt" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1360933610683" ignored="false" />
     <file path="/fragment.js2" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1360850038466" ignored="false" />
     <file path="/AgentF.as" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1360768843386" ignored="false" />
     <file path="/AgentF-app.xml" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1359622409363" ignored="false" />
@@ -45,7 +47,7 @@
     <file path="/InitPlayer.as" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1360241528246" ignored="false" />
     <file path="/UnitManager.as" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1360241712578" ignored="false" />
     <file path="/a.dummy" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1360850383864" ignored="false" />
-    <file path="/GUI.as" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1360770187583" ignored="false" />
+    <file path="/GUI.as" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1360934086756" ignored="false" />
     <file path="/RegisterServiceCommand.as" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1360317409159" ignored="false" />
     <file path="/GameViewMediator.as" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1360846049189" ignored="false" />
     <file path="/IProcess.as" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1360314717859" ignored="false" />
@@ -70,6 +72,7 @@
     <file path="/StartScreenView.as" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1360851332205" ignored="false" />
     <file path="/GUIConsts.as" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1360850107462" ignored="false" />
     <file path="/ViewConsts.as" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1360933514162" ignored="false" />
+    <file path="/GUIMediator.as" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1360934135734" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -146,15 +149,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MainView.as" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/view/MainView.as">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="47" column="66" selection-start="1288" selection-end="1288" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="GameConsts.as" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/consts/GameConsts.as">
           <provider selected="true" editor-type-id="text-editor">
@@ -173,11 +167,36 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GUI.as" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="GUI.as" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/view/GUI.as">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="63" column="12" selection-start="1792" selection-end="1792" vertical-scroll-proportion="1.1903052">
-              <folding />
+            <state line="38" column="45" selection-start="752" selection-end="752" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="e#201#232#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GUIMediator.as" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/view/mediators/GUIMediator.as">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="30" column="56" selection-start="851" selection-end="851" vertical-scroll-proportion="0.9156194">
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+                <element signature="e#210#265#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GameView.as" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/view/GameView.as">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -211,15 +230,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="StartScreenViewMediator.as" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/view/mediators/StartScreenViewMediator.as">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="0" selection-start="747" selection-end="747" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FindManager">
@@ -239,9 +249,7 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/AgentF.as" />
         <option value="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/SystemInfo.as" />
-        <option value="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/view/GUI.as" />
         <option value="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/model/Player.as" />
         <option value="$PROJECT_DIR$/src/config/viewconfig.json" />
         <option value="$PROJECT_DIR$/src/config/config.json" />
@@ -255,6 +263,8 @@
         <option value="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/view/StartScreenView.as" />
         <option value="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/consts/GameConsts.as" />
         <option value="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/consts/ViewConsts.as" />
+        <option value="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/view/GUI.as" />
+        <option value="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/view/mediators/GUIMediator.as" />
       </list>
     </option>
   </component>
@@ -1045,7 +1055,11 @@
       <created>1360852222135</created>
       <updated>1360852222594</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="update lifepoints viewe const">
+      <created>1360933616615</created>
+      <updated>1360933616615</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1136,7 +1150,7 @@
     <option name="MAXIMUM_HISTORY_ROWS" value="1000" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implementing start screen" />
+    <option name="LAST_COMMIT_MESSAGE" value="update lifepoints viewe const" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -1149,7 +1163,6 @@
     <option name="UPDATE_GROUP_BY_CHANGELIST" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
-    <MESSAGE value="GemConst update" />
     <MESSAGE value="the coon...&#10;the .png" />
     <MESSAGE value="units" />
     <MESSAGE value="change unit" />
@@ -1174,6 +1187,7 @@
     <MESSAGE value="adding scale factor for gui" />
     <MESSAGE value="touch input 6" />
     <MESSAGE value="Implementing start screen" />
+    <MESSAGE value="update lifepoints viewe const" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1188,20 +1202,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/model/Player.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="270" column="24" selection-start="11670" selection-end="11670" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/command/RegisterUnitCommand.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="36" selection-start="886" selection-end="905" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/config/config.json">
       <provider selected="true" editor-type-id="text-editor">
         <state line="14" column="25" selection-start="433" selection-end="433" vertical-scroll-proportion="0.0">
@@ -1258,13 +1258,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/services/JSONReader.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="0" selection-start="582" selection-end="582" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/StarlingConfig.as">
       <provider selected="true" editor-type-id="text-editor">
         <state line="80" column="81" selection-start="3249" selection-end="3249" vertical-scroll-proportion="0.0">
@@ -1295,10 +1288,38 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/view/GameView.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/view/GUI.as">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="63" column="12" selection-start="1792" selection-end="1792" vertical-scroll-proportion="1.1903052">
+        <state line="38" column="45" selection-start="752" selection-end="752" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#201#232#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/services/JSONReader.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="0" selection-start="582" selection-end="582" vertical-scroll-proportion="0.0">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/view/mediators/GUIMediator.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="30" column="56" selection-start="851" selection-end="851" vertical-scroll-proportion="0.9156194">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#210#265#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

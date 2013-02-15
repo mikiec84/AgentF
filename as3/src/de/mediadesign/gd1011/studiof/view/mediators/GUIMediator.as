@@ -7,7 +7,12 @@
  */
 package de.mediadesign.gd1011.studiof.view.mediators
 {
+	import de.mediadesign.gd1011.studiof.consts.GameConsts;
+	import de.mediadesign.gd1011.studiof.consts.ViewConsts;
+	import de.mediadesign.gd1011.studiof.events.GameEvent;
 	import de.mediadesign.gd1011.studiof.view.GUI;
+
+	import flash.events.Event;
 
 	import robotlegs.extensions.starlingViewMap.impl.StarlingMediator;
 
@@ -18,7 +23,12 @@ package de.mediadesign.gd1011.studiof.view.mediators
 
 		override public function initialize():void
 		{
+			addContextListener(ViewConsts.UPDATE_LIFEPOINTS,updateLifepoints);
+		}
 
+		private function updateLifepoints(e:GameEvent):void
+		{
+			contextView.setLifepoints(e.dataObj as int);
 		}
 
 		override public function destroy():void
