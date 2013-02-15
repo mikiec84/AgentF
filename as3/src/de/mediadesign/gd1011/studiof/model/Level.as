@@ -42,6 +42,9 @@ package de.mediadesign.gd1011.studiof.model
             }
             for (var index2:int = 0; index2<enemyPositions.length; index2++) {
                 addEnemy(new Unit(1, Math.round(Math.random() * 5), -300, enemyPositions[index2], this, false));
+                if (enemies[enemies.length-1].currentPlatform == 2) {
+                    enemies[enemies.length-1].healthPoints = 3;
+                }
             }
             collisionTolerance = JSONExtractedInformation["collisionTolerance"];
 
@@ -120,15 +123,17 @@ package de.mediadesign.gd1011.studiof.model
 
             for (var index:int =  0; index<enemies.length; index++) {
                 for (var index2:int = 0; index2<enemies[index].ammunition.length; index2++) {
-                    if (player.healthPoints>0 && (player.observePlatform(enemies[index].ammunition[index2].position.y)== player.currentPlatform) && (enemies[index].ammunition[index2].position.x == player.position.x ||  (enemies[index].ammunition[index2].position.x>player.position.x && enemies[index].ammunition[index2].position.x-collisionTolerance<player.position.x))) {
+                    if (enemies[index].ammunition[index2].healthPoints>0 && enemies[index].ammunition[index2].velocity.velocityY == 0 &&player.healthPoints>0 && (player.observePlatform(enemies[index].ammunition[index2].position.y)== player.currentPlatform) && (enemies[index].ammunition[index2].position.x == player.position.x ||  (enemies[index].ammunition[index2].position.x>player.position.x && enemies[index].ammunition[index2].position.x-collisionTolerance<player.position.x))) {
                         enemies[index].ammunition[index2].healthPoints -= 1;
                         player.healthPoints -= 1;
                     }
                 }
             }
+
             for (var index3:int = 0; index3<player.ammunition.length; index3++) {
                 for (var index4:int = 0; index4<enemies.length; index4++) {
                     if (       player.healthPoints>0
+                            && player.ammunition[index3].healthPoints>0
                             && enemies[index4].healthPoints>0
                             && (player.ammunition[index3].position.x < GameConsts.STAGE_WIDTH &&  player.observePlatform(enemies[index4].position.y)== player.observePlatform(player.ammunition[index3].position.y))
                             && (player.ammunition[index3].position.x == enemies[index4].position.x
@@ -136,12 +141,24 @@ package de.mediadesign.gd1011.studiof.model
                     {
                         enemies[index4].healthPoints -= 1;
                         player.ammunition[index3].healthPoints -= 1;
+                        if (enemies[index4].healthPoints<1) {
+                            var ab:GameEvent = new GameEvent(ViewConsts.ENEMY_KILLED);
+                            dispatcher.dispatchEvent(ab);
+                        }
                     }
                 }
             }
+
+            for (var index5:int = 0; index5<enemies.length; index5++) {
+                if (enemies[index5].currentPlatform == 2
+                        && player.currentPlatform == 2
+                        && (enemies[index5].position.x == player.position.x
+                        || (enemies[index5].position.x > player.position.x && enemies[index5].position.x-collisionTolerance<player.position.x))) {
+                    enemies[index5].healthPoints -= 3;
+                    player.healthPoints -= 1;
+                }
+            }
         }
-
-
     }
 }
 

@@ -11,6 +11,7 @@ package de.mediadesign.gd1011.studiof.consts
 	{
 		public static const INIT_GAMEVIEW:String = "INIT_GAMEVIEW";
 		public static const UPDATE_LIFEPOINTS:String = "UPDATE_LIFEPOINTS";
-		public static const SHOW_GAMEOVER:String = "SHOW_GAMEOVER";
+        public static const SHOW_GAMEOVER:String = "SHOW_GAMEOVER";
+        public static const ENEMY_KILLED:String = "ENEMY_KILLED";
 	}
 }

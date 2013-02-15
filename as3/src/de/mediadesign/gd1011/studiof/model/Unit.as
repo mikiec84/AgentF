@@ -25,6 +25,7 @@ package de.mediadesign.gd1011.studiof.model
         private var enemyRange:int;
         public var ammunition:Vector.<Unit>;
         private var _currentLevel:Level;
+        private var doNotShootAnymore:Boolean = false;
 
 
         public function Unit(healthpoints:int, startingPlatform:int, xVel:int, startingXPosition:int, currentLevel:Level, verticalBullet:Boolean)
@@ -48,8 +49,9 @@ package de.mediadesign.gd1011.studiof.model
             enemyRange = JSONExtractedInformation["enemyRange"];
             if (verticalBullet) {
                 velocity.verticalVelocity = true;
-                velocity.velocityY = 30;
+                velocity.velocityY = 600;
                 velocity.velocityX = 0;
+                position.x += 50;
             }
             if (startingPlatform == 2 && velocity.velocityX < 0) {
                 position.y += 80;
@@ -158,14 +160,15 @@ package de.mediadesign.gd1011.studiof.model
                 return bullet;
             }
 
-            /*if (currentPlatform < 2 && cooldown >= (1 / fireRateEnemy) && position.x<enemyRange && position.x>0 && healthPoints > 0)
-            {
+            if (!doNotShootAnymore && currentPlatform < 2 && cooldown >= (1 / fireRateEnemy) && position.x<enemyRange && position.x>0 && healthPoints > 0 && position.x >= _currentLevel.player.position.x && position.x-_currentLevel.collisionTolerance < _currentLevel.player.position.x)
+            {   doNotShootAnymore = true;
+                _currentLevel.player.healthPoints -= 1;
                 var bullet:Unit = new Unit(1, currentPlatform, -600, _currentLevel.player.position.x, _currentLevel, true);
                 bullet.position.y += 100;
                 ammunition.push(bullet);
                 cooldown = 0;
                 return bullet;
-            }*/
+            }
 
             return null;
         }
