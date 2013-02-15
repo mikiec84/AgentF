@@ -7,24 +7,38 @@
  */
 package de.mediadesign.gd1011.studiof.view
 {
+	import de.mediadesign.gd1011.studiof.services.JSONReader;
+
 	import starling.display.Sprite;
 	import starling.events.Event;
 	import starling.text.TextField;
 
 	public class GUI extends Sprite
     {
+		private var _config:Object;
 
+		private var _topLeft:Sprite;
+		private var _topCenter:Sprite;
+		private var _topRight:Sprite;
 		private var _centerCenter:Sprite;
 
 		private var _lifepoints:TextField;
 		private var _gameOverScreen:TextField;
 		public function GUI()
         {
-			_centerCenter = new Sprite();
+			_config = JSONReader.read("viewconfig")["gui"];
+
+			_topLeft 		= new Sprite();
+			_topCenter 		= new Sprite();
+			_topRight 		= new Sprite();
+			_centerCenter 	= new Sprite();
+			addChild(_topLeft);
+			addChild(_topCenter);
+			addChild(_topRight);
 			addChild(_centerCenter);
 
 			_lifepoints = new TextField(100,100,"3","Verdana",60,0xffffff,true);
-			addChild(_lifepoints);
+			_topLeft.addChild(_lifepoints);
 
 			if(stage)
 				adjust();
@@ -36,8 +50,12 @@ package de.mediadesign.gd1011.studiof.view
 
 		private function adjust(e:Event=null):void
 		{
-			_centerCenter.x = getWidth()/2;
-			_centerCenter.y = getHeight()/2;
+			_topLeft.x											= _config["padding"];
+			_topCenter.x 	= _centerCenter.x 					= getWidth()/2;
+			_topRight.x											= getWidth();
+			_topLeft.y		= _topCenter.y		= _topRight.y	= _config["padding"];
+			_centerCenter.y 									= getHeight()/2;
+
 
 		}
 
