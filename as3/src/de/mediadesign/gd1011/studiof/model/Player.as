@@ -79,7 +79,7 @@ package de.mediadesign.gd1011.studiof.model {
 
         override public function move(time:Number):void
         {   //trace((GameConsts.EBENE_HEIGHT*2+einpendelStaerkeWinzig)+", "+(position.y));
-            if (assertCorrectInitialization())
+            if (assertCorrectInitialization() && position.y<1000)
             {
 
                 checkPlayerPosition();
@@ -301,7 +301,7 @@ package de.mediadesign.gd1011.studiof.model {
 
         public function shootNow():Boolean
         {
-            return (!upIsRunning && _comeDownIsntRunning);
+            return (!upIsRunning && _comeDownIsntRunning && healthPoints>0);
         }
 
         public function set accelerateTowardsFinger(value:Boolean):void {
