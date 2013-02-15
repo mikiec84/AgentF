@@ -1,0 +1,16 @@
+[
+    [
+        [
+            {"pattern":0, "count":4},
+            {"pattern":1, "count":4},
+            {"pattern":2, "count":2}
+        ],
+
+        [
+            {"pattern":0, "count":2},
+            {"pattern":2, "count":3},
+            {"pattern":3, "count":4},
+            {"pattern":4, "count":1}
+        ]
+    ]
+]

@@ -21,13 +21,17 @@ package de.mediadesign.gd1011.studiof.view.mediators
 		override public function initialize():void
 		{
 			addContextListener(ViewConsts.UPDATE_LIFEPOINTS,updateLifepoints);
+			addContextListener(ViewConsts.SHOW_GAMEOVER,showGameOver);
+		}
+
+		private function showGameOver(e:GameEvent):void
+		{
+			contextView.showGameOver(e.dataObj as Boolean);
 		}
 
 		private function updateLifepoints(e:GameEvent):void
 		{
 			contextView.setLifepoints(e.dataObj as int);
-			if((e.dataObj as int)==0)
-				contextView.showLostGame();
 		}
 
 		override public function destroy():void
