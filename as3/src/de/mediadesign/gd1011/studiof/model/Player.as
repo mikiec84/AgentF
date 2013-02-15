@@ -53,7 +53,7 @@ package de.mediadesign.gd1011.studiof.model {
 
 
         public function Player(currentLevel:Level)
-        {   super(1, 1, 1, -1, currentLevel);
+        {   super(1, 1, 1, -1, currentLevel, false);
             this._currentLevel = currentLevel;
             ammunition = new Vector.<Unit>();
 
@@ -279,11 +279,11 @@ package de.mediadesign.gd1011.studiof.model {
             if (cooldown >= (1 / fireRate) || (!upIsRunning && _comeDownIsntRunning && currentPlatform<2 && _landIsntRunning && counter == 0))
             {   //trace("Ich will feuern weil up fertig ist aber come down nicht am laufen: "+(_up != null && _up.isComplete && _comeDownIsntRunning));
                 if (currentPlatform == 1 && !_landIsntRunning) {
-                    var bullet:Unit = new Unit(1, 2, 600, -1, _currentLevel);
+                    var bullet:Unit = new Unit(1, 2, 600, -1, _currentLevel, false);
                 }
                 else
                 {
-                    var bullet:Unit = new Unit(1, currentPlatform, 600, -1, _currentLevel);
+                    var bullet:Unit = new Unit(1, currentPlatform, 600, -1, _currentLevel, false);
                 }
                 bullet.position.y += 100;
                 ammunition.push(bullet);

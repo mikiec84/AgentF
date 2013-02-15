@@ -27,7 +27,7 @@ package de.mediadesign.gd1011.studiof.model
         private var _currentLevel:Level;
 
 
-        public function Unit(healthpoints:int, startingPlatform:int, xVel:int, startingXPosition:int, currentLevel:Level)
+        public function Unit(healthpoints:int, startingPlatform:int, xVel:int, startingXPosition:int, currentLevel:Level, verticalBullet:Boolean)
         {
             ammunition = new Vector.<Unit>();
             _weapon = "default";
@@ -46,14 +46,24 @@ package de.mediadesign.gd1011.studiof.model
             JSONExtractedInformation = JSONReader.read("enemy")["ENEMY"];
             fireRateEnemy = JSONExtractedInformation["fireRateEnemy"];
             enemyRange = JSONExtractedInformation["enemyRange"];
+            if (verticalBullet) {
+                velocity.verticalVelocity = true;
+                velocity.velocityY = 30;
+                velocity.velocityX = 0;
+            }
         }
 
         public function move(time:Number):void
         {
             if (assertCorrectInitialization())
             {
-                currentPlatform = observePlatform(position.y);
-                position.x += velocity.velocityX*time;
+                if (!velocity.verticalVelocity) {
+                    currentPlatform = observePlatform(position.y);
+                    position.x += velocity.velocityX*time;
+                } else {
+                    currentPlatform = observePlatform(position.y);
+                    position.y += velocity.velocityY*time;
+                }
             }
             else trace("----------Function Move failed, because Unit not correctly initialized: "+position.x+","+position.y+","+velocity+","+currentPlatform+","+this);
         }
@@ -135,15 +145,26 @@ package de.mediadesign.gd1011.studiof.model
         public function shoot(time:Number):Unit
         {
             cooldown += time;
-            if (cooldown >= (1 / fireRateEnemy) && position.x<enemyRange && position.x>0 && healthPoints > 0)
+
+            if (currentPlatform > 2 && cooldown >= (1 / fireRateEnemy) && position.x<enemyRange && position.x>0 && healthPoints > 0)
             {
-                var bullet:Unit = new Unit(1, currentPlatform, -600, position.x, _currentLevel);
+                var bullet:Unit = new Unit(1, currentPlatform, -600, position.x, _currentLevel, false);
                 bullet.position.y += 100;
                 ammunition.push(bullet);
                 cooldown = 0;
                 return bullet;
             }
-            else return null;
+
+            /*if (currentPlatform < 2 && cooldown >= (1 / fireRateEnemy) && position.x<enemyRange && position.x>0 && healthPoints > 0)
+            {
+                var bullet:Unit = new Unit(1, currentPlatform, -600, _currentLevel.player.position.x, _currentLevel, true);
+                bullet.position.y += 100;
+                ammunition.push(bullet);
+                cooldown = 0;
+                return bullet;
+            }*/
+
+            return null;
         }
 
         public function shootBullet(time:Number):void

@@ -80,7 +80,7 @@ package de.mediadesign.gd1011.studiof.services
                     currentLevel.player.ammunition[index4].position.y += 100;
                 }
             }
-            trace("Lebenspunkte des Spielers: "+currentLevel.player.healthPoints);
+            //trace("Lebenspunkte des Spielers: "+currentLevel.player.healthPoints);
         }
 	}
 }

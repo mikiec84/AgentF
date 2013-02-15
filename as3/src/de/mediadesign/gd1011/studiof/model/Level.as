@@ -37,7 +37,7 @@ package de.mediadesign.gd1011.studiof.model
                 }
             }
             for (var index2:int = 0; index2<enemyPositions.length; index2++) {
-                addEnemy(new Unit(1, Math.round(Math.random() * 5), -300, enemyPositions[index2], this));
+                addEnemy(new Unit(1, Math.round(Math.random() * 5), -300, enemyPositions[index2], this, false));
             }
         }
 

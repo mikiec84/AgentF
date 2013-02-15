@@ -54,10 +54,10 @@ package de.mediadesign.gd1011.studiof.command
             for (var index:int = 0; index<level.enemies.length; index++) {
                 moveProcess.addEntity(level.enemies[index]);
 
-                var img:Image = Assets.getImage("E1_texture");
-                if () {
-                    //
-                }
+                if (level.enemies[index].currentPlatform < 2) var img:Image = Assets.getImage("E1_texture");
+                if (level.enemies[index].currentPlatform == 2) var img:Image = Assets.getImage("E2_texture");
+                if (level.enemies[index].currentPlatform > 2) var img:Image = Assets.getImage("E3_texture");
+                
                 var a:Sprite = new Sprite();
                 a.addChild(img);
 
