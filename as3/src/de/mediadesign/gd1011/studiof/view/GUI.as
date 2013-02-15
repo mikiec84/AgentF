@@ -36,9 +36,23 @@ package de.mediadesign.gd1011.studiof.view
 
 		private function adjust(e:Event=null):void
 		{
-			_centerCenter.x = stage.stageWidth/2;
-			_centerCenter.y = stage.stageHeight/2;
+			_centerCenter.x = getWidth()/2;
+			_centerCenter.y = getHeight()/2;
 
+		}
+
+		private function getWidth():Number
+		{
+			if(stage)
+				return stage.stageWidth/scaleX;
+			return 0;
+		}
+
+		private function getHeight():Number
+		{
+			if(stage)
+				return stage.stageHeight/scaleY;
+			return 0;
 		}
 
 		public function setLifepoints(points:int):void
@@ -48,7 +62,7 @@ package de.mediadesign.gd1011.studiof.view
 
 		public function showGameOver(won:Boolean):void
 		{
-			_gameOverScreen = new TextField(100,300,"","Verdana",60,0xffffff,true);
+			_gameOverScreen = new TextField(600,100,"","Verdana",60,0xffffff,true);
 			_gameOverScreen.x = -_gameOverScreen.width/2;
 			_gameOverScreen.y = -_gameOverScreen.height/2;
 			if(won)
