@@ -26,8 +26,9 @@ package de.mediadesign.gd1011.studiof.model {
         private var jumpSpeedBeimFall:Number;             // Wie lange der tween für den fall braucht um vollständig abgespielt zu werden in sekunden
         private var jumpSpeedBeimEinpendeln:Number;       // Wie lange der tween für das einpendeln braucht um vollständig abgespielt zu werden in sekunden
         private var accelerationSpeed:int;                // Die zusätzliche Anzahl an Pixel die der Spieler nach unten bewegt wird wenn er im fall nach unten gezogen wird
+        private var fireRate:Number;                      // Feuer Rate: Kugeln pro Sekunde
+        private var jumpSpeedBeimSprungWinzig:Number;     // Dauer des UP tweens wenn von ebene 3 losgelassen
         ////////////////////////////
-        private var JSONExtractedInformation:Object;
         private var _up:Tween;
         private var _down:Tween;
         private var _landing:Tween;
@@ -42,11 +43,8 @@ package de.mediadesign.gd1011.studiof.model {
         private var _currentLevel:Level;
         private var _accelerateTowardsFinger:Boolean = false;
         private var _swiped:Boolean = false;
-        private var checkSomething:Boolean = false;
+        private var startLandTweenAfterThis:Boolean = false;
 
-        private var ammunition:Vector.<Unit>;
-        private var cooldown:Number = 0;
-        private var fireRate:Number = 5;
         private var upIsRunning:Boolean = false;
         private var counter:int = 0;
         private var comeDownIsntRunningBuffer:Boolean = true;
@@ -55,17 +53,18 @@ package de.mediadesign.gd1011.studiof.model {
 
 
         public function Player(currentLevel:Level)
-        {   super(1, 1, 1);
+        {   super(1, 1, 1, -1, currentLevel);
             this._currentLevel = currentLevel;
             ammunition = new Vector.<Unit>();
 
             JSONExtractedInformation = JSONReader.read("config")["PLAYER"];
             currentPlatform = JSONExtractedInformation["platform"];
             healthPoints = JSONExtractedInformation["healthPoints"];
-            //weapon = JSONExtractedInformation["weapon"];
+            fireRate = JSONExtractedInformation["fireRate"];
             einpendelStaerkeKlein = JSONExtractedInformation["einpendelStaerkeKlein"];
             einpendelStaerkeGross = JSONExtractedInformation["einpendelStaerkeGross"];
             einpendelStaerkeWinzig = JSONExtractedInformation["einpendelStaerkeWinzig"];
+            jumpSpeedBeimSprungWinzig = JSONExtractedInformation["jumpSpeedBeimSprungWinzig"];
             if (einpendelStaerkeWinzig>GameConsts.EBENE_HEIGHT-1) {
                 einpendelStaerkeWinzig = GameConsts.EBENE_HEIGHT-1;
             }
@@ -79,9 +78,9 @@ package de.mediadesign.gd1011.studiof.model {
         }
 
         override public function move(time:Number):void
-        {
+        {   //trace((GameConsts.EBENE_HEIGHT*2+einpendelStaerkeWinzig)+", "+(position.y));
             if (assertCorrectInitialization())
-            {   //trace(counter);
+            {
 
                 checkPlayerPosition();
 
@@ -95,7 +94,7 @@ package de.mediadesign.gd1011.studiof.model {
                 }
                 else
                 {
-                    position.y = _tweenedPosition.y;
+                    position.y = _tweenedPosition.y; //trace("POS.Y: "+position.y);
                     if (_targetPlatform == 6) ignoreMouseInput();
                 }
             }
@@ -189,6 +188,11 @@ package de.mediadesign.gd1011.studiof.model {
                 land();
             }
 
+            if (startLandTweenAfterThis && !upIsRunning) {
+                startLandTweenAfterThis = false;
+                land();
+            }
+
             if (!_landIsntRunning && _moveTowardsMouseAsSoonAsYouCan) {
                 Starling.juggler.remove(_landing);
                 _landing = null;
@@ -198,15 +202,6 @@ package de.mediadesign.gd1011.studiof.model {
             if (_checkTargetPlatform != _targetPlatform) {
                 _moveTowardsMouseAsSoonAsYouCan = true;
                 _checkTargetPlatform = _targetPlatform;
-            }
-        }
-
-        public function shootBullet(time:Number):void
-        {
-            var bullet:Unit = shoot(time);
-            if (bullet != null)
-            {
-                _currentLevel.register(bullet);
             }
         }
 
@@ -229,8 +224,9 @@ package de.mediadesign.gd1011.studiof.model {
                     }
                     else
                     {
-                        _up = new Tween(_tweenedPosition, 0.7, Transitions.EASE_IN);
+                        _up = new Tween(_tweenedPosition, jumpSpeedBeimSprungWinzig, Transitions.EASE_OUT);
                         _up.moveTo(_tweenedPosition.x, GameConsts.EBENE_HEIGHT*2+einpendelStaerkeWinzig );
+                        startLandTweenAfterThis = true;
                     }
                     Starling.juggler.add(_up);
                 } else trace("startJump in Player has been used but there are Tweens in Motion right now, or currentPlatform is smaller/equal than 2. Request Denied.");
@@ -254,15 +250,9 @@ package de.mediadesign.gd1011.studiof.model {
         }
 
         private function land():void
-        {
+        {   trace("LANDING BEGIN");
             _landing = new Tween(_tweenedPosition, jumpSpeedBeimEinpendeln, Transitions.EASE_OUT_ELASTIC);
-            if (GameConsts.EBENE_HEIGHT*2+einpendelStaerkeWinzig != position.y) {
-                _landing.moveTo(_tweenedPosition.x,  GameConsts.STAGE_HEIGHT/3+1);//+1 weil ansonsten der player in ebene 1 endet aus welchem grund auch immer. da current 1 ist aber target 2 wird er ~20pixel nach oben gezogen, und dann wieder auf ebene 2 hochkorrigiert, wodurch er auf der stelle zu springen scheint. +1 verhindert das.
-            }
-            else
-            {
-                _landing.moveTo(_tweenedPosition.x,  GameConsts.STAGE_HEIGHT/3);
-            }
+            _landing.moveTo(_tweenedPosition.x,  GameConsts.STAGE_HEIGHT/3+1);//+1 weil ansonsten der player in ebene 1 endet aus welchem grund auch immer. da current 1 ist aber target 2 wird er ~20pixel nach oben gezogen, und dann wieder auf ebene 2 hochkorrigiert, wodurch er auf der stelle zu springen scheint. +1 verhindert das.
             Starling.juggler.add(_landing);
         }
 
@@ -283,17 +273,17 @@ package de.mediadesign.gd1011.studiof.model {
             }
         }
 
-        public function shoot(time:Number):Unit
+        override public function shoot(time:Number):Unit
         {
             cooldown += time;
             if (cooldown >= (1 / fireRate) || (!upIsRunning && _comeDownIsntRunning && currentPlatform<2 && _landIsntRunning && counter == 0))
             {   //trace("Ich will feuern weil up fertig ist aber come down nicht am laufen: "+(_up != null && _up.isComplete && _comeDownIsntRunning));
                 if (currentPlatform == 1 && !_landIsntRunning) {
-                    var bullet:Unit = new Unit(1, 2, 600);
+                    var bullet:Unit = new Unit(1, 2, 600, -1, _currentLevel);
                 }
                 else
                 {
-                    var bullet:Unit = new Unit(1, currentPlatform, 600);
+                    var bullet:Unit = new Unit(1, currentPlatform, 600, -1, _currentLevel);
                 }
                 bullet.position.y += 100;
                 ammunition.push(bullet);

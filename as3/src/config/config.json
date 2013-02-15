@@ -10,7 +10,8 @@
             "jumpSpeedBeimSprung":1,
             "jumpSpeedBeimFall":1,
             "jumpSpeedBeimEinpendeln":4,
-            "accelerationSpeed":20
+            "fireRate":3,
+            "jumpSpeedBeimSprungWinzig":0.4
            },
     "gamebounds":{
             "width":1710,

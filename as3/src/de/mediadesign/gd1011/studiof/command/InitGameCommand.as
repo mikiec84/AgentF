@@ -51,15 +51,25 @@ package de.mediadesign.gd1011.studiof.command
             gameLoop.registerProcess(renderProcess);
             level.setPlayer(new Player(level));
             moveProcess.addEntity(level.player);
+            for (var index:int = 0; index<level.enemies.length; index++) {
+                moveProcess.addEntity(level.enemies[index]);
 
-            var q:Quad = new Quad(120, 120, 0x0F00F00, false);
+                var img:Image = Assets.getImage("E1_texture");
+                if () {
+                    //
+                }
+                var a:Sprite = new Sprite();
+                a.addChild(img);
+
+                renderProcess.registerRenderable(new Renderable(level.enemies[index].position, a));
+                var ab:GameEvent = new GameEvent(GameConsts.ADD_SPRITE_TO_GAME, GameConsts.ADD_SPRITE_TO_GAME, a);
+                dispatcher.dispatchEvent(ab);
+            }
 
 
             var img3:Image = Assets.getImage("AgentF_texture");
             var a:Sprite = new Sprite();
             a.addChild(img3);
-
-            renderProcess.registerRenderable(new Renderable(level.player.position, a));
 
             renderProcess.registerRenderable(new Renderable(level.player.position, a));
             var ab:GameEvent = new GameEvent(GameConsts.ADD_SPRITE_TO_GAME, GameConsts.ADD_SPRITE_TO_GAME, a);

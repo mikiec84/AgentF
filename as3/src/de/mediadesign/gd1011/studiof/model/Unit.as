@@ -10,6 +10,7 @@ package de.mediadesign.gd1011.studiof.model
     import de.mediadesign.gd1011.studiof.consts.GameConsts;
     import de.mediadesign.gd1011.studiof.model.components.PositionComponent;
     import de.mediadesign.gd1011.studiof.model.components.VelocityComponent;
+    import de.mediadesign.gd1011.studiof.services.JSONReader;
 
     public class Unit implements IMovable
     {
@@ -18,18 +19,33 @@ package de.mediadesign.gd1011.studiof.model
         private var _position:PositionComponent;
         private var _velocity:VelocityComponent;
         private var _weapon:String;
+        public var cooldown:Number = 0;
+        private var fireRateEnemy:Number;
+        public var JSONExtractedInformation:Object;
+        private var enemyRange:int;
+        public var ammunition:Vector.<Unit>;
+        private var _currentLevel:Level;
 
 
-        public function Unit(healthpoints:int, startingPlatform:int, xVel:int)
+        public function Unit(healthpoints:int, startingPlatform:int, xVel:int, startingXPosition:int, currentLevel:Level)
         {
+            ammunition = new Vector.<Unit>();
             _weapon = "default";
             _currentPlatform = startingPlatform;
             _healthPoints = healthpoints;
             _position = new PositionComponent();
             _velocity = new VelocityComponent();
             _velocity.velocityX = xVel;
+            position.x = startingXPosition;
+            if (startingXPosition == -1) {
+                position.x = 20;
+            }
+            this._currentLevel = currentLevel;
 
             _position.y = currentPlatform * GameConsts.EBENE_HEIGHT;
+            JSONExtractedInformation = JSONReader.read("enemy")["ENEMY"];
+            fireRateEnemy = JSONExtractedInformation["fireRateEnemy"];
+            enemyRange = JSONExtractedInformation["enemyRange"];
         }
 
         public function move(time:Number):void
@@ -114,6 +130,28 @@ package de.mediadesign.gd1011.studiof.model
         {
             if (y>=GameConsts.EBENE_HEIGHT*2 && y<=GameConsts.EBENE_HEIGHT*6) {
                 _position.y = y;
+            }
+        }
+        public function shoot(time:Number):Unit
+        {
+            cooldown += time;
+            if (cooldown >= (1 / fireRateEnemy) && position.x<enemyRange && position.x>0 && healthPoints > 0)
+            {
+                var bullet:Unit = new Unit(1, currentPlatform, -600, position.x, _currentLevel);
+                bullet.position.y += 100;
+                ammunition.push(bullet);
+                cooldown = 0;
+                return bullet;
+            }
+            else return null;
+        }
+
+        public function shootBullet(time:Number):void
+        {
+            var bullet:Unit = shoot(time);
+            if (bullet != null)
+            {
+                _currentLevel.register(bullet);
             }
         }
     }

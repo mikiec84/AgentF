@@ -50,6 +50,8 @@ package de.mediadesign.gd1011.studiof.services
             {
                 currentLevel.player.shootBullet(e.passedTime);
             }
+            for (var index:int = 0; index<currentLevel.enemies.length; index++)
+                currentLevel.enemies[index].shootBullet(e.passedTime);
             //trace(currentLevel.scrollBGs.length);
             if (currentLevel.scrollBGs[0].position.x < 0 && currentLevel.scrollBGs.length < 4 )
             {
@@ -59,7 +61,26 @@ package de.mediadesign.gd1011.studiof.services
             {
                 currentLevel.scrollBGs.shift();
             }
-
+            currentLevel.collisionDetection();
+            for (var index2:int = 0; index2<currentLevel.enemies.length; index2++) {
+                for (var index3:int = 0; index3<currentLevel.enemies[index2].ammunition.length; index3++) {
+                    if (currentLevel.enemies[index2].ammunition[index3].healthPoints < 1) {
+                        currentLevel.enemies[index2].ammunition[index3].position.y += 200;
+                    }
+                }
+                if (currentLevel.enemies[index2].healthPoints < 1) {
+                    currentLevel.enemies[index2].position.y += 200;
+                }
+            }
+            if (currentLevel.player.healthPoints < 1) {
+                currentLevel.player.position.y += 200;
+            }
+            for (var index4:int = 0; index4<currentLevel.player.ammunition.length; index4++) {
+                if (currentLevel.player.ammunition[index4].healthPoints < 1) {
+                    currentLevel.player.ammunition[index4].position.y += 100;
+                }
+            }
+            trace("Lebenspunkte des Spielers: "+currentLevel.player.healthPoints);
         }
 	}
 }
