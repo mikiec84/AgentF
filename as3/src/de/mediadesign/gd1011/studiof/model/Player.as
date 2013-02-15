@@ -98,7 +98,7 @@ package de.mediadesign.gd1011.studiof.model {
                     if (_targetPlatform == 6) ignoreMouseInput();
                 }
             }
-            else trace("----------Function Move failed, because Player not correctly initialized: "+position.x+","+position.y+","+velocity+","+currentPlatform+","+this+","+_tweenedPosition.x+","+_tweenedPosition.y);
+            else trace("----------Function Move failed, because Player EITHER DEAD or not correctly initialized. Additional Info: "+position.x+","+position.y+","+velocity+","+currentPlatform+","+this+","+_tweenedPosition.x+","+_tweenedPosition.y);
         }
 
         private function ignoreMouseInput():void
