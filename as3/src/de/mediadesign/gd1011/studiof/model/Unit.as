@@ -51,6 +51,9 @@ package de.mediadesign.gd1011.studiof.model
                 velocity.velocityY = 30;
                 velocity.velocityX = 0;
             }
+            if (startingPlatform == 2 && velocity.velocityX < 0) {
+                position.y += 80;
+            }
         }
 
         public function move(time:Number):void

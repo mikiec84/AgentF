@@ -26,20 +26,20 @@ package de.mediadesign.gd1011.studiof.model
         public var scrollBGs:Vector.<ScrollableBG>;
         private var JSONExtractedInformation:Object;
         public var enemyPositions:Vector.<int>;
+        public var collisionTolerance:int;
 
         public function Level()
         {   enemyPositions = new Vector.<int>;
             _enemies = new Vector.<Unit>();
             scrollBGs = new Vector.<ScrollableBG>();
             JSONExtractedInformation = JSONReader.read("enemy")["ENEMY"];
-            for (var index:int = 0; index<100;index++) {
-                if (JSONExtractedInformation[index] != null) {
-                    enemyPositions.push(JSONExtractedInformation[index]);
-                }
+            for (var index:int = 0; index<JSONExtractedInformation["enemyCount"];index++) {
+                enemyPositions.push(GameConsts.STAGE_WIDTH+((1+index)*JSONExtractedInformation["enemyRate"]));
             }
             for (var index2:int = 0; index2<enemyPositions.length; index2++) {
                 addEnemy(new Unit(1, Math.round(Math.random() * 5), -300, enemyPositions[index2], this, false));
             }
+            collisionTolerance = JSONExtractedInformation["collisionTolerance"];
         }
 
         public function get enemies():Vector.<Unit>
@@ -95,9 +95,19 @@ package de.mediadesign.gd1011.studiof.model
         {   var ab:GameEvent = new GameEvent(ViewConsts.UPDATE_LIFEPOINTS, GameConsts.ADD_SPRITE_TO_GAME, player.healthPoints);
             dispatcher.dispatchEvent(ab);
 
+            if (player.healthPoints<1) {
+                var ab:GameEvent = new GameEvent(ViewConsts.SHOW_GAMEOVER, GameConsts.ADD_SPRITE_TO_GAME, false);
+                dispatcher.dispatchEvent(ab);
+            }
+            if (player.healthPoints>0 && (enemies[enemies.length-1].healthPoints<1 || enemies[enemies.length-1].position.x<0)) {
+                var ab:GameEvent = new GameEvent(ViewConsts.SHOW_GAMEOVER, GameConsts.ADD_SPRITE_TO_GAME, true);
+                dispatcher.dispatchEvent(ab);
+            }
+
+
             for (var index:int =  0; index<enemies.length; index++) {
                 for (var index2:int = 0; index2<enemies[index].ammunition.length; index2++) {
-                    if (player.healthPoints>0 && (player.observePlatform(enemies[index].ammunition[index2].position.y)== player.currentPlatform) && (enemies[index].ammunition[index2].position.x == player.position.x ||  (enemies[index].ammunition[index2].position.x>player.position.x && enemies[index].ammunition[index2].position.x-30<player.position.x))) {
+                    if (player.healthPoints>0 && (player.observePlatform(enemies[index].ammunition[index2].position.y)== player.currentPlatform) && (enemies[index].ammunition[index2].position.x == player.position.x ||  (enemies[index].ammunition[index2].position.x>player.position.x && enemies[index].ammunition[index2].position.x-collisionTolerance<player.position.x))) {
                         enemies[index].ammunition[index2].healthPoints -= 1;
                         player.healthPoints -= 1;
                     }
@@ -109,18 +119,13 @@ package de.mediadesign.gd1011.studiof.model
                             && enemies[index4].healthPoints>0
                             && (player.ammunition[index3].position.x < GameConsts.STAGE_WIDTH &&  player.observePlatform(enemies[index4].position.y)== player.observePlatform(player.ammunition[index3].position.y))
                             && (player.ammunition[index3].position.x == enemies[index4].position.x
-                            || (player.ammunition[index3].position.x<enemies[index4].position.x && player.ammunition[index3].position.x+30>enemies[index4].position.x)))
+                            || (player.ammunition[index3].position.x<enemies[index4].position.x && player.ammunition[index3].position.x+collisionTolerance>enemies[index4].position.x)))
                     {
                         enemies[index4].healthPoints -= 1;
                         player.ammunition[index3].healthPoints -= 1;
                     }
                 }
             }
-        }
-
-        public function deleteDead():void
-        {
-
         }
 
 

@@ -149,7 +149,7 @@ package de.mediadesign.gd1011.studiof.model {
                     else
                     {
                         position.y = GameConsts.EBENE_HEIGHT*_targetPlatform;
-                        trace("Player.y wurde beim Runterziehen auf targetplatform gesetzt.");
+                        //trace("Player.y wurde beim Runterziehen auf targetplatform gesetzt.");
                     }
                 }
                 else
@@ -250,7 +250,7 @@ package de.mediadesign.gd1011.studiof.model {
         }
 
         private function land():void
-        {   trace("LANDING BEGIN");
+        {   //trace("LANDING BEGIN");
             _landing = new Tween(_tweenedPosition, jumpSpeedBeimEinpendeln, Transitions.EASE_OUT_ELASTIC);
             _landing.moveTo(_tweenedPosition.x,  GameConsts.STAGE_HEIGHT/3+1);//+1 weil ansonsten der player in ebene 1 endet aus welchem grund auch immer. da current 1 ist aber target 2 wird er ~20pixel nach oben gezogen, und dann wieder auf ebene 2 hochkorrigiert, wodurch er auf der stelle zu springen scheint. +1 verhindert das.
             Starling.juggler.add(_landing);
