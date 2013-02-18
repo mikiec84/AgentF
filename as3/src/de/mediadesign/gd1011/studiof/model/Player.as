@@ -276,7 +276,7 @@ package de.mediadesign.gd1011.studiof.model {
         override public function shoot(time:Number):Unit
         {
             cooldown += time;
-            if (cooldown >= (1 / fireRate) || (!upIsRunning && _comeDownIsntRunning && currentPlatform<2 && _landIsntRunning && counter == 0))
+            if (cooldown >= (1 / fireRate) || (!_anyTweensInMotion && currentPlatform<2 && counter == 0))
             {   //trace("Ich will feuern weil up fertig ist aber come down nicht am laufen: "+(_up != null && _up.isComplete && _comeDownIsntRunning));
                 if (currentPlatform == 1 && !_landIsntRunning) {
                     var bullet:Unit = new Unit(1, 2, 600, -1, _currentLevel, false);
@@ -289,7 +289,8 @@ package de.mediadesign.gd1011.studiof.model {
                 ammunition.push(bullet);
                 cooldown = 0;
                 if (currentPlatform<2) {
-                    ++counter;
+                    counter+=1;
+                    trace("Counter für schießen: "+counter);
                 }
                 if (currentPlatform > 1) {
                     counter = 0;

@@ -26,6 +26,7 @@ package de.mediadesign.gd1011.studiof.model
         public var ammunition:Vector.<Unit>;
         private var _currentLevel:Level;
         private var doNotShootAnymore:Boolean = false;
+        public var hasAlreadyHitThePlayer = false;
 
 
         public function Unit(healthpoints:int, startingPlatform:int, xVel:int, startingXPosition:int, currentLevel:Level, verticalBullet:Boolean)

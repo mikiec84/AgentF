@@ -16,6 +16,7 @@ package de.mediadesign.gd1011.studiof.view
 	public class GUI extends Sprite
     {
 		private var _config:Object;
+        private var _enemyConfig:Object;
 
 		private var _topLeft:Sprite;
 		private var _topCenter:Sprite;
@@ -30,7 +31,8 @@ package de.mediadesign.gd1011.studiof.view
 
 		public function GUI()
         {
-			_config = JSONReader.read("viewconfig")["gui"];
+            _config = JSONReader.read("viewconfig")["gui"];
+            _enemyConfig = JSONReader.read("enemy")["ENEMY"];
 
 			_topLeft 		= new Sprite();
 			_topCenter 		= new Sprite();
@@ -41,16 +43,15 @@ package de.mediadesign.gd1011.studiof.view
 			addChild(_topRight);
 			addChild(_centerCenter);
 
-			_lifepoints = new TextField(100,100,"3","Verdana",60,0xffffff,true);
+			_lifepoints = new TextField(100,200,"3","Verdana",60,0xffffff,true);
 			_topLeft.addChild(_lifepoints);
-            _enemiesKilled = new TextField(100, 100, "Enemies killed: ", "Verdana", 60, 0xffffff, true);
+            _enemiesKilled = new TextField(1000, 200, "Enemies killed: ", "Verdana", 60, 0xffffff, true);
             _topCenter.addChild(_enemiesKilled);
 
 			if(stage)
 				adjust();
 			else
 				addEventListener(Event.ADDED_TO_STAGE,adjust);
-
 
         }
 
@@ -61,7 +62,6 @@ package de.mediadesign.gd1011.studiof.view
 			_topRight.x											= getWidth();
 			_topLeft.y		= _topCenter.y		= _topRight.y	= _config["padding"];
 			_centerCenter.y 									= getHeight()/2;
-
 
 		}
 
@@ -86,7 +86,7 @@ package de.mediadesign.gd1011.studiof.view
 
         public function setEnemiesKilled(points:int):void
         {   ++enemyKilledCounter;
-            _enemiesKilled.text = "Enemies killed: "+enemyKilledCounter.toString();
+            _enemiesKilled.text = "Enemies killed: "+enemyKilledCounter.toString()+"/"+_enemyConfig["enemyCount"];
         }
 
 		public function showGameOver(won:Boolean):void

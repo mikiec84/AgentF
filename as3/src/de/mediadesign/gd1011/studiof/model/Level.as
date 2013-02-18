@@ -153,10 +153,12 @@ package de.mediadesign.gd1011.studiof.model
             for (var index5:int = 0; index5<enemies.length; index5++) {
                 if (enemies[index5].currentPlatform == 2
                         && player.currentPlatform == 2
+                        && !enemies[index5].hasAlreadyHitThePlayer
                         && (enemies[index5].position.x == player.position.x
                         || (enemies[index5].position.x > player.position.x && enemies[index5].position.x-collisionTolerance<player.position.x))) {
-                    enemies[index5].healthPoints -= 3;
+                    enemies[index5].healthPoints = 0;
                     player.healthPoints -= 1;
+                    enemies[index5].hasAlreadyHitThePlayer = true;
                 }
             }
         }
