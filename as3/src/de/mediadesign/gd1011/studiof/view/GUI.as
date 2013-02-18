@@ -24,6 +24,10 @@ package de.mediadesign.gd1011.studiof.view
 
 		private var _lifepoints:TextField;
 		private var _gameOverScreen:TextField;
+        private var _enemiesKilled:TextField;
+
+        private var enemyKilledCounter:int = 0;
+
 		public function GUI()
         {
 			_config = JSONReader.read("viewconfig")["gui"];
@@ -39,6 +43,8 @@ package de.mediadesign.gd1011.studiof.view
 
 			_lifepoints = new TextField(100,100,"3","Verdana",60,0xffffff,true);
 			_topLeft.addChild(_lifepoints);
+            _enemiesKilled = new TextField(100, 100, "Enemies killed: ", "Verdana", 60, 0xffffff, true);
+            _topCenter.addChild(_enemiesKilled);
 
 			if(stage)
 				adjust();
@@ -77,6 +83,11 @@ package de.mediadesign.gd1011.studiof.view
 		{
 			_lifepoints.text=points.toString();
 		}
+
+        public function setEnemiesKilled(points:int):void
+        {   ++enemyKilledCounter;
+            _enemiesKilled.text = "Enemies killed: "+enemyKilledCounter.toString();
+        }
 
 		public function showGameOver(won:Boolean):void
 		{

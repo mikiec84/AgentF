@@ -22,7 +22,13 @@ package de.mediadesign.gd1011.studiof.view.mediators
 		{
 			addContextListener(ViewConsts.UPDATE_LIFEPOINTS,updateLifepoints);
 			addContextListener(ViewConsts.SHOW_GAMEOVER,showGameOver);
+            addContextListener(ViewConsts.ENEMY_KILLED, updateEnemyKilled);
 		}
+
+        private function updateEnemyKilled(e:GameEvent):void
+        {
+            contextView.setEnemiesKilled(e.dataObj as int);
+        }
 
 		private function showGameOver(e:GameEvent):void
 		{

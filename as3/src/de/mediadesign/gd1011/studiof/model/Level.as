@@ -9,6 +9,7 @@ package de.mediadesign.gd1011.studiof.model
 {
     import de.mediadesign.gd1011.studiof.consts.GameConsts;
     import de.mediadesign.gd1011.studiof.consts.ViewConsts;
+    import de.mediadesign.gd1011.studiof.consts.ViewConsts;
     import de.mediadesign.gd1011.studiof.events.GameEvent;
     import de.mediadesign.gd1011.studiof.view.ScrollBackgroundView;
     import de.mediadesign.gd1011.studiof.services.JSONReader;
@@ -142,7 +143,7 @@ package de.mediadesign.gd1011.studiof.model
                         enemies[index4].healthPoints -= 1;
                         player.ammunition[index3].healthPoints -= 1;
                         if (enemies[index4].healthPoints<1) {
-                            var ab:GameEvent = new GameEvent(ViewConsts.ENEMY_KILLED);
+                            var ab:GameEvent = new GameEvent(ViewConsts.ENEMY_KILLED, ViewConsts.ENEMY_KILLED, true);
                             dispatcher.dispatchEvent(ab);
                         }
                     }
