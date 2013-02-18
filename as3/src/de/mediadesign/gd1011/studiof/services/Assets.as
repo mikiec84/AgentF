@@ -2,14 +2,19 @@ package de.mediadesign.gd1011.studiof.services
 {
     import flash.display.Bitmap;
 	import flash.display.BitmapData;
-	import flash.media.Sound;
+    import flash.geom.Rectangle;
+    import flash.media.Sound;
     import flash.utils.ByteArray;
     import flash.utils.Dictionary;
 	import flash.utils.getDefinitionByName;
 
-	import starling.display.Image;
+    import starling.core.Starling;
+    import starling.display.DisplayObject;
 
-	import starling.text.BitmapFont;
+    import starling.display.Image;
+    import starling.display.MovieClip;
+
+    import starling.text.BitmapFont;
     import starling.text.TextField;
     import starling.textures.Texture;
     import starling.textures.TextureAtlas;
@@ -20,6 +25,43 @@ package de.mediadesign.gd1011.studiof.services
         private static var sSounds:Dictionary = new Dictionary();
         private static var sTextureAtlas:TextureAtlas;
         private static var sBitmapFontsLoaded:Boolean;
+
+
+
+        public static function createAtlasAnim(name:String,w:int,h:int,frames:int):TextureAtlas
+        {
+            var texture:Texture = getTexture(name);
+
+            var atlas:TextureAtlas = new TextureAtlas (texture);
+            var hNew:int = texture.height / h;
+            var wNew:int = texture.width / w;
+
+            for (var i:int = 0; i < frames; i++)
+            {
+                var x:int = i%w;
+                var y:int = i/w;
+
+                var nameNew:String = String(i);
+                while ( nameNew.length < 3 )
+                {
+                    nameNew = "0" + nameNew;
+                }
+                atlas.addRegion(name+nameNew, new Rectangle(x*wNew,y*hNew, wNew, hNew));
+
+            }
+            return atlas;
+        }
+
+        private static function createMovieClip(assetName:String, v:Vector.<int>):DisplayObject
+        {
+            var newClip:MovieClip;
+            var frames:Vector.<Texture> = createAtlasAnim(assetName,v[0],v[1],v[2]).getTextures(assetName);
+            newClip = new MovieClip(frames, v[3]);
+            newClip.play();
+            Starling.juggler.add(newClip);
+            return newClip;
+        }
+
 
 		public static function getImage(name:String):Image
 		{

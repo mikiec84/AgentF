@@ -79,26 +79,28 @@ package de.mediadesign.gd1011.studiof.model {
 
         override public function move(time:Number):void
         {   //trace((GameConsts.EBENE_HEIGHT*2+einpendelStaerkeWinzig)+", "+(position.y));
-            if (assertCorrectInitialization() && position.y<1000)
-            {
-
-                checkPlayerPosition();
-
-                initializeVariables();
-
-                administerTweens(time);
-
-                if (!_anyTweensInMotion)
+            if (position.y<1000) {
+                if (assertCorrectInitialization())
                 {
-                    administerPlayerTowardsMouseMovement(time);
+
+                    checkPlayerPosition();
+
+                    initializeVariables();
+
+                    administerTweens(time);
+
+                    if (!_anyTweensInMotion)
+                    {
+                        administerPlayerTowardsMouseMovement(time);
+                    }
+                    else
+                    {
+                        position.y = _tweenedPosition.y; //trace("POS.Y: "+position.y);
+                        if (_targetPlatform == 6) ignoreMouseInput();
+                    }
                 }
-                else
-                {
-                    position.y = _tweenedPosition.y; //trace("POS.Y: "+position.y);
-                    if (_targetPlatform == 6) ignoreMouseInput();
-                }
+                else trace("----------Function Move failed, because Player EITHER DEAD or not correctly initialized. Additional Info: "+position.x+","+position.y+","+velocity+","+currentPlatform+","+this+","+_tweenedPosition.x+","+_tweenedPosition.y);
             }
-            else trace("----------Function Move failed, because Player EITHER DEAD or not correctly initialized. Additional Info: "+position.x+","+position.y+","+velocity+","+currentPlatform+","+this+","+_tweenedPosition.x+","+_tweenedPosition.y);
         }
 
         private function ignoreMouseInput():void
