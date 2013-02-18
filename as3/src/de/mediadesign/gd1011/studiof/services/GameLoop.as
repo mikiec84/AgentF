@@ -8,8 +8,13 @@
 package de.mediadesign.gd1011.studiof.services
 {
     import de.mediadesign.gd1011.studiof.consts.GameConsts;
+    import de.mediadesign.gd1011.studiof.consts.ViewConsts;
+    import de.mediadesign.gd1011.studiof.events.GameEvent;
     import de.mediadesign.gd1011.studiof.model.Level;
     import de.mediadesign.gd1011.studiof.model.ScrollableBG;
+    import de.mediadesign.gd1011.studiof.model.Unit;
+
+    import flash.events.IEventDispatcher;
 
     import starling.events.EnterFrameEvent;
 
@@ -21,6 +26,12 @@ package de.mediadesign.gd1011.studiof.services
 
         [Inject]
         public var moveProcess:MoveProcess;
+
+        [Inject]
+        public var rules:Rules;
+
+        [Inject]
+        public var dispatcher:IEventDispatcher;
 
 		public function GameLoop(currentLevel:Level):void
 		{
@@ -39,20 +50,29 @@ package de.mediadesign.gd1011.studiof.services
             processes.push(process);
         }
 
+        public function deleteUnits(units:Vector.<Unit>, index:int):void
+        {
+            currentLevel.deleteCurrentUnit(units[index]);
+            units.splice(index,  1);
+        }
+
         public function update(e:EnterFrameEvent):void
         {
+            // update position & render
             for each (var target:IProcess in processes)
             {
                 target.update(e.passedTime);
             }
-
+            // player shooting
             if (currentLevel.player.shootNow())
             {
                 currentLevel.player.shootBullet(e.passedTime);
             }
+            // Enemy shooting
             for (var index:int = 0; index<currentLevel.enemies.length; index++)
                 currentLevel.enemies[index].shootBullet(e.passedTime);
-            //trace(currentLevel.scrollBGs.length);
+
+            // scrolling background
             if (currentLevel.scrollBGs[0].position.x < 0 && currentLevel.scrollBGs.length < 4 )
             {
                 initScroll();
@@ -61,26 +81,77 @@ package de.mediadesign.gd1011.studiof.services
             {
                 currentLevel.scrollBGs.shift();
             }
-            currentLevel.collisionDetection();
-            for (var index2:int = 0; index2<currentLevel.enemies.length; index2++) {
-                for (var index3:int = 0; index3<currentLevel.enemies[index2].ammunition.length; index3++) {
-                    if (currentLevel.enemies[index2].ammunition[index3].healthPoints < 1) {
-                        currentLevel.enemies[index2].ammunition[index3].position.y += 200;
+
+            // collsision
+
+            for (var i:int = 0; i < currentLevel.player.ammunition.length; i++)
+            {
+                for (var j:int = 0; j < currentLevel.enemies.length; j++)
+                {
+                    rules.collisionDetection(currentLevel.player.ammunition[i], currentLevel.enemies[j]);
+
+                    if (rules.isDead(currentLevel.player.ammunition[i]))
+                    {
+                        deleteUnits(currentLevel.player.ammunition, i);
+                        break;
+                        break;
+                    }
+                    if (rules.isDead(currentLevel.enemies[j]))
+                    {
+                        deleteUnits(currentLevel.enemies, j);
+                        break;
+                        break;
                     }
                 }
-                if (currentLevel.enemies[index2].healthPoints < 1) {
-                    currentLevel.enemies[index2].position.y += 200;
+            }
+
+            for (var i:int = 0; i < currentLevel.enemies.length; i++)
+            {
+                for (var j:int = 0; j < currentLevel.enemies[i].ammunition.length; j++)
+                {
+                    rules.collisionDetection(currentLevel.player, currentLevel.enemies[i]);
+                    rules.collisionDetection(currentLevel.player, currentLevel.enemies[i].ammunition[j]);
+
+                    if (rules.isDead(currentLevel.enemies[i]))
+                    {
+                        deleteUnits(currentLevel.enemies, i);
+                        break;
+                        break;
+                    }
+
+                    if (rules.isDead(currentLevel.enemies[i].ammunition[j]))
+                    {
+                        deleteUnits(currentLevel.enemies[i].ammunition, j);
+                        break;
+                        break;
+                    }
+
                 }
             }
-            if (currentLevel.player.healthPoints < 1) {
-                currentLevel.player.position.y += 200;
+
+            var updateLifePointEvent:GameEvent = new GameEvent(ViewConsts.UPDATE_LIFEPOINTS, GameConsts.ADD_SPRITE_TO_GAME, currentLevel.player.healthPoints);
+            dispatcher.dispatchEvent(updateLifePointEvent);
+
+            if (currentLevel.player.healthPoints<1)
+            {
+                var ab:GameEvent = new GameEvent(ViewConsts.SHOW_GAMEOVER, GameConsts.ADD_SPRITE_TO_GAME, false);
+                dispatcher.dispatchEvent(ab);
             }
-            for (var index4:int = 0; index4<currentLevel.player.ammunition.length; index4++) {
-                if (currentLevel.player.ammunition[index4].healthPoints < 1) {
-                    currentLevel.player.ammunition[index4].position.y += 100;
-                }
+            if (currentLevel.enemies.length != 0)
+            if (currentLevel.player.healthPoints > 0
+                    && (currentLevel.enemies[currentLevel.enemies.length-1].healthPoints < 1
+                    || currentLevel.enemies[currentLevel.enemies.length - 1].position.x < 0))
+            {
+                var ab:GameEvent = new GameEvent(ViewConsts.SHOW_GAMEOVER, GameConsts.ADD_SPRITE_TO_GAME, true);
+                dispatcher.dispatchEvent(ab);
             }
-            //trace("Lebenspunkte des Spielers: "+currentLevel.player.healthPoints);
+            else if (currentLevel.enemies.length = 0)
+            {
+                var ab:GameEvent = new GameEvent(ViewConsts.SHOW_GAMEOVER, GameConsts.ADD_SPRITE_TO_GAME, true);
+                dispatcher.dispatchEvent(ab);
+            }
+
+
         }
 	}
 }

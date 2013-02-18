@@ -7,9 +7,10 @@
  */
 package de.mediadesign.gd1011.studiof
 {
+    import de.mediadesign.gd1011.studiof.command.DeleteUnitCommand;
     import de.mediadesign.gd1011.studiof.command.ImplementBackgroundCommand;
     import de.mediadesign.gd1011.studiof.command.InitGameCommand;
-    import de.mediadesign.gd1011.studiof.command.RegisterUnitCommand;
+    import de.mediadesign.gd1011.studiof.command.RegisterBulletCommand;
     import de.mediadesign.gd1011.studiof.consts.GameConsts;
     import de.mediadesign.gd1011.studiof.events.GameEvent;
     import de.mediadesign.gd1011.studiof.model.Level;
@@ -21,6 +22,7 @@ package de.mediadesign.gd1011.studiof
     import de.mediadesign.gd1011.studiof.services.GameLoop;
     import de.mediadesign.gd1011.studiof.services.MoveProcess;
     import de.mediadesign.gd1011.studiof.services.RenderProcess;
+    import de.mediadesign.gd1011.studiof.services.Rules;
     import de.mediadesign.gd1011.studiof.view.BackgroundView;
     import de.mediadesign.gd1011.studiof.view.GUI;
     import de.mediadesign.gd1011.studiof.view.GameView;
@@ -68,13 +70,15 @@ package de.mediadesign.gd1011.studiof
             modelMap.map(RenderProcess).asSingleton();
             modelMap.map(GameLoop).asSingleton();
 			modelMap.map(LevelConfiguration).asSingleton();
+            modelMap.map(Rules).asSingleton();
         }
 
         private function initCommands():void
         {
             commandMap.map(GameConsts.INIT_GAME).toCommand(InitGameCommand);
             commandMap.map(GameConsts.IMPL_BG).toCommand(ImplementBackgroundCommand);
-            commandMap.map(GameConsts.REGISTER_UNIT).toCommand(RegisterUnitCommand);
+            commandMap.map(GameConsts.REGISTER_UNIT).toCommand(RegisterBulletCommand);
+            commandMap.map(GameConsts.DELETE_UNIT).toCommand(DeleteUnitCommand);
         }
 
         public function initMediators() : void

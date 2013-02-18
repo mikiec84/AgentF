@@ -98,7 +98,7 @@ package de.mediadesign.gd1011.studiof.model {
                     if (_targetPlatform == 6) ignoreMouseInput();
                 }
             }
-            else trace("----------Function Move failed, because Player EITHER DEAD or not correctly initialized. Additional Info: "+position.x+","+position.y+","+velocity+","+currentPlatform+","+this+","+_tweenedPosition.x+","+_tweenedPosition.y);
+            //else trace("----------Function Move failed, because Player EITHER DEAD or not correctly initialized. Additional Info: "+position.x+","+position.y+","+velocity+","+currentPlatform+","+this+","+_tweenedPosition.x+","+_tweenedPosition.y);
         }
 
         private function ignoreMouseInput():void
@@ -123,9 +123,21 @@ package de.mediadesign.gd1011.studiof.model {
             _landIsntRunning     = !(_landing != null && !_landing.isComplete);
             _landStillInJuggler  = Starling.juggler.contains(_landing);
             _anyTweensInMotion   = (upIsRunning || !_comeDownIsntRunning || (!_landIsntRunning || landNow));
-            if (_up != null && _up.isComplete && Starling.juggler.contains(_up)) {Starling.juggler.remove(_up); trace("Up removed from juggler");}
-            if (_down != null && _down.isComplete && Starling.juggler.contains(_down)) {Starling.juggler.remove(_down); trace("Down removed from juggler");}
-            if (_landing != null && _landing.isComplete && Starling.juggler.contains(_landing)) {Starling.juggler.remove(_landing); trace("Land removed from juggler");}
+            if (_up != null && _up.isComplete && Starling.juggler.contains(_up))
+            {
+                Starling.juggler.remove(_up);
+//                trace("Up removed from juggler");
+            }
+            if (_down != null && _down.isComplete && Starling.juggler.contains(_down))
+            {
+                Starling.juggler.remove(_down);
+//                trace("Down removed from juggler");
+            }
+            if (_landing != null && _landing.isComplete && Starling.juggler.contains(_landing))
+            {
+                Starling.juggler.remove(_landing);
+//                trace("Land removed from juggler");
+            }
         }
 
         private function checkPlayerPosition():void
@@ -207,8 +219,9 @@ package de.mediadesign.gd1011.studiof.model {
 
         public function startJump():void
         {
-            if (_targetPlatform == 6 && currentPlatform != 5) {
-                trace("startJump wird nicht ausgeführt weil targetplatform == 6 aber currentplatform != 5. currentPlatform: "+currentPlatform);
+            if (_targetPlatform == 6 && currentPlatform != 5)
+            {
+                //trace("startJump wird nicht ausgeführt weil targetplatform == 6 aber currentplatform != 5. currentPlatform: "+currentPlatform);
                 _swiped = true;
             }
             else
@@ -229,7 +242,7 @@ package de.mediadesign.gd1011.studiof.model {
                         startLandTweenAfterThis = true;
                     }
                     Starling.juggler.add(_up);
-                } else trace("startJump in Player has been used but there are Tweens in Motion right now, or currentPlatform is smaller/equal than 2. Request Denied.");
+                } //else trace("startJump in Player has been used but there are Tweens in Motion right now, or currentPlatform is smaller/equal than 2. Request Denied.");
             }
         }
 
@@ -263,8 +276,9 @@ package de.mediadesign.gd1011.studiof.model {
 
         public function set targetPlatform(value:int):void
         {
-            if (value<2 || value>6) {
-                trace("Trying to set Player targetPlatform to "+value+". Value not accepted.");
+            if (value<2 || value>6)
+            {
+                //trace("Trying to set Player targetPlatform to "+value+". Value not accepted.");
             }
             else
             {
@@ -277,8 +291,9 @@ package de.mediadesign.gd1011.studiof.model {
         {
             cooldown += time;
             if (cooldown >= (1 / fireRate) || (!_anyTweensInMotion && currentPlatform<2 && counter == 0))
-            {   //trace("Ich will feuern weil up fertig ist aber come down nicht am laufen: "+(_up != null && _up.isComplete && _comeDownIsntRunning));
-                if (currentPlatform == 1 && !_landIsntRunning) {
+            {
+                if (currentPlatform == 1 && !_landIsntRunning)
+                {
                     var bullet:Unit = new Unit(1, 2, 600, -1, _currentLevel, false);
                 }
                 else
@@ -288,11 +303,12 @@ package de.mediadesign.gd1011.studiof.model {
                 bullet.position.y += 100;
                 ammunition.push(bullet);
                 cooldown = 0;
-                if (currentPlatform<2) {
+                if (currentPlatform<2)
+                {
                     counter+=1;
-                    trace("Counter für schießen: "+counter);
                 }
-                if (currentPlatform > 1) {
+                if (currentPlatform > 1)
+                {
                     counter = 0;
                 }
                 return bullet;
@@ -305,15 +321,18 @@ package de.mediadesign.gd1011.studiof.model {
             return (!upIsRunning && _comeDownIsntRunning && healthPoints>0);
         }
 
-        public function set accelerateTowardsFinger(value:Boolean):void {
+        public function set accelerateTowardsFinger(value:Boolean):void
+        {
             _accelerateTowardsFinger = value;
         }
 
-        public function get swiped():Boolean {
+        public function get swiped():Boolean
+        {
             return _swiped;
         }
 
-        public function set swiped(value:Boolean):void {
+        public function set swiped(value:Boolean):void
+        {
             _swiped = value;
         }
     }

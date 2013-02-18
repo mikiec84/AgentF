@@ -10,17 +10,12 @@ package de.mediadesign.gd1011.studiof.services {
 
     public class MoveProcess implements IProcess
     {
-        private var targets:Vector.<IMovable>;
+        public var targets:Vector.<IMovable>;
 
         public function MoveProcess()
         {
             targets = new Vector.<IMovable>();
         }
-
-//        public function registerMovable(movable:Mov):void
-//        {
-//            targets.push(movable);
-//        }
 
         public function update(time:Number):void
         {
@@ -33,6 +28,11 @@ package de.mediadesign.gd1011.studiof.services {
         public function addEntity(target:IMovable):void
         {
             targets.push(target);
+        }
+
+        public function removeEntity(i:int):void
+        {
+            targets.splice(i, 1);
         }
     }
 }

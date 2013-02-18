@@ -7,25 +7,47 @@
  */
 package de.mediadesign.gd1011.studiof.services
 {
+    import de.mediadesign.gd1011.studiof.consts.GameConsts;
     import de.mediadesign.gd1011.studiof.model.Unit;
 
     public class Rules
     {
-        public static function collisionDetection(unit1:Unit, unit2:Unit):void
+        private var JSONExtractedInformation:Object;
+
+        public var collisionTolerance:int;
+
+
+        public function Rules():void
         {
-            if (unit1.currentPlatform == unit2.currentPlatform && unit1.position.x == unit2.position.x)
-            {
-                unit1.healthPoints--;
-                unit2.healthPoints--;
-            }
+            JSONExtractedInformation = JSONReader.read("enemy")["ENEMY"];
+            collisionTolerance = JSONExtractedInformation["collisionTolerance"];
         }
 
-        public static function isDead(unit:Unit):Boolean
+        // first unit: movement -->
+        // second unit: movement <--
+        public function collisionDetection(unit1:Unit, unit2:Unit):void
+        {
+            if (unit2.position.x < GameConsts.STAGE_WIDTH)
+            {
+                if (unit1.currentPlatform == unit2.currentPlatform
+                        && unit1.position.x + collisionTolerance >= unit2.position.x)
+                {
+                    unit1.healthPoints--;
+                    unit2.healthPoints--;
+                }
+            }
+            if (unit1.position.x > GameConsts.STAGE_WIDTH)
+                unit1.healthPoints = 0;
+            if (unit2.position.x < 0)
+                unit2.healthPoints = 0;
+        }
+
+        public function isDead(unit:Unit):Boolean
         {
             return (unit.healthPoints <= 0);
         }
 
-        public static function loose(player:Unit):Boolean
+        public function loose(player:Unit):Boolean
         {
             return isDead(player);
         }

@@ -45,6 +45,7 @@ package de.mediadesign.gd1011.studiof.view.mediators {
             contextView.addEventListener(EnterFrameEvent.ENTER_FRAME, game.update);
 
             addContextListener(GameConsts.ADD_SPRITE_TO_GAME, add);
+            addContextListener(GameConsts.REMOVE_SPRITE_FROM_GAME, remove);
 
             var initGameEvent:GameEvent = new GameEvent(GameConsts.INIT_GAME, GameConsts.INIT_GAME);
             dispatcher.dispatchEvent(initGameEvent);
@@ -60,6 +61,11 @@ package de.mediadesign.gd1011.studiof.view.mediators {
 		{
             contextView.addChildAt(event.dataObj, contextView.numChildren);
 		}
+
+        private function remove(event:GameEvent):void
+        {
+            contextView.removeChild(event.dataObj);
+        }
 
 		private function handleTouch(e:TouchEvent):void
 		{

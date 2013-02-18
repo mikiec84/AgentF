@@ -102,6 +102,12 @@ package de.mediadesign.gd1011.studiof.model
             dispatcher.dispatchEvent(registerUnitEvent);
         }
 
+        public function deleteCurrentUnit(unit:Unit):void
+        {
+            var deleteUnitEvent:GameEvent = new GameEvent(GameConsts.DELETE_UNIT, GameConsts.DELETE_UNIT, unit);
+            dispatcher.dispatchEvent(deleteUnitEvent);
+        }
+
         public function initScrollBG(bgScroll:ScrollableBG):void
         {
             var registerBGEvent:GameEvent = new GameEvent(GameConsts.IMPL_BG, GameConsts.IMPL_BG, bgScroll);
@@ -124,7 +130,12 @@ package de.mediadesign.gd1011.studiof.model
 
             for (var index:int =  0; index<enemies.length; index++) {
                 for (var index2:int = 0; index2<enemies[index].ammunition.length; index2++) {
-                    if (enemies[index].ammunition[index2].healthPoints>0 && enemies[index].ammunition[index2].velocity.velocityY == 0 &&player.healthPoints>0 && (player.observePlatform(enemies[index].ammunition[index2].position.y)== player.currentPlatform) && (enemies[index].ammunition[index2].position.x == player.position.x ||  (enemies[index].ammunition[index2].position.x>player.position.x && enemies[index].ammunition[index2].position.x-collisionTolerance<player.position.x))) {
+                    if (enemies[index].ammunition[index2].healthPoints>0
+                            && enemies[index].ammunition[index2].velocity.velocityY == 0 &&player.healthPoints>0
+                            && (player.observePlatform(enemies[index].ammunition[index2].position.y)== player.currentPlatform)
+                            && (enemies[index].ammunition[index2].position.x == player.position.x ||  (enemies[index].ammunition[index2].position.x>player.position.x
+                            && enemies[index].ammunition[index2].position.x-collisionTolerance<player.position.x)))
+                    {
                         enemies[index].ammunition[index2].healthPoints -= 1;
                         player.healthPoints -= 1;
                     }
@@ -136,9 +147,11 @@ package de.mediadesign.gd1011.studiof.model
                     if (       player.healthPoints>0
                             && player.ammunition[index3].healthPoints>0
                             && enemies[index4].healthPoints>0
-                            && (player.ammunition[index3].position.x < GameConsts.STAGE_WIDTH &&  player.observePlatform(enemies[index4].position.y)== player.observePlatform(player.ammunition[index3].position.y))
+                            && (player.ammunition[index3].position.x < GameConsts.STAGE_WIDTH
+                            &&  player.observePlatform(enemies[index4].position.y)== player.observePlatform(player.ammunition[index3].position.y))
                             && (player.ammunition[index3].position.x == enemies[index4].position.x
-                            || (player.ammunition[index3].position.x<enemies[index4].position.x && player.ammunition[index3].position.x+collisionTolerance>enemies[index4].position.x)))
+                            || (player.ammunition[index3].position.x<enemies[index4].position.x
+                            && player.ammunition[index3].position.x+collisionTolerance>enemies[index4].position.x)))
                     {
                         enemies[index4].healthPoints -= 1;
                         player.ammunition[index3].healthPoints -= 1;
@@ -155,7 +168,9 @@ package de.mediadesign.gd1011.studiof.model
                         && player.currentPlatform == 2
                         && !enemies[index5].hasAlreadyHitThePlayer
                         && (enemies[index5].position.x == player.position.x
-                        || (enemies[index5].position.x > player.position.x && enemies[index5].position.x-collisionTolerance<player.position.x))) {
+                        || (enemies[index5].position.x > player.position.x
+                        && enemies[index5].position.x-collisionTolerance<player.position.x)))
+                {
                     enemies[index5].healthPoints = 0;
                     player.healthPoints -= 1;
                     enemies[index5].hasAlreadyHitThePlayer = true;

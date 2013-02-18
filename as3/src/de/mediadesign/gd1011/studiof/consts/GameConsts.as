@@ -7,15 +7,18 @@
  */
 package de.mediadesign.gd1011.studiof.consts
 {
-    import flash.utils.getQualifiedClassName;
-
     public class GameConsts
     {
-        public static const INIT_PLAYER:String = /*getQualifiedClassName(this)+*/"INIT_PLAYER";
-        public static const INIT_GAME:String   = /*getQualifiedClassName(this)+*/"INIT_GAME";
+        // GameEvent Strings
+        public static const INIT_PLAYER:String = "INIT_PLAYER";
+        public static const INIT_GAME:String   = "INIT_GAME";
+
         public static const IMPL_BG:String = "IMPL_BG";
         public static const REGISTER_UNIT:String = "REGISTER_UNIT";
+        public static const DELETE_UNIT:String = "DELETE_UNIT";
+
         public static const ADD_SPRITE_TO_GAME:String = "ADD_SPRITE_TO_GAME";
+        public static const REMOVE_SPRITE_FROM_GAME:String = "REMOVE_SPRITE_FROM_GAME";
         public static const ADD_BG_TO_GAME:String = "ADD_BG_TO_GAME";
 
         public static const STAGE_HEIGHT:int   = 720;

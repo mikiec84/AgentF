@@ -122,6 +122,11 @@ package de.mediadesign.gd1011.studiof.model
             else _currentPlatform = value;
         }
 
+        public function set position(value:PositionComponent):void
+        {
+            _position = value;
+        }
+
         public function get position():PositionComponent
         {
             return _position;

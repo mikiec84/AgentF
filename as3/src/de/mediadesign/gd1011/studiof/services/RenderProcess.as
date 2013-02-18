@@ -11,7 +11,7 @@ package de.mediadesign.gd1011.studiof.services
 
     public class RenderProcess implements IProcess
     {
-        private var targets:Vector.<Renderable>;
+        public var targets:Vector.<Renderable>;
 
         public function RenderProcess()
         {
@@ -21,6 +21,11 @@ package de.mediadesign.gd1011.studiof.services
         public function registerRenderable(render:Renderable):void
         {
             targets.push(render);
+        }
+
+        public function deleteRenderable(i:int):void
+        {
+            targets.splice(i, 1);
         }
 
         public function update(time:Number):void

@@ -1,7 +1,7 @@
 {
     "PLAYER":{
             "platform":2,
-            "healthPoints":3,
+            "healthPoints":1000,
             "weapon":"MACHINE_GUN",
             "einpendelStaerkeWinzig":15,
             "einpendelStaerkeKlein":30,

@@ -24,7 +24,7 @@ package de.mediadesign.gd1011.studiof.command
 
     import starling.display.Sprite;
 
-    public class RegisterUnitCommand extends Command
+    public class RegisterBulletCommand extends Command
     {
         [Inject]
         public var moveProcess:MoveProcess;
