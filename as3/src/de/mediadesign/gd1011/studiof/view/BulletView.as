@@ -7,15 +7,9 @@
  */
 package de.mediadesign.gd1011.studiof.view
 {
-    import de.mediadesign.gd1011.studiof.model.components.PositionComponent;
-
-    import flash.display.BitmapData;
-
-    import starling.display.Image;
     import starling.display.Quad;
 
     import starling.display.Sprite;
-    import starling.textures.Texture;
 
     public class BulletView extends Sprite
     {
@@ -25,10 +19,6 @@ package de.mediadesign.gd1011.studiof.view
             q.y += 5;
             alpha = 0;
             addChildAt(q, 0);
-
-//            var bmd:BitmapData = new E1_texture(0,0);
-//            var image:Image = new Image(Texture.fromBitmapData(bmd));
-//            addChild(image);
         }
     }
 }

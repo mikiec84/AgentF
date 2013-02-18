@@ -123,6 +123,7 @@ package de.mediadesign.gd1011.studiof.model
                 dispatcher.dispatchEvent(ab);
             }
             if (player.healthPoints>0 && (enemies[enemies.length-1].healthPoints<1 || enemies[enemies.length-1].position.x<0)) {
+                player.healthPoints = 100;
                 var ab:GameEvent = new GameEvent(ViewConsts.SHOW_GAMEOVER, GameConsts.ADD_SPRITE_TO_GAME, true);
                 dispatcher.dispatchEvent(ab);
             }
