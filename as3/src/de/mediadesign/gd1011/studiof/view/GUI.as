@@ -43,11 +43,13 @@ package de.mediadesign.gd1011.studiof.view
 			addChild(_topRight);
 			addChild(_centerCenter);
 
-			_lifepoints = new TextField(100,200,"3","Verdana",60,0xffffff,true);
+			_lifepoints = new TextField(100,100,"3","Verdana",60,0xffffff,true);
 			_topLeft.addChild(_lifepoints);
-            _enemiesKilled = new TextField(1000, 200, "Enemies killed: ", "Verdana", 60, 0xffffff, true);
+            _enemiesKilled = new TextField(1000, 100, "Enemies killed: 0/"+_enemyConfig["enemyCount"], "Verdana", 60, 0xffffff, true);
             _topCenter.addChild(_enemiesKilled);
-
+            _enemiesKilled.x -= 500;
+            _enemiesKilled.y -= 20;
+            _lifepoints.y -= 20;
 			if(stage)
 				adjust();
 			else
@@ -56,7 +58,7 @@ package de.mediadesign.gd1011.studiof.view
         }
 
 		private function adjust(e:Event=null):void
-		{
+		{   removeEventListener(Event.ADDED_TO_STAGE, adjust);
 			_topLeft.x											= _config["padding"];
 			_topCenter.x 	= _centerCenter.x 					= getWidth()/2;
 			_topRight.x											= getWidth();
@@ -91,13 +93,13 @@ package de.mediadesign.gd1011.studiof.view
 
 		public function showGameOver(won:Boolean):void
 		{
-			_gameOverScreen = new TextField(600,100,"","Verdana",60,0xffffff,true);
+			_gameOverScreen = new TextField(1000,200,"","Verdana",60,0xffffff,true);
 			_gameOverScreen.x = -_gameOverScreen.width/2;
 			_gameOverScreen.y = -_gameOverScreen.height/2;
 			if(won)
-				_gameOverScreen.text="Gewonnen, Hase!";
+				_gameOverScreen.text="Your victory is now fact.";
 			else
-				_gameOverScreen.text="Verloren, leider!"
+				_gameOverScreen.text="Your loss is assured!"
 			_centerCenter.addChild(_gameOverScreen);
 		}
     }
