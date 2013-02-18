@@ -292,39 +292,44 @@ package de.mediadesign.gd1011.studiof.model {
         override public function shoot(time:Number):Unit
         {
             cooldown += time;
-            if (currentPlatform > 1) {
+            if (currentPlatform > 1)
+            {
                 counter = 0;
             }
             if (counter == 0 && (cooldown >= (1 / fireRate) || (!_anyTweensInMotion && currentPlatform<2)))
             {   //trace("Ich will feuern weil up fertig ist aber come down nicht am laufen: "+(_up != null && _up.isComplete && _comeDownIsntRunning));
-                if (currentPlatform == 1 && !_landIsntRunning) {
-            if (cooldown >= (1 / fireRate) || (!_anyTweensInMotion && currentPlatform<2 && counter == 0))
-            {
-                if (currentPlatform == 1 && !_landIsntRunning)
+                //if (currentPlatform == 1 && !_landIsntRunning) {
+                if (cooldown >= (1 / fireRate) || (!_anyTweensInMotion && currentPlatform<2 && counter == 0))
                 {
-                    var bullet:Unit = new Unit(1, 2, 600, -1, _currentLevel, false);
+                    if (currentPlatform == 1 && !_landIsntRunning)
+                    {
+                        var bullet:Unit = new Unit(1, 2, 600, -1, _currentLevel, false);
+                    }
+                    else
+                    {
+                        var bullet:Unit = new Unit(1, currentPlatform, 600, -1, _currentLevel, false);
+                    }
+                    bullet.position.y += 100;
+                    ammunition.push(bullet);
+                    cooldown = 0;
+                    if (currentPlatform<2)
+                    {
+                        counter=1;
+                        trace("Counter für schießen: "+counter);
+                    }
+                    if (currentPlatform<2)
+                    {
+                        counter+=1;
+                    }
+                    if (currentPlatform > 1)
+                    {
+                        counter = 0;
+                    }
+                    return bullet;
                 }
-                else
-                {
-                    var bullet:Unit = new Unit(1, currentPlatform, 600, -1, _currentLevel, false);
-                }
-                bullet.position.y += 100;
-                ammunition.push(bullet);
-                cooldown = 0;
-                if (currentPlatform<2) {
-                    counter=1;
-                    trace("Counter für schießen: "+counter);
-                if (currentPlatform<2)
-                {
-                    counter+=1;
-                }
-                if (currentPlatform > 1)
-                {
-                    counter = 0;
-                }
-                return bullet;
+                else return null;
             }
-            else return null;
+            return null;
         }
 
         public function shootNow():Boolean

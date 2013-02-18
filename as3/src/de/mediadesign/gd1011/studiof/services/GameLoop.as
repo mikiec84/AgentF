@@ -145,7 +145,7 @@ package de.mediadesign.gd1011.studiof.services
                 var ab:GameEvent = new GameEvent(ViewConsts.SHOW_GAMEOVER, GameConsts.ADD_SPRITE_TO_GAME, true);
                 dispatcher.dispatchEvent(ab);
             }
-            else if (currentLevel.enemies.length = 0)
+            else if (currentLevel.enemies.length == 0)
             {
                 var ab:GameEvent = new GameEvent(ViewConsts.SHOW_GAMEOVER, GameConsts.ADD_SPRITE_TO_GAME, true);
                 dispatcher.dispatchEvent(ab);
