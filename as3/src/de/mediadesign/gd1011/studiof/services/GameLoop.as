@@ -152,6 +152,8 @@ package de.mediadesign.gd1011.studiof.services
             }
 
 
+            //trace(currentLevel.player.counter);
+            //trace("Lebenspunkte des Spielers: "+currentLevel.player.healthPoints);
         }
 	}
 }

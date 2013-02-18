@@ -46,7 +46,7 @@ package de.mediadesign.gd1011.studiof.model {
         private var startLandTweenAfterThis:Boolean = false;
 
         private var upIsRunning:Boolean = false;
-        private var counter:int = 0;
+        public var counter:int = 0;
         private var comeDownIsntRunningBuffer:Boolean = true;
         private var landNow:Boolean = false;
         // Sollte später von JSON eingelesen werden !!!
@@ -98,7 +98,7 @@ package de.mediadesign.gd1011.studiof.model {
                     if (_targetPlatform == 6) ignoreMouseInput();
                 }
             }
-            //else trace("----------Function Move failed, because Player EITHER DEAD or not correctly initialized. Additional Info: "+position.x+","+position.y+","+velocity+","+currentPlatform+","+this+","+_tweenedPosition.x+","+_tweenedPosition.y);
+            else trace("----------Function Move failed, because Player EITHER DEAD or not correctly initialized. Additional Info: "+position.x+","+position.y+","+velocity+","+currentPlatform+","+this+","+_tweenedPosition.x+","+_tweenedPosition.y);
         }
 
         private function ignoreMouseInput():void
@@ -290,6 +290,12 @@ package de.mediadesign.gd1011.studiof.model {
         override public function shoot(time:Number):Unit
         {
             cooldown += time;
+            if (currentPlatform > 1) {
+                counter = 0;
+            }
+            if (counter == 0 && (cooldown >= (1 / fireRate) || (!_anyTweensInMotion && currentPlatform<2)))
+            {   //trace("Ich will feuern weil up fertig ist aber come down nicht am laufen: "+(_up != null && _up.isComplete && _comeDownIsntRunning));
+                if (currentPlatform == 1 && !_landIsntRunning) {
             if (cooldown >= (1 / fireRate) || (!_anyTweensInMotion && currentPlatform<2 && counter == 0))
             {
                 if (currentPlatform == 1 && !_landIsntRunning)
@@ -303,6 +309,9 @@ package de.mediadesign.gd1011.studiof.model {
                 bullet.position.y += 100;
                 ammunition.push(bullet);
                 cooldown = 0;
+                if (currentPlatform<2) {
+                    counter=1;
+                    trace("Counter für schießen: "+counter);
                 if (currentPlatform<2)
                 {
                     counter+=1;
