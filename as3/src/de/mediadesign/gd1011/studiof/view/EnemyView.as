@@ -7,9 +7,14 @@
  */
 package de.mediadesign.gd1011.studiof.view
 {
+    import de.mediadesign.gd1011.studiof.consts.ViewConsts;
+    import de.mediadesign.gd1011.studiof.events.GameEvent;
+
     import flash.display.BitmapData;
 
     import starling.display.Image;
+    import starling.display.MovieClip;
+    import starling.display.Quad;
 
     import starling.display.Sprite;
     import starling.textures.Texture;
@@ -18,9 +23,18 @@ package de.mediadesign.gd1011.studiof.view
     {
         public function EnemyView()
         {
-            var bmd:BitmapData = new E1_texture(0,0);
-            var image:Image = new Image(Texture.fromBitmapData(bmd));
-            addChild(image);
+            addEventListener(ViewConsts.GET_DAMAGE, damageView);
+            addEventListener(ViewConsts.SET_NORMAL, normalView);
+        }
+
+        public function damageView(e:GameEvent):void
+        {
+            this.alpha = 0.5;
+        }
+
+        public function normalView(e:GameEvent):void
+        {
+            this.alpha = 1;
         }
     }
 }

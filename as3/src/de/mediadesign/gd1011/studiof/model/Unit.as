@@ -44,7 +44,7 @@ package de.mediadesign.gd1011.studiof.model
             }
             this._currentLevel = currentLevel;
 
-            _position.y = currentPlatform * GameConsts.EBENE_HEIGHT;
+            _position.y = currentPlatform * GameConsts.PLATFORM_HEIGHT;
             JSONExtractedInformation = JSONReader.read("enemy")["ENEMY"];
             fireRateEnemy = JSONExtractedInformation["fireRateEnemy"];
             enemyRange = JSONExtractedInformation["enemyRange"];
@@ -149,7 +149,7 @@ package de.mediadesign.gd1011.studiof.model
 
         public function setNewPosition(y:int):void
         {
-            if (y>=GameConsts.EBENE_HEIGHT*2 && y<=GameConsts.EBENE_HEIGHT*6) {
+            if (y>=GameConsts.PLATFORM_HEIGHT*2 && y<=GameConsts.PLATFORM_HEIGHT*6) {
                 _position.y = y;
             }
         }

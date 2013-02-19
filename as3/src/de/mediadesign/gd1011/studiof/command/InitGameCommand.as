@@ -16,6 +16,7 @@ package de.mediadesign.gd1011.studiof.command
     import de.mediadesign.gd1011.studiof.services.GameLoop;
     import de.mediadesign.gd1011.studiof.services.MoveProcess;
     import de.mediadesign.gd1011.studiof.services.RenderProcess;
+    import de.mediadesign.gd1011.studiof.view.EnemyView;
 
     import flash.display.BitmapData;
     import flash.events.IEventDispatcher;
@@ -49,31 +50,34 @@ package de.mediadesign.gd1011.studiof.command
         {
             gameLoop.registerProcess(moveProcess);
             gameLoop.registerProcess(renderProcess);
+
             level.setPlayer(new Player(level));
             moveProcess.addEntity(level.player);
-            for (var index:int = 0; index<level.enemies.length; index++) {
+
+            for (var index:int = 0; index<level.enemies.length; index++)
+            {
                 moveProcess.addEntity(level.enemies[index]);
 
                 if (level.enemies[index].currentPlatform < 2) var img:Image = Assets.getImage("E1_texture");
                 if (level.enemies[index].currentPlatform == 2) var img:Image = Assets.getImage("E2_texture");
                 if (level.enemies[index].currentPlatform > 2) var img:Image = Assets.getImage("E3_texture");
                 
-                var a:Sprite = new Sprite();
-                a.addChild(img);
+                var enemyView:Sprite = new EnemyView();
+                enemyView.addChild(img);
 
-                renderProcess.registerRenderable(new Renderable(level.enemies[index].position, a));
-                var ab:GameEvent = new GameEvent(GameConsts.ADD_SPRITE_TO_GAME, GameConsts.ADD_SPRITE_TO_GAME, a);
-                dispatcher.dispatchEvent(ab);
+                renderProcess.registerRenderable(new Renderable(level.enemies[index].position, enemyView));
+                var addEnemySpriteToGameEvent:GameEvent = new GameEvent(GameConsts.ADD_SPRITE_TO_GAME, GameConsts.ADD_SPRITE_TO_GAME, enemyView);
+                dispatcher.dispatchEvent(addEnemySpriteToGameEvent);
             }
 
 
             var img3:Image = Assets.getImage("AgentF_texture");
-            var a:Sprite = new Sprite();
-            a.addChild(img3);
+            var playerView:Sprite = new Sprite();
+            playerView.addChild(img3);
 
-            renderProcess.registerRenderable(new Renderable(level.player.position, a));
-            var ab:GameEvent = new GameEvent(GameConsts.ADD_SPRITE_TO_GAME, GameConsts.ADD_SPRITE_TO_GAME, a);
-            dispatcher.dispatchEvent(ab);
+            renderProcess.registerRenderable(new Renderable(level.player.position, playerView));
+            var addSpriteToGameEvent:GameEvent = new GameEvent(GameConsts.ADD_SPRITE_TO_GAME, GameConsts.ADD_SPRITE_TO_GAME, playerView);
+            dispatcher.dispatchEvent(addSpriteToGameEvent);
         }
     }
 }

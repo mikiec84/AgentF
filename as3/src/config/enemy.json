@@ -1,5 +1,6 @@
 {
-    "ENEMY":{
+    "ENEMY":
+	{
         "enemyCount":50,
         "enemyRate":500,
         "fireRateEnemy":0.4,

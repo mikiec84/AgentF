@@ -2,28 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9d5af888-79aa-45bf-94bc-b57803b7fbdf" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/command/DeleteUnitCommand.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/command/RegisterBulletCommand.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/config/pattern.json" />
-      <change type="DELETED" beforePath="C:\Users\maxfrank\Documents\GitHub\AgentF\as3\src\de\mediadesign\gd1011\studiof\command\RegisterUnitCommand.as" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/view/EnemyView.as" afterPath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/view/EnemyView.as" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/consts/GameConsts.as" afterPath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/consts/GameConsts.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/events/GameEvent.as" afterPath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/events/GameEvent.as" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/services/GameLoop.as" afterPath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/services/GameLoop.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/view/mediators/GameViewMediator.as" afterPath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/view/mediators/GameViewMediator.as" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/command/InitGameCommand.as" afterPath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/command/InitGameCommand.as" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/model/Level.as" afterPath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/model/Level.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/services/MoveProcess.as" afterPath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/services/MoveProcess.as" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/model/Player.as" afterPath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/model/Player.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/services/RenderProcess.as" afterPath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/services/RenderProcess.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/model/Renderable.as" afterPath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/model/Renderable.as" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/model/components/PositionComponent.as" afterPath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/model/components/PositionComponent.as" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/services/Rules.as" afterPath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/services/Rules.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/StarlingConfig.as" afterPath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/StarlingConfig.as" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/model/Unit.as" afterPath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/model/Unit.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/config/config.json" afterPath="$PROJECT_DIR$/src/config/config.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/consts/ViewConsts.as" afterPath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/consts/ViewConsts.as" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/config/enemy.json" afterPath="$PROJECT_DIR$/src/config/enemy.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="AgentF.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1361182427542" ignored="false" />
+    <file path="/Dummy.txt" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1361260399172" ignored="false" />
     <file path="/fragment.js2" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1361173912445" ignored="false" />
     <file path="/AgentF.as" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1359635910403" ignored="false" />
     <file path="/AgentF-app.xml" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1359622409363" ignored="false" />
@@ -35,7 +29,7 @@
     <file path="/Board.as" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1359636094442" ignored="false" />
     <file path="/IMovementManager.as" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1360054163134" ignored="false" />
     <file path="/MovementManager.as" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1360054228759" ignored="false" />
-    <file path="/Rules.as" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1361195933237" ignored="false" />
+    <file path="/Rules.as" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1361273609462" ignored="false" />
     <file path="/Unit.as" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1360753720361" ignored="false" />
     <file path="/User.as" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1360058211162" ignored="false" />
     <file path="/Score.as" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1360056558455" ignored="false" />
@@ -45,12 +39,12 @@
     <file path="/Gamestate.as" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1360067319520" ignored="false" />
     <file path="/LevelManager.as" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1360147156947" ignored="false" />
     <file path="/Currentlevel.as" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1360146620948" ignored="false" />
-    <file path="/Level.as" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1361192997514" ignored="false" />
+    <file path="/Level.as" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1361269540187" ignored="false" />
     <file path="/CheckRules.as" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1360159897477" ignored="false" />
     <file path="/InitGame.as" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1360162157675" ignored="false" />
     <file path="/MainViewMediator.as" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1360312946017" ignored="false" />
     <file path="/Render.as" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1360658627307" ignored="false" />
-    <file path="/GameConsts.as" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1361177048571" ignored="false" />
+    <file path="/GameConsts.as" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1361260755621" ignored="false" />
     <file path="/BackgroundView.as" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1360849171188" ignored="false" />
     <file path="/BackgroundViewMediator.as" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1360849689570" ignored="false" />
     <file path="/IRenderable.as" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1360226988766" ignored="false" />
@@ -60,7 +54,7 @@
     <file path="/GetUnitPosition.as" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1360243100959" ignored="false" />
     <file path="/InitPlayer.as" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1360241528246" ignored="false" />
     <file path="/UnitManager.as" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1360241712578" ignored="false" />
-    <file path="/a.dummy" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1361177442568" ignored="false" />
+    <file path="/a.dummy" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1361260705605" ignored="false" />
     <file path="/GUI.as" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1360311066272" ignored="false" />
     <file path="/RegisterServiceCommand.as" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1360317409159" ignored="false" />
     <file path="/GameViewMediator.as" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1361176022944" ignored="false" />
@@ -72,9 +66,9 @@
     <file path="/GameView.as" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1360752158034" ignored="false" />
     <file path="/RenderProcess.as" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1361176671511" ignored="false" />
     <file path="/Renderable.as" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1361180248583" ignored="false" />
-    <file path="/EnemyView.as" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1360672375433" ignored="false" />
-    <file path="/InitGameCommand.as" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1360745250145" ignored="false" />
-    <file path="/GameLoop.as" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1361198753381" ignored="false" />
+    <file path="/EnemyView.as" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1361274757200" ignored="false" />
+    <file path="/InitGameCommand.as" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1361272262700" ignored="false" />
+    <file path="/GameLoop.as" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1361270563156" ignored="false" />
     <file path="/AddEnemyCommand.as" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1360682432460" ignored="false" />
     <file path="/Player.as" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1360757227460" ignored="false" />
     <file path="/BulletView.as" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1360752040997" ignored="false" />
@@ -89,6 +83,7 @@
     <file path="/Pattern.as" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1360937909987" ignored="false" />
     <file path="/DeleteUnitCommand.as" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1361193423078" ignored="false" />
     <file path="/GameEvent.as" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1361176901816" ignored="false" />
+    <file path="/ViewConsts.as" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1361273243788" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -146,24 +141,42 @@
     <favorites_list name="AgentF" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5023011">
+    <splitter split-orientation="horizontal" split-proportion="0.4490467">
       <split-first>
         <leaf>
-          <file leaf-file-name="DeleteUnitCommand.as" pinned="false" current="true" current-in-tab="true">
+          <file leaf-file-name="DeleteUnitCommand.as" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/command/DeleteUnitCommand.as">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="62" column="0" selection-start="1886" selection-end="1886" vertical-scroll-proportion="0.7430233">
+                <state line="41" column="42" selection-start="1144" selection-end="1144" vertical-scroll-proportion="0.0">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="Player.as" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/model/Player.as">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="74" column="78" selection-start="4484" selection-end="4484" vertical-scroll-proportion="0.0">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="JSONReader.as" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/services/JSONReader.as">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
                   <folding>
-                    <element signature="e#207#262#0" expanded="true" />
+                    <element signature="n#!!doc" expanded="true" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="Rules.as" pinned="false" current="false" current-in-tab="false">
+          <file leaf-file-name="Rules.as" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/services/Rules.as">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="37" column="13" selection-start="1159" selection-end="1173" vertical-scroll-proportion="0.0">
+                <state line="38" column="14" selection-start="1246" selection-end="1246" vertical-scroll-proportion="0.45292014">
                   <folding>
                     <element signature="e#208#263#0" expanded="true" />
                   </folding>
@@ -171,10 +184,21 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="config.json" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/config/config.json">
+          <file leaf-file-name="InitGameCommand.as" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/command/InitGameCommand.as">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="3" column="31" selection-start="74" selection-end="74" vertical-scroll-proportion="0.0">
+                <state line="60" column="88" selection-start="1906" selection-end="1943" vertical-scroll-proportion="0.0">
+                  <folding>
+                    <element signature="n#!!doc" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="Assets.as" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/services/Assets.as">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="70" column="31" selection-start="2182" selection-end="2182" vertical-scroll-proportion="0.0">
                   <folding />
                 </state>
               </provider>
@@ -187,8 +211,19 @@
           <file leaf-file-name="RegisterBulletCommand.as" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/command/RegisterBulletCommand.as">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="39" column="0" selection-start="1167" selection-end="1167" vertical-scroll-proportion="0.0">
+                <state line="38" column="47" selection-start="1109" selection-end="1166" vertical-scroll-proportion="0.0">
                   <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="EnemyView.as" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/view/EnemyView.as">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="40" column="0" selection-start="990" selection-end="990" vertical-scroll-proportion="0.0">
+                  <folding>
+                    <element signature="e#204#259#0" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -196,19 +231,19 @@
           <file leaf-file-name="GameLoop.as" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/services/GameLoop.as">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="150" column="45" selection-start="5447" selection-end="5447" vertical-scroll-proportion="0.86162794">
-                  <folding>
-                    <element signature="e#207#262#0" expanded="true" />
-                  </folding>
+                <state line="129" column="21" selection-start="4498" selection-end="4498" vertical-scroll-proportion="0.48604652">
+                  <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="GameViewMediator.as" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/view/mediators/GameViewMediator.as">
+          <file leaf-file-name="ViewConsts.as" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/consts/ViewConsts.as">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="32" column="7" selection-start="1005" selection-end="1045" vertical-scroll-proportion="0.0">
-                  <folding />
+                <state line="15" column="59" selection-start="544" selection-end="554" vertical-scroll-proportion="0.0">
+                  <folding>
+                    <element signature="n#!!doc" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -216,7 +251,7 @@
           <file leaf-file-name="MoveProcess.as" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/services/MoveProcess.as">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="32" column="36" selection-start="793" selection-end="805" vertical-scroll-proportion="0.0">
+                <state line="38" column="0" selection-start="793" selection-end="805" vertical-scroll-proportion="0.0">
                   <folding />
                 </state>
               </provider>
@@ -243,22 +278,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/view/mediators/GameViewMediator.as" />
-        <option value="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/command/RegisterBulletCommand.as" />
-        <option value="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/services/MoveProcess.as" />
         <option value="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/services/RenderProcess.as" />
         <option value="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/events/GameEvent.as" />
-        <option value="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/consts/GameConsts.as" />
         <option value="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/model/Renderable.as" />
         <option value="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/model/Unit.as" />
         <option value="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/StarlingConfig.as" />
-        <option value="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/model/Player.as" />
         <option value="$PROJECT_DIR$/src/config/enemy.json" />
-        <option value="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/model/Level.as" />
-        <option value="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/services/Rules.as" />
         <option value="$PROJECT_DIR$/src/config/config.json" />
         <option value="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/command/DeleteUnitCommand.as" />
+        <option value="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/model/Player.as" />
+        <option value="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/consts/GameConsts.as" />
+        <option value="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/model/Level.as" />
+        <option value="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/command/InitGameCommand.as" />
+        <option value="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/consts/ViewConsts.as" />
+        <option value="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/view/EnemyView.as" />
         <option value="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/services/GameLoop.as" />
+        <option value="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/services/Rules.as" />
       </list>
     </option>
   </component>
@@ -299,7 +334,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -552,8 +586,45 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AgentF" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="as3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="level" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AgentF" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="as3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="libs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -573,8 +644,8 @@
     <property name="restartRequiresConfirmation" value="true" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -594,7 +665,7 @@
       <recent name="C:\Users\anlicht\Documents\GitHub\AgentF\src\de\mediadesign\gd1011\studiof" />
     </key>
   </component>
-  <component name="RunManager" selected="Flash App.Nexus7">
+  <component name="RunManager" selected="Flash App.Desktop">
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
       <module name="" />
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m" />
@@ -620,19 +691,6 @@
       </option>
       <option name="moduleName" value="" />
       <option name="trusted" value="true" />
-      <method />
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
@@ -661,6 +719,19 @@
       <envs />
       <properties />
       <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -975,7 +1046,11 @@
       <created>1360856359231</created>
       <updated>1360856359231</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="units gelöscht, bugfix">
+      <created>1361201112291</created>
+      <updated>1361201112291</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1005,25 +1080,25 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32552955" sideWeight="0.497552" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3737486" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4349277" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.43381536" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3263506" sideWeight="0.49816403" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32887402" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3214683" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3192436" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32998884" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977587" sideWeight="0.54282534" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18836713" sideWeight="0.6785317" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18836713" sideWeight="0.56618464" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3277592" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3737486" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -1066,7 +1141,7 @@
     <option name="MAXIMUM_HISTORY_ROWS" value="1000" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="implementing Scrollable Background&#10;PROBLEM: time" />
+    <option name="LAST_COMMIT_MESSAGE" value="units gelöscht, bugfix" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -1079,7 +1154,6 @@
     <option name="UPDATE_GROUP_BY_CHANGELIST" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
-    <MESSAGE value="JSON-obj" />
     <MESSAGE value="robotlegs rinn" />
     <MESSAGE value="alle bisher notwendigen Klassen erstellt" />
     <MESSAGE value="unit getter&amp;setter" />
@@ -1104,13 +1178,14 @@
     <MESSAGE value="implementing shoot" />
     <MESSAGE value="implementing Scrollable Background" />
     <MESSAGE value="implementing Scrollable Background&#10;PROBLEM: time" />
+    <MESSAGE value="units gelöscht, bugfix" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="66" />
+      <option name="time" value="68" />
     </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
@@ -1118,128 +1193,124 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/model/IMovable.as">
+    <entry file="file://$PROJECT_DIR$/src/config/pattern.json">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/services/RenderProcess.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="32" selection-start="872" selection-end="872" vertical-scroll-proportion="0.5452463">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/model/LevelConfiguration.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/consts/GameConsts.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="63" selection-start="579" selection-end="579" vertical-scroll-proportion="0.2142039">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/StarlingConfig.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="79" column="43" selection-start="3280" selection-end="3293" vertical-scroll-proportion="0.63380283">
-          <folding>
-            <element signature="e#199#262#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/config/enemy.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="30" selection-start="152" selection-end="152" vertical-scroll-proportion="0.116838485">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/model/Level.as">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="104" column="29" selection-start="3248" selection-end="3248" vertical-scroll-proportion="0.33255813">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/model/Unit.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="29" selection-start="930" selection-end="940" vertical-scroll-proportion="-0.57325584">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/model/Player.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="100" column="14" selection-start="5340" selection-end="5340" vertical-scroll-proportion="1.4825581">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/services/Rules.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="13" selection-start="1159" selection-end="1173" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#208#263#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/config/config.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="31" selection-start="74" selection-end="74" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/view/mediators/GameViewMediator.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="7" selection-start="1005" selection-end="1045" vertical-scroll-proportion="0.0">
+        <state line="68" column="12" selection-start="2411" selection-end="2411" vertical-scroll-proportion="0.7116279">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/services/MoveProcess.as">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="36" selection-start="793" selection-end="805" vertical-scroll-proportion="0.0">
+        <state line="38" column="0" selection-start="793" selection-end="805" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/model/Player.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="74" column="78" selection-start="4484" selection-end="4484" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/view/GUI.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="88" column="24" selection-start="2356" selection-end="2356" vertical-scroll-proportion="0.5387366">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/view/mediators/GUIMediator.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="33" selection-start="902" selection-end="902" vertical-scroll-proportion="0.36998853">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/services/JSONReader.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/command/InitGameCommand.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="60" column="88" selection-start="1906" selection-end="1943" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/model/Unit.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/view/mediators/GameViewMediator.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="56" column="71" selection-start="1314" selection-end="1330" vertical-scroll-proportion="0.77093023">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/services/Assets.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="70" column="31" selection-start="2182" selection-end="2182" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/command/RegisterBulletCommand.as">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="39" column="0" selection-start="1167" selection-end="1167" vertical-scroll-proportion="0.0">
+        <state line="38" column="47" selection-start="1109" selection-end="1166" vertical-scroll-proportion="0.0">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/consts/ViewConsts.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="59" selection-start="544" selection-end="554" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/view/EnemyView.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="40" column="0" selection-start="990" selection-end="990" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#204#259#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/services/GameLoop.as">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="150" column="45" selection-start="5447" selection-end="5447" vertical-scroll-proportion="0.86162794">
-          <folding>
-            <element signature="e#207#262#0" expanded="true" />
-          </folding>
+        <state line="129" column="21" selection-start="4498" selection-end="4498" vertical-scroll-proportion="0.48604652">
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/command/DeleteUnitCommand.as">
+    <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/services/Rules.as">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="62" column="0" selection-start="1886" selection-end="1886" vertical-scroll-proportion="0.7430233">
+        <state line="38" column="14" selection-start="1246" selection-end="1246" vertical-scroll-proportion="0.45292014">
           <folding>
-            <element signature="e#207#262#0" expanded="true" />
+            <element signature="e#208#263#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -8,14 +8,20 @@
 package de.mediadesign.gd1011.studiof.services
 {
     import de.mediadesign.gd1011.studiof.consts.GameConsts;
+    import de.mediadesign.gd1011.studiof.consts.ViewConsts;
+    import de.mediadesign.gd1011.studiof.events.GameEvent;
     import de.mediadesign.gd1011.studiof.model.Unit;
+
+    import flash.events.IEventDispatcher;
 
     public class Rules
     {
+        [Inject]
+        public var dispatcher:IEventDispatcher;
+
         private var JSONExtractedInformation:Object;
 
         public var collisionTolerance:int;
-
 
         public function Rules():void
         {
@@ -27,6 +33,10 @@ package de.mediadesign.gd1011.studiof.services
         // second unit: movement <--
         public function collisionDetection(unit1:Unit, unit2:Unit):void
         {
+            var getDamageEvent = new GameEvent(ViewConsts.GET_DAMAGE, ViewConsts.GET_DAMAGE);
+            //var setNormalEvent = new GameEvent(ViewConsts.SET_NORMAL, ViewConsts.SET_NORMAL);
+
+            //dispatcher.dispatchEvent(setNormalEvent);
             if (unit2.position.x < GameConsts.STAGE_WIDTH)
             {
                 if (unit1.currentPlatform == unit2.currentPlatform
@@ -34,11 +44,12 @@ package de.mediadesign.gd1011.studiof.services
                 {
                     unit1.healthPoints--;
                     unit2.healthPoints--;
+                    dispatcher.dispatchEvent(getDamageEvent);
                 }
             }
-            if (unit1.position.x > GameConsts.STAGE_WIDTH)
+            if (unit1.position.x > GameConsts.STAGE_WIDTH + GameConsts.ENEMY_SPRITE_WIDTH)
                 unit1.healthPoints = 0;
-            if (unit2.position.x < 0)
+            if (unit2.position.x < 0 - GameConsts.ENEMY_SPRITE_WIDTH)
                 unit2.healthPoints = 0;
         }
 

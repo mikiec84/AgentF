@@ -84,6 +84,7 @@ package de.mediadesign.gd1011.studiof.services
 
             // collsision
 
+            var updatePointsEvent:GameEvent = new GameEvent(ViewConsts.ENEMY_KILLED, ViewConsts.ENEMY_KILLED);
             for (var i:int = 0; i < currentLevel.player.ammunition.length; i++)
             {
                 for (var j:int = 0; j < currentLevel.enemies.length; j++)
@@ -99,6 +100,7 @@ package de.mediadesign.gd1011.studiof.services
                     if (rules.isDead(currentLevel.enemies[j]))
                     {
                         deleteUnits(currentLevel.enemies, j);
+                        dispatcher.dispatchEvent(updatePointsEvent);
                         break;
                         break;
                     }
@@ -115,6 +117,7 @@ package de.mediadesign.gd1011.studiof.services
                     if (rules.isDead(currentLevel.enemies[i]))
                     {
                         deleteUnits(currentLevel.enemies, i);
+                        dispatcher.dispatchEvent(updatePointsEvent);
                         break;
                         break;
                     }
@@ -125,7 +128,6 @@ package de.mediadesign.gd1011.studiof.services
                         break;
                         break;
                     }
-
                 }
             }
 
@@ -150,10 +152,6 @@ package de.mediadesign.gd1011.studiof.services
                 var ab:GameEvent = new GameEvent(ViewConsts.SHOW_GAMEOVER, GameConsts.ADD_SPRITE_TO_GAME, true);
                 dispatcher.dispatchEvent(ab);
             }
-
-
-            //trace(currentLevel.player.counter);
-            //trace("Lebenspunkte des Spielers: "+currentLevel.player.healthPoints);
         }
 	}
 }

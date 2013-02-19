@@ -65,8 +65,8 @@ package de.mediadesign.gd1011.studiof.model {
             einpendelStaerkeGross = JSONExtractedInformation["einpendelStaerkeGross"];
             einpendelStaerkeWinzig = JSONExtractedInformation["einpendelStaerkeWinzig"];
             jumpSpeedBeimSprungWinzig = JSONExtractedInformation["jumpSpeedBeimSprungWinzig"];
-            if (einpendelStaerkeWinzig>GameConsts.EBENE_HEIGHT-1) {
-                einpendelStaerkeWinzig = GameConsts.EBENE_HEIGHT-1;
+            if (einpendelStaerkeWinzig>GameConsts.PLATFORM_HEIGHT-1) {
+                einpendelStaerkeWinzig = GameConsts.PLATFORM_HEIGHT-1;
             }
             speedTowardsMouse = JSONExtractedInformation["speedTowardsMouse"];
             jumpSpeedBeimSprung = JSONExtractedInformation["jumpSpeedBeimSprung"];
@@ -74,7 +74,7 @@ package de.mediadesign.gd1011.studiof.model {
             jumpSpeedBeimEinpendeln = JSONExtractedInformation["jumpSpeedBeimEinpendeln"];
             accelerationSpeed = JSONExtractedInformation["accelerationSpeed"];
             _tweenedPosition = new PositionComponent();
-            position.y = currentPlatform * GameConsts.EBENE_HEIGHT;
+            position.y = currentPlatform * GameConsts.PLATFORM_HEIGHT;
         }
 
         override public function move(time:Number):void
@@ -146,7 +146,7 @@ package de.mediadesign.gd1011.studiof.model {
         {
             if (position.y<0)
             {
-                position.y = GameConsts.EBENE_HEIGHT*2;
+                position.y = GameConsts.PLATFORM_HEIGHT*2;
                 currentPlatform = 2;
             }
         }
@@ -162,7 +162,7 @@ package de.mediadesign.gd1011.studiof.model {
                     }
                     else
                     {
-                        position.y = GameConsts.EBENE_HEIGHT*_targetPlatform;
+                        position.y = GameConsts.PLATFORM_HEIGHT*_targetPlatform;
                         //trace("Player.y wurde beim Runterziehen auf targetplatform gesetzt.");
                     }
                 }
@@ -174,7 +174,7 @@ package de.mediadesign.gd1011.studiof.model {
                            setNewPosition(position.y-speedTowardsMouse*time);
                         } else {
                             if (currentPlatform == 2) {
-                                position.y = GameConsts.EBENE_HEIGHT*_targetPlatform;
+                                position.y = GameConsts.PLATFORM_HEIGHT*_targetPlatform;
                             }
                         }
                     }
@@ -191,7 +191,7 @@ package de.mediadesign.gd1011.studiof.model {
             //trace("Land Is Running: "+!_landIsntRunning+", is land running: "+(_landing != null && !_landing.isComplete && _landStillInJuggler));
 
 
-            if (!upIsRunning && _comeDownIsntRunning && position.y < GameConsts.EBENE_HEIGHT*2-50 && _landIsntRunning)
+            if (!upIsRunning && _comeDownIsntRunning && position.y < GameConsts.PLATFORM_HEIGHT*2-50 && _landIsntRunning)
             {
                     shootBullet(time);
                     comeDown();
@@ -240,7 +240,7 @@ package de.mediadesign.gd1011.studiof.model {
                     else
                     {
                         _up = new Tween(_tweenedPosition, jumpSpeedBeimSprungWinzig, Transitions.EASE_OUT);
-                        _up.moveTo(_tweenedPosition.x, GameConsts.EBENE_HEIGHT*2+einpendelStaerkeWinzig );
+                        _up.moveTo(_tweenedPosition.x, GameConsts.PLATFORM_HEIGHT*2+einpendelStaerkeWinzig );
                         startLandTweenAfterThis = true;
                     }
                     Starling.juggler.add(_up);
