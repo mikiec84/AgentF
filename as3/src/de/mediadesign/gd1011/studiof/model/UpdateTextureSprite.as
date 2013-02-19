@@ -6,6 +6,7 @@
  * To change this template use File | Settings | File Templates.
  */
 package de.mediadesign.gd1011.studiof.model {
+    import de.mediadesign.gd1011.studiof.consts.MovementConsts;
     import de.mediadesign.gd1011.studiof.consts.ViewConsts;
     import de.mediadesign.gd1011.studiof.services.Assets;
 
@@ -26,24 +27,24 @@ package de.mediadesign.gd1011.studiof.model {
             switch(enemyType)
             {
                 case(ViewConsts.PLAYER):
-                    textures.push(new Image(Assets.getTexture("E1_texture")));
-                    textures.push(new Image(Assets.getTexture("E2_texture")));
-                    textures.push(new Image(Assets.getTexture("E3_texture")));
+                    textures.push(new Image(MovementConsts.E1_TEXTURE));
+                    textures.push(new Image(MovementConsts.E2_TEXTURE));
+                    textures.push(new Image(MovementConsts.E3_TEXTURE));
                     break;
                 case(ViewConsts.FLYING_ENEMY):
-                    textures.push(new Image(Assets.getTexture("E1_texture")));
-                    textures.push(new Image(Assets.getTexture("E2_texture")));
-                    textures.push(new Image(Assets.getTexture("E3_texture")));
+                    textures.push(new Image(MovementConsts.E1_TEXTURE));
+                    textures.push(new Image(MovementConsts.E2_TEXTURE));
+                    textures.push(new Image(MovementConsts.E3_TEXTURE));
                     break;
                 case(ViewConsts.FLOATING_ENEMY):
-                    textures.push(new Image(Assets.getTexture("E1_texture")));
-                    textures.push(new Image(Assets.getTexture("E2_texture")));
-                    textures.push(new Image(Assets.getTexture("E3_texture")));
+                    textures.push(new Image(MovementConsts.E1_TEXTURE));
+                    textures.push(new Image(MovementConsts.E2_TEXTURE));
+                    textures.push(new Image(MovementConsts.E3_TEXTURE));
                     break;
                 case(ViewConsts.UNDERWATER_ENEMY):
-                    textures.push(new Image(Assets.getTexture("E1_texture")));
-                    textures.push(new Image(Assets.getTexture("E2_texture")));
-                    textures.push(new Image(Assets.getTexture("E3_texture")));
+                    textures.push(new Image(MovementConsts.E1_TEXTURE));
+                    textures.push(new Image(MovementConsts.E2_TEXTURE));
+                    textures.push(new Image(MovementConsts.E3_TEXTURE));
                     break;
             }
             addChild(textures[0]);
