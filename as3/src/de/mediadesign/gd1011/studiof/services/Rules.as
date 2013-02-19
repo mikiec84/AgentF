@@ -47,10 +47,6 @@ package de.mediadesign.gd1011.studiof.services
                     dispatcher.dispatchEvent(getDamageEvent);
                 }
             }
-            if (unit1.position.x > GameConsts.STAGE_WIDTH + GameConsts.ENEMY_SPRITE_WIDTH)
-                unit1.healthPoints = 0;
-            if (unit2.position.x < 0 - GameConsts.ENEMY_SPRITE_WIDTH)
-                unit2.healthPoints = 0;
         }
 
         public function isDead(unit:Unit):Boolean

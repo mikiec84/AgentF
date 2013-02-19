@@ -104,6 +104,10 @@ package de.mediadesign.gd1011.studiof.services
                         break;
                         break;
                     }
+                    if (currentLevel.player.ammunition[i].position.x > GameConsts.STAGE_WIDTH + GameConsts.ENEMY_SPRITE_WIDTH)
+                        deleteUnits(currentLevel.player.ammunition, i);
+                    if (currentLevel.enemies[j].position.x < 0 - GameConsts.ENEMY_SPRITE_WIDTH)
+                        deleteUnits(currentLevel.enemies, j);
                 }
             }
 
