@@ -8,10 +8,12 @@
 package de.mediadesign.gd1011.studiof.command
 {
     import de.mediadesign.gd1011.studiof.consts.GameConsts;
+    import de.mediadesign.gd1011.studiof.consts.ViewConsts;
     import de.mediadesign.gd1011.studiof.events.GameEvent;
     import de.mediadesign.gd1011.studiof.model.Level;
     import de.mediadesign.gd1011.studiof.model.Player;
     import de.mediadesign.gd1011.studiof.model.Renderable;
+    import de.mediadesign.gd1011.studiof.model.UpdateTextureSprite;
     import de.mediadesign.gd1011.studiof.services.Assets;
     import de.mediadesign.gd1011.studiof.services.GameLoop;
     import de.mediadesign.gd1011.studiof.services.MoveProcess;
@@ -58,22 +60,19 @@ package de.mediadesign.gd1011.studiof.command
             {
                 moveProcess.addEntity(level.enemies[index]);
 
-                if (level.enemies[index].currentPlatform < 2) var img:Image = Assets.getImage("E1_texture");
-                if (level.enemies[index].currentPlatform == 2) var img:Image = Assets.getImage("E2_texture");
-                if (level.enemies[index].currentPlatform > 2) var img:Image = Assets.getImage("E3_texture");
-                
-                var enemyView:Sprite = new EnemyView();
-                enemyView.addChild(img);
+                if (level.enemies[index].currentPlatform < 2) var playerView:UpdateTextureSprite = new UpdateTextureSprite(ViewConsts.FLYING_ENEMY);
+                if (level.enemies[index].currentPlatform == 2) var playerView:UpdateTextureSprite = new UpdateTextureSprite(ViewConsts.FLOATING_ENEMY);
+                if (level.enemies[index].currentPlatform > 2) var playerView:UpdateTextureSprite = new UpdateTextureSprite(ViewConsts.UNDERWATER_ENEMY);
 
-                renderProcess.registerRenderable(new Renderable(level.enemies[index].position, enemyView));
-                var addEnemySpriteToGameEvent:GameEvent = new GameEvent(GameConsts.ADD_SPRITE_TO_GAME, GameConsts.ADD_SPRITE_TO_GAME, enemyView);
+                renderProcess.registerRenderable(new Renderable(level.enemies[index].position, playerView));
+                var addEnemySpriteToGameEvent:GameEvent = new GameEvent(GameConsts.ADD_SPRITE_TO_GAME, GameConsts.ADD_SPRITE_TO_GAME, playerView);
                 dispatcher.dispatchEvent(addEnemySpriteToGameEvent);
             }
 
 
-            var img3:Image = Assets.getImage("AgentF_texture");
-            var playerView:Sprite = new Sprite();
-            playerView.addChild(img3);
+            //var img3:Image = Assets.getImage("AgentF_texture");
+            var playerView:UpdateTextureSprite = new UpdateTextureSprite(ViewConsts.PLAYER);/*
+            playerView.addChild(img3);*/
 
             renderProcess.registerRenderable(new Renderable(level.player.position, playerView));
             var addSpriteToGameEvent:GameEvent = new GameEvent(GameConsts.ADD_SPRITE_TO_GAME, GameConsts.ADD_SPRITE_TO_GAME, playerView);

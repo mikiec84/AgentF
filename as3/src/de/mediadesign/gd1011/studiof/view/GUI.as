@@ -43,13 +43,12 @@ package de.mediadesign.gd1011.studiof.view
 			addChild(_topRight);
 			addChild(_centerCenter);
 
-			_lifepoints = new TextField(100,100,"3","Verdana",60,0xffffff,true);
+			_lifepoints = new TextField(200,100,"3","Verdana",60,0xffffff,true);
 			_topLeft.addChild(_lifepoints);
             _enemiesKilled = new TextField(1000, 100, "Enemies killed: 0/"+_enemyConfig["enemyCount"], "Verdana", 60, 0xffffff, true);
             _topCenter.addChild(_enemiesKilled);
             _enemiesKilled.x -= 500;
             _enemiesKilled.y -= 20;
-            _lifepoints.y -= 20;
 			if(stage)
 				adjust();
 			else
