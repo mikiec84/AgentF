@@ -42,10 +42,13 @@ package de.mediadesign.gd1011.studiof.command
 
         override public function execute():void
         {
+			level.setPlayer(new Player(level));
+			level.setPlayer(new Player(level));
+
             gameLoop.registerProcess(moveProcess);
             gameLoop.registerProcess(renderProcess);
 
-            level.setPlayer(new Player(level));
+
             moveProcess.addEntity(level.player);
             level.fortFox = new FortFoxBoss(level);
 

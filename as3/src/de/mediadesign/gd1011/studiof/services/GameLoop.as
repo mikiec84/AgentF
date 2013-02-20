@@ -60,12 +60,15 @@ package de.mediadesign.gd1011.studiof.services
 
         public function update(e:EnterFrameEvent):void
         {
+			if(currentLevel.player== null)
+			return;
+
             for each (var target:IProcess in processes)
             {
                 target.update(e.passedTime);
             }
             // player shooting
-            if (currentLevel.player.shootNow())
+            if (currentLevel.player!= null && currentLevel.player.shootNow())
             {
                 currentLevel.player.shootBullet(e.passedTime);
             }
@@ -74,11 +77,11 @@ package de.mediadesign.gd1011.studiof.services
                 currentLevel.enemies[index].shootBullet(e.passedTime);
 
             // scrolling background
-            if (currentLevel.scrollBGs[0].position.x < 0 && currentLevel.scrollBGs.length < 4 )
+            if (currentLevel.scrollBGs.length != 0 && currentLevel.scrollBGs[0].position.x < 0 && currentLevel.scrollBGs.length < 4 )
             {
                 initScroll();
             }
-            if (currentLevel.scrollBGs[0].position.x < -844)
+            if (currentLevel.scrollBGs.length != 0 && currentLevel.scrollBGs[0].position.x < -844)
             {
                 currentLevel.scrollBGs.shift();
             }

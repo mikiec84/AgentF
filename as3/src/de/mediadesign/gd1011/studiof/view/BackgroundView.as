@@ -7,17 +7,13 @@
  */
 package de.mediadesign.gd1011.studiof.view
 {
-	import de.mediadesign.gd1011.studiof.services.Assets;
+	import starling.display.Sprite;
 
-    import starling.display.Image;
-    import starling.display.Sprite;
-
-    public class BackgroundView extends Sprite
+	public class BackgroundView extends Sprite
     {
         public function BackgroundView():void
         {
-            var bgImage1:Image = Assets.getImage("BG1_texture");
-            addChild(bgImage1);
+
         }
     }
 }

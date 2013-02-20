@@ -7,22 +7,17 @@
  */
 package de.mediadesign.gd1011.studiof.view
 {
-	import de.mediadesign.gd1011.studiof.services.Assets;
-
-	import starling.display.Button;
 	import starling.display.Sprite;
 
 	public class StartScreenView extends Sprite
 	{
-		public var startButton:Button;
-
+		public var dimX:Number;
+		public var dimY:Number;
 		public function StartScreenView(width:Number,  height:Number)
 		{
-			startButton = new Button(Assets.getTexture("E2_texture"), "start", Assets.getTexture("Pause_texture"));
+			dimX =width;
+			dimY=height;
 
-			startButton.x = (width - startButton.width) / 2;
-			startButton.y = (height - startButton.height) / 2;
-			addChild(startButton);
 		}
 
 	}

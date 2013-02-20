@@ -14,7 +14,11 @@ package de.mediadesign.gd1011.studiof.view.mediators
 
     import robotlegs.extensions.starlingViewMap.impl.StarlingMediator;
 
-    public class BackgroundViewMediator extends StarlingMediator
+	import starling.display.Image;
+
+	import starling.utils.AssetManager;
+
+	public class BackgroundViewMediator extends StarlingMediator
     {
         [Inject]
         public var bgView:BackgroundView;
@@ -22,8 +26,12 @@ package de.mediadesign.gd1011.studiof.view.mediators
         [Inject]
         public var gameLoop:GameLoop;
 
+		[Inject]
+		public var assets:AssetManager;
+
         override public function initialize():void
         {
+			bgView.addChild(new Image(assets.getTexture("BG1_texture")));
             addContextListener(GameConsts.ADD_BG_TO_GAME, add);
             gameLoop.initScroll();
         }

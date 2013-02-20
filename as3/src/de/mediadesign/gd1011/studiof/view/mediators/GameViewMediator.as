@@ -5,7 +5,8 @@ package de.mediadesign.gd1011.studiof.view.mediators {
     import de.mediadesign.gd1011.studiof.model.Unit;
     import de.mediadesign.gd1011.studiof.services.GameLoop;
     import de.mediadesign.gd1011.studiof.services.JSONReader;
-    import de.mediadesign.gd1011.studiof.view.GameView;
+	import de.mediadesign.gd1011.studiof.view.BackgroundView;
+	import de.mediadesign.gd1011.studiof.view.GameView;
 
     import flash.events.IEventDispatcher;
 	import flash.geom.Point;
@@ -17,8 +18,9 @@ package de.mediadesign.gd1011.studiof.view.mediators {
     import starling.events.Touch;
     import starling.events.TouchEvent;
     import starling.events.TouchPhase;
+	import starling.utils.AssetManager;
 
-    public class GameViewMediator extends StarlingMediator
+	public class GameViewMediator extends StarlingMediator
 	{
 		[Inject]
 		public var contextView:GameView;
@@ -32,6 +34,9 @@ package de.mediadesign.gd1011.studiof.view.mediators {
         [Inject]
         public var dispatcher:IEventDispatcher;
 
+		[Inject]
+		public var assets:AssetManager;
+
 		private var _touchConfig:Object;
 		private var _validTouchID:int = -1;
 		private var _startTouchPos:Point;
@@ -44,17 +49,44 @@ package de.mediadesign.gd1011.studiof.view.mediators {
 			contextView.addEventListener(TouchEvent.TOUCH, handleTouch);
             contextView.addEventListener(EnterFrameEvent.ENTER_FRAME, game.update);
 
-            addContextListener(GameConsts.ADD_SPRITE_TO_GAME, add);
-            addContextListener(GameConsts.REMOVE_SPRITE_FROM_GAME, remove);
-
-            var initGameEvent:GameEvent = new GameEvent(GameConsts.INIT_GAME);
-            dispatcher.dispatchEvent(initGameEvent);
+			addAssets();
+            assets.loadQueue(loadAssets);
 		}
 
 		override public function destroy():void
 		{
             contextView.removeEventListener(TouchEvent.TOUCH, handleTouch);
             contextView.removeEventListener(EnterFrameEvent.ENTER_FRAME, game.update);
+		}
+
+		private function addAssets():void
+		{
+			assets.enqueue(SpriteSheetTauchbaer);
+			assets.enqueue(AgentF_texture);
+			assets.enqueue(E1_texture);
+			assets.enqueue(E3_texture);
+			assets.enqueue(BG1_texture);
+			assets.enqueue(BG2_texture);
+			assets.enqueue(BG3_texture);
+			assets.enqueue(Gras01_texture);
+			assets.enqueue(Gras02_texture);
+			assets.enqueue("config/atlasxml/SpriteSheetTauchbaer.xml");
+		}
+
+		private function loadAssets(ratio:Number):void
+		{
+			trace("Lade Spiel: "+ratio);
+			if(ratio == 1.0)
+			{
+				var backgroundView:BackgroundView = new BackgroundView();
+				contextView.addChildAt(backgroundView, 1);
+
+				addContextListener(GameConsts.ADD_SPRITE_TO_GAME, add);
+				addContextListener(GameConsts.REMOVE_SPRITE_FROM_GAME, remove);
+
+				var initGameEvent:GameEvent = new GameEvent(GameConsts.INIT_GAME);
+				dispatcher.dispatchEvent(initGameEvent);
+			}
 		}
 
 		private function add(event:GameEvent):void
