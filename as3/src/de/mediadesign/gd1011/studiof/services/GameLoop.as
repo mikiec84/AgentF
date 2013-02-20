@@ -15,7 +15,6 @@ package de.mediadesign.gd1011.studiof.services
     import de.mediadesign.gd1011.studiof.model.Unit;
 
     import flash.events.IEventDispatcher;
-    import flash.utils.getDefinitionByName;
 
     import starling.events.EnterFrameEvent;
 
@@ -59,8 +58,6 @@ package de.mediadesign.gd1011.studiof.services
 
         public function update(e:EnterFrameEvent):void
         {
-            var a:Object = getDefinitionByName("DUMMY_ANIMATION");
-            // update position & render
             for each (var target:IProcess in processes)
             {
                 target.update(e.passedTime);
