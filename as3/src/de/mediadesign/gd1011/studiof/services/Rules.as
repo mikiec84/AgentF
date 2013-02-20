@@ -45,6 +45,7 @@ package de.mediadesign.gd1011.studiof.services
                 {
                     unit1.healthPoints--;
                     unit2.healthPoints--;
+
                     var damageUnitEvent:GameEvent = new GameEvent(GameConsts.DAMAGE_UNIT, unit2);
                     dispatcher.dispatchEvent(damageUnitEvent);
                 }

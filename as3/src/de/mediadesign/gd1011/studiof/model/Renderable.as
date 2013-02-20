@@ -27,9 +27,6 @@ package de.mediadesign.gd1011.studiof.model
             view.alpha = 1;
             view.x = position.x;
             view.y = position.y;
-            if (view is UpdateTextureSprite) {
-                (view as UpdateTextureSprite).updateTexture(time);
-            }
         }
     }
 }

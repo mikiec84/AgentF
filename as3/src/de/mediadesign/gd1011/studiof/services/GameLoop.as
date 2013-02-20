@@ -16,6 +16,8 @@ package de.mediadesign.gd1011.studiof.services
 
     import flash.events.IEventDispatcher;
 
+    import robotlegs.bender.framework.api.LogLevel;
+
     import starling.events.EnterFrameEvent;
 
     public class GameLoop
@@ -147,13 +149,21 @@ package de.mediadesign.gd1011.studiof.services
                     && (currentLevel.enemies[currentLevel.enemies.length-1].healthPoints < 1
                     || currentLevel.enemies[currentLevel.enemies.length - 1].position.x < 0))
             {
-                var ab:GameEvent = new GameEvent(ViewConsts.SHOW_GAMEOVER, true);
-                dispatcher.dispatchEvent(ab);
+//                var ab:GameEvent = new GameEvent(ViewConsts.SHOW_GAMEOVER, true);
+//                dispatcher.dispatchEvent(ab);
+                if(!currentLevel.fortFox.initialized && !currentLevel.fortFox.moveLeftRunning)
+                {
+                    currentLevel.fortFox.start();
+                }
             }
             else if (currentLevel.enemies.length == 0)
             {
-                var ab:GameEvent = new GameEvent(ViewConsts.SHOW_GAMEOVER, true);
-                dispatcher.dispatchEvent(ab);
+//                var ab:GameEvent = new GameEvent(ViewConsts.SHOW_GAMEOVER, true);
+//                dispatcher.dispatchEvent(ab);
+                if(!currentLevel.fortFox.initialized && !currentLevel.fortFox.moveLeftRunning)
+                {
+                    currentLevel.fortFox.start();
+                }
             }
         }
 	}

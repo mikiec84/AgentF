@@ -1,11 +1,21 @@
 {
     "ENEMY":
-	{
+    {
         "enemyCount":50,
-        "enemyRate":500,
+        "enemyRate":300,
         "fireRateEnemy":0.4,
         "enemyRange":1500,
         "collisionTolerance":40
+
+    },
+
+    "FORT_FOX":
+    {
+        "idleTimeFrame":3,
+        "idleXPosition":1000,
+        "startingPlatform":0,
+        "changePosTime":2,
+        "backMovementDistance":300
 
     }
 }

@@ -26,6 +26,7 @@ package de.mediadesign.gd1011.studiof.model
 
         private var _enemies:Vector.<Unit>;
         private var _player:Player;
+        private var _fortFox:FortFoxBoss;
 
         public var scrollBGs:Vector.<ScrollableBG>;
 
@@ -56,7 +57,7 @@ package de.mediadesign.gd1011.studiof.model
             {
                 if (lvlConfig.getEnemySequence(0,0)[index2] != 6)
                 {
-                    addEnemy(new Unit(1, lvlConfig.getEnemySequence(0,0)[index2], -300, enemyPositions[index2], this, false));
+                    addEnemy(new Unit(1, lvlConfig.getEnemySequence(0,0)[index2], -300, enemyPositions[index2], this, false, index2.toString()));
                     if (enemies[enemies.length-1].currentPlatform == 2)
                     {
                         enemies[enemies.length-1].healthPoints = 3;
@@ -123,6 +124,15 @@ package de.mediadesign.gd1011.studiof.model
         }
 
 
+        public function get fortFox():FortFoxBoss
+        {
+            return _fortFox;
+        }
+
+        public function set fortFox(value:FortFoxBoss):void
+        {
+            _fortFox = value;
+        }
     }
 }
 

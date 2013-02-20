@@ -10,26 +10,18 @@ package de.mediadesign.gd1011.studiof.command
     import de.mediadesign.gd1011.studiof.consts.GameConsts;
     import de.mediadesign.gd1011.studiof.consts.ViewConsts;
     import de.mediadesign.gd1011.studiof.events.GameEvent;
+    import de.mediadesign.gd1011.studiof.model.FortFoxBoss;
     import de.mediadesign.gd1011.studiof.model.Level;
     import de.mediadesign.gd1011.studiof.model.Player;
     import de.mediadesign.gd1011.studiof.model.Renderable;
-    import de.mediadesign.gd1011.studiof.model.UpdateTextureSprite;
-    import de.mediadesign.gd1011.studiof.services.Assets;
     import de.mediadesign.gd1011.studiof.services.GameLoop;
     import de.mediadesign.gd1011.studiof.services.MoveProcess;
     import de.mediadesign.gd1011.studiof.services.RenderProcess;
     import de.mediadesign.gd1011.studiof.view.EnemyView;
 
-    import flash.display.BitmapData;
     import flash.events.IEventDispatcher;
 
     import robotlegs.bender.bundles.mvcs.Command;
-
-    import starling.display.Image;
-    import starling.display.Quad;
-    import starling.display.Sprite;
-
-    import starling.textures.Texture;
 
     public class InitGameCommand extends Command
     {
@@ -55,6 +47,7 @@ package de.mediadesign.gd1011.studiof.command
 
             level.setPlayer(new Player(level));
             moveProcess.addEntity(level.player);
+            level.fortFox = new FortFoxBoss(level);
 
             for (var index:int = 0; index<level.enemies.length; index++)
             {
@@ -73,7 +66,7 @@ package de.mediadesign.gd1011.studiof.command
             }
 
             //var img3:Image = Assets.getImage("AgentF_texture");
-            var playerView:UpdateTextureSprite = new UpdateTextureSprite(ViewConsts.PLAYER);/*
+            var playerView:EnemyView = new EnemyView(ViewConsts.PLAYER);/*
             playerView.addChild(img3);*/
 
             renderProcess.registerRenderable(new Renderable(level.player.position, playerView));

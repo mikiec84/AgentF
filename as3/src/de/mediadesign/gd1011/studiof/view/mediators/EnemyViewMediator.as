@@ -36,7 +36,10 @@ package de.mediadesign.gd1011.studiof.view.mediators
         private function damage(e:GameEvent):void
         {
             if (enemyView.ID == e.dataObj.ID)
+            {
+
                 enemyView.getDamage();
+            }
         }
     }
 }

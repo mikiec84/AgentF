@@ -12,6 +12,7 @@ package de.mediadesign.gd1011.studiof
     import de.mediadesign.gd1011.studiof.command.ImplementBackgroundCommand;
     import de.mediadesign.gd1011.studiof.command.InitGameCommand;
     import de.mediadesign.gd1011.studiof.command.RegisterBulletCommand;
+    import de.mediadesign.gd1011.studiof.command.SpawnEndbossCommand;
     import de.mediadesign.gd1011.studiof.consts.GameConsts;
     import de.mediadesign.gd1011.studiof.events.GameEvent;
     import de.mediadesign.gd1011.studiof.model.Level;
@@ -85,6 +86,7 @@ package de.mediadesign.gd1011.studiof
             commandMap.map(GameConsts.REGISTER_UNIT).toCommand(RegisterBulletCommand);
             commandMap.map(GameConsts.DELETE_UNIT).toCommand(DeleteUnitCommand);
             commandMap.map(GameConsts.DAMAGE_UNIT).toCommand(DamageUnitCommand);
+            commandMap.map(GameConsts.ENDBOSS).toCommand(SpawnEndbossCommand);
         }
 
         public function initMediators() : void
