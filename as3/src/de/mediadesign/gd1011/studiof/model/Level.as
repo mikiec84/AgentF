@@ -34,33 +34,14 @@ package de.mediadesign.gd1011.studiof.model
         public var enemyPositions:Vector.<int>;
         public var collisionTolerance:int;
 
-        public var levelPattern:Vector.<Vector.<Vector.<Vector.<int>>>>;
-
         public function Level()
         {
 			enemyPositions = new Vector.<int>;
             _enemies = new Vector.<Unit>();
             scrollBGs = new Vector.<ScrollableBG>();
 
-            levelPattern = new Vector.<Vector.<Vector.<Vector.<int>>>>();
-
             JSONExtractedInformation = JSONReader.read("enemy")["ENEMY"];
             collisionTolerance = JSONExtractedInformation["collisionTolerance"];
-
-            // ***************** This was for testing *****************
-            for (var index:int = 0; index<JSONExtractedInformation["enemyCount"];index++)
-            {
-                enemyPositions.push(GameConsts.STAGE_WIDTH+((1+index)*JSONExtractedInformation["enemyRate"]));
-            }
-            for (var index2:int = 0; index2<enemyPositions.length; index2++)
-            {
-                addEnemy(new Unit(1, Math.round(Math.random() * 5), -300, enemyPositions[index2], this, false));
-                if (enemies[enemies.length-1].currentPlatform == 2)
-                {
-                    enemies[enemies.length-1].healthPoints = 3;
-                }
-            }
-            // **********************************
         }
 
         private function initPattern():void
@@ -77,9 +58,22 @@ package de.mediadesign.gd1011.studiof.model
 		[PostConstruct]
 		public function onCreated():void
 		{
-//			trace(lvlConfig.numLevelPacks);
-//			trace(lvlConfig.getLevelCount(0));
-//			trace(lvlConfig.getEnemySequence(0,0));
+
+            for (var index:int = 0; index<lvlConfig.getEnemySequence(0,0).length; index++) //JSONExtractedInformation["enemyCount"]
+            {
+                enemyPositions.push(GameConsts.STAGE_WIDTH+((1+index)*JSONExtractedInformation["enemyRate"]));
+            }
+            for (var index2:int = 0; index2<enemyPositions.length; index2++)
+            {
+                if (lvlConfig.getEnemySequence(0,0)[index2] != 6)
+                {
+                    addEnemy(new Unit(1, lvlConfig.getEnemySequence(0,0)[index2], -300, enemyPositions[index2], this, false));
+                    if (enemies[enemies.length-1].currentPlatform == 2)
+                    {
+                        enemies[enemies.length-1].healthPoints = 3;
+                    }
+                }
+            }
 		}
 
         public function get enemies():Vector.<Unit>

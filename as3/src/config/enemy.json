@@ -6,5 +6,6 @@
         "fireRateEnemy":0.4,
         "enemyRange":1500,
         "collisionTolerance":40
+
     }
 }
