@@ -42,21 +42,6 @@ package de.mediadesign.gd1011.studiof.model
 
             JSONExtractedInformation = JSONReader.read("enemy")["ENEMY"];
             collisionTolerance = JSONExtractedInformation["collisionTolerance"];
-
-            // ***************** This was for testing *****************
-            for (var index:int = 0; index<JSONExtractedInformation["enemyCount"];index++)
-            {
-                enemyPositions.push(GameConsts.STAGE_WIDTH+((1+index)*JSONExtractedInformation["enemyRate"]));
-            }
-            for (var index2:int = 0; index2<enemyPositions.length; index2++)
-            {
-                addEnemy(new Unit(1, Math.round(Math.random() * 5), -300, enemyPositions[index2], this, false, index2.toString()));
-                if (enemies[enemies.length-1].currentPlatform == 2)
-                {
-                    enemies[enemies.length-1].healthPoints = 3;
-                }
-            }
-            // **********************************
         }
 
 		[PostConstruct]
