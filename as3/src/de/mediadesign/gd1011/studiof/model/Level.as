@@ -32,7 +32,7 @@ package de.mediadesign.gd1011.studiof.model
         private var JSONExtractedInformation:Object;
 
         public var enemyPositions:Vector.<int>;
-        public var collisionTolerance:int;
+        public var collisionTolerance:int;              // Wie weit die bullet von der Unit entfernt sein darf um immernoch als treffer zu zählen
 
         public function Level()
         {
