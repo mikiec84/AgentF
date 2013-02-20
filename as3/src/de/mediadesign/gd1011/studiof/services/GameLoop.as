@@ -84,7 +84,7 @@ package de.mediadesign.gd1011.studiof.services
 
             // collsision
 
-            var updatePointsEvent:GameEvent = new GameEvent(ViewConsts.ENEMY_KILLED, ViewConsts.ENEMY_KILLED);
+            var updatePointsEvent:GameEvent = new GameEvent(ViewConsts.ENEMY_KILLED);
             for (var i:int = 0; i < currentLevel.player.ammunition.length; i++)
             {
                 for (var j:int = 0; j < currentLevel.enemies.length; j++)
@@ -135,12 +135,12 @@ package de.mediadesign.gd1011.studiof.services
                 }
             }
 
-            var updateLifePointEvent:GameEvent = new GameEvent(ViewConsts.UPDATE_LIFEPOINTS, GameConsts.ADD_SPRITE_TO_GAME, currentLevel.player.healthPoints);
+            var updateLifePointEvent:GameEvent = new GameEvent(ViewConsts.UPDATE_LIFEPOINTS, currentLevel.player.healthPoints);
             dispatcher.dispatchEvent(updateLifePointEvent);
 
             if (currentLevel.player.healthPoints<1)
             {
-                var ab:GameEvent = new GameEvent(ViewConsts.SHOW_GAMEOVER, GameConsts.ADD_SPRITE_TO_GAME, false);
+                var ab:GameEvent = new GameEvent(ViewConsts.SHOW_GAMEOVER, false);
                 dispatcher.dispatchEvent(ab);
             }
             if (currentLevel.enemies.length != 0)
@@ -148,12 +148,12 @@ package de.mediadesign.gd1011.studiof.services
                     && (currentLevel.enemies[currentLevel.enemies.length-1].healthPoints < 1
                     || currentLevel.enemies[currentLevel.enemies.length - 1].position.x < 0))
             {
-                var ab:GameEvent = new GameEvent(ViewConsts.SHOW_GAMEOVER, GameConsts.ADD_SPRITE_TO_GAME, true);
+                var ab:GameEvent = new GameEvent(ViewConsts.SHOW_GAMEOVER, true);
                 dispatcher.dispatchEvent(ab);
             }
             else if (currentLevel.enemies.length == 0)
             {
-                var ab:GameEvent = new GameEvent(ViewConsts.SHOW_GAMEOVER, GameConsts.ADD_SPRITE_TO_GAME, true);
+                var ab:GameEvent = new GameEvent(ViewConsts.SHOW_GAMEOVER, true);
                 dispatcher.dispatchEvent(ab);
             }
         }

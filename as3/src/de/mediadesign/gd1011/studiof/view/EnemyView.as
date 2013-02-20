@@ -7,34 +7,30 @@
  */
 package de.mediadesign.gd1011.studiof.view
 {
-    import de.mediadesign.gd1011.studiof.consts.ViewConsts;
-    import de.mediadesign.gd1011.studiof.events.GameEvent;
+    import de.mediadesign.gd1011.studiof.model.UpdateTextureSprite;
 
-    import flash.display.BitmapData;
+    import starling.filters.ColorMatrixFilter;
 
-    import starling.display.Image;
-    import starling.display.MovieClip;
-    import starling.display.Quad;
-
-    import starling.display.Sprite;
-    import starling.textures.Texture;
-
-    public class EnemyView extends Sprite
+    public class EnemyView extends UpdateTextureSprite
     {
-        public function EnemyView()
+        private var _ID:String;
+        private var colorFilter:ColorMatrixFilter = new ColorMatrixFilter();
+
+        public function EnemyView(enemyType:String, ID:String = "")
         {
-            addEventListener(ViewConsts.GET_DAMAGE, damageView);
-            addEventListener(ViewConsts.SET_NORMAL, normalView);
+            super(enemyType);
+            this._ID = ID;
         }
 
-        public function damageView(e:GameEvent):void
+        public function getDamage():void
         {
-            this.alpha = 0.5;
+            trace("mach was cooles");
+            
         }
 
-        public function normalView(e:GameEvent):void
+        public function get ID():String
         {
-            this.alpha = 1;
+            return _ID;
         }
     }
 }

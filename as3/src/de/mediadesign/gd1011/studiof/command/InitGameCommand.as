@@ -60,22 +60,24 @@ package de.mediadesign.gd1011.studiof.command
             {
                 moveProcess.addEntity(level.enemies[index]);
 
-                if (level.enemies[index].currentPlatform < 2) var playerView:UpdateTextureSprite = new UpdateTextureSprite(ViewConsts.FLYING_ENEMY);
-                if (level.enemies[index].currentPlatform == 2) var playerView:UpdateTextureSprite = new UpdateTextureSprite(ViewConsts.FLOATING_ENEMY);
-                if (level.enemies[index].currentPlatform > 2) var playerView:UpdateTextureSprite = new UpdateTextureSprite(ViewConsts.UNDERWATER_ENEMY);
+                if (level.enemies[index].currentPlatform < 2)
+                    var enemyView:EnemyView = new EnemyView(ViewConsts.FLYING_ENEMY, level.enemies[index].ID);
+                if (level.enemies[index].currentPlatform == 2)
+                    var enemyView:EnemyView = new EnemyView(ViewConsts.FLOATING_ENEMY, level.enemies[index].ID);
+                if (level.enemies[index].currentPlatform > 2)
+                    var enemyView:EnemyView = new EnemyView(ViewConsts.UNDERWATER_ENEMY, level.enemies[index].ID);
 
-                renderProcess.registerRenderable(new Renderable(level.enemies[index].position, playerView));
-                var addEnemySpriteToGameEvent:GameEvent = new GameEvent(GameConsts.ADD_SPRITE_TO_GAME, GameConsts.ADD_SPRITE_TO_GAME, playerView);
+                renderProcess.registerRenderable(new Renderable(level.enemies[index].position, enemyView));
+                var addEnemySpriteToGameEvent:GameEvent = new GameEvent(GameConsts.ADD_SPRITE_TO_GAME, enemyView);
                 dispatcher.dispatchEvent(addEnemySpriteToGameEvent);
             }
-
 
             //var img3:Image = Assets.getImage("AgentF_texture");
             var playerView:UpdateTextureSprite = new UpdateTextureSprite(ViewConsts.PLAYER);/*
             playerView.addChild(img3);*/
 
             renderProcess.registerRenderable(new Renderable(level.player.position, playerView));
-            var addSpriteToGameEvent:GameEvent = new GameEvent(GameConsts.ADD_SPRITE_TO_GAME, GameConsts.ADD_SPRITE_TO_GAME, playerView);
+            var addSpriteToGameEvent:GameEvent = new GameEvent(GameConsts.ADD_SPRITE_TO_GAME, playerView);
             dispatcher.dispatchEvent(addSpriteToGameEvent);
         }
     }

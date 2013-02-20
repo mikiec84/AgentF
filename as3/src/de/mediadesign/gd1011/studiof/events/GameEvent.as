@@ -11,14 +11,12 @@ package de.mediadesign.gd1011.studiof.events
 
     public class GameEvent extends Event
     {
-        public var id:String;
         public var dataObj:*;
         public var data:*;
 
-        public function GameEvent(type:String, id:String = "", dataObj:* = null, data:* = null)
+        public function GameEvent(type:String, dataObj:* = null, data:* = null)
         {
             super(type, false, false);
-            this.id = id;
             this.dataObj = dataObj;
             this.data = data;
         }

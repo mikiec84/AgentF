@@ -11,11 +11,16 @@ package de.mediadesign.gd1011.studiof.services
     import de.mediadesign.gd1011.studiof.consts.ViewConsts;
     import de.mediadesign.gd1011.studiof.events.GameEvent;
     import de.mediadesign.gd1011.studiof.model.Unit;
+    import de.mediadesign.gd1011.studiof.view.EnemyView;
+    import de.mediadesign.gd1011.studiof.view.EnemyView;
 
     import flash.events.IEventDispatcher;
 
     public class Rules
     {
+        [Inject]
+        public var renderProcess:RenderProcess;
+
         [Inject]
         public var dispatcher:IEventDispatcher;
 
@@ -29,14 +34,10 @@ package de.mediadesign.gd1011.studiof.services
             collisionTolerance = JSONExtractedInformation["collisionTolerance"];
         }
 
-        // first unit: movement -->
-        // second unit: movement <--
+        // unit1: movement -->
+        // unit2: movement <--
         public function collisionDetection(unit1:Unit, unit2:Unit):void
         {
-            var getDamageEvent = new GameEvent(ViewConsts.GET_DAMAGE, ViewConsts.GET_DAMAGE);
-            //var setNormalEvent = new GameEvent(ViewConsts.SET_NORMAL, ViewConsts.SET_NORMAL);
-
-            //dispatcher.dispatchEvent(setNormalEvent);
             if (unit2.position.x < GameConsts.STAGE_WIDTH)
             {
                 if (unit1.currentPlatform == unit2.currentPlatform
@@ -44,7 +45,8 @@ package de.mediadesign.gd1011.studiof.services
                 {
                     unit1.healthPoints--;
                     unit2.healthPoints--;
-                    dispatcher.dispatchEvent(getDamageEvent);
+                    var damageUnitEvent:GameEvent = new GameEvent(GameConsts.DAMAGE_UNIT, unit2);
+                    dispatcher.dispatchEvent(damageUnitEvent);
                 }
             }
         }

@@ -49,7 +49,7 @@ package de.mediadesign.gd1011.studiof.command
             moveProcess.addEntity(event.dataObj);
             renderProcess.registerRenderable(new Renderable(unit.position, view));
 
-            var addToGameEvent:GameEvent = new GameEvent(GameConsts.ADD_SPRITE_TO_GAME, GameConsts.ADD_SPRITE_TO_GAME, view);
+            var addToGameEvent:GameEvent = new GameEvent(GameConsts.ADD_SPRITE_TO_GAME, view);
             dispatcher.dispatchEvent(addToGameEvent);
 
         }

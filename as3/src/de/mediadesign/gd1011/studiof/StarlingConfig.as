@@ -7,6 +7,7 @@
  */
 package de.mediadesign.gd1011.studiof
 {
+    import de.mediadesign.gd1011.studiof.command.DamageUnitCommand;
     import de.mediadesign.gd1011.studiof.command.DeleteUnitCommand;
     import de.mediadesign.gd1011.studiof.command.ImplementBackgroundCommand;
     import de.mediadesign.gd1011.studiof.command.InitGameCommand;
@@ -24,17 +25,21 @@ package de.mediadesign.gd1011.studiof
     import de.mediadesign.gd1011.studiof.services.RenderProcess;
     import de.mediadesign.gd1011.studiof.services.Rules;
     import de.mediadesign.gd1011.studiof.view.BackgroundView;
+    import de.mediadesign.gd1011.studiof.view.EnemyView;
     import de.mediadesign.gd1011.studiof.view.GUI;
     import de.mediadesign.gd1011.studiof.view.GameView;
     import de.mediadesign.gd1011.studiof.view.MainView;
 	import de.mediadesign.gd1011.studiof.view.StartScreenView;
 	import de.mediadesign.gd1011.studiof.view.mediators.BackgroundViewMediator;
+    import de.mediadesign.gd1011.studiof.view.mediators.EnemyViewMediator;
     import de.mediadesign.gd1011.studiof.view.mediators.GUIMediator;
     import de.mediadesign.gd1011.studiof.view.mediators.GameViewMediator;
     import de.mediadesign.gd1011.studiof.view.mediators.MainViewMediator;
 	import de.mediadesign.gd1011.studiof.view.mediators.StartScreenViewMediator;
 
 	import flash.events.IEventDispatcher;
+
+    import flashx.textLayout.events.DamageEvent;
 
     import org.swiftsuspenders.Injector;
 
@@ -79,6 +84,7 @@ package de.mediadesign.gd1011.studiof
             commandMap.map(GameConsts.IMPL_BG).toCommand(ImplementBackgroundCommand);
             commandMap.map(GameConsts.REGISTER_UNIT).toCommand(RegisterBulletCommand);
             commandMap.map(GameConsts.DELETE_UNIT).toCommand(DeleteUnitCommand);
+            commandMap.map(GameConsts.DAMAGE_UNIT).toCommand(DamageUnitCommand);
         }
 
         public function initMediators() : void
@@ -88,6 +94,7 @@ package de.mediadesign.gd1011.studiof
 			mediatorMap.map(GameView).toMediator(GameViewMediator);
 			mediatorMap.map(GUI).toMediator(GUIMediator);
             mediatorMap.map(BackgroundView).toMediator(BackgroundViewMediator);
+            mediatorMap.map(EnemyView).toMediator(EnemyViewMediator);
         }
 
 

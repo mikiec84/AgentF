@@ -51,7 +51,7 @@ package de.mediadesign.gd1011.studiof.command
             moveProcess.addEntity(event.dataObj);
             renderProcess.registerRenderable(new Renderable(scrBG.position, view));
 
-            var addToBGEvent:GameEvent = new GameEvent(GameConsts.ADD_BG_TO_GAME, GameConsts.ADD_BG_TO_GAME, view);
+            var addToBGEvent:GameEvent = new GameEvent(GameConsts.ADD_BG_TO_GAME, view);
             dispatcher.dispatchEvent(addToBGEvent);
         }
     }

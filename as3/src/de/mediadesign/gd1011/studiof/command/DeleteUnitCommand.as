@@ -63,7 +63,7 @@ package de.mediadesign.gd1011.studiof.command
 
             if (view != null)
             {
-                var removeFromGameEvent:GameEvent = new GameEvent(GameConsts.REMOVE_SPRITE_FROM_GAME, GameConsts.REMOVE_SPRITE_FROM_GAME, view);
+                var removeFromGameEvent:GameEvent = new GameEvent(GameConsts.REMOVE_SPRITE_FROM_GAME, view);
                 dispatcher.dispatchEvent(removeFromGameEvent);
             }
 

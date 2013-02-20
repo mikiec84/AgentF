@@ -1,13 +1,22 @@
 {
     "PLAYER":{
             "platform":2,
-            "healthPoints":3,
+            "healthPoints":1000,
             "weapon":"MACHINE_GUN",
-            "einpendelStaerke":30,
-            "speedTowardsMouse":900,
+            "einpendelStaerkeWinzig":15,
+            "einpendelStaerkeKlein":30,
+            "einpendelStaerkeGross":90,
+            "speedTowardsMouse":1200,
             "jumpSpeedBeimSprung":1,
             "jumpSpeedBeimFall":1,
-            "jumpSpeedBeimEinpendeln":4
-           }
+            "jumpSpeedBeimEinpendeln":4,
+            "fireRate":3,
+            "jumpSpeedBeimSprungWinzig":0.4
+           },
+    "gamebounds":{
+            "width":1710,
+            "height":870,
+            "plattform-height":120
+    }
 
 }

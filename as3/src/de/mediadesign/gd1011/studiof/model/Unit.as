@@ -19,17 +19,21 @@ package de.mediadesign.gd1011.studiof.model
         private var _position:PositionComponent;
         private var _velocity:VelocityComponent;
         private var _weapon:String;
-        public var cooldown:Number = 0;
-        private var fireRateEnemy:Number;
-        public var JSONExtractedInformation:Object;
-        private var enemyRange:int;
-        public var ammunition:Vector.<Unit>;
+
         private var _currentLevel:Level;
         private var doNotShootAnymore:Boolean = false;
+        private var enemyRange:int;
+        private var fireRateEnemy:Number;
+
+        private var _ID:String;
+
+        public var cooldown:Number = 0;
+        public var JSONExtractedInformation:Object;
+        public var ammunition:Vector.<Unit>;
         public var hasAlreadyHitThePlayer:Boolean = false;
 
 
-        public function Unit(healthpoints:int, startingPlatform:int, xVel:int, startingXPosition:int, currentLevel:Level, verticalBullet:Boolean)
+        public function Unit(healthpoints:int, startingPlatform:int, xVel:int, startingXPosition:int, currentLevel:Level, verticalBullet:Boolean, ID:String = "")
         {
             ammunition = new Vector.<Unit>();
             _weapon = "default";
@@ -57,6 +61,8 @@ package de.mediadesign.gd1011.studiof.model
             if (startingPlatform == 2 && velocity.velocityX < 0) {
                 position.y += 80;
             }
+
+            this._ID = ID;
         }
 
         public function move(time:Number):void
@@ -186,6 +192,11 @@ package de.mediadesign.gd1011.studiof.model
             {
                 _currentLevel.register(bullet);
             }
+        }
+
+        public function get ID():String
+        {
+            return _ID;
         }
     }
 }

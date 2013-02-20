@@ -47,7 +47,7 @@ package de.mediadesign.gd1011.studiof.view.mediators {
             addContextListener(GameConsts.ADD_SPRITE_TO_GAME, add);
             addContextListener(GameConsts.REMOVE_SPRITE_FROM_GAME, remove);
 
-            var initGameEvent:GameEvent = new GameEvent(GameConsts.INIT_GAME, GameConsts.INIT_GAME);
+            var initGameEvent:GameEvent = new GameEvent(GameConsts.INIT_GAME);
             dispatcher.dispatchEvent(initGameEvent);
 		}
 
