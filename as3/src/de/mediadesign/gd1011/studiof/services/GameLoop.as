@@ -58,7 +58,6 @@ package de.mediadesign.gd1011.studiof.services
 
         public function update(e:EnterFrameEvent):void
         {
-            // update position & render
             for each (var target:IProcess in processes)
             {
                 target.update(e.passedTime);
