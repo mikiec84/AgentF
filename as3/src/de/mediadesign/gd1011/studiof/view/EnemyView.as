@@ -18,14 +18,14 @@ package de.mediadesign.gd1011.studiof.view
 
         public function EnemyView(enemyType:String, ID:String = "")
         {
+            colorFilter.invert();
             super(enemyType);
             this._ID = ID;
         }
 
         public function getDamage():void
         {
-            trace("mach was cooles");
-            
+            trace("BÄM Filter");
         }
 
         public function get ID():String

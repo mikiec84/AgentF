@@ -26,24 +26,24 @@ package de.mediadesign.gd1011.studiof.model {
             switch(enemyType)
             {
                 case(ViewConsts.PLAYER):
-                    textures.push(new Image(Assets.getTexture("E1_texture")));
                     textures.push(new Image(Assets.getTexture("E2_texture")));
-                    textures.push(new Image(Assets.getTexture("E3_texture")));
+                    textures.push(new Image(Assets.getTexture("E2_texture")));
+                    textures.push(new Image(Assets.getTexture("E2_texture")));
                     break;
                 case(ViewConsts.FLYING_ENEMY):
-                    textures.push(new Image(Assets.getTexture("E1_texture")));
                     textures.push(new Image(Assets.getTexture("E2_texture")));
-                    textures.push(new Image(Assets.getTexture("E3_texture")));
+                    textures.push(new Image(Assets.getTexture("E2_texture")));
+                    textures.push(new Image(Assets.getTexture("E2_texture")));
                     break;
                 case(ViewConsts.FLOATING_ENEMY):
-                    textures.push(new Image(Assets.getTexture("E1_texture")));
                     textures.push(new Image(Assets.getTexture("E2_texture")));
-                    textures.push(new Image(Assets.getTexture("E3_texture")));
+                    textures.push(new Image(Assets.getTexture("E2_texture")));
+                    textures.push(new Image(Assets.getTexture("E2_texture")));
                     break;
                 case(ViewConsts.UNDERWATER_ENEMY):
-                    textures.push(new Image(Assets.getTexture("E1_texture")));
                     textures.push(new Image(Assets.getTexture("E2_texture")));
-                    textures.push(new Image(Assets.getTexture("E3_texture")));
+                    textures.push(new Image(Assets.getTexture("E2_texture")));
+                    textures.push(new Image(Assets.getTexture("E2_texture")));
                     break;
             }
             addChild(textures[0]);
