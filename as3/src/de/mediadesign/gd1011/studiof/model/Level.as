@@ -27,6 +27,8 @@ package de.mediadesign.gd1011.studiof.model
         private var _enemies:Vector.<Unit>;
         private var _player:Player;
         private var _fortFox:FortFoxBoss;
+        private var _nautilus:NautilusBoss;
+        private var currentLevel:int = 2;
 
         private var JSONExtractedInformation:Object;
 
@@ -34,6 +36,10 @@ package de.mediadesign.gd1011.studiof.model
 
         public var enemyPositions:Vector.<int>;
         public var collisionTolerance:int;              // Wie weit die bullet von der Unit entfernt sein darf um immernoch als treffer zu zählen
+
+        ///CHEATS
+        public var onlyThreeMobs:Boolean = true;
+        /////////
 
         public function Level()
         {
@@ -53,6 +59,16 @@ package de.mediadesign.gd1011.studiof.model
             {
                 enemyPositions.push(GameConsts.STAGE_WIDTH+((1+index)*JSONExtractedInformation["enemyRate"]));
             }
+
+            //////////// CHEAT ///////////////
+            if (onlyThreeMobs) {
+                while(enemyPositions.length > 3)
+                {
+                    var a:int = enemyPositions.pop();
+                }
+                trace("ENEMY POSITION LENGTH: "+enemyPositions.length);
+            }
+            //////////////////////////////////
             for (var index2:int = 0; index2<enemyPositions.length; index2++)
             {
                 if (lvlConfig.getEnemySequence(0,0)[index2] != 6)
@@ -65,6 +81,27 @@ package de.mediadesign.gd1011.studiof.model
                 }
             }
 		}
+
+        public function spawnBoss():void
+        {
+            var JSONExtract = JSONReader.read("enemy")["BOSS_SPAWN"];
+            if (JSONExtract[currentLevel] != null)
+            {   //trace("JSONExtract = JSONReader.read('enemy')['BOSS_SPAWN'], JSONExtract[currentLevel]: "+JSONExtract[currentLevel]);
+                if (JSONExtract[currentLevel] == "Fort_Fox") {
+                    if (!fortFox.initialized && !fortFox.moveLeftRunning) {
+                        fortFox.start();
+                    }
+                }
+                else
+                if (JSONExtract[currentLevel] == "Nautilus")
+                {
+                    if (!nautilus.initialized && !nautilus.moveLeftRunning) {
+                        nautilus.start();
+                    }
+                }
+            }
+            else trace("Es wird versucht ein Level Endboss zu starten, der in der JSON nicht eingetragen ist.");
+        }
 
         public function get enemies():Vector.<Unit>
         {
@@ -138,6 +175,14 @@ package de.mediadesign.gd1011.studiof.model
         public function set fortFox(value:FortFoxBoss):void
         {
             _fortFox = value;
+        }
+
+        public function get nautilus():NautilusBoss {
+            return _nautilus;
+        }
+
+        public function set nautilus(value:NautilusBoss):void {
+            _nautilus = value;
         }
     }
 }

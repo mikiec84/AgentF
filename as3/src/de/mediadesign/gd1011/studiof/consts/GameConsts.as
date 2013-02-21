@@ -12,7 +12,8 @@ package de.mediadesign.gd1011.studiof.consts
         // Command Event Strings
         public static const INIT_PLAYER:String = "INIT_PLAYER";
         public static const INIT_GAME:String   = "INIT_GAME";
-        public static const ENDBOSS:String     = "ENDBOSS";
+        public static const FORT_FOX:String     = "FORT_FOX";
+        public static const NAUTILUS:String     = "NAUTILUS";
 
         public static const IMPL_BG:String = "IMPL_BG";
         public static const REGISTER_UNIT:String = "REGISTER_UNIT";

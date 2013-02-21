@@ -124,6 +124,9 @@ package de.mediadesign.gd1011.studiof.services
 
         public function update(e:EnterFrameEvent):void
         {
+            /*if (currentLevel.nautilus != null) {
+                trace("Nautilus x: "+currentLevel.nautilus.position.x);
+            }*/
             if(currentLevel.player== null)
                 return;
 
@@ -136,6 +139,7 @@ package de.mediadesign.gd1011.studiof.services
             {
                 currentLevel.player.shootBullet(e.passedTime);
             }
+            currentLevel.nautilus.shootBullet(e.passedTime);
             // Enemy shooting
             for (var index:int = 0; index<currentLevel.enemies.length; index++)
                 currentLevel.enemies[index].shootBullet(e.passedTime);
@@ -171,8 +175,7 @@ package de.mediadesign.gd1011.studiof.services
                     if(!currentLevel.fortFox.initialized && !currentLevel.fortFox.moveLeftRunning)
                     {
                         currentLevel.stopScrollBG();
-                        currentLevel.fortFox.start();
-                        //currentLevel.spawnBoss();
+                        currentLevel.spawnBoss();
                     }
                 }
             }
@@ -189,9 +192,7 @@ package de.mediadesign.gd1011.studiof.services
                 if(!currentLevel.fortFox.initialized && !currentLevel.fortFox.moveLeftRunning)
                 {
                     currentLevel.stopScrollBG();
-                    currentLevel.fortFox.start();
-                    //currentLevel.spawnBoss();
-
+                    currentLevel.spawnBoss();
                 }
             }
         }

@@ -16,11 +16,8 @@ package de.mediadesign.gd1011.studiof.command
 
     import starling.display.Sprite;
 
-    public class SpawnEndbossCommand extends Command
+    public class SpawnFortFoxCommand extends Command
     {
-        [Inject]
-        public var gameLoop:GameLoop;
-
         [Inject]
         public var moveProcess:MoveProcess;
 
