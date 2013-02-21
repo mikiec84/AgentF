@@ -142,7 +142,6 @@ package de.mediadesign.gd1011.studiof.model {
         override public function shoot(time:Number):Unit
         {
             cooldown += time;
-            trace("pos.x: "+position.x+", idleX: "+idleXPosition+", health: "+healthPoints);
             if (cooldown >= (1 / attackSpeed) && position.x<=idleXPosition && healthPoints > 0)
             {
                 var bullet:Unit = new Unit(1, currentPlatform, -600, position.x, level, false);

@@ -28,7 +28,7 @@ package de.mediadesign.gd1011.studiof.model
         private var _player:Player;
         private var _fortFox:FortFoxBoss;
         private var _nautilus:NautilusBoss;
-        private var currentLevel:int = 2;
+        private var _currentLevel:int = 2;
 
         private var JSONExtractedInformation:Object;
 
@@ -85,15 +85,15 @@ package de.mediadesign.gd1011.studiof.model
         public function spawnBoss():void
         {
             var JSONExtract = JSONReader.read("enemy")["BOSS_SPAWN"];
-            if (JSONExtract[currentLevel] != null)
+            if (JSONExtract[_currentLevel] != null)
             {   //trace("JSONExtract = JSONReader.read('enemy')['BOSS_SPAWN'], JSONExtract[currentLevel]: "+JSONExtract[currentLevel]);
-                if (JSONExtract[currentLevel] == "Fort_Fox") {
+                if (JSONExtract[_currentLevel] == "Fort_Fox") {
                     if (!fortFox.initialized && !fortFox.moveLeftRunning) {
                         fortFox.start();
                     }
                 }
                 else
-                if (JSONExtract[currentLevel] == "Nautilus")
+                if (JSONExtract[_currentLevel] == "Nautilus")
                 {
                     if (!nautilus.initialized && !nautilus.moveLeftRunning) {
                         nautilus.start();
@@ -183,6 +183,14 @@ package de.mediadesign.gd1011.studiof.model
 
         public function set nautilus(value:NautilusBoss):void {
             _nautilus = value;
+        }
+
+        public function get currentLevel():int {
+            return _currentLevel;
+        }
+
+        public function set currentLevel(value:int):void {
+            _currentLevel = value;
         }
     }
 }
