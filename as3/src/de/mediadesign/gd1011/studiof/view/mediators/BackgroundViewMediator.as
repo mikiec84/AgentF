@@ -31,7 +31,7 @@ package de.mediadesign.gd1011.studiof.view.mediators
 
         override public function initialize():void
         {
-			bgView.addChild(new Image(assets.getTexture("BG1_texture")));
+			bgView.addChild(new Image(assets.getTexture("Background1")));
             addContextListener(GameConsts.ADD_BG_TO_GAME, add);
             gameLoop.initScroll();
         }

@@ -2,27 +2,24 @@ package de.mediadesign.gd1011.studiof.view.mediators {
     import de.mediadesign.gd1011.studiof.consts.GameConsts;
     import de.mediadesign.gd1011.studiof.events.GameEvent;
     import de.mediadesign.gd1011.studiof.model.Level;
-    import de.mediadesign.gd1011.studiof.model.Unit;
     import de.mediadesign.gd1011.studiof.services.GameLoop;
     import de.mediadesign.gd1011.studiof.services.JSONReader;
-	import de.mediadesign.gd1011.studiof.view.BackgroundView;
-	import de.mediadesign.gd1011.studiof.view.GameView;
+    import de.mediadesign.gd1011.studiof.view.BackgroundView;
+    import de.mediadesign.gd1011.studiof.view.GameView;
 
     import flash.events.IEventDispatcher;
-	import flash.geom.Point;
-	import flash.utils.Timer;
+    import flash.geom.Point;
 
-	import robotlegs.extensions.starlingViewMap.impl.StarlingMediator;
+    import robotlegs.extensions.starlingViewMap.impl.StarlingMediator;
 
     import starling.display.Quad;
-
     import starling.events.EnterFrameEvent;
     import starling.events.Touch;
     import starling.events.TouchEvent;
     import starling.events.TouchPhase;
-	import starling.utils.AssetManager;
+    import starling.utils.AssetManager;
 
-	public class GameViewMediator extends StarlingMediator
+    public class GameViewMediator extends StarlingMediator
 	{
 		[Inject]
 		public var contextView:GameView;
@@ -67,7 +64,9 @@ package de.mediadesign.gd1011.studiof.view.mediators {
 
 		private function addAssets():void
 		{
-			assets.enqueue(SpriteSheetTauchbaer);
+            assets.enqueue(Background1);
+            assets.enqueue(Background2);
+            assets.enqueue(SpriteSheetTauchbaer);
 			assets.enqueue(AgentF_texture);
 			assets.enqueue(E1_texture);
 			assets.enqueue(E3_texture);
