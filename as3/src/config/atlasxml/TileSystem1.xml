@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker http://texturepacker.com-->
+<!-- $TexturePacker:SmartUpdate:93c8a7455040e32a4a14333ce29d2f9e$ -->
+<TextureAtlas imagePath="TileSystem1.png">
+    <SubTexture name="Tile01" x="2" y="2206" width="855" height="1018" frameX="0" frameY="-82" frameWidth="855" frameHeight="1100"/>
+    <SubTexture name="Tile02" x="859" y="1104" width="855" height="1098" frameX="0" frameY="-2" frameWidth="855" frameHeight="1100"/>
+    <SubTexture name="Tile03" x="859" y="2204" width="855" height="1028" frameX="0" frameY="-72" frameWidth="855" frameHeight="1100"/>
+    <SubTexture name="Tile04" x="2" y="1104" width="855" height="1100"/>
+    <SubTexture name="Tile05" x="859" y="2" width="855" height="1100"/>
+    <SubTexture name="Tile06" x="2" y="2" width="855" height="1100"/>
+</TextureAtlas>
