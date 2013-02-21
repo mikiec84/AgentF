@@ -58,49 +58,25 @@ package de.mediadesign.gd1011.studiof.services
             units.splice(index,  1);
         }
 
-        public function update(e:EnterFrameEvent):void
+        public function collision():void
         {
-			if(currentLevel.player== null)
-			return;
-
-            for each (var target:IProcess in processes)
-            {
-                target.update(e.passedTime);
-            }
-            // player shooting
-            if (currentLevel.player!= null && currentLevel.player.shootNow())
-            {
-                currentLevel.player.shootBullet(e.passedTime);
-            }
-            // Enemy shooting
-            for (var index:int = 0; index<currentLevel.enemies.length; index++)
-                currentLevel.enemies[index].shootBullet(e.passedTime);
-
-            // scrolling background
-            if (currentLevel.scrollBGs.length != 0 && currentLevel.scrollBGs[0].position.x < 0 && currentLevel.scrollBGs.length < 4 )
-            {
-                initScroll();
-            }
-            if (currentLevel.scrollBGs.length != 0 && currentLevel.scrollBGs[0].position.x < -844)
-            {
-                currentLevel.scrollBGs.shift();
-            }
-
-            // collsision
-
             var updatePointsEvent:GameEvent = new GameEvent(ViewConsts.ENEMY_KILLED);
             for (var i:int = 0; i < currentLevel.player.ammunition.length; i++)
             {
+                if (currentLevel.fortFox.initialized)
+                    rules.collisionDetection(currentLevel.player.ammunition[i], currentLevel.fortFox);
+
+                if (rules.isDead(currentLevel.player.ammunition[i]))
+                {
+                    deleteUnits(currentLevel.player.ammunition, i);
+                    break;
+                    break;
+                }
+
                 for (var j:int = 0; j < currentLevel.enemies.length; j++)
                 {
                     rules.collisionDetection(currentLevel.player.ammunition[i], currentLevel.enemies[j]);
 
-                    if (rules.isDead(currentLevel.player.ammunition[i]))
-                    {
-                        deleteUnits(currentLevel.player.ammunition, i);
-                        break;
-                        break;
-                    }
                     if (rules.isDead(currentLevel.enemies[j]))
                     {
                         deleteUnits(currentLevel.enemies, j);
@@ -138,31 +114,67 @@ package de.mediadesign.gd1011.studiof.services
                     }
                 }
             }
+        }
+
+        public function update(e:EnterFrameEvent):void
+        {
+            if(currentLevel.player== null)
+                return;
+
+            for each (var target:IProcess in processes)
+            {
+                target.update(e.passedTime);
+            }
+            // player shooting
+            if (currentLevel.player.shootNow())
+            {
+                currentLevel.player.shootBullet(e.passedTime);
+            }
+            // Enemy shooting
+            for (var index:int = 0; index<currentLevel.enemies.length; index++)
+                currentLevel.enemies[index].shootBullet(e.passedTime);
+
+            // scrolling background
+            if (currentLevel.scrollBGs[0].position.x < 0 && currentLevel.scrollBGs.length < 4 )
+            {
+                initScroll();
+            }
+            if (currentLevel.scrollBGs[0].position.x < -844)
+            {
+                currentLevel.scrollBGs.shift();
+            }
+
+            collision();
 
             var updateLifePointEvent:GameEvent = new GameEvent(ViewConsts.UPDATE_LIFEPOINTS, currentLevel.player.healthPoints);
             dispatcher.dispatchEvent(updateLifePointEvent);
 
+            //Lost
             if (currentLevel.player.healthPoints<1)
             {
                 var ab:GameEvent = new GameEvent(ViewConsts.SHOW_GAMEOVER, false);
                 dispatcher.dispatchEvent(ab);
             }
+            // End of Level 1, start Boss Level 1
             if (currentLevel.enemies.length != 0)
             if (currentLevel.player.healthPoints > 0
                     && (currentLevel.enemies[currentLevel.enemies.length-1].healthPoints < 1
                     || currentLevel.enemies[currentLevel.enemies.length - 1].position.x < 0))
             {
-//                var ab:GameEvent = new GameEvent(ViewConsts.SHOW_GAMEOVER, true);
-//                dispatcher.dispatchEvent(ab);
                 if(!currentLevel.fortFox.initialized && !currentLevel.fortFox.moveLeftRunning)
                 {
                     currentLevel.fortFox.start();
                 }
             }
+
+            if (currentLevel.fortFox.healthPoints <= 0 && currentLevel.fortFox.initialized)
+            {
+                var ab:GameEvent = new GameEvent(ViewConsts.SHOW_GAMEOVER, true);
+                dispatcher.dispatchEvent(ab);
+            }
+
             else if (currentLevel.enemies.length == 0)
             {
-//                var ab:GameEvent = new GameEvent(ViewConsts.SHOW_GAMEOVER, true);
-//                dispatcher.dispatchEvent(ab);
                 if(!currentLevel.fortFox.initialized && !currentLevel.fortFox.moveLeftRunning)
                 {
                     currentLevel.fortFox.start();

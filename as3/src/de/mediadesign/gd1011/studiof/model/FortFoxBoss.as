@@ -36,6 +36,7 @@ package de.mediadesign.gd1011.studiof.model {
             movementSpeed = Math.round((backMovementDistance*2)/changePosTime);
             position.x = idleXPosition+backMovementDistance;
             level = currentLevel;
+            healthPoints = 10;
         }
 
         public function start():void
