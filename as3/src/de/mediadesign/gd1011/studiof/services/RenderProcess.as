@@ -8,14 +8,18 @@
 package de.mediadesign.gd1011.studiof.services
 {
     import de.mediadesign.gd1011.studiof.model.Renderable;
+    import de.mediadesign.gd1011.studiof.view.EnemyView;
 
     public class RenderProcess implements IProcess
     {
         public var targets:Vector.<Renderable>;
 
+        private var _running:Boolean;
+
         public function RenderProcess()
         {
             targets = new Vector.<Renderable>();
+            start();
         }
 
         public function registerRenderable(render:Renderable):void
@@ -30,10 +34,32 @@ package de.mediadesign.gd1011.studiof.services
 
         public function update(time:Number):void
         {
+            if (!_running)
+                return
             for each ( var target:Renderable in targets)
             {
                 target.render(time);
+                if (target.view is EnemyView)
+                {
+                    EnemyView(target.view).timePassed += time;
+                    if (EnemyView(target.view).timePassed >= 0.2)
+                    {
+                        EnemyView(target.view).setNormal();
+                        EnemyView(target.view).timePassed = 0;
+                    }
+                }
             }
         }
+
+        public function start():void
+        {
+            _running = true
+        }
+
+        public function stop():void
+        {
+            _running = false;
+        }
+
     }
 }

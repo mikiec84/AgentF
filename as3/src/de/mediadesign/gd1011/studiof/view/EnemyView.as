@@ -7,25 +7,33 @@
  */
 package de.mediadesign.gd1011.studiof.view
 {
-	import starling.display.Sprite;
-	import starling.filters.ColorMatrixFilter;
+    import starling.display.Image;
+    import starling.display.Sprite;
 
-	public class EnemyView extends Sprite
+    public class EnemyView extends Sprite
     {
         private var _ID:String;
-        private var colorFilter:ColorMatrixFilter = new ColorMatrixFilter();
         public var enemyType:String;
+
+        public var timePassed:Number = 0;
 
         public function EnemyView(enemyType:String, ID:String = "")
         {
-			this.enemyType = enemyType;
-            colorFilter.invert();
+			alpha = 0;
+            this.enemyType = enemyType;
             this._ID = ID;
         }
 
         public function getDamage():void
         {
-            trace("BÄM Filter");
+            var img:Image = Image(getChildAt(0));
+            img.color = 0xFF0000;
+        }
+
+        public function setNormal():void
+        {
+            var img:Image = Image(getChildAt(0));
+            img.color = 0xFFFFFF;
         }
 
         public function get ID():String

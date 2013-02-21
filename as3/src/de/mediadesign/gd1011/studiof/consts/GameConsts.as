@@ -18,6 +18,7 @@ package de.mediadesign.gd1011.studiof.consts
         public static const REGISTER_UNIT:String = "REGISTER_UNIT";
         public static const DELETE_UNIT:String = "DELETE_UNIT";
         public static const DAMAGE_UNIT:String = "DAMAGE_UNIT";
+        public static const STOP_SCROLL:String ="STOP_SCROLL";
 
         // Mediator Event Strings
         public static const ADD_SPRITE_TO_GAME:String = "ADD_SPRITE_TO_GAME";

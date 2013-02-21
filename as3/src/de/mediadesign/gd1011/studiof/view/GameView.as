@@ -7,14 +7,15 @@
  */
 package de.mediadesign.gd1011.studiof.view
 {
-	import starling.core.Starling;
-	import starling.display.MovieClip;
-	import starling.display.Quad;
+    import de.mediadesign.gd1011.studiof.consts.GameConsts;
+
+    import starling.display.Quad;
 	import starling.display.Sprite;
 	import starling.events.Event;
 
 	public class GameView extends Sprite
 	{
+        public var loadQuad:Quad;
 
         public function GameView()
 		{
@@ -26,16 +27,11 @@ package de.mediadesign.gd1011.studiof.view
 
 		public function init(e:Event = null):void
 		{
-
-
-
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 
-            var q:Quad = new Quad(1710,1070,0x0000FF);
+            var q:Quad = new Quad(1710,1070,0x000000);
             q.y = -200;
 			addChildAt(q, 0);
 		}
-
-
 	}
 }

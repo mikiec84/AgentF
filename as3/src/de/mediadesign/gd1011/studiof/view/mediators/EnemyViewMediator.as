@@ -68,7 +68,6 @@ package de.mediadesign.gd1011.studiof.view.mediators
         {
             if (enemyView.ID == e.dataObj.ID)
             {
-
                 enemyView.getDamage();
             }
         }

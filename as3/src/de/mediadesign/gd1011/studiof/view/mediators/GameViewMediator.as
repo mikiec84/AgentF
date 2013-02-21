@@ -14,6 +14,8 @@ package de.mediadesign.gd1011.studiof.view.mediators {
 
 	import robotlegs.extensions.starlingViewMap.impl.StarlingMediator;
 
+    import starling.display.Quad;
+
     import starling.events.EnterFrameEvent;
     import starling.events.Touch;
     import starling.events.TouchEvent;
@@ -49,6 +51,10 @@ package de.mediadesign.gd1011.studiof.view.mediators {
 			contextView.addEventListener(TouchEvent.TOUCH, handleTouch);
             contextView.addEventListener(EnterFrameEvent.ENTER_FRAME, game.update);
 
+            contextView.loadQuad = new Quad(800, 50, 0x0FFF0F);
+            contextView.loadQuad.x = GameConsts.STAGE_HEIGHT/2 + 50;
+            contextView.loadQuad.y = (GameConsts.STAGE_WIDTH-800)/2;
+
 			addAssets();
             assets.loadQueue(loadAssets);
 		}
@@ -75,10 +81,13 @@ package de.mediadesign.gd1011.studiof.view.mediators {
 
 		private function loadAssets(ratio:Number):void
 		{
-			trace("Lade Spiel: "+ratio);
+            contextView.loadQuad.scaleX = ratio;
+
+            trace("Lade Spiel: "+ratio);
 			if(ratio == 1.0)
 			{
-				var backgroundView:BackgroundView = new BackgroundView();
+				contextView.removeChild(contextView.loadQuad);
+                var backgroundView:BackgroundView = new BackgroundView();
 				contextView.addChildAt(backgroundView, 1);
 
 				addContextListener(GameConsts.ADD_SPRITE_TO_GAME, add);
@@ -87,6 +96,8 @@ package de.mediadesign.gd1011.studiof.view.mediators {
 				var initGameEvent:GameEvent = new GameEvent(GameConsts.INIT_GAME);
 				dispatcher.dispatchEvent(initGameEvent);
 			}
+            else
+                contextView.addChild(contextView.loadQuad);
 		}
 
 		private function add(event:GameEvent):void
@@ -149,8 +160,6 @@ package de.mediadesign.gd1011.studiof.view.mediators {
 						level.player.targetPlatform = platform;
 					}
 				}
-
-
 
 			//Handle end touch
 			var endingTouches:Vector.<Touch> = e.getTouches(contextView, TouchPhase.ENDED);

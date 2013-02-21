@@ -12,13 +12,18 @@ package de.mediadesign.gd1011.studiof.services {
     {
         public var targets:Vector.<IMovable>;
 
+        private var _running:Boolean;
+
         public function MoveProcess()
         {
             targets = new Vector.<IMovable>();
+            start();
         }
 
         public function update(time:Number):void
         {
+            if (!_running)
+                return
             for each(var target:IMovable in targets)
             {
                 target.move(time);
@@ -33,6 +38,16 @@ package de.mediadesign.gd1011.studiof.services {
         public function removeEntity(i:int):void
         {
             targets.splice(i, 1);
+        }
+
+        public function start():void
+        {
+            _running = true
+        }
+
+        public function stop():void
+        {
+            _running = false;
         }
     }
 }

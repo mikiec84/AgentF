@@ -43,7 +43,8 @@ package de.mediadesign.gd1011.studiof.model
             _velocity = new VelocityComponent();
             _velocity.velocityX = xVel;
             position.x = startingXPosition;
-            if (startingXPosition == -1) {
+            if (startingXPosition == -1)
+            {
                 position.x = 20;
             }
             this._currentLevel = currentLevel;
@@ -52,13 +53,15 @@ package de.mediadesign.gd1011.studiof.model
             JSONExtractedInformation = JSONReader.read("enemy")["ENEMY"];
             fireRateEnemy = JSONExtractedInformation["fireRateEnemy"];
             enemyRange = JSONExtractedInformation["enemyRange"];
-            if (verticalBullet) {
+            if (verticalBullet)
+            {
                 velocity.verticalVelocity = true;
                 velocity.velocityY = 600;
                 velocity.velocityX = 0;
                 position.x += 50;
             }
-            if (startingPlatform == 2 && velocity.velocityX < 0) {
+            if (startingPlatform == 2 && velocity.velocityX < 0)
+            {
                 position.y += 80;
             }
 
@@ -69,10 +72,13 @@ package de.mediadesign.gd1011.studiof.model
         {
             if (assertCorrectInitialization())
             {
-                if (!velocity.verticalVelocity) {
+                if (!velocity.verticalVelocity)
+                {
                     currentPlatform = observePlatform(position.y);
                     position.x += velocity.velocityX*time;
-                } else {
+                }
+                else
+                {
                     currentPlatform = observePlatform(position.y);
                     position.y += velocity.velocityY*time;
                 }
@@ -155,7 +161,8 @@ package de.mediadesign.gd1011.studiof.model
 
         public function setNewPosition(y:int):void
         {
-            if (y>=GameConsts.PLATFORM_HEIGHT*2 && y<=GameConsts.PLATFORM_HEIGHT*6) {
+            if (y>=GameConsts.PLATFORM_HEIGHT*2 && y<=GameConsts.PLATFORM_HEIGHT*6)
+            {
                 _position.y = y;
             }
         }
@@ -173,7 +180,8 @@ package de.mediadesign.gd1011.studiof.model
             }
 
             if (!doNotShootAnymore && currentPlatform < 2 && cooldown >= (1 / fireRateEnemy) && position.x<enemyRange && position.x>0 && healthPoints > 0 && position.x >= _currentLevel.player.position.x && position.x-_currentLevel.collisionTolerance < _currentLevel.player.position.x)
-            {   doNotShootAnymore = true;
+            {
+                doNotShootAnymore = true;
                 _currentLevel.player.healthPoints -= 1;
                 var bullet:Unit = new Unit(1, currentPlatform, -600, _currentLevel.player.position.x, _currentLevel, true);
                 bullet.position.y += 100;

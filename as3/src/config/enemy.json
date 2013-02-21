@@ -2,7 +2,7 @@
     "ENEMY":
     {
         "enemyCount":50,
-        "enemyRate":50,
+        "enemyRate":40,
         "fireRateEnemy":0.4,
         "enemyRange":1500,
         "collisionTolerance":40

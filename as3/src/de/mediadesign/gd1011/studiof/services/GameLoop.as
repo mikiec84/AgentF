@@ -63,6 +63,7 @@ package de.mediadesign.gd1011.studiof.services
             var updatePointsEvent:GameEvent = new GameEvent(ViewConsts.ENEMY_KILLED);
             for (var i:int = 0; i < currentLevel.player.ammunition.length; i++)
             {
+                // collision Boss1
                 if (currentLevel.fortFox.initialized)
                     rules.collisionDetection(currentLevel.player.ammunition[i], currentLevel.fortFox);
 
@@ -75,6 +76,7 @@ package de.mediadesign.gd1011.studiof.services
 
                 for (var j:int = 0; j < currentLevel.enemies.length; j++)
                 {
+                    //collision playerbullet, enemy
                     rules.collisionDetection(currentLevel.player.ammunition[i], currentLevel.enemies[j]);
 
                     if (rules.isDead(currentLevel.enemies[j]))
@@ -93,18 +95,22 @@ package de.mediadesign.gd1011.studiof.services
 
             for (var i:int = 0; i < currentLevel.enemies.length; i++)
             {
+                //collision player, enemy
+                rules.collisionDetection(currentLevel.player, currentLevel.enemies[i]);
+
+                if (rules.isDead(currentLevel.enemies[i]))
+                {
+                    deleteUnits(currentLevel.enemies, i);
+                    dispatcher.dispatchEvent(updatePointsEvent);
+                    break;
+                    break;
+                }
+
                 for (var j:int = 0; j < currentLevel.enemies[i].ammunition.length; j++)
                 {
-                    rules.collisionDetection(currentLevel.player, currentLevel.enemies[i]);
-                    rules.collisionDetection(currentLevel.player, currentLevel.enemies[i].ammunition[j]);
 
-                    if (rules.isDead(currentLevel.enemies[i]))
-                    {
-                        deleteUnits(currentLevel.enemies, i);
-                        dispatcher.dispatchEvent(updatePointsEvent);
-                        break;
-                        break;
-                    }
+                    //collision player, enemybullet
+                    rules.collisionDetection(currentLevel.player, currentLevel.enemies[i].ammunition[j]);
 
                     if (rules.isDead(currentLevel.enemies[i].ammunition[j]))
                     {
@@ -157,18 +163,23 @@ package de.mediadesign.gd1011.studiof.services
             }
             // End of Level 1, start Boss Level 1
             if (currentLevel.enemies.length != 0)
-            if (currentLevel.player.healthPoints > 0
-                    && (currentLevel.enemies[currentLevel.enemies.length-1].healthPoints < 1
-                    || currentLevel.enemies[currentLevel.enemies.length - 1].position.x < 0))
             {
-                if(!currentLevel.fortFox.initialized && !currentLevel.fortFox.moveLeftRunning)
+                if (currentLevel.player.healthPoints > 0
+                        && (currentLevel.enemies[currentLevel.enemies.length-1].healthPoints < 1
+                        || currentLevel.enemies[currentLevel.enemies.length - 1].position.x < 0))
                 {
-                    currentLevel.fortFox.start();
+                    if(!currentLevel.fortFox.initialized && !currentLevel.fortFox.moveLeftRunning)
+                    {
+                        currentLevel.stopScrollBG();
+                        currentLevel.fortFox.start();
+                        //currentLevel.spawnBoss();
+                    }
                 }
             }
 
             if (currentLevel.fortFox.healthPoints <= 0 && currentLevel.fortFox.initialized)
             {
+                //currentLevel.currentLevel + 1;
                 var ab:GameEvent = new GameEvent(ViewConsts.SHOW_GAMEOVER, true);
                 dispatcher.dispatchEvent(ab);
             }
@@ -177,7 +188,10 @@ package de.mediadesign.gd1011.studiof.services
             {
                 if(!currentLevel.fortFox.initialized && !currentLevel.fortFox.moveLeftRunning)
                 {
+                    currentLevel.stopScrollBG();
                     currentLevel.fortFox.start();
+                    //currentLevel.spawnBoss();
+
                 }
             }
         }

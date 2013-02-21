@@ -28,9 +28,9 @@ package de.mediadesign.gd1011.studiof.model
         private var _player:Player;
         private var _fortFox:FortFoxBoss;
 
-        public var scrollBGs:Vector.<ScrollableBG>;
-
         private var JSONExtractedInformation:Object;
+
+        public var scrollBGs:Vector.<ScrollableBG>;
 
         public var enemyPositions:Vector.<int>;
         public var collisionTolerance:int;              // Wie weit die bullet von der Unit entfernt sein darf um immernoch als treffer zu zählen
@@ -121,6 +121,12 @@ package de.mediadesign.gd1011.studiof.model
         {
             var registerBGEvent:GameEvent = new GameEvent(GameConsts.IMPL_BG, bgScroll);
             dispatcher.dispatchEvent(registerBGEvent);
+        }
+
+        public function stopScrollBG():void
+        {
+            var stopScrollEvent:GameEvent = new GameEvent(GameConsts.STOP_SCROLL);
+            dispatcher.dispatchEvent(stopScrollEvent);
         }
 
 
