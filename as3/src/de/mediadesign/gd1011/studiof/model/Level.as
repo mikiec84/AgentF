@@ -38,7 +38,7 @@ package de.mediadesign.gd1011.studiof.model
         public var collisionTolerance:int;              // Wie weit die bullet von der Unit entfernt sein darf um immernoch als treffer zu zählen
 
         ///CHEATS
-        public var onlyThreeMobs:Boolean = false;
+        public var onlyThreeMobs:Boolean = true;
         /////////
 
         public function Level()
@@ -137,9 +137,55 @@ package de.mediadesign.gd1011.studiof.model
             }
         }
 
-        public function removePlayer():void
+        public function stopAllUnits():void
         {
-            _player = null;
+            for (var index:int = 0; index<enemies.length; index++) {
+                enemies[index].stop();
+                for (var index2:int = 0; index2<enemies[index].ammunition.length; index2++) {
+                    enemies[index].ammunition[index2].stop();
+                }
+            }
+            player.stop();
+            for (var index3:int = 0;index3<player.ammunition.length; index3++) {
+                player.ammunition[index3].stop();
+            }
+            if (fortFox.initialized || fortFox.moveLeftRunning) {
+                fortFox.stop();
+                for (var index4:int = 0; index4<fortFox.ammunition.length; index4++) {
+                    fortFox.ammunition[index4].stop();
+                }
+            }
+            if (nautilus.initialized || nautilus.moveLeftRunning) {
+                nautilus.stop();
+                for (var index5:int = 0; index5<nautilus.ammunition.length; index5++) {
+                    nautilus.ammunition[index5].stop();
+                }
+            }
+        }
+        public function resumeAllUnits():void
+        {
+            for (var index:int = 0; index<enemies.length; index++) {
+                enemies[index].resume();
+                for (var index2:int = 0; index2<enemies[index].ammunition.length; index2++) {
+                    enemies[index].ammunition[index2].resume();
+                }
+            }
+            player.resume();
+            for (var index3:int = 0;index3<player.ammunition.length; index3++) {
+                player.ammunition[index3].resume();
+            }
+            if (fortFox.initialized || fortFox.moveLeftRunning) {
+                fortFox.resume();
+                for (var index4:int = 0; index4<fortFox.ammunition.length; index4++) {
+                    fortFox.ammunition[index4].resume();
+                }
+            }
+            if (nautilus.initialized || nautilus.moveLeftRunning) {
+                nautilus.resume();
+                for (var index5:int = 0; index5<nautilus.ammunition.length; index5++) {
+                    nautilus.ammunition[index5].resume();
+                }
+            }
         }
 
         public function register(unit:Unit):void

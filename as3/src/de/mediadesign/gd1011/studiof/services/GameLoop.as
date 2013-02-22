@@ -126,9 +126,6 @@ package de.mediadesign.gd1011.studiof.services
 
         public function update(e:EnterFrameEvent):void
         {
-            /*if (currentLevel.nautilus != null) {
-                trace("Nautilus x: "+currentLevel.nautilus.position.x);
-            }*/
             if(currentLevel.player== null)
                 return;
 
@@ -166,6 +163,7 @@ package de.mediadesign.gd1011.studiof.services
             {
                 var ab:GameEvent = new GameEvent(ViewConsts.SHOW_GAMEOVER, false);
                 dispatcher.dispatchEvent(ab);
+                currentLevel.stopAllUnits();
             }
             // End of Level 1, start Boss Level 1
             if (currentLevel.enemies.length != 0)
@@ -187,6 +185,7 @@ package de.mediadesign.gd1011.studiof.services
                 currentLevel.currentLevel+=1;
                 var ab:GameEvent = new GameEvent(ViewConsts.SHOW_GAMEOVER, true);
                 dispatcher.dispatchEvent(ab);
+                currentLevel.stopAllUnits();
             }
 
             else if (currentLevel.enemies.length == 0)
@@ -203,6 +202,7 @@ package de.mediadesign.gd1011.studiof.services
                 currentLevel.currentLevel+=1;
                 var ab:GameEvent = new GameEvent(ViewConsts.SHOW_GAMEOVER, true);
                 dispatcher.dispatchEvent(ab);
+                currentLevel.stopAllUnits();
             }
 
             else if (currentLevel.enemies.length == 0)
