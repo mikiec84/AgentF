@@ -79,7 +79,8 @@ package de.mediadesign.gd1011.studiof.model {
         }
 
         override public function move(time:Number):void
-        {   trace(_anyTweensInMotion);
+        {
+            //trace(position.y, ", ", currentPlatform, ", ", _anyTweensInMotion);
             if (!stopped) {
                 if (position.y<1000) {
                     if (assertCorrectInitialization())

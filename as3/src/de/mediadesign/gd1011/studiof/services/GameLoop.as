@@ -52,75 +52,6 @@ package de.mediadesign.gd1011.studiof.services
             processes.push(process);
         }
 
-        public function updateLP():void
-        {
-            var updateLifePointEvent:GameEvent = new GameEvent(ViewConsts.UPDATE_LIFEPOINTS, currentLevel.player.healthPoints);
-            dispatcher.dispatchEvent(updateLifePointEvent);
-        }
-
-        public function  checkStatus():void
-        {
-            //Lost
-            if (currentLevel.player.healthPoints<1)
-            {
-                var ab:GameEvent = new GameEvent(ViewConsts.SHOW_GAMEOVER, false);
-                dispatcher.dispatchEvent(ab);
-                currentLevel.stopAllUnits();
-            }
-
-            //trace(currentLevel.fortFox.healthPoints);
-
-            // End of Level 1, start Boss Level 1
-            if (currentLevel.enemies.length != 0)
-            {
-                if (currentLevel.player.healthPoints > 0
-                        && (currentLevel.enemies[currentLevel.enemies.length-1].healthPoints < 1
-                        || currentLevel.enemies[currentLevel.enemies.length - 1].position.x < 0))
-                {
-                    if(!currentLevel.fortFox.initialized && !currentLevel.fortFox.moveLeftRunning)
-                    {
-                        currentLevel.stopScrollBG();
-                        currentLevel.spawnBoss();
-                    }
-                }
-            }
-
-            if (currentLevel.fortFox.healthPoints <= 0 && currentLevel.fortFox.initialized)
-            {
-                currentLevel.currentLevel+=1;
-                var ab:GameEvent = new GameEvent(ViewConsts.SHOW_GAMEOVER, true);
-                dispatcher.dispatchEvent(ab);
-                currentLevel.stopAllUnits();
-            }
-            //Boss Spawn
-            else if (currentLevel.enemies.length == 0)
-            {
-                if(!currentLevel.fortFox.initialized && !currentLevel.fortFox.moveLeftRunning)
-                {
-                    currentLevel.stopScrollBG();
-                    currentLevel.spawnBoss();
-                }
-            }
-            // Win
-            if (currentLevel.nautilus.healthPoints <= 0 && currentLevel.nautilus.initialized)
-            {
-                currentLevel.currentLevel+=1;
-                var ab:GameEvent = new GameEvent(ViewConsts.SHOW_GAMEOVER, true);
-                dispatcher.dispatchEvent(ab);
-                currentLevel.stopAllUnits();
-            }
-
-            //Boss Spawn
-            else if (currentLevel.enemies.length == 0)
-            {
-                if(!currentLevel.nautilus.initialized && !currentLevel.nautilus.moveLeftRunning)
-                {
-                    currentLevel.stopScrollBG();
-                    currentLevel.spawnBoss();
-                }
-            }
-        }
-
         public function update(e:EnterFrameEvent):void
         {
             if(currentLevel.player== null)
@@ -130,8 +61,6 @@ package de.mediadesign.gd1011.studiof.services
             {
                 target.update(e.passedTime);
             }
-            updateLP();
-            checkStatus();
         }
 	}
 }

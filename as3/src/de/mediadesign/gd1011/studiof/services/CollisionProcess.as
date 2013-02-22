@@ -80,7 +80,6 @@ package de.mediadesign.gd1011.studiof.services
 
                 for (var j:int = 0; j < level.enemies[i].ammunition.length; j++)
                 {
-
                     //collision player, enemybullet
                     rules.collisionDetection(level.player, level.enemies[i].ammunition[j]);
 

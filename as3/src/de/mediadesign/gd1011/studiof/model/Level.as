@@ -83,6 +83,74 @@ package de.mediadesign.gd1011.studiof.model
             {
                 scrollBGs.shift();
             }
+            updateLP();
+            checkStatus();
+        }
+
+        public function updateLP():void
+        {
+            var updateLifePointEvent:GameEvent = new GameEvent(ViewConsts.UPDATE_LIFEPOINTS, player.healthPoints);
+            dispatcher.dispatchEvent(updateLifePointEvent);
+        }
+
+        public function  checkStatus():void
+        {
+            //Lost
+            if (player.healthPoints<1)
+            {
+                var ab:GameEvent = new GameEvent(ViewConsts.SHOW_GAMEOVER, false);
+                dispatcher.dispatchEvent(ab);
+                stopAllUnits();
+            }
+            // End of Level 1, start Boss Level 1
+            if (enemies.length != 0)
+            {
+                if (player.healthPoints > 0
+                        && (enemies[enemies.length-1].healthPoints < 1
+                        || enemies[enemies.length - 1].position.x < 0))
+                {
+                    if(!fortFox.initialized && !fortFox.moveLeftRunning)
+                    {
+                        stopScrollBG();
+                        spawnBoss();
+                    }
+                }
+            }
+
+            if (fortFox.healthPoints <= 0 && fortFox.initialized)
+            {
+                currentLevel+=1;
+                var ab:GameEvent = new GameEvent(ViewConsts.SHOW_GAMEOVER, true);
+                dispatcher.dispatchEvent(ab);
+                stopAllUnits();
+            }
+            //Boss Spawn
+            else if (enemies.length == 0)
+            {
+                if(!fortFox.initialized && !fortFox.moveLeftRunning)
+                {
+                    stopScrollBG();
+                    spawnBoss();
+                }
+            }
+            // Win
+            if (nautilus.healthPoints <= 0 && nautilus.initialized)
+            {
+                currentLevel+=1;
+                var ab:GameEvent = new GameEvent(ViewConsts.SHOW_GAMEOVER, true);
+                dispatcher.dispatchEvent(ab);
+                stopAllUnits();
+            }
+
+            //Boss Spawn
+            else if (enemies.length == 0)
+            {
+                if(!nautilus.initialized && !nautilus.moveLeftRunning)
+                {
+                    stopScrollBG();
+                    spawnBoss();
+                }
+            }
         }
 
         public function newLevel(currentLevel:int):void
