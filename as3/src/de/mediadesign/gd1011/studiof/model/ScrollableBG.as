@@ -9,8 +9,9 @@ package de.mediadesign.gd1011.studiof.model
 {
     import de.mediadesign.gd1011.studiof.model.components.PositionComponent;
     import de.mediadesign.gd1011.studiof.model.components.VelocityComponent;
+	import de.mediadesign.gd1011.studiof.services.JSONReader;
 
-    public class ScrollableBG implements IMovable
+	public class ScrollableBG implements IMovable
     {
         private var _position:PositionComponent;
         private var _velocity:VelocityComponent;
@@ -19,12 +20,12 @@ package de.mediadesign.gd1011.studiof.model
         {
             _position = new PositionComponent();
             _velocity = new VelocityComponent();
+
         }
 
         public function move(time:Number):void
         {
-            //_position.x -= 80 *time;
-            _position.x -= 4;
+            _position.x -= (JSONReader.read("config")["background"]["speed"] *time);
         }
 
         public function get position():PositionComponent

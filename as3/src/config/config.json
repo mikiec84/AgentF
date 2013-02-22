@@ -17,6 +17,9 @@
             "width":1710,
             "height":870,
             "plattform-height":120
+            },
+    "background":{
+            "speed":150
     }
 
 }
