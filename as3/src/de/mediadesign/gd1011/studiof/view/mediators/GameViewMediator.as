@@ -85,7 +85,7 @@ package de.mediadesign.gd1011.studiof.view.mediators {
 			assets.enqueue(Gras01_texture);
 			assets.enqueue(Gras02_texture);
 
-            assets.enqueue("config/atlasxml/TileSystem1.xml");
+            //assets.enqueue("config/atlasxml/TileSystem1.xml");
 			assets.enqueue("config/atlasxml/SpriteSheetTauchbaer.xml");
 		}
 
