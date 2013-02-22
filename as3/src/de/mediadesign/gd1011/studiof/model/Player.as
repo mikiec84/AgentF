@@ -79,7 +79,7 @@ package de.mediadesign.gd1011.studiof.model {
         }
 
         override public function move(time:Number):void
-        {   //trace((GameConsts.EBENE_HEIGHT*2+einpendelStaerkeWinzig)+", "+(position.y));
+        {   trace(_anyTweensInMotion);
             if (!stopped) {
                 if (position.y<1000) {
                     if (assertCorrectInitialization())
@@ -115,6 +115,10 @@ package de.mediadesign.gd1011.studiof.model {
 
         private function initializeVariables():void
         {
+            if (position.y > 210 && position.y < 211 && !_anyTweensInMotion && currentPlatform == 1) {
+                position.y = GameConsts.STAGE_HEIGHT/3+yOffset+10;
+                land();
+            }
             currentPlatform      = observePlatform(position.y);
             upIsRunning          = (_up != null && !_up.isComplete && Starling.juggler.contains(_up));
             _comeDownIsntRunning = !(_down != null && !_down.isComplete);

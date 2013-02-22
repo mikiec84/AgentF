@@ -39,7 +39,7 @@ package de.mediadesign.gd1011.studiof.model {
             idleTimeFrame = JSONExtractedInformation["idleTimeFrame"];
             attackSpeed = JSONExtractedInformation["attackSpeed"];
             backMovementDistance = GameConsts.STAGE_WIDTH+xOffset-idleXPosition;
-            trace("backMovementDistance im konstruktor: "+backMovementDistance);
+            //trace("backMovementDistance im konstruktor: "+backMovementDistance);
             movementSpeed = backMovementDistance/changePosTime;
             level = currentLevel;
             super(JSONExtractedInformation["healthPoints"],JSONExtractedInformation["startingPlatform"],0,idleXPosition, currentLevel, false, GameConsts.NAUTILUS);
