@@ -124,40 +124,14 @@ package de.mediadesign.gd1011.studiof.services
             }
         }
 
-        public function update(e:EnterFrameEvent):void
+        public function updateLP():void
         {
-            if(currentLevel.player== null)
-                return;
-
-            for each (var target:IProcess in processes)
-            {
-                target.update(e.passedTime);
-            }
-            // player shooting
-            if (currentLevel.player.shootNow())
-            {
-                currentLevel.player.shootBullet(e.passedTime);
-            }
-            currentLevel.nautilus.shootBullet(e.passedTime);
-            // Enemy shooting
-            for (var index:int = 0; index<currentLevel.enemies.length; index++)
-                currentLevel.enemies[index].shootBullet(e.passedTime);
-
-            // scrolling background
-            if (currentLevel.scrollBGs[0].position.x < 0 && currentLevel.scrollBGs.length < 4 )
-            {
-                initScroll();
-            }
-            if (currentLevel.scrollBGs[0].position.x < -844)
-            {
-                currentLevel.scrollBGs.shift();
-            }
-
-            collision();
-
             var updateLifePointEvent:GameEvent = new GameEvent(ViewConsts.UPDATE_LIFEPOINTS, currentLevel.player.healthPoints);
             dispatcher.dispatchEvent(updateLifePointEvent);
+        }
 
+        public function  checkStatus():void
+        {
             //Lost
             if (currentLevel.player.healthPoints<1)
             {
@@ -165,6 +139,9 @@ package de.mediadesign.gd1011.studiof.services
                 dispatcher.dispatchEvent(ab);
                 currentLevel.stopAllUnits();
             }
+
+            //trace(currentLevel.fortFox.healthPoints);
+
             // End of Level 1, start Boss Level 1
             if (currentLevel.enemies.length != 0)
             {
@@ -213,6 +190,40 @@ package de.mediadesign.gd1011.studiof.services
                     currentLevel.spawnBoss();
                 }
             }
+        }
+
+        public function update(e:EnterFrameEvent):void
+        {
+            if(currentLevel.player== null)
+                return;
+
+            for each (var target:IProcess in processes)
+            {
+                target.update(e.passedTime);
+            }
+            // player shooting
+            if (currentLevel.player.shootNow())
+            {
+                currentLevel.player.shootBullet(e.passedTime);
+            }
+            currentLevel.nautilus.shootBullet(e.passedTime);
+            // Enemy shooting
+            for (var index:int = 0; index<currentLevel.enemies.length; index++)
+                currentLevel.enemies[index].shootBullet(e.passedTime);
+
+            // scrolling background
+            if (currentLevel.scrollBGs[0].position.x < 0 && currentLevel.scrollBGs.length < 4 )
+            {
+                initScroll();
+            }
+            if (currentLevel.scrollBGs[0].position.x < -844)
+            {
+                currentLevel.scrollBGs.shift();
+            }
+
+            collision();
+            updateLP();
+            checkStatus();
         }
 	}
 }

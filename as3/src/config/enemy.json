@@ -16,7 +16,7 @@
         "startingPlatform":0,
         "changePosTime":2,
         "backMovementDistance":300,
-        "healthpoints":10
+        "healthPoints":10
 
     },
 
@@ -29,7 +29,7 @@
         "xOffset":500,
         "changePosMovementSpeed":600,
         "attackSpeed":1,
-        "healthpoints":20
+        "healthPoints":20
     },
 
     "BOSS_SPAWN":
