@@ -29,7 +29,7 @@ package de.mediadesign.gd1011.studiof.model {
         {
             var JSONExtractedInformation:Object = JSONReader.read("enemy")["FORT_FOX"];
             idleXPosition = JSONExtractedInformation["idleXPosition"];
-            super(JSONExtractedInformation["healthpoints"],JSONExtractedInformation["startingPlatform"],0,idleXPosition, currentLevel, false);
+            super(JSONExtractedInformation["healthpoints"],JSONExtractedInformation["startingPlatform"],0,idleXPosition, currentLevel, false, GameConsts.FORT_FOX);
             idleTimeFrame = JSONExtractedInformation["idleTimeFrame"];
             changePosTime = JSONExtractedInformation["changePosTime"];
             backMovementDistance = JSONExtractedInformation["backMovementDistance"];
