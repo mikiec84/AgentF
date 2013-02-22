@@ -46,7 +46,7 @@ package de.mediadesign.gd1011.studiof.command
 
             // location of creation
 			if(level.scrollBGs.length > 1)
-				scrBG.position.x = Math.floor(level.scrollBGs[level.scrollBGs.length - 2].position.x) +(GameConsts.STAGE_WIDTH / 2)-1;
+				scrBG.position.x = level.scrollBGs[level.scrollBGs.length - 2].position.x +(GameConsts.STAGE_WIDTH / 2)-1;
 
             scrBG.position.y = + 180;
 
