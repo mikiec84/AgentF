@@ -1,7 +1,7 @@
 package de.mediadesign.gd1011.studiof.view.mediators {
     import de.mediadesign.gd1011.studiof.consts.GameConsts;
     import de.mediadesign.gd1011.studiof.events.GameEvent;
-    import de.mediadesign.gd1011.studiof.model.Level;
+    import de.mediadesign.gd1011.studiof.services.LevelProcess;
     import de.mediadesign.gd1011.studiof.services.GameLoop;
     import de.mediadesign.gd1011.studiof.services.JSONReader;
     import de.mediadesign.gd1011.studiof.view.BackgroundView;
@@ -28,7 +28,7 @@ package de.mediadesign.gd1011.studiof.view.mediators {
         public var game:GameLoop;
 
 		[Inject]
-		public var level:Level;
+		public var level:LevelProcess;
 
         [Inject]
         public var dispatcher:IEventDispatcher;

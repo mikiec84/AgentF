@@ -9,7 +9,7 @@ package de.mediadesign.gd1011.studiof.command
 {
     import de.mediadesign.gd1011.studiof.consts.GameConsts;
     import de.mediadesign.gd1011.studiof.events.GameEvent;
-    import de.mediadesign.gd1011.studiof.model.Level;
+    import de.mediadesign.gd1011.studiof.services.LevelProcess;
     import de.mediadesign.gd1011.studiof.model.Unit;
     import de.mediadesign.gd1011.studiof.services.MoveProcess;
     import de.mediadesign.gd1011.studiof.services.RenderProcess;
@@ -35,7 +35,7 @@ package de.mediadesign.gd1011.studiof.command
         public var dispatcher:IEventDispatcher;
 
         [Inject]
-        public var level:Level;
+        public var level:LevelProcess;
 
         override public function execute():void
         {

@@ -9,6 +9,7 @@ package de.mediadesign.gd1011.studiof.model {
     import de.mediadesign.gd1011.studiof.consts.GameConsts;
     import de.mediadesign.gd1011.studiof.model.components.PositionComponent;
     import de.mediadesign.gd1011.studiof.services.JSONReader;
+    import de.mediadesign.gd1011.studiof.services.LevelProcess;
 
     import starling.animation.Transitions;
 
@@ -40,7 +41,7 @@ package de.mediadesign.gd1011.studiof.model {
         private var _tweenedPosition:PositionComponent;
         private var _checkTargetPlatform:int          = 2;
         private var _moveTowardsMouseAsSoonAsYouCan:Boolean = false;
-        private var _currentLevel:Level;
+        private var _currentLevel:LevelProcess;
         private var _accelerateTowardsFinger:Boolean = false;
         private var _swiped:Boolean = false;
         private var startLandTweenAfterThis:Boolean = false;
@@ -53,7 +54,7 @@ package de.mediadesign.gd1011.studiof.model {
         // Sollte später von JSON eingelesen werden !!!
 
 
-        public function Player(currentLevel:Level)
+        public function Player(currentLevel:LevelProcess)
         {   super(1, 1, 1, -1, currentLevel, false);
             this._currentLevel = currentLevel;
             ammunition = new Vector.<Unit>();

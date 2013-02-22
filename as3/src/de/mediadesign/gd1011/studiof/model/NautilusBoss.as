@@ -9,6 +9,7 @@ package de.mediadesign.gd1011.studiof.model {
     import de.mediadesign.gd1011.studiof.consts.GameConsts;
     import de.mediadesign.gd1011.studiof.events.GameEvent;
     import de.mediadesign.gd1011.studiof.services.JSONReader;
+    import de.mediadesign.gd1011.studiof.services.LevelProcess;
 
     public class NautilusBoss extends Unit implements IEndboss
     {
@@ -22,14 +23,14 @@ package de.mediadesign.gd1011.studiof.model {
         private var yOffset:int = 2;
         private var _moveLeftRunning:Boolean = false;
         private var _initialized:Boolean = false;
-        private var level:Level;
+        private var level:LevelProcess;
         private var backMovementDistance:int;
         private var _finishLine:int = 0;
         private var changePosMovementSpeed:Number = 0;
         private var xOffset:int;
         private var attackSpeed:int;
 
-        public function NautilusBoss(currentLevel:Level)
+        public function NautilusBoss(currentLevel:LevelProcess)
         {
             JSONExtractedInformation = JSONReader.read("enemy")["NAUTILUS"];
             changePosMovementSpeed = JSONExtractedInformation["changePosMovementSpeed"];

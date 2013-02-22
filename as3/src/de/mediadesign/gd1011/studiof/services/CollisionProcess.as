@@ -10,7 +10,7 @@ package de.mediadesign.gd1011.studiof.services
     import de.mediadesign.gd1011.studiof.consts.GameConsts;
     import de.mediadesign.gd1011.studiof.consts.ViewConsts;
     import de.mediadesign.gd1011.studiof.events.GameEvent;
-    import de.mediadesign.gd1011.studiof.model.Level;
+    import de.mediadesign.gd1011.studiof.services.LevelProcess;
     import de.mediadesign.gd1011.studiof.model.Unit;
 
     import flash.events.IEventDispatcher;
@@ -18,7 +18,7 @@ package de.mediadesign.gd1011.studiof.services
     public class CollisionProcess implements IProcess
     {
         [Inject]
-        public var level:Level;
+        public var level:LevelProcess;
 
         [Inject]
         public var rules:Rules;

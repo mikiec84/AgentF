@@ -9,6 +9,7 @@ package de.mediadesign.gd1011.studiof.model {
     import de.mediadesign.gd1011.studiof.consts.GameConsts;
     import de.mediadesign.gd1011.studiof.events.GameEvent;
     import de.mediadesign.gd1011.studiof.services.JSONReader;
+    import de.mediadesign.gd1011.studiof.services.LevelProcess;
 
     public class FortFoxBoss extends Unit implements IEndboss
     {
@@ -23,9 +24,9 @@ package de.mediadesign.gd1011.studiof.model {
         private var yOffset:int = 2;
         private var _moveLeftRunning:Boolean = false;
         private var _initialized:Boolean = false;
-        private var level:Level;
+        private var level:LevelProcess;
 
-        public function FortFoxBoss(currentLevel:Level)
+        public function FortFoxBoss(currentLevel:LevelProcess)
         {
             var JSONExtractedInformation:Object = JSONReader.read("enemy")["FORT_FOX"];
             idleXPosition = JSONExtractedInformation["idleXPosition"];

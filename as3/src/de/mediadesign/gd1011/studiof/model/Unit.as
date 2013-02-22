@@ -11,6 +11,7 @@ package de.mediadesign.gd1011.studiof.model
     import de.mediadesign.gd1011.studiof.model.components.PositionComponent;
     import de.mediadesign.gd1011.studiof.model.components.VelocityComponent;
     import de.mediadesign.gd1011.studiof.services.JSONReader;
+    import de.mediadesign.gd1011.studiof.services.LevelProcess;
 
     public class Unit implements IMovable
     {
@@ -20,7 +21,7 @@ package de.mediadesign.gd1011.studiof.model
         private var _velocity:VelocityComponent;
         private var _weapon:String;
 
-        private var _currentLevel:Level;
+        private var _currentLevel:LevelProcess;
         private var doNotShootAnymore:Boolean = false;
         private var enemyRange:int;
         private var fireRateEnemy:Number;
@@ -35,7 +36,7 @@ package de.mediadesign.gd1011.studiof.model
         private var verticalBullet:Boolean = false;
 
 
-        public function Unit(healthpoints:int, startingPlatform:int, xVel:int, startingXPosition:int, currentLevel:Level, verticalBullet:Boolean, ID:String = "")
+        public function Unit(healthpoints:int, startingPlatform:int, xVel:int, startingXPosition:int, currentLevel:LevelProcess, verticalBullet:Boolean, ID:String = "")
         {
             ammunition = new Vector.<Unit>();
             _weapon = "default";

@@ -5,17 +5,16 @@
  * Time: 09:56
  * To change this template use File | Settings | File Templates.
  */
-package de.mediadesign.gd1011.studiof.model
+package de.mediadesign.gd1011.studiof.services
 {
-	import de.mediadesign.gd1011.studiof.consts.GameConsts;
-	import de.mediadesign.gd1011.studiof.consts.ViewConsts;
-	import de.mediadesign.gd1011.studiof.events.GameEvent;
-	import de.mediadesign.gd1011.studiof.services.IProcess;
-	import de.mediadesign.gd1011.studiof.services.JSONReader;
+    import de.mediadesign.gd1011.studiof.consts.GameConsts;
+    import de.mediadesign.gd1011.studiof.consts.ViewConsts;
+    import de.mediadesign.gd1011.studiof.events.GameEvent;
+    import de.mediadesign.gd1011.studiof.model.*;
 
-	import flash.events.IEventDispatcher;
+    import flash.events.IEventDispatcher;
 
-	public class Level implements IProcess
+    public class LevelProcess implements IProcess
     {
         [Inject]
         public var dispatcher:IEventDispatcher;
@@ -42,7 +41,7 @@ package de.mediadesign.gd1011.studiof.model
         public var bossHaveLowLife:Boolean = false;
         /////////
 
-        public function Level()
+        public function LevelProcess()
         {
 			enemyPositions = new Vector.<int>;
             _enemies = new Vector.<Unit>();

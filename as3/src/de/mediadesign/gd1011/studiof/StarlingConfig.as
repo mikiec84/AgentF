@@ -16,7 +16,7 @@ package de.mediadesign.gd1011.studiof
     import de.mediadesign.gd1011.studiof.command.SpawnNautilusCommand;
     import de.mediadesign.gd1011.studiof.command.StopScrollBGCommand;
     import de.mediadesign.gd1011.studiof.consts.GameConsts;
-	import de.mediadesign.gd1011.studiof.model.Level;
+	import de.mediadesign.gd1011.studiof.services.LevelProcess;
 	import de.mediadesign.gd1011.studiof.model.LevelConfiguration;
 	import de.mediadesign.gd1011.studiof.model.Renderable;
 	import de.mediadesign.gd1011.studiof.model.Score;
@@ -72,7 +72,7 @@ package de.mediadesign.gd1011.studiof
         private function initModels():void
         {
             modelMap.map(Renderable);
-            modelMap.map(Level).asSingleton();
+            modelMap.map(LevelProcess).asSingleton();
             modelMap.map(Score).asSingleton();
             modelMap.map(User).asSingleton();
 
