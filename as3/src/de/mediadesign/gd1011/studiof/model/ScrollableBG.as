@@ -15,6 +15,7 @@ package de.mediadesign.gd1011.studiof.model
     {
         private var _position:PositionComponent;
         private var _velocity:VelocityComponent;
+		public var moving:Boolean = true;
 
         public function ScrollableBG()
         {
@@ -25,7 +26,8 @@ package de.mediadesign.gd1011.studiof.model
 
         public function move(time:Number):void
         {
-            _position.x -= (JSONReader.read("config")["background"]["speed"] *time);
+			if(moving)
+           		_position.x -= (JSONReader.read("config")["background"]["speed"] *time);
         }
 
         public function get position():PositionComponent

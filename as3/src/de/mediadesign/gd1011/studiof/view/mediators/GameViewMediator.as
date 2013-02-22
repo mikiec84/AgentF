@@ -1,6 +1,7 @@
 package de.mediadesign.gd1011.studiof.view.mediators {
     import de.mediadesign.gd1011.studiof.consts.GameConsts;
-    import de.mediadesign.gd1011.studiof.events.GameEvent;
+	import de.mediadesign.gd1011.studiof.consts.ViewConsts;
+	import de.mediadesign.gd1011.studiof.events.GameEvent;
     import de.mediadesign.gd1011.studiof.services.LevelProcess;
     import de.mediadesign.gd1011.studiof.services.GameLoop;
     import de.mediadesign.gd1011.studiof.services.JSONReader;
@@ -100,8 +101,8 @@ package de.mediadesign.gd1011.studiof.view.mediators {
                 var backgroundView:BackgroundView = new BackgroundView();
 				contextView.addChildAt(backgroundView, 1);
 
-				addContextListener(GameConsts.ADD_SPRITE_TO_GAME, add);
-				addContextListener(GameConsts.REMOVE_SPRITE_FROM_GAME, remove);
+				addContextListener(ViewConsts.ADD_SPRITE_TO_GAME, add);
+				addContextListener(ViewConsts.REMOVE_SPRITE_FROM_GAME, remove);
 
 				var initGameEvent:GameEvent = new GameEvent(GameConsts.INIT_GAME);
 				dispatcher.dispatchEvent(initGameEvent);

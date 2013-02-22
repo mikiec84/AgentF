@@ -67,7 +67,7 @@ package de.mediadesign.gd1011.studiof.command
                     var enemyView:EnemyView = new EnemyView(ViewConsts.UNDERWATER_ENEMY, level.enemies[index].ID);
 
                 renderProcess.registerRenderable(new Renderable(level.enemies[index].position, enemyView));
-                var addEnemySpriteToGameEvent:GameEvent = new GameEvent(GameConsts.ADD_SPRITE_TO_GAME, enemyView);
+                var addEnemySpriteToGameEvent:GameEvent = new GameEvent(ViewConsts.ADD_SPRITE_TO_GAME, enemyView);
                 dispatcher.dispatchEvent(addEnemySpriteToGameEvent);
             }
 
@@ -81,11 +81,11 @@ package de.mediadesign.gd1011.studiof.command
             gameLoop.registerProcess(level);
 
 
-			level.scrollBGs.push(new ScrollableBG());
-			level.initScrollBG(level.scrollBGs[level.scrollBGs.length-1]);
+			//level.scrollBGs.push(new ScrollableBG());
+
 
             renderProcess.registerRenderable(new Renderable(level.player.position, playerView));
-            var addSpriteToGameEvent:GameEvent = new GameEvent(GameConsts.ADD_SPRITE_TO_GAME, playerView);
+            var addSpriteToGameEvent:GameEvent = new GameEvent(ViewConsts.ADD_SPRITE_TO_GAME, playerView);
             dispatcher.dispatchEvent(addSpriteToGameEvent);
         }
     }

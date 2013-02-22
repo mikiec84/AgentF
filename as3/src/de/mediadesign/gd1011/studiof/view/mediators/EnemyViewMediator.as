@@ -56,12 +56,12 @@ package de.mediadesign.gd1011.studiof.view.mediators
 			}
 			enemyView.addChild(img);
 
-            addContextListener(GameConsts.SHOW_DAMAGE, damage);
+            addContextListener(ViewConsts.SHOW_DAMAGE, damage);
         }
 
         override public function destroy():void
         {
-            removeContextListener(GameConsts.SHOW_DAMAGE, damage);
+            removeContextListener(ViewConsts.SHOW_DAMAGE, damage);
         }
 
         private function damage(e:GameEvent):void
