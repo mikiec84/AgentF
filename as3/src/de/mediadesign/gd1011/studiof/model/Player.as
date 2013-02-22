@@ -326,7 +326,7 @@ package de.mediadesign.gd1011.studiof.model {
 
         public function shootNow():Boolean
         {
-            return (!upIsRunning && _comeDownIsntRunning && healthPoints>0 && !stopped);
+            return (!upIsRunning && _comeDownIsntRunning && healthPoints>0 && !stopped && position.y > GameConsts.PLATFORM_HEIGHT*2-10);
         }
 
         public function set accelerateTowardsFinger(value:Boolean):void

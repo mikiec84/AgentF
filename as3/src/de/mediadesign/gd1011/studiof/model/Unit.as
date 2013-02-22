@@ -32,6 +32,7 @@ package de.mediadesign.gd1011.studiof.model
         public var ammunition:Vector.<Unit>;
         public var hasAlreadyHitThePlayer:Boolean = false;
         public var stopped:Boolean = false;
+        private var verticalBullet:Boolean = false;
 
 
         public function Unit(healthpoints:int, startingPlatform:int, xVel:int, startingXPosition:int, currentLevel:Level, verticalBullet:Boolean, ID:String = "")
@@ -55,7 +56,7 @@ package de.mediadesign.gd1011.studiof.model
             fireRateEnemy = JSONExtractedInformation["fireRateEnemy"];
             enemyRange = JSONExtractedInformation["enemyRange"];
             if (verticalBullet)
-            {
+            {   this.verticalBullet = true;
                 velocity.verticalVelocity = true;
                 velocity.velocityY = 600;
                 velocity.velocityX = 0;
@@ -81,7 +82,7 @@ package de.mediadesign.gd1011.studiof.model
 
         public function move(time:Number):void
         {
-            if (position.y >= GameConsts.PLATFORM_HEIGHT*6) {
+            if (position.y >= GameConsts.PLATFORM_HEIGHT*6 && !verticalBullet) {
                 position.y = GameConsts.PLATFORM_HEIGHT*5+2;
             }
             if (!stopped) {

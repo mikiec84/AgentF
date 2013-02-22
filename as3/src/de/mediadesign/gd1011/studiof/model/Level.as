@@ -28,7 +28,7 @@ package de.mediadesign.gd1011.studiof.model
         private var _player:Player;
         private var _fortFox:FortFoxBoss;
         private var _nautilus:NautilusBoss;
-        private var _currentLevel:int = 2;
+        private var _currentLevel:int = 1;
 
         private var JSONExtractedInformation:Object;
 
