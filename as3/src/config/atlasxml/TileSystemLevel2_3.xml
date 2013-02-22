@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker http://texturepacker.com-->
+<!-- $TexturePacker:SmartUpdate:83beeb138aff61391a7bc424f987df3e$ -->
+<TextureAtlas imagePath="TileSystemLevel2_3.png">
+    <SubTexture name="CaveTile05" x="859" y="2" width="855" height="1100"/>
+    <SubTexture name="CaveTile06" x="2" y="2" width="855" height="1100"/>
+</TextureAtlas>
