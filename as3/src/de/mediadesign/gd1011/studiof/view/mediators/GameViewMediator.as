@@ -67,7 +67,13 @@ package de.mediadesign.gd1011.studiof.view.mediators {
             assets.enqueue(Background1);
             assets.enqueue(Background2);
 
-            assets.enqueue(TileSystem1);
+            assets.enqueue(TileSystemLevel1_1);
+            assets.enqueue(TileSystemLevel1_2);
+            assets.enqueue(TileSystemLevel1_3);
+            assets.enqueue(TileSystemLevel2_1);
+            assets.enqueue(TileSystemLevel2_2);
+            assets.enqueue(TileSystemLevel2_3);
+
             assets.enqueue(SpriteSheetTauchbaer);
 
 			assets.enqueue(AgentF_texture);
