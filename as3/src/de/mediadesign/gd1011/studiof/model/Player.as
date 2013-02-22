@@ -116,10 +116,6 @@ package de.mediadesign.gd1011.studiof.model {
 
         private function initializeVariables():void
         {
-            if (position.y > 210 && position.y < 211 && !_anyTweensInMotion && currentPlatform == 1) {
-                position.y = GameConsts.STAGE_HEIGHT/3+yOffset+10;
-                land();
-            }
             currentPlatform      = observePlatform(position.y);
             upIsRunning          = (_up != null && !_up.isComplete && Starling.juggler.contains(_up));
             _comeDownIsntRunning = !(_down != null && !_down.isComplete);
@@ -143,6 +139,14 @@ package de.mediadesign.gd1011.studiof.model {
             if (_landing != null && _landing.isComplete && Starling.juggler.contains(_landing))
             {
                 Starling.juggler.remove(_landing);
+            }
+            if (position.y > 190 && position.y < GameConsts.PLATFORM_HEIGHT*2 && !_anyTweensInMotion && currentPlatform == 1) {/*
+                _anyTweensInMotion = true;
+                _landIsntRunning = false;*/
+                position.y = GameConsts.STAGE_HEIGHT/3+yOffset+10;/*
+                land();
+                _landStillInJuggler  = Starling.juggler.contains(_landing);*/
+                trace("BUG DETECTED");
             }
         }
 
