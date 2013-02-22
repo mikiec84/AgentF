@@ -10,7 +10,7 @@ package de.mediadesign.gd1011.studiof.command
 	import de.mediadesign.gd1011.studiof.consts.ViewConsts;
 	import de.mediadesign.gd1011.studiof.events.GameEvent;
 	import de.mediadesign.gd1011.studiof.model.Renderable;
-	import de.mediadesign.gd1011.studiof.model.ScrollableBG;
+	import de.mediadesign.gd1011.studiof.model.BGTile;
 	import de.mediadesign.gd1011.studiof.services.LevelProcess;
 	import de.mediadesign.gd1011.studiof.services.MoveProcess;
 	import de.mediadesign.gd1011.studiof.services.RenderProcess;
@@ -41,11 +41,11 @@ package de.mediadesign.gd1011.studiof.command
 
         override public function execute():void
         {
-            var view:Sprite = new ScrollBackgroundView();
-            var scrBG:ScrollableBG = event.dataObj;
+            var bg:BGTile = event.dataObj;
+			var view:Sprite = new ScrollBackgroundView(bg.layerID);
 
-            moveProcess.addEntity(event.dataObj);
-            renderProcess.registerRenderable(new Renderable(scrBG.position, view));
+            moveProcess.addEntity(bg);
+            renderProcess.registerRenderable(new Renderable(bg.position, view));
 
             var addToBGEvent:GameEvent = new GameEvent(ViewConsts.ADD_BG, view);
             dispatcher.dispatchEvent(addToBGEvent);

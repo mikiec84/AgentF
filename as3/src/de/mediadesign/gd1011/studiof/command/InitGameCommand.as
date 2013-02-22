@@ -16,7 +16,7 @@ package de.mediadesign.gd1011.studiof.command
     import de.mediadesign.gd1011.studiof.model.NautilusBoss;
     import de.mediadesign.gd1011.studiof.model.Player;
     import de.mediadesign.gd1011.studiof.model.Renderable;
-	import de.mediadesign.gd1011.studiof.model.ScrollableBG;
+	import de.mediadesign.gd1011.studiof.model.BGTile;
 	import de.mediadesign.gd1011.studiof.services.CollisionProcess;
     import de.mediadesign.gd1011.studiof.services.GameLoop;
     import de.mediadesign.gd1011.studiof.services.MoveProcess;

@@ -31,7 +31,8 @@ package de.mediadesign.gd1011.studiof.services
 
         private var JSONExtractedInformation:Object;
 
-        public var scrollBGs:Vector.<ScrollableBG>;
+		private var _bgLayer01:BGScroller;
+       	private var _bgLayer02:BGScroller;
 		private var _scrollLevel:Boolean = true;
 
         public var enemyPositions:Vector.<int>;
@@ -44,10 +45,6 @@ package de.mediadesign.gd1011.studiof.services
 
         public function LevelProcess()
         {
-			enemyPositions = new Vector.<int>;
-            _enemies = new Vector.<Unit>();
-            scrollBGs = new Vector.<ScrollableBG>();
-
             JSONExtractedInformation = JSONReader.read("enemy")["ENEMY"];
             collisionTolerance = JSONExtractedInformation["collisionTolerance"];
         }
@@ -71,30 +68,12 @@ package de.mediadesign.gd1011.studiof.services
             for (var index:int = 0; index<enemies.length; index++)
                 enemies[index].shootBullet(time);
 
-            // updating scrolling background
+			_bgLayer01.update();
+			_bgLayer02.update();
 
-            if (scrollBGs.length>0 && scrollBGs[0].position.x < -GameConsts.STAGE_WIDTH/2)
-                scrollBGs.shift();
-			if (scrollBGs.length < 4 )
-				addScrollableBG();
-            updateLP();
+			updateLP();
             checkStatus();
         }
-
-		private function addScrollableBG():void
-		{
-			var bg:ScrollableBG = new ScrollableBG();
-			scrollBGs.push(bg);
-
-			if (scrollBGs.length > 1)
-				bg.position.x = scrollBGs[scrollBGs.length - 2].position.x + (GameConsts.STAGE_WIDTH / 2) - 1;
-			bg.position.y = +180;
-
-			var registerBGEvent:GameEvent = new GameEvent(GameConsts.CREATE_BG, bg);
-			dispatcher.dispatchEvent(registerBGEvent);
-			if(!_scrollLevel)
-				bg.moving = false;
-		}
 
         public function updateLP():void
         {
@@ -164,6 +143,12 @@ package de.mediadesign.gd1011.studiof.services
 
         public function newLevel(currentLevel:int):void
         {
+			enemyPositions = new Vector.<int>;
+			_enemies = new Vector.<Unit>();
+
+			_bgLayer01 = new BGScroller("layer01",dispatcher);
+			_bgLayer02 = new BGScroller("layer02",dispatcher);
+
             for (var index:int = 0; index<lvlConfig.getEnemySequence(0, currentLevel-1).length; index++) //JSONExtractedInformation["enemyCount"]
             {
                 enemyPositions.push(GameConsts.STAGE_WIDTH+((1+index)*JSONExtractedInformation["enemyRate"]));
@@ -325,8 +310,8 @@ package de.mediadesign.gd1011.studiof.services
 
         public function stopScrollLevel():void
         {
-            for each(var bg:ScrollableBG in scrollBGs)
-				bg.moving = false;
+            _scrollLevel = false;
+			_bgLayer02.stopScrolling();
         }
 
 

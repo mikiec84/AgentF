@@ -7,47 +7,38 @@
  */
 package de.mediadesign.gd1011.studiof.view.mediators
 {
+	import de.mediadesign.gd1011.studiof.services.JSONReader;
+	import de.mediadesign.gd1011.studiof.services.LevelProcess;
 	import de.mediadesign.gd1011.studiof.view.ScrollBackgroundView;
 
 	import robotlegs.extensions.starlingViewMap.impl.StarlingMediator;
 
-    import starling.display.Image;
-
-    import starling.display.Image;
-    import starling.display.MovieClip;
-    import starling.textures.Texture;
-
-    import starling.utils.AssetManager;
+	import starling.display.Image;
+	import starling.utils.AssetManager;
 
 	public class ScrollBackgroundViewMediator extends StarlingMediator
 	{
 		[Inject]
 		public var bgView:ScrollBackgroundView;
 
-
 		[Inject]
 		public var assets:AssetManager;
 
+		[Inject]
+		public var level:LevelProcess;
+
 		override public function initialize():void
 		{
-			var bgImage:Image;
 			bgView.alpha = 0;
-            //var mc = new MovieClip(assets.getTextures("Tile"));
-			switch (Math.round(Math.random()* 2))
+
+			var layerTextures:Array = JSONReader.read("viewconfig")["assetsets"]["level_"+level.currentLevel]["background"][bgView.layerID];
+			if(layerTextures.length > 0)
 			{
-				case(0):
-                    bgImage = assets.getImage("Gras01_texture");
-					//bgImage = new Image(mc.getFrameTexture(1));
-					break;
-				case(1):
-                    bgImage = assets.getImage("Gras02_texture");
-                    //bgImage = new Image(mc.getFrameTexture(2));
-					break;
-				default:
-					bgImage = assets.getImage("Gras01_texture");
-					break;
+				var bgImage:Image;
+				bgImage = assets.getImage(layerTextures[Math.floor(Math.random()* layerTextures.length)]);
+				bgView.addChild(bgImage);
 			}
-			bgView.addChild(bgImage);
+
 		}
 
 		override public function destroy():void

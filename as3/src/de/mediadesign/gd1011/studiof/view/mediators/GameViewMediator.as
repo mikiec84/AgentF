@@ -44,6 +44,9 @@ package de.mediadesign.gd1011.studiof.view.mediators {
 		
 		override public function initialize():void
 		{
+			var backgroundView:BackgroundView = new BackgroundView();
+			contextView.addChild(backgroundView);
+
 			_touchConfig = JSONReader.read("viewconfig")["game"];
 
 			contextView.addEventListener(TouchEvent.TOUCH, handleTouch);
@@ -98,8 +101,6 @@ package de.mediadesign.gd1011.studiof.view.mediators {
 			if(ratio == 1.0)
 			{
 				contextView.removeChild(contextView.loadQuad);
-                var backgroundView:BackgroundView = new BackgroundView();
-				contextView.addChildAt(backgroundView, 1);
 
 				addContextListener(ViewConsts.ADD_SPRITE_TO_GAME, add);
 				addContextListener(ViewConsts.REMOVE_SPRITE_FROM_GAME, remove);

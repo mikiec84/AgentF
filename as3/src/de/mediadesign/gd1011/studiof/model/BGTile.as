@@ -11,23 +11,30 @@ package de.mediadesign.gd1011.studiof.model
     import de.mediadesign.gd1011.studiof.model.components.VelocityComponent;
 	import de.mediadesign.gd1011.studiof.services.JSONReader;
 
-	public class ScrollableBG implements IMovable
+	public class BGTile implements IMovable
     {
         private var _position:PositionComponent;
         private var _velocity:VelocityComponent;
+		private var _layerID:String;
 		public var moving:Boolean = true;
 
-        public function ScrollableBG()
+        public function BGTile(layerID:String)
         {
+			_layerID = layerID;
             _position = new PositionComponent();
             _velocity = new VelocityComponent();
 
         }
 
+		public function get layerID():String
+		{
+			return _layerID;
+		}
+
         public function move(time:Number):void
         {
 			if(moving)
-           		_position.x -= (JSONReader.read("config")["background"]["speed"] *time);
+           		_position.x -= velocity.velocityX*time;
         }
 
         public function get position():PositionComponent

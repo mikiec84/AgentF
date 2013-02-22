@@ -7,16 +7,14 @@
  */
 package de.mediadesign.gd1011.studiof.view.mediators
 {
-    import de.mediadesign.gd1011.studiof.consts.GameConsts;
 	import de.mediadesign.gd1011.studiof.consts.ViewConsts;
 	import de.mediadesign.gd1011.studiof.events.GameEvent;
-    import de.mediadesign.gd1011.studiof.services.GameLoop;
-    import de.mediadesign.gd1011.studiof.view.BackgroundView;
+	import de.mediadesign.gd1011.studiof.view.BackgroundView;
+	import de.mediadesign.gd1011.studiof.view.ScrollBackgroundView;
 
-    import robotlegs.extensions.starlingViewMap.impl.StarlingMediator;
+	import robotlegs.extensions.starlingViewMap.impl.StarlingMediator;
 
-	import starling.display.Image;
-
+	import starling.display.Sprite;
 	import starling.utils.AssetManager;
 
 	public class BackgroundViewMediator extends StarlingMediator
@@ -29,7 +27,7 @@ package de.mediadesign.gd1011.studiof.view.mediators
 
         override public function initialize():void
         {
-			bgView.addChild(new Image(assets.getTexture("Background1")));
+			//bgView.addChild(new Image(assets.getTexture("Background1")));
             addContextListener(ViewConsts.ADD_BG, add);
         }
 
@@ -40,7 +38,13 @@ package de.mediadesign.gd1011.studiof.view.mediators
 
         private function add(event:GameEvent):void
         {
-            bgView.addChild(event.dataObj);
+			var layerID:String = (event.dataObj as ScrollBackgroundView).layerID;
+			if(bgView.bgLayer[layerID]==null)
+			{
+				bgView.bgLayer[layerID] = new Sprite();
+				bgView.addChild(bgView.bgLayer[layerID] as Sprite);
+			}
+			(bgView.bgLayer[layerID] as Sprite).addChild(event.dataObj);
         }
     }
 }

@@ -18,6 +18,7 @@ package de.mediadesign.gd1011.studiof.consts
 
 		public static const ADD_SPRITE_TO_GAME:String = "ADD_SPRITE_TO_GAME";
 		public static const REMOVE_SPRITE_FROM_GAME:String = "REMOVE_SPRITE_FROM_GAME";
+		public static const CREATE_BG_LAYER:String = "CREATE_BG_LAYER";
 		public static const ADD_BG:String = "ADD_BG";
 		public static const SHOW_DAMAGE:String = "SHOW_DAMAGE";
 

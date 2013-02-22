@@ -16,22 +16,5 @@ package de.mediadesign.gd1011.studiof.view
 	public class GameView extends Sprite
 	{
         public var loadQuad:Quad;
-
-        public function GameView()
-		{
-			if(stage)
-				init();
-			else
-				addEventListener(Event.ADDED_TO_STAGE, init);
-		}
-
-		public function init(e:Event = null):void
-		{
-			removeEventListener(Event.ADDED_TO_STAGE, init);
-
-            var q:Quad = new Quad(1710,1070,0x000000);
-            q.y = -200;
-			addChildAt(q, 0);
-		}
 	}
 }

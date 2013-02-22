@@ -19,7 +19,17 @@
             "plattform-height":120
             },
     "background":{
-            "speed":150
+            "layer01":{
+                "vPosition":0,
+                "speed":0,
+                "width":1710
+            },
+            "layer02":{
+                "vPosition":180,
+                "speed":150,
+                "width":855
+            }
+
     }
 
 }
