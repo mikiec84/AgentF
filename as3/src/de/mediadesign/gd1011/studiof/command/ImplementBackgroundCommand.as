@@ -45,7 +45,9 @@ package de.mediadesign.gd1011.studiof.command
             var scrBG:ScrollableBG = event.dataObj;
 
             // location of creation
-            scrBG.position.x = (level.scrollBGs.length - 1) * (GameConsts.STAGE_WIDTH / 2 -15);
+			if(level.scrollBGs.length > 1)
+				scrBG.position.x = Math.floor(level.scrollBGs[level.scrollBGs.length - 2].position.x) +(GameConsts.STAGE_WIDTH / 2)-1;
+
             scrBG.position.y = + 180;
 
             moveProcess.addEntity(event.dataObj);
