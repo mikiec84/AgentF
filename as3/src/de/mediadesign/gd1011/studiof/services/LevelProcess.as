@@ -95,8 +95,8 @@ package de.mediadesign.gd1011.studiof.services
             //Lost
             if (player.healthPoints<1)
             {
-                var ab:GameEvent = new GameEvent(ViewConsts.SHOW_GAMEOVER, false);
-                dispatcher.dispatchEvent(ab);
+                var gameOverEvent:GameEvent = new GameEvent(ViewConsts.SHOW_GAMEOVER, false);
+                dispatcher.dispatchEvent(gameOverEvent);
                 stopAllUnits();
             }
             // End of Level 1, start Boss Level 1
@@ -117,8 +117,8 @@ package de.mediadesign.gd1011.studiof.services
             if (fortFox.healthPoints <= 0 && fortFox.initialized)
             {
                 currentLevel+=1;
-                var ab:GameEvent = new GameEvent(ViewConsts.SHOW_GAMEOVER, true);
-                dispatcher.dispatchEvent(ab);
+                var gameWonEvent:GameEvent = new GameEvent(ViewConsts.SHOW_GAMEOVER, true);
+                dispatcher.dispatchEvent(gameWonEvent);
                 stopAllUnits();
             }
             //Boss Spawn
@@ -134,8 +134,8 @@ package de.mediadesign.gd1011.studiof.services
             if (nautilus.healthPoints <= 0 && nautilus.initialized)
             {
                 currentLevel+=1;
-                var ab:GameEvent = new GameEvent(ViewConsts.SHOW_GAMEOVER, true);
-                dispatcher.dispatchEvent(ab);
+                var gameWonEvent2:GameEvent = new GameEvent(ViewConsts.SHOW_GAMEOVER, true);
+                dispatcher.dispatchEvent(gameWonEvent2);
                 stopAllUnits();
             }
 
