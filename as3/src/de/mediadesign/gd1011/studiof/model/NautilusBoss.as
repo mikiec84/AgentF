@@ -26,7 +26,6 @@ package de.mediadesign.gd1011.studiof.model {
         private var backMovementDistance:int;
         private var _finishLine:int = 0;
         private var changePosMovementSpeed:Number = 0;
-        private var stopped:Boolean = false;
         private var xOffset:int;
         private var attackSpeed:int;
 
@@ -171,17 +170,6 @@ package de.mediadesign.gd1011.studiof.model {
         public function get initialized():Boolean
         {
             return _initialized;
-        }
-
-        public function stop():void
-        {
-            stopped = true;
-        }
-
-
-        public function resume():void
-        {
-            stopped = false;
         }
     }
 }

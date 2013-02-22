@@ -24,7 +24,6 @@ package de.mediadesign.gd1011.studiof.model {
         private var _moveLeftRunning:Boolean = false;
         private var _initialized:Boolean = false;
         private var level:Level;
-        public var stopped:Boolean = false;
 
         public function FortFoxBoss(currentLevel:Level)
         {
@@ -81,16 +80,6 @@ package de.mediadesign.gd1011.studiof.model {
                     }
                 }
             }
-        }
-
-        public function stop():void
-        {
-            stopped = true;
-        }
-
-        public function resume():void
-        {
-            stopped = false;
         }
 
         private function doMoveLeft(time:Number):void

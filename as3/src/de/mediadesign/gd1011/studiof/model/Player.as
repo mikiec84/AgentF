@@ -44,6 +44,7 @@ package de.mediadesign.gd1011.studiof.model {
         private var _accelerateTowardsFinger:Boolean = false;
         private var _swiped:Boolean = false;
         private var startLandTweenAfterThis:Boolean = false;
+        private var yOffset:int = 2;
 
         private var upIsRunning:Boolean = false;
         public var counter:int = 0;
@@ -79,27 +80,29 @@ package de.mediadesign.gd1011.studiof.model {
 
         override public function move(time:Number):void
         {   //trace((GameConsts.EBENE_HEIGHT*2+einpendelStaerkeWinzig)+", "+(position.y));
-            if (position.y<1000) {
-                if (assertCorrectInitialization())
-                {
-
-                    checkPlayerPosition();
-
-                    initializeVariables();
-
-                    administerTweens(time);
-
-                    if (!_anyTweensInMotion)
+            if (!stopped) {
+                if (position.y<1000) {
+                    if (assertCorrectInitialization())
                     {
-                        administerPlayerTowardsMouseMovement(time);
+
+                        checkPlayerPosition();
+
+                        initializeVariables();
+
+                        administerTweens(time);
+
+                        if (!_anyTweensInMotion)
+                        {
+                            administerPlayerTowardsMouseMovement(time);
+                        }
+                        else
+                        {
+                            position.y = _tweenedPosition.y; //trace("POS.Y: "+position.y);
+                            if (_targetPlatform == 6) ignoreMouseInput();
+                        }
                     }
-                    else
-                    {
-                        position.y = _tweenedPosition.y; //trace("POS.Y: "+position.y);
-                        if (_targetPlatform == 6) ignoreMouseInput();
-                    }
+                    else trace("----------Function Move failed, because Player EITHER DEAD or not correctly initialized. Additional Info: "+position.x+","+position.y+","+velocity+","+currentPlatform+","+this+","+_tweenedPosition.x+","+_tweenedPosition.y);
                 }
-                else trace("----------Function Move failed, because Player EITHER DEAD or not correctly initialized. Additional Info: "+position.x+","+position.y+","+velocity+","+currentPlatform+","+this+","+_tweenedPosition.x+","+_tweenedPosition.y);
             }
         }
 
@@ -158,7 +161,7 @@ package de.mediadesign.gd1011.studiof.model {
                 {
                     if((observePlatform(speedTowardsMouse*time+position.y)<_targetPlatform))
                     {
-                        setNewPosition(speedTowardsMouse*time+position.y);
+                        setNewPosition(yOffset+speedTowardsMouse*time+position.y);
                     }
                     else
                     {
@@ -171,7 +174,7 @@ package de.mediadesign.gd1011.studiof.model {
                     if (currentPlatform>=_targetPlatform) {
                         if(observePlatform(position.y-speedTowardsMouse*time)>=_targetPlatform)
                         {
-                           setNewPosition(position.y-speedTowardsMouse*time);
+                           setNewPosition(yOffset+position.y-speedTowardsMouse*time);
                         } else {
                             if (currentPlatform == 2) {
                                 position.y = GameConsts.PLATFORM_HEIGHT*_targetPlatform;
@@ -240,7 +243,7 @@ package de.mediadesign.gd1011.studiof.model {
                     else
                     {
                         _up = new Tween(_tweenedPosition, jumpSpeedBeimSprungWinzig, Transitions.EASE_OUT);
-                        _up.moveTo(_tweenedPosition.x, GameConsts.PLATFORM_HEIGHT*2+einpendelStaerkeWinzig );
+                        _up.moveTo(_tweenedPosition.x, GameConsts.PLATFORM_HEIGHT*2+einpendelStaerkeWinzig+yOffset );
                         startLandTweenAfterThis = true;
                     }
                     Starling.juggler.add(_up);
@@ -267,7 +270,7 @@ package de.mediadesign.gd1011.studiof.model {
         private function land():void
         {   //trace("LANDING BEGIN");
             _landing = new Tween(_tweenedPosition, jumpSpeedBeimEinpendeln, Transitions.EASE_OUT_ELASTIC);
-            _landing.moveTo(_tweenedPosition.x,  GameConsts.STAGE_HEIGHT/3+1);//+1 weil ansonsten der player in ebene 1 endet aus welchem grund auch immer. da current 1 ist aber target 2 wird er ~20pixel nach oben gezogen, und dann wieder auf ebene 2 hochkorrigiert, wodurch er auf der stelle zu springen scheint. +1 verhindert das.
+            _landing.moveTo(_tweenedPosition.x,  GameConsts.STAGE_HEIGHT/3+yOffset);
             Starling.juggler.add(_landing);
         }
 
@@ -334,7 +337,7 @@ package de.mediadesign.gd1011.studiof.model {
 
         public function shootNow():Boolean
         {
-            return (!upIsRunning && _comeDownIsntRunning && healthPoints>0);
+            return (!upIsRunning && _comeDownIsntRunning && healthPoints>0 && !stopped);
         }
 
         public function set accelerateTowardsFinger(value:Boolean):void

@@ -31,6 +31,7 @@ package de.mediadesign.gd1011.studiof.model
         public var JSONExtractedInformation:Object;
         public var ammunition:Vector.<Unit>;
         public var hasAlreadyHitThePlayer:Boolean = false;
+        public var stopped:Boolean = false;
 
 
         public function Unit(healthpoints:int, startingPlatform:int, xVel:int, startingXPosition:int, currentLevel:Level, verticalBullet:Boolean, ID:String = "")
@@ -68,22 +69,34 @@ package de.mediadesign.gd1011.studiof.model
             this._ID = ID;
         }
 
+        public function stop():void
+        {
+            stopped = true;
+        }
+
+        public function resume():void
+        {
+            stopped = false;
+        }
+
         public function move(time:Number):void
         {
-            if (assertCorrectInitialization())
-            {
-                if (!velocity.verticalVelocity)
+            if (!stopped) {
+                if (assertCorrectInitialization())
                 {
-                    currentPlatform = observePlatform(position.y);
-                    position.x += velocity.velocityX*time;
+                    if (!velocity.verticalVelocity)
+                    {
+                        currentPlatform = observePlatform(position.y);
+                        position.x += velocity.velocityX*time;
+                    }
+                    else
+                    {
+                        currentPlatform = observePlatform(position.y);
+                        position.y += velocity.velocityY*time;
+                    }
                 }
-                else
-                {
-                    currentPlatform = observePlatform(position.y);
-                    position.y += velocity.velocityY*time;
-                }
+                else trace("----------Function Move failed, because Unit not correctly initialized: "+position.x+","+position.y+","+velocity+","+currentPlatform+","+this);
             }
-            else trace("----------Function Move failed, because Unit not correctly initialized: "+position.x+","+position.y+","+velocity+","+currentPlatform+","+this);
         }
 
         public function assertCorrectInitialization():Boolean
@@ -149,16 +162,6 @@ package de.mediadesign.gd1011.studiof.model
             return _velocity;
         }
 
-        public function get weapon():String
-        {
-            return _weapon;
-        }
-
-        public function set weapon(value:String):void
-        {
-            _weapon = value;
-        }
-
         public function setNewPosition(y:int):void
         {
             if (y>=GameConsts.PLATFORM_HEIGHT*2 && y<=GameConsts.PLATFORM_HEIGHT*6)
@@ -195,10 +198,12 @@ package de.mediadesign.gd1011.studiof.model
 
         public function shootBullet(time:Number):void
         {
-            var bullet:Unit = shoot(time);
-            if (bullet != null)
-            {
-                _currentLevel.register(bullet);
+            if (!stopped) {
+                var bullet:Unit = shoot(time);
+                if (bullet != null)
+                {
+                    _currentLevel.register(bullet);
+                }
             }
         }
 

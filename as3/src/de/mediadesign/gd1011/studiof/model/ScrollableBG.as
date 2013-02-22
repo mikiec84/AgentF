@@ -46,5 +46,11 @@ package de.mediadesign.gd1011.studiof.model
         {
             _velocity = value;
         }
+
+        public function stop():void {
+        }
+
+        public function resume():void {
+        }
     }
 }
