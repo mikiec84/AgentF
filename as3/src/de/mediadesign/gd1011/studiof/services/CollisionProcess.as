@@ -58,11 +58,11 @@ package de.mediadesign.gd1011.studiof.services
                         break;
                         break;
                     }
-                    if (level.player.ammunition[i].position.x > GameConsts.STAGE_WIDTH + GameConsts.ENEMY_SPRITE_WIDTH)
-                        deleteUnits(level.player.ammunition, i);
                     if (level.enemies[j].position.x < 0 - GameConsts.ENEMY_SPRITE_WIDTH)
                         deleteUnits(level.enemies, j);
                 }
+                if (level.player.ammunition[i].position.x > GameConsts.STAGE_WIDTH + GameConsts.ENEMY_SPRITE_WIDTH)
+                    deleteUnits(level.player.ammunition, i);
             }
 
             for (var i:int = 0; i < level.enemies.length; i++)

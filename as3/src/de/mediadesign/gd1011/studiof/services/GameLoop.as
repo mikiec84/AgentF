@@ -130,25 +130,6 @@ package de.mediadesign.gd1011.studiof.services
             {
                 target.update(e.passedTime);
             }
-            // player shooting
-            if (currentLevel.player.shootNow())
-            {
-                currentLevel.player.shootBullet(e.passedTime);
-            }
-            currentLevel.nautilus.shootBullet(e.passedTime);
-            // Enemy shooting
-            for (var index:int = 0; index<currentLevel.enemies.length; index++)
-                currentLevel.enemies[index].shootBullet(e.passedTime);
-
-            // scrolling background
-            if (currentLevel.scrollBGs[0].position.x < 0 && currentLevel.scrollBGs.length < 4 )
-            {
-                initScroll();
-            }
-            if (currentLevel.scrollBGs[0].position.x < - GameConsts.STAGE_WIDTH/2)
-            {
-                currentLevel.scrollBGs.shift();
-            }
             updateLP();
             checkStatus();
         }

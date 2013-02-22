@@ -51,11 +51,6 @@ package de.mediadesign.gd1011.studiof.command
 			level.setPlayer(new Player(level));
 			level.setPlayer(new Player(level));
 
-            gameLoop.registerProcess(moveProcess);
-            gameLoop.registerProcess(renderProcess);
-            gameLoop.registerProcess(collisionProcess);
-
-
             moveProcess.addEntity(level.player);
             level.fortFox = new FortFoxBoss(level);
             level.nautilus = new NautilusBoss(level);
@@ -79,6 +74,11 @@ package de.mediadesign.gd1011.studiof.command
             //var img3:Image = Assets.getImage("AgentF_texture");
             var playerView:EnemyView = new EnemyView(ViewConsts.PLAYER);/*
             playerView.addChild(img3);*/
+
+            gameLoop.registerProcess(moveProcess);
+            gameLoop.registerProcess(renderProcess);
+            gameLoop.registerProcess(collisionProcess);
+            gameLoop.registerProcess(level);
 
             renderProcess.registerRenderable(new Renderable(level.player.position, playerView));
             var addSpriteToGameEvent:GameEvent = new GameEvent(GameConsts.ADD_SPRITE_TO_GAME, playerView);

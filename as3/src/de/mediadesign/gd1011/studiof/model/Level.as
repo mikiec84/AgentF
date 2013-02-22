@@ -11,12 +11,13 @@ package de.mediadesign.gd1011.studiof.model
     import de.mediadesign.gd1011.studiof.consts.ViewConsts;
     import de.mediadesign.gd1011.studiof.consts.ViewConsts;
     import de.mediadesign.gd1011.studiof.events.GameEvent;
+    import de.mediadesign.gd1011.studiof.services.IProcess;
     import de.mediadesign.gd1011.studiof.view.ScrollBackgroundView;
     import de.mediadesign.gd1011.studiof.services.JSONReader;
 
     import flash.events.IEventDispatcher;
 
-    public class Level
+    public class Level implements IProcess
     {
         [Inject]
         public var dispatcher:IEventDispatcher;
@@ -24,6 +25,7 @@ package de.mediadesign.gd1011.studiof.model
 		[Inject]
 		public var lvlConfig:LevelConfiguration;
 
+        private var _running:Boolean;
         private var _enemies:Vector.<Unit>;
         private var _player:Player;
         private var _fortFox:FortFoxBoss;
@@ -55,12 +57,40 @@ package de.mediadesign.gd1011.studiof.model
 		[PostConstruct]
 		public function onCreated():void
 		{
+            newLevel(1);
+		}
 
-            for (var index:int = 0; index<lvlConfig.getEnemySequence(0,0).length; index++) //JSONExtractedInformation["enemyCount"]
+        public function update(time:Number):void
+        {
+            if(player== null)
+                return;
+
+            if (_player.shootNow())
+                _player.shootBullet(time);
+
+            nautilus.shootBullet(time);
+
+            for (var index:int = 0; index<enemies.length; index++)
+                enemies[index].shootBullet(time);
+
+            // scrolling background
+            if (scrollBGs[0].position.x < 0 && scrollBGs.length < 4 )
+            {
+                scrollBGs.push(new ScrollableBG());
+                initScrollBG(scrollBGs[scrollBGs.length-1]);
+            }
+            if (scrollBGs[0].position.x < - GameConsts.STAGE_WIDTH/2)
+            {
+                scrollBGs.shift();
+            }
+        }
+
+        public function newLevel(currentLevel:int):void
+        {
+            for (var index:int = 0; index<lvlConfig.getEnemySequence(0, currentLevel-1).length; index++) //JSONExtractedInformation["enemyCount"]
             {
                 enemyPositions.push(GameConsts.STAGE_WIDTH+((1+index)*JSONExtractedInformation["enemyRate"]));
             }
-
             //////////// CHEAT ///////////////
             if (onlyThreeMobs) {
                 while(enemyPositions.length > 3)
@@ -81,7 +111,7 @@ package de.mediadesign.gd1011.studiof.model
                     }
                 }
             }
-		}
+        }
 
         public function spawnBoss():void
         {
@@ -140,50 +170,65 @@ package de.mediadesign.gd1011.studiof.model
 
         public function stopAllUnits():void
         {
-            for (var index:int = 0; index<enemies.length; index++) {
+            for (var index:int = 0; index<enemies.length; index++)
+            {
                 enemies[index].stop();
-                for (var index2:int = 0; index2<enemies[index].ammunition.length; index2++) {
+                for (var index2:int = 0; index2<enemies[index].ammunition.length; index2++)
+                {
                     enemies[index].ammunition[index2].stop();
                 }
             }
             player.stop();
-            for (var index3:int = 0;index3<player.ammunition.length; index3++) {
+            for (var index3:int = 0;index3<player.ammunition.length; index3++)
+            {
                 player.ammunition[index3].stop();
             }
-            if (fortFox.initialized || fortFox.moveLeftRunning) {
+            if (fortFox.initialized || fortFox.moveLeftRunning)
+            {
                 fortFox.stop();
-                for (var index4:int = 0; index4<fortFox.ammunition.length; index4++) {
+                for (var index4:int = 0; index4<fortFox.ammunition.length; index4++)
+                {
                     fortFox.ammunition[index4].stop();
                 }
             }
-            if (nautilus.initialized || nautilus.moveLeftRunning) {
+            if (nautilus.initialized || nautilus.moveLeftRunning)
+            {
                 nautilus.stop();
-                for (var index5:int = 0; index5<nautilus.ammunition.length; index5++) {
+                for (var index5:int = 0; index5<nautilus.ammunition.length; index5++)
+                {
                     nautilus.ammunition[index5].stop();
                 }
             }
         }
+
         public function resumeAllUnits():void
         {
-            for (var index:int = 0; index<enemies.length; index++) {
+            for (var index:int = 0; index<enemies.length; index++)
+            {
                 enemies[index].resume();
-                for (var index2:int = 0; index2<enemies[index].ammunition.length; index2++) {
+                for (var index2:int = 0; index2<enemies[index].ammunition.length; index2++)
+                {
                     enemies[index].ammunition[index2].resume();
                 }
             }
             player.resume();
-            for (var index3:int = 0;index3<player.ammunition.length; index3++) {
+            for (var index3:int = 0;index3<player.ammunition.length; index3++)
+            {
                 player.ammunition[index3].resume();
             }
-            if (fortFox.initialized || fortFox.moveLeftRunning) {
+            if (fortFox.initialized || fortFox.moveLeftRunning)
+            {
                 fortFox.resume();
-                for (var index4:int = 0; index4<fortFox.ammunition.length; index4++) {
+                for (var index4:int = 0; index4<fortFox.ammunition.length; index4++)
+                {
                     fortFox.ammunition[index4].resume();
                 }
             }
-            if (nautilus.initialized || nautilus.moveLeftRunning) {
+            if (nautilus.initialized || nautilus.moveLeftRunning)
+            {
                 nautilus.resume();
-                for (var index5:int = 0; index5<nautilus.ammunition.length; index5++) {
+                for (var index5:int = 0; index5<nautilus.ammunition.length; index5++)
+                {
                     nautilus.ammunition[index5].resume();
                 }
             }
@@ -224,20 +269,34 @@ package de.mediadesign.gd1011.studiof.model
             _fortFox = value;
         }
 
-        public function get nautilus():NautilusBoss {
+        public function get nautilus():NautilusBoss
+        {
             return _nautilus;
         }
 
-        public function set nautilus(value:NautilusBoss):void {
+        public function set nautilus(value:NautilusBoss):void
+        {
             _nautilus = value;
         }
 
-        public function get currentLevel():int {
+        public function get currentLevel():int
+        {
             return _currentLevel;
         }
 
-        public function set currentLevel(value:int):void {
+        public function set currentLevel(value:int):void
+        {
             _currentLevel = value;
+        }
+
+        public function start():void
+        {
+            _running = true;
+        }
+
+        public function stop():void
+        {
+            _running = false;
         }
     }
 }
