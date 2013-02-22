@@ -52,78 +52,6 @@ package de.mediadesign.gd1011.studiof.services
             processes.push(process);
         }
 
-        public function deleteUnits(units:Vector.<Unit>, index:int):void
-        {
-            currentLevel.deleteCurrentUnit(units[index]);
-            units.splice(index,  1);
-        }
-
-        public function collision():void
-        {
-            var updatePointsEvent:GameEvent = new GameEvent(ViewConsts.ENEMY_KILLED);
-            for (var i:int = 0; i < currentLevel.player.ammunition.length; i++)
-            {
-                // collision Boss1
-                if (currentLevel.fortFox.initialized)
-                    rules.collisionDetection(currentLevel.player.ammunition[i], currentLevel.fortFox);
-                if (currentLevel.nautilus.initialized)
-                    rules.collisionDetection(currentLevel.player.ammunition[i], currentLevel.nautilus);
-
-                if (rules.isDead(currentLevel.player.ammunition[i]))
-                {
-                    deleteUnits(currentLevel.player.ammunition, i);
-                    break;
-                    break;
-                }
-
-                for (var j:int = 0; j < currentLevel.enemies.length; j++)
-                {
-                    //collision playerbullet, enemy
-                    rules.collisionDetection(currentLevel.player.ammunition[i], currentLevel.enemies[j]);
-
-                    if (rules.isDead(currentLevel.enemies[j]))
-                    {
-                        deleteUnits(currentLevel.enemies, j);
-                        dispatcher.dispatchEvent(updatePointsEvent);
-                        break;
-                        break;
-                    }
-                    if (currentLevel.player.ammunition[i].position.x > GameConsts.STAGE_WIDTH + GameConsts.ENEMY_SPRITE_WIDTH)
-                        deleteUnits(currentLevel.player.ammunition, i);
-                    if (currentLevel.enemies[j].position.x < 0 - GameConsts.ENEMY_SPRITE_WIDTH)
-                        deleteUnits(currentLevel.enemies, j);
-                }
-            }
-
-            for (var i:int = 0; i < currentLevel.enemies.length; i++)
-            {
-                //collision player, enemy
-                rules.collisionDetection(currentLevel.player, currentLevel.enemies[i]);
-
-                if (rules.isDead(currentLevel.enemies[i]))
-                {
-                    deleteUnits(currentLevel.enemies, i);
-                    dispatcher.dispatchEvent(updatePointsEvent);
-                    break;
-                    break;
-                }
-
-                for (var j:int = 0; j < currentLevel.enemies[i].ammunition.length; j++)
-                {
-
-                    //collision player, enemybullet
-                    rules.collisionDetection(currentLevel.player, currentLevel.enemies[i].ammunition[j]);
-
-                    if (rules.isDead(currentLevel.enemies[i].ammunition[j]))
-                    {
-                        deleteUnits(currentLevel.enemies[i].ammunition, j);
-                        break;
-                        break;
-                    }
-                }
-            }
-        }
-
         public function updateLP():void
         {
             var updateLifePointEvent:GameEvent = new GameEvent(ViewConsts.UPDATE_LIFEPOINTS, currentLevel.player.healthPoints);
@@ -164,7 +92,7 @@ package de.mediadesign.gd1011.studiof.services
                 dispatcher.dispatchEvent(ab);
                 currentLevel.stopAllUnits();
             }
-
+            //Boss Spawn
             else if (currentLevel.enemies.length == 0)
             {
                 if(!currentLevel.fortFox.initialized && !currentLevel.fortFox.moveLeftRunning)
@@ -173,7 +101,7 @@ package de.mediadesign.gd1011.studiof.services
                     currentLevel.spawnBoss();
                 }
             }
-
+            // Win
             if (currentLevel.nautilus.healthPoints <= 0 && currentLevel.nautilus.initialized)
             {
                 currentLevel.currentLevel+=1;
@@ -182,6 +110,7 @@ package de.mediadesign.gd1011.studiof.services
                 currentLevel.stopAllUnits();
             }
 
+            //Boss Spawn
             else if (currentLevel.enemies.length == 0)
             {
                 if(!currentLevel.nautilus.initialized && !currentLevel.nautilus.moveLeftRunning)
@@ -216,12 +145,10 @@ package de.mediadesign.gd1011.studiof.services
             {
                 initScroll();
             }
-            if (currentLevel.scrollBGs[0].position.x < -844)
+            if (currentLevel.scrollBGs[0].position.x < - GameConsts.STAGE_WIDTH/2)
             {
                 currentLevel.scrollBGs.shift();
             }
-
-            collision();
             updateLP();
             checkStatus();
         }

@@ -10,5 +10,9 @@ package de.mediadesign.gd1011.studiof.services
     public interface IProcess
     {
         function update(time:Number):void;
+
+        function start():void
+
+        function stop():void
     }
 }

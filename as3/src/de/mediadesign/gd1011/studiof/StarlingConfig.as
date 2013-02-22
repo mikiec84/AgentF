@@ -21,7 +21,8 @@ package de.mediadesign.gd1011.studiof
 	import de.mediadesign.gd1011.studiof.model.Renderable;
 	import de.mediadesign.gd1011.studiof.model.Score;
 	import de.mediadesign.gd1011.studiof.model.User;
-	import de.mediadesign.gd1011.studiof.services.GameLoop;
+    import de.mediadesign.gd1011.studiof.services.CollisionProcess;
+    import de.mediadesign.gd1011.studiof.services.GameLoop;
 	import de.mediadesign.gd1011.studiof.services.MoveProcess;
 	import de.mediadesign.gd1011.studiof.services.RenderProcess;
 	import de.mediadesign.gd1011.studiof.services.Rules;
@@ -74,8 +75,11 @@ package de.mediadesign.gd1011.studiof
             modelMap.map(Level).asSingleton();
             modelMap.map(Score).asSingleton();
             modelMap.map(User).asSingleton();
+
             modelMap.map(MoveProcess).asSingleton();
             modelMap.map(RenderProcess).asSingleton();
+            modelMap.map(CollisionProcess).asSingleton();
+
             modelMap.map(GameLoop).asSingleton();
 			modelMap.map(LevelConfiguration).asSingleton();
             modelMap.map(Rules).asSingleton();
