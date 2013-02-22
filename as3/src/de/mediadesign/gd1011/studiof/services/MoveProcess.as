@@ -35,9 +35,12 @@ package de.mediadesign.gd1011.studiof.services {
             targets.push(target);
         }
 
-        public function removeEntity(i:int):void
+        public function removeEntity(entity:*):void
         {
-            targets.splice(i, 1);
+			if(entity is int)
+            	targets.splice(entity, 1);
+			else if (entity is IMovable)
+				targets.splice(targets.indexOf(entity),1);
         }
 
         public function start():void

@@ -32,6 +32,7 @@ package de.mediadesign.gd1011.studiof.services
         private var JSONExtractedInformation:Object;
 
         public var scrollBGs:Vector.<ScrollableBG>;
+		private var _scrollLevel:Boolean = true;
 
         public var enemyPositions:Vector.<int>;
         public var collisionTolerance:int;              // Wie weit die bullet von der Unit entfernt sein darf um immernoch als treffer zu zählen
@@ -70,19 +71,30 @@ package de.mediadesign.gd1011.studiof.services
             for (var index:int = 0; index<enemies.length; index++)
                 enemies[index].shootBullet(time);
 
-            // scrolling background
-            if (scrollBGs[0].position.x < 0 && scrollBGs.length < 4 )
-            {
-                scrollBGs.push(new ScrollableBG());
-                initScrollBG(scrollBGs[scrollBGs.length-1]);
-            }
-            if (scrollBGs[0].position.x < - GameConsts.STAGE_WIDTH/2)
-            {
+            // updating scrolling background
+
+            if (scrollBGs.length>0 && scrollBGs[0].position.x < -GameConsts.STAGE_WIDTH/2)
                 scrollBGs.shift();
-            }
+			if (scrollBGs.length < 4 )
+				addScrollableBG();
             updateLP();
             checkStatus();
         }
+
+		private function addScrollableBG():void
+		{
+			var bg:ScrollableBG = new ScrollableBG();
+			scrollBGs.push(bg);
+
+			if (scrollBGs.length > 1)
+				bg.position.x = scrollBGs[scrollBGs.length - 2].position.x + (GameConsts.STAGE_WIDTH / 2) - 1;
+			bg.position.y = +180;
+
+			var registerBGEvent:GameEvent = new GameEvent(GameConsts.CREATE_BG, bg);
+			dispatcher.dispatchEvent(registerBGEvent);
+			if(!_scrollLevel)
+				bg.moving = false;
+		}
 
         public function updateLP():void
         {
@@ -108,7 +120,7 @@ package de.mediadesign.gd1011.studiof.services
                 {
                     if(!fortFox.initialized && !fortFox.moveLeftRunning)
                     {
-                        stopScrollBG();
+                        stopScrollLevel();
                         spawnBoss();
                     }
                 }
@@ -126,7 +138,7 @@ package de.mediadesign.gd1011.studiof.services
             {
                 if(!fortFox.initialized && !fortFox.moveLeftRunning)
                 {
-                    stopScrollBG();
+                    stopScrollLevel();
                     spawnBoss();
                 }
             }
@@ -144,7 +156,7 @@ package de.mediadesign.gd1011.studiof.services
             {
                 if(!nautilus.initialized && !nautilus.moveLeftRunning)
                 {
-                    stopScrollBG();
+                    stopScrollLevel();
                     spawnBoss();
                 }
             }
@@ -311,16 +323,10 @@ package de.mediadesign.gd1011.studiof.services
             dispatcher.dispatchEvent(deleteUnitEvent);
         }
 
-        public function initScrollBG(bgScroll:ScrollableBG):void
+        public function stopScrollLevel():void
         {
-            var registerBGEvent:GameEvent = new GameEvent(GameConsts.IMPL_BG, bgScroll);
-            dispatcher.dispatchEvent(registerBGEvent);
-        }
-
-        public function stopScrollBG():void
-        {
-            var stopScrollEvent:GameEvent = new GameEvent(GameConsts.STOP_SCROLL);
-            dispatcher.dispatchEvent(stopScrollEvent);
+            for each(var bg:ScrollableBG in scrollBGs)
+				bg.moving = false;
         }
 
 

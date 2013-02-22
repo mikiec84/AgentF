@@ -8,7 +8,8 @@
 package de.mediadesign.gd1011.studiof.view.mediators
 {
     import de.mediadesign.gd1011.studiof.consts.GameConsts;
-    import de.mediadesign.gd1011.studiof.events.GameEvent;
+	import de.mediadesign.gd1011.studiof.consts.ViewConsts;
+	import de.mediadesign.gd1011.studiof.events.GameEvent;
     import de.mediadesign.gd1011.studiof.services.GameLoop;
     import de.mediadesign.gd1011.studiof.view.BackgroundView;
 
@@ -29,7 +30,7 @@ package de.mediadesign.gd1011.studiof.view.mediators
         override public function initialize():void
         {
 			bgView.addChild(new Image(assets.getTexture("Background1")));
-            addContextListener(GameConsts.ADD_BG_TO_GAME, add);
+            addContextListener(ViewConsts.ADD_BG, add);
         }
 
         override public function destroy():void

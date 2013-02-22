@@ -9,7 +9,8 @@ package de.mediadesign.gd1011.studiof.command
 {
 
     import de.mediadesign.gd1011.studiof.consts.GameConsts;
-    import de.mediadesign.gd1011.studiof.events.GameEvent;
+	import de.mediadesign.gd1011.studiof.consts.ViewConsts;
+	import de.mediadesign.gd1011.studiof.events.GameEvent;
     import de.mediadesign.gd1011.studiof.services.LevelProcess;
     import de.mediadesign.gd1011.studiof.model.Renderable;
     import de.mediadesign.gd1011.studiof.model.Unit;
@@ -49,7 +50,7 @@ package de.mediadesign.gd1011.studiof.command
             moveProcess.addEntity(event.dataObj);
             renderProcess.registerRenderable(new Renderable(unit.position, view));
 
-            var addToGameEvent:GameEvent = new GameEvent(GameConsts.ADD_SPRITE_TO_GAME, view);
+            var addToGameEvent:GameEvent = new GameEvent(ViewConsts.ADD_SPRITE_TO_GAME, view);
             dispatcher.dispatchEvent(addToGameEvent);
 
         }

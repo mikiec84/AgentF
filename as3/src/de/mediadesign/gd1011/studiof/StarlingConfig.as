@@ -9,20 +9,20 @@ package de.mediadesign.gd1011.studiof
 {
 	import de.mediadesign.gd1011.studiof.command.DamageUnitCommand;
 	import de.mediadesign.gd1011.studiof.command.DeleteUnitCommand;
-	import de.mediadesign.gd1011.studiof.command.ImplementBackgroundCommand;
+	import de.mediadesign.gd1011.studiof.command.CreateBackgroundCommand;
 	import de.mediadesign.gd1011.studiof.command.InitGameCommand;
 	import de.mediadesign.gd1011.studiof.command.RegisterBulletCommand;
 	import de.mediadesign.gd1011.studiof.command.SpawnFortFoxCommand;
-    import de.mediadesign.gd1011.studiof.command.SpawnNautilusCommand;
-    import de.mediadesign.gd1011.studiof.command.StopScrollBGCommand;
-    import de.mediadesign.gd1011.studiof.consts.GameConsts;
-	import de.mediadesign.gd1011.studiof.services.LevelProcess;
+	import de.mediadesign.gd1011.studiof.command.SpawnNautilusCommand;
+	import de.mediadesign.gd1011.studiof.consts.GameConsts;
+	import de.mediadesign.gd1011.studiof.consts.ViewConsts;
 	import de.mediadesign.gd1011.studiof.model.LevelConfiguration;
 	import de.mediadesign.gd1011.studiof.model.Renderable;
 	import de.mediadesign.gd1011.studiof.model.Score;
 	import de.mediadesign.gd1011.studiof.model.User;
-    import de.mediadesign.gd1011.studiof.services.CollisionProcess;
-    import de.mediadesign.gd1011.studiof.services.GameLoop;
+	import de.mediadesign.gd1011.studiof.services.CollisionProcess;
+	import de.mediadesign.gd1011.studiof.services.GameLoop;
+	import de.mediadesign.gd1011.studiof.services.LevelProcess;
 	import de.mediadesign.gd1011.studiof.services.MoveProcess;
 	import de.mediadesign.gd1011.studiof.services.RenderProcess;
 	import de.mediadesign.gd1011.studiof.services.Rules;
@@ -89,13 +89,12 @@ package de.mediadesign.gd1011.studiof
         private function initCommands():void
         {
             commandMap.map(GameConsts.INIT_GAME).toCommand(InitGameCommand);
-            commandMap.map(GameConsts.IMPL_BG).toCommand(ImplementBackgroundCommand);
+            commandMap.map(GameConsts.CREATE_BG).toCommand(CreateBackgroundCommand);
             commandMap.map(GameConsts.REGISTER_UNIT).toCommand(RegisterBulletCommand);
             commandMap.map(GameConsts.DELETE_UNIT).toCommand(DeleteUnitCommand);
             commandMap.map(GameConsts.DAMAGE_UNIT).toCommand(DamageUnitCommand);
             commandMap.map(GameConsts.FORT_FOX).toCommand(SpawnFortFoxCommand);
             commandMap.map(GameConsts.NAUTILUS).toCommand(SpawnNautilusCommand);
-            commandMap.map(GameConsts.STOP_SCROLL).toCommand(StopScrollBGCommand);
         }
 
         public function initMediators() : void

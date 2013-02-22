@@ -8,7 +8,8 @@
 package de.mediadesign.gd1011.studiof.command
 {
     import de.mediadesign.gd1011.studiof.consts.GameConsts;
-    import de.mediadesign.gd1011.studiof.events.GameEvent;
+	import de.mediadesign.gd1011.studiof.consts.ViewConsts;
+	import de.mediadesign.gd1011.studiof.events.GameEvent;
     import de.mediadesign.gd1011.studiof.services.LevelProcess;
     import de.mediadesign.gd1011.studiof.model.Unit;
     import de.mediadesign.gd1011.studiof.services.MoveProcess;
@@ -63,7 +64,7 @@ package de.mediadesign.gd1011.studiof.command
 
             if (view != null)
             {
-                var removeFromGameEvent:GameEvent = new GameEvent(GameConsts.REMOVE_SPRITE_FROM_GAME, view);
+                var removeFromGameEvent:GameEvent = new GameEvent(ViewConsts.REMOVE_SPRITE_FROM_GAME, view);
                 dispatcher.dispatchEvent(removeFromGameEvent);
             }
 

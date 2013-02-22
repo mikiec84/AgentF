@@ -8,7 +8,8 @@
 package de.mediadesign.gd1011.studiof.command
 {
     import de.mediadesign.gd1011.studiof.consts.GameConsts;
-    import de.mediadesign.gd1011.studiof.events.GameEvent;
+	import de.mediadesign.gd1011.studiof.consts.ViewConsts;
+	import de.mediadesign.gd1011.studiof.events.GameEvent;
     import de.mediadesign.gd1011.studiof.services.RenderProcess;
 
     import flash.events.IEventDispatcher;
@@ -28,7 +29,7 @@ package de.mediadesign.gd1011.studiof.command
 
         override public function execute():void
         {
-            var showDamageEvent:GameEvent = new GameEvent(GameConsts.SHOW_DAMAGE, event.dataObj);
+            var showDamageEvent:GameEvent = new GameEvent(ViewConsts.SHOW_DAMAGE, event.dataObj);
             dispatcher.dispatchEvent(showDamageEvent);
         }
     }

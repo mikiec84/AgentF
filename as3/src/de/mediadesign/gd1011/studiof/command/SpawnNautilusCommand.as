@@ -35,7 +35,7 @@ package de.mediadesign.gd1011.studiof.command
             var bossView:Sprite = new EnemyView(ViewConsts.UNDERWATER_ENEMY, GameConsts.NAUTILUS);
             moveProcess.addEntity(level.nautilus);
             renderProcess.registerRenderable(new Renderable(level.nautilus.position, bossView));
-            var addEnemySpriteToGameEvent:GameEvent = new GameEvent(GameConsts.ADD_SPRITE_TO_GAME, bossView);
+            var addEnemySpriteToGameEvent:GameEvent = new GameEvent(ViewConsts.ADD_SPRITE_TO_GAME, bossView);
             dispatcher.dispatchEvent(addEnemySpriteToGameEvent);
         }
     }
