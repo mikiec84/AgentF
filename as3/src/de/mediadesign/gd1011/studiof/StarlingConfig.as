@@ -12,7 +12,8 @@ package de.mediadesign.gd1011.studiof
 	import de.mediadesign.gd1011.studiof.command.ImplementBackgroundCommand;
 	import de.mediadesign.gd1011.studiof.command.InitGameCommand;
 	import de.mediadesign.gd1011.studiof.command.RegisterBulletCommand;
-	import de.mediadesign.gd1011.studiof.command.SpawnEndbossCommand;
+	import de.mediadesign.gd1011.studiof.command.SpawnFortFoxCommand;
+    import de.mediadesign.gd1011.studiof.command.SpawnNautilusCommand;
     import de.mediadesign.gd1011.studiof.command.StopScrollBGCommand;
     import de.mediadesign.gd1011.studiof.consts.GameConsts;
 	import de.mediadesign.gd1011.studiof.model.Level;
@@ -88,7 +89,8 @@ package de.mediadesign.gd1011.studiof
             commandMap.map(GameConsts.REGISTER_UNIT).toCommand(RegisterBulletCommand);
             commandMap.map(GameConsts.DELETE_UNIT).toCommand(DeleteUnitCommand);
             commandMap.map(GameConsts.DAMAGE_UNIT).toCommand(DamageUnitCommand);
-            commandMap.map(GameConsts.ENDBOSS).toCommand(SpawnEndbossCommand);
+            commandMap.map(GameConsts.FORT_FOX).toCommand(SpawnFortFoxCommand);
+            commandMap.map(GameConsts.NAUTILUS).toCommand(SpawnNautilusCommand);
             commandMap.map(GameConsts.STOP_SCROLL).toCommand(StopScrollBGCommand);
         }
 

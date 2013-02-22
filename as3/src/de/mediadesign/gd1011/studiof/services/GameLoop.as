@@ -66,6 +66,8 @@ package de.mediadesign.gd1011.studiof.services
                 // collision Boss1
                 if (currentLevel.fortFox.initialized)
                     rules.collisionDetection(currentLevel.player.ammunition[i], currentLevel.fortFox);
+                if (currentLevel.nautilus.initialized)
+                    rules.collisionDetection(currentLevel.player.ammunition[i], currentLevel.nautilus);
 
                 if (rules.isDead(currentLevel.player.ammunition[i]))
                 {
@@ -124,6 +126,9 @@ package de.mediadesign.gd1011.studiof.services
 
         public function update(e:EnterFrameEvent):void
         {
+            /*if (currentLevel.nautilus != null) {
+                trace("Nautilus x: "+currentLevel.nautilus.position.x);
+            }*/
             if(currentLevel.player== null)
                 return;
 
@@ -136,6 +141,7 @@ package de.mediadesign.gd1011.studiof.services
             {
                 currentLevel.player.shootBullet(e.passedTime);
             }
+            currentLevel.nautilus.shootBullet(e.passedTime);
             // Enemy shooting
             for (var index:int = 0; index<currentLevel.enemies.length; index++)
                 currentLevel.enemies[index].shootBullet(e.passedTime);
@@ -171,15 +177,14 @@ package de.mediadesign.gd1011.studiof.services
                     if(!currentLevel.fortFox.initialized && !currentLevel.fortFox.moveLeftRunning)
                     {
                         currentLevel.stopScrollBG();
-                        currentLevel.fortFox.start();
-                        //currentLevel.spawnBoss();
+                        currentLevel.spawnBoss();
                     }
                 }
             }
 
             if (currentLevel.fortFox.healthPoints <= 0 && currentLevel.fortFox.initialized)
             {
-                //currentLevel.currentLevel + 1;
+                currentLevel.currentLevel+=1;
                 var ab:GameEvent = new GameEvent(ViewConsts.SHOW_GAMEOVER, true);
                 dispatcher.dispatchEvent(ab);
             }
@@ -189,9 +194,23 @@ package de.mediadesign.gd1011.studiof.services
                 if(!currentLevel.fortFox.initialized && !currentLevel.fortFox.moveLeftRunning)
                 {
                     currentLevel.stopScrollBG();
-                    currentLevel.fortFox.start();
-                    //currentLevel.spawnBoss();
+                    currentLevel.spawnBoss();
+                }
+            }
 
+            if (currentLevel.nautilus.healthPoints <= 0 && currentLevel.nautilus.initialized)
+            {
+                currentLevel.currentLevel+=1;
+                var ab:GameEvent = new GameEvent(ViewConsts.SHOW_GAMEOVER, true);
+                dispatcher.dispatchEvent(ab);
+            }
+
+            else if (currentLevel.enemies.length == 0)
+            {
+                if(!currentLevel.nautilus.initialized && !currentLevel.nautilus.moveLeftRunning)
+                {
+                    currentLevel.stopScrollBG();
+                    currentLevel.spawnBoss();
                 }
             }
         }

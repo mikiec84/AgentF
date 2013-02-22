@@ -2,14 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9d5af888-79aa-45bf-94bc-b57803b7fbdf" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/config/atlasxml/TileSystem1.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/view/mediators/GameViewMediator.as" afterPath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/view/mediators/GameViewMediator.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/view/mediators/ScrollBackgroundViewMediator.as" afterPath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/view/mediators/ScrollBackgroundViewMediator.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/model/IEndboss.as" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/model/NautilusBoss.as" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/command/SpawnNautilusCommand.as" />
+      <change type="MOVED" beforePath="C:\Users\maxfrank\Documents\GitHub\AgentF\as3\src\de\mediadesign\gd1011\studiof\command\SpawnEndbossCommand.as" afterPath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/command/SpawnFortFoxCommand.as" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/model/FortFoxBoss.as" afterPath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/model/FortFoxBoss.as" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/consts/GameConsts.as" afterPath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/consts/GameConsts.as" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/services/GameLoop.as" afterPath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/services/GameLoop.as" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/model/IMovable.as" afterPath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/model/IMovable.as" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/command/InitGameCommand.as" afterPath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/command/InitGameCommand.as" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/model/Level.as" afterPath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/model/Level.as" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/model/Player.as" afterPath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/model/Player.as" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/model/ScrollableBG.as" afterPath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/model/ScrollableBG.as" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/StarlingConfig.as" afterPath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/StarlingConfig.as" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/model/Unit.as" afterPath="$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/model/Unit.as" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/config/config.json" afterPath="$PROJECT_DIR$/src/config/config.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/config/enemy.json" afterPath="$PROJECT_DIR$/src/config/enemy.json" />
     </list>
     <ignored path="AgentF.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1361451842056" ignored="false" />
+    <file path="/Dummy.txt" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1361525672016" ignored="false" />
     <file path="/fragment.js2" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1361436488082" ignored="false" />
     <file path="/AgentF.as" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1359635910403" ignored="false" />
     <file path="/AgentF-app.xml" changelist="9d5af888-79aa-45bf-94bc-b57803b7fbdf" time="1359622409363" ignored="false" />
@@ -97,6 +109,7 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -131,7 +144,6 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
-    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -147,9 +159,7 @@
             <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/view/mediators/GameViewMediator.as">
               <provider selected="true" editor-type-id="text-editor">
                 <state line="59" column="9" selection-start="1867" selection-end="1867" vertical-scroll-proportion="0.0">
-                  <folding>
-                    <element signature="e#59#114#0" expanded="true" />
-                  </folding>
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -157,7 +167,7 @@
           <file leaf-file-name="EnemyViewMediator.as" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/view/mediators/EnemyViewMediator.as">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="51" column="68" selection-start="1436" selection-end="1442" vertical-scroll-proportion="0.41580757">
+                <state line="51" column="68" selection-start="1436" selection-end="1442" vertical-scroll-proportion="0.60366553">
                   <folding />
                 </state>
               </provider>
@@ -171,9 +181,7 @@
             <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/view/BackgroundView.as">
               <provider selected="true" editor-type-id="text-editor">
                 <state line="19" column="0" selection-start="359" selection-end="359" vertical-scroll-proportion="0.0">
-                  <folding>
-                    <element signature="n#!!doc" expanded="true" />
-                  </folding>
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -273,8 +281,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -306,24 +312,6 @@
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="utils" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AgentF" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="as3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -362,32 +350,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="view" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AgentF" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="as3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="studiof" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="view" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mediators" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -453,11 +415,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="model" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
+              <option name="myItemId" value="events" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -475,7 +433,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="config" />
+              <option name="myItemId" value="studiof" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="consts" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -493,70 +455,18 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="config" />
+              <option name="myItemId" value="studiof" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="atlasxml" />
+              <option name="myItemId" value="command" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AgentF" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="as3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="assetlibs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AgentF" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="as3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="assetlibs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TileSystem.swc" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="library.swf" />
-              <option name="myItemType" value="com.intellij.lang.javascript.flex.presentation.FlexTreeStructureProvider$FlexFileNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AgentF" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="as3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="assetlibs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TileSystem.swc" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -575,8 +485,8 @@
     <property name="restartRequiresConfirmation" value="true" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -611,19 +521,18 @@
             <option name="mySupportsDeletion" value="false" />
             <option name="myCanBeAbsent" value="false" />
             <option name="myId" value="UPDATED" />
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/AgentF.as</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/src/config/config.json</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/src/config/enemy.json</PATH>
             <PATH vcs="Git" revision="">$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/StarlingConfig.as</PATH>
             <PATH vcs="Git" revision="">$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/command/InitGameCommand.as</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/consts/GameConsts.as</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/model/FortFoxBoss.as</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/model/IMovable.as</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/model/Level.as</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/model/Player.as</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/model/ScrollableBG.as</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/model/Unit.as</PATH>
             <PATH vcs="Git" revision="">$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/services/GameLoop.as</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/view/BackgroundView.as</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/view/EnemyView.as</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/view/GameView.as</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/view/ScrollBackgroundView.as</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/view/StartScreenView.as</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/view/mediators/BackgroundViewMediator.as</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/view/mediators/EnemyViewMediator.as</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/view/mediators/GameViewMediator.as</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/view/mediators/StartScreenViewMediator.as</PATH>
           </FILE-GROUP>
           <FILE-GROUP>
             <option name="myUpdateName" value="Created" />
@@ -631,8 +540,10 @@
             <option name="mySupportsDeletion" value="false" />
             <option name="myCanBeAbsent" value="false" />
             <option name="myId" value="CREATED" />
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/view/mediators/ScrollBackgroundViewMediator.as</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/src/starling/utils/AssetManager.as</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/command/SpawnFortFoxCommand.as</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/command/SpawnNautilusCommand.as</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/model/IEndboss.as</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/model/NautilusBoss.as</PATH>
           </FILE-GROUP>
           <FILE-GROUP>
             <option name="myUpdateName" value="Deleted" />
@@ -640,9 +551,11 @@
             <option name="mySupportsDeletion" value="false" />
             <option name="myCanBeAbsent" value="true" />
             <option name="myId" value="REMOVED_FROM_REPOSITORY" />
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/libs/dummy.swc</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/consts/MovementConsts.as</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/services/Assets.as</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/AgentF/AgentF-app.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/AgentF/config/config.json</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/AgentF/config/viewconfig.json</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/AgentF/robotlegs/extensions/starlingViewMap/readme.md</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/command/SpawnEndbossCommand.as</PATH>
           </FILE-GROUP>
           <FILE-GROUP>
             <option name="myUpdateName" value="Restored" />
@@ -672,6 +585,7 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="MERGED_WITH_CONFLICTS" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/AgentF/AgentF.swf</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Merged with tree conflicts" />
@@ -753,6 +667,19 @@
       <option name="trusted" value="true" />
       <method />
     </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method />
+    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -779,19 +706,6 @@
       <envs />
       <properties />
       <listeners />
-      <method />
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -1163,12 +1077,11 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32552955" sideWeight="0.497552" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3737486" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.6373749" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1177,16 +1090,17 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32814237" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3192436" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32998884" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977587" sideWeight="0.54282534" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18836713" sideWeight="0.36262515" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18836713" sideWeight="0.6718576" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32703003" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3737486" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3192436" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -1283,18 +1197,12 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/model/ScrollableBG.as">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="9" selection-start="912" selection-end="912" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
+        <state line="32" column="9" selection-start="912" selection-end="912" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/command/DeleteUnitCommand.as">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="63" column="29" selection-start="1916" selection-end="1916" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="63" column="29" selection-start="1916" selection-end="1916" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/services/RenderProcess.as">
@@ -1309,9 +1217,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/services/Rules.as">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="57" selection-start="1267" selection-end="1267" vertical-scroll-proportion="0.40232557">
-          <folding />
-        </state>
+        <state line="40" column="57" selection-start="1267" selection-end="1267" vertical-scroll-proportion="0.40232557" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/config/enemy.json">
@@ -1323,11 +1229,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/view/GameView.as">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="9" selection-start="766" selection-end="766" vertical-scroll-proportion="0.5452463">
-          <folding>
-            <element signature="e#203#258#0" expanded="true" />
-          </folding>
-        </state>
+        <state line="34" column="9" selection-start="766" selection-end="766" vertical-scroll-proportion="0.5452463" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/config/viewconfig.json">
@@ -1339,9 +1241,7 @@
     </entry>
     <entry file="file://C:/Program Files (x86)/FlashDevelop/Tools/flexsdk/frameworks/projects/mx/src/mx/controls/Image.as">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="69" column="0" selection-start="2345" selection-end="2345" vertical-scroll-proportion="0.22336769">
-          <folding />
-        </state>
+        <state line="69" column="0" selection-start="2345" selection-end="2345" vertical-scroll-proportion="0.22336769" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/services/GameLoop.as">
@@ -1361,27 +1261,19 @@
     <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/view/BackgroundView.as">
       <provider selected="true" editor-type-id="text-editor">
         <state line="19" column="0" selection-start="359" selection-end="359" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/view/EnemyView.as">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="15" selection-start="815" selection-end="815" vertical-scroll-proportion="0.5452463">
-          <folding>
-            <element signature="e#204#234#0" expanded="true" />
-          </folding>
-        </state>
+        <state line="34" column="15" selection-start="815" selection-end="815" vertical-scroll-proportion="0.5452463" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/view/mediators/GameViewMediator.as">
       <provider selected="true" editor-type-id="text-editor">
         <state line="59" column="9" selection-start="1867" selection-end="1867" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#59#114#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1394,7 +1286,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/de/mediadesign/gd1011/studiof/view/mediators/EnemyViewMediator.as">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="51" column="68" selection-start="1436" selection-end="1442" vertical-scroll-proportion="0.41580757">
+        <state line="51" column="68" selection-start="1436" selection-end="1442" vertical-scroll-proportion="0.60366553">
           <folding />
         </state>
       </provider>

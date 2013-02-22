@@ -11,7 +11,9 @@ package de.mediadesign.gd1011.studiof.command
     import de.mediadesign.gd1011.studiof.consts.ViewConsts;
     import de.mediadesign.gd1011.studiof.events.GameEvent;
     import de.mediadesign.gd1011.studiof.model.FortFoxBoss;
+    import de.mediadesign.gd1011.studiof.model.NautilusBoss;
     import de.mediadesign.gd1011.studiof.model.Level;
+    import de.mediadesign.gd1011.studiof.model.NautilusBoss;
     import de.mediadesign.gd1011.studiof.model.Player;
     import de.mediadesign.gd1011.studiof.model.Renderable;
     import de.mediadesign.gd1011.studiof.services.GameLoop;
@@ -51,6 +53,7 @@ package de.mediadesign.gd1011.studiof.command
 
             moveProcess.addEntity(level.player);
             level.fortFox = new FortFoxBoss(level);
+            level.nautilus = new NautilusBoss(level);
 
             for (var index:int = 0; index<level.enemies.length; index++)
             {

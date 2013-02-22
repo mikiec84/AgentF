@@ -1,8 +1,8 @@
 {
     "ENEMY":
     {
-        "enemyCount":50,
-        "enemyRate":40,
+        "enemyCount":100,
+        "enemyRate":500,
         "fireRateEnemy":0.4,
         "enemyRange":1500,
         "collisionTolerance":40
@@ -17,5 +17,23 @@
         "changePosTime":2,
         "backMovementDistance":300
 
+    },
+
+    "NAUTILUS":
+    {
+        "idleTimeFrame":3,
+        "idleXPosition":1000,
+        "startingPlatform":4,
+        "changePosTime":1,
+        "xOffset":500,
+        "changePosMovementSpeed":600,
+        "attackSpeed":1,
+        "healthpoints":20
+    },
+
+    "BOSS_SPAWN":
+    {
+        "1":"Fort_Fox",
+        "2":"Nautilus"
     }
 }

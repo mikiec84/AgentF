@@ -10,7 +10,7 @@ package de.mediadesign.gd1011.studiof.model {
     import de.mediadesign.gd1011.studiof.events.GameEvent;
     import de.mediadesign.gd1011.studiof.services.JSONReader;
 
-    public class FortFoxBoss extends Unit
+    public class FortFoxBoss extends Unit implements IEndboss
     {
         private var timeCounter:Number = 0;
         private var idleTimeFrame:Number;
@@ -40,9 +40,9 @@ package de.mediadesign.gd1011.studiof.model {
         }
 
         public function start():void
-        {
+        {   trace("FORTFOX SPAWNED");
             _moveLeftRunning = true;
-            var a:GameEvent = new GameEvent(GameConsts.ENDBOSS);
+            var a:GameEvent = new GameEvent(GameConsts.FORT_FOX);
             level.dispatcher.dispatchEvent(a);
         }
 
@@ -50,32 +50,34 @@ package de.mediadesign.gd1011.studiof.model {
         {   //trace("Current Platform = "+currentPlatform+", Current X = "+position.x+", Current Y = "+position.y);
             //trace("DownMovementRunning = "+downMovementRunning+", UpMovementRunning = "+upMovementRunning);
             currentPlatform = observePlatform(position.y);
-            if (!upMovementRunning && !downMovementRunning && !_moveLeftRunning && _initialized)
-            {   //trace(timeCounter+", "+idleTimeFrame);
-                timeCounter+=time;
-                if (timeCounter >= idleTimeFrame)
+            if (!stopped) {
+                if (!upMovementRunning && !downMovementRunning && !_moveLeftRunning && _initialized)
+                {   //trace(timeCounter+", "+idleTimeFrame);
+                    timeCounter+=time;
+                    if (timeCounter >= idleTimeFrame)
+                    {
+                        timeCounter = 0;
+                        if (currentPlatform == 1)
+                        {
+                            upMovementRunning = true;
+                        }
+                        else
+                        {
+                            downMovementRunning = true;
+                        }
+                    }
+                }
+                else
                 {
-                    timeCounter = 0;
-                    if (currentPlatform == 1)
-                    {
-                        upMovementRunning = true;
+                    if (upMovementRunning) {
+                        doUpMovement(time);
                     }
-                    else
-                    {
-                        downMovementRunning = true;
+                    if (downMovementRunning) {
+                        doDownMovement(time);
                     }
-                }
-            }
-            else
-            {
-                if (upMovementRunning) {
-                    doUpMovement(time);
-                }
-                if (downMovementRunning) {
-                    doDownMovement(time);
-                }
-                if (_moveLeftRunning) {
-                    doMoveLeft(time);
+                    if (_moveLeftRunning) {
+                        doMoveLeft(time);
+                    }
                 }
             }
         }
@@ -154,6 +156,14 @@ package de.mediadesign.gd1011.studiof.model {
         public function get initialized():Boolean
         {
             return _initialized;
+        }
+
+        public function reset():void
+        {
+            position.x = idleXPosition+backMovementDistance;
+            _initialized = false;
+            healthPoints = JSONExtractedInformation["healthpoints"];
+            position.y = JSONExtractedInformation["startingPlatform"]*GameConsts.PLATFORM_HEIGHT+yOffset;
         }
     }
 }
