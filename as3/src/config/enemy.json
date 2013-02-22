@@ -15,7 +15,8 @@
         "idleXPosition":1000,
         "startingPlatform":0,
         "changePosTime":2,
-        "backMovementDistance":300
+        "backMovementDistance":300,
+        "healthpoints":10
 
     },
 
