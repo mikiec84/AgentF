@@ -28,7 +28,7 @@ package de.mediadesign.gd1011.studiof.model
         private var _player:Player;
         private var _fortFox:FortFoxBoss;
         private var _nautilus:NautilusBoss;
-        private var _currentLevel:int = 1;
+        private var _currentLevel:int = 2;
 
         private var JSONExtractedInformation:Object;
 
@@ -38,8 +38,8 @@ package de.mediadesign.gd1011.studiof.model
         public var collisionTolerance:int;              // Wie weit die bullet von der Unit entfernt sein darf um immernoch als treffer zu zählen
 
         ///CHEATS
-        public var onlyThreeMobs:Boolean   = true;
-        public var bossHaveLowLife:Boolean = true;
+        public var onlyThreeMobs:Boolean   = false;
+        public var bossHaveLowLife:Boolean = false;
         /////////
 
         public function Level()

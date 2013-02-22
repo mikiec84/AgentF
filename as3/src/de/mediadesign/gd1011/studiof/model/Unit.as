@@ -81,6 +81,9 @@ package de.mediadesign.gd1011.studiof.model
 
         public function move(time:Number):void
         {
+            if (position.y >= GameConsts.PLATFORM_HEIGHT*6) {
+                position.y = GameConsts.PLATFORM_HEIGHT*5+2;
+            }
             if (!stopped) {
                 if (assertCorrectInitialization())
                 {
