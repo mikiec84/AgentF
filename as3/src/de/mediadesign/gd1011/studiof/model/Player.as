@@ -101,7 +101,7 @@ package de.mediadesign.gd1011.studiof.model {
                             if (_targetPlatform == 6) ignoreMouseInput();
                         }
                     }
-                    else trace("----------Function Move failed, because Player EITHER DEAD or not correctly initialized. Additional Info: "+position.x+","+position.y+","+velocity+","+currentPlatform+","+this+","+_tweenedPosition.x+","+_tweenedPosition.y);
+                    else trace("----------Function Move failed, because Player not correctly initialized. Additional Info: "+position.x+","+position.y+","+velocity+","+currentPlatform+","+this+","+_tweenedPosition.x+","+_tweenedPosition.y);
                 }
             }
         }
@@ -114,8 +114,7 @@ package de.mediadesign.gd1011.studiof.model {
         }
 
         private function initializeVariables():void
-        {   //trace(_comeDownIsntRunning);
-            //if (_down != null) trace("Is down in juggler: "+Starling.juggler.contains(_down));
+        {
             currentPlatform      = observePlatform(position.y);
             upIsRunning          = (_up != null && !_up.isComplete && Starling.juggler.contains(_up));
             _comeDownIsntRunning = !(_down != null && !_down.isComplete);
@@ -131,17 +130,14 @@ package de.mediadesign.gd1011.studiof.model {
             if (_up != null && _up.isComplete && Starling.juggler.contains(_up))
             {
                 Starling.juggler.remove(_up);
-//                trace("Up removed from juggler");
             }
             if (_down != null && _down.isComplete && Starling.juggler.contains(_down))
             {
                 Starling.juggler.remove(_down);
-//                trace("Down removed from juggler");
             }
             if (_landing != null && _landing.isComplete && Starling.juggler.contains(_landing))
             {
                 Starling.juggler.remove(_landing);
-//                trace("Land removed from juggler");
             }
         }
 
@@ -165,8 +161,7 @@ package de.mediadesign.gd1011.studiof.model {
                     }
                     else
                     {
-                        position.y = GameConsts.PLATFORM_HEIGHT*_targetPlatform;
-                        //trace("Player.y wurde beim Runterziehen auf targetplatform gesetzt.");
+                        position.y = GameConsts.PLATFORM_HEIGHT*_targetPlatform+yOffset;
                     }
                 }
                 else
@@ -177,7 +172,7 @@ package de.mediadesign.gd1011.studiof.model {
                            setNewPosition(yOffset+position.y-speedTowardsMouse*time);
                         } else {
                             if (currentPlatform == 2) {
-                                position.y = GameConsts.PLATFORM_HEIGHT*_targetPlatform;
+                                position.y = GameConsts.PLATFORM_HEIGHT*_targetPlatform+yOffset;
                             }
                         }
                     }
@@ -190,10 +185,7 @@ package de.mediadesign.gd1011.studiof.model {
         }
 
         private function administerTweens(time:Number):void
-        {   //trace("Any Tween in Motion: "+_anyTweensInMotion+", HochTween: "+(_up != null && !_up.isComplete)+", DownTween: "+(_down != null && !_down.isComplete)+", LandTween: "+(_landing != null && !_landing.isComplete));
-            //trace("Land Is Running: "+!_landIsntRunning+", is land running: "+(_landing != null && !_landing.isComplete && _landStillInJuggler));
-
-
+        {
             if (!upIsRunning && _comeDownIsntRunning && position.y < GameConsts.PLATFORM_HEIGHT*2-50 && _landIsntRunning)
             {
                     shootBullet(time);
@@ -226,7 +218,6 @@ package de.mediadesign.gd1011.studiof.model {
         {
             if (_targetPlatform == 6 && currentPlatform != 5)
             {
-                //trace("startJump wird nicht ausgeführt weil targetplatform == 6 aber currentplatform != 5. currentPlatform: "+currentPlatform);
                 _swiped = true;
             }
             else
@@ -268,7 +259,7 @@ package de.mediadesign.gd1011.studiof.model {
         }
 
         private function land():void
-        {   //trace("LANDING BEGIN");
+        {
             _landing = new Tween(_tweenedPosition, jumpSpeedBeimEinpendeln, Transitions.EASE_OUT_ELASTIC);
             _landing.moveTo(_tweenedPosition.x,  GameConsts.STAGE_HEIGHT/3+yOffset);
             Starling.juggler.add(_landing);
@@ -288,7 +279,6 @@ package de.mediadesign.gd1011.studiof.model {
             else
             {
                 _targetPlatform = value;
-                //trace("targetPlatform wurde auf "+targetPlatform+" gesetzt.");
             }
         }
 
@@ -299,9 +289,8 @@ package de.mediadesign.gd1011.studiof.model {
             {
                 counter = 0;
             }
-            if (counter == 0 && (cooldown >= (1 / fireRate) || (!_anyTweensInMotion && currentPlatform<2)))
-            {   //trace("Ich will feuern weil up fertig ist aber come down nicht am laufen: "+(_up != null && _up.isComplete && _comeDownIsntRunning));
-                //if (currentPlatform == 1 && !_landIsntRunning) {
+            if (counter == 0 && ((cooldown >= (1 / fireRate) && position.y > GameConsts.PLATFORM_HEIGHT*2-50) || (!_anyTweensInMotion && currentPlatform<2 && position.y < GameConsts.PLATFORM_HEIGHT*2-50)))
+            {
                 if (cooldown >= (1 / fireRate) || (!_anyTweensInMotion && currentPlatform<2 && counter == 0))
                 {
                     if (currentPlatform == 1 && !_landIsntRunning)
@@ -318,7 +307,7 @@ package de.mediadesign.gd1011.studiof.model {
                     if (currentPlatform<2)
                     {
                         counter=1;
-                        trace("Counter für schießen: "+counter);
+                        //trace("Counter für schießen: "+counter);
                     }
                     if (currentPlatform<2)
                     {
