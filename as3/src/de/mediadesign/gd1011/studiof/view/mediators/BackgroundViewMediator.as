@@ -23,9 +23,6 @@ package de.mediadesign.gd1011.studiof.view.mediators
         [Inject]
         public var bgView:BackgroundView;
 
-        [Inject]
-        public var gameLoop:GameLoop;
-
 		[Inject]
 		public var assets:AssetManager;
 
@@ -33,7 +30,6 @@ package de.mediadesign.gd1011.studiof.view.mediators
         {
 			bgView.addChild(new Image(assets.getTexture("Background1")));
             addContextListener(GameConsts.ADD_BG_TO_GAME, add);
-            gameLoop.initScroll();
         }
 
         override public function destroy():void

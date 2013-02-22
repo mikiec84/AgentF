@@ -7,17 +7,15 @@
  */
 package de.mediadesign.gd1011.studiof.model
 {
-    import de.mediadesign.gd1011.studiof.consts.GameConsts;
-    import de.mediadesign.gd1011.studiof.consts.ViewConsts;
-    import de.mediadesign.gd1011.studiof.consts.ViewConsts;
-    import de.mediadesign.gd1011.studiof.events.GameEvent;
-    import de.mediadesign.gd1011.studiof.services.IProcess;
-    import de.mediadesign.gd1011.studiof.view.ScrollBackgroundView;
-    import de.mediadesign.gd1011.studiof.services.JSONReader;
+	import de.mediadesign.gd1011.studiof.consts.GameConsts;
+	import de.mediadesign.gd1011.studiof.consts.ViewConsts;
+	import de.mediadesign.gd1011.studiof.events.GameEvent;
+	import de.mediadesign.gd1011.studiof.services.IProcess;
+	import de.mediadesign.gd1011.studiof.services.JSONReader;
 
-    import flash.events.IEventDispatcher;
+	import flash.events.IEventDispatcher;
 
-    public class Level implements IProcess
+	public class Level implements IProcess
     {
         [Inject]
         public var dispatcher:IEventDispatcher;

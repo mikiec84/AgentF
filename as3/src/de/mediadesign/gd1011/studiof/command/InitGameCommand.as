@@ -16,7 +16,8 @@ package de.mediadesign.gd1011.studiof.command
     import de.mediadesign.gd1011.studiof.model.NautilusBoss;
     import de.mediadesign.gd1011.studiof.model.Player;
     import de.mediadesign.gd1011.studiof.model.Renderable;
-    import de.mediadesign.gd1011.studiof.services.CollisionProcess;
+	import de.mediadesign.gd1011.studiof.model.ScrollableBG;
+	import de.mediadesign.gd1011.studiof.services.CollisionProcess;
     import de.mediadesign.gd1011.studiof.services.GameLoop;
     import de.mediadesign.gd1011.studiof.services.MoveProcess;
     import de.mediadesign.gd1011.studiof.services.RenderProcess;
@@ -49,7 +50,6 @@ package de.mediadesign.gd1011.studiof.command
         override public function execute():void
         {
 			level.setPlayer(new Player(level));
-			level.setPlayer(new Player(level));
 
             moveProcess.addEntity(level.player);
             level.fortFox = new FortFoxBoss(level);
@@ -79,6 +79,10 @@ package de.mediadesign.gd1011.studiof.command
             gameLoop.registerProcess(renderProcess);
             gameLoop.registerProcess(collisionProcess);
             gameLoop.registerProcess(level);
+
+
+			level.scrollBGs.push(new ScrollableBG());
+			level.initScrollBG(level.scrollBGs[level.scrollBGs.length-1]);
 
             renderProcess.registerRenderable(new Renderable(level.player.position, playerView));
             var addSpriteToGameEvent:GameEvent = new GameEvent(GameConsts.ADD_SPRITE_TO_GAME, playerView);
