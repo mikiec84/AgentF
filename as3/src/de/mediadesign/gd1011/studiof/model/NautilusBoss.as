@@ -44,6 +44,9 @@ package de.mediadesign.gd1011.studiof.model {
             level = currentLevel;
             super(JSONExtractedInformation["healthPoints"],JSONExtractedInformation["startingPlatform"],0,idleXPosition, currentLevel, false);
             position.x = GameConsts.STAGE_WIDTH+xOffset;
+            if (currentLevel.bossHaveLowLife) {
+                healthPoints = 2;
+            }
         }
 
 

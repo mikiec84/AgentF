@@ -37,7 +37,9 @@ package de.mediadesign.gd1011.studiof.model {
             position.x = idleXPosition+backMovementDistance;
             level = currentLevel;
             healthPoints = JSONExtractedInformation["healthPoints"];
-            trace(JSONExtractedInformation["healthPoints"]);
+            if (currentLevel.bossHaveLowLife) {
+                healthPoints = 2;
+            }
         }
 
         public function start():void

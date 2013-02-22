@@ -38,7 +38,8 @@ package de.mediadesign.gd1011.studiof.model
         public var collisionTolerance:int;              // Wie weit die bullet von der Unit entfernt sein darf um immernoch als treffer zu zählen
 
         ///CHEATS
-        public var onlyThreeMobs:Boolean = true;
+        public var onlyThreeMobs:Boolean   = true;
+        public var bossHaveLowLife:Boolean = true;
         /////////
 
         public function Level()
