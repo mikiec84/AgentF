@@ -30,15 +30,15 @@
             },
             "layer02":
             {
-                "vPosition":180,
+                "vPosition":-220,
                 "speed":150,
                 "width":855
             },
             "layer03":
             {
-                "vPosition":445,
+                "vPosition":455,
                 "speed":0,
-                "width":855
+                "width":1710
             }
 
     }

@@ -78,23 +78,7 @@ package de.mediadesign.gd1011.studiof.view.mediators {
             assets.enqueue(TileSystemLevel2_2);
             assets.enqueue(TileSystemLevel2_3);
 
-            assets.enqueue("config/atlasxml/(TileSystemLevel1_1.xml");
-            assets.enqueue("config/atlasxml/(TileSystemLevel1_2.xml");
-            assets.enqueue("config/atlasxml/(TileSystemLevel1_3.xml");
-            assets.enqueue("config/atlasxml/(TileSystemLevel2_1.xml");
-            assets.enqueue("config/atlasxml/(TileSystemLevel2_1.xml");
-            assets.enqueue("config/atlasxml/(TileSystemLevel2_1.xml");
-
-			assets.enqueue(AgentF_texture);
-			assets.enqueue(E1_texture);
-			assets.enqueue(E2_texture);
-			assets.enqueue(E3_texture);
-			assets.enqueue(BG1_texture);
-			assets.enqueue(BG2_texture);
-			assets.enqueue(BG3_texture);
-			assets.enqueue(Gras01_texture);
-			assets.enqueue(Gras02_texture);
-            assets.enqueue(Wasser_texture);
+            assets.enqueue(Water);
 
             assets.enqueue(AgentF_Idle_texture);
             assets.enqueue(AgentF_Fall_texture);
@@ -103,6 +87,15 @@ package de.mediadesign.gd1011.studiof.view.mediators {
             assets.enqueue(Barrel_texture);
             assets.enqueue(FlyCoon_texture);
             assets.enqueue(SwimCoon_texture);
+
+            assets.enqueue("config/atlasxml/TileSystemLevel1_1.xml");
+            assets.enqueue("config/atlasxml/TileSystemLevel1_2.xml");
+            assets.enqueue("config/atlasxml/TileSystemLevel1_3.xml");
+            assets.enqueue("config/atlasxml/TileSystemLevel2_1.xml");
+            assets.enqueue("config/atlasxml/TileSystemLevel2_2.xml");
+            assets.enqueue("config/atlasxml/TileSystemLevel2_3.xml");
+
+            assets.enqueue("config/atlasxml/Water.xml");
 
             assets.enqueue("config/atlasxml/AgentF_Idle_texture.xml");
             assets.enqueue("config/atlasxml/AgentF_Fall_texture.xml");

@@ -2,6 +2,6 @@
 <!-- Created with TexturePacker http://texturepacker.com-->
 <!-- $TexturePacker:SmartUpdate:9e7897a6c3853b23a99593b856b4676f$ -->
 <TextureAtlas imagePath="TileSystemLevel1_3.png">
-    <SubTexture name="Tile05" x="859" y="2" width="855" height="1100"/>
-    <SubTexture name="Tile06" x="2" y="2" width="855" height="1100"/>
+    <SubTexture name="TileE" x="859" y="2" width="855" height="1100"/>
+    <SubTexture name="TileF" x="2" y="2" width="855" height="1100"/>
 </TextureAtlas>

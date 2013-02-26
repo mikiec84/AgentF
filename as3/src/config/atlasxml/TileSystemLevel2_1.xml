@@ -2,6 +2,6 @@
 <!-- Created with TexturePacker http://texturepacker.com-->
 <!-- $TexturePacker:SmartUpdate:67a1c826547a95ad5b565b94efcae403$ -->
 <TextureAtlas imagePath="TileSystemLevel2_1.png">
-    <SubTexture name="CaveTile01" x="2" y="2" width="855" height="1100"/>
-    <SubTexture name="CaveTile02" x="2" y="1104" width="855" height="906" frameX="0" frameY="-194" frameWidth="855" frameHeight="1100"/>
+    <SubTexture name="CaveTileA" x="2" y="2" width="855" height="1100"/>
+    <SubTexture name="CaveTileB" x="2" y="1104" width="855" height="906" frameX="0" frameY="-194" frameWidth="855" frameHeight="1100"/>
 </TextureAtlas>
