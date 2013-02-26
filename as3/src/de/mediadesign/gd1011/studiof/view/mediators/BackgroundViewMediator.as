@@ -14,31 +14,30 @@ package de.mediadesign.gd1011.studiof.view.mediators
 
 	import robotlegs.extensions.starlingViewMap.impl.StarlingMediator;
 
-    import starling.display.Image;
-
-    import starling.display.Sprite;
+	import starling.display.Sprite;
 	import starling.utils.AssetManager;
 
 	public class BackgroundViewMediator extends StarlingMediator
-    {
-        [Inject]
-        public var bgView:BackgroundView;
+	{
+		[Inject]
+		public var bgView:BackgroundView;
 
 		[Inject]
 		public var assets:AssetManager;
 
-        override public function initialize():void
-        {
-            addContextListener(ViewConsts.ADD_BG, add);
-        }
+		override public function initialize():void
+		{
+			//bgView.addChild(new Image(assets.getTexture("Background1")));
+			addContextListener(ViewConsts.ADD_BG, add);
+		}
 
-        override public function destroy():void
-        {
+		override public function destroy():void
+		{
 
-        }
+		}
 
-        private function add(event:GameEvent):void
-        {
+		private function add(event:GameEvent):void
+		{
 			var layerID:String = (event.dataObj as ScrollBackgroundView).layerID;
 			if(bgView.bgLayer[layerID]==null)
 			{
@@ -46,6 +45,6 @@ package de.mediadesign.gd1011.studiof.view.mediators
 				bgView.addChild(bgView.bgLayer[layerID] as Sprite);
 			}
 			(bgView.bgLayer[layerID] as Sprite).addChild(event.dataObj);
-        }
-    }
+		}
+	}
 }

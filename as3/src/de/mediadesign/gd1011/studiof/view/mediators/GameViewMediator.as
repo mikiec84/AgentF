@@ -87,6 +87,7 @@ package de.mediadesign.gd1011.studiof.view.mediators {
 
 			assets.enqueue(AgentF_texture);
 			assets.enqueue(E1_texture);
+			assets.enqueue(E2_texture);
 			assets.enqueue(E3_texture);
 			assets.enqueue(BG1_texture);
 			assets.enqueue(BG2_texture);

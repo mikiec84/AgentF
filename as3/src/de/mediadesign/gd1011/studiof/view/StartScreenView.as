@@ -17,6 +17,8 @@ package de.mediadesign.gd1011.studiof.view
 		{
 			dimX =width;
 			dimY=height;
+			visible = false;
+
 		}
 
 	}

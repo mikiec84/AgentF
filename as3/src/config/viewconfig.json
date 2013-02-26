@@ -1,9 +1,15 @@
 {
+    "startscreen":{
+
+    },
     "gui":{
         "scale":0.75,
-        "padding":20
+        "padding":20,
+        "min-scale":0.5,
+        "max-scale":1.5
     },
     "game":{
+        "padding":50,
         "hTouch":300,
         "vTouch":[0,145,290,435,580,725,850],
         "defaultZone":2,

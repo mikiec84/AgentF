@@ -18,6 +18,8 @@ package de.mediadesign.gd1011.studiof.view
 		private var _appScale:Number = 1;
 		private var _appLeftOffset:Number = 0;
 		private var _appTopOffset:Number = 0;
+		private var _appWidth:Number = 0;
+		private var _appHeight:Number = 0;
 
 		private var _guiScale:Number = 1;
 		private var _guiWidth:Number = 0;
@@ -44,8 +46,8 @@ package de.mediadesign.gd1011.studiof.view
 			setGUIScale();
 			trace("scale GUI with scale factor "+_guiScale);
 
-			_startScreen = new StartScreenView(_guiWidth,_guiHeight);
-			_startScreen.scaleX = _startScreen.scaleY = _guiScale;
+			_startScreen = new StartScreenView(_appWidth,_appHeight);
+			_startScreen.scaleX = _startScreen.scaleY = _appScale;
 			addChild(_startScreen);
 		}
 
@@ -81,11 +83,16 @@ package de.mediadesign.gd1011.studiof.view
 				_appScale = deviceHeight / gameHeight;
 				_appLeftOffset = deviceWidth - gameWidth * _appScale;
 			}
+
+			_appWidth = stage.stageWidth/_appScale;
+			_appHeight = stage.stageHeight/_appScale;
 		}
 
 		private function setGUIScale():void
 		{
 			_guiScale = JSONReader.read("viewconfig")["gui"]["scale"]/SystemInfo.getDP();
+			_guiScale = Math.min(_guiScale,JSONReader.read("viewconfig")["gui"]["max-scale"]);
+			_guiScale = Math.max(_guiScale,JSONReader.read("viewconfig")["gui"]["min-scale"]);
 			_guiWidth = stage.stageWidth/_guiScale;
 			_guiHeight = stage.stageHeight/_guiScale;
 		}

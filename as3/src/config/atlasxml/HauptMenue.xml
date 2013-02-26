@@ -2,7 +2,7 @@
 <!-- Created with TexturePacker http://texturepacker.com-->
 <!-- $TexturePacker:SmartUpdate:e5be7c77aa37061418292dac9fada50d$ -->
 <TextureAtlas imagePath="HauptMenue.png">
-    <SubTexture name="Blut" x="690" y="1102" width="1042" height="166" frameX="0" frameY="0" frameWidth="1042" frameHeight="170"/>
-    <SubTexture name="HauptHG" x="0" y="0" width="2048" height="1100"/>
-    <SubTexture name="Titel" x="0" y="1102" width="688" height="214" frameX="-5" frameY="-4" frameWidth="706" frameHeight="224"/>
+    <SubTexture name="Menu_Blood" x="690" y="1102" width="1042" height="166" frameX="0" frameY="0" frameWidth="1042" frameHeight="170"/>
+    <SubTexture name="Menu_BG" x="0" y="0" width="2048" height="1100"/>
+    <SubTexture name="Menu_Logo" x="0" y="1102" width="688" height="214" frameX="-5" frameY="-4" frameWidth="706" frameHeight="224"/>
 </TextureAtlas>
