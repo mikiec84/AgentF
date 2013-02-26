@@ -68,8 +68,8 @@ package de.mediadesign.gd1011.studiof.view.mediators {
 
 		private function addAssets():void
 		{
-            assets.enqueue(Background1);
-            assets.enqueue(Background2);
+            assets.enqueue(Level1);
+            assets.enqueue(Level2);
 
             assets.enqueue(TileSystemLevel1_1);
             assets.enqueue(TileSystemLevel1_2);
@@ -87,6 +87,9 @@ package de.mediadesign.gd1011.studiof.view.mediators {
             assets.enqueue(Barrel_texture);
             assets.enqueue(FlyCoon_texture);
             assets.enqueue(SwimCoon_texture);
+
+            assets.enqueue("config/atlasxml/Level1.xml");
+            assets.enqueue("config/atlasxml/Level2.xml");
 
             assets.enqueue("config/atlasxml/TileSystemLevel1_1.xml");
             assets.enqueue("config/atlasxml/TileSystemLevel1_2.xml");
