@@ -39,13 +39,6 @@ package de.mediadesign.gd1011.studiof.services
                 if (level.nautilus.initialized)
                     rules.collisionDetection(level.player.ammunition[i], level.nautilus);
 
-                if (rules.isDead(level.player.ammunition[i]))
-                {
-                    deleteUnits(level.player.ammunition, i);
-                    break;
-                    break;
-                }
-
                 for (var j:int = 0; j < level.enemies.length; j++)
                 {
                     //collision playerbullet, enemy
@@ -61,6 +54,12 @@ package de.mediadesign.gd1011.studiof.services
                     if (level.enemies[j].position.x < 0 - GameConsts.ENEMY_SPRITE_WIDTH)
                         deleteUnits(level.enemies, j);
                 }
+                if (rules.isDead(level.player.ammunition[i]))
+                {
+                    deleteUnits(level.player.ammunition, i);
+                    break;
+                    break;
+                }
                 if (level.player.ammunition[i].position.x > GameConsts.STAGE_WIDTH + GameConsts.ENEMY_SPRITE_WIDTH)
                     deleteUnits(level.player.ammunition, i);
             }
@@ -69,14 +68,6 @@ package de.mediadesign.gd1011.studiof.services
             {
                 //collision player, enemy
                 rules.collisionDetection(level.player, level.enemies[i]);
-
-                if (rules.isDead(level.enemies[i]))
-                {
-                    deleteUnits(level.enemies, i);
-                    dispatcher.dispatchEvent(updatePointsEvent);
-                    break;
-                    break;
-                }
 
                 for (var j:int = 0; j < level.enemies[i].ammunition.length; j++)
                 {
@@ -89,6 +80,14 @@ package de.mediadesign.gd1011.studiof.services
                         break;
                         break;
                     }
+                }
+
+                if (rules.isDead(level.enemies[i]))
+                {
+                    deleteUnits(level.enemies, i);
+                    dispatcher.dispatchEvent(updatePointsEvent);
+                    break;
+                    break;
                 }
             }
         }

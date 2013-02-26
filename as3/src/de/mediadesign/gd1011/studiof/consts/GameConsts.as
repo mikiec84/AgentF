@@ -15,6 +15,7 @@ package de.mediadesign.gd1011.studiof.consts
         public static const FORT_FOX:String     = "FORT_FOX";
         public static const NAUTILUS:String     = "NAUTILUS";
 
+        public static const CHANGE_STATE:String = "CHANGE_STATE";
         public static const REGISTER_UNIT:String = "REGISTER_UNIT";
         public static const DELETE_UNIT:String = "DELETE_UNIT";
         public static const DAMAGE_UNIT:String = "DAMAGE_UNIT";
@@ -26,5 +27,9 @@ package de.mediadesign.gd1011.studiof.consts
         public static const PLATFORM_HEIGHT:int    = 120;
         public static const ENEMY_SPRITE_WIDTH:int = 300;
 
+        //Player states
+        public static const IDLE:String = "IDLE";
+        public static const FALL:String = "FALL";
+        public static const JUMP:String = "JUMP";
     }
 }
