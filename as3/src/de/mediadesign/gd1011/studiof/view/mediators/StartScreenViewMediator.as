@@ -20,6 +20,7 @@ package de.mediadesign.gd1011.studiof.view.mediators
 
 	import starling.display.Button;
 	import starling.display.Image;
+	import starling.display.Quad;
 
 	import starling.events.Event;
 	import starling.utils.AssetManager;
@@ -34,6 +35,8 @@ package de.mediadesign.gd1011.studiof.view.mediators
 
 		[Inject]
 		public var assets:AssetManager;
+
+		private var _startScreenConfig:Object;
 
 		private var _background:Image;
 		private var _logo:Image;
@@ -61,33 +64,55 @@ package de.mediadesign.gd1011.studiof.view.mediators
 
 		private function createStartScreen():void
 		{
+			_startScreenConfig = JSONReader.read("viewconfig")["startscreen"];
+
+			//White BG
+			var bgQuad:Quad = new Quad(contextView.dimX,contextView.dimY,0xffffff);
+			contextView.addChild(bgQuad);
+
+			//Fox BG Asset
 			_background = assets.getImage("Menu_BG");
 			_background.y = (contextView.dimY - _background.height)/2;
 			contextView.addChild(_background);
 
+			//Border
+			var leftBorder:Quad = new Quad(_startScreenConfig["border-width"],contextView.dimY);
+			var rightBorder:Quad = new Quad(_startScreenConfig["border-width"],contextView.dimY);
+			rightBorder.x = contextView.dimX-_startScreenConfig["border-width"];
+			var topBorder:Quad = new Quad(contextView.dimX,_startScreenConfig["border-width"]);
+			var bottomBorder:Quad = new Quad(contextView.dimX,_startScreenConfig["border-width"]);
+			bottomBorder.y = contextView.dimY-_startScreenConfig["border-width"];
+			contextView.addChild(leftBorder);
+			contextView.addChild(rightBorder);
+			contextView.addChild(topBorder);
+			contextView.addChild(bottomBorder);
+
+			//Agent F Logo
 			_logo = assets.getImage("Menu_Logo");
-			_logo.x = _logo.y = JSONReader.read("viewconfig")["game"]["padding"];
+			_logo.x = _logo.y = _startScreenConfig["padding"];
 			contextView.addChild(_logo);
 
-			_playButton = new TopSecretButton(Localization.getString("new game"),90);
-			_playButton.x = JSONReader.read("viewconfig")["game"]["padding"];
-			_playButton.y = (contextView.dimY - _playButton.height)/2;
+			//Menu
+			_playButton = new TopSecretButton(Localization.getString("new game"),_startScreenConfig["button-size"]);
+			_playButton.x = _startScreenConfig["button-offset"];
+			var menuHeight:Number = (contextView.dimY - _logo.height-_startScreenConfig["padding"]);
+			_playButton.y = _logo.height+_startScreenConfig["padding"]+(menuHeight-(_playButton.height*4+_startScreenConfig["vSpace"]*3))/2;
 			contextView.addChild(_playButton);
 			_playButton.addEventListener(Event.TRIGGERED, changeToGameView);
 
-			_optionButton = new TopSecretButton(Localization.getString("options"),90);
-			_optionButton.x = JSONReader.read("viewconfig")["game"]["padding"];
-			_optionButton.y = _playButton.y+_playButton.height;
+			_optionButton = new TopSecretButton(Localization.getString("options"),_startScreenConfig["button-size"]);
+			_optionButton.x = _startScreenConfig["button-offset"];
+			_optionButton.y = _playButton.y+_playButton.height+_startScreenConfig["vSpace"];
 			contextView.addChild(_optionButton);
 
-			_scoreButton = new TopSecretButton(Localization.getString("highscore"),90);
-			_scoreButton.x = JSONReader.read("viewconfig")["game"]["padding"];
-			_scoreButton.y = _optionButton.y+_optionButton.height;
+			_scoreButton = new TopSecretButton(Localization.getString("highscore"),_startScreenConfig["button-size"]);
+			_scoreButton.x = _startScreenConfig["button-offset"];
+			_scoreButton.y = _optionButton.y+_optionButton.height+_startScreenConfig["vSpace"];
 			contextView.addChild(_scoreButton);
 
-			_creditButton = new TopSecretButton(Localization.getString("credits"),90);
-			_creditButton.x = JSONReader.read("viewconfig")["game"]["padding"];
-			_creditButton.y = _scoreButton.y+_scoreButton.height;
+			_creditButton = new TopSecretButton(Localization.getString("credits"),_startScreenConfig["button-size"]);
+			_creditButton.x = _startScreenConfig["button-offset"];
+			_creditButton.y = _scoreButton.y+_scoreButton.height+_startScreenConfig["vSpace"];
 			contextView.addChild(_creditButton);
 
 			contextView.visible = true;

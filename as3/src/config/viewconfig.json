@@ -1,6 +1,10 @@
 {
     "startscreen":{
-
+        "border-width":20,
+        "padding":50,
+        "button-offset":150,
+        "button-size":90,
+        "vSpace":40
     },
     "gui":{
         "scale":0.75,
@@ -9,7 +13,6 @@
         "max-scale":1.5
     },
     "game":{
-        "padding":50,
         "hTouch":300,
         "vTouch":[0,145,290,435,580,725,850],
         "defaultZone":2,
