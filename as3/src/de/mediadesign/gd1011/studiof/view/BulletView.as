@@ -16,7 +16,7 @@ package de.mediadesign.gd1011.studiof.view
         public function BulletView()
         {
             var q:Quad = new Quad(50,10,0xFFFFFF);
-            q.y += 5;
+            q.y += 25;
             alpha = 0;
             addChildAt(q, 0);
         }

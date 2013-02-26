@@ -7,6 +7,7 @@
  */
 package de.mediadesign.gd1011.studiof.model {
     import de.mediadesign.gd1011.studiof.consts.GameConsts;
+    import de.mediadesign.gd1011.studiof.events.GameEvent;
     import de.mediadesign.gd1011.studiof.model.components.PositionComponent;
     import de.mediadesign.gd1011.studiof.services.JSONReader;
     import de.mediadesign.gd1011.studiof.services.LevelProcess;
@@ -133,6 +134,7 @@ package de.mediadesign.gd1011.studiof.model {
             _landIsntRunning     = !(_landing != null && !_landing.isComplete);
             _landStillInJuggler  = Starling.juggler.contains(_landing);
             _anyTweensInMotion   = (upIsRunning || !_comeDownIsntRunning || (!_landIsntRunning || landNow));
+
             if (_up != null && _up.isComplete && Starling.juggler.contains(_up))
             {
                 Starling.juggler.remove(_up);
@@ -151,7 +153,6 @@ package de.mediadesign.gd1011.studiof.model {
                 position.y = GameConsts.STAGE_HEIGHT/3+yOffset+10;/*
                 land();
                 _landStillInJuggler  = Starling.juggler.contains(_landing);*/
-                trace("BUG DETECTED");
             }
         }
 
@@ -245,7 +246,8 @@ package de.mediadesign.gd1011.studiof.model {
                 {
                     _tweenedPosition.y = position.y;
                     _tweenedPosition.x = position.x;
-                    if (currentPlatform>3) {
+                    if (currentPlatform>3)
+                    {
                         _up = new Tween(_tweenedPosition, jumpSpeedBeimSprung, Transitions.EASE_OUT);
                         _up.moveTo(_tweenedPosition.x, GameConsts.STAGE_HEIGHT - (GameConsts.STAGE_HEIGHT/6) * (currentPlatform + 1) );
                     }
@@ -255,6 +257,9 @@ package de.mediadesign.gd1011.studiof.model {
                         _up.moveTo(_tweenedPosition.x, GameConsts.PLATFORM_HEIGHT*2+einpendelStaerkeWinzig+yOffset );
                         startLandTweenAfterThis = true;
                     }
+                    // ********************************
+                    state = GameConsts.JUMP;
+                    // ********************************
                     Starling.juggler.add(_up);
                 } //else trace("startJump in Player has been used but there are Tweens in Motion right now, or currentPlatform is smaller/equal than 2. Request Denied.");
             }
@@ -273,12 +278,19 @@ package de.mediadesign.gd1011.studiof.model {
                 {
                     _down.moveTo(_tweenedPosition.x, GameConsts.STAGE_HEIGHT/3+einpendelStaerkeGross);
                 }
+                // ********************************
+                state = GameConsts.FALL;
+                // ********************************
                 Starling.juggler.add(_down);
             }
         }
 
         private function land():void
         {
+            // ********************************
+            state = GameConsts.IDLE;
+            // ********************************
+
             _landing = new Tween(_tweenedPosition, jumpSpeedBeimEinpendeln, Transitions.EASE_OUT_ELASTIC);
             _landing.moveTo(_tweenedPosition.x,  GameConsts.STAGE_HEIGHT/3+yOffset);
             Starling.juggler.add(_landing);
@@ -314,11 +326,11 @@ package de.mediadesign.gd1011.studiof.model {
                 {
                     if (currentPlatform == 1 && !_landIsntRunning)
                     {
-                        var bullet:Unit = new Unit(1, 2, 600, -1, _currentLevel, false);
+                        var bullet:Unit = new Unit(1, 2, 600, 200, _currentLevel, false);
                     }
                     else
                     {
-                        var bullet:Unit = new Unit(1, currentPlatform, 600, -1, _currentLevel, false);
+                        var bullet:Unit = new Unit(1, currentPlatform, 600, 200, _currentLevel, false);
                     }
                     bullet.position.y += 100;
                     ammunition.push(bullet);
@@ -326,7 +338,6 @@ package de.mediadesign.gd1011.studiof.model {
                     if (currentPlatform<2)
                     {
                         counter=1;
-                        //trace("Counter für schießen: "+counter);
                     }
                     if (currentPlatform<2)
                     {

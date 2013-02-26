@@ -9,7 +9,6 @@ package de.mediadesign.gd1011.studiof.services
 {
     import de.mediadesign.gd1011.studiof.model.Renderable;
     import de.mediadesign.gd1011.studiof.view.EnemyView;
-    import de.mediadesign.gd1011.studiof.view.PlayerView;
 
     public class RenderProcess implements IProcess
     {
@@ -40,17 +39,6 @@ package de.mediadesign.gd1011.studiof.services
             for each ( var target:Renderable in targets)
             {
                 target.render(time);
-                if (target.view is PlayerView)
-                {
-                    PlayerView(target.view).timePassed += time;
-                    if (PlayerView(target.view).timePassed >= 0.2)
-                    {
-                        PlayerView(target.view).setNormal();
-                        PlayerView(target.view).timePassed = 0;
-                    }
-
-                }
-
                 if (target.view is EnemyView)
                 {
                     EnemyView(target.view).timePassed += time;

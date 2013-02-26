@@ -30,7 +30,6 @@ package de.mediadesign.gd1011.studiof
     import de.mediadesign.gd1011.studiof.view.GUI;
     import de.mediadesign.gd1011.studiof.view.GameView;
     import de.mediadesign.gd1011.studiof.view.MainView;
-    import de.mediadesign.gd1011.studiof.view.PlayerView;
     import de.mediadesign.gd1011.studiof.view.ScrollBackgroundView;
     import de.mediadesign.gd1011.studiof.view.StartScreenView;
     import de.mediadesign.gd1011.studiof.view.mediators.BackgroundViewMediator;
@@ -38,7 +37,6 @@ package de.mediadesign.gd1011.studiof
     import de.mediadesign.gd1011.studiof.view.mediators.GUIMediator;
     import de.mediadesign.gd1011.studiof.view.mediators.GameViewMediator;
     import de.mediadesign.gd1011.studiof.view.mediators.MainViewMediator;
-    import de.mediadesign.gd1011.studiof.view.mediators.PlayerViewMediator;
     import de.mediadesign.gd1011.studiof.view.mediators.ScrollBackgroundViewMediator;
     import de.mediadesign.gd1011.studiof.view.mediators.StartScreenViewMediator;
 
@@ -105,7 +103,6 @@ package de.mediadesign.gd1011.studiof
 			mediatorMap.map(GameView).toMediator(GameViewMediator);
 			mediatorMap.map(GUI).toMediator(GUIMediator);
             mediatorMap.map(BackgroundView).toMediator(BackgroundViewMediator);
-            mediatorMap.map(PlayerView).toMediator(PlayerViewMediator);
             mediatorMap.map(EnemyView).toMediator(EnemyViewMediator);
 			mediatorMap.map(ScrollBackgroundView).toMediator(ScrollBackgroundViewMediator);
         }

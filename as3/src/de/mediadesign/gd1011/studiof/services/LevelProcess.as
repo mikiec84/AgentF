@@ -45,6 +45,8 @@ package de.mediadesign.gd1011.studiof.services
         public var bossHaveLowLife:Boolean = false;
         /////////
 
+        private var lastState:String;
+
         public function LevelProcess()
         {
             JSONExtractedInformation = JSONReader.read("enemy")["ENEMY"];
@@ -144,6 +146,12 @@ package de.mediadesign.gd1011.studiof.services
                     spawnBoss();
                 }
             }
+            if (lastState != player.state)
+            {
+                var changeStateEvent:GameEvent = new GameEvent(GameConsts.CHANGE_STATE, player.state);
+                dispatcher.dispatchEvent(changeStateEvent);
+            }
+            lastState = player.state;
         }
 
         public function newLevel(currentLevel:int):void

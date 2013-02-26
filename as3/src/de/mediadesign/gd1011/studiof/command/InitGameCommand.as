@@ -7,22 +7,18 @@
  */
 package de.mediadesign.gd1011.studiof.command
 {
-    import de.mediadesign.gd1011.studiof.consts.GameConsts;
     import de.mediadesign.gd1011.studiof.consts.ViewConsts;
     import de.mediadesign.gd1011.studiof.events.GameEvent;
     import de.mediadesign.gd1011.studiof.model.FortFoxBoss;
     import de.mediadesign.gd1011.studiof.model.NautilusBoss;
-    import de.mediadesign.gd1011.studiof.services.LevelProcess;
-    import de.mediadesign.gd1011.studiof.model.NautilusBoss;
     import de.mediadesign.gd1011.studiof.model.Player;
     import de.mediadesign.gd1011.studiof.model.Renderable;
-	import de.mediadesign.gd1011.studiof.model.BGTile;
-	import de.mediadesign.gd1011.studiof.services.CollisionProcess;
+    import de.mediadesign.gd1011.studiof.services.CollisionProcess;
     import de.mediadesign.gd1011.studiof.services.GameLoop;
+    import de.mediadesign.gd1011.studiof.services.LevelProcess;
     import de.mediadesign.gd1011.studiof.services.MoveProcess;
     import de.mediadesign.gd1011.studiof.services.RenderProcess;
     import de.mediadesign.gd1011.studiof.view.EnemyView;
-    import de.mediadesign.gd1011.studiof.view.PlayerView;
 
     import flash.events.IEventDispatcher;
 
@@ -72,7 +68,7 @@ package de.mediadesign.gd1011.studiof.command
                 dispatcher.dispatchEvent(addEnemySpriteToGameEvent);
             }
 
-            var playerView:PlayerView = new PlayerView(ViewConsts.PLAYER);
+            var playerView:EnemyView = new EnemyView(ViewConsts.PLAYER, ViewConsts.PLAYER);
 
             gameLoop.registerProcess(moveProcess);
             gameLoop.registerProcess(renderProcess);
