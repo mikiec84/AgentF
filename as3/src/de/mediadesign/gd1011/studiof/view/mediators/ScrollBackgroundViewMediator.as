@@ -13,7 +13,9 @@ package de.mediadesign.gd1011.studiof.view.mediators
 
 	import robotlegs.extensions.starlingViewMap.impl.StarlingMediator;
 
-	import starling.display.Image;
+    import starling.display.Image;
+
+    import starling.display.Image;
 	import starling.utils.AssetManager;
 
 	public class ScrollBackgroundViewMediator extends StarlingMediator
@@ -34,11 +36,10 @@ package de.mediadesign.gd1011.studiof.view.mediators
 			var layerTextures:Array = JSONReader.read("viewconfig")["assetsets"]["level_"+level.currentLevel]["background"][bgView.layerID];
 			if(layerTextures.length > 0)
 			{
-				var bgImage:Image;
+                var bgImage:Image;
 				bgImage = assets.getImage(layerTextures[Math.floor(Math.random()* layerTextures.length)]);
 				bgView.addChild(bgImage);
 			}
-
 		}
 
 		override public function destroy():void

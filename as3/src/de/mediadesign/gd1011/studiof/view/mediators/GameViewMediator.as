@@ -78,7 +78,12 @@ package de.mediadesign.gd1011.studiof.view.mediators {
             assets.enqueue(TileSystemLevel2_2);
             assets.enqueue(TileSystemLevel2_3);
 
-            assets.enqueue(SpriteSheetTauchbaer);
+            assets.enqueue("config/atlasxml/(TileSystemLevel1_1.xml");
+            assets.enqueue("config/atlasxml/(TileSystemLevel1_2.xml");
+            assets.enqueue("config/atlasxml/(TileSystemLevel1_3.xml");
+            assets.enqueue("config/atlasxml/(TileSystemLevel2_1.xml");
+            assets.enqueue("config/atlasxml/(TileSystemLevel2_1.xml");
+            assets.enqueue("config/atlasxml/(TileSystemLevel2_1.xml");
 
 			assets.enqueue(AgentF_texture);
 			assets.enqueue(E1_texture);
@@ -88,16 +93,24 @@ package de.mediadesign.gd1011.studiof.view.mediators {
 			assets.enqueue(BG3_texture);
 			assets.enqueue(Gras01_texture);
 			assets.enqueue(Gras02_texture);
+            assets.enqueue(Wasser_texture);
 
-            //assets.enqueue("config/atlasxml/TileSystem1.xml");
-			assets.enqueue("config/atlasxml/SpriteSheetTauchbaer.xml");
+            assets.enqueue(AgentF_Idle_texture);
+            assets.enqueue(Barrel_texture);
+            assets.enqueue(FlyCoon_texture);
+            assets.enqueue(SwimCoon_texture);
+
+            assets.enqueue("config/atlasxml/AgentF_Idle_texture.xml");
+            assets.enqueue("config/atlasxml/Barrel_texture.xml");
+            assets.enqueue("config/atlasxml/FlyCoon_texture.xml");
+            assets.enqueue("config/atlasxml/SwimCoon_texture.xml");
 		}
 
 		private function loadAssets(ratio:Number):void
 		{
             contextView.loadQuad.scaleX = ratio;
 
-            trace("Lade Spiel: "+ratio);
+            //trace("Lade Spiel: "+ratio);
 			if(ratio == 1.0)
 			{
 				contextView.removeChild(contextView.loadQuad);

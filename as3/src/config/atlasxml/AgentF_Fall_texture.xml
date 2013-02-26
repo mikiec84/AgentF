@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker http://texturepacker.com-->
+<!-- $TexturePacker:SmartUpdate:493e1a929b08162354e7479649e82a17$ -->
+<TextureAtlas imagePath="AgentF_Fall_texture.png">
+    <SubTexture name="Player_Fall_00" x="252" y="856" width="246" height="214" frameX="-6" frameY="-22" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="Player_Fall_01" x="752" y="432" width="248" height="214" frameX="-5" frameY="-22" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="Player_Fall_02" x="502" y="428" width="248" height="214" frameX="-5" frameY="-23" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="Player_Fall_03" x="252" y="218" width="248" height="214" frameX="-6" frameY="-23" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="Player_Fall_04" x="254" y="2" width="250" height="214" frameX="-5" frameY="-23" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="Player_Fall_05" x="2" y="2" width="250" height="214" frameX="-5" frameY="-23" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="Player_Fall_06" x="758" y="2" width="250" height="212" frameX="-6" frameY="-24" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="Player_Fall_07" x="2" y="434" width="248" height="212" frameX="-8" frameY="-23" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="Player_Fall_08" x="502" y="644" width="248" height="210" frameX="-8" frameY="-24" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="Player_Fall_09" x="752" y="648" width="248" height="208" frameX="-8" frameY="-24" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="Player_Fall_10" x="748" y="858" width="246" height="208" frameX="-9" frameY="-24" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="Player_Fall_11" x="2" y="858" width="246" height="210" frameX="-9" frameY="-23" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="Player_Fall_12" x="494" y="1486" width="244" height="208" frameX="-11" frameY="-24" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="Player_Fall_13" x="742" y="1278" width="244" height="208" frameX="-11" frameY="-24" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="Player_Fall_14" x="2" y="1490" width="244" height="208" frameX="-11" frameY="-24" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="Player_Fall_15" x="248" y="1282" width="244" height="208" frameX="-11" frameY="-24" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="Player_Fall_16" x="496" y="1276" width="244" height="208" frameX="-11" frameY="-24" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="Player_Fall_17" x="746" y="1068" width="244" height="208" frameX="-11" frameY="-24" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="Player_Fall_18" x="2" y="1280" width="244" height="208" frameX="-11" frameY="-24" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="Player_Fall_19" x="250" y="1072" width="244" height="208" frameX="-11" frameY="-24" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="Player_Fall_20" x="740" y="1488" width="244" height="206" frameX="-11" frameY="-26" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="Player_Fall_21" x="500" y="1066" width="244" height="208" frameX="-11" frameY="-25" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="Player_Fall_22" x="248" y="1492" width="244" height="206" frameX="-11" frameY="-26" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="Player_Fall_23" x="500" y="856" width="246" height="208" frameX="-9" frameY="-25" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="Player_Fall_24" x="2" y="1070" width="246" height="208" frameX="-9" frameY="-25" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="Player_Fall_25" x="2" y="648" width="248" height="208" frameX="-8" frameY="-26" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="Player_Fall_26" x="252" y="646" width="248" height="208" frameX="-8" frameY="-26" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="Player_Fall_27" x="252" y="434" width="248" height="210" frameX="-8" frameY="-25" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="Player_Fall_28" x="506" y="216" width="250" height="210" frameX="-6" frameY="-26" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="Player_Fall_29" x="506" y="2" width="250" height="212" frameX="-5" frameY="-25" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="Player_Fall_30" x="2" y="218" width="248" height="214" frameX="-6" frameY="-23" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="Player_Fall_31" x="758" y="216" width="248" height="214" frameX="-5" frameY="-23" frameWidth="256" frameHeight="256"/>
+</TextureAtlas>

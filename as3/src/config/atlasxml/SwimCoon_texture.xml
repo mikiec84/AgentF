@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker http://texturepacker.com-->
+<!-- $TexturePacker:SmartUpdate:a608ee5e031603370d7072dc1eff9175$ -->
+<TextureAtlas imagePath="SwimCoon_texture.png">
+    <SubTexture name="E3 Idle_00" x="924" y="1094" width="228" height="182" frameX="-9" frameY="-35" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="E3 Idle_01" x="1160" y="1090" width="228" height="182" frameX="-9" frameY="-35" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="E3 Idle_02" x="1392" y="1088" width="228" height="182" frameX="-9" frameY="-35" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="E3 Idle_03" x="1622" y="1078" width="228" height="182" frameX="-9" frameY="-35" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="E3 Idle_04" x="1392" y="904" width="228" height="182" frameX="-10" frameY="-34" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="E3 Idle_05" x="694" y="912" width="228" height="182" frameX="-10" frameY="-34" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="E3 Idle_06" x="698" y="730" width="230" height="180" frameX="-9" frameY="-35" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="E3 Idle_07" x="466" y="550" width="230" height="180" frameX="-9" frameY="-35" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="E3 Idle_08" x="2" y="552" width="230" height="180" frameX="-10" frameY="-34" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="E3 Idle_09" x="234" y="550" width="230" height="180" frameX="-10" frameY="-34" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="E3 Idle_10" x="1654" y="898" width="232" height="178" frameX="-9" frameY="-35" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="E3 Idle_11" x="1420" y="724" width="232" height="178" frameX="-10" frameY="-35" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="E3 Idle_12" x="1186" y="724" width="232" height="178" frameX="-11" frameY="-34" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="E3 Idle_13" x="1186" y="544" width="232" height="178" frameX="-11" frameY="-34" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="E3 Idle_14" x="1428" y="364" width="234" height="176" frameX="-10" frameY="-35" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="E3 Idle_15" x="1664" y="362" width="234" height="176" frameX="-10" frameY="-35" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="E3 Idle_16" x="1664" y="540" width="234" height="174" frameX="-11" frameY="-35" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="E3 Idle_17" x="1190" y="368" width="234" height="174" frameX="-11" frameY="-34" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="E3 Idle_18" x="240" y="188" width="236" height="174" frameX="-10" frameY="-35" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="E3 Idle_19" x="2" y="188" width="236" height="174" frameX="-10" frameY="-35" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="E3 Idle_20" x="478" y="186" width="236" height="176" frameX="-10" frameY="-34" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="E3 Idle_21" x="716" y="182" width="236" height="176" frameX="-10" frameY="-34" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="E3 Idle_22" x="954" y="180" width="236" height="176" frameX="-10" frameY="-34" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="E3 Idle_23" x="1668" y="2" width="236" height="176" frameX="-10" frameY="-34" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="E3 Idle_24" x="1430" y="2" width="236" height="176" frameX="-10" frameY="-33" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="E3 Idle_25" x="1192" y="2" width="236" height="176" frameX="-10" frameY="-33" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="E3 Idle_26" x="954" y="2" width="236" height="176" frameX="-10" frameY="-33" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="E3 Idle_27" x="716" y="2" width="236" height="178" frameX="-10" frameY="-34" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="E3 Idle_28" x="478" y="2" width="236" height="182" frameX="-10" frameY="-33" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="E3 Idle_29" x="240" y="2" width="236" height="184" frameX="-10" frameY="-34" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="E3 Idle_30" x="2" y="2" width="236" height="184" frameX="-10" frameY="-35" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="E3 Idle_31" x="1192" y="180" width="234" height="186" frameX="-11" frameY="-34" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="E3 Idle_32" x="716" y="360" width="234" height="184" frameX="-11" frameY="-35" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="E3 Idle_33" x="954" y="358" width="234" height="184" frameX="-11" frameY="-34" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="E3 Idle_34" x="1428" y="180" width="234" height="182" frameX="-10" frameY="-34" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="E3 Idle_35" x="1664" y="180" width="234" height="180" frameX="-10" frameY="-35" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="E3 Idle_36" x="952" y="544" width="232" height="180" frameX="-11" frameY="-34" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="E3 Idle_37" x="1660" y="716" width="232" height="180" frameX="-11" frameY="-34" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="E3 Idle_38" x="1426" y="542" width="232" height="180" frameX="-10" frameY="-35" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="E3 Idle_39" x="930" y="726" width="230" height="180" frameX="-11" frameY="-35" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="E3 Idle_40" x="698" y="546" width="230" height="182" frameX="-10" frameY="-34" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="E3 Idle_41" x="466" y="364" width="230" height="184" frameX="-10" frameY="-34" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="E3 Idle_42" x="234" y="364" width="230" height="184" frameX="-9" frameY="-35" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="E3 Idle_43" x="2" y="364" width="230" height="186" frameX="-9" frameY="-34" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="E3 Idle_44" x="464" y="732" width="228" height="186" frameX="-10" frameY="-34" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="E3 Idle_45" x="2" y="734" width="228" height="186" frameX="-10" frameY="-35" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="E3 Idle_46" x="234" y="732" width="228" height="186" frameX="-10" frameY="-34" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="E3 Idle_47" x="930" y="908" width="228" height="184" frameX="-9" frameY="-36" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="E3 Idle_48" x="1162" y="904" width="228" height="184" frameX="-9" frameY="-35" frameWidth="256" frameHeight="256"/>
+</TextureAtlas>

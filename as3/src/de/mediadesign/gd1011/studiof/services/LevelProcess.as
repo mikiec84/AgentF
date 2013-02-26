@@ -33,6 +33,8 @@ package de.mediadesign.gd1011.studiof.services
 
 		private var _bgLayer01:BGScroller;
        	private var _bgLayer02:BGScroller;
+        private var _bgLayer03:BGScroller;
+
 		private var _scrollLevel:Boolean = true;
 
         public var enemyPositions:Vector.<int>;
@@ -57,19 +59,22 @@ package de.mediadesign.gd1011.studiof.services
 
         public function update(time:Number):void
         {
-            if(player== null)
+            if(player == null)
                 return;
 
+            //shootBullets
             if (_player.shootNow())
                 _player.shootBullet(time);
 
-            nautilus.shootBullet(time);
+            if (nautilus.initialized)
+                nautilus.shootBullet(time);
 
             for (var index:int = 0; index<enemies.length; index++)
                 enemies[index].shootBullet(time);
 
 			_bgLayer01.update();
 			_bgLayer02.update();
+            _bgLayer03.update();
 
 			updateLP();
             checkStatus();
@@ -104,12 +109,12 @@ package de.mediadesign.gd1011.studiof.services
                     }
                 }
             }
-
+            // new level
             if (fortFox.healthPoints <= 0 && fortFox.initialized)
             {
-                currentLevel+=1;
-                var gameWonEvent:GameEvent = new GameEvent(ViewConsts.SHOW_GAMEOVER, true);
-                dispatcher.dispatchEvent(gameWonEvent);
+                closeCurrentLevel();
+                _currentLevel+=1;
+                newLevel(_currentLevel);
                 stopAllUnits();
             }
             //Boss Spawn
@@ -148,6 +153,8 @@ package de.mediadesign.gd1011.studiof.services
 
 			_bgLayer01 = new BGScroller("layer01",dispatcher);
 			_bgLayer02 = new BGScroller("layer02",dispatcher);
+            _bgLayer03 = new BGScroller("layer03",dispatcher);
+
 
             for (var index:int = 0; index<lvlConfig.getEnemySequence(0, currentLevel-1).length; index++) //JSONExtractedInformation["enemyCount"]
             {
@@ -173,6 +180,14 @@ package de.mediadesign.gd1011.studiof.services
                     }
                 }
             }
+        }
+
+
+        // wird vlt. nicht benötigt
+        public function closeCurrentLevel():void
+        {
+            enemyPositions.splice(0, enemyPositions.length-1);
+            _enemies.splice(0, _enemies.length-1);
         }
 
         public function spawnBoss():void

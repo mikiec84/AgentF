@@ -1,5 +1,6 @@
 {
-    "PLAYER":{
+    "PLAYER":
+    {
             "platform":2,
             "healthPoints":1000,
             "weapon":"MACHINE_GUN",
@@ -12,21 +13,31 @@
             "jumpSpeedBeimEinpendeln":4,
             "fireRate":2,
             "jumpSpeedBeimSprungWinzig":0.4
-           },
-    "gamebounds":{
+    },
+    "gamebounds":
+    {
             "width":1710,
             "height":870,
             "plattform-height":120
-            },
-    "background":{
-            "layer01":{
-                "vPosition":0,
+    },
+    "background":
+    {
+            "layer01":
+            {
+                "vPosition":-180,
                 "speed":0,
                 "width":1710
             },
-            "layer02":{
+            "layer02":
+            {
                 "vPosition":180,
                 "speed":150,
+                "width":855
+            },
+            "layer03":
+            {
+                "vPosition":445,
+                "speed":0,
                 "width":855
             }
 

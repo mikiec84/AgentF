@@ -13,7 +13,8 @@
         "level_1":{
             "background":{
                 "layer01":["Background1"],
-                "layer02":["Gras01_texture","Gras02_texture"]
+                "layer02":["Gras01_texture","Gras02_texture"],
+                "layer03":["Wasser_texture"]
             }
         }
     }

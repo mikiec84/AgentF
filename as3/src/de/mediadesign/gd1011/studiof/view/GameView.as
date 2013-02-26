@@ -7,13 +7,10 @@
  */
 package de.mediadesign.gd1011.studiof.view
 {
-    import de.mediadesign.gd1011.studiof.consts.GameConsts;
-
     import starling.display.Quad;
-	import starling.display.Sprite;
-	import starling.events.Event;
+    import starling.display.Sprite;
 
-	public class GameView extends Sprite
+    public class GameView extends Sprite
 	{
         public var loadQuad:Quad;
 	}

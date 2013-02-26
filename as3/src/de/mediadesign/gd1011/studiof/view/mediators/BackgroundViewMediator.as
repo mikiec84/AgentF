@@ -14,7 +14,9 @@ package de.mediadesign.gd1011.studiof.view.mediators
 
 	import robotlegs.extensions.starlingViewMap.impl.StarlingMediator;
 
-	import starling.display.Sprite;
+    import starling.display.Image;
+
+    import starling.display.Sprite;
 	import starling.utils.AssetManager;
 
 	public class BackgroundViewMediator extends StarlingMediator
@@ -27,7 +29,6 @@ package de.mediadesign.gd1011.studiof.view.mediators
 
         override public function initialize():void
         {
-			//bgView.addChild(new Image(assets.getTexture("Background1")));
             addContextListener(ViewConsts.ADD_BG, add);
         }
 

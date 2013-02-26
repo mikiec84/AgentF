@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker http://texturepacker.com-->
+<!-- $TexturePacker:SmartUpdate:b76c89a546dd09d6beaabd2dd7da711f$ -->
+<TextureAtlas imagePath="AgentF_Idle_texture.png">
+    <SubTexture name="Player_Idle_00" x="250" y="1534" width="246" height="214" frameX="-6" frameY="-22" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="Player_Idle_01" x="498" y="1532" width="246" height="214" frameX="-6" frameY="-23" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="Player_Idle_02" x="250" y="1316" width="246" height="216" frameX="-6" frameY="-23" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="Player_Idle_03" x="2" y="1754" width="246" height="216" frameX="-6" frameY="-24" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="Player_Idle_04" x="2" y="1536" width="246" height="216" frameX="-6" frameY="-24" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="Player_Idle_05" x="2" y="1318" width="246" height="216" frameX="-6" frameY="-25" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="Player_Idle_06" x="2" y="662" width="246" height="218" frameX="-6" frameY="-23" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="Player_Idle_07" x="746" y="442" width="246" height="218" frameX="-6" frameY="-23" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="Player_Idle_08" x="498" y="442" width="246" height="218" frameX="-6" frameY="-23" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="Player_Idle_09" x="250" y="442" width="246" height="218" frameX="-6" frameY="-23" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="Player_Idle_10" x="746" y="1098" width="246" height="216" frameX="-6" frameY="-24" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="Player_Idle_11" x="2" y="442" width="246" height="218" frameX="-6" frameY="-22" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="Player_Idle_12" x="498" y="1098" width="246" height="216" frameX="-6" frameY="-23" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="Player_Idle_13" x="2" y="1100" width="246" height="216" frameX="-6" frameY="-23" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="Player_Idle_14" x="250" y="1098" width="246" height="216" frameX="-6" frameY="-22" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="Player_Idle_15" x="746" y="880" width="246" height="216" frameX="-6" frameY="-21" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="Player_Idle_16" x="498" y="880" width="246" height="216" frameX="-6" frameY="-21" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="Player_Idle_17" x="2" y="882" width="246" height="216" frameX="-6" frameY="-21" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="Player_Idle_18" x="250" y="880" width="246" height="216" frameX="-6" frameY="-21" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="Player_Idle_19" x="746" y="222" width="246" height="218" frameX="-6" frameY="-20" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="Player_Idle_20" x="498" y="222" width="246" height="218" frameX="-6" frameY="-20" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="Player_Idle_21" x="250" y="222" width="246" height="218" frameX="-6" frameY="-20" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="Player_Idle_22" x="2" y="222" width="246" height="218" frameX="-6" frameY="-19" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="Player_Idle_23" x="746" y="2" width="246" height="218" frameX="-6" frameY="-19" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="Player_Idle_24" x="498" y="2" width="246" height="218" frameX="-6" frameY="-19" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="Player_Idle_25" x="250" y="2" width="246" height="218" frameX="-6" frameY="-19" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="Player_Idle_26" x="2" y="2" width="246" height="218" frameX="-6" frameY="-19" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="Player_Idle_27" x="746" y="662" width="246" height="216" frameX="-6" frameY="-21" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="Player_Idle_28" x="498" y="662" width="246" height="216" frameX="-6" frameY="-21" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="Player_Idle_29" x="250" y="662" width="246" height="216" frameX="-6" frameY="-21" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="Player_Idle_30" x="746" y="1316" width="246" height="214" frameX="-6" frameY="-23" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="Player_Idle_31" x="498" y="1316" width="246" height="214" frameX="-6" frameY="-23" frameWidth="256" frameHeight="256"/>
+</TextureAtlas>

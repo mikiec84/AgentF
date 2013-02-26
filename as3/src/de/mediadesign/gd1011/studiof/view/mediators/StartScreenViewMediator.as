@@ -16,8 +16,9 @@ package de.mediadesign.gd1011.studiof.view.mediators
 	import robotlegs.extensions.starlingViewMap.impl.StarlingMediator;
 
 	import starling.display.Button;
+    import starling.display.Image;
 
-	import starling.events.Event;
+    import starling.events.Event;
 	import starling.utils.AssetManager;
 
 	public class StartScreenViewMediator extends StarlingMediator
@@ -33,10 +34,20 @@ package de.mediadesign.gd1011.studiof.view.mediators
 
 		override public function initialize():void
 		{
-			assets.enqueue(E2_texture);
-			assets.loadQueue(loadAssets);
+            addAssets();
 
+            //trace(assets.getImage("HauptHG"));
+            //contextView.addChild(assets.getImage("HauptHG"));
+
+			assets.loadQueue(loadAssets);
 		}
+
+        private function addAssets():void
+        {
+            assets.enqueue(E2_texture);
+            assets.enqueue(HauptMenue);
+            assets.enqueue("config/atlasxml/HauptMenue.xml");
+        }
 
 		private function loadAssets(ratio:Number):void
 		{

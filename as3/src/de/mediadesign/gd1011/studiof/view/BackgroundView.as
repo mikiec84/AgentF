@@ -14,7 +14,6 @@ package de.mediadesign.gd1011.studiof.view
 		public var bgLayer:Array = new Array();
         public function BackgroundView():void
         {
-
         }
     }
 }
