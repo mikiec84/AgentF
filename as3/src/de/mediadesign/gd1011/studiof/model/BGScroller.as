@@ -19,15 +19,19 @@ package de.mediadesign.gd1011.studiof.model
 
 		private var _scrollBGs:Vector.<BGTile>;
 		private var _layerID:String;
+		private var _currentLevel:int;
 		private var _bgConfig:Object;
 		private var _scrolling:Boolean;
+		private var _randomScroll:Boolean;
 		private var _dispatcher:IEventDispatcher;
 		private var _maxTiles:int;
 
-		public function BGScroller(bgLayerID:String, dispatcher:IEventDispatcher)
+		public function BGScroller(bgLayerID:String, dispatcher:IEventDispatcher, level:int, scrollRandom:Boolean = true)
 		{
+			_currentLevel = level;
 			_layerID = bgLayerID;
 			_dispatcher = dispatcher;
+			_randomScroll = scrollRandom;
 			_bgConfig = JSONReader.read("config")["background"][bgLayerID];
 			_scrollBGs = new Vector.<BGTile>();
 			_maxTiles = Math.ceil(JSONReader.read("config")["gamebounds"]["width"]/(_bgConfig["width"]-1)+1);
@@ -48,7 +52,13 @@ package de.mediadesign.gd1011.studiof.model
 		}
 		private function addScrollableBG():void
 		{
-			var bg:BGTile = new BGTile(_layerID);
+			var layerTexturesCont:Number = JSONReader.read("viewconfig")["assetsets"]["level_"+_currentLevel]["background"][_layerID].length;
+			var newTileID:int = 0;
+			if(_randomScroll)
+				newTileID = Math.floor(Math.random()*layerTexturesCont);
+			else if (_scrollBGs.length >0)
+				newTileID = (_scrollBGs[_scrollBGs.length-1].tileID+1)%layerTexturesCont;
+			var bg:BGTile = new BGTile(_layerID, newTileID);
 			_scrollBGs.push(bg);
 
 
@@ -66,14 +76,14 @@ package de.mediadesign.gd1011.studiof.model
 			var registerBGEvent:GameEvent = new GameEvent(GameConsts.CREATE_BG, bg);
 			_dispatcher.dispatchEvent(registerBGEvent);
 			if(!_scrolling)
-				bg.moving = false;
+				bg.stop();
 		}
 
 		public function stopScrolling():void
 		{
 			_scrolling = false;
 			for each(var bg:BGTile in _scrollBGs)
-				bg.moving = false;
+				bg.stop();
 		}
 	}
 }

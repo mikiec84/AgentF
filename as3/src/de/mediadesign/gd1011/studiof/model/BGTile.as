@@ -16,12 +16,14 @@ package de.mediadesign.gd1011.studiof.model
         private var _position:PositionComponent;
         private var _velocity:VelocityComponent;
 		private var _layerID:String;
-		public var moving:Boolean = true;
+		private var _tileID:int;
+		private var moving:Boolean = true;
 
-        public function BGTile(layerID:String)
+        public function BGTile(layerID:String, tileID:int)
         {
 			_layerID = layerID;
-            _position = new PositionComponent();
+            _tileID = tileID;
+			_position = new PositionComponent();
             _velocity = new VelocityComponent();
 
         }
@@ -57,10 +59,17 @@ package de.mediadesign.gd1011.studiof.model
             _velocity = value;
         }
 
+		public function get tileID():int
+		{
+			return _tileID;
+		}
+
         public function stop():void {
+			moving = false;
         }
 
         public function resume():void {
+			moving = true;
         }
     }
 }

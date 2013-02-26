@@ -42,7 +42,7 @@ package de.mediadesign.gd1011.studiof.command
         override public function execute():void
         {
             var bg:BGTile = event.dataObj;
-			var view:Sprite = new ScrollBackgroundView(bg.layerID);
+			var view:Sprite = new ScrollBackgroundView(bg.layerID, bg.tileID);
 
             moveProcess.addEntity(bg);
             renderProcess.registerRenderable(new Renderable(bg.position, view));

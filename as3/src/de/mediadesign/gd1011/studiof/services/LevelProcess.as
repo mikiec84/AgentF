@@ -159,9 +159,9 @@ package de.mediadesign.gd1011.studiof.services
             enemyPositions = new Vector.<int>;
             _enemies = new Vector.<Unit>();
 
-            _bgLayer01 = new BGScroller("layer01",dispatcher);
-            _bgLayer02 = new BGScroller("layer02",dispatcher);
-            _bgLayer03 = new BGScroller("layer03",dispatcher);
+            _bgLayer01 = new BGScroller("layer01",dispatcher, currentLevel);
+            _bgLayer02 = new BGScroller("layer02",dispatcher, currentLevel);
+            _bgLayer03 = new BGScroller("layer03",dispatcher, currentLevel);
 
 
             for (var index:int = 0; index<lvlConfig.getEnemySequence(0, currentLevel-1).length; index++) //JSONExtractedInformation["enemyCount"]

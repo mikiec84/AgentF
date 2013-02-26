@@ -39,7 +39,7 @@ package de.mediadesign.gd1011.studiof.view.mediators
 			if(layerTextures.length > 0)
 			{
                 var bgImage:Image;
-				bgImage = assets.getAsset(layerTextures[Math.floor(Math.random()* layerTextures.length)]);
+				bgImage = assets.getAsset(layerTextures[bgView.tileID]);
 				bgView.addChild(bgImage);
 				if(bgImage is MovieClip)
 				{

@@ -12,14 +12,21 @@ package de.mediadesign.gd1011.studiof.view
 	public class ScrollBackgroundView extends Sprite
     {
 		private var _layerID:String;
-        public function ScrollBackgroundView(layerID:String)
+		private var _tileID:int;
+        public function ScrollBackgroundView(layerID:String, tileID:int)
         {
+			_tileID = tileID;
 			_layerID = layerID;
         }
 
 		public function get layerID():String
 		{
 			return _layerID;
+		}
+
+		public function get tileID():int
+		{
+			return _tileID;
 		}
     }
 }
