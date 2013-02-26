@@ -13,9 +13,10 @@ package de.mediadesign.gd1011.studiof.view.mediators
 
 	import robotlegs.extensions.starlingViewMap.impl.StarlingMediator;
 
-    import starling.display.Image;
+	import starling.core.Starling;
 
-    import starling.display.Image;
+	import starling.display.Image;
+	import starling.display.MovieClip;
 	import starling.utils.AssetManager;
 
 	public class ScrollBackgroundViewMediator extends StarlingMediator
@@ -33,12 +34,19 @@ package de.mediadesign.gd1011.studiof.view.mediators
 		{
 			bgView.alpha = 0;
 
+
 			var layerTextures:Array = JSONReader.read("viewconfig")["assetsets"]["level_"+level.currentLevel]["background"][bgView.layerID];
 			if(layerTextures.length > 0)
 			{
                 var bgImage:Image;
-				bgImage = assets.getImage(layerTextures[Math.floor(Math.random()* layerTextures.length)]);
+				bgImage = assets.getAsset(layerTextures[Math.floor(Math.random()* layerTextures.length)]);
 				bgView.addChild(bgImage);
+				if(bgImage is MovieClip)
+				{
+					(bgImage as MovieClip).fps = 5;
+					Starling.juggler.add(bgImage as MovieClip);
+					(bgImage as MovieClip).play();
+				}
 			}
 		}
 

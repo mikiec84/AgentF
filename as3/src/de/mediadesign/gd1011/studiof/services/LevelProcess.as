@@ -335,6 +335,7 @@ package de.mediadesign.gd1011.studiof.services
         {
             _scrollLevel = false;
             _bgLayer02.stopScrolling();
+			_bgLayer03.stopScrolling();
         }
 
 
