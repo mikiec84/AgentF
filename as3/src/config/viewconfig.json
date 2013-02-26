@@ -1,5 +1,12 @@
 {
     "startscreen":{
+        "progressbar":{
+                "position-from-center":357,
+                "height": 757,
+                "position-from-left":750,
+                "width": 761,
+                "color": 11211009
+        },
         "border-width":20,
         "padding":50,
         "button-offset":150,
@@ -23,7 +30,7 @@
             "background":{
                 "layer01":["Background1"],
                 "layer02":["TileA", "TileB","TileC","TileD","TileE","TileF"],
-                "layer03":["Water_01"]
+                "layer03":["Water_"]
             }
         },
         "level_2":{

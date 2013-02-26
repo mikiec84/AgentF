@@ -24,6 +24,7 @@ package starling.utils
 
 	import starling.core.Starling;
 	import starling.display.Image;
+	import starling.display.MovieClip;
 	import starling.text.BitmapFont;
 	import starling.text.TextField;
 	import starling.textures.Texture;
@@ -195,6 +196,15 @@ package starling.utils
 		public function getImage(name:String):Image
 		{
 			return new Image(getTexture(name));
+		}
+
+		public function getAsset(name:String):Image
+		{
+			if(getTexture(name) != null)
+				return new Image(getTexture(name));
+			else if (getTextures(name).length > 0)
+				return new MovieClip(getTextures(name),30);
+			return null;
 		}
         
         /** Register a sound under a certain name. It will be availble right away. */
