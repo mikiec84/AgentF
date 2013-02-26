@@ -23,7 +23,7 @@ package de.mediadesign.gd1011.studiof.view
 		private var _startScreenConfig:Object;
 		private var _assets:AssetManager;
 
-		private var _background:Image;
+		private var _background:Sprite;
 		private var _logo:Image;
 		public var playButton:TopSecretButton;
 		public var optionButton:TopSecretButton;
@@ -63,20 +63,21 @@ package de.mediadesign.gd1011.studiof.view
 
 		public function createStartScreen():void
 		{
+			_background = new Sprite();
 			//White BG
 			var bgQuad:Quad = new Quad(_width,_height,0xffffff);
-			addChild(bgQuad);
+			_background.addChild(bgQuad);
 
 			//Progress Bar
 			progressBar = new ProgressBar(_startScreenConfig["progressbar"]["width"],_startScreenConfig["progressbar"]["height"], _assets.getImage("Menu_Blood"));
 			progressBar.x = _startScreenConfig["progressbar"]["position-from-left"];
 			progressBar.y = (_height/2)-_startScreenConfig["progressbar"]["position-from-center"];
-			addChild(progressBar);
-			progressBar.progress = 1;
+			_background.addChild(progressBar);
 
 			//Fox BG Asset
-			_background = _assets.getImage("Menu_BG");
-			_background.y = (_height - _background.height)/2;
+			var bgImage:Image = _assets.getImage("Menu_BG");
+			bgImage.y = (_height - bgImage.height)/2;
+			_background.addChild(bgImage);
 			addChild(_background);
 
 			//Border

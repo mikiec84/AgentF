@@ -7,11 +7,13 @@
  */
 package de.mediadesign.gd1011.studiof.view
 {
-    import starling.display.Quad;
-    import starling.display.Sprite;
+	import starling.display.Sprite;
 
-    public class GameView extends Sprite
+	public class GameView extends Sprite
 	{
-        public var loadQuad:Quad;
+       public function GameView():void
+	   {
+		   visible = false;
+	   }
 	}
 }

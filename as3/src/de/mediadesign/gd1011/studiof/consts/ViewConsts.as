@@ -27,6 +27,7 @@ package de.mediadesign.gd1011.studiof.consts
         public static const FLOATING_ENEMY:String = "schwimmbaer";
         public static const FLYING_ENEMY:String = "pilotbaer";
         public static const PLAYER:String = "PLAYER";
+		public static const LOAD_GAMEVIEW:String = "LOAD_GAMEVIEW";
 
         public static const PATRONE:String = "PATRONE";
         public static const HARPUNE:String = "HARPUNE";

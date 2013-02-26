@@ -40,7 +40,8 @@ package de.mediadesign.gd1011.studiof.view
 			_bar.addChild(_border);
 			_bar.y = -_bar.height
 			addChild(_bar);
-			_tween = new Tween(_bar,3,"linear");
+			_tween = new Tween(_bar,JSONReader.read("viewconfig")["startscreen"]["progressbar"]["progress-speed"],"linear");
+
 		}
 
 		public function set progress(state:Number):void

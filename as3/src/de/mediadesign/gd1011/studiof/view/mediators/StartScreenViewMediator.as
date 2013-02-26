@@ -45,7 +45,7 @@ package de.mediadesign.gd1011.studiof.view.mediators
 
 		private function changeToGameView(e:Event):void
 		{
-			dispatcher.dispatchEvent(new GameEvent(ViewConsts.INIT_GAMEVIEW));
+			dispatcher.dispatchEvent(new GameEvent(ViewConsts.LOAD_GAMEVIEW));
 		}
 
 	}
