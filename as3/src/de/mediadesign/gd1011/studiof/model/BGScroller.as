@@ -57,7 +57,12 @@ package de.mediadesign.gd1011.studiof.model
 			if(_randomScroll)
 				newTileID = Math.floor(Math.random()*layerTexturesCont);
 			else if (_scrollBGs.length >0)
-				newTileID = (_scrollBGs[_scrollBGs.length-1].tileID+1)%layerTexturesCont;
+			{
+				if(_bgConfig>0)
+					newTileID = (_scrollBGs[_scrollBGs.length-1].tileID+1)%layerTexturesCont;
+				else
+					newTileID = (_scrollBGs[_scrollBGs.length-1].tileID-1+layerTexturesCont)%layerTexturesCont;
+			}
 			var bg:BGTile = new BGTile(_layerID, newTileID);
 			_scrollBGs.push(bg);
 
