@@ -95,12 +95,20 @@ package de.mediadesign.gd1011.studiof.view.mediators {
 			assets.enqueue(Gras02_texture);
             assets.enqueue(Wasser_texture);
 
+            //assets.enqueue(SpriteSheetTauchbaerTest);
+
+            assets.enqueue(AgentF_Fall_texture);
             assets.enqueue(AgentF_Idle_texture);
+            assets.enqueue(AgentF_Jump_texture);
             assets.enqueue(Barrel_texture);
             assets.enqueue(FlyCoon_texture);
             assets.enqueue(SwimCoon_texture);
 
+            //assets.enqueue("config/atlasxml/SpriteSheetTauchbaerTest.xml")
+
+            assets.enqueue("config/atlasxml/AgentF_Fall_texture.xml");
             assets.enqueue("config/atlasxml/AgentF_Idle_texture.xml");
+            assets.enqueue("config/atlasxml/AgentF_Jump_texture.xml");
             assets.enqueue("config/atlasxml/Barrel_texture.xml");
             assets.enqueue("config/atlasxml/FlyCoon_texture.xml");
             assets.enqueue("config/atlasxml/SwimCoon_texture.xml");

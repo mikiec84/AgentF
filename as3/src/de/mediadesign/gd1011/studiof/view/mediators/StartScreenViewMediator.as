@@ -36,16 +36,12 @@ package de.mediadesign.gd1011.studiof.view.mediators
 		{
             addAssets();
 
-            //trace(assets.getImage("HauptHG"));
-            //contextView.addChild(assets.getImage("HauptHG"));
-
 			assets.loadQueue(loadAssets);
 		}
 
         private function addAssets():void
         {
             assets.enqueue(E2_texture);
-            assets.enqueue(HauptMenue);
             assets.enqueue("config/atlasxml/HauptMenue.xml");
         }
 

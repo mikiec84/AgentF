@@ -51,13 +51,16 @@ package de.mediadesign.gd1011.studiof.model {
         public var counter:int = 0;
         private var comeDownIsntRunningBuffer:Boolean = true;
         private var landNow:Boolean = false;
-        // Sollte später von JSON eingelesen werden !!!
+
+        public var state:String;
 
 
         public function Player(currentLevel:LevelProcess)
         {   super(1, 1, 1, -1, currentLevel, false);
             this._currentLevel = currentLevel;
             ammunition = new Vector.<Unit>();
+
+            state = GameConsts.IDLE;
 
             JSONExtractedInformation = JSONReader.read("config")["PLAYER"];
             currentPlatform = JSONExtractedInformation["platform"];
@@ -67,7 +70,8 @@ package de.mediadesign.gd1011.studiof.model {
             einpendelStaerkeGross = JSONExtractedInformation["einpendelStaerkeGross"];
             einpendelStaerkeWinzig = JSONExtractedInformation["einpendelStaerkeWinzig"];
             jumpSpeedBeimSprungWinzig = JSONExtractedInformation["jumpSpeedBeimSprungWinzig"];
-            if (einpendelStaerkeWinzig>GameConsts.PLATFORM_HEIGHT-1) {
+            if (einpendelStaerkeWinzig>GameConsts.PLATFORM_HEIGHT-1)
+            {
                 einpendelStaerkeWinzig = GameConsts.PLATFORM_HEIGHT-1;
             }
             speedTowardsMouse = JSONExtractedInformation["speedTowardsMouse"];
@@ -80,8 +84,7 @@ package de.mediadesign.gd1011.studiof.model {
         }
 
         override public function move(time:Number):void
-        {   //trace(_anyTweensInMotion, position.y, currentPlatform);
-            //trace(position.y, ", ", currentPlatform, ", ", _anyTweensInMotion);
+        {
             if (!stopped) {
                 if (position.y<1000) {
                     if (assertCorrectInitialization())
@@ -121,7 +124,8 @@ package de.mediadesign.gd1011.studiof.model {
             upIsRunning          = (_up != null && !_up.isComplete && Starling.juggler.contains(_up));
             _comeDownIsntRunning = !(_down != null && !_down.isComplete);
 
-            if (comeDownIsntRunningBuffer != _comeDownIsntRunning) {
+            if (comeDownIsntRunningBuffer != _comeDownIsntRunning)
+            {
                 comeDownIsntRunningBuffer = _comeDownIsntRunning;
                 if (comeDownIsntRunningBuffer)  landNow = true;
             }
@@ -202,23 +206,27 @@ package de.mediadesign.gd1011.studiof.model {
                     comeDown();
             }
 
-            if (landNow) {
+            if (landNow)
+            {
                 landNow = false;
                 land();
             }
 
-            if (startLandTweenAfterThis && !upIsRunning) {
+            if (startLandTweenAfterThis && !upIsRunning)
+            {
                 startLandTweenAfterThis = false;
                 land();
             }
 
-            if (!_landIsntRunning && _moveTowardsMouseAsSoonAsYouCan) {
+            if (!_landIsntRunning && _moveTowardsMouseAsSoonAsYouCan)
+            {
                 Starling.juggler.remove(_landing);
                 _landing = null;
             }
 
 
-            if (_checkTargetPlatform != _targetPlatform) {
+            if (_checkTargetPlatform != _targetPlatform)
+            {
                 _moveTowardsMouseAsSoonAsYouCan = true;
                 _checkTargetPlatform = _targetPlatform;
             }
@@ -257,7 +265,8 @@ package de.mediadesign.gd1011.studiof.model {
             _down  = new  Tween(_tweenedPosition, jumpSpeedBeimFall, Transitions.EASE_IN);
             if (currentPlatform < 2)
             {
-                if (currentPlatform == 1) {
+                if (currentPlatform == 1)
+                {
                     _down.moveTo(_tweenedPosition.x, GameConsts.STAGE_HEIGHT/3+einpendelStaerkeKlein);
                 }
                 else

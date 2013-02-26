@@ -55,7 +55,7 @@ package de.mediadesign.gd1011.studiof.view.mediators
                     img.y = -100;
                     break;
 				case(ViewConsts.UNDERWATER_ENEMY):
-					img = new MovieClip(assets.getTextures("E3 Idle_"),30);
+					img = new MovieClip(assets.getTextures("E3 Idle_"),15);
 					Starling.juggler.add(img as MovieClip);
 					(img as MovieClip).play();
 					break;
