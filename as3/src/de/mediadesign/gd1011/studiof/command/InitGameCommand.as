@@ -71,18 +71,12 @@ package de.mediadesign.gd1011.studiof.command
                 dispatcher.dispatchEvent(addEnemySpriteToGameEvent);
             }
 
-            //var img3:Image = Assets.getImage("AgentF_texture");
-            var playerView:EnemyView = new EnemyView(ViewConsts.PLAYER);/*
-            playerView.addChild(img3);*/
+            var playerView:EnemyView = new EnemyView(ViewConsts.PLAYER, ViewConsts.PLAYER);
 
             gameLoop.registerProcess(moveProcess);
             gameLoop.registerProcess(renderProcess);
             gameLoop.registerProcess(collisionProcess);
             gameLoop.registerProcess(level);
-
-
-			//level.scrollBGs.push(new ScrollableBG());
-
 
             renderProcess.registerRenderable(new Renderable(level.player.position, playerView));
             var addSpriteToGameEvent:GameEvent = new GameEvent(ViewConsts.ADD_SPRITE_TO_GAME, playerView);

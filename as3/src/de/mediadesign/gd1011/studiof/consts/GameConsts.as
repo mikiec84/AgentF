@@ -18,8 +18,13 @@ package de.mediadesign.gd1011.studiof.consts
         public static const REGISTER_UNIT:String = "REGISTER_UNIT";
         public static const DELETE_UNIT:String = "DELETE_UNIT";
         public static const DAMAGE_UNIT:String = "DAMAGE_UNIT";
+        public static const CHANGE_STATE:String ="CHANGE_STATE";
 
 		public static const CREATE_BG:String = "CREATE_BG";
+
+        public static const IDLE:String = "IDLE";
+        public static const JUMP:String = "JUMP";
+        public static const FALL:String = "FALL";
 
         public static const STAGE_HEIGHT:int   = 720;
         public static const STAGE_WIDTH:int    = 1710;

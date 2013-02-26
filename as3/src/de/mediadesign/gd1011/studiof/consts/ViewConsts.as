@@ -21,6 +21,7 @@ package de.mediadesign.gd1011.studiof.consts
 		public static const CREATE_BG_LAYER:String = "CREATE_BG_LAYER";
 		public static const ADD_BG:String = "ADD_BG";
 		public static const SHOW_DAMAGE:String = "SHOW_DAMAGE";
+        public static const CHANGE_ANIM:String ="CHANGE_ANIM";
 
         public static const UNDERWATER_ENEMY:String = "tauchbaer";
         public static const FLOATING_ENEMY:String = "schwimmbaer";

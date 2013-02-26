@@ -7,7 +7,8 @@
  */
 package de.mediadesign.gd1011.studiof
 {
-	import de.mediadesign.gd1011.studiof.command.DamageUnitCommand;
+    import de.mediadesign.gd1011.studiof.command.ChangeUnitStateCommand;
+    import de.mediadesign.gd1011.studiof.command.DamageUnitCommand;
 	import de.mediadesign.gd1011.studiof.command.DeleteUnitCommand;
 	import de.mediadesign.gd1011.studiof.command.CreateBackgroundCommand;
 	import de.mediadesign.gd1011.studiof.command.InitGameCommand;
@@ -95,6 +96,7 @@ package de.mediadesign.gd1011.studiof
             commandMap.map(GameConsts.DAMAGE_UNIT).toCommand(DamageUnitCommand);
             commandMap.map(GameConsts.FORT_FOX).toCommand(SpawnFortFoxCommand);
             commandMap.map(GameConsts.NAUTILUS).toCommand(SpawnNautilusCommand);
+            commandMap.map(GameConsts.CHANGE_STATE).toCommand(ChangeUnitStateCommand);
         }
 
         public function initMediators() : void

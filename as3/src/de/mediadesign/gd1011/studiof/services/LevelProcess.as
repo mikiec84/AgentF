@@ -19,8 +19,8 @@ package de.mediadesign.gd1011.studiof.services
         [Inject]
         public var dispatcher:IEventDispatcher;
 
-		[Inject]
-		public var lvlConfig:LevelConfiguration;
+        [Inject]
+        public var lvlConfig:LevelConfiguration;
 
         private var _running:Boolean;
         private var _enemies:Vector.<Unit>;
@@ -31,19 +31,21 @@ package de.mediadesign.gd1011.studiof.services
 
         private var JSONExtractedInformation:Object;
 
-		private var _bgLayer01:BGScroller;
-       	private var _bgLayer02:BGScroller;
+        private var _bgLayer01:BGScroller;
+        private var _bgLayer02:BGScroller;
         private var _bgLayer03:BGScroller;
 
-		private var _scrollLevel:Boolean = true;
+        private var _scrollLevel:Boolean = true;
 
         public var enemyPositions:Vector.<int>;
-        public var collisionTolerance:int;              // Wie weit die bullet von der Unit entfernt sein darf um immernoch als treffer zu zählen
+        public var collisionTolerance:int; // Wie weit die bullet von der Unit entfernt sein darf um immernoch als treffer zu zählen
 
         ///CHEATS
-        public var onlyThreeMobs:Boolean   = false;
+        public var onlyThreeMobs:Boolean = false;
         public var bossHaveLowLife:Boolean = false;
         /////////
+
+        private var lastState:String;
 
         public function LevelProcess()
         {
@@ -51,11 +53,11 @@ package de.mediadesign.gd1011.studiof.services
             collisionTolerance = JSONExtractedInformation["collisionTolerance"];
         }
 
-		[PostConstruct]
-		public function onCreated():void
-		{
+        [PostConstruct]
+        public function onCreated():void
+        {
             newLevel(1);
-		}
+        }
 
         public function update(time:Number):void
         {
@@ -72,11 +74,11 @@ package de.mediadesign.gd1011.studiof.services
             for (var index:int = 0; index<enemies.length; index++)
                 enemies[index].shootBullet(time);
 
-			_bgLayer01.update();
-			_bgLayer02.update();
+            _bgLayer01.update();
+            _bgLayer02.update();
             _bgLayer03.update();
 
-			updateLP();
+            updateLP();
             checkStatus();
         }
 
@@ -86,7 +88,7 @@ package de.mediadesign.gd1011.studiof.services
             dispatcher.dispatchEvent(updateLifePointEvent);
         }
 
-        public function  checkStatus():void
+        public function checkStatus():void
         {
             //Lost
             if (player.healthPoints<1)
@@ -144,15 +146,21 @@ package de.mediadesign.gd1011.studiof.services
                     spawnBoss();
                 }
             }
+            if (lastState != player.state)
+            {
+                var changeStateEvent:GameEvent = new GameEvent(GameConsts.CHANGE_STATE, player.state);
+                dispatcher.dispatchEvent(changeStateEvent);
+            }
+            lastState = player.state;
         }
 
         public function newLevel(currentLevel:int):void
         {
-			enemyPositions = new Vector.<int>;
-			_enemies = new Vector.<Unit>();
+            enemyPositions = new Vector.<int>;
+            _enemies = new Vector.<Unit>();
 
-			_bgLayer01 = new BGScroller("layer01",dispatcher);
-			_bgLayer02 = new BGScroller("layer02",dispatcher);
+            _bgLayer01 = new BGScroller("layer01",dispatcher);
+            _bgLayer02 = new BGScroller("layer02",dispatcher);
             _bgLayer03 = new BGScroller("layer03",dispatcher);
 
 
@@ -194,7 +202,7 @@ package de.mediadesign.gd1011.studiof.services
         {
             var JSONExtract = JSONReader.read("enemy")["BOSS_SPAWN"];
             if (JSONExtract[_currentLevel] != null)
-            {   //trace("JSONExtract = JSONReader.read('enemy')['BOSS_SPAWN'], JSONExtract[currentLevel]: "+JSONExtract[currentLevel]);
+            { //trace("JSONExtract = JSONReader.read('enemy')['BOSS_SPAWN'], JSONExtract[currentLevel]: "+JSONExtract[currentLevel]);
                 if (JSONExtract[_currentLevel] == "Fort_Fox") {
                     if (!fortFox.initialized && !fortFox.moveLeftRunning) {
                         fortFox.start();
@@ -326,7 +334,7 @@ package de.mediadesign.gd1011.studiof.services
         public function stopScrollLevel():void
         {
             _scrollLevel = false;
-			_bgLayer02.stopScrolling();
+            _bgLayer02.stopScrolling();
         }
 
 
