@@ -28,5 +28,9 @@ package de.mediadesign.gd1011.studiof.consts
         public static const FLYING_ENEMY:String = "pilotbaer";
         public static const PLAYER:String = "PLAYER";
 
+        public static const PATRONE:String = "PATRONE";
+        public static const HARPUNE:String = "HARPUNE";
+        public static const BOMBE:String = "BOMBE";
+        public static const MINE:String = "MINE";
 	}
 }

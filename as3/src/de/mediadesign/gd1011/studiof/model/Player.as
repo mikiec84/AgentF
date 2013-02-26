@@ -320,7 +320,8 @@ package de.mediadesign.gd1011.studiof.model {
             {
                 counter = 0;
             }
-            if (counter == 0 && ((cooldown >= (1 / fireRate) && position.y > GameConsts.PLATFORM_HEIGHT*2-50) || (!_anyTweensInMotion && currentPlatform<2 && position.y < GameConsts.PLATFORM_HEIGHT*2-50)))
+            if (counter == 0 && ((cooldown >= (1 / fireRate) && position.y > GameConsts.PLATFORM_HEIGHT*2-50)
+                    || (!_anyTweensInMotion && currentPlatform<2 && position.y < GameConsts.PLATFORM_HEIGHT*2-50)))
             {
                 if (cooldown >= (1 / fireRate) || (!_anyTweensInMotion && currentPlatform<2 && counter == 0))
                 {

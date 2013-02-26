@@ -7,18 +7,22 @@
  */
 package de.mediadesign.gd1011.studiof.view
 {
-    import starling.display.Quad;
+    import de.mediadesign.gd1011.studiof.model.Unit;
 
+    import starling.display.Quad;
     import starling.display.Sprite;
 
     public class BulletView extends Sprite
     {
-        public function BulletView()
+        public var master:Unit;
+
+        public function BulletView(master:Unit)
         {
-            var q:Quad = new Quad(50,10,0xFFFFFF);
-            q.y += 25;
-            alpha = 0;
-            addChildAt(q, 0);
+            this.master = master;
+//            var q:Quad = new Quad(50,10,0xFFFFFF);
+//            q.y += 25;
+//            alpha = 0;
+//            addChildAt(q, 0);
         }
     }
 }

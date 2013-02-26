@@ -25,7 +25,7 @@
             "layer01":
             {
                 "vPosition":-180,
-                "speed":0,
+                "speed":30,
                 "width":2048
             },
             "layer02":

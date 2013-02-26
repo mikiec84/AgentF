@@ -29,14 +29,16 @@ package de.mediadesign.gd1011.studiof
 	import de.mediadesign.gd1011.studiof.services.RenderProcess;
 	import de.mediadesign.gd1011.studiof.services.Rules;
 	import de.mediadesign.gd1011.studiof.view.BackgroundView;
-	import de.mediadesign.gd1011.studiof.view.EnemyView;
+    import de.mediadesign.gd1011.studiof.view.BulletView;
+    import de.mediadesign.gd1011.studiof.view.EnemyView;
 	import de.mediadesign.gd1011.studiof.view.GUI;
 	import de.mediadesign.gd1011.studiof.view.GameView;
 	import de.mediadesign.gd1011.studiof.view.MainView;
 	import de.mediadesign.gd1011.studiof.view.ScrollBackgroundView;
 	import de.mediadesign.gd1011.studiof.view.StartScreenView;
 	import de.mediadesign.gd1011.studiof.view.mediators.BackgroundViewMediator;
-	import de.mediadesign.gd1011.studiof.view.mediators.EnemyViewMediator;
+    import de.mediadesign.gd1011.studiof.view.mediators.BulletViewMediator;
+    import de.mediadesign.gd1011.studiof.view.mediators.EnemyViewMediator;
 	import de.mediadesign.gd1011.studiof.view.mediators.GUIMediator;
 	import de.mediadesign.gd1011.studiof.view.mediators.GameViewMediator;
 	import de.mediadesign.gd1011.studiof.view.mediators.MainViewMediator;
@@ -108,6 +110,7 @@ package de.mediadesign.gd1011.studiof
             mediatorMap.map(BackgroundView).toMediator(BackgroundViewMediator);
             mediatorMap.map(EnemyView).toMediator(EnemyViewMediator);
 			mediatorMap.map(ScrollBackgroundView).toMediator(ScrollBackgroundViewMediator);
+            mediatorMap.map(BulletView).toMediator(BulletViewMediator);
         }
     }
 }

@@ -207,7 +207,7 @@ package de.mediadesign.gd1011.studiof.model
                 var bullet:Unit = shoot(time);
                 if (bullet != null)
                 {
-                    _currentLevel.register(bullet);
+                    _currentLevel.register(bullet, this);
                 }
             }
         }

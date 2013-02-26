@@ -8,12 +8,11 @@
 package de.mediadesign.gd1011.studiof.command
 {
 
-    import de.mediadesign.gd1011.studiof.consts.GameConsts;
-	import de.mediadesign.gd1011.studiof.consts.ViewConsts;
-	import de.mediadesign.gd1011.studiof.events.GameEvent;
-    import de.mediadesign.gd1011.studiof.services.LevelProcess;
+    import de.mediadesign.gd1011.studiof.consts.ViewConsts;
+    import de.mediadesign.gd1011.studiof.events.GameEvent;
     import de.mediadesign.gd1011.studiof.model.Renderable;
     import de.mediadesign.gd1011.studiof.model.Unit;
+    import de.mediadesign.gd1011.studiof.services.LevelProcess;
     import de.mediadesign.gd1011.studiof.services.MoveProcess;
     import de.mediadesign.gd1011.studiof.services.RenderProcess;
     import de.mediadesign.gd1011.studiof.view.BulletView;
@@ -21,7 +20,6 @@ package de.mediadesign.gd1011.studiof.command
     import flash.events.IEventDispatcher;
 
     import robotlegs.bender.bundles.mvcs.Command;
-    import robotlegs.bender.framework.api.LogLevel;
 
     import starling.display.Sprite;
 
@@ -44,10 +42,11 @@ package de.mediadesign.gd1011.studiof.command
 
         override public function execute():void
         {
-            var view:Sprite = new BulletView();
-            var unit:Unit = event.dataObj;
+            var infos:Array = event.dataObj;
+            var unit:Unit = infos[0];
+            var view:Sprite = new BulletView(infos[1]);
 
-            moveProcess.addEntity(event.dataObj);
+            moveProcess.addEntity(unit);
             renderProcess.registerRenderable(new Renderable(unit.position, view));
 
             var addToGameEvent:GameEvent = new GameEvent(ViewConsts.ADD_SPRITE_TO_GAME, view);

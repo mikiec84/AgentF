@@ -68,6 +68,7 @@ package de.mediadesign.gd1011.studiof.view.mediators {
 
 		private function addAssets():void
 		{
+            // Backgrounds for the Gamelevels
             assets.enqueue(Level1);
             assets.enqueue(Level2);
 
@@ -87,6 +88,8 @@ package de.mediadesign.gd1011.studiof.view.mediators {
             assets.enqueue(Barrel_texture);
             assets.enqueue(FlyCoon_texture);
             assets.enqueue(SwimCoon_texture);
+
+            assets.enqueue(Bullet);
 
             assets.enqueue("config/atlasxml/Level1.xml");
             assets.enqueue("config/atlasxml/Level2.xml");

@@ -159,7 +159,7 @@ package de.mediadesign.gd1011.studiof.services
             enemyPositions = new Vector.<int>;
             _enemies = new Vector.<Unit>();
 
-            _bgLayer01 = new BGScroller("layer01",dispatcher, currentLevel);
+            _bgLayer01 = new BGScroller("layer01",dispatcher, currentLevel, false);
             _bgLayer02 = new BGScroller("layer02",dispatcher, currentLevel);
             _bgLayer03 = new BGScroller("layer03",dispatcher, currentLevel);
 
@@ -319,9 +319,12 @@ package de.mediadesign.gd1011.studiof.services
             }
         }
 
-        public function register(unit:Unit):void
+        public function register(bullet:Unit, shootingUnit:Unit):void
         {
-            var registerUnitEvent:GameEvent = new GameEvent(GameConsts.REGISTER_UNIT, unit);
+            var infos:Array = new Array();
+            infos.push(bullet);
+            infos.push(shootingUnit);
+            var registerUnitEvent:GameEvent = new GameEvent(GameConsts.REGISTER_UNIT, infos);
             dispatcher.dispatchEvent(registerUnitEvent);
         }
 

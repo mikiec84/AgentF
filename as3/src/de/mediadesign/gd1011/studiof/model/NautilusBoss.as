@@ -162,7 +162,7 @@ package de.mediadesign.gd1011.studiof.model {
             var bullet:Unit = shoot(time);
             if (bullet != null)
             {
-                level.register(bullet);
+                level.register(bullet, this);
             }
         }
 
