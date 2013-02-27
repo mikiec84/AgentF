@@ -13,8 +13,14 @@ package de.mediadesign.gd1011.studiof.view.mediators {
 
     import robotlegs.extensions.starlingViewMap.impl.StarlingMediator;
 
-    import starling.display.Quad;
-    import starling.events.EnterFrameEvent;
+	import starling.core.Starling;
+
+	import starling.display.DisplayObject;
+	import starling.display.MovieClip;
+
+	import starling.display.Quad;
+	import starling.display.Sprite;
+	import starling.events.EnterFrameEvent;
     import starling.events.Touch;
     import starling.events.TouchEvent;
     import starling.events.TouchPhase;
@@ -52,6 +58,17 @@ package de.mediadesign.gd1011.studiof.view.mediators {
 			contextView.addEventListener(TouchEvent.TOUCH, handleTouch);
             contextView.addEventListener(EnterFrameEvent.ENTER_FRAME, game.update);
 
+			contextView.units = new Sprite();
+			contextView.addChild(contextView.units);
+
+			var water:MovieClip = assets.getAsset("Water_") as MovieClip;
+			water.fps = 5;
+			water.y = 455;
+			water.alpha = 0.5;
+			Starling.juggler.add(water);
+			contextView.addChild(water);
+			water.play();
+
 			addContextListener(ViewConsts.ADD_SPRITE_TO_GAME, add);
 			addContextListener(ViewConsts.REMOVE_SPRITE_FROM_GAME, remove);
 
@@ -69,12 +86,12 @@ package de.mediadesign.gd1011.studiof.view.mediators {
 
 		private function add(event:GameEvent):void
 		{
-            contextView.addChildAt(event.dataObj, contextView.numChildren);
+            contextView.addUnit(event.dataObj as DisplayObject);
 		}
 
         private function remove(event:GameEvent):void
         {
-            contextView.removeChild(event.dataObj);
+            contextView.removeUnit(event.dataObj as DisplayObject);
         }
 
 		private function handleTouch(e:TouchEvent):void
