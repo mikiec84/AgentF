@@ -36,6 +36,8 @@ package de.mediadesign.gd1011.studiof.view.mediators
 		[Inject]
 		public var assets:AssetManager;
 
+        private var loaded:Boolean = false;
+
 		override public function initialize():void
 		{
 			contextView.loadAssets(assets);
@@ -45,7 +47,10 @@ package de.mediadesign.gd1011.studiof.view.mediators
 
 		private function changeToGameView(e:Event):void
 		{
-			dispatcher.dispatchEvent(new GameEvent(ViewConsts.LOAD_GAMEVIEW));
+            if (!loaded) {
+                loaded = true;
+                dispatcher.dispatchEvent(new GameEvent(ViewConsts.LOAD_GAMEVIEW));
+            }
 		}
 
 	}
