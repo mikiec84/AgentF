@@ -16,12 +16,8 @@ package de.mediadesign.gd1011.studiof
 	import de.mediadesign.gd1011.studiof.command.SpawnFortFoxCommand;
 	import de.mediadesign.gd1011.studiof.command.SpawnNautilusCommand;
 	import de.mediadesign.gd1011.studiof.consts.GameConsts;
-	import de.mediadesign.gd1011.studiof.consts.ViewConsts;
-	import de.mediadesign.gd1011.studiof.model.BGScroller;
 	import de.mediadesign.gd1011.studiof.model.LevelConfiguration;
-	import de.mediadesign.gd1011.studiof.model.Renderable;
 	import de.mediadesign.gd1011.studiof.model.Score;
-	import de.mediadesign.gd1011.studiof.model.User;
 	import de.mediadesign.gd1011.studiof.services.CollisionProcess;
 	import de.mediadesign.gd1011.studiof.services.GameLoop;
 	import de.mediadesign.gd1011.studiof.services.LevelProcess;
@@ -77,7 +73,6 @@ package de.mediadesign.gd1011.studiof
         {
             modelMap.map(LevelProcess).asSingleton();
             modelMap.map(Score).asSingleton();
-            modelMap.map(User).asSingleton();
 
             modelMap.map(MoveProcess).asSingleton();
             modelMap.map(RenderProcess).asSingleton();
