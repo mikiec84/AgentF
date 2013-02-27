@@ -55,22 +55,6 @@ package de.mediadesign.gd1011.studiof.command
             level.fortFox = new FortFoxBoss(level);
             level.nautilus = new NautilusBoss(level);
 
-            for (var index:int = 0; index<level.enemies.length; index++)
-            {
-                moveProcess.addEntity(level.enemies[index]);
-
-                if (level.enemies[index].currentPlatform < 2)
-                    var enemyView:EnemyView = new EnemyView(ViewConsts.FLYING_ENEMY, level.enemies[index].ID);
-                if (level.enemies[index].currentPlatform == 2)
-                    var enemyView:EnemyView = new EnemyView(ViewConsts.FLOATING_ENEMY, level.enemies[index].ID);
-                if (level.enemies[index].currentPlatform > 2)
-                    var enemyView:EnemyView = new EnemyView(ViewConsts.UNDERWATER_ENEMY, level.enemies[index].ID);
-
-                renderProcess.registerRenderable(new Renderable(level.enemies[index].position, enemyView));
-                var addEnemySpriteToGameEvent:GameEvent = new GameEvent(ViewConsts.ADD_SPRITE_TO_GAME, enemyView);
-                dispatcher.dispatchEvent(addEnemySpriteToGameEvent);
-            }
-
             var playerView:EnemyView = new EnemyView(ViewConsts.PLAYER, ViewConsts.PLAYER);
 
             gameLoop.registerProcess(moveProcess);

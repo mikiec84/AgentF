@@ -71,11 +71,10 @@ package de.mediadesign.gd1011.studiof
 
         private function initModels():void
         {
-            modelMap.map(LevelProcess).asSingleton();
             modelMap.map(Score).asSingleton();
-
             modelMap.map(MoveProcess).asSingleton();
             modelMap.map(RenderProcess).asSingleton();
+            modelMap.map(LevelProcess).asSingleton();
             modelMap.map(CollisionProcess).asSingleton();
 
             modelMap.map(GameLoop).asSingleton();

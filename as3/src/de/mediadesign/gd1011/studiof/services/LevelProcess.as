@@ -11,6 +11,8 @@ package de.mediadesign.gd1011.studiof.services
     import de.mediadesign.gd1011.studiof.consts.ViewConsts;
     import de.mediadesign.gd1011.studiof.events.GameEvent;
     import de.mediadesign.gd1011.studiof.model.*;
+    import de.mediadesign.gd1011.studiof.model.components.EnemyInitPositioning;
+    import de.mediadesign.gd1011.studiof.view.EnemyView;
 
     import flash.events.IEventDispatcher;
 
@@ -21,6 +23,12 @@ package de.mediadesign.gd1011.studiof.services
 
         [Inject]
         public var lvlConfig:LevelConfiguration;
+
+        [Inject]
+        public var moveProcess:MoveProcess;
+
+        [Inject]
+        public var renderProcess:RenderProcess;
 
         private var _running:Boolean = true;
         private var _enemies:Vector.<Unit>;
@@ -38,7 +46,8 @@ package de.mediadesign.gd1011.studiof.services
 
         private var _scrollLevel:Boolean = true;
 
-        public var enemyPositions:Vector.<int>;
+        public var currentXKoord:int = GameConsts.STAGE_WIDTH;
+        public var enemyPositions:Vector.<EnemyInitPositioning>;
         public var collisionTolerance:int; // Wie weit die bullet von der Unit entfernt sein darf um immernoch als treffer zu zählen
 
         ///CHEATS
@@ -83,6 +92,45 @@ package de.mediadesign.gd1011.studiof.services
 
             updateLP();
             checkStatus();
+
+            currentXKoord += 300*time;
+
+            for (var index2:int = 0; index2<enemyPositions.length; index2++)
+            {
+                if (lvlConfig.getEnemySequence(0,0)[index2] != 6 && enemyPositions[index2].xPos < currentXKoord && !enemyPositions[index2].spawned)
+                {
+                    enemyPositions[index2].spawned = true;
+                    createAndShowEnemy(index2);
+                }
+            }
+        }
+
+        private function shouldBossSpawn():Boolean
+        {   var a:int = -1;
+            for (var index:int = 0; index<lvlConfig.getEnemySequence(0,0).length; index++) {
+                if (lvlConfig.getEnemySequence(0,0)[index] != 6) {
+                    a = index;
+                }
+            }
+            return enemyPositions[a].spawned;
+        }
+
+        private function createAndShowEnemy(index:int):void
+        {   // enemies vector
+            _enemies.push(new Unit(1, lvlConfig.getEnemySequence(0,0)[index], -300, enemyPositions[index].xPos, this, false, index.toString()));
+            // moveProcess
+            moveProcess.addEntity(_enemies[_enemies.length-1]);
+            // texture
+            if (_enemies[_enemies.length-1].currentPlatform < 2)
+                var enemyView:EnemyView = new EnemyView(ViewConsts.FLYING_ENEMY, _enemies[_enemies.length-1].ID);
+            if (_enemies[_enemies.length-1].currentPlatform == 2)
+                var enemyView:EnemyView = new EnemyView(ViewConsts.FLOATING_ENEMY, _enemies[_enemies.length-1].ID);
+            if (_enemies[_enemies.length-1].currentPlatform > 2)
+                var enemyView:EnemyView = new EnemyView(ViewConsts.UNDERWATER_ENEMY, _enemies[_enemies.length-1].ID);
+            // renderProcess
+            renderProcess.registerRenderable(new Renderable(_enemies[_enemies.length-1].position, enemyView));
+            var addEnemySpriteToGameEvent:GameEvent = new GameEvent(ViewConsts.ADD_SPRITE_TO_GAME, enemyView);
+            dispatcher.dispatchEvent(addEnemySpriteToGameEvent);
         }
 
         public function updateLP():void
@@ -101,7 +149,7 @@ package de.mediadesign.gd1011.studiof.services
                 stopAllUnits();
             }
             // End of Level 1, start Boss Level 1
-            if (enemies.length != 0)
+            /*if (enemies.length != 0)
             {
                 if (player.healthPoints > 0
                         && (enemies[enemies.length-1].healthPoints < 1
@@ -113,7 +161,7 @@ package de.mediadesign.gd1011.studiof.services
                         spawnBoss();
                     }
                 }
-            }
+            }*/
             // new level
             if (fortFox.healthPoints <= 0 && fortFox.initialized)
             {
@@ -123,7 +171,7 @@ package de.mediadesign.gd1011.studiof.services
                 stopAllUnits();
             }
             //Boss Spawn
-            else if (enemies.length == 0)
+            else if (enemies.length == 0 && shouldBossSpawn())
             {
                 if(!fortFox.initialized && !fortFox.moveLeftRunning)
                 {
@@ -141,7 +189,7 @@ package de.mediadesign.gd1011.studiof.services
             }
 
             //Boss Spawn
-            else if (enemies.length == 0)
+            else if (enemies.length == 0 && shouldBossSpawn())
             {
                 if(!nautilus.initialized && !nautilus.moveLeftRunning)
                 {
@@ -159,7 +207,7 @@ package de.mediadesign.gd1011.studiof.services
 
         public function newLevel(currentLevel:int):void
         {
-            enemyPositions = new Vector.<int>;
+            enemyPositions = new Vector.<EnemyInitPositioning>;
             _enemies = new Vector.<Unit>();
             _enemieBullets = new Vector.<Unit>();
 
@@ -170,28 +218,17 @@ package de.mediadesign.gd1011.studiof.services
 
             for (var index:int = 0; index<lvlConfig.getEnemySequence(0, currentLevel-1).length; index++) //JSONExtractedInformation["enemyCount"]
             {
-                enemyPositions.push(GameConsts.STAGE_WIDTH+((1+index)*JSONExtractedInformation["enemyRate"]));
+                enemyPositions.push(new EnemyInitPositioning(false, GameConsts.STAGE_WIDTH+((1+index)*JSONExtractedInformation["enemyRate"])));
             }
             //////////// CHEAT ///////////////
             if (onlyThreeMobs) {
                 while(enemyPositions.length > 3)
                 {
-                    var a:int = enemyPositions.pop();
+                    var a:EnemyInitPositioning = enemyPositions.pop();
                 }
                 trace("ENEMY POSITION LENGTH: "+enemyPositions.length);
             }
             //////////////////////////////////
-            for (var index2:int = 0; index2<enemyPositions.length; index2++)
-            {
-                if (lvlConfig.getEnemySequence(0,0)[index2] != 6)
-                {
-                    addEnemy(new Unit(1, lvlConfig.getEnemySequence(0,0)[index2], -300, enemyPositions[index2], this, false, index2.toString()));
-                    if (enemies[enemies.length-1].currentPlatform == 2)
-                    {
-                        enemies[enemies.length-1].healthPoints = 3;
-                    }
-                }
-            }
         }
 
 
@@ -227,11 +264,6 @@ package de.mediadesign.gd1011.studiof.services
         public function get enemies():Vector.<Unit>
         {
             return _enemies;
-        }
-
-        public function addEnemy(value:Unit):void
-        {
-            _enemies.push(value);
         }
 
         public function removeEnemy(value:Unit):void

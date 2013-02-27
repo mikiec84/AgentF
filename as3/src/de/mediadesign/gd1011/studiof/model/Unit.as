@@ -30,15 +30,12 @@ package de.mediadesign.gd1011.studiof.model
 
         public var cooldown:Number = 0;
         public var JSONExtractedInformation:Object;
-        //public var ammunition:Vector.<Unit>;
-        public var hasAlreadyHitThePlayer:Boolean = false;
         public var stopped:Boolean = false;
         private var verticalBullet:Boolean = false;
 
 
         public function Unit(healthpoints:int, startingPlatform:int, xVel:int, startingXPosition:int, currentLevel:LevelProcess, verticalBullet:Boolean, ID:String = "")
         {
-            //ammunition = new Vector.<Unit>();
             _weapon = "default";
             _currentPlatform = startingPlatform;
             _healthPoints = healthpoints;
@@ -66,6 +63,7 @@ package de.mediadesign.gd1011.studiof.model
             if (startingPlatform == 2 && velocity.velocityX < 0)
             {
                 position.y += 80;
+                _healthPoints = 3;
             }
 
             this._ID = ID;
