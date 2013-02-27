@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with TexturePacker http://texturepacker.com-->
-<!-- $TexturePacker:SmartUpdate:70ab13b09c324a211d6720ee4f20bbe3$ -->
+<!-- $TexturePacker:SmartUpdate:1880e1281c829a81781e0ea668254f63$ -->
 <TextureAtlas imagePath="Water.png">
-    <SubTexture name="Water_01" x="2" y="439" width="1710" height="435"/>
-    <SubTexture name="Water_02" x="2" y="2" width="1710" height="435"/>
+    <SubTexture name="Water_01" x="0" y="437" width="1710" height="435"/>
+    <SubTexture name="Water_02" x="0" y="0" width="1710" height="435"/>
 </TextureAtlas>

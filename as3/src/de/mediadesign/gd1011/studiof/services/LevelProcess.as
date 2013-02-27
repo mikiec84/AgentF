@@ -24,6 +24,7 @@ package de.mediadesign.gd1011.studiof.services
 
         private var _running:Boolean;
         private var _enemies:Vector.<Unit>;
+        private var _enemieBullets:Vector.<Unit>;
         private var _player:Player;
         private var _fortFox:FortFoxBoss;
         private var _nautilus:NautilusBoss;
@@ -158,6 +159,7 @@ package de.mediadesign.gd1011.studiof.services
         {
             enemyPositions = new Vector.<int>;
             _enemies = new Vector.<Unit>();
+            _enemieBullets = new Vector.<Unit>();
 
             _bgLayer01 = new BGScroller("layer01",dispatcher, currentLevel, false);
             _bgLayer02 = new BGScroller("layer02",dispatcher, currentLevel);
@@ -255,13 +257,13 @@ package de.mediadesign.gd1011.studiof.services
 
         public function stopAllUnits():void
         {
-            for (var index:int = 0; index<enemies.length; index++)
+            for (var index:int = 0; index < enemies.length; index++)
             {
                 enemies[index].stop();
-                for (var index2:int = 0; index2<enemies[index].ammunition.length; index2++)
-                {
-                    enemies[index].ammunition[index2].stop();
-                }
+            }
+            for (var index2:int = 0; index2 < _enemieBullets.length; index2++)
+            {
+                _enemieBullets[index2].stop();
             }
             player.stop();
             for (var index3:int = 0;index3<player.ammunition.length; index3++)
@@ -271,10 +273,6 @@ package de.mediadesign.gd1011.studiof.services
             if (fortFox.initialized || fortFox.moveLeftRunning)
             {
                 fortFox.stop();
-                for (var index4:int = 0; index4<fortFox.ammunition.length; index4++)
-                {
-                    fortFox.ammunition[index4].stop();
-                }
             }
             if (nautilus.initialized || nautilus.moveLeftRunning)
             {
@@ -291,10 +289,10 @@ package de.mediadesign.gd1011.studiof.services
             for (var index:int = 0; index<enemies.length; index++)
             {
                 enemies[index].resume();
-                for (var index2:int = 0; index2<enemies[index].ammunition.length; index2++)
-                {
-                    enemies[index].ammunition[index2].resume();
-                }
+            }
+            for (var index2:int = 0; index2 < _enemieBullets.length; index2++)
+            {
+                _enemieBullets[index2].stop();
             }
             player.resume();
             for (var index3:int = 0;index3<player.ammunition.length; index3++)
@@ -304,10 +302,6 @@ package de.mediadesign.gd1011.studiof.services
             if (fortFox.initialized || fortFox.moveLeftRunning)
             {
                 fortFox.resume();
-                for (var index4:int = 0; index4<fortFox.ammunition.length; index4++)
-                {
-                    fortFox.ammunition[index4].resume();
-                }
             }
             if (nautilus.initialized || nautilus.moveLeftRunning)
             {
@@ -380,6 +374,16 @@ package de.mediadesign.gd1011.studiof.services
         public function stop():void
         {
             _running = false;
+        }
+
+        public function get enemieBullets():Vector.<Unit>
+        {
+            return _enemieBullets;
+        }
+
+        public function set enemieBullets(value:Vector.<Unit>):void
+        {
+            _enemieBullets = value;
         }
     }
 }

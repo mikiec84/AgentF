@@ -29,6 +29,7 @@ package de.mediadesign.gd1011.studiof.model {
         private var changePosMovementSpeed:Number = 0;
         private var xOffset:int;
         private var attackSpeed:int;
+        public var ammunition:Vector.<Unit>;
 
         public function NautilusBoss(currentLevel:LevelProcess)
         {
@@ -108,7 +109,8 @@ package de.mediadesign.gd1011.studiof.model {
 
         private function doMoveLeft(time:Number):void
         {
-            if (position.x > idleXPosition) {
+            if (position.x > idleXPosition)
+            {
                 position.x-=movementSpeed*time;
             }
             else
@@ -120,7 +122,8 @@ package de.mediadesign.gd1011.studiof.model {
 
         private function doDownMovement(time:Number):void
         {
-            if (position.y+changePosMovementSpeed*time >= GameConsts.PLATFORM_HEIGHT*_finishLine) {
+            if (position.y+changePosMovementSpeed*time >= GameConsts.PLATFORM_HEIGHT*_finishLine)
+            {
                 position.y = GameConsts.PLATFORM_HEIGHT*_finishLine+yOffset;
                 downMovementRunning = false;
             }
@@ -132,7 +135,8 @@ package de.mediadesign.gd1011.studiof.model {
 
         private function doUpMovement(time:Number):void
         {
-            if (position.y-changePosMovementSpeed*time <= GameConsts.PLATFORM_HEIGHT*_finishLine+yOffset) {
+            if (position.y-changePosMovementSpeed*time <= GameConsts.PLATFORM_HEIGHT*_finishLine+yOffset)
+            {
                 position.y = GameConsts.PLATFORM_HEIGHT*_finishLine+yOffset;
                 upMovementRunning = false;
             }

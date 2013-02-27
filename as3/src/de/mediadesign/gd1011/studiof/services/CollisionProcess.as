@@ -77,18 +77,16 @@ package de.mediadesign.gd1011.studiof.services
                     break;
                     break;
                 }
-
-                for (var j:int = 0; j < level.enemies[i].ammunition.length; j++)
+            }
+            for (var i:int = 0; i < level.enemieBullets.length; i++)
+            {
+                rules.collisionDetection(level.player, level.enemieBullets[i]);
+                if (rules.isDead(level.enemieBullets[i]))
                 {
-                    //collision player, enemybullet
-                    rules.collisionDetection(level.player, level.enemies[i].ammunition[j]);
-
-                    if (rules.isDead(level.enemies[i].ammunition[j]))
-                    {
-                        deleteUnits(level.enemies[i].ammunition, j);
-                        break;
-                        break;
-                    }
+                    deleteUnits(level.enemieBullets, i);
+                    dispatcher.dispatchEvent(updatePointsEvent);
+                    break;
+                    break;
                 }
             }
         }

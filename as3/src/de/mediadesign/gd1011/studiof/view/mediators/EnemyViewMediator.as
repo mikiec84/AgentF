@@ -46,6 +46,7 @@ package de.mediadesign.gd1011.studiof.view.mediators
                     Starling.juggler.add(currentImg as MovieClip);
                     images.push(currentImg);
                     (currentImg as MovieClip).play();
+                    currentImg.x = -140;
                     currentImg.y = 20;
                     enemyView.addChild(currentImg);
                     // ##################

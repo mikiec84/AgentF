@@ -45,14 +45,11 @@ package de.mediadesign.gd1011.studiof.view.mediators
             }
             else if (!(bulletView.master is Player) && !(bulletView.master is NautilusBoss) && !(bulletView.master is FortFoxBoss))
             {
-                trace(bulletView.master.currentPlatform);
                 switch(bulletView.master.currentPlatform)
                 {
                     case(0):
                         break;
                     case(1):
-                        break;
-                    case(3):
                         break;
                     case(3):
                         var img:Image = new Image(assets.getTexture("Bullet"));

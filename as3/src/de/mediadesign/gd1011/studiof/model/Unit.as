@@ -30,7 +30,7 @@ package de.mediadesign.gd1011.studiof.model
 
         public var cooldown:Number = 0;
         public var JSONExtractedInformation:Object;
-        public var ammunition:Vector.<Unit>;
+        //public var ammunition:Vector.<Unit>;
         public var hasAlreadyHitThePlayer:Boolean = false;
         public var stopped:Boolean = false;
         private var verticalBullet:Boolean = false;
@@ -38,7 +38,7 @@ package de.mediadesign.gd1011.studiof.model
 
         public function Unit(healthpoints:int, startingPlatform:int, xVel:int, startingXPosition:int, currentLevel:LevelProcess, verticalBullet:Boolean, ID:String = "")
         {
-            ammunition = new Vector.<Unit>();
+            //ammunition = new Vector.<Unit>();
             _weapon = "default";
             _currentPlatform = startingPlatform;
             _healthPoints = healthpoints;
@@ -48,7 +48,7 @@ package de.mediadesign.gd1011.studiof.model
             position.x = startingXPosition;
             if (startingXPosition == -1)
             {
-                position.x = 20;
+                position.x = 160;
             }
             this._currentLevel = currentLevel;
 
@@ -182,7 +182,7 @@ package de.mediadesign.gd1011.studiof.model
             {
                 var bullet:Unit = new Unit(1, currentPlatform, -600, position.x, _currentLevel, false);
                 bullet.position.y += 100;
-                ammunition.push(bullet);
+                _currentLevel.enemieBullets.push(bullet);
                 cooldown = 0;
                 return bullet;
             }
@@ -193,7 +193,7 @@ package de.mediadesign.gd1011.studiof.model
                 _currentLevel.player.healthPoints -= 1;
                 var bullet:Unit = new Unit(1, currentPlatform, -600, _currentLevel.player.position.x, _currentLevel, true);
                 bullet.position.y += 100;
-                ammunition.push(bullet);
+                _currentLevel.enemieBullets.push(bullet);
                 cooldown = 0;
                 return bullet;
             }
@@ -203,7 +203,8 @@ package de.mediadesign.gd1011.studiof.model
 
         public function shootBullet(time:Number):void
         {
-            if (!stopped) {
+            if (!stopped)
+            {
                 var bullet:Unit = shoot(time);
                 if (bullet != null)
                 {

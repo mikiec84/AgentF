@@ -52,6 +52,7 @@ package de.mediadesign.gd1011.studiof.model {
         public var counter:int = 0;
         private var comeDownIsntRunningBuffer:Boolean = true;
         private var landNow:Boolean = false;
+        public var ammunition:Vector.<Unit>;
 
         public var state:String;
 
