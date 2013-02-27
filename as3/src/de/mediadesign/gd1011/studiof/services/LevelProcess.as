@@ -22,7 +22,7 @@ package de.mediadesign.gd1011.studiof.services
         [Inject]
         public var lvlConfig:LevelConfiguration;
 
-        private var _running:Boolean;
+        private var _running:Boolean = true;
         private var _enemies:Vector.<Unit>;
         private var _enemieBullets:Vector.<Unit>;
         private var _player:Player;
@@ -62,6 +62,8 @@ package de.mediadesign.gd1011.studiof.services
 
         public function update(time:Number):void
         {
+			if(!_running)
+			return;
             if(player == null)
                 return;
 
@@ -198,6 +200,7 @@ package de.mediadesign.gd1011.studiof.services
         {
             enemyPositions.splice(0, enemyPositions.length-1);
             _enemies.splice(0, _enemies.length-1);
+			this.stop();
         }
 
         public function spawnBoss():void
@@ -331,6 +334,7 @@ package de.mediadesign.gd1011.studiof.services
         public function stopScrollLevel():void
         {
             _scrollLevel = false;
+			_bgLayer01.stopScrolling();
             _bgLayer02.stopScrolling();
 			_bgLayer03.stopScrolling();
         }
