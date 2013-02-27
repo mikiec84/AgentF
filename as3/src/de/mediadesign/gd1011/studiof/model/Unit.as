@@ -192,7 +192,7 @@ package de.mediadesign.gd1011.studiof.model
                     && position.x-_currentLevel.collisionTolerance < _currentLevel.player.position.x)
             {
                 doNotShootAnymore = true;
-                _currentLevel.player.healthPoints -= 1;
+                //_currentLevel.player.healthPoints -= 1;
                 var bullet:Unit = new Unit(1, currentPlatform, -600, _currentLevel.player.position.x, _currentLevel, true);
                 bullet.position.y += 10;
                 _currentLevel.enemieBullets.push(bullet);
