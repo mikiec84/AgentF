@@ -7,24 +7,47 @@
  */
 package de.mediadesign.gd1011.studiof.model
 {
+    import de.mediadesign.gd1011.studiof.model.components.HighscoreEntry;
+
+    import flash.net.SharedObject;
+
     public class Score
     {
-        private var currentUser:User;
-        private var users:Vector.<User>;
+        private var _entries:Array;
+        private var saveData:SharedObject;
 
-        public function Score()
+        [PostConstruct]
+        public function onCreated():void
         {
-
+            saveData = SharedObject.getLocal("AgentFHighScoreSave");
+            if (saveData.data.highscore != null) {
+                _entries = saveData.data.highscore;
+            }
+            else
+            {
+                _entries = new Array;
+            }
         }
 
-        public function loadScore():void
+        public  function inputScore(userName:String, userScore:int):void
         {
+            _entries.push(new HighscoreEntry(userName, userScore));
 
+            if (_entries.length > 1)
+                _entries.sortOn("points", Array.DESCENDING | Array.NUMERIC);
+
+            if (_entries.length > 10)
+                var a:Object = _entries.pop();
         }
 
-        public  function saveScore():void
+        public function saveScore():void
         {
+            saveData.data.highscore = _entries;
+            saveData.flush();
+        }
 
+        public function get entries():Array {
+            return _entries;
         }
     }
 }
