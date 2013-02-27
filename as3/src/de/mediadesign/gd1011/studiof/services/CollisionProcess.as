@@ -30,7 +30,6 @@ package de.mediadesign.gd1011.studiof.services
 
         public function update(time:Number):void
         {
-            var updatePointsEvent:GameEvent = new GameEvent(ViewConsts.ENEMY_KILLED);
             for (var i:int = 0; i < level.player.ammunition.length; i++)
             {
                 // collision Boss1
@@ -54,6 +53,7 @@ package de.mediadesign.gd1011.studiof.services
                     if (rules.isDead(level.enemies[j]))
                     {
                         deleteUnits(level.enemies, j);
+                        var updatePointsEvent:GameEvent = new GameEvent(ViewConsts.ENEMY_KILLED);
                         dispatcher.dispatchEvent(updatePointsEvent);
                         break;
                         break;
@@ -73,6 +73,7 @@ package de.mediadesign.gd1011.studiof.services
                 if (rules.isDead(level.enemies[i]))
                 {
                     deleteUnits(level.enemies, i);
+                    var updatePointsEvent:GameEvent = new GameEvent(ViewConsts.ENEMY_KILLED);
                     dispatcher.dispatchEvent(updatePointsEvent);
                     break;
                     break;
@@ -84,6 +85,7 @@ package de.mediadesign.gd1011.studiof.services
                 if (rules.isDead(level.enemieBullets[i]))
                 {
                     deleteUnits(level.enemieBullets, i);
+                    var updatePointsEvent:GameEvent = new GameEvent(ViewConsts.ENEMY_KILLED);
                     dispatcher.dispatchEvent(updatePointsEvent);
                     break;
                     break;
