@@ -51,9 +51,11 @@ package de.mediadesign.gd1011.studiof.view.mediators
                     enemyView.addChild(currentImg);
                     // ##################
                     currentImg = new MovieClip(assets.getTextures("Player_Fall_"),30);
+                    currentImg.x = -140;
                     images.push(currentImg);
                     Starling.juggler.add(currentImg as MovieClip);
                     currentImg = new MovieClip(assets.getTextures("Player_Jump_"),30);
+                    currentImg.x = -140;
                     images.push(currentImg);
                     Starling.juggler.add(currentImg as MovieClip);
                     addContextListener(ViewConsts.CHANGE_ANIM, changeAnimation);

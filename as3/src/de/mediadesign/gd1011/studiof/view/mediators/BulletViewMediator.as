@@ -48,21 +48,29 @@ package de.mediadesign.gd1011.studiof.view.mediators
                 switch(bulletView.master.currentPlatform)
                 {
                     case(0):
+                        var img:Image = new Image(assets.getTexture("Bomb"));
+                        img.x = -140;
+                        img.y = 0;
+                        bulletView.addChild(img);
                         break;
                     case(1):
+                        var img:Image = new Image(assets.getTexture("Bomb"));
+                        img.x = -140;
+                        img.y = 0;
+                        bulletView.addChild(img);
                         break;
                     case(3):
-                        var img:Image = new Image(assets.getTexture("Bullet"));
+                        var img:Image = new Image(assets.getTexture("Arrow"));
                         img.y = 60;
                         bulletView.addChild(img);
                         break;
                     case(4):
-                        var img:Image = new Image(assets.getTexture("Bullet"));
+                        var img:Image = new Image(assets.getTexture("Arrow"));
                         img.y = 60;
                         bulletView.addChild(img);
                         break;
                     case(5):
-                        var img:Image = new Image(assets.getTexture("Bullet"));
+                        var img:Image = new Image(assets.getTexture("Arrow"));
                         img.y = 60;
                         bulletView.addChild(img);
                         break;
