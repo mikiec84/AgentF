@@ -52,83 +52,19 @@ package de.mediadesign.gd1011.studiof.view.mediators {
 			contextView.addEventListener(TouchEvent.TOUCH, handleTouch);
             contextView.addEventListener(EnterFrameEvent.ENTER_FRAME, game.update);
 
-            contextView.loadQuad = new Quad(800, 50, 0x0FFF0F);
-            contextView.loadQuad.x = GameConsts.STAGE_HEIGHT/2 + 50;
-            contextView.loadQuad.y = (GameConsts.STAGE_WIDTH-800)/2;
+			addContextListener(ViewConsts.ADD_SPRITE_TO_GAME, add);
+			addContextListener(ViewConsts.REMOVE_SPRITE_FROM_GAME, remove);
 
-			addAssets();
-            assets.loadQueue(loadAssets);
+			var initGameEvent:GameEvent = new GameEvent(GameConsts.INIT_GAME);
+			dispatcher.dispatchEvent(initGameEvent);
+			contextView.visible = true;
+
 		}
 
 		override public function destroy():void
 		{
             contextView.removeEventListener(TouchEvent.TOUCH, handleTouch);
             contextView.removeEventListener(EnterFrameEvent.ENTER_FRAME, game.update);
-		}
-
-		private function addAssets():void
-		{
-            // Backgrounds for the Gamelevels
-            assets.enqueue(Level1);
-            assets.enqueue(Level2);
-
-            assets.enqueue(TileSystemLevel1_1);
-            assets.enqueue(TileSystemLevel1_2);
-            assets.enqueue(TileSystemLevel1_3);
-            assets.enqueue(TileSystemLevel2_1);
-            assets.enqueue(TileSystemLevel2_2);
-            assets.enqueue(TileSystemLevel2_3);
-
-            assets.enqueue(Water);
-
-            assets.enqueue(AgentF_Idle_texture);
-            assets.enqueue(AgentF_Fall_texture);
-            assets.enqueue(AgentF_Jump_texture);
-
-            assets.enqueue(Barrel_texture);
-            assets.enqueue(FlyCoon_texture);
-            assets.enqueue(SwimCoon_texture);
-
-            assets.enqueue(Bullet);
-
-            assets.enqueue("config/atlasxml/Level1.xml");
-            assets.enqueue("config/atlasxml/Level2.xml");
-
-            assets.enqueue("config/atlasxml/TileSystemLevel1_1.xml");
-            assets.enqueue("config/atlasxml/TileSystemLevel1_2.xml");
-            assets.enqueue("config/atlasxml/TileSystemLevel1_3.xml");
-            assets.enqueue("config/atlasxml/TileSystemLevel2_1.xml");
-            assets.enqueue("config/atlasxml/TileSystemLevel2_2.xml");
-            assets.enqueue("config/atlasxml/TileSystemLevel2_3.xml");
-
-            assets.enqueue("config/atlasxml/Water.xml");
-
-            assets.enqueue("config/atlasxml/AgentF_Idle_texture.xml");
-            assets.enqueue("config/atlasxml/AgentF_Fall_texture.xml");
-            assets.enqueue("config/atlasxml/AgentF_Jump_texture.xml");
-
-            assets.enqueue("config/atlasxml/Barrel_texture.xml");
-            assets.enqueue("config/atlasxml/FlyCoon_texture.xml");
-            assets.enqueue("config/atlasxml/SwimCoon_texture.xml");
-		}
-
-		private function loadAssets(ratio:Number):void
-		{
-            contextView.loadQuad.scaleX = ratio;
-
-            //trace("Lade Spiel: "+ratio);
-			if(ratio == 1.0)
-			{
-				contextView.removeChild(contextView.loadQuad);
-
-				addContextListener(ViewConsts.ADD_SPRITE_TO_GAME, add);
-				addContextListener(ViewConsts.REMOVE_SPRITE_FROM_GAME, remove);
-
-				var initGameEvent:GameEvent = new GameEvent(GameConsts.INIT_GAME);
-				dispatcher.dispatchEvent(initGameEvent);
-			}
-            else
-                contextView.addChild(contextView.loadQuad);
 		}
 
 		private function add(event:GameEvent):void

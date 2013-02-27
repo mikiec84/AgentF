@@ -12,6 +12,7 @@ package de.mediadesign.gd1011.studiof.view
 
 	import starling.display.Sprite;
 	import starling.events.Event;
+	import starling.utils.AssetManager;
 
 	public class MainView extends Sprite
 	{
@@ -53,6 +54,7 @@ package de.mediadesign.gd1011.studiof.view
 
 		public function initGameView():void
 		{
+
 			var gameView:GameView = new GameView();
 			gameView.scaleX = gameView.scaleY = _appScale;
 			gameView.x = _appLeftOffset;
@@ -98,6 +100,59 @@ package de.mediadesign.gd1011.studiof.view
 		}
 
 
+		public function loadGameView(assets:AssetManager):void
+		{
+			assets.enqueue(Level1);
+			assets.enqueue(Level2);
 
+			assets.enqueue(TileSystemLevel1_1);
+			assets.enqueue(TileSystemLevel1_2);
+			assets.enqueue(TileSystemLevel1_3);
+			assets.enqueue(TileSystemLevel2_1);
+			assets.enqueue(TileSystemLevel2_2);
+			assets.enqueue(TileSystemLevel2_3);
+
+			assets.enqueue(Water);
+
+			assets.enqueue(AgentF_Idle_texture);
+			assets.enqueue(AgentF_Fall_texture);
+			assets.enqueue(AgentF_Jump_texture);
+
+			assets.enqueue(Barrel_texture);
+			assets.enqueue(FlyCoon_texture);
+			assets.enqueue(SwimCoon_texture);
+
+			assets.enqueue(Bullet);
+
+			assets.enqueue("config/atlasxml/Level1.xml");
+			assets.enqueue("config/atlasxml/Level2.xml");
+
+			assets.enqueue("config/atlasxml/TileSystemLevel1_1.xml");
+			assets.enqueue("config/atlasxml/TileSystemLevel1_2.xml");
+			assets.enqueue("config/atlasxml/TileSystemLevel1_3.xml");
+			assets.enqueue("config/atlasxml/TileSystemLevel2_1.xml");
+			assets.enqueue("config/atlasxml/TileSystemLevel2_2.xml");
+			assets.enqueue("config/atlasxml/TileSystemLevel2_3.xml");
+
+			assets.enqueue("config/atlasxml/Water.xml");
+
+			assets.enqueue("config/atlasxml/AgentF_Idle_texture.xml");
+			assets.enqueue("config/atlasxml/AgentF_Fall_texture.xml");
+			assets.enqueue("config/atlasxml/AgentF_Jump_texture.xml");
+
+			assets.enqueue("config/atlasxml/Barrel_texture.xml");
+			assets.enqueue("config/atlasxml/FlyCoon_texture.xml");
+			assets.enqueue("config/atlasxml/SwimCoon_texture.xml");
+
+			assets.loadQueue(onLoad);
+		}
+
+		private function onLoad(ratio:Number):void
+		{
+			_startScreen.progressBar.progress = ratio;
+
+			if(ratio == 1.0)
+				dispatchEvent(new Event(Event.COMPLETE));
+		}
 	}
 }

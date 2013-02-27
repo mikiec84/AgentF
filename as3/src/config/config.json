@@ -7,7 +7,7 @@
             "einpendelStaerkeWinzig":15,
             "einpendelStaerkeKlein":30,
             "einpendelStaerkeGross":90,
-            "speedTowardsMouse":1200,
+            "speedTowardsMouse":900,
             "jumpSpeedBeimSprung":1,
             "jumpSpeedBeimFall":1,
             "jumpSpeedBeimEinpendeln":4,
