@@ -42,7 +42,6 @@ package de.mediadesign.gd1011.studiof.services
 
         private var _bgLayer01:BGScroller;
         private var _bgLayer02:BGScroller;
-        private var _bgLayer03:BGScroller;
 
         private var _scrollLevel:Boolean = true;
 
@@ -88,7 +87,7 @@ package de.mediadesign.gd1011.studiof.services
 
             _bgLayer01.update();
             _bgLayer02.update();
-            _bgLayer03.update();
+
 
             updateLP();
             checkStatus();
@@ -213,7 +212,6 @@ package de.mediadesign.gd1011.studiof.services
 
             _bgLayer01 = new BGScroller("layer01",dispatcher, currentLevel, false);
             _bgLayer02 = new BGScroller("layer02",dispatcher, currentLevel);
-            _bgLayer03 = new BGScroller("layer03",dispatcher, currentLevel);
 
 
             for (var index:int = 0; index<lvlConfig.getEnemySequence(0, currentLevel-1).length; index++) //JSONExtractedInformation["enemyCount"]
@@ -368,7 +366,6 @@ package de.mediadesign.gd1011.studiof.services
             _scrollLevel = false;
 			_bgLayer01.stopScrolling();
             _bgLayer02.stopScrolling();
-			_bgLayer03.stopScrolling();
         }
 
 

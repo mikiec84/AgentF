@@ -7,13 +7,24 @@
  */
 package de.mediadesign.gd1011.studiof.view
 {
+	import starling.display.DisplayObject;
 	import starling.display.Sprite;
 
 	public class GameView extends Sprite
 	{
-       public function GameView():void
-	   {
-		   visible = false;
-	   }
+		public var units:Sprite;
+       	public function GameView():void
+	   	{
+			visible = false;
+	  	}
+		public function addUnit(unit:DisplayObject):void
+		{
+			units.addChild(unit);
+		}
+
+		public function removeUnit(unit:DisplayObject):void
+		{
+			units.removeChild(unit);
+		}
 	}
 }
