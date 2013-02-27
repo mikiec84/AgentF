@@ -12,7 +12,8 @@ package de.mediadesign.gd1011.studiof.command
     import de.mediadesign.gd1011.studiof.events.GameEvent;
     import de.mediadesign.gd1011.studiof.model.FortFoxBoss;
     import de.mediadesign.gd1011.studiof.model.NautilusBoss;
-    import de.mediadesign.gd1011.studiof.services.LevelProcess;
+	import de.mediadesign.gd1011.studiof.services.JSONReader;
+	import de.mediadesign.gd1011.studiof.services.LevelProcess;
     import de.mediadesign.gd1011.studiof.model.NautilusBoss;
     import de.mediadesign.gd1011.studiof.model.Player;
     import de.mediadesign.gd1011.studiof.model.Renderable;
@@ -24,8 +25,9 @@ package de.mediadesign.gd1011.studiof.command
     import de.mediadesign.gd1011.studiof.view.EnemyView;
 
     import flash.events.IEventDispatcher;
+	import flash.utils.getDefinitionByName;
 
-    import robotlegs.bender.bundles.mvcs.Command;
+	import robotlegs.bender.bundles.mvcs.Command;
 
     public class InitGameCommand extends Command
     {
@@ -52,8 +54,7 @@ package de.mediadesign.gd1011.studiof.command
 			level.setPlayer(new Player(level));
 
             moveProcess.addEntity(level.player);
-            level.fortFox = new FortFoxBoss(level);
-            level.nautilus = new NautilusBoss(level);
+            level.boss = new (getDefinitionByName("de.mediadesign.gd1011.studiof.model."+JSONReader.read("level/level")[0][level.currentLevel]["endboss"]) as Class)(level);
 
             var playerView:EnemyView = new EnemyView(ViewConsts.PLAYER, ViewConsts.PLAYER);
 

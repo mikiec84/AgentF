@@ -33,10 +33,8 @@ package de.mediadesign.gd1011.studiof.services
             for (var i:int = 0; i < level.player.ammunition.length; i++)
             {
                 // collision Boss1
-                if (level.fortFox.initialized)
-                    rules.collisionDetection(level.player.ammunition[i], level.fortFox);
-                if (level.nautilus.initialized)
-                    rules.collisionDetection(level.player.ammunition[i], level.nautilus);
+                if (level.boss.initialized)
+                    rules.collisionDetection(level.player.ammunition[i], level.boss as Unit);
 
                 if (rules.isDead(level.player.ammunition[i]))
                 {

@@ -34,9 +34,8 @@ package de.mediadesign.gd1011.studiof.services
         private var _enemies:Vector.<Unit>;
         private var _enemieBullets:Vector.<Unit>;
         private var _player:Player;
-        private var _fortFox:FortFoxBoss;
-        private var _nautilus:NautilusBoss;
-        private var _currentLevel:int = 1;
+        private var _boss:IEndboss;
+        private var _currentLevel:int = 0;
 
         private var JSONExtractedInformation:Object;
 
@@ -50,7 +49,7 @@ package de.mediadesign.gd1011.studiof.services
         public var collisionTolerance:int; // Wie weit die bullet von der Unit entfernt sein darf um immernoch als treffer zu zählen
 
         ///CHEATS
-        public var onlyThreeMobs:Boolean = false;
+        public var onlyThreeMobs:Boolean = true;
         public var bossHaveLowLife:Boolean = false;
         /////////
 
@@ -79,8 +78,7 @@ package de.mediadesign.gd1011.studiof.services
             if (_player.shootNow())
                 _player.shootBullet(time);
 
-            if (nautilus.initialized)
-                nautilus.shootBullet(time);
+            boss.update(time);
 
             for (var index:int = 0; index<enemies.length; index++)
                 enemies[index].shootBullet(time);
@@ -106,8 +104,8 @@ package de.mediadesign.gd1011.studiof.services
 
         private function shouldBossSpawn():Boolean
         {   var a:int = -1;
-            for (var index:int = 0; index<lvlConfig.getEnemySequence(0,0).length; index++) {
-                if (lvlConfig.getEnemySequence(0,0)[index] != 6) {
+            for (var index:int = 0; index<enemyPositions.length; index++) {
+                if (lvlConfig.getEnemySequence(0,_currentLevel)[index] != 6) {
                     a = index;
                 }
             }
@@ -162,7 +160,7 @@ package de.mediadesign.gd1011.studiof.services
                 }
             }*/
             // new level
-            if (fortFox.healthPoints <= 0 && fortFox.initialized)
+            if (boss.healthPoints <= 0 && boss.initialized)
             {
                 closeCurrentLevel();
                 _currentLevel+=1;
@@ -172,25 +170,17 @@ package de.mediadesign.gd1011.studiof.services
             //Boss Spawn
             else if (enemies.length == 0 && shouldBossSpawn())
             {
-                if(!fortFox.initialized && !fortFox.moveLeftRunning)
+                if(!boss.initialized)
                 {
                     stopScrollLevel();
                     spawnBoss();
                 }
             }
-            // Win
-            if (nautilus.healthPoints <= 0 && nautilus.initialized)
-            {
-                currentLevel+=1;
-                var gameWonEvent2:GameEvent = new GameEvent(ViewConsts.SHOW_GAMEOVER, true);
-                dispatcher.dispatchEvent(gameWonEvent2);
-                stopAllUnits();
-            }
 
             //Boss Spawn
             else if (enemies.length == 0 && shouldBossSpawn())
             {
-                if(!nautilus.initialized && !nautilus.moveLeftRunning)
+                if(!boss.initialized && !boss.moveLeftRunning)
                 {
                     stopScrollLevel();
                     spawnBoss();
@@ -214,7 +204,7 @@ package de.mediadesign.gd1011.studiof.services
             _bgLayer02 = new BGScroller("layer02",dispatcher, currentLevel);
 
 
-            for (var index:int = 0; index<lvlConfig.getEnemySequence(0, currentLevel-1).length; index++) //JSONExtractedInformation["enemyCount"]
+            for (var index:int = 0; index<lvlConfig.getEnemySequence(0, currentLevel).length; index++) //JSONExtractedInformation["enemyCount"]
             {
                 enemyPositions.push(new EnemyInitPositioning(false, GameConsts.STAGE_WIDTH+((1+index)*JSONExtractedInformation["enemyRate"])));
             }
@@ -240,22 +230,11 @@ package de.mediadesign.gd1011.studiof.services
 
         public function spawnBoss():void
         {
-            var JSONExtract = JSONReader.read("enemy")["BOSS_SPAWN"];
-            if (JSONExtract[_currentLevel] != null)
-            { //trace("JSONExtract = JSONReader.read('enemy')['BOSS_SPAWN'], JSONExtract[currentLevel]: "+JSONExtract[currentLevel]);
-                if (JSONExtract[_currentLevel] == "Fort_Fox") {
-                    if (!fortFox.initialized && !fortFox.moveLeftRunning) {
-                        fortFox.start();
-                    }
-                }
-                else
-                if (JSONExtract[_currentLevel] == "Nautilus")
-                {
-                    if (!nautilus.initialized && !nautilus.moveLeftRunning) {
-                        nautilus.start();
-                    }
-                }
-            }
+
+			if (!boss.initialized && !boss.moveLeftRunning)
+			{
+				boss.start();
+			}
             else trace("Es wird versucht ein Level Endboss zu starten, der in der JSON nicht eingetragen ist.");
         }
 
@@ -303,17 +282,9 @@ package de.mediadesign.gd1011.studiof.services
             {
                 player.ammunition[index3].stop();
             }
-            if (fortFox.initialized || fortFox.moveLeftRunning)
+            if (boss.initialized || boss.moveLeftRunning)
             {
-                fortFox.stop();
-            }
-            if (nautilus.initialized || nautilus.moveLeftRunning)
-            {
-                nautilus.stop();
-                for (var index5:int = 0; index5<nautilus.ammunition.length; index5++)
-                {
-                    nautilus.ammunition[index5].stop();
-                }
+                boss.stop();
             }
         }
 
@@ -332,17 +303,9 @@ package de.mediadesign.gd1011.studiof.services
             {
                 player.ammunition[index3].resume();
             }
-            if (fortFox.initialized || fortFox.moveLeftRunning)
+            if (boss.initialized || boss.moveLeftRunning)
             {
-                fortFox.resume();
-            }
-            if (nautilus.initialized || nautilus.moveLeftRunning)
-            {
-                nautilus.resume();
-                for (var index5:int = 0; index5<nautilus.ammunition.length; index5++)
-                {
-                    nautilus.ammunition[index5].resume();
-                }
+                boss.resume();
             }
         }
 
@@ -369,24 +332,14 @@ package de.mediadesign.gd1011.studiof.services
         }
 
 
-        public function get fortFox():FortFoxBoss
+        public function get boss():IEndboss
         {
-            return _fortFox;
+            return _boss;
         }
 
-        public function set fortFox(value:FortFoxBoss):void
+        public function set boss(value:IEndboss):void
         {
-            _fortFox = value;
-        }
-
-        public function get nautilus():NautilusBoss
-        {
-            return _nautilus;
-        }
-
-        public function set nautilus(value:NautilusBoss):void
-        {
-            _nautilus = value;
+            _boss = value;
         }
 
         public function get currentLevel():int

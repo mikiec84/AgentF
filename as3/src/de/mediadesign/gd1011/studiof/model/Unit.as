@@ -71,6 +71,7 @@ package de.mediadesign.gd1011.studiof.model
 
         public function stop():void
         {
+
             stopped = true;
         }
 

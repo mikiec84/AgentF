@@ -29,7 +29,7 @@ package de.mediadesign.gd1011.studiof.model
 		public function getEnemySequence(levelPack:int, level:int):Array
 		{
 			var patterns:Vector.<Array>= new Vector.<Array>();
-			for each(var pattern:Object in _levelPacks[levelPack][level])
+			for each(var pattern:Object in _levelPacks[levelPack][level]["enemy-sequence"])
 			{
 				for(var i:int = 0; i < pattern["count"];i++)
 					patterns.push(_enemyPattern[pattern["pattern"] as Number]);

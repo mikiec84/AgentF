@@ -30,7 +30,7 @@ package de.mediadesign.gd1011.studiof.model {
         {
             var JSONExtractedInformation:Object = JSONReader.read("enemy")["FORT_FOX"];
             idleXPosition = JSONExtractedInformation["idleXPosition"];
-            super(JSONExtractedInformation["healthpoints"],JSONExtractedInformation["startingPlatform"],0,idleXPosition, currentLevel, false, GameConsts.FORT_FOX);
+            super(JSONExtractedInformation["healthpoints"],JSONExtractedInformation["startingPlatform"],0,idleXPosition, currentLevel, false, GameConsts.BOSS_SPAWN);
             idleTimeFrame = JSONExtractedInformation["idleTimeFrame"];
             changePosTime = JSONExtractedInformation["changePosTime"];
             backMovementDistance = JSONExtractedInformation["backMovementDistance"];
@@ -46,7 +46,7 @@ package de.mediadesign.gd1011.studiof.model {
         public function start():void
         {   trace("FORTFOX SPAWNED");
             _moveLeftRunning = true;
-            var a:GameEvent = new GameEvent(GameConsts.FORT_FOX);
+            var a:GameEvent = new GameEvent(GameConsts.BOSS_SPAWN);
             level.dispatcher.dispatchEvent(a);
         }
 
@@ -169,5 +169,9 @@ package de.mediadesign.gd1011.studiof.model {
             healthPoints = JSONExtractedInformation["healthpoints"];
             position.y = JSONExtractedInformation["startingPlatform"]*GameConsts.PLATFORM_HEIGHT+yOffset;
         }
-    }
+
+		public function update(time:Number):void
+		{
+		}
+	}
 }

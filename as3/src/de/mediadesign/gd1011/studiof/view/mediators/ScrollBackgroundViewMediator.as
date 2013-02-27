@@ -35,7 +35,7 @@ package de.mediadesign.gd1011.studiof.view.mediators
 			bgView.alpha = 0;
 
 
-			var layerTextures:Array = JSONReader.read("viewconfig")["assetsets"]["level_"+level.currentLevel]["background"][bgView.layerID];
+			var layerTextures:Array = JSONReader.read("viewconfig")["assetsets"]["level_"+(level.currentLevel+1)]["background"][bgView.layerID];
 			if(layerTextures.length > 0)
 			{
                 var bgImage:Image;

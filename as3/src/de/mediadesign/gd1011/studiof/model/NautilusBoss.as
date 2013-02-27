@@ -52,7 +52,16 @@ package de.mediadesign.gd1011.studiof.model {
         }
 
 
-        public function reset():void
+		override public function stop():void
+		{
+			for (var index5:int = 0; index5<ammunition.length; index5++)
+			{
+				ammunition[index5].stop();
+			}
+			super.stop();
+		}
+
+		public function reset():void
         {
             position.x = GameConsts.STAGE_WIDTH+JSONExtractedInformation["xOffset"];
             _initialized = false;
@@ -179,5 +188,20 @@ package de.mediadesign.gd1011.studiof.model {
         {
             return _initialized;
         }
-    }
+
+		public function update(time:Number):void
+		{
+			if (initialized)
+				shootBullet(time);
+		}
+
+		override public function resume():void
+		{
+			for (var index5:int = 0; index5<ammunition.length; index5++)
+			{
+				ammunition[index5].resume();
+			}
+			super.resume();
+		}
+	}
 }

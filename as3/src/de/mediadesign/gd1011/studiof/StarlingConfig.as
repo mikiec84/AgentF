@@ -7,14 +7,13 @@
  */
 package de.mediadesign.gd1011.studiof
 {
-    import de.mediadesign.gd1011.studiof.command.ChangeUnitStateCommand;
-    import de.mediadesign.gd1011.studiof.command.DamageUnitCommand;
-	import de.mediadesign.gd1011.studiof.command.DeleteUnitCommand;
+	import de.mediadesign.gd1011.studiof.command.ChangeUnitStateCommand;
 	import de.mediadesign.gd1011.studiof.command.CreateBackgroundCommand;
+	import de.mediadesign.gd1011.studiof.command.DamageUnitCommand;
+	import de.mediadesign.gd1011.studiof.command.DeleteUnitCommand;
 	import de.mediadesign.gd1011.studiof.command.InitGameCommand;
 	import de.mediadesign.gd1011.studiof.command.RegisterBulletCommand;
-	import de.mediadesign.gd1011.studiof.command.SpawnFortFoxCommand;
-	import de.mediadesign.gd1011.studiof.command.SpawnNautilusCommand;
+	import de.mediadesign.gd1011.studiof.command.SpawnBossCommand;
 	import de.mediadesign.gd1011.studiof.consts.GameConsts;
 	import de.mediadesign.gd1011.studiof.model.LevelConfiguration;
 	import de.mediadesign.gd1011.studiof.model.Score;
@@ -25,16 +24,16 @@ package de.mediadesign.gd1011.studiof
 	import de.mediadesign.gd1011.studiof.services.RenderProcess;
 	import de.mediadesign.gd1011.studiof.services.Rules;
 	import de.mediadesign.gd1011.studiof.view.BackgroundView;
-    import de.mediadesign.gd1011.studiof.view.BulletView;
-    import de.mediadesign.gd1011.studiof.view.EnemyView;
+	import de.mediadesign.gd1011.studiof.view.BulletView;
+	import de.mediadesign.gd1011.studiof.view.EnemyView;
 	import de.mediadesign.gd1011.studiof.view.GUI;
 	import de.mediadesign.gd1011.studiof.view.GameView;
 	import de.mediadesign.gd1011.studiof.view.MainView;
 	import de.mediadesign.gd1011.studiof.view.ScrollBackgroundView;
 	import de.mediadesign.gd1011.studiof.view.StartScreenView;
 	import de.mediadesign.gd1011.studiof.view.mediators.BackgroundViewMediator;
-    import de.mediadesign.gd1011.studiof.view.mediators.BulletViewMediator;
-    import de.mediadesign.gd1011.studiof.view.mediators.EnemyViewMediator;
+	import de.mediadesign.gd1011.studiof.view.mediators.BulletViewMediator;
+	import de.mediadesign.gd1011.studiof.view.mediators.EnemyViewMediator;
 	import de.mediadesign.gd1011.studiof.view.mediators.GUIMediator;
 	import de.mediadesign.gd1011.studiof.view.mediators.GameViewMediator;
 	import de.mediadesign.gd1011.studiof.view.mediators.MainViewMediator;
@@ -90,8 +89,7 @@ package de.mediadesign.gd1011.studiof
             commandMap.map(GameConsts.REGISTER_UNIT).toCommand(RegisterBulletCommand);
             commandMap.map(GameConsts.DELETE_UNIT).toCommand(DeleteUnitCommand);
             commandMap.map(GameConsts.DAMAGE_UNIT).toCommand(DamageUnitCommand);
-            commandMap.map(GameConsts.FORT_FOX).toCommand(SpawnFortFoxCommand);
-            commandMap.map(GameConsts.NAUTILUS).toCommand(SpawnNautilusCommand);
+            commandMap.map(GameConsts.BOSS_SPAWN).toCommand(SpawnBossCommand);
             commandMap.map(GameConsts.CHANGE_STATE).toCommand(ChangeUnitStateCommand);
         }
 
