@@ -41,5 +41,18 @@
                 "layer03":["Water_01","Water_02"]
             }
         }
+    },
+    "soundsets":{
+        "level_1":{
+            "music":["ThemeLvl1"]
+        },
+        "level_2":{
+            "music":["ThemeLvl2"]
+        }
+    },
+    "generalsounds":{
+        "shot":["Shot"],
+        "explosion":["Explosion"],
+        "waterexplosion":["WaterExplosion"]
     }
 }
