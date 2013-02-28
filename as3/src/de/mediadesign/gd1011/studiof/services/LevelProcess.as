@@ -30,6 +30,9 @@ package de.mediadesign.gd1011.studiof.services
         [Inject]
         public var renderProcess:RenderProcess;
 
+        [Inject]
+        public var sounds:Sounds;
+
         private var _running:Boolean = true;
         private var _enemies:Vector.<Unit>;
         private var _enemieBullets:Vector.<Unit>;
@@ -182,6 +185,8 @@ package de.mediadesign.gd1011.studiof.services
             _bgLayer01 = new BGScroller("layer01",dispatcher, currentLevel, false);
             _bgLayer02 = new BGScroller("layer02",dispatcher, currentLevel);
 
+            sounds.setBGSound("ThemeLvl1");
+
 			_enemySequence =  lvlConfig.getEnemySequence(0, currentLevel);
 
 
@@ -216,7 +221,7 @@ package de.mediadesign.gd1011.studiof.services
 			{
 				boss.start();
 			}
-            else trace("Es wird versucht ein Level Endboss zu starten, der in der JSON nicht eingetragen ist.");
+            //else trace("Es wird versucht ein Level Endboss zu starten, der in der JSON nicht eingetragen ist.");
         }
 
         public function get enemies():Vector.<Unit>

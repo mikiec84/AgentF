@@ -28,12 +28,12 @@ package de.mediadesign.gd1011.studiof.model {
         private var _finishLine:int = 0;
         private var changePosMovementSpeed:Number = 0;
         private var xOffset:int;
-        private var attackSpeed:int;
+        private var attackSpeed:Number;
         public var ammunition:Vector.<Unit>;
 
         public function NautilusBoss(currentLevel:LevelProcess)
         {
-			ammunition = new Vector.<Unit>();
+            ammunition = new Vector.<Unit>();
             JSONExtractedInformation = JSONReader.read("enemy")["NAUTILUS"];
             changePosMovementSpeed = JSONExtractedInformation["changePosMovementSpeed"];
             changePosTime = JSONExtractedInformation["changePosTime"];
@@ -46,7 +46,7 @@ package de.mediadesign.gd1011.studiof.model {
             movementSpeed = backMovementDistance/changePosTime;
             level = currentLevel;
             ammunition = new Vector.<Unit>();
-            super(JSONExtractedInformation["healthPoints"],JSONExtractedInformation["startingPlatform"],0,idleXPosition, currentLevel, false, GameConsts.NAUTILUS);
+            super(JSONExtractedInformation["healthPoints"],JSONExtractedInformation["startingPlatform"],0,idleXPosition, currentLevel, false, GameConsts.BOSS_SPAWN);
             position.x = GameConsts.STAGE_WIDTH+xOffset;
             if (currentLevel.bossHaveLowLife) {
                 healthPoints = 2;
@@ -162,7 +162,7 @@ package de.mediadesign.gd1011.studiof.model {
             cooldown += time;
             if (cooldown >= (1 / attackSpeed) && position.x<=idleXPosition && healthPoints > 0)
             {
-                var bullet:Unit = new Unit(1, currentPlatform, -600, position.x, level, false);
+                var bullet:Unit = new Unit(1, currentPlatform, -300, position.x, level, false);
                 bullet.position.y += 100;
                 ammunition.push(bullet);
                 cooldown = 0;

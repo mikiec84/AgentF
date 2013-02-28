@@ -149,6 +149,9 @@ package de.mediadesign.gd1011.studiof.view
 
             assets.enqueue("config/atlasxml/SeaMine_texture.xml");
 
+            assets.enqueue("assets/Shot.mp3");
+            assets.enqueue("assets/ThemeLvl1.mp3");
+
 			assets.loadQueue(onLoad);
 		}
 

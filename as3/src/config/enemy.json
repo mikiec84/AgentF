@@ -27,7 +27,7 @@
         "changePosTime":1,
         "xOffset":500,
         "changePosMovementSpeed":600,
-        "attackSpeed":1,
+        "attackSpeed":0.5,
         "healthPoints":20
     },
 

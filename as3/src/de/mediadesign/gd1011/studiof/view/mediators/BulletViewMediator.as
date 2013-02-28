@@ -13,6 +13,7 @@ package de.mediadesign.gd1011.studiof.view.mediators
     import de.mediadesign.gd1011.studiof.view.BulletView;
 
     import flash.events.IEventDispatcher;
+    import flash.media.Sound;
 
     import robotlegs.extensions.starlingViewMap.impl.StarlingMediator;
 
@@ -39,8 +40,11 @@ package de.mediadesign.gd1011.studiof.view.mediators
             if (bulletView.master is Player)
             {
                 var img:Image = new Image(assets.getTexture("Bullet"));
+                var shot:Sound;
                 img.y = 20;
                 bulletView.addChild(img);
+
+                //shot.play();
             }
             else if (bulletView.master is NautilusBoss)
             {

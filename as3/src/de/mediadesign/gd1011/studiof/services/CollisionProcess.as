@@ -11,7 +11,6 @@ package de.mediadesign.gd1011.studiof.services
     import de.mediadesign.gd1011.studiof.consts.ViewConsts;
     import de.mediadesign.gd1011.studiof.events.GameEvent;
     import de.mediadesign.gd1011.studiof.model.NautilusBoss;
-    import de.mediadesign.gd1011.studiof.services.LevelProcess;
     import de.mediadesign.gd1011.studiof.model.Unit;
 
     import flash.events.IEventDispatcher;
