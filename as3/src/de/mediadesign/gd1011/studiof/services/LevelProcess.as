@@ -46,6 +46,7 @@ package de.mediadesign.gd1011.studiof.services
 
         public var currentXKoord:int = GameConsts.STAGE_WIDTH;
         public var enemyPositions:Vector.<EnemyInitPositioning>;
+		private var _enemySequence:Array;
         public var collisionTolerance:int; // Wie weit die bullet von der Unit entfernt sein darf um immernoch als treffer zu zählen
 
         ///CHEATS
@@ -94,7 +95,7 @@ package de.mediadesign.gd1011.studiof.services
 
             for (var index2:int = 0; index2<enemyPositions.length; index2++)
             {
-                if (lvlConfig.getEnemySequence(0,_currentLevel)[index2] != 6 && enemyPositions[index2].xPos < currentXKoord && !enemyPositions[index2].spawned)
+                if (_enemySequence[index2] != 6 && enemyPositions[index2].xPos < currentXKoord && !enemyPositions[index2].spawned)
                 {
                     enemyPositions[index2].spawned = true;
                     createAndShowEnemy(index2);
@@ -105,14 +106,14 @@ package de.mediadesign.gd1011.studiof.services
         private function shouldBossSpawn():Boolean
         {
 			for(var i:int = enemyPositions.length-1; i>=0;i--)
-				if(lvlConfig.getEnemySequence(0,_currentLevel)[i]!=6)
+				if(_enemySequence[i]!=6)
             	return enemyPositions[i].spawned;
 			return true;
         }
 
         private function createAndShowEnemy(index:int):void
         {   // enemies vector
-            _enemies.push(new Unit(1, lvlConfig.getEnemySequence(0,0)[index], -300, enemyPositions[index].xPos, this, false, index.toString()));
+            _enemies.push(new Unit(1, _enemySequence[index], -300, enemyPositions[index].xPos, this, false, index.toString()));
             // moveProcess
             moveProcess.addEntity(_enemies[_enemies.length-1]);
             // texture
@@ -183,7 +184,9 @@ package de.mediadesign.gd1011.studiof.services
             lastState = player.state;
         }
 
-        public function newLevel(currentLevel:int):void
+
+
+		public function newLevel(currentLevel:int):void
         {
             enemyPositions = new Vector.<EnemyInitPositioning>;
             _enemies = new Vector.<Unit>();
@@ -192,8 +195,10 @@ package de.mediadesign.gd1011.studiof.services
             _bgLayer01 = new BGScroller("layer01",dispatcher, currentLevel, false);
             _bgLayer02 = new BGScroller("layer02",dispatcher, currentLevel);
 
+			_enemySequence =  lvlConfig.getEnemySequence(0, currentLevel);
 
-            for (var index:int = 0; index<lvlConfig.getEnemySequence(0, currentLevel).length; index++) //JSONExtractedInformation["enemyCount"]
+
+			for (var index:int = 0; index<_enemySequence.length; index++) //JSONExtractedInformation["enemyCount"]
             {
                 enemyPositions.push(new EnemyInitPositioning(false, GameConsts.STAGE_WIDTH+((1+index)*JSONExtractedInformation["enemyRate"])));
             }
