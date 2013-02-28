@@ -1,7 +1,8 @@
 {
     "ENEMY":
     {
-        "enemyRate":350,
+        "enemyRate":250,
+        "enemySpeed":450,
         "fireRateEnemy":0.4,
         "enemyRange":1500,
         "collisionTolerance":20

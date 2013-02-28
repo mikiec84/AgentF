@@ -116,7 +116,7 @@ package de.mediadesign.gd1011.studiof.services
 
         private function createAndShowEnemy(index:int):void
         {   // enemies vector
-            _enemies.push(new Unit(1, _enemySequence[index], -300, enemyPositions[index].xPos, this, false, index.toString()));
+            _enemies.push(new Unit(1, _enemySequence[index], (-1)*JSONExtractedInformation["enemySpeed"], enemyPositions[index].xPos, this, false, index.toString()));
             // moveProcess
             moveProcess.addEntity(_enemies[_enemies.length-1]);
             // texture
