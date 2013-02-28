@@ -9,6 +9,7 @@ package de.mediadesign.gd1011.studiof.view.mediators
 {
 	import de.mediadesign.gd1011.studiof.consts.ViewConsts;
 	import de.mediadesign.gd1011.studiof.events.GameEvent;
+	import de.mediadesign.gd1011.studiof.services.JSONReader;
 	import de.mediadesign.gd1011.studiof.view.BackgroundView;
 	import de.mediadesign.gd1011.studiof.view.ScrollBackgroundView;
 
@@ -29,6 +30,7 @@ package de.mediadesign.gd1011.studiof.view.mediators
 		{
 			//bgView.addChild(new Image(assets.getTexture("Background1")));
 			addContextListener(ViewConsts.ADD_BG, add);
+			addContextListener(ViewConsts.CLEAN_BG, clean);
 		}
 
 		override public function destroy():void
@@ -38,13 +40,26 @@ package de.mediadesign.gd1011.studiof.view.mediators
 
 		private function add(event:GameEvent):void
 		{
+
 			var layerID:String = (event.dataObj as ScrollBackgroundView).layerID;
-			if(bgView.bgLayer[layerID]==null)
+			var maxTiles = Math.ceil(JSONReader.read("config")["gamebounds"]["width"]/(JSONReader.read("config")["background"][layerID]["width"]-1)+1);
+			var layer:Sprite = (bgView.bgLayer[layerID] as Sprite);
+			if(layer==null)
 			{
-				bgView.bgLayer[layerID] = new Sprite();
-				bgView.addChild(bgView.bgLayer[layerID] as Sprite);
+				layer = new Sprite();
+				bgView.addChild(layer);
 			}
-			(bgView.bgLayer[layerID] as Sprite).addChild(event.dataObj);
+			layer.addChild(event.dataObj);
+			if(layer.numChildren>maxTiles)
+				layer.removeChildAt(0);
 		}
+
+		private function clean(event:GameEvent):void
+		{
+			for each (var s:Sprite in bgView.bgLayer)
+				s.dispose();
+
+		}
+
 	}
 }

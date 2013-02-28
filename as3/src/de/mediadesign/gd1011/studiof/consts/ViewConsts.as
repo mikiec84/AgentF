@@ -20,6 +20,7 @@ package de.mediadesign.gd1011.studiof.consts
 		public static const REMOVE_SPRITE_FROM_GAME:String = "REMOVE_SPRITE_FROM_GAME";
 		public static const CREATE_BG_LAYER:String = "CREATE_BG_LAYER";
 		public static const ADD_BG:String = "ADD_BG";
+		public static const CLEAN_BG:String = "CLEAN_BG";
 		public static const SHOW_DAMAGE:String = "SHOW_DAMAGE";
         public static const CHANGE_ANIM:String ="CHANGE_ANIM";
 
@@ -33,5 +34,6 @@ package de.mediadesign.gd1011.studiof.consts
         public static const HARPUNE:String = "HARPUNE";
         public static const BOMBE:String = "BOMBE";
         public static const MINE:String = "MINE";
+
 	}
 }

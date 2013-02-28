@@ -35,7 +35,7 @@ package de.mediadesign.gd1011.studiof.services
         private var _enemieBullets:Vector.<Unit>;
         private var _player:Player;
         private var _boss:IEndboss;
-        private var _currentLevel:int = 1;
+        private var _currentLevel:int = 0;
 
         private var JSONExtractedInformation:Object;
 
@@ -50,7 +50,7 @@ package de.mediadesign.gd1011.studiof.services
         public var collisionTolerance:int; // Wie weit die bullet von der Unit entfernt sein darf um immernoch als treffer zu zählen
 
         ///CHEATS
-        public var onlyThreeMobs:Boolean = true;
+        public var onlyThreeMobs:Boolean = false;
         public var bossHaveLowLife:Boolean = false;
         /////////
 
@@ -65,7 +65,7 @@ package de.mediadesign.gd1011.studiof.services
         [PostConstruct]
         public function onCreated():void
         {
-            newLevel(1);
+            newLevel(_currentLevel);
         }
 
         public function update(time:Number):void
@@ -144,27 +144,13 @@ package de.mediadesign.gd1011.studiof.services
                 dispatcher.dispatchEvent(gameOverEvent);
                 stopAllUnits();
             }
-            // End of Level 1, start Boss Level 1
-            /*if (enemies.length != 0)
-            {
-                if (player.healthPoints > 0
-                        && (enemies[enemies.length-1].healthPoints < 1
-                        || enemies[enemies.length - 1].position.x < 0))
-                {
-                    if(!fortFox.initialized && !fortFox.moveLeftRunning)
-                    {
-                        stopScrollLevel();
-                        spawnBoss();
-                    }
-                }
-            }*/
             // new level
             if (boss.healthPoints <= 0 && boss.initialized)
             {
                 closeCurrentLevel();
                 _currentLevel+=1;
-                newLevel(_currentLevel);
                 stopAllUnits();
+                newLevel(_currentLevel);
             }
             //Boss Spawn
             else if (enemies.length == 0 && shouldBossSpawn())
@@ -191,6 +177,7 @@ package de.mediadesign.gd1011.studiof.services
             enemyPositions = new Vector.<EnemyInitPositioning>;
             _enemies = new Vector.<Unit>();
             _enemieBullets = new Vector.<Unit>();
+            currentXKoord = GameConsts.STAGE_WIDTH;
 
             _bgLayer01 = new BGScroller("layer01",dispatcher, currentLevel, false);
             _bgLayer02 = new BGScroller("layer02",dispatcher, currentLevel);
@@ -206,7 +193,7 @@ package de.mediadesign.gd1011.studiof.services
             if (onlyThreeMobs) {
                 while(enemyPositions.length > 3)
                 {
-                    var a:EnemyInitPositioning = enemyPositions.pop();
+                    enemyPositions.pop();
                 }
                 trace("ENEMY POSITION LENGTH: "+enemyPositions.length);
             }
