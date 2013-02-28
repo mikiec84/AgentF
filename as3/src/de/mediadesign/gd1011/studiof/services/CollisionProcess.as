@@ -42,6 +42,7 @@ package de.mediadesign.gd1011.studiof.services
                         for (var j:int = 0; j < (level.boss as NautilusBoss).ammunition.length; j++)
                         {
                             rules.collisionDetection(level.player.ammunition[i], (level.boss as NautilusBoss).ammunition[j]);
+                            rules.collisionDetection(level.player, (level.boss as NautilusBoss).ammunition[j]);
 
                             if (rules.isDead((level.boss as NautilusBoss).ammunition[j]))
                             {
