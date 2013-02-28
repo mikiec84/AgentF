@@ -23,6 +23,7 @@ package de.mediadesign.gd1011.studiof
 	import de.mediadesign.gd1011.studiof.services.MoveProcess;
 	import de.mediadesign.gd1011.studiof.services.RenderProcess;
 	import de.mediadesign.gd1011.studiof.services.Rules;
+	import de.mediadesign.gd1011.studiof.services.Sounds;
 	import de.mediadesign.gd1011.studiof.view.BackgroundView;
 	import de.mediadesign.gd1011.studiof.view.BulletView;
 	import de.mediadesign.gd1011.studiof.view.EnemyView;
@@ -79,7 +80,9 @@ package de.mediadesign.gd1011.studiof
             modelMap.map(GameLoop).asSingleton();
 			modelMap.map(LevelConfiguration).asSingleton();
             modelMap.map(Rules).asSingleton();
+
 			modelMap.map(AssetManager).asSingleton();
+			modelMap.map(Sounds).asSingleton();
         }
 
         private function initCommands():void
