@@ -77,7 +77,7 @@ package de.mediadesign.gd1011.studiof.services
 			return;
             if(player == null)
                 return;
-
+            deleteOffscreenUnits();
             //shootBullets
             if (_player.shootNow())
                 _player.shootBullet(time);
@@ -102,6 +102,34 @@ package de.mediadesign.gd1011.studiof.services
                 {
                     enemyPositions[index2].spawned = true;
                     createAndShowEnemy(index2);
+                }
+            }
+        }
+
+        public function deleteOffscreenUnits():void
+        {
+            for (var index:int = 0; index<enemieBullets.length; index++)
+            {
+                if (enemieBullets[index].position.x < -300)
+                {
+                    deleteCurrentUnit(enemieBullets[index]);
+                    enemieBullets.splice(index,  1);
+                }
+            }
+            for (var index2:int = 0; index2<enemies.length; index2++)
+            {
+                if (enemies[index2].position.x < -300)
+                {
+                    deleteCurrentUnit(enemies[index2]);
+                    enemies.splice(index2,  1);
+                }
+            }
+            for (var index3:int = 0; index3<player.ammunition.length; index3++)
+            {
+                if (player.ammunition[index3].position.x > GameConsts.STAGE_WIDTH+300)
+                {
+                    deleteCurrentUnit(player.ammunition[index3]);
+                    player.ammunition.splice(index3,  1);
                 }
             }
         }
