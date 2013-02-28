@@ -325,6 +325,7 @@ package de.mediadesign.gd1011.studiof.services
 
         public function register(bullet:Unit, shootingUnit:Unit):void
         {
+			sounds.play("shot");
             var infos:Array = new Array();
             infos.push(bullet);
             infos.push(shootingUnit);

@@ -43,16 +43,16 @@
         }
     },
     "soundsets":{
+        "generalsounds":{
+            "shot":"Shot",
+            "explosion":"Explosion",
+            "waterexplosion":"WaterExplosion"
+        },
         "level_1":{
             "bg-loop":["ThemeLvl1"]
         },
         "level_2":{
             "bg-loop":["ThemeLvl2"]
         }
-    },
-    "generalsounds":{
-        "shot":"Shot",
-        "explosion":"Explosion",
-        "waterexplosion":"WaterExplosion"
     }
 }
