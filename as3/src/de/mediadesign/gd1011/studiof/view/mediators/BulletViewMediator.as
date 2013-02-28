@@ -47,6 +47,7 @@ package de.mediadesign.gd1011.studiof.view.mediators
                 var img:Image = new MovieClip(assets.getTextures("SeaMine_"), 30);
                 Starling.juggler.add(img as MovieClip);
                 (img as MovieClip).play();
+                img.y = -60;
                 bulletView.addChild(img);
             }
             else if (!(bulletView.master is Player) && !(bulletView.master is NautilusBoss) && !(bulletView.master is FortFoxBoss))
