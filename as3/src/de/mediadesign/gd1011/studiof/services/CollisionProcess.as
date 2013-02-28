@@ -10,6 +10,7 @@ package de.mediadesign.gd1011.studiof.services
     import de.mediadesign.gd1011.studiof.consts.GameConsts;
     import de.mediadesign.gd1011.studiof.consts.ViewConsts;
     import de.mediadesign.gd1011.studiof.events.GameEvent;
+    import de.mediadesign.gd1011.studiof.model.NautilusBoss;
     import de.mediadesign.gd1011.studiof.services.LevelProcess;
     import de.mediadesign.gd1011.studiof.model.Unit;
 
@@ -32,10 +33,25 @@ package de.mediadesign.gd1011.studiof.services
         {
             for (var i:int = 0; i < level.player.ammunition.length; i++)
             {
-                // collision Boss1
+                // collision Boss
                 if (level.boss.initialized)
+                {
                     rules.collisionDetection(level.player.ammunition[i], level.boss as Unit);
+                    if (level.boss is NautilusBoss)
+                    {
+                        for (var j:int = 0; j < (level.boss as NautilusBoss).ammunition.length; j++)
+                        {
+                            rules.collisionDetection(level.player.ammunition[i], (level.boss as NautilusBoss).ammunition[j]);
 
+                            if (rules.isDead((level.boss as NautilusBoss).ammunition[j]))
+                            {
+                                deleteUnits((level.boss as NautilusBoss).ammunition, j);
+                                break;
+                                break;
+                            }
+                        }
+                    }
+                }
                 if (rules.isDead(level.player.ammunition[i]))
                 {
                     deleteUnits(level.player.ammunition, i);

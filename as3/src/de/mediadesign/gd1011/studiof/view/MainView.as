@@ -147,7 +147,7 @@ package de.mediadesign.gd1011.studiof.view
 			assets.enqueue("config/atlasxml/FlyCoon_texture.xml");
 			assets.enqueue("config/atlasxml/SwimCoon_texture.xml");
 
-            assets.enqueue("config/atlasxml/SeaMine_texture");
+            assets.enqueue("config/atlasxml/SeaMine_texture.xml");
 
 			assets.loadQueue(onLoad);
 		}

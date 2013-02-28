@@ -16,7 +16,10 @@ package de.mediadesign.gd1011.studiof.view.mediators
 
     import robotlegs.extensions.starlingViewMap.impl.StarlingMediator;
 
+    import starling.core.Starling;
+
     import starling.display.Image;
+    import starling.display.MovieClip;
 
     import starling.utils.AssetManager;
 
@@ -41,7 +44,10 @@ package de.mediadesign.gd1011.studiof.view.mediators
             }
             else if (bulletView.master is NautilusBoss)
             {
-
+                var img:Image = new MovieClip(assets.getTextures("SeaMine_"), 30);
+                Starling.juggler.add(img as MovieClip);
+                (img as MovieClip).play();
+                bulletView.addChild(img);
             }
             else if (!(bulletView.master is Player) && !(bulletView.master is NautilusBoss) && !(bulletView.master is FortFoxBoss))
             {
