@@ -152,7 +152,7 @@ package de.mediadesign.gd1011.studiof.services
             {
                 closeCurrentLevel();
                 _currentLevel+=1;
-                stopAllUnits();
+                //stopAllUnits();
                 newLevel(_currentLevel);
             }
             //Boss Spawn

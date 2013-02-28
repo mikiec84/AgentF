@@ -57,10 +57,5 @@ package de.mediadesign.gd1011.studiof.services
         {
             return (unit.healthPoints <= 0);
         }
-
-        public function loose(player:Unit):Boolean
-        {
-            return isDead(player);
-        }
     }
 }
