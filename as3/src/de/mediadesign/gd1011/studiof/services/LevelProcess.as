@@ -94,7 +94,7 @@ package de.mediadesign.gd1011.studiof.services
 
             for (var index2:int = 0; index2<enemyPositions.length; index2++)
             {
-                if (lvlConfig.getEnemySequence(0,0)[index2] != 6 && enemyPositions[index2].xPos < currentXKoord && !enemyPositions[index2].spawned)
+                if (lvlConfig.getEnemySequence(0,_currentLevel)[index2] != 6 && enemyPositions[index2].xPos < currentXKoord && !enemyPositions[index2].spawned)
                 {
                     enemyPositions[index2].spawned = true;
                     createAndShowEnemy(index2);
@@ -104,7 +104,10 @@ package de.mediadesign.gd1011.studiof.services
 
         private function shouldBossSpawn():Boolean
         {
-            return enemyPositions[enemyPositions.length-1].spawned;
+			for(var i:int = enemyPositions.length-1; i>=0;i--)
+				if(lvlConfig.getEnemySequence(0,_currentLevel)[i]!=6)
+            	return enemyPositions[i].spawned;
+			return true;
         }
 
         private function createAndShowEnemy(index:int):void
