@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker http://texturepacker.com-->
+<!-- $TexturePacker:SmartUpdate:a570d5e6d3f7fc8cba06f1929b31457f$ -->
+<TextureAtlas imagePath="SeaMine_texture.png">
+    <SubTexture name="SeaMine_00" x="100" y="2" width="96" height="96" frameX="-81" frameY="-78" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="SeaMine_01" x="2" y="2" width="96" height="96" frameX="-81" frameY="-78" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="SeaMine_02" x="2" y="388" width="96" height="94" frameX="-81" frameY="-79" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="SeaMine_03" x="198" y="386" width="96" height="94" frameX="-81" frameY="-79" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="SeaMine_04" x="394" y="290" width="96" height="94" frameX="-81" frameY="-79" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="SeaMine_05" x="296" y="290" width="96" height="94" frameX="-81" frameY="-79" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="SeaMine_06" x="100" y="292" width="96" height="94" frameX="-81" frameY="-79" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="SeaMine_07" x="2" y="292" width="96" height="94" frameX="-81" frameY="-78" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="SeaMine_08" x="198" y="290" width="96" height="94" frameX="-81" frameY="-78" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="SeaMine_09" x="394" y="194" width="96" height="94" frameX="-81" frameY="-78" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="SeaMine_10" x="296" y="194" width="96" height="94" frameX="-81" frameY="-78" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="SeaMine_11" x="100" y="196" width="96" height="94" frameX="-81" frameY="-78" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="SeaMine_12" x="2" y="196" width="96" height="94" frameX="-81" frameY="-78" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="SeaMine_13" x="296" y="574" width="96" height="92" frameX="-81" frameY="-79" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="SeaMine_14" x="198" y="482" width="96" height="92" frameX="-81" frameY="-79" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="SeaMine_15" x="2" y="484" width="96" height="92" frameX="-81" frameY="-79" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="SeaMine_16" x="100" y="482" width="96" height="92" frameX="-81" frameY="-80" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="SeaMine_17" x="394" y="480" width="96" height="92" frameX="-81" frameY="-80" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="SeaMine_18" x="296" y="480" width="96" height="92" frameX="-81" frameY="-80" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="SeaMine_19" x="394" y="386" width="96" height="92" frameX="-81" frameY="-80" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="SeaMine_20" x="198" y="194" width="96" height="94" frameX="-81" frameY="-78" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="SeaMine_21" x="296" y="386" width="96" height="92" frameX="-81" frameY="-79" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="SeaMine_22" x="100" y="388" width="96" height="92" frameX="-81" frameY="-79" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="SeaMine_23" x="394" y="98" width="96" height="94" frameX="-81" frameY="-78" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="SeaMine_24" x="296" y="98" width="96" height="94" frameX="-81" frameY="-78" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="SeaMine_25" x="100" y="100" width="96" height="94" frameX="-81" frameY="-78" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="SeaMine_26" x="2" y="100" width="96" height="94" frameX="-81" frameY="-78" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="SeaMine_27" x="198" y="98" width="96" height="94" frameX="-81" frameY="-79" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="SeaMine_28" x="394" y="2" width="96" height="94" frameX="-81" frameY="-79" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="SeaMine_29" x="296" y="2" width="96" height="94" frameX="-81" frameY="-79" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="SeaMine_30" x="198" y="2" width="96" height="94" frameX="-81" frameY="-79" frameWidth="256" frameHeight="256"/>
+</TextureAtlas>

@@ -45,6 +45,7 @@ package de.mediadesign.gd1011.studiof.model {
             //trace("backMovementDistance im konstruktor: "+backMovementDistance);
             movementSpeed = backMovementDistance/changePosTime;
             level = currentLevel;
+            ammunition = new Vector.<Unit>();
             super(JSONExtractedInformation["healthPoints"],JSONExtractedInformation["startingPlatform"],0,idleXPosition, currentLevel, false, GameConsts.NAUTILUS);
             position.x = GameConsts.STAGE_WIDTH+xOffset;
             if (currentLevel.bossHaveLowLife) {
