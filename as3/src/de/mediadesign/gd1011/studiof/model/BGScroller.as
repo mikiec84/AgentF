@@ -52,7 +52,7 @@ package de.mediadesign.gd1011.studiof.model
 		}
 		private function addScrollableBG():void
 		{
-			var layerTexturesCount:Number = JSONReader.read("viewconfig")["assetsets"]["level_"+_currentLevel]["background"][_layerID].length;
+			var layerTexturesCount:Number = JSONReader.read("viewconfig")["assetsets"]["level_"+(_currentLevel+1)]["background"][_layerID].length;
 			var newTileID:int = 0;
 			if(_randomScroll)
 				newTileID = Math.floor(Math.random()*layerTexturesCount);
