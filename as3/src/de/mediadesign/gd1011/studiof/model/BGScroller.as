@@ -52,18 +52,18 @@ package de.mediadesign.gd1011.studiof.model
 		}
 		private function addScrollableBG():void
 		{
-			var layerTexturesCont:Number = JSONReader.read("viewconfig")["assetsets"]["level_"+_currentLevel]["background"][_layerID].length;
+			var layerTexturesCount:Number = JSONReader.read("viewconfig")["assetsets"]["level_"+_currentLevel]["background"][_layerID].length;
 			var newTileID:int = 0;
 			if(_randomScroll)
-				newTileID = Math.floor(Math.random()*layerTexturesCont);
+				newTileID = Math.floor(Math.random()*layerTexturesCount);
 			else if (_scrollBGs.length >0)
 			{
 				if(_bgConfig["speed"]>0)
-					newTileID = (_scrollBGs[_scrollBGs.length-1].tileID+1)%layerTexturesCont;
+					newTileID = (_scrollBGs[_scrollBGs.length-1].tileID+1)%layerTexturesCount;
 				else
-					newTileID = (_scrollBGs[_scrollBGs.length-1].tileID-1+layerTexturesCont)%layerTexturesCont;
+					newTileID = (_scrollBGs[_scrollBGs.length-1].tileID-1+layerTexturesCount)%layerTexturesCount;
 			} else if(_bgConfig["speed"]<0)
-				newTileID = layerTexturesCont-1;
+				newTileID = layerTexturesCount-1;
 			var bg:BGTile = new BGTile(_layerID, newTileID);
 			_scrollBGs.push(bg);
 
