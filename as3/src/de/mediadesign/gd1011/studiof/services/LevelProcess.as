@@ -35,7 +35,7 @@ package de.mediadesign.gd1011.studiof.services
         private var _enemieBullets:Vector.<Unit>;
         private var _player:Player;
         private var _boss:IEndboss;
-        private var _currentLevel:int = 0;
+        private var _currentLevel:int = 1;
 
         private var JSONExtractedInformation:Object;
 
@@ -103,13 +103,8 @@ package de.mediadesign.gd1011.studiof.services
         }
 
         private function shouldBossSpawn():Boolean
-        {   var a:int = -1;
-            for (var index:int = 0; index<enemyPositions.length; index++) {
-                if (lvlConfig.getEnemySequence(0,_currentLevel)[index] != 6) {
-                    a = index;
-                }
-            }
-            return enemyPositions[a].spawned;
+        {
+            return enemyPositions[enemyPositions.length-1].spawned;
         }
 
         private function createAndShowEnemy(index:int):void
@@ -177,15 +172,6 @@ package de.mediadesign.gd1011.studiof.services
                 }
             }
 
-            //Boss Spawn
-            else if (enemies.length == 0 && shouldBossSpawn())
-            {
-                if(!boss.initialized && !boss.moveLeftRunning)
-                {
-                    stopScrollLevel();
-                    spawnBoss();
-                }
-            }
             if (lastState != player.state)
             {
                 var changeStateEvent:GameEvent = new GameEvent(GameConsts.CHANGE_STATE, player.state);

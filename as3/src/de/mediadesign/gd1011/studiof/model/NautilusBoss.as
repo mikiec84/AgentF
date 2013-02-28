@@ -33,6 +33,7 @@ package de.mediadesign.gd1011.studiof.model {
 
         public function NautilusBoss(currentLevel:LevelProcess)
         {
+			ammunition = new Vector.<Unit>();
             JSONExtractedInformation = JSONReader.read("enemy")["NAUTILUS"];
             changePosMovementSpeed = JSONExtractedInformation["changePosMovementSpeed"];
             changePosTime = JSONExtractedInformation["changePosTime"];
@@ -72,7 +73,7 @@ package de.mediadesign.gd1011.studiof.model {
         public function start():void
         {   trace("NAUTILUS SPAWNED");
             _moveLeftRunning = true;
-            var a:GameEvent = new GameEvent(GameConsts.NAUTILUS);
+            var a:GameEvent = new GameEvent(GameConsts.BOSS_SPAWN);
             level.dispatcher.dispatchEvent(a);
         }
 
