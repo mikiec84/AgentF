@@ -47,6 +47,11 @@ package de.mediadesign.gd1011.studiof.services
 			_soundConfig = JSONReader.read("viewconfig")["soundsets"];
 		}
 
+		public function play(key:String):void
+		{
+
+		}
+
 		public function setBGSound(level,key:String):void
 		{
 			var soundName:Array = _soundConfig["level_"+(level+1)][key];
