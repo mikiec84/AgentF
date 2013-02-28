@@ -35,7 +35,7 @@ package de.mediadesign.gd1011.studiof.services
         private var _enemieBullets:Vector.<Unit>;
         private var _player:Player;
         private var _boss:IEndboss;
-        private var _currentLevel:int = 1;
+        private var _currentLevel:int = 0;
 
         private var JSONExtractedInformation:Object;
 
@@ -50,7 +50,7 @@ package de.mediadesign.gd1011.studiof.services
         public var collisionTolerance:int; // Wie weit die bullet von der Unit entfernt sein darf um immernoch als treffer zu zählen
 
         ///CHEATS
-        public var onlyThreeMobs:Boolean = true;
+        public var onlyThreeMobs:Boolean = false;
         public var bossHaveLowLife:Boolean = false;
         /////////
 
