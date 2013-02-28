@@ -44,15 +44,15 @@
     },
     "soundsets":{
         "level_1":{
-            "music":["ThemeLvl1"]
+            "bg-loop":["ThemeLvl1"]
         },
         "level_2":{
-            "music":["ThemeLvl2"]
+            "bg-loop":["ThemeLvl2"]
         }
     },
     "generalsounds":{
-        "shot":["Shot"],
-        "explosion":["Explosion"],
-        "waterexplosion":["WaterExplosion"]
+        "shot":"Shot",
+        "explosion":"Explosion",
+        "waterexplosion":"WaterExplosion"
     }
 }

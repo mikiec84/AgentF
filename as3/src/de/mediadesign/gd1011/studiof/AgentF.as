@@ -37,7 +37,7 @@ package de.mediadesign.gd1011.studiof {
 			stage.removeEventListener(flash.events.Event.RESIZE, onResize);
 			var deviceSize:Rectangle = new Rectangle(0, 0,Math.max(stage.fullScreenWidth, stage.fullScreenHeight),Math.min(stage.fullScreenWidth, stage.fullScreenHeight));
 			_starling = new Starling(MainView, stage, deviceSize);
-			_starling.showStats = true;
+		//	_starling.showStats = true;
 			_context = new Context()
 					.install( MVCSBundle, StarlingViewMapExtension )
 					.configure( StarlingConfig, this, _starling)

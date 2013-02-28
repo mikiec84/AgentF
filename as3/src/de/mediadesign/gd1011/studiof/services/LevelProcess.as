@@ -213,7 +213,7 @@ package de.mediadesign.gd1011.studiof.services
             _bgLayer01 = new BGScroller("layer01",dispatcher, currentLevel, false);
             _bgLayer02 = new BGScroller("layer02",dispatcher, currentLevel);
 
-            sounds.setBGSound("ThemeLvl1");
+            sounds.setBGSound(currentLevel,"bg-loop");
 
 			_enemySequence =  lvlConfig.getEnemySequence(0, currentLevel);
 
