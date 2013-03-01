@@ -21,7 +21,7 @@ package de.mediadesign.gd1011.studiof.view
             this.master = master;
 //            var q:Quad = new Quad(50,10,0xFFFFFF);
 //            q.y += 25;
-//            alpha = 0;
+              alpha = 0;
 //            addChildAt(q, 0);
         }
     }

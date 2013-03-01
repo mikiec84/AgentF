@@ -54,5 +54,10 @@
         "level_2":{
             "bg-loop":["ThemeLvl2"]
         }
+    },
+    "viewOffsets":
+    {
+        "Flying":30,
+        "Swimming":30
     }
 }

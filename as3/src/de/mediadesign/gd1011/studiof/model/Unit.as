@@ -31,7 +31,8 @@ package de.mediadesign.gd1011.studiof.model
         public var cooldown:Number = 0;
         public var JSONExtractedInformation:Object;
         public var stopped:Boolean = false;
-        private var verticalBullet:Boolean = false;
+        public var isPlayer:Boolean = false;
+        public var verticalBullet:Boolean = false;
 
 
         public function Unit(healthpoints:int, startingPlatform:int, xVel:int, startingXPosition:int, currentLevel:LevelProcess, verticalBullet:Boolean, ID:String = "")
@@ -56,9 +57,9 @@ package de.mediadesign.gd1011.studiof.model
             if (verticalBullet)
             {   this.verticalBullet = true;
                 velocity.verticalVelocity = true;
-                velocity.velocityY = 600;
+                velocity.velocityY = 400;
                 velocity.velocityX = 0;
-                position.x += -50;
+                position.x -= 50;
             }
             if (startingPlatform == 2 && velocity.velocityX < 0)
             {
@@ -194,7 +195,7 @@ package de.mediadesign.gd1011.studiof.model
             {
                 doNotShootAnymore = true;
                 //_currentLevel.player.healthPoints -= 1;
-                var bullet:Unit = new Unit(1, currentPlatform, -600, _currentLevel.player.position.x, _currentLevel, true);
+                var bullet:Unit = new Unit(1, currentPlatform, 0, position.x, _currentLevel, true);
                 bullet.position.y += 10;
                 _currentLevel.enemieBullets.push(bullet);
                 cooldown = 0;

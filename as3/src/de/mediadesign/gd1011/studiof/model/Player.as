@@ -83,10 +83,11 @@ package de.mediadesign.gd1011.studiof.model {
             accelerationSpeed = JSONExtractedInformation["accelerationSpeed"];
             _tweenedPosition = new PositionComponent();
             position.y = currentPlatform * GameConsts.PLATFORM_HEIGHT;
+            isPlayer = true;
         }
 
         override public function move(time:Number):void
-        {
+        {   //trace("my x is", position.x);
             if (!stopped) {
                 if (position.y<1000) {
                     if (assertCorrectInitialization())

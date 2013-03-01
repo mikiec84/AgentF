@@ -61,13 +61,13 @@ package de.mediadesign.gd1011.studiof.view.mediators
                     case(0):
                         var img:Image = new Image(assets.getTexture("Bomb"));
                         img.x = -140;
-                        img.y = 0;
+                        img.y = -160;
                         bulletView.addChild(img);
                         break;
                     case(1):
                         var img:Image = new Image(assets.getTexture("Bomb"));
                         img.x = -140;
-                        img.y = 0;
+                        img.y = -160;
                         bulletView.addChild(img);
                         break;
                     case(3):
