@@ -150,8 +150,23 @@ package de.mediadesign.gd1011.studiof.view
             assets.enqueue("config/atlasxml/SeaMine_texture.xml");
 
             assets.enqueue("assets/Shot.mp3");
-            assets.enqueue("assets/ThemeLvl1.mp3");
-			assets.enqueue("assets/ThemeLvl2.mp3");
+
+			assets.enqueue("assets/Lvl1_Part_01.mp3");
+			assets.enqueue("assets/Lvl1_Part_02.mp3");
+			assets.enqueue("assets/Lvl1_Part_03.mp3");
+			assets.enqueue("assets/Lvl1_Part_04.mp3");
+			assets.enqueue("assets/Lvl1_Part_05.mp3");
+			assets.enqueue("assets/Lvl1_Part_06.mp3");
+			assets.enqueue("assets/Lvl1_Part_07.mp3");
+			assets.enqueue("assets/Lvl1_Part_08.mp3");
+			assets.enqueue("assets/Lvl1_Part_09.mp3");
+			assets.enqueue("assets/Lvl1_Part_10.mp3");
+			assets.enqueue("assets/Lvl1_Part_11.mp3");
+			assets.enqueue("assets/Lvl1_Part_12.mp3");
+//			assets.enqueue("assets/ThemeLvl1.mp3");
+//			assets.enqueue("assets/ThemeLvl1.mp3");
+//			assets.enqueue("assets/ThemeLvl1.mp3");
+//			assets.enqueue("assets/ThemeLvl1.mp3");
 
 			assets.loadQueue(onLoad);
 		}

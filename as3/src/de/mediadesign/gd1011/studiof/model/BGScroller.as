@@ -39,6 +39,13 @@ package de.mediadesign.gd1011.studiof.model
 			dispatcher.dispatchEvent(new GameEvent(ViewConsts.CREATE_BG_LAYER,bgLayerID));
 		}
 
+		public function dispose():void
+		{
+			for each (var bg:BGTile in _scrollBGs)
+				bg.dispose();
+			_dispatcher.dispatchEvent(new GameEvent(ViewConsts.CLEAN_BG));
+		}
+
 		public function update():void
 		{
 

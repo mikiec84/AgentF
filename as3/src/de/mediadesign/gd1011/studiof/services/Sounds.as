@@ -7,24 +7,14 @@
  */
 package de.mediadesign.gd1011.studiof.services
 {
-	import de.mediadesign.gd1011.studiof.AgentF;
-	import de.mediadesign.gd1011.studiof.view.MainView;
-
-	import flash.display.Stage3D;
-
 	import flash.events.Event;
 	import flash.media.Sound;
 	import flash.media.SoundChannel;
-	import flash.media.SoundChannel;
-
-	import robotlegs.bender.extensions.contextView.ContextView;
-	import robotlegs.bender.framework.impl.Context;
+	import flash.utils.setInterval;
+	import flash.utils.setTimeout;
 
 	import starling.core.Starling;
-
 	import starling.utils.AssetManager;
-
-
 
 	public class Sounds
 	{
@@ -39,6 +29,9 @@ package de.mediadesign.gd1011.studiof.services
 		private var _pausePositions:Vector.<int>;
 		private var _soundConfig:Object;
 
+		private var _delay:Number = 0;
+
+
 		public function Sounds()
 		{
 			_soundFX = new Vector.<SoundChannel>();
@@ -46,7 +39,8 @@ package de.mediadesign.gd1011.studiof.services
 			_bgSoundQueue = new Array();
 			_pausePositions = new Vector.<int>();
 			_soundConfig = JSONReader.read("viewconfig")["soundsets"];
-			Starling.current.stage3D.addEventListener(flash.events.Event.DEACTIVATE, stage_deactivateHandler, false, 0, true);
+			_delay = _soundConfig["delay"];
+			Starling.current.stage3D.addEventListener(Event.DEACTIVATE, stage_deactivateHandler, false, 0, true);
 		}
 
 		public function play(key:String):void
@@ -67,6 +61,8 @@ package de.mediadesign.gd1011.studiof.services
 				var sound:Sound = assets.getSound(name);
 				loopSounds.push(sound);
 			}
+			if(loopSounds.length==0)
+				return;
 
 			_bgSoundQueue.push(loopSounds);
 
@@ -75,9 +71,32 @@ package de.mediadesign.gd1011.studiof.services
 				_bgSound = loopSounds[0].play();
 				if(_bgSound!= null)
 				{
-					_bgSound.addEventListener(Event.SOUND_COMPLETE, loopBGSound);
+					setInterval(watchBGSound,_delay*0.1);
+					//_bgSound.addEventListener(Event.SOUND_COMPLETE, loopBGSound);
 				}
 			}
+		}
+
+		private function loopBGSound(e:Event = null):void
+		{
+
+			_bgSound.removeEventListener(Event.SOUND_COMPLETE, loopBGSound);
+			if(_bgSoundQueue.length > 1)
+				_bgSoundQueue.shift();
+			else
+				_bgSoundQueue[0].push(_bgSoundQueue[0].shift());
+
+			_bgSound = _bgSoundQueue[0][0].play();
+			setInterval(watchBGSound,_delay*0.1);
+			//_bgSound.addEventListener(Event.SOUND_COMPLETE, loopBGSound);
+		}
+
+		private function watchBGSound():void
+		{
+			if(_bgSound==null)
+				return;
+			if(_bgSoundQueue[0][0].length-_bgSound.position <=_delay )
+				loopBGSound();
 		}
 
 		private function stage_deactivateHandler(e:Event):void
@@ -94,12 +113,12 @@ package de.mediadesign.gd1011.studiof.services
 				sfx.stop();
 			}
 			_soundFX = new Vector.<SoundChannel>();
-			Starling.current.stage3D.addEventListener(flash.events.Event.ACTIVATE, stage_activateHandler, false, 0, true);
+			Starling.current.stage3D.addEventListener(Event.ACTIVATE, stage_activateHandler, false, 0, true);
 		}
 
 		private function stage_activateHandler(e:Event):void
 		{
-			Starling.current.stage3D.removeEventListener(flash.events.Event.ACTIVATE, stage_activateHandler);
+			Starling.current.stage3D.removeEventListener(Event.ACTIVATE, stage_activateHandler);
 			if(_bgSoundQueue.length>0)
 			{
 				_bgSound = _bgSoundQueue[0][0].play(_pausePositions.shift());
@@ -112,18 +131,6 @@ package de.mediadesign.gd1011.studiof.services
 				_soundFX.push(sound.play(_pausePositions.shift()));
 				_soundFX[_soundFX.length-1].addEventListener(Event.SOUND_COMPLETE, stopFX);
 			}
-		}
-
-		private function loopBGSound(e:Event):void
-		{
-			_bgSound.removeEventListener(Event.SOUND_COMPLETE, loopBGSound);
-			if(_bgSoundQueue.length > 1)
-				_bgSoundQueue.shift();
-			else
-				_bgSoundQueue[0].push(_bgSoundQueue[0].shift());
-
-			_bgSound = _bgSoundQueue[0][0].play();
-			_bgSound.addEventListener(Event.SOUND_COMPLETE, loopBGSound);
 		}
 
 		private function stopFX(e:Event):void

@@ -213,6 +213,7 @@ package de.mediadesign.gd1011.studiof.services
             _bgLayer01 = new BGScroller("layer01",dispatcher, currentLevel, false);
             _bgLayer02 = new BGScroller("layer02",dispatcher, currentLevel);
 
+			sounds.setBGSound(currentLevel,"intro");
             sounds.setBGSound(currentLevel,"bg-loop");
 
 			_enemySequence =  lvlConfig.getEnemySequence(0, currentLevel);
@@ -248,6 +249,8 @@ package de.mediadesign.gd1011.studiof.services
 			if (!boss.initialized && !boss.moveLeftRunning)
 			{
 				boss.start();
+				sounds.setBGSound(currentLevel,"boss-intro");
+				sounds.setBGSound(currentLevel,"boss-loop1");
 			}
             //else trace("Es wird versucht ein Level Endboss zu starten, der in der JSON nicht eingetragen ist.");
         }
@@ -325,7 +328,7 @@ package de.mediadesign.gd1011.studiof.services
 
         public function register(bullet:Unit, shootingUnit:Unit):void
         {
-			sounds.play("shot");
+			//sounds.play("shot");
             var infos:Array = new Array();
             infos.push(bullet);
             infos.push(shootingUnit);

@@ -71,5 +71,10 @@ package de.mediadesign.gd1011.studiof.model
         public function resume():void {
 			moving = true;
         }
+
+		public function dispose():void
+		{
+
+		}
     }
 }
