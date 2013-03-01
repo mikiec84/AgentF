@@ -60,6 +60,7 @@ package de.mediadesign.gd1011.studiof.model
                 velocity.velocityY = 400;
                 velocity.velocityX = 0;
                 position.x -= 50;
+                position.y += 10;
             }
             if (startingPlatform == 2 && velocity.velocityX < 0)
             {
@@ -189,13 +190,12 @@ package de.mediadesign.gd1011.studiof.model
 
             if (!doNotShootAnymore && currentPlatform < 2
                     && cooldown >= (1 / fireRateEnemy)
-                    && position.x<enemyRange && position.x>0 && healthPoints > 0
-                    && position.x +50 >= _currentLevel.player.position.x
-                    && position.x-_currentLevel.collisionTolerance < _currentLevel.player.position.x)
+                    && position.x<enemyRange && healthPoints > 0
+                    && position.x+200 < _currentLevel.player.position.x)
             {
                 doNotShootAnymore = true;
                 //_currentLevel.player.healthPoints -= 1;
-                var bullet:Unit = new Unit(1, currentPlatform, 0, position.x, _currentLevel, true);
+                var bullet:Unit = new Unit(1, currentPlatform, 0, position.x+150, _currentLevel, true);
                 bullet.position.y += 10;
                 _currentLevel.enemieBullets.push(bullet);
                 cooldown = 0;
