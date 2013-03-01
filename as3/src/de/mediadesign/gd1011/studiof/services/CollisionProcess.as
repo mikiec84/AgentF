@@ -82,7 +82,10 @@ package de.mediadesign.gd1011.studiof.services
             for (var i:int = 0; i < level.enemies.length; i++)
             {
                 //collision player, enemy
-                rules.collisionDetection(level.player, level.enemies[i]);
+                if (level.enemies[i].currentPlatform == 2)
+                {
+                    rules.collisionDetection(level.player, level.enemies[i]);
+                }
 
                 if (rules.isDead(level.enemies[i]))
                 {
