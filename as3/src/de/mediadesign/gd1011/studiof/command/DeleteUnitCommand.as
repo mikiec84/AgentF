@@ -56,7 +56,7 @@ package de.mediadesign.gd1011.studiof.command
             // delete Movable in Vector
             for (var i:int = 0; i < moveProcess.targets.length; i++)
             {
-                if (moveProcess.targets[i] is Unit && unit.position == Unit(moveProcess.targets[i]).position)
+                if (moveProcess.targets[i] is Unit && unit.position == (moveProcess.targets[i] as Unit).position)
                 {
                     moveProcess.removeEntity(i);
                 }

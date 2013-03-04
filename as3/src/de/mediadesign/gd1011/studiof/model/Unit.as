@@ -38,6 +38,7 @@ package de.mediadesign.gd1011.studiof.model
         public var lastState:String;
 
 
+
         public function Unit(healthpoints:int, startingPlatform:int, xVel:int, startingXPosition:int, currentLevel:LevelProcess, verticalBullet:Boolean, ID:String = "")
         {
             _weapon = "default";
@@ -196,7 +197,6 @@ package de.mediadesign.gd1011.studiof.model
                     && position.x+200 < _currentLevel.player.position.x)
             {
                 doNotShootAnymore = true;
-                //_currentLevel.player.healthPoints -= 1;
                 var bullet:Unit = new Unit(1, currentPlatform, 0, position.x+150, _currentLevel, true);
                 bullet.position.y += 10;
                 _currentLevel.enemieBullets.push(bullet);

@@ -51,21 +51,11 @@ package de.mediadesign.gd1011.studiof.command
 
         override public function execute():void
         {
-			level.setPlayer(new Player(level));
-
-            moveProcess.addEntity(level.player);
-            level.boss = new (getDefinitionByName("de.mediadesign.gd1011.studiof.model."+JSONReader.read("level/level")[0][level.currentLevel]["endboss"]) as Class)(level);
-
-            var playerView:EnemyView = new EnemyView(ViewConsts.PLAYER, ViewConsts.PLAYER);
-
             gameLoop.registerProcess(moveProcess);
             gameLoop.registerProcess(renderProcess);
             gameLoop.registerProcess(collisionProcess);
             gameLoop.registerProcess(level);
-
-            renderProcess.registerRenderable(new Renderable(level.player.position, playerView));
-            var addSpriteToGameEvent:GameEvent = new GameEvent(ViewConsts.ADD_SPRITE_TO_GAME, playerView);
-            dispatcher.dispatchEvent(addSpriteToGameEvent);
+            level.newLevel(level.currentLevel);
         }
     }
 }

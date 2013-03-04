@@ -9,6 +9,8 @@ package de.mediadesign.gd1011.studiof.consts
 {
 	public class ViewConsts
 	{
+        public static const ADD_WATER_TO_GAME = "ADD_WATER_TO_GAME";
+
 		public static const INIT_GAMEVIEW:String = "INIT_GAMEVIEW";
 		public static const UPDATE_LIFEPOINTS:String = "UPDATE_LIFEPOINTS";
         public static const SHOW_GAMEOVER:String = "SHOW_GAMEOVER";
@@ -41,6 +43,11 @@ package de.mediadesign.gd1011.studiof.consts
         public static const HARPUNE:String = "HARPUNE";
         public static const BOMBE:String = "BOMBE";
         public static const MINE:String = "MINE";
+
+        public static const LOAD_LEVEL1:String = "LOAD_LEVEL1";
+        public static const LOAD_LEVEL2:String = "LOAD_LEVEL2";
+        public static const DELETE_LEVEL1:String = "DELETE_LEVEL1";
+        public static const DELETE_LEVEL2:String = "DELETE_LEVEL2";
 
 	}
 }

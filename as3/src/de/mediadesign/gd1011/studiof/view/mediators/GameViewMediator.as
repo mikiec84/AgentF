@@ -62,15 +62,9 @@ package de.mediadesign.gd1011.studiof.view.mediators {
 			contextView.units = new Sprite();
 			contextView.addChild(contextView.units);
 
-			var water:MovieClip = assets.getAsset("Water_") as MovieClip;
-			water.fps = 5;
-			water.y = 455;
-			water.alpha = 0.5;
-			Starling.juggler.add(water);
-			contextView.addChild(water);
-			water.play();
 
-			addContextListener(ViewConsts.ADD_SPRITE_TO_GAME, add);
+            addContextListener(ViewConsts.ADD_WATER_TO_GAME, addWater);
+            addContextListener(ViewConsts.ADD_SPRITE_TO_GAME, add);
 			addContextListener(ViewConsts.REMOVE_SPRITE_FROM_GAME, remove);
             addContextListener(ViewConsts.CREATE_FORTBG, createFort);
 
@@ -92,6 +86,17 @@ package de.mediadesign.gd1011.studiof.view.mediators {
             var fortUpperLayer:Image = new Image(assets.getTexture("Fort_UpperLayer"));
             fortUpperLayer.x = GameConsts.STAGE_WIDTH - 890;
             contextView.addChildAt(fortUpperLayer, contextView.numChildren-1);
+        }
+
+        public function addWater(event:GameEvent):void
+        {
+            var water:MovieClip = assets.getAsset("Water_") as MovieClip;
+            water.fps = 5;
+            water.y = 455;
+            water.alpha = 0.5;
+            Starling.juggler.add(water);
+            contextView.addChild(water);
+            water.play();
         }
 
 		override public function destroy():void
