@@ -61,11 +61,13 @@ package de.mediadesign.gd1011.studiof.services
         public var collisionTolerance:int; // Wie weit die bullet von der Unit entfernt sein darf um immernoch als treffer zu zählen
 
         ///CHEATS
-        public var onlyThreeMobs:Boolean = false;
-        public var bossHaveLowLife:Boolean = false;
+        public var onlyThreeMobs:Boolean = true;
+        public var bossHaveLowLife:Boolean = true;
         /////////
 
         private var lastState:String;
+        private var maxLevel:int = 1;
+        private var gameIsOver:Boolean = false;
 
         public function LevelProcess()
         {
@@ -189,7 +191,18 @@ package de.mediadesign.gd1011.studiof.services
             // new level
             if (boss.healthPoints <= 0 && boss.initialized)
             {
-                initNextLevel();
+                if (currentLevel != maxLevel) {
+                    initNextLevel();
+                }
+                else
+                {
+                    if (!gameIsOver)
+                    {
+                        gameIsOver = true;
+                        var a:GameEvent = new GameEvent(ViewConsts.SHOW_GAMEOVER, true);
+                        dispatcher.dispatchEvent(a);
+                    }
+                }
             }
             //Boss Spawn
             else if (enemies.length == 0 && shouldBossSpawn())
