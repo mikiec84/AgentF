@@ -68,18 +68,37 @@ package de.mediadesign.gd1011.studiof.view.mediators
                     enemyView.addChild(currentImg);
                     break;
                 case(ViewConsts.FLOATING_ENEMY):
-                    currentImg = new MovieClip(assets.getTextures("E2 Idle_"),30);
+                    currentImg = new MovieClip(assets.getTextures("Barrel_"),30);
                     Starling.juggler.add(currentImg as MovieClip);
                     (currentImg as MovieClip).play();
                     currentImg.y = -50;
                     enemyView.addChild(currentImg);
                     break;
                 case(ViewConsts.UNDERWATER_ENEMY):
-                    currentImg = new MovieClip(assets.getTextures("E3 Idle_"),15);
+                    currentImg = new MovieClip(assets.getTextures("E3 Idle_"),30);
                     Starling.juggler.add(currentImg as MovieClip);
                     (currentImg as MovieClip).play();
                     currentImg.y = 50;
                     enemyView.addChild(currentImg);
+                    break;
+                case(ViewConsts.NAUTILUS):
+                    images = new Vector.<Image>();
+                    currentImg = new MovieClip(assets.getTextures("Nautilus_Idle_"),30);
+                    Starling.juggler.add(currentImg as MovieClip);
+                    images.push(currentImg);
+                    (currentImg as MovieClip).play();
+                    currentImg.y = -100;
+                    enemyView.addChild(currentImg);
+                    // ##################
+                    currentImg = new MovieClip(assets.getTextures("Nautilus_Shot_"),30);
+                    images.push(currentImg);
+                    currentImg.y = -100;
+                    Starling.juggler.add(currentImg as MovieClip);
+                    currentImg = new MovieClip(assets.getTextures("Nautilus_Change_"),30);
+                    images.push(currentImg);
+                    currentImg.y = -100;
+                    Starling.juggler.add(currentImg as MovieClip);
+                    addContextListener(ViewConsts.CHANGE_ANIM, changeAnimation);
                     break;
             }
             addContextListener(ViewConsts.SHOW_DAMAGE, damage);
@@ -93,10 +112,10 @@ package de.mediadesign.gd1011.studiof.view.mediators
                 case(GameConsts.IDLE):
                     currentImg = images[0];
                     break;
-                case(GameConsts.FALL):
+                case(GameConsts.FALL || GameConsts.SHOT):
                     currentImg = images[1];
                     break;
-                case(GameConsts.JUMP):
+                case(GameConsts.JUMP || GameConsts.CHANGE):
                     currentImg = images[2];
                     break;
             }

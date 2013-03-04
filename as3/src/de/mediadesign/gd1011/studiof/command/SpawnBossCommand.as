@@ -33,7 +33,7 @@ package de.mediadesign.gd1011.studiof.command
 
         override public function execute():void
         {
-            var bossView:Sprite = new EnemyView(ViewConsts.UNDERWATER_ENEMY, GameConsts.BOSS_SPAWN);
+            var bossView:Sprite = new EnemyView(ViewConsts.NAUTILUS, GameConsts.BOSS_SPAWN);
             moveProcess.addEntity(level.boss as Unit);
             renderProcess.registerRenderable(new Renderable(level.boss.position, bossView));
             var addEnemySpriteToGameEvent:GameEvent = new GameEvent(ViewConsts.ADD_SPRITE_TO_GAME, bossView);

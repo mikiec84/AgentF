@@ -122,6 +122,13 @@ package de.mediadesign.gd1011.studiof.view
 			assets.enqueue(FlyCoon_texture);
 			assets.enqueue(SwimCoon_texture);
 
+            assets.enqueue(ClackHigh);
+            assets.enqueue(FortFoxHigh);
+
+            assets.enqueue(Nautilus_Change_texture);
+            assets.enqueue(Nautilus_Idle_texture);
+            assets.enqueue(Nautilus_Shot_texture);
+
 			assets.enqueue(Arrow);
             assets.enqueue(Bomb);
             assets.enqueue(Bullet);
@@ -146,6 +153,13 @@ package de.mediadesign.gd1011.studiof.view
 			assets.enqueue("config/atlasxml/Barrel_texture.xml");
 			assets.enqueue("config/atlasxml/FlyCoon_texture.xml");
 			assets.enqueue("config/atlasxml/SwimCoon_texture.xml");
+
+            assets.enqueue("config/atlasxml/ClackHigh.xml");
+            assets.enqueue("config/atlasxml/FortFoxHigh.xml");
+
+            assets.enqueue("config/atlasxml/Nautilus_Change_texture.xml");
+            assets.enqueue("config/atlasxml/Nautilus_Idle_texture.xml");
+            assets.enqueue("config/atlasxml/Nautilus_Shot_texture.xml");
 
             assets.enqueue("config/atlasxml/SeaMine_texture.xml");
 

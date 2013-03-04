@@ -1,37 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with TexturePacker http://texturepacker.com-->
-<!-- $TexturePacker:SmartUpdate:da3278df55fa69d8ffbcd39cd4eda57a$ -->
+<!-- $TexturePacker:SmartUpdate:5f636a30e8269c441bc95b6d327a1eef$ -->
 <TextureAtlas imagePath="AgentF_Jump_texture.png">
-    <SubTexture name="Player_Jump_00" x="746" y="2" width="246" height="214" frameX="-6" frameY="-22" frameWidth="256" frameHeight="256"/>
-    <SubTexture name="Player_Jump_01" x="498" y="2" width="246" height="214" frameX="-6" frameY="-22" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="Player_Jump_00" x="746" y="2" width="246" height="214" frameX="-6" frameY="-23" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="Player_Jump_01" x="498" y="2" width="246" height="214" frameX="-6" frameY="-23" frameWidth="256" frameHeight="256"/>
     <SubTexture name="Player_Jump_02" x="2" y="2" width="246" height="216" frameX="-5" frameY="-21" frameWidth="256" frameHeight="256"/>
     <SubTexture name="Player_Jump_03" x="250" y="218" width="244" height="218" frameX="-6" frameY="-20" frameWidth="256" frameHeight="256"/>
-    <SubTexture name="Player_Jump_04" x="740" y="218" width="242" height="218" frameX="-6" frameY="-20" frameWidth="256" frameHeight="256"/>
-    <SubTexture name="Player_Jump_05" x="2" y="438" width="240" height="220" frameX="-7" frameY="-18" frameWidth="256" frameHeight="256"/>
-    <SubTexture name="Player_Jump_06" x="720" y="438" width="232" height="222" frameX="-8" frameY="-17" frameWidth="256" frameHeight="256"/>
-    <SubTexture name="Player_Jump_07" x="484" y="438" width="234" height="220" frameX="-8" frameY="-18" frameWidth="256" frameHeight="256"/>
-    <SubTexture name="Player_Jump_08" x="2" y="660" width="232" height="222" frameX="-9" frameY="-16" frameWidth="256" frameHeight="256"/>
-    <SubTexture name="Player_Jump_09" x="2" y="884" width="230" height="222" frameX="-10" frameY="-16" frameWidth="256" frameHeight="256"/>
-    <SubTexture name="Player_Jump_10" x="236" y="878" width="230" height="222" frameX="-10" frameY="-16" frameWidth="256" frameHeight="256"/>
-    <SubTexture name="Player_Jump_11" x="698" y="884" width="228" height="222" frameX="-12" frameY="-16" frameWidth="256" frameHeight="256"/>
-    <SubTexture name="Player_Jump_12" x="2" y="1108" width="228" height="222" frameX="-11" frameY="-16" frameWidth="256" frameHeight="256"/>
-    <SubTexture name="Player_Jump_13" x="2" y="1780" width="226" height="222" frameX="-13" frameY="-16" frameWidth="256" frameHeight="256"/>
-    <SubTexture name="Player_Jump_14" x="690" y="1332" width="226" height="220" frameX="-13" frameY="-17" frameWidth="256" frameHeight="256"/>
-    <SubTexture name="Player_Jump_15" x="2" y="1556" width="226" height="222" frameX="-13" frameY="-16" frameWidth="256" frameHeight="256"/>
-    <SubTexture name="Player_Jump_16" x="230" y="1548" width="226" height="222" frameX="-13" frameY="-16" frameWidth="256" frameHeight="256"/>
-    <SubTexture name="Player_Jump_17" x="462" y="1328" width="226" height="222" frameX="-13" frameY="-16" frameWidth="256" frameHeight="256"/>
-    <SubTexture name="Player_Jump_18" x="694" y="1108" width="226" height="222" frameX="-13" frameY="-16" frameWidth="256" frameHeight="256"/>
-    <SubTexture name="Player_Jump_19" x="230" y="1772" width="226" height="220" frameX="-13" frameY="-17" frameWidth="256" frameHeight="256"/>
-    <SubTexture name="Player_Jump_20" x="2" y="1332" width="226" height="222" frameX="-13" frameY="-16" frameWidth="256" frameHeight="256"/>
-    <SubTexture name="Player_Jump_21" x="234" y="1102" width="228" height="222" frameX="-11" frameY="-16" frameWidth="256" frameHeight="256"/>
-    <SubTexture name="Player_Jump_22" x="232" y="1326" width="228" height="220" frameX="-11" frameY="-18" frameWidth="256" frameHeight="256"/>
-    <SubTexture name="Player_Jump_23" x="468" y="882" width="228" height="222" frameX="-11" frameY="-17" frameWidth="256" frameHeight="256"/>
-    <SubTexture name="Player_Jump_24" x="464" y="1106" width="228" height="220" frameX="-11" frameY="-18" frameWidth="256" frameHeight="256"/>
-    <SubTexture name="Player_Jump_25" x="714" y="662" width="230" height="220" frameX="-9" frameY="-18" frameWidth="256" frameHeight="256"/>
-    <SubTexture name="Player_Jump_26" x="480" y="660" width="232" height="220" frameX="-9" frameY="-18" frameWidth="256" frameHeight="256"/>
-    <SubTexture name="Player_Jump_27" x="244" y="658" width="234" height="218" frameX="-9" frameY="-20" frameWidth="256" frameHeight="256"/>
-    <SubTexture name="Player_Jump_28" x="244" y="438" width="238" height="218" frameX="-7" frameY="-21" frameWidth="256" frameHeight="256"/>
-    <SubTexture name="Player_Jump_29" x="496" y="218" width="242" height="218" frameX="-6" frameY="-20" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="Player_Jump_04" x="496" y="218" width="242" height="220" frameX="-6" frameY="-19" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="Player_Jump_05" x="740" y="438" width="240" height="220" frameX="-7" frameY="-19" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="Player_Jump_06" x="242" y="438" width="236" height="222" frameX="-8" frameY="-17" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="Player_Jump_07" x="2" y="658" width="234" height="222" frameX="-8" frameY="-17" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="Player_Jump_08" x="716" y="660" width="232" height="222" frameX="-9" frameY="-17" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="Player_Jump_09" x="472" y="662" width="230" height="222" frameX="-10" frameY="-17" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="Player_Jump_10" x="2" y="882" width="230" height="222" frameX="-10" frameY="-17" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="Player_Jump_11" x="232" y="1106" width="228" height="222" frameX="-12" frameY="-16" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="Player_Jump_12" x="2" y="1106" width="228" height="222" frameX="-11" frameY="-16" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="Player_Jump_13" x="686" y="1332" width="226" height="222" frameX="-13" frameY="-16" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="Player_Jump_14" x="458" y="1332" width="226" height="222" frameX="-13" frameY="-16" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="Player_Jump_15" x="230" y="1778" width="226" height="222" frameX="-13" frameY="-16" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="Player_Jump_16" x="230" y="1554" width="226" height="222" frameX="-13" frameY="-16" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="Player_Jump_17" x="2" y="1778" width="226" height="222" frameX="-13" frameY="-16" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="Player_Jump_18" x="2" y="1554" width="226" height="222" frameX="-13" frameY="-16" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="Player_Jump_19" x="230" y="1330" width="226" height="222" frameX="-13" frameY="-16" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="Player_Jump_20" x="2" y="1330" width="226" height="222" frameX="-13" frameY="-16" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="Player_Jump_21" x="696" y="1108" width="228" height="222" frameX="-11" frameY="-16" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="Player_Jump_22" x="462" y="1110" width="228" height="220" frameX="-11" frameY="-18" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="Player_Jump_23" x="466" y="886" width="228" height="222" frameX="-11" frameY="-17" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="Player_Jump_24" x="704" y="884" width="228" height="222" frameX="-11" frameY="-17" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="Player_Jump_25" x="234" y="884" width="230" height="220" frameX="-9" frameY="-19" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="Player_Jump_26" x="238" y="662" width="232" height="220" frameX="-9" frameY="-19" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="Player_Jump_27" x="480" y="440" width="234" height="220" frameX="-9" frameY="-19" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="Player_Jump_28" x="2" y="438" width="238" height="218" frameX="-7" frameY="-21" frameWidth="256" frameHeight="256"/>
+    <SubTexture name="Player_Jump_29" x="740" y="218" width="242" height="218" frameX="-6" frameY="-20" frameWidth="256" frameHeight="256"/>
     <SubTexture name="Player_Jump_30" x="2" y="220" width="244" height="216" frameX="-6" frameY="-22" frameWidth="256" frameHeight="256"/>
     <SubTexture name="Player_Jump_31" x="250" y="2" width="246" height="214" frameX="-6" frameY="-23" frameWidth="256" frameHeight="256"/>
 </TextureAtlas>
