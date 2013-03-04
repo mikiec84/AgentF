@@ -7,6 +7,7 @@
  */
 package de.mediadesign.gd1011.studiof.model {
     import de.mediadesign.gd1011.studiof.consts.GameConsts;
+    import de.mediadesign.gd1011.studiof.consts.ViewConsts;
     import de.mediadesign.gd1011.studiof.events.GameEvent;
     import de.mediadesign.gd1011.studiof.services.JSONReader;
     import de.mediadesign.gd1011.studiof.services.LevelProcess;
@@ -16,7 +17,9 @@ package de.mediadesign.gd1011.studiof.model {
         private var timeCounter:Number = 0;
         private var idleTimeFrame:Number;
         private var upMovementRunning:Boolean = false;
+        private var upMovementRunningBuffer:Boolean = false;
         private var downMovementRunning:Boolean = false;
+        private var downMovementRunningBuffer:Boolean = false;
         private var changePosTime:Number;
         private var backMovementDistance:int;
         private var idleXPosition:int;
@@ -25,6 +28,8 @@ package de.mediadesign.gd1011.studiof.model {
         private var _moveLeftRunning:Boolean = false;
         private var _initialized:Boolean = false;
         private var level:LevelProcess;
+        private var _scrollLevel:Boolean = false;
+        private var _idleState:Boolean = false;
 
         public function FortFoxBoss(currentLevel:LevelProcess)
         {
@@ -84,6 +89,14 @@ package de.mediadesign.gd1011.studiof.model {
                     }
                 }
             }
+            if (!upMovementRunning && !downMovementRunning && initialized)
+            {
+                _idleState = true;
+            }
+            else
+            {
+                _idleState = false;
+            }
         }
 
         private function doMoveLeft(time:Number):void
@@ -100,6 +113,11 @@ package de.mediadesign.gd1011.studiof.model {
 
         private function doDownMovement(time:Number):void
         {
+            if (!downMovementRunningBuffer) {
+                downMovementRunningBuffer = true;
+                var a:GameEvent = new GameEvent(ViewConsts.UPPER_DOOR);
+                level.dispatcher.dispatchEvent(a);
+            }
             if (currentPlatform == 0 && position.x < backMovementDistance+idleXPosition)
             {
                 position.x+=movementSpeed*time;
@@ -118,12 +136,22 @@ package de.mediadesign.gd1011.studiof.model {
 
             if (currentPlatform == 1 && position.x <= idleXPosition)
             {
+                downMovementRunningBuffer = false;
                 downMovementRunning = false;
+                var ab:GameEvent = new GameEvent(ViewConsts.NETHER_DOOR);
+                level.dispatcher.dispatchEvent(ab);
+                var ac:GameEvent = new GameEvent(ViewConsts.FORT_FOX_BOSS_MOVEMENT);
+                level.dispatcher.dispatchEvent(ac);
             }
         }
 
         private function doUpMovement(time:Number):void
         {
+            if (!upMovementRunningBuffer) {
+                upMovementRunningBuffer = true;
+                var a:GameEvent = new GameEvent(ViewConsts.NETHER_DOOR);
+                level.dispatcher.dispatchEvent(a);
+            }
             if (currentPlatform == 1 && position.x < backMovementDistance+idleXPosition)
             {
                 position.x+=movementSpeed*time;
@@ -142,7 +170,12 @@ package de.mediadesign.gd1011.studiof.model {
 
             if (currentPlatform == 0 && position.x <= idleXPosition)
             {
+                upMovementRunningBuffer = false;
                 upMovementRunning = false;
+                var ab:GameEvent = new GameEvent(ViewConsts.UPPER_DOOR);
+                level.dispatcher.dispatchEvent(ab);
+                var ac:GameEvent = new GameEvent(ViewConsts.FORT_FOX_BOSS_MOVEMENT);
+                level.dispatcher.dispatchEvent(ac);
             }
 
         }
@@ -173,5 +206,17 @@ package de.mediadesign.gd1011.studiof.model {
 		public function update(time:Number):void
 		{
 		}
-	}
+
+        public function get scrollLevel():Boolean {
+            return _scrollLevel;
+        }
+
+        public function get idleState():Boolean {
+            return _idleState;
+        }
+
+        public function set idleState(value:Boolean):void {
+            _idleState = value;
+        }
+    }
 }

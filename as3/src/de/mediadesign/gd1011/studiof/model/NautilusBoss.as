@@ -30,6 +30,8 @@ package de.mediadesign.gd1011.studiof.model {
         private var xOffset:int;
         private var attackSpeed:Number;
         public var ammunition:Vector.<Unit>;
+        private var _scrollLevel:Boolean = true;
+        private var _idleState:Boolean = true;
 
         public function NautilusBoss(currentLevel:LevelProcess)
         {
@@ -205,5 +207,13 @@ package de.mediadesign.gd1011.studiof.model {
 			}
 			super.resume();
 		}
-	}
+
+        public function get scrollLevel():Boolean {
+            return _scrollLevel;
+        }
+
+        public function get idleState():Boolean {
+            return _idleState;
+        }
+    }
 }
