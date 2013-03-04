@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker http://texturepacker.com-->
+<!-- $TexturePacker:SmartUpdate:c846d4dc82ec802b9d369f6972d763f8$ -->
+<TextureAtlas imagePath="ClackHigh.png">
+    <SubTexture name="Clack_High_00" x="2" y="646" width="78" height="135" frameX="-523" frameY="-89" frameWidth="890" frameHeight="921"/>
+    <SubTexture name="Clack_High_01" x="100" y="606" width="78" height="135" frameX="-523" frameY="-89" frameWidth="890" frameHeight="921"/>
+    <SubTexture name="Clack_High_02" x="214" y="559" width="80" height="135" frameX="-521" frameY="-89" frameWidth="890" frameHeight="921"/>
+    <SubTexture name="Clack_High_03" x="428" y="2" width="82" height="135" frameX="-519" frameY="-89" frameWidth="890" frameHeight="921"/>
+    <SubTexture name="Clack_High_04" x="426" y="139" width="84" height="135" frameX="-517" frameY="-89" frameWidth="890" frameHeight="921"/>
+    <SubTexture name="Clack_High_05" x="422" y="276" width="88" height="135" frameX="-513" frameY="-89" frameWidth="890" frameHeight="921"/>
+    <SubTexture name="Clack_High_06" x="352" y="538" width="92" height="135" frameX="-509" frameY="-89" frameWidth="890" frameHeight="921"/>
+    <SubTexture name="Clack_High_07" x="2" y="509" width="96" height="135" frameX="-505" frameY="-90" frameWidth="890" frameHeight="921"/>
+    <SubTexture name="Clack_High_08" x="112" y="469" width="100" height="135" frameX="-501" frameY="-90" frameWidth="890" frameHeight="921"/>
+    <SubTexture name="Clack_High_09" x="246" y="424" width="104" height="133" frameX="-497" frameY="-92" frameWidth="890" frameHeight="921"/>
+    <SubTexture name="Clack_High_10" x="2" y="376" width="108" height="131" frameX="-493" frameY="-95" frameWidth="890" frameHeight="921"/>
+    <SubTexture name="Clack_High_11" x="130" y="340" width="114" height="127" frameX="-487" frameY="-99" frameWidth="890" frameHeight="921"/>
+    <SubTexture name="Clack_High_12" x="392" y="413" width="118" height="123" frameX="-482" frameY="-104" frameWidth="890" frameHeight="921"/>
+    <SubTexture name="Clack_High_13" x="268" y="303" width="122" height="119" frameX="-478" frameY="-108" frameWidth="890" frameHeight="921"/>
+    <SubTexture name="Clack_High_14" x="2" y="261" width="126" height="113" frameX="-474" frameY="-114" frameWidth="890" frameHeight="921"/>
+    <SubTexture name="Clack_High_15" x="136" y="231" width="130" height="107" frameX="-470" frameY="-121" frameWidth="890" frameHeight="921"/>
+    <SubTexture name="Clack_High_16" x="2" y="160" width="132" height="99" frameX="-467" frameY="-129" frameWidth="890" frameHeight="921"/>
+    <SubTexture name="Clack_High_17" x="284" y="212" width="136" height="89" frameX="-463" frameY="-139" frameWidth="890" frameHeight="921"/>
+    <SubTexture name="Clack_High_18" x="286" y="129" width="138" height="81" frameX="-461" frameY="-147" frameWidth="890" frameHeight="921"/>
+    <SubTexture name="Clack_High_19" x="144" y="156" width="138" height="73" frameX="-460" frameY="-155" frameWidth="890" frameHeight="921"/>
+    <SubTexture name="Clack_High_20" x="2" y="2" width="140" height="63" frameX="-458" frameY="-165" frameWidth="890" frameHeight="921"/>
+    <SubTexture name="Clack_High_21" x="144" y="2" width="140" height="55" frameX="-458" frameY="-173" frameWidth="890" frameHeight="921"/>
+    <SubTexture name="Clack_High_22" x="286" y="2" width="140" height="47" frameX="-458" frameY="-181" frameWidth="890" frameHeight="921"/>
+    <SubTexture name="Clack_High_23" x="286" y="51" width="140" height="39" frameX="-457" frameY="-189" frameWidth="890" frameHeight="921"/>
+    <SubTexture name="Clack_High_24" x="144" y="96" width="140" height="31" frameX="-457" frameY="-197" frameWidth="890" frameHeight="921"/>
+    <SubTexture name="Clack_High_25" x="2" y="133" width="140" height="25" frameX="-457" frameY="-203" frameWidth="890" frameHeight="921"/>
+    <SubTexture name="Clack_High_26" x="144" y="129" width="140" height="25" frameX="-458" frameY="-206" frameWidth="890" frameHeight="921"/>
+    <SubTexture name="Clack_High_27" x="2" y="102" width="140" height="29" frameX="-458" frameY="-206" frameWidth="890" frameHeight="921"/>
+    <SubTexture name="Clack_High_28" x="2" y="67" width="140" height="33" frameX="-458" frameY="-206" frameWidth="890" frameHeight="921"/>
+    <SubTexture name="Clack_High_29" x="286" y="92" width="140" height="35" frameX="-458" frameY="-206" frameWidth="890" frameHeight="921"/>
+    <SubTexture name="Clack_High_30" x="144" y="59" width="140" height="35" frameX="-458" frameY="-206" frameWidth="890" frameHeight="921"/>
+</TextureAtlas>

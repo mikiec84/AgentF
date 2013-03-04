@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker http://texturepacker.com-->
+<!-- $TexturePacker:SmartUpdate:83db5f93f1e49566e8b38c552f0288fd$ -->
+<TextureAtlas imagePath="Nautilus_Idle_texture.png">
+    <SubTexture name="Nautilus_Idle_00" x="2" y="1002" width="380" height="248" frameX="-66" frameY="-135" frameWidth="512" frameHeight="512"/>
+    <SubTexture name="Nautilus_Idle_01" x="1530" y="1742" width="380" height="246" frameX="-66" frameY="-136" frameWidth="512" frameHeight="512"/>
+    <SubTexture name="Nautilus_Idle_02" x="2" y="752" width="380" height="248" frameX="-66" frameY="-134" frameWidth="512" frameHeight="512"/>
+    <SubTexture name="Nautilus_Idle_03" x="1530" y="1494" width="380" height="246" frameX="-66" frameY="-135" frameWidth="512" frameHeight="512"/>
+    <SubTexture name="Nautilus_Idle_04" x="1148" y="1742" width="380" height="246" frameX="-66" frameY="-135" frameWidth="512" frameHeight="512"/>
+    <SubTexture name="Nautilus_Idle_05" x="1148" y="1494" width="380" height="246" frameX="-66" frameY="-135" frameWidth="512" frameHeight="512"/>
+    <SubTexture name="Nautilus_Idle_06" x="2" y="502" width="380" height="248" frameX="-66" frameY="-133" frameWidth="512" frameHeight="512"/>
+    <SubTexture name="Nautilus_Idle_07" x="1530" y="252" width="380" height="248" frameX="-66" frameY="-133" frameWidth="512" frameHeight="512"/>
+    <SubTexture name="Nautilus_Idle_08" x="1530" y="1246" width="380" height="246" frameX="-66" frameY="-134" frameWidth="512" frameHeight="512"/>
+    <SubTexture name="Nautilus_Idle_09" x="1148" y="1246" width="380" height="246" frameX="-66" frameY="-134" frameWidth="512" frameHeight="512"/>
+    <SubTexture name="Nautilus_Idle_10" x="766" y="1742" width="380" height="246" frameX="-66" frameY="-134" frameWidth="512" frameHeight="512"/>
+    <SubTexture name="Nautilus_Idle_11" x="766" y="1494" width="380" height="246" frameX="-66" frameY="-134" frameWidth="512" frameHeight="512"/>
+    <SubTexture name="Nautilus_Idle_12" x="1148" y="252" width="380" height="248" frameX="-66" frameY="-133" frameWidth="512" frameHeight="512"/>
+    <SubTexture name="Nautilus_Idle_13" x="766" y="1246" width="380" height="246" frameX="-66" frameY="-135" frameWidth="512" frameHeight="512"/>
+    <SubTexture name="Nautilus_Idle_14" x="1530" y="998" width="380" height="246" frameX="-66" frameY="-135" frameWidth="512" frameHeight="512"/>
+    <SubTexture name="Nautilus_Idle_15" x="1148" y="998" width="380" height="246" frameX="-66" frameY="-135" frameWidth="512" frameHeight="512"/>
+    <SubTexture name="Nautilus_Idle_16" x="766" y="252" width="380" height="248" frameX="-66" frameY="-134" frameWidth="512" frameHeight="512"/>
+    <SubTexture name="Nautilus_Idle_17" x="766" y="998" width="380" height="246" frameX="-66" frameY="-136" frameWidth="512" frameHeight="512"/>
+    <SubTexture name="Nautilus_Idle_18" x="1530" y="750" width="380" height="246" frameX="-66" frameY="-136" frameWidth="512" frameHeight="512"/>
+    <SubTexture name="Nautilus_Idle_19" x="384" y="252" width="380" height="248" frameX="-66" frameY="-135" frameWidth="512" frameHeight="512"/>
+    <SubTexture name="Nautilus_Idle_20" x="1148" y="750" width="380" height="246" frameX="-66" frameY="-137" frameWidth="512" frameHeight="512"/>
+    <SubTexture name="Nautilus_Idle_21" x="766" y="750" width="380" height="246" frameX="-66" frameY="-137" frameWidth="512" frameHeight="512"/>
+    <SubTexture name="Nautilus_Idle_22" x="384" y="1742" width="380" height="246" frameX="-66" frameY="-137" frameWidth="512" frameHeight="512"/>
+    <SubTexture name="Nautilus_Idle_23" x="2" y="252" width="380" height="248" frameX="-66" frameY="-136" frameWidth="512" frameHeight="512"/>
+    <SubTexture name="Nautilus_Idle_24" x="384" y="1494" width="380" height="246" frameX="-66" frameY="-138" frameWidth="512" frameHeight="512"/>
+    <SubTexture name="Nautilus_Idle_25" x="384" y="1246" width="380" height="246" frameX="-66" frameY="-138" frameWidth="512" frameHeight="512"/>
+    <SubTexture name="Nautilus_Idle_26" x="1530" y="2" width="380" height="248" frameX="-66" frameY="-137" frameWidth="512" frameHeight="512"/>
+    <SubTexture name="Nautilus_Idle_27" x="1148" y="2" width="380" height="248" frameX="-66" frameY="-137" frameWidth="512" frameHeight="512"/>
+    <SubTexture name="Nautilus_Idle_28" x="384" y="998" width="380" height="246" frameX="-66" frameY="-139" frameWidth="512" frameHeight="512"/>
+    <SubTexture name="Nautilus_Idle_29" x="384" y="750" width="380" height="246" frameX="-66" frameY="-139" frameWidth="512" frameHeight="512"/>
+    <SubTexture name="Nautilus_Idle_30" x="1530" y="502" width="380" height="246" frameX="-66" frameY="-139" frameWidth="512" frameHeight="512"/>
+    <SubTexture name="Nautilus_Idle_31" x="766" y="2" width="380" height="248" frameX="-66" frameY="-137" frameWidth="512" frameHeight="512"/>
+    <SubTexture name="Nautilus_Idle_32" x="384" y="2" width="380" height="248" frameX="-66" frameY="-137" frameWidth="512" frameHeight="512"/>
+    <SubTexture name="Nautilus_Idle_33" x="1148" y="502" width="380" height="246" frameX="-66" frameY="-138" frameWidth="512" frameHeight="512"/>
+    <SubTexture name="Nautilus_Idle_34" x="766" y="502" width="380" height="246" frameX="-66" frameY="-138" frameWidth="512" frameHeight="512"/>
+    <SubTexture name="Nautilus_Idle_35" x="384" y="502" width="380" height="246" frameX="-66" frameY="-138" frameWidth="512" frameHeight="512"/>
+    <SubTexture name="Nautilus_Idle_36" x="2" y="2" width="380" height="248" frameX="-66" frameY="-136" frameWidth="512" frameHeight="512"/>
+    <SubTexture name="Nautilus_Idle_37" x="2" y="1748" width="380" height="246" frameX="-66" frameY="-137" frameWidth="512" frameHeight="512"/>
+    <SubTexture name="Nautilus_Idle_38" x="2" y="1500" width="380" height="246" frameX="-66" frameY="-137" frameWidth="512" frameHeight="512"/>
+    <SubTexture name="Nautilus_Idle_39" x="2" y="1252" width="380" height="246" frameX="-66" frameY="-137" frameWidth="512" frameHeight="512"/>
+</TextureAtlas>

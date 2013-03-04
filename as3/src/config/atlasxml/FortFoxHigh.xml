@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker http://texturepacker.com-->
+<!-- $TexturePacker:SmartUpdate:8114e895fbb842fe5a9785b361699a38$ -->
+<TextureAtlas imagePath="FortFoxHigh.png">
+    <SubTexture name="Boss_High_00" x="426" y="2" width="84" height="127" frameX="-590" frameY="-101" frameWidth="890" frameHeight="921"/>
+    <SubTexture name="Boss_High_01" x="396" y="623" width="86" height="127" frameX="-588" frameY="-101" frameWidth="890" frameHeight="921"/>
+    <SubTexture name="Boss_High_02" x="2" y="718" width="86" height="127" frameX="-587" frameY="-101" frameWidth="890" frameHeight="921"/>
+    <SubTexture name="Boss_High_03" x="422" y="369" width="86" height="127" frameX="-587" frameY="-101" frameWidth="890" frameHeight="921"/>
+    <SubTexture name="Boss_High_04" x="422" y="240" width="88" height="127" frameX="-584" frameY="-101" frameWidth="890" frameHeight="921"/>
+    <SubTexture name="Boss_High_05" x="200" y="601" width="90" height="127" frameX="-581" frameY="-100" frameWidth="890" frameHeight="921"/>
+    <SubTexture name="Boss_High_06" x="98" y="714" width="90" height="125" frameX="-580" frameY="-102" frameWidth="890" frameHeight="921"/>
+    <SubTexture name="Boss_High_07" x="302" y="583" width="92" height="125" frameX="-577" frameY="-102" frameWidth="890" frameHeight="921"/>
+    <SubTexture name="Boss_High_08" x="2" y="591" width="94" height="125" frameX="-573" frameY="-102" frameWidth="890" frameHeight="921"/>
+    <SubTexture name="Boss_High_09" x="102" y="589" width="96" height="123" frameX="-569" frameY="-103" frameWidth="890" frameHeight="921"/>
+    <SubTexture name="Boss_High_10" x="204" y="476" width="96" height="123" frameX="-567" frameY="-103" frameWidth="890" frameHeight="921"/>
+    <SubTexture name="Boss_High_11" x="412" y="498" width="98" height="123" frameX="-563" frameY="-103" frameWidth="890" frameHeight="921"/>
+    <SubTexture name="Boss_High_12" x="2" y="355" width="100" height="121" frameX="-559" frameY="-105" frameWidth="890" frameHeight="921"/>
+    <SubTexture name="Boss_High_13" x="106" y="240" width="100" height="121" frameX="-556" frameY="-105" frameWidth="890" frameHeight="921"/>
+    <SubTexture name="Boss_High_14" x="214" y="238" width="102" height="121" frameX="-551" frameY="-106" frameWidth="890" frameHeight="921"/>
+    <SubTexture name="Boss_High_15" x="214" y="2" width="104" height="119" frameX="-547" frameY="-108" frameWidth="890" frameHeight="921"/>
+    <SubTexture name="Boss_High_16" x="108" y="2" width="104" height="119" frameX="-544" frameY="-109" frameWidth="890" frameHeight="921"/>
+    <SubTexture name="Boss_High_17" x="2" y="2" width="104" height="119" frameX="-541" frameY="-109" frameWidth="890" frameHeight="921"/>
+    <SubTexture name="Boss_High_18" x="320" y="121" width="104" height="117" frameX="-538" frameY="-111" frameWidth="890" frameHeight="921"/>
+    <SubTexture name="Boss_High_19" x="320" y="2" width="104" height="117" frameX="-535" frameY="-112" frameWidth="890" frameHeight="921"/>
+    <SubTexture name="Boss_High_20" x="108" y="123" width="104" height="115" frameX="-532" frameY="-114" frameWidth="890" frameHeight="921"/>
+    <SubTexture name="Boss_High_21" x="2" y="123" width="104" height="115" frameX="-529" frameY="-114" frameWidth="890" frameHeight="921"/>
+    <SubTexture name="Boss_High_22" x="214" y="123" width="104" height="113" frameX="-527" frameY="-116" frameWidth="890" frameHeight="921"/>
+    <SubTexture name="Boss_High_23" x="2" y="240" width="102" height="113" frameX="-527" frameY="-116" frameWidth="890" frameHeight="921"/>
+    <SubTexture name="Boss_High_24" x="318" y="355" width="102" height="113" frameX="-524" frameY="-117" frameWidth="890" frameHeight="921"/>
+    <SubTexture name="Boss_High_25" x="318" y="240" width="102" height="113" frameX="-523" frameY="-117" frameWidth="890" frameHeight="921"/>
+    <SubTexture name="Boss_High_26" x="208" y="361" width="100" height="113" frameX="-523" frameY="-117" frameWidth="890" frameHeight="921"/>
+    <SubTexture name="Boss_High_27" x="310" y="470" width="100" height="111" frameX="-522" frameY="-119" frameWidth="890" frameHeight="921"/>
+    <SubTexture name="Boss_High_28" x="104" y="363" width="100" height="111" frameX="-521" frameY="-119" frameWidth="890" frameHeight="921"/>
+    <SubTexture name="Boss_High_29" x="2" y="478" width="98" height="111" frameX="-522" frameY="-119" frameWidth="890" frameHeight="921"/>
+    <SubTexture name="Boss_High_30" x="104" y="476" width="98" height="111" frameX="-522" frameY="-119" frameWidth="890" frameHeight="921"/>
+</TextureAtlas>
