@@ -21,6 +21,7 @@ package de.mediadesign.gd1011.studiof.model {
 		function get position():PositionComponent;
         function get scrollLevel():Boolean;
         function get idleState():Boolean;
+        function get ammunition():Vector.<Unit>;
 		function update(time:Number):void;
 
     }

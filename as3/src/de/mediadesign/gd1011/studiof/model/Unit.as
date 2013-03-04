@@ -39,7 +39,7 @@ package de.mediadesign.gd1011.studiof.model
 
 
 
-        public function Unit(healthpoints:int, startingPlatform:int, xVel:int, startingXPosition:int, currentLevel:LevelProcess, verticalBullet:Boolean, ID:String = "")
+        public function Unit(healthpoints:int, startingPlatform:int, xVel:int, startingXPosition:int, currentLevel:LevelProcess, verticalBullet:Boolean, bossEnemy:Boolean, ID:String = "")
         {
             _weapon = "default";
             _currentPlatform = startingPlatform;
@@ -66,7 +66,21 @@ package de.mediadesign.gd1011.studiof.model
                 position.x -= 50;
                 position.y += 10;
             }
-            if (startingPlatform == 2 && velocity.velocityX < 0)
+            if (bossEnemy)
+            {
+                if (currentLevel.boss != null)
+                {
+                    if (currentLevel.boss is NautilusBoss)
+                    {
+                        position.y = (Math.round(Math.random()*2))*GameConsts.PLATFORM_HEIGHT+5;
+                    }
+                    else
+                    {
+                        position.y = (Math.round(Math.random())+4)*GameConsts.PLATFORM_HEIGHT+5;
+                    }
+                }
+            }
+            if (observePlatform(position.y) == 2 && velocity.velocityX < 0)
             {
                 position.y += 80;
                 _healthPoints = 3;
@@ -184,7 +198,7 @@ package de.mediadesign.gd1011.studiof.model
 
             if (currentPlatform > 2 && cooldown >= (1 / fireRateEnemy) && position.x<enemyRange && position.x>0 && healthPoints > 0)
             {
-                var bullet:Unit = new Unit(1, currentPlatform, -600, position.x, _currentLevel, false);
+                var bullet:Unit = new Unit(1, currentPlatform, -600, position.x, _currentLevel, false, false);
                 bullet.position.y += 100;
                 _currentLevel.enemieBullets.push(bullet);
                 cooldown = 0;
@@ -197,7 +211,7 @@ package de.mediadesign.gd1011.studiof.model
                     && position.x+200 < _currentLevel.player.position.x)
             {
                 doNotShootAnymore = true;
-                var bullet:Unit = new Unit(1, currentPlatform, 0, position.x+150, _currentLevel, true);
+                var bullet:Unit = new Unit(1, currentPlatform, 0, position.x+150, _currentLevel, true, false);
                 bullet.position.y += 10;
                 _currentLevel.enemieBullets.push(bullet);
                 cooldown = 0;

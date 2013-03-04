@@ -45,10 +45,12 @@ package de.mediadesign.gd1011.studiof.services
         private var _enemieBullets:Vector.<Unit>;
         private var _player:Player;
         private var _boss:IEndboss;
-        private var _currentLevel:int = 1;
+        private var _currentLevel:int = 0;
         private var allUnitsStopped:Boolean = false;
 
         private var JSONExtractedInformation:Object;
+        private var JSONFORT:Object;
+        private var JSONNAUT:Object;
 
         private var _bgLayer01:BGScroller;
         private var _bgLayer02:BGScroller;
@@ -62,17 +64,20 @@ package de.mediadesign.gd1011.studiof.services
 
         ///CHEATS
         public var onlyThreeMobs:Boolean = true;
-        public var bossHaveLowLife:Boolean = true;
+        public var bossHaveLowLife:Boolean = false;
         /////////
 
         private var lastState:String;
         private var maxLevel:int = 1;
         private var gameIsOver:Boolean = false;
+        private var bossEnemiesSpawnCounter:int = 0;
 
         public function LevelProcess()
         {
             JSONExtractedInformation = JSONReader.read("enemy")["ENEMY"];
             collisionTolerance = JSONExtractedInformation["collisionTolerance"];
+            JSONFORT = JSONReader.read("enemy")["FORT_FOX"];
+            JSONNAUT = JSONReader.read("enemy")["NAUTILUS"];
         }
 
         [PostConstruct]
@@ -111,11 +116,30 @@ package de.mediadesign.gd1011.studiof.services
 
             for (var index2:int = 0; index2<enemyPositions.length; index2++)
             {
-                if (_enemySequence[index2] != 6 && enemyPositions[index2].xPos < currentXKoord && !enemyPositions[index2].spawned)
+                if ((_enemySequence[index2] != 6 || boss.initialized) && enemyPositions[index2].xPos < currentXKoord && !enemyPositions[index2].spawned)
                 {
                     enemyPositions[index2].spawned = true;
                     createAndShowEnemy(index2);
+                    if (index2+1 < enemyPositions.length && boss != null && boss.initialized && boss is NautilusBoss && enemyPositions[index2+1].xPos-enemyPositions[index2].xPos < JSONExtractedInformation["enemyRate"]*JSONNAUT["enemyRate"])
+                    {
+                        enemyPositions.splice(index2+1, 1);
+                    }
+                    if (index2+1 < enemyPositions.length && boss != null && boss.initialized && boss is FortFoxBoss && enemyPositions[index2+1].xPos-enemyPositions[index2].xPos < JSONExtractedInformation["enemyRate"]*JSONFORT["enemyRate"])
+                    {
+                        enemyPositions.splice(index2+1, 1);
+                    }
                 }
+            }
+
+            if (boss.initialized && boss is NautilusBoss && (enemyPositions[enemyPositions.length-1].spawned) || enemyPositions.length == 0)
+            {
+                bossEnemiesSpawnCounter = currentXKoord+JSONExtractedInformation["enemyRate"]*JSONNAUT["enemyRate"];
+                enemyPositions.push(new EnemyInitPositioning(false, bossEnemiesSpawnCounter));
+            }
+            if (boss.initialized && boss is FortFoxBoss && (enemyPositions[enemyPositions.length-1].spawned) || enemyPositions.length == 0)
+            {
+                bossEnemiesSpawnCounter = currentXKoord+JSONExtractedInformation["enemyRate"]*JSONFORT["enemyRate"];
+                enemyPositions.push(new EnemyInitPositioning(false, bossEnemiesSpawnCounter));
             }
         }
 
@@ -145,6 +169,17 @@ package de.mediadesign.gd1011.studiof.services
                     player.ammunition.splice(index3,  1);
                 }
             }
+            if (boss != null && boss.initialized && boss is NautilusBoss)
+            {
+                for (var index4:int = 0; index4<boss.ammunition.length; index4++)
+                {
+                    if (boss.ammunition[index4].position.x < -300)
+                    {
+                        deleteCurrentUnit(boss.ammunition[index4]);
+                        boss.ammunition.splice(index4, 1);
+                    }
+                }
+            }
         }
 
         private function shouldBossSpawn():Boolean
@@ -157,20 +192,28 @@ package de.mediadesign.gd1011.studiof.services
 
         private function createAndShowEnemy(index:int):void
         {   // enemies vector
-            _enemies.push(new Unit(1, _enemySequence[index], (-1)*JSONExtractedInformation["enemySpeed"], GameConsts.STAGE_WIDTH+300, this, false, index.toString())); //enemyPositions[index].xPos
+            if (boss != null && boss.initialized)
+            {
+                _enemies.push(new Unit(1, -1, (-1)*JSONExtractedInformation["enemySpeed"], GameConsts.STAGE_WIDTH+300, this, false, true, index.toString()));
+            }
+            else
+            {
+                _enemies.push(new Unit(1, _enemySequence[index], (-1)*JSONExtractedInformation["enemySpeed"], GameConsts.STAGE_WIDTH+300, this, false, false, index.toString()));
+            }
             // moveProcess
             moveProcess.addEntity(_enemies[_enemies.length-1]);
             // texture
-            if (_enemies[_enemies.length-1].currentPlatform < 2)
+            if (_enemies[_enemies.length-1].observePlatform(_enemies[_enemies.length-1].position.y) < 2)
                 var enemyView:EnemyView = new EnemyView(ViewConsts.FLYING_ENEMY, _enemies[_enemies.length-1].ID);
-            if (_enemies[_enemies.length-1].currentPlatform == 2)
+            if (_enemies[_enemies.length-1].observePlatform(_enemies[_enemies.length-1].position.y) == 2)
                 var enemyView:EnemyView = new EnemyView(ViewConsts.FLOATING_ENEMY, _enemies[_enemies.length-1].ID);
-            if (_enemies[_enemies.length-1].currentPlatform > 2)
+            if (_enemies[_enemies.length-1].observePlatform(_enemies[_enemies.length-1].position.y) > 2)
                 var enemyView:EnemyView = new EnemyView(ViewConsts.UNDERWATER_ENEMY, _enemies[_enemies.length-1].ID);
             // renderProcess
             renderProcess.registerRenderable(new Renderable(_enemies[_enemies.length-1].position, enemyView));
             var addEnemySpriteToGameEvent:GameEvent = new GameEvent(ViewConsts.ADD_SPRITE_TO_GAME, enemyView);
             dispatcher.dispatchEvent(addEnemySpriteToGameEvent);
+
         }
 
         public function updateLP():void

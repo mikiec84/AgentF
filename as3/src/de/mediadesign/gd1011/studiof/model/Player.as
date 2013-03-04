@@ -57,7 +57,7 @@ package de.mediadesign.gd1011.studiof.model {
 
         public function Player(currentLevel:LevelProcess)
         {
-            super(1, 1, 1, -1, currentLevel, false);
+            super(1, 1, 1, -1, currentLevel, false, false);
             this._currentLevel = currentLevel;
             ammunition = new Vector.<Unit>();
 
@@ -329,11 +329,11 @@ package de.mediadesign.gd1011.studiof.model {
                 {
                     if (currentPlatform == 1 && !_landIsntRunning)
                     {
-                        var bullet:Unit = new Unit(1, 2, 600, 200, _currentLevel, false);
+                        var bullet:Unit = new Unit(1, 2, 600, 200, _currentLevel, false, false);
                     }
                     else
                     {
-                        var bullet:Unit = new Unit(1, currentPlatform, 600, 200, _currentLevel, false);
+                        var bullet:Unit = new Unit(1, currentPlatform, 600, 200, _currentLevel, false, false);
                     }
                     bullet.position.y += 100;
                     ammunition.push(bullet);

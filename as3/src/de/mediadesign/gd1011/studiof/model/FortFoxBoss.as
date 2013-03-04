@@ -30,12 +30,13 @@ package de.mediadesign.gd1011.studiof.model {
         private var level:LevelProcess;
         private var _scrollLevel:Boolean = false;
         private var _idleState:Boolean = false;
+        private var _ammunition:Vector.<Unit>;
 
         public function FortFoxBoss(currentLevel:LevelProcess)
         {
             var JSONExtractedInformation:Object = JSONReader.read("enemy")["FORT_FOX"];
             idleXPosition = JSONExtractedInformation["idleXPosition"];
-            super(JSONExtractedInformation["healthpoints"],JSONExtractedInformation["startingPlatform"],0,idleXPosition, currentLevel, false, GameConsts.BOSS_SPAWN);
+            super(JSONExtractedInformation["healthpoints"],JSONExtractedInformation["startingPlatform"],0,idleXPosition, currentLevel, false, false, GameConsts.BOSS_SPAWN);
             idleTimeFrame = JSONExtractedInformation["idleTimeFrame"];
             changePosTime = JSONExtractedInformation["changePosTime"];
             backMovementDistance = JSONExtractedInformation["backMovementDistance"];
@@ -217,6 +218,10 @@ package de.mediadesign.gd1011.studiof.model {
 
         public function set idleState(value:Boolean):void {
             _idleState = value;
+        }
+
+        public function get ammunition():Vector.<Unit> {
+            return _ammunition;
         }
     }
 }

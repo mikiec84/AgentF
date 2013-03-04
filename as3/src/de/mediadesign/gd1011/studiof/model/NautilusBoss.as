@@ -29,13 +29,13 @@ package de.mediadesign.gd1011.studiof.model {
         private var changePosMovementSpeed:Number = 0;
         private var xOffset:int;
         private var attackSpeed:Number;
-        public var ammunition:Vector.<Unit>;
+        private var _ammunition:Vector.<Unit>;
         private var _scrollLevel:Boolean = true;
         private var _idleState:Boolean = true;
 
         public function NautilusBoss(currentLevel:LevelProcess)
         {
-            ammunition = new Vector.<Unit>();
+            _ammunition = new Vector.<Unit>();
             JSONExtractedInformation = JSONReader.read("enemy")["NAUTILUS"];
             changePosMovementSpeed = JSONExtractedInformation["changePosMovementSpeed"];
             changePosTime = JSONExtractedInformation["changePosTime"];
@@ -47,8 +47,8 @@ package de.mediadesign.gd1011.studiof.model {
             //trace("backMovementDistance im konstruktor: "+backMovementDistance);
             movementSpeed = backMovementDistance/changePosTime;
             level = currentLevel;
-            ammunition = new Vector.<Unit>();
-            super(JSONExtractedInformation["healthPoints"],JSONExtractedInformation["startingPlatform"],0,idleXPosition, currentLevel, false, GameConsts.BOSS_SPAWN);
+            _ammunition = new Vector.<Unit>();
+            super(JSONExtractedInformation["healthPoints"],JSONExtractedInformation["startingPlatform"],0,idleXPosition, currentLevel, false, false, GameConsts.BOSS_SPAWN);
             position.x = GameConsts.STAGE_WIDTH+xOffset;
             state = GameConsts.IDLE;
             if (currentLevel.bossHaveLowLife) {
@@ -59,9 +59,9 @@ package de.mediadesign.gd1011.studiof.model {
 
 		override public function stop():void
 		{
-			for (var index5:int = 0; index5<ammunition.length; index5++)
+			for (var index5:int = 0; index5<_ammunition.length; index5++)
 			{
-				ammunition[index5].stop();
+				_ammunition[index5].stop();
 			}
 			super.stop();
 		}
@@ -169,9 +169,9 @@ package de.mediadesign.gd1011.studiof.model {
             cooldown += time;
             if (cooldown >= (1 / attackSpeed) && position.x<=idleXPosition && healthPoints > 0)
             {
-                var bullet:Unit = new Unit(1, currentPlatform, -300, position.x, level, false);
+                var bullet:Unit = new Unit(1, currentPlatform, -300, position.x, level, false, false);
                 bullet.position.y += 100;
-                ammunition.push(bullet);
+                _ammunition.push(bullet);
                 cooldown = 0;
                 return bullet;
             }
@@ -206,9 +206,9 @@ package de.mediadesign.gd1011.studiof.model {
 
 		override public function resume():void
 		{
-			for (var index5:int = 0; index5<ammunition.length; index5++)
+			for (var index5:int = 0; index5<_ammunition.length; index5++)
 			{
-				ammunition[index5].resume();
+				_ammunition[index5].resume();
 			}
 			super.resume();
 		}
@@ -219,6 +219,14 @@ package de.mediadesign.gd1011.studiof.model {
 
         public function get idleState():Boolean {
             return _idleState;
+        }
+
+        public function get ammunition():Vector.<Unit> {
+            return _ammunition;
+        }
+
+        public function set ammunition(value:Vector.<Unit>):void {
+            _ammunition = value;
         }
     }
 }
