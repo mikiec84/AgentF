@@ -18,16 +18,23 @@ package de.mediadesign.gd1011.studiof.consts
 
 		public static const ADD_SPRITE_TO_GAME:String = "ADD_SPRITE_TO_GAME";
 		public static const REMOVE_SPRITE_FROM_GAME:String = "REMOVE_SPRITE_FROM_GAME";
+        public static const CREATE_FORTBG:String = "CREATE_FORTBG";
 		public static const CREATE_BG_LAYER:String = "CREATE_BG_LAYER";
 		public static const ADD_BG:String = "ADD_BG";
 		public static const CLEAN_BG:String = "CLEAN_BG";
 		public static const SHOW_DAMAGE:String = "SHOW_DAMAGE";
         public static const CHANGE_ANIM:String ="CHANGE_ANIM";
 
-        public static const UNDERWATER_ENEMY:String = "tauchbaer";
-        public static const FLOATING_ENEMY:String = "schwimmbaer";
-        public static const FLYING_ENEMY:String = "pilotbaer";
+        public static const UNDERWATER_ENEMY:String = "UNDERWATER_ENEMY";
+        public static const FLOATING_ENEMY:String = "FLOATING_ENEMY";
+        public static const FLYING_ENEMY:String = "FLYING_ENEMY";
         public static const PLAYER:String = "PLAYER";
+        public static const NAUTILUS:String ="NAUTILUS";
+        public static const FORTFOX:String = "FORTFOX";
+        public static const NETHER_DOOR:String = "NETHER_DOOR";
+        public static const FORT_FOX_BOSS_MOVEMENT:String = "FORT_FOX_BOSS_MOVEMENT";
+        public static const UPPER_DOOR:String = "UPPER_DOOR";
+
 		public static const LOAD_GAMEVIEW:String = "LOAD_GAMEVIEW";
 
         public static const PATRONE:String = "PATRONE";

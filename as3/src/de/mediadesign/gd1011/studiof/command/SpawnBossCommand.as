@@ -3,7 +3,8 @@ package de.mediadesign.gd1011.studiof.command
     import de.mediadesign.gd1011.studiof.consts.GameConsts;
     import de.mediadesign.gd1011.studiof.consts.ViewConsts;
     import de.mediadesign.gd1011.studiof.events.GameEvent;
-	import de.mediadesign.gd1011.studiof.model.Unit;
+    import de.mediadesign.gd1011.studiof.model.FortFoxBoss;
+    import de.mediadesign.gd1011.studiof.model.Unit;
 	import de.mediadesign.gd1011.studiof.services.LevelProcess;
     import de.mediadesign.gd1011.studiof.model.Renderable;
     import de.mediadesign.gd1011.studiof.services.GameLoop;
@@ -33,9 +34,20 @@ package de.mediadesign.gd1011.studiof.command
 
         override public function execute():void
         {
-            var bossView:Sprite = new EnemyView(ViewConsts.NAUTILUS, GameConsts.BOSS_SPAWN);
+            if (level.boss is FortFoxBoss)
+            {
+                var addFortEvent:GameEvent = new GameEvent(ViewConsts.CREATE_FORTBG);
+                dispatcher.dispatchEvent(addFortEvent);
+                var bossView:Sprite = new EnemyView(ViewConsts.FORTFOX, GameConsts.BOSS_SPAWN);
+            }
+            else
+            {
+                var bossView:Sprite = new EnemyView(ViewConsts.NAUTILUS, GameConsts.BOSS_SPAWN);
+            }
+
             moveProcess.addEntity(level.boss as Unit);
             renderProcess.registerRenderable(new Renderable(level.boss.position, bossView));
+
             var addEnemySpriteToGameEvent:GameEvent = new GameEvent(ViewConsts.ADD_SPRITE_TO_GAME, bossView);
             dispatcher.dispatchEvent(addEnemySpriteToGameEvent);
         }

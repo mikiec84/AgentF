@@ -19,6 +19,7 @@ package de.mediadesign.gd1011.studiof.model {
 		function get healthPoints():int;
 		function get moveLeftRunning():Boolean;
 		function get position():PositionComponent;
+        function get scrollLevel():Boolean;
 		function update(time:Number):void;
 
     }

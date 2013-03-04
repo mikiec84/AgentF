@@ -7,6 +7,7 @@
  */
 package de.mediadesign.gd1011.studiof.model {
     import de.mediadesign.gd1011.studiof.consts.GameConsts;
+    import de.mediadesign.gd1011.studiof.consts.ViewConsts;
     import de.mediadesign.gd1011.studiof.events.GameEvent;
     import de.mediadesign.gd1011.studiof.model.components.PositionComponent;
     import de.mediadesign.gd1011.studiof.services.JSONReader;
@@ -54,15 +55,14 @@ package de.mediadesign.gd1011.studiof.model {
         private var landNow:Boolean = false;
         public var ammunition:Vector.<Unit>;
 
-        public var state:String;
-
-
         public function Player(currentLevel:LevelProcess)
-        { super(1, 1, 1, -1, currentLevel, false);
+        {
+            super(1, 1, 1, -1, currentLevel, false);
             this._currentLevel = currentLevel;
             ammunition = new Vector.<Unit>();
 
             state = GameConsts.IDLE;
+            ID = ViewConsts.PLAYER;
 
             JSONExtractedInformation = JSONReader.read("config")["PLAYER"];
             currentPlatform = JSONExtractedInformation["platform"];

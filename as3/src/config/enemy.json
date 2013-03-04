@@ -12,10 +12,10 @@
     "FORT_FOX":
     {
         "idleTimeFrame":3,
-        "idleXPosition":1000,
+        "idleXPosition":820,
         "startingPlatform":0,
         "changePosTime":2,
-        "backMovementDistance":300,
+        "backMovementDistance":30,
         "healthPoints":10
 
     },
@@ -27,7 +27,7 @@
         "startingPlatform":4,
         "changePosTime":1,
         "xOffset":500,
-        "changePosMovementSpeed":600,
+        "changePosMovementSpeed":200,
         "attackSpeed":0.5,
         "healthPoints":20
     },

@@ -34,6 +34,9 @@ package de.mediadesign.gd1011.studiof.model
         public var isPlayer:Boolean = false;
         public var verticalBullet:Boolean = false;
 
+        public var state:String;
+        public var lastState:String;
+
 
         public function Unit(healthpoints:int, startingPlatform:int, xVel:int, startingXPosition:int, currentLevel:LevelProcess, verticalBullet:Boolean, ID:String = "")
         {
@@ -67,7 +70,6 @@ package de.mediadesign.gd1011.studiof.model
                 position.y += 80;
                 _healthPoints = 3;
             }
-
             this._ID = ID;
         }
 
@@ -220,6 +222,11 @@ package de.mediadesign.gd1011.studiof.model
         public function get ID():String
         {
             return _ID;
+        }
+
+        public function set ID(value:String):void
+        {
+            _ID = value;
         }
     }
 }

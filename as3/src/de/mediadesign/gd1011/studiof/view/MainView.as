@@ -124,6 +124,9 @@ package de.mediadesign.gd1011.studiof.view
 
             assets.enqueue(ClackHigh);
             assets.enqueue(FortFoxHigh);
+            assets.enqueue(Fort_BackLayer);
+            assets.enqueue(Fort_MidLayer);
+            assets.enqueue(Fort_UpperLayer);
 
             assets.enqueue(Nautilus_Change_texture);
             assets.enqueue(Nautilus_Idle_texture);

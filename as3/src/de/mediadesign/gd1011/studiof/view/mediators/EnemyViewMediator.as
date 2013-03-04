@@ -10,6 +10,8 @@ package de.mediadesign.gd1011.studiof.view.mediators
     import de.mediadesign.gd1011.studiof.consts.GameConsts;
     import de.mediadesign.gd1011.studiof.consts.ViewConsts;
     import de.mediadesign.gd1011.studiof.events.GameEvent;
+    import de.mediadesign.gd1011.studiof.model.Player;
+    import de.mediadesign.gd1011.studiof.model.Unit;
     import de.mediadesign.gd1011.studiof.view.EnemyView;
 
     import flash.events.IEventDispatcher;
@@ -81,22 +83,29 @@ package de.mediadesign.gd1011.studiof.view.mediators
                     currentImg.y = 50;
                     enemyView.addChild(currentImg);
                     break;
+                case(ViewConsts.FORTFOX):
+                    currentImg = new MovieClip(assets.getTextures("Boss_High_"),30);
+                    Starling.juggler.add(currentImg as MovieClip);
+                    (currentImg as MovieClip).play();
+                    currentImg.y = 50;
+                    enemyView.addChild(currentImg);
+                    break;
                 case(ViewConsts.NAUTILUS):
                     images = new Vector.<Image>();
                     currentImg = new MovieClip(assets.getTextures("Nautilus_Idle_"),30);
                     Starling.juggler.add(currentImg as MovieClip);
                     images.push(currentImg);
                     (currentImg as MovieClip).play();
-                    currentImg.y = -100;
+                    currentImg.y = -50;
                     enemyView.addChild(currentImg);
                     // ##################
                     currentImg = new MovieClip(assets.getTextures("Nautilus_Shot_"),30);
                     images.push(currentImg);
-                    currentImg.y = -100;
+                    currentImg.y = -50;
                     Starling.juggler.add(currentImg as MovieClip);
                     currentImg = new MovieClip(assets.getTextures("Nautilus_Change_"),30);
                     images.push(currentImg);
-                    currentImg.y = -100;
+                    currentImg.y = -50;
                     Starling.juggler.add(currentImg as MovieClip);
                     addContextListener(ViewConsts.CHANGE_ANIM, changeAnimation);
                     break;
@@ -106,21 +115,31 @@ package de.mediadesign.gd1011.studiof.view.mediators
 
         public function changeAnimation(event:GameEvent):void
         {
-            enemyView.removeChildren(0, enemyView.numChildren-1);
-            switch(event.dataObj)
+            if (enemyView.ID == event.dataObj.ID)
             {
-                case(GameConsts.IDLE):
-                    currentImg = images[0];
-                    break;
-                case(GameConsts.FALL || GameConsts.SHOT):
-                    currentImg = images[1];
-                    break;
-                case(GameConsts.JUMP || GameConsts.CHANGE):
-                    currentImg = images[2];
-                    break;
+                enemyView.removeChildren(0, enemyView.numChildren-1);
+                switch(event.dataObj.state)
+                {
+                    case(GameConsts.IDLE):
+                        currentImg = images[0];
+                        break;
+                    case(GameConsts.FALL):
+                        currentImg = images[1];
+                        break;
+                    case(GameConsts.SHOT):
+                        currentImg = images[1];
+                        break;
+                    case(GameConsts.JUMP):
+                        currentImg = images[2];
+                        break;
+                    case(GameConsts.CHANGE):
+                        currentImg = images[2];
+                        break;
+                }
+                (currentImg as MovieClip).play();
+                enemyView.addChild(currentImg);
             }
-            (currentImg as MovieClip).play();
-            enemyView.addChild(currentImg);
+
         }
 
         override public function destroy():void

@@ -36,6 +36,7 @@ package de.mediadesign.gd1011.studiof.services
                 if (level.boss.initialized)
                 {
                     rules.collisionDetection(level.player.ammunition[i], level.boss as Unit);
+                    // collision SeaMine
                     if (level.boss is NautilusBoss)
                     {
                         for (var j:int = 0; j < (level.boss as NautilusBoss).ammunition.length; j++)

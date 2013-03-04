@@ -16,7 +16,8 @@ package de.mediadesign.gd1011.studiof.view.mediators {
 	import starling.core.Starling;
 
 	import starling.display.DisplayObject;
-	import starling.display.MovieClip;
+    import starling.display.Image;
+    import starling.display.MovieClip;
 
 	import starling.display.Quad;
 	import starling.display.Sprite;
@@ -71,12 +72,27 @@ package de.mediadesign.gd1011.studiof.view.mediators {
 
 			addContextListener(ViewConsts.ADD_SPRITE_TO_GAME, add);
 			addContextListener(ViewConsts.REMOVE_SPRITE_FROM_GAME, remove);
+            addContextListener(ViewConsts.CREATE_FORTBG, createFort);
 
 			var initGameEvent:GameEvent = new GameEvent(GameConsts.INIT_GAME);
 			dispatcher.dispatchEvent(initGameEvent);
 			contextView.visible = true;
 
 		}
+
+        private function createFort(event:GameEvent):void
+        {
+            removeContextListener(ViewConsts.CREATE_FORTBG, createFort);
+            var fortBackLayer:Image = new Image(assets.getTexture("Fort_BackLayer"));
+            fortBackLayer.x = GameConsts.STAGE_WIDTH - 890;
+            contextView.addChildAt(fortBackLayer, contextView.numChildren-2);
+            var fortMiddleLayer:Image = new Image(assets.getTexture("Fort_MidLayer"));
+            fortMiddleLayer.x = GameConsts.STAGE_WIDTH - 890;
+            contextView.addChildAt(fortMiddleLayer, contextView.numChildren-2);
+            var fortUpperLayer:Image = new Image(assets.getTexture("Fort_UpperLayer"));
+            fortUpperLayer.x = GameConsts.STAGE_WIDTH - 890;
+            contextView.addChildAt(fortUpperLayer, contextView.numChildren-1);
+        }
 
 		override public function destroy():void
 		{

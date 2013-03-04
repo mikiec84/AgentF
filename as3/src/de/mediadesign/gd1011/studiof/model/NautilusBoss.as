@@ -50,6 +50,7 @@ package de.mediadesign.gd1011.studiof.model {
             ammunition = new Vector.<Unit>();
             super(JSONExtractedInformation["healthPoints"],JSONExtractedInformation["startingPlatform"],0,idleXPosition, currentLevel, false, GameConsts.BOSS_SPAWN);
             position.x = GameConsts.STAGE_WIDTH+xOffset;
+            state = GameConsts.IDLE;
             if (currentLevel.bossHaveLowLife) {
                 healthPoints = 2;
             }
@@ -137,11 +138,13 @@ package de.mediadesign.gd1011.studiof.model {
         {
             if (position.y+changePosMovementSpeed*time >= GameConsts.PLATFORM_HEIGHT*_finishLine)
             {
+                state = GameConsts.IDLE;
                 position.y = GameConsts.PLATFORM_HEIGHT*_finishLine+yOffset;
                 downMovementRunning = false;
             }
             else
             {
+                state = GameConsts.CHANGE;
                 position.y+=changePosMovementSpeed*time;
             }
         }
@@ -150,11 +153,13 @@ package de.mediadesign.gd1011.studiof.model {
         {
             if (position.y-changePosMovementSpeed*time <= GameConsts.PLATFORM_HEIGHT*_finishLine+yOffset)
             {
+                state = GameConsts.IDLE;
                 position.y = GameConsts.PLATFORM_HEIGHT*_finishLine+yOffset;
                 upMovementRunning = false;
             }
             else
             {
+                state = GameConsts.CHANGE;
                 position.y-=changePosMovementSpeed*time;
             }
         }

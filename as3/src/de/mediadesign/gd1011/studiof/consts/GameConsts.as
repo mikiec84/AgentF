@@ -25,6 +25,8 @@ package de.mediadesign.gd1011.studiof.consts
         public static const IDLE:String = "IDLE";
         public static const JUMP:String = "JUMP";
         public static const FALL:String = "FALL";
+        public static const SHOT:String = "SHOT";
+        public static const CHANGE:String = "CHANGE";
 
         public static const STAGE_HEIGHT:int   = 720;
         public static const STAGE_WIDTH:int    = 1710;
