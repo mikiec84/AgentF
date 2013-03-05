@@ -59,6 +59,8 @@ package de.mediadesign.gd1011.studiof.services
 
                             if (rules.isDead((level.boss as NautilusBoss).ammunition[j]))
                             {
+                                var explosionEvent:GameEvent = new GameEvent(ViewConsts.EXPLOSION, (level.boss as NautilusBoss).ammunition[j]);
+                                dispatcher.dispatchEvent(explosionEvent);
                                 deleteUnits((level.boss as NautilusBoss).ammunition, j);
                                 break;
                                 break;

@@ -147,7 +147,6 @@ package de.mediadesign.gd1011.studiof.view.mediators
                 (currentImg as MovieClip).play();
                 enemyView.addChild(currentImg);
             }
-
         }
 
         override public function destroy():void
