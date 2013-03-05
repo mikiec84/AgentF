@@ -3,9 +3,10 @@
         {
            "level-id":1,
            "enemy-sequence":[
-                            {"pattern":0, "count":4},
-                            {"pattern":1, "count":4},
-                            {"pattern":2, "count":2}
+         		   {"pattern":0, "count":2},
+          		   {"pattern":1, "count":2},
+         		   {"pattern":2, "count":2},
+          		   {"pattern":3, "count":2}
                         ],
            "endboss":"FortFoxBoss"
 
@@ -13,10 +14,10 @@
         {
             "level-id":2,
             "enemy-sequence":[
-                            {"pattern":0, "count":2},
-                            {"pattern":2, "count":3},
-                            {"pattern":3, "count":4},
-                            {"pattern":4, "count":1}
+   		            {"pattern":4, "count":2},
+        		    {"pattern":5, "count":2},
+        		    {"pattern":6, "count":2},
+         		    {"pattern":7, "count":2}
                         ],
             "endboss":"NautilusBoss"
         }

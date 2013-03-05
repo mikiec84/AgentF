@@ -131,6 +131,8 @@ package de.mediadesign.gd1011.studiof.model {
             {
                 position.y = GameConsts.PLATFORM_HEIGHT+yOffset;
                 position.x-=movementSpeed*time;
+                var ab:GameEvent = new GameEvent(ViewConsts.NETHER_DOOR);
+                level.dispatcher.dispatchEvent(ab);
             }
 
             if (currentPlatform == 1 && position.x < backMovementDistance+idleXPosition)
@@ -142,8 +144,6 @@ package de.mediadesign.gd1011.studiof.model {
             {
                 downMovementRunningBuffer = false;
                 downMovementRunning = false;
-                var ab:GameEvent = new GameEvent(ViewConsts.NETHER_DOOR);
-                level.dispatcher.dispatchEvent(ab);
                 var ac:GameEvent = new GameEvent(ViewConsts.FORT_FOX_BOSS_MOVEMENT, this);
                 level.dispatcher.dispatchEvent(ac);
             }
@@ -166,6 +166,8 @@ package de.mediadesign.gd1011.studiof.model {
             {
                 position.y = yOffset;
                 position.x-=movementSpeed*time;
+                var ab:GameEvent = new GameEvent(ViewConsts.UPPER_DOOR);
+                level.dispatcher.dispatchEvent(ab);
             }
 
             if (currentPlatform == 0 && position.x < backMovementDistance+idleXPosition)
@@ -177,8 +179,6 @@ package de.mediadesign.gd1011.studiof.model {
             {
                 upMovementRunningBuffer = false;
                 upMovementRunning = false;
-                var ab:GameEvent = new GameEvent(ViewConsts.UPPER_DOOR);
-                level.dispatcher.dispatchEvent(ab);
                 var ac:GameEvent = new GameEvent(ViewConsts.FORT_FOX_BOSS_MOVEMENT, this);
                 level.dispatcher.dispatchEvent(ac);
             }
