@@ -10,6 +10,8 @@ package de.mediadesign.gd1011.studiof.services
     import de.mediadesign.gd1011.studiof.consts.GameConsts;
     import de.mediadesign.gd1011.studiof.consts.ViewConsts;
     import de.mediadesign.gd1011.studiof.events.GameEvent;
+    import de.mediadesign.gd1011.studiof.model.FortFoxBoss;
+    import de.mediadesign.gd1011.studiof.model.NautilusBoss;
     import de.mediadesign.gd1011.studiof.model.Player;
     import de.mediadesign.gd1011.studiof.model.Unit;
     import de.mediadesign.gd1011.studiof.view.EnemyView;
@@ -30,6 +32,8 @@ package de.mediadesign.gd1011.studiof.services
         public var collisionToleranceFlying:int;
         public var collisionToleranceFloating:int;
         public var collisionToleranceDiving:int;
+        public var JSONNAUT:Object;
+        public var JSONFORT:Object;
 
         public function Rules():void
         {
@@ -37,6 +41,9 @@ package de.mediadesign.gd1011.studiof.services
             collisionToleranceFlying = JSONExtractedInformation["collisionToleranceFlying"];
             collisionToleranceFloating = JSONExtractedInformation["collisionToleranceFloating"];
             collisionToleranceDiving = JSONExtractedInformation["collisionToleranceDiving"];
+            JSONNAUT = JSONReader.read("enemy")["NAUTILUS"];
+            JSONFORT = JSONReader.read("enemy")["FORT_FOX"];
+
         }
 
         // unit1: movement -->
@@ -58,6 +65,16 @@ package de.mediadesign.gd1011.studiof.services
             if (unit1.observePlatform(unit1.position.y)>2)
             {
                 collisionTolerance = collisionToleranceDiving;
+            }
+
+            if (unit2 is FortFoxBoss)
+            {
+                collisionTolerance = JSONFORT["collisionTolerance"];
+            }
+
+            if (unit2 is NautilusBoss)
+            {
+                collisionTolerance = JSONNAUT["collisionTolerance"];
             }
 
             if (unit2.position.x < GameConsts.STAGE_WIDTH)

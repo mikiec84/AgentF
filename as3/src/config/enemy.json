@@ -18,7 +18,8 @@
         "changePosTime":2,
         "backMovementDistance":30,
         "healthPoints":10,
-        "enemyRate":750
+        "enemyRate":750,
+        "collisionTolerance":50
     },
 
     "NAUTILUS":
@@ -31,7 +32,8 @@
         "changePosMovementSpeed":200,
         "attackSpeed":0.5,
         "healthPoints":20,
-        "enemyRate":1500
+        "enemyRate":1500,
+        "collisionTolerance":50
     },
 
     "BOSS_SPAWN":
