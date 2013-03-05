@@ -105,6 +105,8 @@ package de.mediadesign.gd1011.studiof.model {
             }
             else
             {
+                var a:GameEvent = new GameEvent(ViewConsts.UPPER_DOOR);
+                level.dispatcher.dispatchEvent(a);
                 _moveLeftRunning = false;
                 _initialized      = true;
             }
