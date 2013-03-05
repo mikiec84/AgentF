@@ -27,9 +27,16 @@ package de.mediadesign.gd1011.studiof.services
         public var dispatcher:IEventDispatcher;
 
         private var _running:Boolean;
+        private var expCounter:int = 0;
 
         public function update(time:Number):void
         {
+            expCounter++;
+            if (expCounter >= 6)
+            {
+                var noExplosionEvent:GameEvent = new GameEvent(ViewConsts.REMOVE_EXP);
+                dispatcher.dispatchEvent(noExplosionEvent);
+            }
             for (var i:int = 0; i < level.player.ammunition.length; i++)
             {
                 if (rules.isDead(level.player.ammunition[i]))
@@ -42,9 +49,7 @@ package de.mediadesign.gd1011.studiof.services
                 if (level.boss.initialized)
                 {
                     if (level.boss.idleState)
-                    {
                         rules.collisionDetection(level.player.ammunition[i], level.boss as Unit);
-                    }
                     if (level.boss is NautilusBoss)
                     {
                         for (var j:int = 0; j < (level.boss as NautilusBoss).ammunition.length; j++)
@@ -70,12 +75,15 @@ package de.mediadesign.gd1011.studiof.services
                     if (rules.isDead(level.enemies[j]))
                     {
                         if (level.enemies[j].currentPlatform == 2)
+                        {
+                            var explosionEvent:GameEvent = new GameEvent(ViewConsts.EXPLOSION, level.enemies[j]);
+                            dispatcher.dispatchEvent(explosionEvent);
                             deleteUnits(level.enemies, j);
+                            var updatePointsEvent:GameEvent = new GameEvent(ViewConsts.ENEMY_KILLED);
+                            dispatcher.dispatchEvent(updatePointsEvent);
+                        }
                         else
                             level.enemies.splice(j, 1);
-
-                        var updatePointsEvent:GameEvent = new GameEvent(ViewConsts.ENEMY_KILLED);
-                        dispatcher.dispatchEvent(updatePointsEvent);
                         break;
                         break;
                     }
@@ -90,9 +98,7 @@ package de.mediadesign.gd1011.studiof.services
             {
                 //collision player, enemy
                 if (level.enemies[i].currentPlatform == 2)
-                {
                     rules.collisionDetection(level.player, level.enemies[i]);
-                }
 
                 if (rules.isDead(level.enemies[i]))
                 {
@@ -129,18 +135,15 @@ package de.mediadesign.gd1011.studiof.services
                 }
             }
         }
-
         public function deleteUnits(units:Vector.<Unit>, index:int):void
         {
             level.deleteCurrentUnit(units[index]);
             units.splice(index,  1);
         }
-
         public function start():void
         {
             _running = true
         }
-
         public function stop():void
         {
             _running = false;

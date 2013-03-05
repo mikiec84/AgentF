@@ -1,4 +1,5 @@
-package de.mediadesign.gd1011.studiof.view.mediators {
+package de.mediadesign.gd1011.studiof.view.mediators
+{
     import de.mediadesign.gd1011.studiof.consts.GameConsts;
 	import de.mediadesign.gd1011.studiof.consts.ViewConsts;
 	import de.mediadesign.gd1011.studiof.events.GameEvent;
@@ -19,7 +20,6 @@ package de.mediadesign.gd1011.studiof.view.mediators {
     import starling.display.Image;
     import starling.display.MovieClip;
 
-	import starling.display.Quad;
 	import starling.display.Sprite;
 	import starling.events.EnterFrameEvent;
     import starling.events.Touch;
@@ -49,6 +49,8 @@ package de.mediadesign.gd1011.studiof.view.mediators {
         private var doorU:MovieClip;
         private var doorU2:MovieClip;
 
+        private var explosions:Vector.<MovieClip>;
+
 		private var _touchConfig:Object;
 		private var _validTouchID:int = -1;
 		private var _startTouchPos:Point;
@@ -67,15 +69,65 @@ package de.mediadesign.gd1011.studiof.view.mediators {
 			contextView.units = new Sprite();
 			contextView.addChild(contextView.units);
 
+            explosions = new Vector.<MovieClip>();
+
             addContextListener(ViewConsts.ADD_WATER_TO_GAME, addWater);
             addContextListener(ViewConsts.ADD_SPRITE_TO_GAME, add);
 			addContextListener(ViewConsts.REMOVE_SPRITE_FROM_GAME, remove);
             addContextListener(ViewConsts.CREATE_FORTBG, createFort);
+            addContextListener(ViewConsts.EXPLOSION, showExplosion);
+            addContextListener(ViewConsts.REMOVE_EXP, removeExplosions);
 
 			var initGameEvent:GameEvent = new GameEvent(GameConsts.INIT_GAME);
 			dispatcher.dispatchEvent(initGameEvent);
 			contextView.visible = true;
 		}
+
+        public function showExplosion(event:GameEvent):void
+        {
+            var explosionImg:MovieClip;
+
+            if (event.dataObj.verticalBullet)
+            {
+                if (event.dataObj.position.y <= GameConsts.STAGE_HEIGHT/2)
+                    explosionImg = new MovieClip(assets.getTextures("exp_"), 30);
+                else
+                    explosionImg = new MovieClip(assets.getTextures("wExp_"), 30);
+
+                explosionImg.x = event.dataObj.position.x - 156;
+                explosionImg.y = event.dataObj.position.y - 256;
+            }
+            else
+            {
+                if (event.dataObj.currentPlatform == 2)
+                    explosionImg = new MovieClip(assets.getTextures("exp_"), 30);
+                else if (event.dataObj.currentPlatform >= 3)
+                    explosionImg = new MovieClip(assets.getTextures("wExp_"), 30);
+
+                explosionImg.x = event.dataObj.position.x - 256;
+                explosionImg.y = event.dataObj.position.y - 256;
+            }
+
+            Starling.juggler.add(explosionImg);
+            explosionImg.loop = false;
+            explosionImg.play();
+
+            explosions.push(explosionImg);
+
+            contextView.addChild(explosionImg);
+        }
+
+        public function removeExplosions(event:GameEvent):void
+        {
+            for (var i:int = 0; i < explosions.length; i++)
+            {
+                if (explosions[i].currentFrame == 11)
+                {
+                    contextView.removeChild(explosions[i]);
+                    explosions.splice(i, 1);
+                }
+            }
+        }
 
         private function createFort(event:GameEvent):void
         {
@@ -122,7 +174,6 @@ package de.mediadesign.gd1011.studiof.view.mediators {
 
         private function handleNetherDoor(event:GameEvent):void
         {
-            trace("unten",doorU.currentFrame);
             if (doorU.currentFrame == 0)
             {
                 contextView.removeChild(doorU2);
@@ -143,7 +194,6 @@ package de.mediadesign.gd1011.studiof.view.mediators {
 
         private function handleUpperDoor(event:GameEvent):void
         {
-            trace("oben", doorO.currentFrame);
             if (doorO.currentFrame == 0)
             {
                 contextView.removeChild(doorO2);

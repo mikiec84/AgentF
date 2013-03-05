@@ -16,7 +16,6 @@ package de.mediadesign.gd1011.studiof.services
     import de.mediadesign.gd1011.studiof.view.EnemyView;
 
     import flash.events.IEventDispatcher;
-    import flash.trace.Trace;
     import flash.utils.getDefinitionByName;
 
     import starling.display.Sprite;
@@ -110,7 +109,6 @@ package de.mediadesign.gd1011.studiof.services
 
             _bgLayer01.update();
             _bgLayer02.update();
-
 
             updateLP();
             checkStatus();
