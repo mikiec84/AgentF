@@ -5,8 +5,9 @@
         "enemySpeed":350,
         "fireRateEnemy":0.4,
         "enemyRange":1500,
-        "collisionTolerance":20
-
+        "collisionToleranceFlying":20,
+        "collisionToleranceFloating":40,
+        "collisionToleranceDiving":40
     },
 
     "FORT_FOX":

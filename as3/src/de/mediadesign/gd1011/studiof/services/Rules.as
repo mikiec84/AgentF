@@ -27,18 +27,39 @@ package de.mediadesign.gd1011.studiof.services
 
         private var JSONExtractedInformation:Object;
 
-        public var collisionTolerance:int;
+        public var collisionToleranceFlying:int;
+        public var collisionToleranceFloating:int;
+        public var collisionToleranceDiving:int;
 
         public function Rules():void
         {
             JSONExtractedInformation = JSONReader.read("enemy")["ENEMY"];
-            collisionTolerance = JSONExtractedInformation["collisionTolerance"];
+            collisionToleranceFlying = JSONExtractedInformation["collisionToleranceFlying"];
+            collisionToleranceFloating = JSONExtractedInformation["collisionToleranceFloating"];
+            collisionToleranceDiving = JSONExtractedInformation["collisionToleranceDiving"];
         }
 
         // unit1: movement -->
         // unit2: movement <--
         public function collisionDetection(unit1:Unit, unit2:Unit):void
         {
+            var collisionTolerance:int;
+
+            if (unit1.observePlatform(unit1.position.y)<2)
+            {
+                collisionTolerance = collisionToleranceFlying;
+            }
+
+            if (unit1.observePlatform(unit1.position.y)==2)
+            {
+                collisionTolerance = collisionToleranceFloating;
+            }
+
+            if (unit1.observePlatform(unit1.position.y)>2)
+            {
+                collisionTolerance = collisionToleranceDiving;
+            }
+
             if (unit2.position.x < GameConsts.STAGE_WIDTH)
             {
                 if (unit1.currentPlatform == unit2.currentPlatform
