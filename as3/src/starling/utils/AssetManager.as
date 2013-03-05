@@ -209,7 +209,7 @@ package starling.utils
 			return new Image(getTexture(name));
 		}
 
-		public function getMCReverse(name:String):Image
+		public function getMCReverse(name:String):MovieClip
 		{
 			return new MovieClip(getTexturesReverse(name),30);
 		}
