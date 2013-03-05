@@ -107,7 +107,7 @@ package de.mediadesign.gd1011.studiof.model {
             {
                 var a:GameEvent = new GameEvent(ViewConsts.UPPER_DOOR);
                 level.dispatcher.dispatchEvent(a);
-                var ac:GameEvent = new GameEvent(ViewConsts.FORT_FOX_BOSS_MOVEMENT);
+                var ac:GameEvent = new GameEvent(ViewConsts.FORT_FOX_BOSS_MOVEMENT, this);
                 level.dispatcher.dispatchEvent(ac);
                 _moveLeftRunning = false;
                 _initialized      = true;
@@ -144,7 +144,7 @@ package de.mediadesign.gd1011.studiof.model {
                 downMovementRunning = false;
                 var ab:GameEvent = new GameEvent(ViewConsts.NETHER_DOOR);
                 level.dispatcher.dispatchEvent(ab);
-                var ac:GameEvent = new GameEvent(ViewConsts.FORT_FOX_BOSS_MOVEMENT);
+                var ac:GameEvent = new GameEvent(ViewConsts.FORT_FOX_BOSS_MOVEMENT, this);
                 level.dispatcher.dispatchEvent(ac);
             }
         }
@@ -179,7 +179,7 @@ package de.mediadesign.gd1011.studiof.model {
                 upMovementRunning = false;
                 var ab:GameEvent = new GameEvent(ViewConsts.UPPER_DOOR);
                 level.dispatcher.dispatchEvent(ab);
-                var ac:GameEvent = new GameEvent(ViewConsts.FORT_FOX_BOSS_MOVEMENT);
+                var ac:GameEvent = new GameEvent(ViewConsts.FORT_FOX_BOSS_MOVEMENT, this);
                 level.dispatcher.dispatchEvent(ac);
             }
         }
