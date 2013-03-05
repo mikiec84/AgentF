@@ -42,14 +42,14 @@
     },
     "soundsets":{
         "delay":100,
-        "generalsounds":{
+        "general":{
             "shot":"Shot",
             "explosion":"Explosion",
             "waterexplosion":"WaterExplosion"
         },
         "level_1":{
             "intro":["Lvl1_Part_07"],
-            "bg-loop":["Lvl1_Part_01","Lvl1_Part_01","Lvl1_Part_02","Lvl1_Part_02","Lvl1_Part_03","Lvl1_Part_04""Lvl1_Part_05","Lvl1_Part_06","Lvl1_Part_06","Lvl1_Part_07"],
+            "bg-loop":["Lvl1_Part_01","Lvl1_Part_01","Lvl1_Part_02","Lvl1_Part_02","Lvl1_Part_03","Lvl1_Part_04","Lvl1_Part_05","Lvl1_Part_06","Lvl1_Part_06","Lvl1_Part_07"],
             "boss-intro":["Lvl1_Part_11"],
             "boss-loop1":["Lvl1_Part_08","Lvl1_Part_09","Lvl1_Part_10","Lvl1_Part_13"]
         },
@@ -64,5 +64,25 @@
     {
         "Flying":30,
         "Swimming":30
+    },
+    "loadingsets":
+    {
+      "maingui":{
+          "classnames":["Mainmenu"],
+          "xml":["Mainmenu.xml"]
+
+      },
+      "general":{
+          "classnames":["Water", "AgentF_Idle_texture", "AgentF_Fall_texture", "AgentF_Jump_texture", "Barrel_texture", "FlyCoon_texture", "FlyCoon_Shoot", "SwimCoon_texture", "Arrow", "Bomb", "Bullet", "FassExplosion", "WasserExplosion"],
+          "xml":["Water.xml","AgentF_Idle_texture.xml","AgentF_Fall_texture.xml", "AgentF_Jump_texture.xml", "Barrel_texture.xml", "FlyCoon_texture.xml","FlyCoon_Shoot.xml", "SwimCoon_texture.xml","FassExplosion.xml","WasserExplosion.xml"]
+      },
+      "level_1":{
+          "classnames":["Level1","TileSystemLevel1_1","TileSystemLevel1_2","TileSystemLevel1_3", "ClackLow", "ClackHigh", "FortFoxHigh", "Fort_BackLayer", "Fort_MidLayer", "Fort_UpperLayer"],
+          "xml":["Level1.xml","TileSystemLevel1_1.xml","TileSystemLevel1_2.xml","TileSystemLevel1_3.xml","ClackLow.xml","ClackHigh.xml","FortFoxHigh.xml"]
+      },
+      "level_2":{
+          "classnames":["Level2", "TileSystemLevel2_1","TileSystemLevel2_2","TileSystemLevel2_3", "Nautilus_Change_texture", "Nautilus_Idle_texture", "Nautilus_Shot_texture", "SeaMine_texture"],
+          "xml":["Level2.xml","TileSystemLevel2_1.xml","TileSystemLevel2_2.xml","TileSystemLevel2_3.xml","Nautilus_Change_texture.xml","Nautilus_Idle_texture.xml","Nautilus_Shot_texture.xml","SeaMine_texture.xml"]
+      }
     }
 }

@@ -45,7 +45,7 @@ package de.mediadesign.gd1011.studiof.services
 
 		public function play(key:String):void
 		{
-			var name:String = _soundConfig["generalsounds"][key];
+			var name:String = _soundConfig["general"][key];
 			var sound:Sound = assets.getSound(name);
 			_soundFXSounds.push(sound);
 			_soundFX.push(sound.play());

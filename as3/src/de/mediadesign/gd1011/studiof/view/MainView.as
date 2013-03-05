@@ -9,6 +9,7 @@ package de.mediadesign.gd1011.studiof.view
 {
 	import de.mediadesign.gd1011.studiof.SystemInfo;
 	import de.mediadesign.gd1011.studiof.services.JSONReader;
+	import de.mediadesign.gd1011.studiof.view.mediators.LoadingScreen;
 
 	import starling.display.Sprite;
 	import starling.events.Event;
@@ -27,6 +28,10 @@ package de.mediadesign.gd1011.studiof.view
 		private var _guiHeight:Number = 0;
 
 		private var _startScreen:StartScreenView;
+		private var _highscore:LevelEndScreen;
+		private var _gameView:GameView;
+		private var _ui:GUI;
+		private var _loadingScreen:LoadingScreen;
 
 	    public function MainView()
 		{
@@ -55,17 +60,26 @@ package de.mediadesign.gd1011.studiof.view
 		public function initGameView():void
 		{
 
-			var gameView:GameView = new GameView();
-			gameView.scaleX = gameView.scaleY = _appScale;
-			gameView.x = _appLeftOffset;
-			gameView.y = _appTopOffset;
+			_gameView = new GameView();
+			_gameView.scaleX = _gameView.scaleY = _appScale;
+			_gameView.x = _appLeftOffset;
+			_gameView.y = _appTopOffset;
 
-			var userInterface:GUI = new GUI();
-			userInterface.scaleX = userInterface.scaleY = _guiScale;
+			_ui = new GUI();
+			_ui.scaleX = _ui.scaleY = _guiScale;
 
-			addChild(gameView);
-			addChild(userInterface);
-			removeChild(_startScreen);
+			addChild(_gameView);
+			addChild(_ui);
+			if(_loadingScreen != null)
+				removeChild(_loadingScreen);
+		}
+
+		public function removeGameView():void
+		{
+			if(_gameView != null)
+				removeChild(_gameView);
+			if(_ui != null)
+				removeChild(_ui);
 		}
 
 		private function setAppScale(gameWidth:Number, gameHeight:Number):void
@@ -99,107 +113,24 @@ package de.mediadesign.gd1011.studiof.view
 			_guiHeight = stage.stageHeight/_guiScale;
 		}
 
-
-		public function loadGameView(assets:AssetManager):void
+		public function loadWithScreen(assets:AssetManager,onLoad:Function,...rest):void
 		{
-			assets.enqueue(Level1);
-			assets.enqueue(Level2);
-
-			assets.enqueue(TileSystemLevel1_1);
-			assets.enqueue(TileSystemLevel1_2);
-			assets.enqueue(TileSystemLevel1_3);
-			assets.enqueue(TileSystemLevel2_1);
-			assets.enqueue(TileSystemLevel2_2);
-			assets.enqueue(TileSystemLevel2_3);
-
-			assets.enqueue(Water);
-
-			assets.enqueue(AgentF_Idle_texture);
-			assets.enqueue(AgentF_Fall_texture);
-			assets.enqueue(AgentF_Jump_texture);
-
-			assets.enqueue(Barrel_texture);
-			assets.enqueue(FlyCoon_texture);
-            assets.enqueue(FlyCoon_Shoot);
-			assets.enqueue(SwimCoon_texture);
-
-            assets.enqueue(ClackLow);
-            assets.enqueue(ClackHigh);
-            assets.enqueue(FortFoxHigh);
-            assets.enqueue(Fort_BackLayer);
-            assets.enqueue(Fort_MidLayer);
-            assets.enqueue(Fort_UpperLayer);
-
-            assets.enqueue(Nautilus_Change_texture);
-            assets.enqueue(Nautilus_Idle_texture);
-            assets.enqueue(Nautilus_Shot_texture);
-
-			assets.enqueue(Arrow);
-            assets.enqueue(Bomb);
-            assets.enqueue(Bullet);
-            assets.enqueue(SeaMine_texture);
-
-            assets.enqueue(FassExplosion);
-            assets.enqueue(WasserExplosion);
-
-			assets.enqueue("config/atlasxml/Level1.xml");
-			assets.enqueue("config/atlasxml/Level2.xml");
-
-			assets.enqueue("config/atlasxml/TileSystemLevel1_1.xml");
-			assets.enqueue("config/atlasxml/TileSystemLevel1_2.xml");
-			assets.enqueue("config/atlasxml/TileSystemLevel1_3.xml");
-			assets.enqueue("config/atlasxml/TileSystemLevel2_1.xml");
-			assets.enqueue("config/atlasxml/TileSystemLevel2_2.xml");
-			assets.enqueue("config/atlasxml/TileSystemLevel2_3.xml");
-
-			assets.enqueue("config/atlasxml/Water.xml");
-
-			assets.enqueue("config/atlasxml/AgentF_Idle_texture.xml");
-			assets.enqueue("config/atlasxml/AgentF_Fall_texture.xml");
-			assets.enqueue("config/atlasxml/AgentF_Jump_texture.xml");
-
-			assets.enqueue("config/atlasxml/Barrel_texture.xml");
-			assets.enqueue("config/atlasxml/FlyCoon_texture.xml");
-            assets.enqueue("config/atlasxml/FlyCoon_Shoot.xml");
-			assets.enqueue("config/atlasxml/SwimCoon_texture.xml");
-
-            assets.enqueue("config/atlasxml/ClackLow.xml");
-            assets.enqueue("config/atlasxml/ClackHigh.xml");
-            assets.enqueue("config/atlasxml/FortFoxHigh.xml");
-
-            assets.enqueue("config/atlasxml/Nautilus_Change_texture.xml");
-            assets.enqueue("config/atlasxml/Nautilus_Idle_texture.xml");
-            assets.enqueue("config/atlasxml/Nautilus_Shot_texture.xml");
-
-            assets.enqueue("config/atlasxml/SeaMine_texture.xml");
-
-            assets.enqueue("config/atlasxml/FassExplosion.xml");
-            assets.enqueue("config/atlasxml/WasserExplosion.xml");
-
-            assets.enqueue("assets/Shot.mp3");
-
-			assets.enqueue("assets/Lvl1_Part_01.mp3");
-			assets.enqueue("assets/Lvl1_Part_02.mp3");
-			assets.enqueue("assets/Lvl1_Part_03.mp3");
-			assets.enqueue("assets/Lvl1_Part_04.mp3");
-			assets.enqueue("assets/Lvl1_Part_05.mp3");
-			assets.enqueue("assets/Lvl1_Part_06.mp3");
-			assets.enqueue("assets/Lvl1_Part_07.mp3");
-			assets.enqueue("assets/Lvl1_Part_08.mp3");
-			assets.enqueue("assets/Lvl1_Part_09.mp3");
-			assets.enqueue("assets/Lvl1_Part_10.mp3");
-			assets.enqueue("assets/Lvl1_Part_11.mp3");
-			assets.enqueue("assets/Lvl1_Part_12.mp3");
-
-			assets.loadQueue(onLoad);
+			_loadingScreen = new LoadingScreen(_appWidth,_appHeight,assets);
+			_loadingScreen.scaleX = _loadingScreen.scaleY = _appScale;
+			addChild(_loadingScreen);
+			if(_startScreen!= null)
+			removeChild(_startScreen);
+			for each(var s:String in rest)
+			{
+				_loadingScreen.addAssetPackages(s);
+			}
+			_loadingScreen.load(onLoad);
 		}
 
-		private function onLoad(ratio:Number):void
+		public function showHighscore():void
 		{
-			_startScreen.progressBar.progress = ratio;
-
-			if(ratio == 1.0)
-				dispatchEvent(new Event(Event.COMPLETE));
+			_highscore = new LevelEndScreen();
+			addChild(_highscore);
 		}
 	}
 }

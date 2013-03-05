@@ -40,7 +40,8 @@ package de.mediadesign.gd1011.studiof.view.mediators
 
 		override public function initialize():void
 		{
-			contextView.loadAssets(assets);
+			contextView.assets = assets;
+			assets.loadAssetPackage("maingui",contextView.onLoad);
 			contextView.playButton.addEventListener(Event.TRIGGERED, changeToGameView);
 
 		}
@@ -49,7 +50,7 @@ package de.mediadesign.gd1011.studiof.view.mediators
 		{
             if (!loaded) {
                 loaded = true;
-                dispatcher.dispatchEvent(new GameEvent(ViewConsts.LOAD_GAMEVIEW));
+                dispatcher.dispatchEvent(new GameEvent(ViewConsts.LOAD_GAMEVIEW, 0));
             }
 		}
 

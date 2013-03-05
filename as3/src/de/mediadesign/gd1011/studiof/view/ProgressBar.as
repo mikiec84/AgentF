@@ -27,6 +27,7 @@ package de.mediadesign.gd1011.studiof.view
 		private var _progress:Number = 0;
 
 		private var _tween:Tween;
+		private var _onLoad:Function;
 
 		public function ProgressBar(width:Number, height:Number, borderAsset:Image)
 		{
@@ -42,6 +43,7 @@ package de.mediadesign.gd1011.studiof.view
 			addChild(_bar);
 			_tween = new Tween(_bar,JSONReader.read("viewconfig")["startscreen"]["progressbar"]["progress-speed"],"linear");
 
+
 		}
 
 		public function set progress(state:Number):void
@@ -51,7 +53,13 @@ package de.mediadesign.gd1011.studiof.view
 			Starling.juggler.add(_tween);
 			_tween.moveTo(0,_bar.height*progress-_bar.height);
 			_progress = progress;
+			if(_onLoad!= null && _progress == 1)
+				_tween.onComplete = _onLoad;
+		}
 
+		public function set onLoad(f:Function):void
+		{
+			_onLoad = f;
 		}
 	}
 }

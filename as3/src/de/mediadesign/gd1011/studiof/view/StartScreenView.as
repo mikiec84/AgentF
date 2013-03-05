@@ -12,7 +12,6 @@ package de.mediadesign.gd1011.studiof.view
 	import starling.display.Image;
 	import starling.display.Quad;
 	import starling.display.Sprite;
-	import starling.events.Event;
 	import starling.utils.AssetManager;
 
 	public class StartScreenView extends Sprite
@@ -21,7 +20,7 @@ package de.mediadesign.gd1011.studiof.view
 		private var _height:Number;
 
 		private var _startScreenConfig:Object;
-		private var _assets:AssetManager;
+		public var assets:AssetManager;
 
 		private var _background:Sprite;
 		private var _logo:Image;
@@ -46,16 +45,7 @@ package de.mediadesign.gd1011.studiof.view
 			creditButton = new TopSecretButton(Localization.getString("credits"),_startScreenConfig["button-size"]);
 		}
 
-		public function loadAssets(assets:AssetManager)
-		{
-			_assets = assets;
-			_assets.verbose=true;
-			_assets.enqueue(Mainmenu);
-			_assets.enqueue("/config/atlasxml/Mainmenu.xml");
-			_assets.loadQueue(onLoad);
-		}
-
-		private function onLoad(ratio:Number):void
+		public function onLoad(ratio:Number):void
 		{
 			if(ratio == 1.0)
 				createStartScreen();
@@ -69,13 +59,13 @@ package de.mediadesign.gd1011.studiof.view
 			_background.addChild(bgQuad);
 
 			//Progress Bar
-			progressBar = new ProgressBar(_startScreenConfig["progressbar"]["width"],_startScreenConfig["progressbar"]["height"], _assets.getImage("Menu_Blood"));
+			progressBar = new ProgressBar(_startScreenConfig["progressbar"]["width"],_startScreenConfig["progressbar"]["height"], assets.getImage("Menu_Blood"));
 			progressBar.x = _startScreenConfig["progressbar"]["position-from-left"];
 			progressBar.y = (_height/2)-_startScreenConfig["progressbar"]["position-from-center"];
 			_background.addChild(progressBar);
 
 			//Fox BG Asset
-			var bgImage:Image = _assets.getImage("Menu_BG");
+			var bgImage:Image = assets.getImage("Menu_BG");
 			bgImage.y = (_height - bgImage.height)/2;
 			_background.addChild(bgImage);
 			addChild(_background);
@@ -93,7 +83,7 @@ package de.mediadesign.gd1011.studiof.view
 			addChild(bottomBorder);
 
 			//Agent F Logo
-			_logo = _assets.getImage("Menu_Logo");
+			_logo = assets.getImage("Menu_Logo");
 			_logo.x = _logo.y = _startScreenConfig["padding"];
 			addChild(_logo);
 

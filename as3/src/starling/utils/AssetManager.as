@@ -1,5 +1,7 @@
 package starling.utils
 {
+	import de.mediadesign.gd1011.studiof.services.JSONReader;
+
 	import flash.display.Bitmap;
 	import flash.display.BitmapData;
 	import flash.display.Loader;
@@ -19,6 +21,7 @@ package starling.utils
 	import flash.utils.Dictionary;
 	import flash.utils.clearTimeout;
 	import flash.utils.describeType;
+	import flash.utils.getDefinitionByName;
 	import flash.utils.getQualifiedClassName;
 	import flash.utils.setTimeout;
 
@@ -57,7 +60,48 @@ package starling.utils
         
         /** Create a new AssetManager. The 'scaleFactor' and 'useMipmaps' parameters define
          *  how enqueued bitmaps will be converted to textures. */
-        public function AssetManager(scaleFactor:Number=-1, useMipmaps:Boolean=false)
+
+
+		public function loadAssetPackage(key:String, onLoad:Function = null):void
+		{
+			var loadingConfig:Object = JSONReader.read("viewconfig")["loadingsets"][key];
+			var soundConfig:Object = JSONReader.read("viewconfig")["soundsets"][key];
+			for each(var classname:String in loadingConfig["classnames"])
+			{
+				enqueue(getDefinitionByName(classname) as Class);
+			}
+			for each(var xml:String in loadingConfig["xml"])
+			{
+				enqueue("config/atlasxml/"+xml);
+			}
+			for each(var element:Object in soundConfig)
+			{
+				for each(var soundname:String in element)
+					enqueue("assets/"+soundname+".mp3");
+			}
+
+			if(onLoad != null)
+				loadQueue(onLoad);
+		}
+
+		public function removeAssetPackage(key:String):void
+		{
+			var loadingConfig:Object = JSONReader.read("viewconfig")["loadingsets"][key];
+			var soundConfig:Object = JSONReader.read("viewconfig")["soundsets"][key];
+			for each(var classname:String in loadingConfig["classnames"])
+			{
+				removeTexture(classname);
+				removeTextureAtlas(classname);
+			}
+			for each(var element:Object in soundConfig)
+			{
+				for each(var soundname:String in element)
+					removeSound(soundname);
+			}
+		}
+
+
+		public function AssetManager(scaleFactor:Number=-1, useMipmaps:Boolean=false)
         {
             mVerbose = false;
             mScaleFactor = scaleFactor > 0 ? scaleFactor : Starling.contentScaleFactor;
@@ -180,7 +224,7 @@ package starling.utils
 
             
             if (name in mTextures)
-                throw new Error("Duplicate texture name: " + name);
+                return; //throw new Error("Duplicate texture name: " + name);
             else
 			{
 				log("Adding texture '" + name + "'");
@@ -195,7 +239,7 @@ package starling.utils
 
             
             if (name in mAtlases)
-                throw new Error("Duplicate texture atlas name: " + name);
+                return; //throw new Error("Duplicate texture atlas name: " + name);
             else
 			{
 				log("Adding texture atlas '" + name + "'");
@@ -229,7 +273,7 @@ package starling.utils
             log("Adding sound '" + name + "'");
             
             if (name in mSounds)
-                throw new Error("Duplicate sound name: " + name);
+                return;//throw new Error("Duplicate sound name: " + name);
             else
                 mSounds[name] = sound;
         }
@@ -485,7 +529,14 @@ package starling.utils
             {
                 var url:String = rawAsset as String;
                 extension = url.split(".").pop().toLowerCase();
-                
+               	var filename = url.split(".").shift().split("/").pop();
+				trace(filename, extension);
+				if(extension == "mp3" && filename in mSounds)
+				{
+					onComplete();
+					return;
+				}
+
                 var urlLoader:URLLoader = new URLLoader();
                 urlLoader.dataFormat = URLLoaderDataFormat.BINARY;
                 urlLoader.addEventListener(IOErrorEvent.IO_ERROR, onIoError);
