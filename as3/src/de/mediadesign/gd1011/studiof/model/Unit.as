@@ -8,6 +8,7 @@
 package de.mediadesign.gd1011.studiof.model
 {
     import de.mediadesign.gd1011.studiof.consts.GameConsts;
+    import de.mediadesign.gd1011.studiof.consts.ViewConsts;
     import de.mediadesign.gd1011.studiof.model.components.PositionComponent;
     import de.mediadesign.gd1011.studiof.model.components.VelocityComponent;
     import de.mediadesign.gd1011.studiof.services.JSONReader;
@@ -36,8 +37,6 @@ package de.mediadesign.gd1011.studiof.model
 
         public var state:String;
         public var lastState:String;
-
-
 
         public function Unit(healthpoints:int, startingPlatform:int, xVel:int, startingXPosition:int, currentLevel:LevelProcess, verticalBullet:Boolean, bossEnemy:Boolean, ID:String = "")
         {
@@ -87,6 +86,8 @@ package de.mediadesign.gd1011.studiof.model
                 _healthPoints = 3;
             }
             this._ID = ID;
+            lastState = GameConsts.IDLE;
+            state = GameConsts.IDLE;
         }
 
         public function stop():void
@@ -129,7 +130,8 @@ package de.mediadesign.gd1011.studiof.model
                     }
                 }
             }
-
+            if (currentPlatform < 2 && position.x < 200 && state != GameConsts.SHOT)
+                state = GameConsts.SHOT;
         }
 
         public function assertCorrectInitialization():Boolean

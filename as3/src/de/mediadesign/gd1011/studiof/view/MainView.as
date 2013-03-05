@@ -120,6 +120,7 @@ package de.mediadesign.gd1011.studiof.view
 
 			assets.enqueue(Barrel_texture);
 			assets.enqueue(FlyCoon_texture);
+            assets.enqueue(FlyCoon_Shoot);
 			assets.enqueue(SwimCoon_texture);
 
             assets.enqueue(ClackLow);
@@ -159,6 +160,7 @@ package de.mediadesign.gd1011.studiof.view
 
 			assets.enqueue("config/atlasxml/Barrel_texture.xml");
 			assets.enqueue("config/atlasxml/FlyCoon_texture.xml");
+            assets.enqueue("config/atlasxml/FlyCoon_Shoot.xml");
 			assets.enqueue("config/atlasxml/SwimCoon_texture.xml");
 
             assets.enqueue("config/atlasxml/ClackLow.xml");

@@ -62,11 +62,20 @@ package de.mediadesign.gd1011.studiof.view.mediators
                     addContextListener(ViewConsts.CHANGE_ANIM, changeAnimation);
                     break;
                 case(ViewConsts.FLYING_ENEMY):
+                    // ###### Default state ######
+                    images = new Vector.<Image>();
                     currentImg = new MovieClip(assets.getTextures("E1 Idle_"),30);
                     Starling.juggler.add(currentImg as MovieClip);
+                    images.push(currentImg);
                     (currentImg as MovieClip).play();
                     currentImg.y = -150;
                     enemyView.addChild(currentImg);
+                    // ##################
+                    currentImg = new MovieClip(assets.getTextures("E1 Shot_"),30);
+                    currentImg.y = -150;
+                    images.push(currentImg);
+                    Starling.juggler.add(currentImg as MovieClip);
+                    addContextListener(ViewConsts.CHANGE_ANIM, changeAnimation);
                     break;
                 case(ViewConsts.FLOATING_ENEMY):
                     currentImg = new MovieClip(assets.getTextures("Barrel_"),30);

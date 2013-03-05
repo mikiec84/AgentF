@@ -9,7 +9,6 @@ package de.mediadesign.gd1011.studiof.services
 {
     import de.mediadesign.gd1011.studiof.consts.GameConsts;
     import de.mediadesign.gd1011.studiof.consts.ViewConsts;
-    import de.mediadesign.gd1011.studiof.consts.ViewConsts;
     import de.mediadesign.gd1011.studiof.events.GameEvent;
     import de.mediadesign.gd1011.studiof.model.*;
     import de.mediadesign.gd1011.studiof.model.components.EnemyInitPositioning;
@@ -49,7 +48,7 @@ package de.mediadesign.gd1011.studiof.services
         private var _enemieBullets:Vector.<Unit>;
         private var _player:Player;
         private var _boss:IEndboss;
-        private var _currentLevel:int = 1;
+        private var _currentLevel:int = 0;
 
         private var JSONExtractedInformation:Object;
         private var JSONFORT:Object;
@@ -66,7 +65,6 @@ package de.mediadesign.gd1011.studiof.services
         public var currentXKoord:int = GameConsts.STAGE_WIDTH;
         public var enemyPositions:Vector.<EnemyInitPositioning>;
 		private var _enemySequence:Array;
-        public var collisionTolerance:int; // Wie weit die bullet von der Unit entfernt sein darf um immernoch als treffer zu zählen
 
         ///CHEATS
         public var onlyThreeMobs:Boolean = false;
@@ -283,6 +281,18 @@ package de.mediadesign.gd1011.studiof.services
 
         private function checkStates():void
         {
+            for (var i:int = 0; i < enemies.length; i++)
+            {
+                if (enemies[i].currentPlatform < 2)
+                {
+                    if (enemies[i].lastState != enemies[i].state)
+                    {;
+                        var changeStateEvent:GameEvent = new GameEvent(GameConsts.CHANGE_STATE, enemies[i]);
+                        dispatcher.dispatchEvent(changeStateEvent);
+                    }
+                    enemies[i].lastState = enemies[i].state
+                }
+            }
             // change states of different Units
             if (boss.initialized && boss is NautilusBoss)
             {
