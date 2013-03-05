@@ -15,6 +15,7 @@ package de.mediadesign.gd1011.studiof.services
     import de.mediadesign.gd1011.studiof.view.EnemyView;
 
     import flash.events.IEventDispatcher;
+    import flash.trace.Trace;
     import flash.utils.getDefinitionByName;
 
     import starling.display.Sprite;
@@ -79,6 +80,7 @@ package de.mediadesign.gd1011.studiof.services
             collisionTolerance = JSONExtractedInformation["collisionTolerance"];
             JSONFORT = JSONReader.read("enemy")["FORT_FOX"];
             JSONNAUT = JSONReader.read("enemy")["NAUTILUS"];
+            trace("JSONFORT:",JSONFORT["enemyRate"],"JSONNAUT:",JSONNAUT["enemyRate"]);
         }
 
         [PostConstruct]
@@ -126,22 +128,23 @@ package de.mediadesign.gd1011.studiof.services
 
                     if (index2+1 < enemyPositions.length && boss != null && boss.initialized)
                     {
-                        if (boss is NautilusBoss && enemyPositions[index2+1].xPos-enemyPositions[index2].xPos < JSONNAUT["enemyRate"]
-                                || boss is FortFoxBoss && enemyPositions[index2+1].xPos-enemyPositions[index2].xPos < JSONFORT["enemyRate"])
-
+                        if ((boss is NautilusBoss && enemyPositions[index2+1].xPos-enemyPositions[index2].xPos < JSONNAUT["enemyRate"])
+                                || (boss is FortFoxBoss && enemyPositions[index2+1].xPos-enemyPositions[index2].xPos < JSONFORT["enemyRate"]))
+                        {
                             enemyPositions.splice(index2+1, 1);
+                        }
                     }
                 }
             }
 
             if (boss.initialized && boss is NautilusBoss && (enemyPositions[enemyPositions.length-1].spawned) || enemyPositions.length == 0)
             {
-                bossEnemiesSpawnCounter = currentXKoord+JSONExtractedInformation["enemyRate"]*JSONNAUT["enemyRate"];
+                bossEnemiesSpawnCounter = currentXKoord+JSONNAUT["enemyRate"];
                 enemyPositions.push(new EnemyInitPositioning(false, bossEnemiesSpawnCounter));
             }
             if (boss.initialized && boss is FortFoxBoss && (enemyPositions[enemyPositions.length-1].spawned) || enemyPositions.length == 0)
             {
-                bossEnemiesSpawnCounter = currentXKoord+JSONExtractedInformation["enemyRate"]*JSONFORT["enemyRate"];
+                bossEnemiesSpawnCounter = currentXKoord+JSONFORT["enemyRate"];
                 enemyPositions.push(new EnemyInitPositioning(false, bossEnemiesSpawnCounter));
             }
         }
