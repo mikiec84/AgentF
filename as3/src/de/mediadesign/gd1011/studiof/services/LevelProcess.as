@@ -41,6 +41,9 @@ package de.mediadesign.gd1011.studiof.services
         [Inject]
         public var assets:AssetManager;
 
+        [Inject]
+        public var score:Score;
+
         private var _running:Boolean = true;
         private var _enemies:Vector.<Unit>;
         private var _enemieBullets:Vector.<Unit>;
@@ -242,7 +245,7 @@ package de.mediadesign.gd1011.studiof.services
                 if (currentLevel != maxLevel) {
                     _currentLevel+=1;
                     clearLevel();
-                    var a:GameEvent = new GameEvent(ViewConsts.SHOW_HIGHSCORE);
+                    var a:GameEvent = new GameEvent(ViewConsts.SHOW_HIGHSCORE, score);
                     dispatcher.dispatchEvent(a);
                 }
                 else
