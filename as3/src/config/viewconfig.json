@@ -49,9 +49,9 @@
         },
         "level_1":{
             "intro":["Lvl1_Part_07"],
-            "bg-loop":["Lvl1_Part_01","Lvl1_Part_01","Lvl1_Part_02","Lvl1_Part_02","Lvl1_Part_03"],
+            "bg-loop":["Lvl1_Part_01","Lvl1_Part_01","Lvl1_Part_02","Lvl1_Part_02","Lvl1_Part_03","Lvl1_Part_04""Lvl1_Part_05","Lvl1_Part_06","Lvl1_Part_06","Lvl1_Part_07"],
             "boss-intro":["Lvl1_Part_11"],
-            "boss-loop1":["Lvl1_Part_04","Lvl1_Part_05","Lvl1_Part_08","Lvl1_Part_09"]
+            "boss-loop1":["Lvl1_Part_08","Lvl1_Part_09","Lvl1_Part_10","Lvl1_Part_13"]
         },
         "level_2":{
             "intro":[],
