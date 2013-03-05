@@ -69,8 +69,8 @@ package de.mediadesign.gd1011.studiof.services
         public var collisionTolerance:int; // Wie weit die bullet von der Unit entfernt sein darf um immernoch als treffer zu zählen
 
         ///CHEATS
-        public var onlyThreeMobs:Boolean = false;
-        public var bossHaveLowLife:Boolean = true;
+        public var onlyThreeMobs:Boolean = true;
+        public var bossHaveLowLife:Boolean = false;
         /////////
 
         private var maxLevel:int = 1;
@@ -131,14 +131,17 @@ package de.mediadesign.gd1011.studiof.services
                 {
                     enemyPositions[index2].spawned = true;
                     createAndShowEnemy(index2);
+                }
+            }
 
-                    if (index2+1 < enemyPositions.length && boss != null && boss.initialized)
+            if (enemies.length > 0 && enemies[enemies.length-1].bossEnemy)
+            {
+                for (var i:int = 0; i<enemies.length; i++)
+                {
+                    if (enemies[i].bossEnemy && i+1 < enemies.length && enemies[i+1].position.x-enemies[i].position.x < 500)
                     {
-                        if ((boss is NautilusBoss && enemyPositions[index2+1].xPos-enemyPositions[index2].xPos < JSONNAUT["enemyRate"])
-                                || (boss is FortFoxBoss && enemyPositions[index2+1].xPos-enemyPositions[index2].xPos < JSONFORT["enemyRate"]))
-                        {
-                            enemyPositions.splice(index2+1, 1);
-                        }
+                        deleteCurrentUnit(enemies[i+1]);
+                        enemies.splice(i+1, 1);
                     }
                 }
             }
@@ -426,7 +429,7 @@ package de.mediadesign.gd1011.studiof.services
             }
             //////////// CHEAT ///////////////
             if (onlyThreeMobs) {
-                while(enemyPositions.length > 3)
+                while(enemyPositions.length > 10)
                 {
                     enemyPositions.pop();
                 }

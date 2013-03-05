@@ -33,6 +33,7 @@ package de.mediadesign.gd1011.studiof.model
         public var stopped:Boolean = false;
         public var isPlayer:Boolean = false;
         public var verticalBullet:Boolean = false;
+        public var bossEnemy:Boolean = false;
 
         public var state:String;
         public var lastState:String;
@@ -69,6 +70,7 @@ package de.mediadesign.gd1011.studiof.model
             }
             if (bossEnemy)
             {
+                this.bossEnemy = true;
                 if (currentLevel.boss != null)
                 {
                     if (currentLevel.boss is NautilusBoss)
