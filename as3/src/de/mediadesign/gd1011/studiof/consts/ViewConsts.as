@@ -50,6 +50,8 @@ package de.mediadesign.gd1011.studiof.consts
         public static const BOMBE:String = "BOMBE";
         public static const MINE:String = "MINE";
 
+        public static const EXPLOSION:String = "EXPLOSION";
+
         public static const LOAD_LEVEL1:String = "LOAD_LEVEL1";
         public static const LOAD_LEVEL2:String = "LOAD_LEVEL2";
         public static const DELETE_LEVEL1:String = "DELETE_LEVEL1";
