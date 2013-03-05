@@ -170,7 +170,7 @@ package de.mediadesign.gd1011.studiof.model {
             cooldown += time;
             if (cooldown >= (1 / attackSpeed) && position.x<=idleXPosition && healthPoints > 0)
             {
-                var bullet:Unit = new Unit(1, currentPlatform, -300, position.x, level, false, false);
+                var bullet:Unit = new Unit(6, currentPlatform, -300, position.x, level, false, false);
                 bullet.position.y += 100;
                 _ammunition.push(bullet);
                 cooldown = 0;

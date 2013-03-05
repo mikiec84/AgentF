@@ -10,11 +10,10 @@ package de.mediadesign.gd1011.studiof.services
     import de.mediadesign.gd1011.studiof.consts.GameConsts;
     import de.mediadesign.gd1011.studiof.consts.ViewConsts;
     import de.mediadesign.gd1011.studiof.events.GameEvent;
-    import de.mediadesign.gd1011.studiof.model.FortFoxBoss;
     import de.mediadesign.gd1011.studiof.model.NautilusBoss;
+    import de.mediadesign.gd1011.studiof.model.FortFoxBoss;
     import de.mediadesign.gd1011.studiof.model.Player;
     import de.mediadesign.gd1011.studiof.model.Unit;
-    import de.mediadesign.gd1011.studiof.view.EnemyView;
     import de.mediadesign.gd1011.studiof.view.EnemyView;
 
     import flash.events.IEventDispatcher;
@@ -80,6 +79,16 @@ package de.mediadesign.gd1011.studiof.services
             if (unit2.position.x < GameConsts.STAGE_WIDTH)
             {
                 if (unit1.currentPlatform == unit2.currentPlatform
+                        && unit1.position.x + collisionTolerance >= unit2.position.x)
+                {
+                    unit1.healthPoints--;
+                    unit2.healthPoints--;
+
+                    var damageUnitEvent:GameEvent = new GameEvent(GameConsts.DAMAGE_UNIT, unit2);
+                    dispatcher.dispatchEvent(damageUnitEvent);
+                }
+                else if (unit2 is NautilusBoss
+                        && unit1.currentPlatform == unit2.currentPlatform+1
                         && unit1.position.x + collisionTolerance >= unit2.position.x)
                 {
                     unit1.healthPoints--;

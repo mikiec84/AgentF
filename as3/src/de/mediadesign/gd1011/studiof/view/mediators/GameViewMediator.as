@@ -45,7 +45,9 @@ package de.mediadesign.gd1011.studiof.view.mediators {
 		public var assets:AssetManager;
 
         private var doorO:MovieClip;
+        private var doorO2:MovieClip;
         private var doorU:MovieClip;
+        private var doorU2:MovieClip;
 
 		private var _touchConfig:Object;
 		private var _validTouchID:int = -1;
@@ -65,7 +67,6 @@ package de.mediadesign.gd1011.studiof.view.mediators {
 			contextView.units = new Sprite();
 			contextView.addChild(contextView.units);
 
-
             addContextListener(ViewConsts.ADD_WATER_TO_GAME, addWater);
             addContextListener(ViewConsts.ADD_SPRITE_TO_GAME, add);
 			addContextListener(ViewConsts.REMOVE_SPRITE_FROM_GAME, remove);
@@ -74,7 +75,6 @@ package de.mediadesign.gd1011.studiof.view.mediators {
 			var initGameEvent:GameEvent = new GameEvent(GameConsts.INIT_GAME);
 			dispatcher.dispatchEvent(initGameEvent);
 			contextView.visible = true;
-
 		}
 
         private function createFort(event:GameEvent):void
@@ -94,46 +94,71 @@ package de.mediadesign.gd1011.studiof.view.mediators {
             Starling.juggler.add(doorO as MovieClip);
             doorO.x = GameConsts.STAGE_WIDTH - 890;
             (doorO as MovieClip).stop();
-           // contextView.addChild(doorO);
+            doorO.loop = false;
+            contextView.addChild(doorO);
+
+            doorO2 = assets.getMCReverse("Clack_High_");
+            Starling.juggler.add(doorO2 as MovieClip);
+            doorO2.x = GameConsts.STAGE_WIDTH - 890;
+            (doorO2 as MovieClip).stop();
+            doorO2.loop = false;
+
             doorU = new MovieClip(assets.getTextures("Clack_Low_"),30);
             Starling.juggler.add(doorU as MovieClip);
             doorU.x = GameConsts.STAGE_WIDTH - 890;
             (doorU as MovieClip).stop();
-           // contextView.addChild(doorU);
+            doorU.loop = false;
+            contextView.addChild(doorU);
 
-            addContextListener(ViewConsts.HANDLE_DOOR, handleFortDoors)
+            doorU2 = assets.getMCReverse("Clack_Low_");
+            Starling.juggler.add(doorU2 as MovieClip);
+            doorU2.x = GameConsts.STAGE_WIDTH - 890;
+            (doorU2 as MovieClip).stop();
+            doorU2.loop = false;
+
+            addContextListener(ViewConsts.UPPER_DOOR, handleUpperDoor);
+            addContextListener(ViewConsts.NETHER_DOOR, handleNetherDoor);
         }
 
-        private function handleFortDoors(event:GameEvent):void
+        private function handleNetherDoor(event:GameEvent):void
         {
-            switch (event.dataObj)
+            trace("unten",doorU.currentFrame);
+            if (doorU.currentFrame == 0)
             {
-                case (0):
-                    doorO.stop();
-                    doorU.stop();
-                    break;
-                case (1):
-                    doorO.play();
-                    doorU.stop();
-                    break;
-                case (2):
-                    doorO.currentFrame = 30;
-                    doorO.pause();
-                    doorU.stop();
-                    break;
-                case (3):
-                    break;
-                case (4):
-                    doorO.stop();
-                    doorU.play();
-                    break;
-                case (5):
-                    doorO.stop();
-                    doorU.currentFrame = 30;
-                    doorU.pause();
-                    break;
-                case (6):
-                    break;
+                contextView.removeChild(doorU2);
+                contextView.addChild(doorU);
+                doorU.play();
+                doorU2.stop();
+                doorU2.currentFrame = 0;
+            }
+            else if (doorU.currentFrame == 30)
+            {
+                contextView.removeChild(doorU);
+                contextView.addChild(doorU2);
+                doorU2.play();
+                doorU.stop();
+                doorU.currentFrame = 0;
+            }
+        }
+
+        private function handleUpperDoor(event:GameEvent):void
+        {
+            trace("oben", doorO.currentFrame);
+            if (doorO.currentFrame == 0)
+            {
+                contextView.removeChild(doorO2);
+                contextView.addChild(doorO);
+                doorO.play();
+                doorO2.stop();
+                doorO2.currentFrame = 0;
+            }
+            else if (doorO.currentFrame == 30)
+            {
+                contextView.removeChild(doorO);
+                contextView.addChild(doorO2);
+                doorO2.play();
+                doorO.stop();
+                doorO.currentFrame = 0;
             }
         }
 

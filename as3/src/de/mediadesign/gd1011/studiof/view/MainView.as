@@ -138,6 +138,9 @@ package de.mediadesign.gd1011.studiof.view
             assets.enqueue(Bullet);
             assets.enqueue(SeaMine_texture);
 
+            assets.enqueue(FassExplosion);
+            assets.enqueue(WasserExplosion);
+
 			assets.enqueue("config/atlasxml/Level1.xml");
 			assets.enqueue("config/atlasxml/Level2.xml");
 
@@ -168,6 +171,9 @@ package de.mediadesign.gd1011.studiof.view
 
             assets.enqueue("config/atlasxml/SeaMine_texture.xml");
 
+            assets.enqueue("config/atlasxml/FassExplosion.xml");
+            assets.enqueue("config/atlasxml/WasserExplosion.xml");
+
             assets.enqueue("assets/Shot.mp3");
 
 			assets.enqueue("assets/Lvl1_Part_01.mp3");
@@ -182,10 +188,6 @@ package de.mediadesign.gd1011.studiof.view
 			assets.enqueue("assets/Lvl1_Part_10.mp3");
 			assets.enqueue("assets/Lvl1_Part_11.mp3");
 			assets.enqueue("assets/Lvl1_Part_12.mp3");
-//			assets.enqueue("assets/ThemeLvl1.mp3");
-//			assets.enqueue("assets/ThemeLvl1.mp3");
-//			assets.enqueue("assets/ThemeLvl1.mp3");
-//			assets.enqueue("assets/ThemeLvl1.mp3");
 
 			assets.loadQueue(onLoad);
 		}

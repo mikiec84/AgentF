@@ -91,7 +91,7 @@ package de.mediadesign.gd1011.studiof.services
         public function update(time:Number):void
         {
 			if(!_running)
-			return;
+			    return;
             if(player == null)
                 return;
             deleteOffscreenUnits();
@@ -110,7 +110,12 @@ package de.mediadesign.gd1011.studiof.services
 
             updateLP();
             checkStatus();
+            checkStates();
+            enemySpawn(time);
+        }
 
+        private function enemySpawn(time:Number):void
+        {
             if (!allUnitsStopped)
             {
                 currentXKoord += 300*time;
@@ -189,7 +194,7 @@ package de.mediadesign.gd1011.studiof.services
 
         private function shouldBossSpawn():Boolean
         {
-			for(var i:int = enemyPositions.length-1; i>=0;i--)
+			for(var i:int = enemyPositions.length-1; i >= 0; i--)
 				if(_enemySequence[i]!=6)
             	return enemyPositions[i].spawned;
 			return true;
@@ -257,13 +262,15 @@ package de.mediadesign.gd1011.studiof.services
             {
                 if(!boss.initialized)
                 {
-                    if (!boss.scrollLevel) {
+                    if (!boss.scrollLevel)
                         stopScrollLevel();
-                    }
                     spawnBoss();
                 }
             }
+        }
 
+        private function checkStates():void
+        {
             // change states of different Units
             if (boss.initialized && boss is NautilusBoss)
             {

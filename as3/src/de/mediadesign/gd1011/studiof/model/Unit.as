@@ -101,10 +101,19 @@ package de.mediadesign.gd1011.studiof.model
 
         public function move(time:Number):void
         {
-            if (position.y >= GameConsts.PLATFORM_HEIGHT*6 && !verticalBullet) {
+            if (velocity.velocityX <= 0)
+                if (healthPoints <= 0
+                        && (currentPlatform == 0 || currentPlatform == 1
+                        || (currentPlatform >= 3 && currentPlatform <= 5) ))
+                {
+                    velocity.velocityY = 1000;
+                    position.y += velocity.velocityY*time;
+                    return;
+                }
+            if (position.y >= GameConsts.PLATFORM_HEIGHT*6 && !verticalBullet)
                 position.y = GameConsts.PLATFORM_HEIGHT*5+2;
-            }
-            if (!stopped) {
+            if (!stopped)
+            {
                 if (assertCorrectInitialization())
                 {
                     if (!velocity.verticalVelocity)
@@ -118,8 +127,8 @@ package de.mediadesign.gd1011.studiof.model
                         position.y += velocity.velocityY*time;
                     }
                 }
-                else trace("----------Function Move failed, because Unit not correctly initialized: "+position.x+","+position.y+","+velocity+","+currentPlatform+","+this);
             }
+
         }
 
         public function assertCorrectInitialization():Boolean

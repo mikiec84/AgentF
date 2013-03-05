@@ -10,6 +10,7 @@ package de.mediadesign.gd1011.studiof.view.mediators
     import de.mediadesign.gd1011.studiof.consts.GameConsts;
     import de.mediadesign.gd1011.studiof.consts.ViewConsts;
     import de.mediadesign.gd1011.studiof.events.GameEvent;
+    import de.mediadesign.gd1011.studiof.model.FortFoxBoss;
     import de.mediadesign.gd1011.studiof.view.EnemyView;
 
     import flash.events.IEventDispatcher;
@@ -84,6 +85,7 @@ package de.mediadesign.gd1011.studiof.view.mediators
                 case(ViewConsts.FORTFOX):
                     currentImg = new MovieClip(assets.getTextures("Boss_High_"),30);
                     Starling.juggler.add(currentImg as MovieClip);
+                    (currentImg as MovieClip).loop = false;
                     (currentImg as MovieClip).play();
                     currentImg.y = 50;
                     enemyView.addChild(currentImg);
@@ -109,6 +111,13 @@ package de.mediadesign.gd1011.studiof.view.mediators
                     break;
             }
             addContextListener(ViewConsts.SHOW_DAMAGE, damage);
+            addContextListener(ViewConsts.FORT_FOX_BOSS_MOVEMENT, play);
+        }
+
+        public function play(event:GameEvent):void
+        {
+            if (event.dataObj is FortFoxBoss)
+                (currentImg as MovieClip).play();
         }
 
         public function changeAnimation(event:GameEvent):void

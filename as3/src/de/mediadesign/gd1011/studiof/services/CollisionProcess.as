@@ -32,19 +32,25 @@ package de.mediadesign.gd1011.studiof.services
         {
             for (var i:int = 0; i < level.player.ammunition.length; i++)
             {
+                if (rules.isDead(level.player.ammunition[i]))
+                {
+                    deleteUnits(level.player.ammunition, i);
+                    break;
+                    break;
+                }
                 // collision Boss
                 if (level.boss.initialized)
                 {
-                    if (level.boss.idleState) {
+                    if (level.boss.idleState)
+                    {
                         rules.collisionDetection(level.player.ammunition[i], level.boss as Unit);
                     }
-                    // collision SeaMine
                     if (level.boss is NautilusBoss)
                     {
                         for (var j:int = 0; j < (level.boss as NautilusBoss).ammunition.length; j++)
                         {
-                            rules.collisionDetection(level.player.ammunition[i], (level.boss as NautilusBoss).ammunition[j]);
                             rules.collisionDetection(level.player, (level.boss as NautilusBoss).ammunition[j]);
+                            rules.collisionDetection(level.player.ammunition[i], (level.boss as NautilusBoss).ammunition[j]);
 
                             if (rules.isDead((level.boss as NautilusBoss).ammunition[j]))
                             {
@@ -55,13 +61,7 @@ package de.mediadesign.gd1011.studiof.services
                         }
                     }
                 }
-                if (rules.isDead(level.player.ammunition[i]))
-                {
-                    deleteUnits(level.player.ammunition, i);
-                    break;
-                    break;
-                }
-
+                // collision SeaMine , Player
                 for (var j:int = 0; j < level.enemies.length; j++)
                 {
                     //collision playerbullet, enemy
@@ -69,7 +69,11 @@ package de.mediadesign.gd1011.studiof.services
 
                     if (rules.isDead(level.enemies[j]))
                     {
-                        deleteUnits(level.enemies, j);
+                        if (level.enemies[j].currentPlatform == 2)
+                            deleteUnits(level.enemies, j);
+                        else
+                            level.enemies.splice(j, 1);
+
                         var updatePointsEvent:GameEvent = new GameEvent(ViewConsts.ENEMY_KILLED);
                         dispatcher.dispatchEvent(updatePointsEvent);
                         break;
