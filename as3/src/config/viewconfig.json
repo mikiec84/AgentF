@@ -30,15 +30,13 @@
         "level_1":{
             "background":{
                 "layer01":["Level1_1","Level1_2","Level1_3"],
-                "layer02":["TileA", "TileB","TileC","TileD","TileE","TileF"],
-                "layer03":["Water_"]
+                "layer02":["TileA", "TileB","TileC","TileD","TileE","TileF"]
             }
         },
         "level_2":{
             "background":{
                 "layer01":["Level2_1","Level2_2","Level2_3"],
-                "layer02":["CaveTileA", "CaveTileB","CaveTileC","CaveTileD","CaveTileE","CaveTileF"],
-                "layer03":["Water_01","Water_02"]
+                "layer02":["CaveTileA", "CaveTileB","CaveTileC","CaveTileD","CaveTileE","CaveTileF"]
             }
         }
     },

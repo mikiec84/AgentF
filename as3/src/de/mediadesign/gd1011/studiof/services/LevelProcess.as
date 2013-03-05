@@ -67,7 +67,7 @@ package de.mediadesign.gd1011.studiof.services
 
         ///CHEATS
         public var onlyThreeMobs:Boolean = true;
-        public var bossHaveLowLife:Boolean = false;
+        public var bossHaveLowLife:Boolean = true;
         /////////
 
         private var maxLevel:int = 1;
@@ -288,8 +288,11 @@ package de.mediadesign.gd1011.studiof.services
         {
             _currentLevel+=1;
             stopScrollLevel();
-            var clean_bg:GameEvent = new GameEvent(ViewConsts.CLEAN_BG);
-            dispatcher.dispatchEvent(clean_bg);
+
+
+
+			_bgLayer01.dispose();
+			_bgLayer02.dispose();
 
             deleteCurrentUnit(player);
 

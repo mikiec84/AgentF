@@ -47,6 +47,7 @@ package de.mediadesign.gd1011.studiof.view.mediators
 			if(layer==null)
 			{
 				layer = new Sprite();
+				bgView.bgLayer[layerID] = layer;
 				bgView.addChild(layer);
 			}
 			layer.addChild(event.dataObj);
@@ -56,8 +57,11 @@ package de.mediadesign.gd1011.studiof.view.mediators
 
 		private function clean(event:GameEvent):void
 		{
-			for each (var s:Sprite in bgView.bgLayer)
-				s.dispose();
+			for(var index:String in bgView.bgLayer)
+			{
+				bgView.bgLayer[index].dispose();
+			}
+
 
 		}
 

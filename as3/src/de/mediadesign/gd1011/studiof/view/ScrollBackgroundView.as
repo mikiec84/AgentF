@@ -28,5 +28,10 @@ package de.mediadesign.gd1011.studiof.view
 		{
 			return _tileID;
 		}
-    }
+
+		override public function dispose():void
+		{
+			super.dispose();
+		}
+	}
 }

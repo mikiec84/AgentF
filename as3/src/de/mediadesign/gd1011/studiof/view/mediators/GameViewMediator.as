@@ -94,12 +94,12 @@ package de.mediadesign.gd1011.studiof.view.mediators {
             Starling.juggler.add(doorO as MovieClip);
             doorO.x = GameConsts.STAGE_WIDTH - 890;
             (doorO as MovieClip).stop();
-            contextView.addChild(doorO);
+           // contextView.addChild(doorO);
             doorU = new MovieClip(assets.getTextures("Clack_Low_"),30);
             Starling.juggler.add(doorU as MovieClip);
             doorU.x = GameConsts.STAGE_WIDTH - 890;
             (doorU as MovieClip).stop();
-            contextView.addChild(doorU);
+           // contextView.addChild(doorU);
 
             addContextListener(ViewConsts.HANDLE_DOOR, handleFortDoors)
         }
