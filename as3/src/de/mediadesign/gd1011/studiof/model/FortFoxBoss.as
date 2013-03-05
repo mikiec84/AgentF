@@ -74,7 +74,14 @@ package de.mediadesign.gd1011.studiof.model {
                     if (timeCounter >= idleTimeFrame)
                     {
                         timeCounter = 0;
-                        upMovementRunning = (currentPlatform == 1);
+                        if (currentPlatform == 1)
+                        {
+                            upMovementRunning = true;
+                        }
+                        else
+                        {
+                            downMovementRunning = true;
+                        }
                     }
                 }
                 else

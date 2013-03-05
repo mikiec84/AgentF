@@ -45,7 +45,7 @@ package de.mediadesign.gd1011.studiof.services
         private var _enemieBullets:Vector.<Unit>;
         private var _player:Player;
         private var _boss:IEndboss;
-        private var _currentLevel:int = 1;
+        private var _currentLevel:int = 0;
 
         private var JSONExtractedInformation:Object;
         private var JSONFORT:Object;
@@ -65,7 +65,7 @@ package de.mediadesign.gd1011.studiof.services
         public var collisionTolerance:int; // Wie weit die bullet von der Unit entfernt sein darf um immernoch als treffer zu zählen
 
         ///CHEATS
-        public var onlyThreeMobs:Boolean = false;
+        public var onlyThreeMobs:Boolean = true;
         public var bossHaveLowLife:Boolean = false;
         /////////
 
@@ -126,8 +126,8 @@ package de.mediadesign.gd1011.studiof.services
 
                     if (index2+1 < enemyPositions.length && boss != null && boss.initialized)
                     {
-                        if (boss is NautilusBoss && enemyPositions[index2+1].xPos-enemyPositions[index2].xPos < JSONExtractedInformation["enemyRate"]*JSONNAUT["enemyRate"]
-                                || boss is FortFoxBoss && enemyPositions[index2+1].xPos-enemyPositions[index2].xPos < JSONExtractedInformation["enemyRate"]*JSONFORT["enemyRate"])
+                        if (boss is NautilusBoss && enemyPositions[index2+1].xPos-enemyPositions[index2].xPos < JSONNAUT["enemyRate"]
+                                || boss is FortFoxBoss && enemyPositions[index2+1].xPos-enemyPositions[index2].xPos < JSONFORT["enemyRate"])
 
                             enemyPositions.splice(index2+1, 1);
                     }
