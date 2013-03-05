@@ -96,21 +96,34 @@ package de.mediadesign.gd1011.studiof.services
 
                 if (rules.isDead(level.enemies[i]))
                 {
-                    deleteUnits(level.enemies, i);
+                    deleteUnits(level.enemies, i);/*
                     var updatePointsEvent:GameEvent = new GameEvent(ViewConsts.ENEMY_KILLED);
-                    dispatcher.dispatchEvent(updatePointsEvent);
+                    dispatcher.dispatchEvent(updatePointsEvent);*/
                     break;
                     break;
                 }
             }
             for (var i:int = 0; i < level.enemieBullets.length; i++)
             {
-                rules.collisionDetection(level.player, level.enemieBullets[i]);
+                if (!level.enemieBullets[i].verticalBullet)
+                {
+                    rules.collisionDetection(level.player, level.enemieBullets[i]);
+                }
+                else
+                {
+                    if (level.enemieBullets[i].healthPoints > 0 && level.enemieBullets[i].position.y > level.player.position.y)
+                    {
+                        level.enemieBullets[i].healthPoints-=1;
+                        level.player.healthPoints-=1;
+                        var a:GameEvent = new GameEvent(ViewConsts.EXPLOSION, level.enemieBullets[i]);
+                        dispatcher.dispatchEvent(a);
+                    }
+                }
                 if (rules.isDead(level.enemieBullets[i]))
                 {
-                    deleteUnits(level.enemieBullets, i);
+                    deleteUnits(level.enemieBullets, i);/*
                     var updatePointsEvent:GameEvent = new GameEvent(ViewConsts.ENEMY_KILLED);
-                    dispatcher.dispatchEvent(updatePointsEvent);
+                    dispatcher.dispatchEvent(updatePointsEvent);*/
                     break;
                     break;
                 }

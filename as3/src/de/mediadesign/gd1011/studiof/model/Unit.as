@@ -60,6 +60,7 @@ package de.mediadesign.gd1011.studiof.model
             enemyRange = JSONExtractedInformation["enemyRange"];
             if (verticalBullet)
             {   this.verticalBullet = true;
+                healthPoints = 1;
                 velocity.verticalVelocity = true;
                 velocity.velocityY = 400;
                 velocity.velocityX = 0;
