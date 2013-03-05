@@ -32,21 +32,28 @@ package de.mediadesign.gd1011.studiof.model {
         private var _idleState:Boolean = false;
         private var _ammunition:Vector.<Unit>;
 
+        private var doorState:int = 0;
+
         public function FortFoxBoss(currentLevel:LevelProcess)
         {
             var JSONExtractedInformation:Object = JSONReader.read("enemy")["FORT_FOX"];
             idleXPosition = JSONExtractedInformation["idleXPosition"];
-            super(JSONExtractedInformation["healthpoints"],JSONExtractedInformation["startingPlatform"],0,idleXPosition, currentLevel, false, false, GameConsts.BOSS_SPAWN);
+
+            super(JSONExtractedInformation["healthpoints"],
+                  JSONExtractedInformation["startingPlatform"],
+                  0 ,idleXPosition, currentLevel, false, GameConsts.BOSS_SPAWN);
+
             idleTimeFrame = JSONExtractedInformation["idleTimeFrame"];
             changePosTime = JSONExtractedInformation["changePosTime"];
             backMovementDistance = JSONExtractedInformation["backMovementDistance"];
+
             movementSpeed = Math.round((backMovementDistance*2)/changePosTime);
+
             position.x = idleXPosition+backMovementDistance;
             level = currentLevel;
             healthPoints = JSONExtractedInformation["healthPoints"];
-            if (currentLevel.bossHaveLowLife) {
+            if (currentLevel.bossHaveLowLife)
                 healthPoints = 2;
-            }
         }
 
         public function start():void
@@ -57,52 +64,36 @@ package de.mediadesign.gd1011.studiof.model {
         }
 
         override public function move(time:Number):void
-        {   //trace("Current Platform = "+currentPlatform+", Current X = "+position.x+", Current Y = "+position.y);
-            //trace("DownMovementRunning = "+downMovementRunning+", UpMovementRunning = "+upMovementRunning);
+        {
             currentPlatform = observePlatform(position.y);
-            if (!stopped) {
+            if (!stopped)
+            {
                 if (!upMovementRunning && !downMovementRunning && !_moveLeftRunning && _initialized)
-                {   //trace(timeCounter+", "+idleTimeFrame);
+                {
                     timeCounter+=time;
                     if (timeCounter >= idleTimeFrame)
                     {
                         timeCounter = 0;
-                        if (currentPlatform == 1)
-                        {
-                            upMovementRunning = true;
-                        }
-                        else
-                        {
-                            downMovementRunning = true;
-                        }
+                        upMovementRunning = (currentPlatform == 1);
                     }
                 }
                 else
                 {
-                    if (upMovementRunning) {
+                    if (upMovementRunning)
                         doUpMovement(time);
-                    }
-                    if (downMovementRunning) {
+                    if (downMovementRunning)
                         doDownMovement(time);
-                    }
-                    if (_moveLeftRunning) {
+                    if (_moveLeftRunning)
                         doMoveLeft(time);
-                    }
                 }
             }
-            if (!upMovementRunning && !downMovementRunning && initialized)
-            {
-                _idleState = true;
-            }
-            else
-            {
-                _idleState = false;
-            }
+            _idleState = (!upMovementRunning && !downMovementRunning && initialized);
         }
 
         private function doMoveLeft(time:Number):void
         {
-            if (position.x > idleXPosition) {
+            if (position.x > idleXPosition)
+            {
                 position.x-=movementSpeed*time;
             }
             else
@@ -114,7 +105,8 @@ package de.mediadesign.gd1011.studiof.model {
 
         private function doDownMovement(time:Number):void
         {
-            if (!downMovementRunningBuffer) {
+            if (!downMovementRunningBuffer)
+            {
                 downMovementRunningBuffer = true;
                 var a:GameEvent = new GameEvent(ViewConsts.UPPER_DOOR);
                 level.dispatcher.dispatchEvent(a);
@@ -148,7 +140,8 @@ package de.mediadesign.gd1011.studiof.model {
 
         private function doUpMovement(time:Number):void
         {
-            if (!upMovementRunningBuffer) {
+            if (!upMovementRunningBuffer)
+            {
                 upMovementRunningBuffer = true;
                 var a:GameEvent = new GameEvent(ViewConsts.NETHER_DOOR);
                 level.dispatcher.dispatchEvent(a);
@@ -178,12 +171,24 @@ package de.mediadesign.gd1011.studiof.model {
                 var ac:GameEvent = new GameEvent(ViewConsts.FORT_FOX_BOSS_MOVEMENT);
                 level.dispatcher.dispatchEvent(ac);
             }
-
         }
 
         override public function shoot(time:Number):Unit
         {
             return null;
+        }
+
+
+        public function reset():void
+        {
+            position.x = idleXPosition+backMovementDistance;
+            _initialized = false;
+            healthPoints = JSONExtractedInformation["healthpoints"];
+            position.y = JSONExtractedInformation["startingPlatform"]*GameConsts.PLATFORM_HEIGHT+yOffset;
+        }
+
+        public function update(time:Number):void
+        {
         }
 
         public function get moveLeftRunning():Boolean
@@ -196,31 +201,24 @@ package de.mediadesign.gd1011.studiof.model {
             return _initialized;
         }
 
-        public function reset():void
+
+        public function get scrollLevel():Boolean
         {
-            position.x = idleXPosition+backMovementDistance;
-            _initialized = false;
-            healthPoints = JSONExtractedInformation["healthpoints"];
-            position.y = JSONExtractedInformation["startingPlatform"]*GameConsts.PLATFORM_HEIGHT+yOffset;
-        }
-
-		public function update(time:Number):void
-		{
-		}
-
-        public function get scrollLevel():Boolean {
             return _scrollLevel;
         }
 
-        public function get idleState():Boolean {
+        public function get idleState():Boolean
+        {
             return _idleState;
         }
 
-        public function set idleState(value:Boolean):void {
+        public function set idleState(value:Boolean):void
+        {
             _idleState = value;
         }
 
-        public function get ammunition():Vector.<Unit> {
+        public function get ammunition():Vector.<Unit> 
+        {
             return _ammunition;
         }
     }

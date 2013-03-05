@@ -7,6 +7,7 @@
  */
 package de.mediadesign.gd1011.studiof.model {
     import de.mediadesign.gd1011.studiof.consts.GameConsts;
+    import de.mediadesign.gd1011.studiof.consts.ViewConsts;
     import de.mediadesign.gd1011.studiof.events.GameEvent;
     import de.mediadesign.gd1011.studiof.services.JSONReader;
     import de.mediadesign.gd1011.studiof.services.LevelProcess;
@@ -173,9 +174,9 @@ package de.mediadesign.gd1011.studiof.model {
                 bullet.position.y += 100;
                 _ammunition.push(bullet);
                 cooldown = 0;
+                state = GameConsts.IDLE;
                 return bullet;
             }
-
             return null;
         }
 

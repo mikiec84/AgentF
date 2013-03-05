@@ -44,6 +44,9 @@ package de.mediadesign.gd1011.studiof.view.mediators {
 		[Inject]
 		public var assets:AssetManager;
 
+        private var doorO:MovieClip;
+        private var doorU:MovieClip;
+
 		private var _touchConfig:Object;
 		private var _validTouchID:int = -1;
 		private var _startTouchPos:Point;
@@ -86,6 +89,52 @@ package de.mediadesign.gd1011.studiof.view.mediators {
             var fortUpperLayer:Image = new Image(assets.getTexture("Fort_UpperLayer"));
             fortUpperLayer.x = GameConsts.STAGE_WIDTH - 890;
             contextView.addChildAt(fortUpperLayer, contextView.numChildren-1);
+
+            doorO = new MovieClip(assets.getTextures("Clack_High_"),30);
+            Starling.juggler.add(doorO as MovieClip);
+            doorO.x = GameConsts.STAGE_WIDTH - 890;
+            (doorO as MovieClip).stop();
+            contextView.addChild(doorO);
+            doorU = new MovieClip(assets.getTextures("Clack_Low_"),30);
+            Starling.juggler.add(doorU as MovieClip);
+            doorU.x = GameConsts.STAGE_WIDTH - 890;
+            (doorU as MovieClip).stop();
+            contextView.addChild(doorU);
+
+            addContextListener(ViewConsts.HANDLE_DOOR, handleFortDoors)
+        }
+
+        private function handleFortDoors(event:GameEvent):void
+        {
+            switch (event.dataObj)
+            {
+                case (0):
+                    doorO.stop();
+                    doorU.stop();
+                    break;
+                case (1):
+                    doorO.play();
+                    doorU.stop();
+                    break;
+                case (2):
+                    doorO.currentFrame = 30;
+                    doorO.pause();
+                    doorU.stop();
+                    break;
+                case (3):
+                    break;
+                case (4):
+                    doorO.stop();
+                    doorU.play();
+                    break;
+                case (5):
+                    doorO.stop();
+                    doorU.currentFrame = 30;
+                    doorU.pause();
+                    break;
+                case (6):
+                    break;
+            }
         }
 
         public function addWater(event:GameEvent):void

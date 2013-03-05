@@ -122,6 +122,7 @@ package de.mediadesign.gd1011.studiof.view
 			assets.enqueue(FlyCoon_texture);
 			assets.enqueue(SwimCoon_texture);
 
+            assets.enqueue(ClackLow);
             assets.enqueue(ClackHigh);
             assets.enqueue(FortFoxHigh);
             assets.enqueue(Fort_BackLayer);
@@ -157,6 +158,7 @@ package de.mediadesign.gd1011.studiof.view
 			assets.enqueue("config/atlasxml/FlyCoon_texture.xml");
 			assets.enqueue("config/atlasxml/SwimCoon_texture.xml");
 
+            assets.enqueue("config/atlasxml/ClackLow.xml");
             assets.enqueue("config/atlasxml/ClackHigh.xml");
             assets.enqueue("config/atlasxml/FortFoxHigh.xml");
 

@@ -45,8 +45,7 @@ package de.mediadesign.gd1011.studiof.services
         private var _enemieBullets:Vector.<Unit>;
         private var _player:Player;
         private var _boss:IEndboss;
-        private var _currentLevel:int = 0;
-        private var allUnitsStopped:Boolean = false;
+        private var _currentLevel:int = 1;
 
         private var JSONExtractedInformation:Object;
         private var JSONFORT:Object;
@@ -55,6 +54,9 @@ package de.mediadesign.gd1011.studiof.services
         private var _bgLayer01:BGScroller;
         private var _bgLayer02:BGScroller;
 
+
+        private var allUnitsStopped:Boolean = false;
+        private var gameIsOver:Boolean = false;
         private var _scrollLevel:Boolean = true;
 
         public var currentXKoord:int = GameConsts.STAGE_WIDTH;
@@ -63,13 +65,12 @@ package de.mediadesign.gd1011.studiof.services
         public var collisionTolerance:int; // Wie weit die bullet von der Unit entfernt sein darf um immernoch als treffer zu zählen
 
         ///CHEATS
-        public var onlyThreeMobs:Boolean = true;
+        public var onlyThreeMobs:Boolean = false;
         public var bossHaveLowLife:Boolean = false;
         /////////
 
-        private var lastState:String;
         private var maxLevel:int = 1;
-        private var gameIsOver:Boolean = false;
+
         private var bossEnemiesSpawnCounter:int = 0;
 
         public function LevelProcess()
@@ -116,17 +117,19 @@ package de.mediadesign.gd1011.studiof.services
 
             for (var index2:int = 0; index2<enemyPositions.length; index2++)
             {
-                if ((_enemySequence[index2] != 6 || boss.initialized) && enemyPositions[index2].xPos < currentXKoord && !enemyPositions[index2].spawned)
+                if ((_enemySequence[index2] != 6 || boss.initialized)
+                        && enemyPositions[index2].xPos < currentXKoord
+                        && !enemyPositions[index2].spawned)
                 {
                     enemyPositions[index2].spawned = true;
                     createAndShowEnemy(index2);
-                    if (index2+1 < enemyPositions.length && boss != null && boss.initialized && boss is NautilusBoss && enemyPositions[index2+1].xPos-enemyPositions[index2].xPos < JSONExtractedInformation["enemyRate"]*JSONNAUT["enemyRate"])
+
+                    if (index2+1 < enemyPositions.length && boss != null && boss.initialized)
                     {
-                        enemyPositions.splice(index2+1, 1);
-                    }
-                    if (index2+1 < enemyPositions.length && boss != null && boss.initialized && boss is FortFoxBoss && enemyPositions[index2+1].xPos-enemyPositions[index2].xPos < JSONExtractedInformation["enemyRate"]*JSONFORT["enemyRate"])
-                    {
-                        enemyPositions.splice(index2+1, 1);
+                        if (boss is NautilusBoss && enemyPositions[index2+1].xPos-enemyPositions[index2].xPos < JSONExtractedInformation["enemyRate"]*JSONNAUT["enemyRate"]
+                                || boss is FortFoxBoss && enemyPositions[index2+1].xPos-enemyPositions[index2].xPos < JSONExtractedInformation["enemyRate"]*JSONFORT["enemyRate"])
+
+                            enemyPositions.splice(index2+1, 1);
                     }
                 }
             }
@@ -271,12 +274,12 @@ package de.mediadesign.gd1011.studiof.services
             }
 
 
-            if (lastState != player.state)
+            if (player.lastState != player.state)
             {
                 var changeStateEvent:GameEvent = new GameEvent(GameConsts.CHANGE_STATE, player);
                 dispatcher.dispatchEvent(changeStateEvent);
             }
-            lastState = player.state;
+            player.lastState = player.state;
         }
 
         private function initNextLevel():void
@@ -313,13 +316,39 @@ package de.mediadesign.gd1011.studiof.services
             newLevel(_currentLevel);
         }
 
+        public function deleteEndboss(unit:IEndboss):void
+        {
+            var view:Sprite = null;
 
+            // delete Renderable in Vector
+            for (var i:int = new int(); i < renderProcess.targets.length; i++)
+            {
+                if (unit.position == renderProcess.targets[i].position)
+                {
+                    view = renderProcess.targets[i].view;
+                    renderProcess.deleteRenderable(i);
+                }
+            }
 
+            // delete Movable in Vector
+            for (var i:int = 0; i < moveProcess.targets.length; i++)
+            {
+                if (moveProcess.targets[i] is Unit && unit.position == (moveProcess.targets[i] as Unit).position)
+                {
+                    moveProcess.removeEntity(i);
+                }
+            }
 
+            if (view != null)
+            {
+                var removeFromGameEvent:GameEvent = new GameEvent(ViewConsts.REMOVE_SPRITE_FROM_GAME, view);
+                dispatcher.dispatchEvent(removeFromGameEvent);
+            }
+        }
 
         public function newLevel(currentLevel:int):void
         {
-            if (currentLevel == 1)
+            if (currentLevel == 0)
             {
                 if (assets.getTexture("TileSystemLevel2_1") != null)
                 {
@@ -329,7 +358,7 @@ package de.mediadesign.gd1011.studiof.services
                 var ab:GameEvent = new GameEvent(ViewConsts.LOAD_LEVEL1);
                 dispatcher.dispatchEvent(ab);
             }
-            else if (currentLevel == 2)
+            else if (currentLevel == 1)
             {
                 if (assets.getTexture("TileSystemLevel1_1") != null)
                 {
@@ -490,36 +519,6 @@ package de.mediadesign.gd1011.studiof.services
             dispatcher.dispatchEvent(deleteUnitEvent);
         }
 
-        public function deleteEndboss(unit:IEndboss):void
-        {
-            var view:Sprite = null;
-
-            // delete Renderable in Vector
-            for (var i:int = new int(); i < renderProcess.targets.length; i++)
-            {
-                if (unit.position == renderProcess.targets[i].position)
-                {
-                    view = renderProcess.targets[i].view;
-                    renderProcess.deleteRenderable(i);
-                }
-            }
-
-            // delete Movable in Vector
-            for (var i:int = 0; i < moveProcess.targets.length; i++)
-            {
-                if (moveProcess.targets[i] is Unit && unit.position == (moveProcess.targets[i] as Unit).position)
-                {
-                    moveProcess.removeEntity(i);
-                }
-            }
-
-            if (view != null)
-            {
-                var removeFromGameEvent:GameEvent = new GameEvent(ViewConsts.REMOVE_SPRITE_FROM_GAME, view);
-                dispatcher.dispatchEvent(removeFromGameEvent);
-            }
-        }
-
         public function stopScrollLevel():void
         {
             _scrollLevel = false;
@@ -566,10 +565,6 @@ package de.mediadesign.gd1011.studiof.services
         public function set enemieBullets(value:Vector.<Unit>):void
         {
             _enemieBullets = value;
-        }
-
-        public function set player(value:Player):void {
-            _player = value;
         }
     }
 }

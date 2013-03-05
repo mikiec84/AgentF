@@ -32,8 +32,11 @@ package de.mediadesign.gd1011.studiof.view
 
         public function setNormal():void
         {
-            var img:Image = Image(getChildAt(0));
-            img.color = 0xFFFFFF;
+            if (numChildren > 0)
+            {
+                var img:Image = Image(getChildAt(0));
+                img.color = 0xFFFFFF;
+            }
         }
 
         public function get ID():String

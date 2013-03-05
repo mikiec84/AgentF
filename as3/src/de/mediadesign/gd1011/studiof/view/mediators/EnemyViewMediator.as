@@ -10,8 +10,6 @@ package de.mediadesign.gd1011.studiof.view.mediators
     import de.mediadesign.gd1011.studiof.consts.GameConsts;
     import de.mediadesign.gd1011.studiof.consts.ViewConsts;
     import de.mediadesign.gd1011.studiof.events.GameEvent;
-    import de.mediadesign.gd1011.studiof.model.Player;
-    import de.mediadesign.gd1011.studiof.model.Unit;
     import de.mediadesign.gd1011.studiof.view.EnemyView;
 
     import flash.events.IEventDispatcher;
@@ -136,6 +134,7 @@ package de.mediadesign.gd1011.studiof.view.mediators
                         currentImg = images[2];
                         break;
                 }
+                (currentImg as MovieClip).currentFrame = 0;
                 (currentImg as MovieClip).play();
                 enemyView.addChild(currentImg);
             }
