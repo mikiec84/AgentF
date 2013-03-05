@@ -15,6 +15,7 @@ package de.mediadesign.gd1011.studiof.consts
         public static const BOSS_SPAWN:String     = "BOSS_SPAWN";
         public static const NAUTILUS:String     = "NAUTILUS";
 
+        public static const SPAWN_FORT_FOX_COMMAND:String = "SPAWN_FORT_FOX_COMMAND";
         public static const REGISTER_UNIT:String = "REGISTER_UNIT";
         public static const DELETE_UNIT:String = "DELETE_UNIT";
         public static const DAMAGE_UNIT:String = "DAMAGE_UNIT";

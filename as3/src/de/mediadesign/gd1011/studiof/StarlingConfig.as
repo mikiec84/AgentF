@@ -15,7 +15,8 @@ package de.mediadesign.gd1011.studiof
 	import de.mediadesign.gd1011.studiof.command.RegisterBulletCommand;
 	import de.mediadesign.gd1011.studiof.command.RemoveFromMoveprocessCommand;
 	import de.mediadesign.gd1011.studiof.command.SpawnBossCommand;
-	import de.mediadesign.gd1011.studiof.consts.GameConsts;
+    import de.mediadesign.gd1011.studiof.command.SpawnFortFoxCommand;
+    import de.mediadesign.gd1011.studiof.consts.GameConsts;
 	import de.mediadesign.gd1011.studiof.model.LevelConfiguration;
 	import de.mediadesign.gd1011.studiof.model.Score;
 	import de.mediadesign.gd1011.studiof.services.CollisionProcess;
@@ -95,7 +96,8 @@ package de.mediadesign.gd1011.studiof
             commandMap.map(GameConsts.DAMAGE_UNIT).toCommand(DamageUnitCommand);
             commandMap.map(GameConsts.BOSS_SPAWN).toCommand(SpawnBossCommand);
             commandMap.map(GameConsts.CHANGE_STATE).toCommand(ChangeUnitStateCommand);
-			commandMap.map(GameConsts.REMOVE_FROM_MOVEPROCESS).toCommand(RemoveFromMoveprocessCommand);
+            commandMap.map(GameConsts.REMOVE_FROM_MOVEPROCESS).toCommand(RemoveFromMoveprocessCommand);
+            commandMap.map(GameConsts.SPAWN_FORT_FOX_COMMAND).toCommand(SpawnFortFoxCommand);
         }
 
         public function initMediators() : void
