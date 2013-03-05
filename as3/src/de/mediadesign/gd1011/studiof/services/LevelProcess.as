@@ -240,7 +240,10 @@ package de.mediadesign.gd1011.studiof.services
             if (boss.healthPoints <= 0 && boss.initialized)
             {
                 if (currentLevel != maxLevel) {
-                    initNextLevel();
+                    _currentLevel+=1;
+                    clearLevel();
+                    var a:GameEvent = new GameEvent(ViewConsts.SHOW_HIGHSCORE);
+                    dispatcher.dispatchEvent(a);
                 }
                 else
                 {
@@ -284,12 +287,9 @@ package de.mediadesign.gd1011.studiof.services
             player.lastState = player.state;
         }
 
-        private function initNextLevel():void
+        private function clearLevel():void
         {
-            _currentLevel+=1;
             stopScrollLevel();
-
-
 
 			_bgLayer01.dispose();
 			_bgLayer02.dispose();
@@ -318,7 +318,6 @@ package de.mediadesign.gd1011.studiof.services
             {
                 enemyPositions.pop();
             }
-            newLevel(_currentLevel);
         }
 
         public function deleteEndboss(unit:IEndboss):void
@@ -373,10 +372,10 @@ package de.mediadesign.gd1011.studiof.services
                 var ab:GameEvent = new GameEvent(ViewConsts.LOAD_LEVEL2);
                 dispatcher.dispatchEvent(ab);
             }
-            initTheLevel();
+            initializeLevel();
         }
 
-        public function initTheLevel():void
+        public function initializeLevel():void
         {
 
             setPlayer(new Player(this));

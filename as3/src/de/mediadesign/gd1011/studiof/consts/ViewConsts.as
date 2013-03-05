@@ -10,6 +10,7 @@ package de.mediadesign.gd1011.studiof.consts
 	public class ViewConsts
 	{
         public static const ADD_WATER_TO_GAME = "ADD_WATER_TO_GAME";
+        public static const SHOW_HIGHSCORE = "SHOW_HIGHSCORE";
 
 		public static const INIT_GAMEVIEW:String = "INIT_GAMEVIEW";
 		public static const UPDATE_LIFEPOINTS:String = "UPDATE_LIFEPOINTS";
