@@ -77,7 +77,6 @@ package de.mediadesign.gd1011.studiof.services
         public function LevelProcess()
         {
             JSONExtractedInformation = JSONReader.read("enemy")["ENEMY"];
-            collisionTolerance = JSONExtractedInformation["collisionTolerance"];
             JSONFORT = JSONReader.read("enemy")["FORT_FOX"];
             JSONNAUT = JSONReader.read("enemy")["NAUTILUS"];
             trace("JSONFORT:",JSONFORT["enemyRate"],"JSONNAUT:",JSONNAUT["enemyRate"]);
