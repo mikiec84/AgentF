@@ -109,6 +109,17 @@ package starling.utils
             sNames.length = 0;
             return result;
         }
+
+		public function getTexturesReverse(prefix:String="", result:Vector.<Texture>=null):Vector.<Texture>
+		{
+			if (result == null) result = new <Texture>[];
+
+			for each (var name:String in getTextureNames(prefix, sNames))
+				result.push(getTexture(name));
+			result = result.reverse();
+			sNames.length = 0;
+			return result;
+		}
         
         /** Returns all texture names that start with a certain string, sorted alphabetically. */
         public function getTextureNames(prefix:String="", result:Vector.<String>=null):Vector.<String>
@@ -196,6 +207,11 @@ package starling.utils
 		public function getImage(name:String):Image
 		{
 			return new Image(getTexture(name));
+		}
+
+		public function getMCReverse(name:String):Image
+		{
+			return new MovieClip(getTexturesReverse(name),30);
 		}
 
 		public function getAsset(name:String):Image
