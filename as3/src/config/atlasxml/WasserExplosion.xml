@@ -2,16 +2,16 @@
 <!-- Created with TexturePacker http://texturepacker.com-->
 <!-- $TexturePacker:SmartUpdate:572343d723942b57d9950ed2e19d34ba$ -->
 <TextureAtlas imagePath="WasserExplosion.png">
-    <SubTexture name="wExp_01" x="1962" y="500" width="82" height="86" frameX="-215" frameY="-213" frameWidth="512" frameHeight="512"/>
-    <SubTexture name="wExp_02" x="516" y="818" width="270" height="268" frameX="-115" frameY="-118" frameWidth="512" frameHeight="512"/>
-    <SubTexture name="wExp_03" x="1544" y="500" width="416" height="418" frameX="-46" frameY="-43" frameWidth="512" frameHeight="512"/>
-    <SubTexture name="wExp_04" x="2" y="516" width="512" height="512"/>
-    <SubTexture name="wExp_05" x="1544" y="2" width="496" height="496" frameX="-4" frameY="0" frameWidth="512" frameHeight="512"/>
-    <SubTexture name="wExp_06" x="516" y="2" width="512" height="498" frameX="0" frameY="0" frameWidth="512" frameHeight="512"/>
-    <SubTexture name="wExp_07" x="2" y="1540" width="512" height="506" frameX="0" frameY="0" frameWidth="512" frameHeight="512"/>
-    <SubTexture name="wExp_08" x="2" y="2" width="512" height="512"/>
-    <SubTexture name="wExp_09" x="2" y="1030" width="512" height="508" frameX="0" frameY="0" frameWidth="512" frameHeight="512"/>
-    <SubTexture name="wExp_10" x="1030" y="2" width="512" height="450" frameX="0" frameY="0" frameWidth="512" frameHeight="512"/>
-    <SubTexture name="wExp_11" x="1030" y="454" width="512" height="366" frameX="0" frameY="0" frameWidth="512" frameHeight="512"/>
-    <SubTexture name="wExp_12" x="516" y="502" width="512" height="314" frameX="0" frameY="0" frameWidth="512" frameHeight="512"/>
+    <SubTexture name="wExp_00" x="1962" y="500" width="82" height="86" frameX="-215" frameY="-213" frameWidth="512" frameHeight="512"/>
+    <SubTexture name="wExp_01" x="516" y="818" width="270" height="268" frameX="-115" frameY="-118" frameWidth="512" frameHeight="512"/>
+    <SubTexture name="wExp_02" x="1544" y="500" width="416" height="418" frameX="-46" frameY="-43" frameWidth="512" frameHeight="512"/>
+    <SubTexture name="wExp_03" x="2" y="516" width="512" height="512"/>
+    <SubTexture name="wExp_04" x="1544" y="2" width="496" height="496" frameX="-4" frameY="0" frameWidth="512" frameHeight="512"/>
+    <SubTexture name="wExp_05" x="516" y="2" width="512" height="498" frameX="0" frameY="0" frameWidth="512" frameHeight="512"/>
+    <SubTexture name="wExp_06" x="2" y="1540" width="512" height="506" frameX="0" frameY="0" frameWidth="512" frameHeight="512"/>
+    <SubTexture name="wExp_07" x="2" y="2" width="512" height="512"/>
+    <SubTexture name="wExp_08" x="2" y="1030" width="512" height="508" frameX="0" frameY="0" frameWidth="512" frameHeight="512"/>
+    <SubTexture name="wExp_09" x="1030" y="2" width="512" height="450" frameX="0" frameY="0" frameWidth="512" frameHeight="512"/>
+    <SubTexture name="wExp_10" x="1030" y="454" width="512" height="366" frameX="0" frameY="0" frameWidth="512" frameHeight="512"/>
+    <SubTexture name="wExp_11" x="516" y="502" width="512" height="314" frameX="0" frameY="0" frameWidth="512" frameHeight="512"/>
 </TextureAtlas>

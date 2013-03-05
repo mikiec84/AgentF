@@ -2,16 +2,16 @@
 <!-- Created with TexturePacker http://texturepacker.com-->
 <!-- $TexturePacker:SmartUpdate:2f5ec9c678eb78a7a947571ddc04ded3$ -->
 <TextureAtlas imagePath="FassExplosion.png">
-    <SubTexture name="exp_01" x="818" y="916" width="126" height="64" frameX="-178" frameY="-368" frameWidth="512" frameHeight="512"/>
-    <SubTexture name="exp_02" x="732" y="1662" width="212" height="94" frameX="-140" frameY="-340" frameWidth="512" frameHeight="512"/>
-    <SubTexture name="exp_03" x="408" y="1662" width="322" height="178" frameX="-93" frameY="-285" frameWidth="512" frameHeight="512"/>
-    <SubTexture name="exp_04" x="2" y="1648" width="404" height="304" frameX="-53" frameY="-178" frameWidth="512" frameHeight="512"/>
-    <SubTexture name="exp_05" x="516" y="494" width="474" height="420" frameX="-30" frameY="-79" frameWidth="512" frameHeight="512"/>
-    <SubTexture name="exp_06" x="516" y="2" width="480" height="490" frameX="-23" frameY="-5" frameWidth="512" frameHeight="512"/>
-    <SubTexture name="exp_07" x="2" y="2" width="512" height="502" frameX="0" frameY="-5" frameWidth="512" frameHeight="512"/>
-    <SubTexture name="exp_08" x="2" y="900" width="406" height="392" frameX="-41" frameY="0" frameWidth="512" frameHeight="512"/>
-    <SubTexture name="exp_09" x="2" y="506" width="406" height="392" frameX="-40" frameY="0" frameWidth="512" frameHeight="512"/>
-    <SubTexture name="exp_10" x="410" y="916" width="406" height="374" frameX="-40" frameY="-4" frameWidth="512" frameHeight="512"/>
-    <SubTexture name="exp_11" x="410" y="1292" width="404" height="368" frameX="-40" frameY="0" frameWidth="512" frameHeight="512"/>
-    <SubTexture name="exp_12" x="2" y="1294" width="404" height="352" frameX="-40" frameY="0" frameWidth="512" frameHeight="512"/>
+    <SubTexture name="exp_00" x="818" y="916" width="126" height="64" frameX="-178" frameY="-368" frameWidth="512" frameHeight="512"/>
+    <SubTexture name="exp_01" x="732" y="1662" width="212" height="94" frameX="-140" frameY="-340" frameWidth="512" frameHeight="512"/>
+    <SubTexture name="exp_02" x="408" y="1662" width="322" height="178" frameX="-93" frameY="-285" frameWidth="512" frameHeight="512"/>
+    <SubTexture name="exp_03" x="2" y="1648" width="404" height="304" frameX="-53" frameY="-178" frameWidth="512" frameHeight="512"/>
+    <SubTexture name="exp_04" x="516" y="494" width="474" height="420" frameX="-30" frameY="-79" frameWidth="512" frameHeight="512"/>
+    <SubTexture name="exp_05" x="516" y="2" width="480" height="490" frameX="-23" frameY="-5" frameWidth="512" frameHeight="512"/>
+    <SubTexture name="exp_06" x="2" y="2" width="512" height="502" frameX="0" frameY="-5" frameWidth="512" frameHeight="512"/>
+    <SubTexture name="exp_07" x="2" y="900" width="406" height="392" frameX="-41" frameY="0" frameWidth="512" frameHeight="512"/>
+    <SubTexture name="exp_08" x="2" y="506" width="406" height="392" frameX="-40" frameY="0" frameWidth="512" frameHeight="512"/>
+    <SubTexture name="exp_09" x="410" y="916" width="406" height="374" frameX="-40" frameY="-4" frameWidth="512" frameHeight="512"/>
+    <SubTexture name="exp_10" x="410" y="1292" width="404" height="368" frameX="-40" frameY="0" frameWidth="512" frameHeight="512"/>
+    <SubTexture name="exp_11" x="2" y="1294" width="404" height="352" frameX="-40" frameY="0" frameWidth="512" frameHeight="512"/>
 </TextureAtlas>
