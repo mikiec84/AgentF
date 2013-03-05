@@ -13,6 +13,7 @@ package de.mediadesign.gd1011.studiof
 	import de.mediadesign.gd1011.studiof.command.DeleteUnitCommand;
 	import de.mediadesign.gd1011.studiof.command.InitGameCommand;
 	import de.mediadesign.gd1011.studiof.command.RegisterBulletCommand;
+	import de.mediadesign.gd1011.studiof.command.RemoveFromMoveprocessCommand;
 	import de.mediadesign.gd1011.studiof.command.SpawnBossCommand;
 	import de.mediadesign.gd1011.studiof.consts.GameConsts;
 	import de.mediadesign.gd1011.studiof.model.LevelConfiguration;
@@ -94,6 +95,7 @@ package de.mediadesign.gd1011.studiof
             commandMap.map(GameConsts.DAMAGE_UNIT).toCommand(DamageUnitCommand);
             commandMap.map(GameConsts.BOSS_SPAWN).toCommand(SpawnBossCommand);
             commandMap.map(GameConsts.CHANGE_STATE).toCommand(ChangeUnitStateCommand);
+			commandMap.map(GameConsts.REMOVE_FROM_MOVEPROCESS).toCommand(RemoveFromMoveprocessCommand);
         }
 
         public function initMediators() : void

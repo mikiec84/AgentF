@@ -11,7 +11,8 @@ package de.mediadesign.gd1011.studiof.model
     import de.mediadesign.gd1011.studiof.consts.ViewConsts;
     import de.mediadesign.gd1011.studiof.model.components.PositionComponent;
     import de.mediadesign.gd1011.studiof.services.JSONReader;
-    import de.mediadesign.gd1011.studiof.view.BulletView;
+	import de.mediadesign.gd1011.studiof.services.RenderProcess;
+	import de.mediadesign.gd1011.studiof.view.BulletView;
     import de.mediadesign.gd1011.studiof.view.EnemyView;
 
     import starling.display.Sprite;
@@ -25,6 +26,8 @@ package de.mediadesign.gd1011.studiof.model
         private var flyingOffset:int;
         private var swimmingOffset:int;
 
+		private var _process:RenderProcess;
+
         public function Renderable(pos:PositionComponent, view:Sprite)
         {
             this.position = pos;
@@ -34,6 +37,11 @@ package de.mediadesign.gd1011.studiof.model
             swimmingOffset = JSONExtractedInformation["Swimming"];
 
         }
+
+		public function set renderer(renderProcess:RenderProcess):void
+		{
+			_process = renderProcess;
+		}
 
         public function render(time:Number):void
         {
@@ -68,5 +76,11 @@ package de.mediadesign.gd1011.studiof.model
             //trace(newEbene+","+y);
             return newEbene;
         }
+
+		public function dispose():void
+		{
+			if(_process != null)
+				_process.deleteRenderable(this);
+		}
     }
 }

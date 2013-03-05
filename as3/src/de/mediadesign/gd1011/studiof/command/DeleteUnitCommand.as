@@ -49,7 +49,7 @@ package de.mediadesign.gd1011.studiof.command
                 if (unit.position == renderProcess.targets[i].position)
                 {
                     view = renderProcess.targets[i].view;
-                    renderProcess.deleteRenderable(i);
+                    renderProcess.deleteRenderableByID(i);
                 }
             }
 

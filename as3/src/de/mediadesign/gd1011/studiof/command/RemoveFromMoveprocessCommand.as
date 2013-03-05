@@ -22,35 +22,19 @@ package de.mediadesign.gd1011.studiof.command
 
 	import starling.display.Sprite;
 
-	public class CreateBackgroundCommand extends Command
+	public class RemoveFromMoveprocessCommand extends Command
     {
         [Inject]
         public var moveProcess:MoveProcess;
 
         [Inject]
-        public var renderProcess:RenderProcess;
-
-        [Inject]
         public var event:GameEvent;
 
-        [Inject]
-        public var dispatcher:IEventDispatcher;
-
-        [Inject]
-        public var level:LevelProcess;
 
         override public function execute():void
         {
             var bg:BGTile = event.dataObj;
-			var view:Sprite = new ScrollBackgroundView(bg.layerID, bg.tileID);
-
-            moveProcess.addEntity(bg);
-			var r:Renderable = new Renderable(bg.position, view);
-			bg.renderable = r;
-            renderProcess.registerRenderable(r);
-
-            var addToBGEvent:GameEvent = new GameEvent(ViewConsts.ADD_BG, view);
-            dispatcher.dispatchEvent(addToBGEvent);
+			moveProcess.removeEntity(bg);
         }
     }
 }

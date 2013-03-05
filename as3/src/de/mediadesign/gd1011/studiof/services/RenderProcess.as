@@ -27,10 +27,15 @@ package de.mediadesign.gd1011.studiof.services
             targets.push(render);
         }
 
-        public function deleteRenderable(i:int):void
+        public function deleteRenderableByID(i:int):void
         {
             targets.splice(i, 1);
         }
+
+		public function deleteRenderable(r:Renderable):void
+		{
+			targets.splice(targets.indexOf(r),1);
+		}
 
         public function update(time:Number):void
         {

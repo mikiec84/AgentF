@@ -17,6 +17,7 @@ package de.mediadesign.gd1011.studiof.model
         private var _velocity:VelocityComponent;
 		private var _layerID:String;
 		private var _tileID:int;
+		private var _renderable:Renderable;
 		private var moving:Boolean = true;
 
         public function BGTile(layerID:String, tileID:int)
@@ -74,7 +75,12 @@ package de.mediadesign.gd1011.studiof.model
 
 		public function dispose():void
 		{
+			_renderable.dispose();
+		}
 
+		public function set renderable(r:Renderable):void
+		{
+			_renderable = r;
 		}
     }
 }

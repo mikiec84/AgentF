@@ -42,7 +42,11 @@ package de.mediadesign.gd1011.studiof.model
 		public function dispose():void
 		{
 			for each (var bg:BGTile in _scrollBGs)
+			{
 				bg.dispose();
+				_dispatcher.dispatchEvent(new GameEvent(GameConsts.REMOVE_FROM_MOVEPROCESS, bg));
+			}
+
 			_dispatcher.dispatchEvent(new GameEvent(ViewConsts.CLEAN_BG));
 		}
 
