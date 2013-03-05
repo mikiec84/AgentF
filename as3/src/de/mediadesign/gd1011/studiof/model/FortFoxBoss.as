@@ -107,6 +107,8 @@ package de.mediadesign.gd1011.studiof.model {
             {
                 var a:GameEvent = new GameEvent(ViewConsts.UPPER_DOOR);
                 level.dispatcher.dispatchEvent(a);
+                var ac:GameEvent = new GameEvent(ViewConsts.FORT_FOX_BOSS_MOVEMENT);
+                level.dispatcher.dispatchEvent(ac);
                 _moveLeftRunning = false;
                 _initialized      = true;
             }
