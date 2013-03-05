@@ -9,6 +9,7 @@ package de.mediadesign.gd1011.studiof.services
 {
     import de.mediadesign.gd1011.studiof.consts.GameConsts;
     import de.mediadesign.gd1011.studiof.consts.ViewConsts;
+    import de.mediadesign.gd1011.studiof.consts.ViewConsts;
     import de.mediadesign.gd1011.studiof.events.GameEvent;
     import de.mediadesign.gd1011.studiof.model.*;
     import de.mediadesign.gd1011.studiof.model.components.EnemyInitPositioning;
@@ -69,7 +70,7 @@ package de.mediadesign.gd1011.studiof.services
         public var collisionTolerance:int; // Wie weit die bullet von der Unit entfernt sein darf um immernoch als treffer zu zählen
 
         ///CHEATS
-        public var onlyThreeMobs:Boolean = true;
+        public var onlyThreeMobs:Boolean = false;
         public var bossHaveLowLife:Boolean = true;
         /////////
 
@@ -270,7 +271,14 @@ package de.mediadesign.gd1011.studiof.services
                 {
                     if (!boss.scrollLevel)
                         stopScrollLevel();
-                    spawnBoss();
+                    if (boss is FortFoxBoss) {
+                        var a:GameEvent = new GameEvent(ViewConsts.SPAWN_FORT_FOX)
+                        dispatcher.dispatchEvent(a);
+                    }
+                    else
+                    {
+                        spawnBoss();
+                    }
                 }
             }
         }
