@@ -41,6 +41,9 @@ package de.mediadesign.gd1011.studiof.services
         [Inject]
         public var assets:AssetManager;
 
+        [Inject]
+        public var score:Score;
+
         private var _running:Boolean = true;
         private var _enemies:Vector.<Unit>;
         private var _enemieBullets:Vector.<Unit>;
@@ -157,7 +160,7 @@ package de.mediadesign.gd1011.studiof.services
         {
             for (var index:int = 0; index<enemieBullets.length; index++)
             {
-                if (enemieBullets[index].position.x < -300)
+                if (enemieBullets[index].position.x < -300 || enemieBullets[index].position.y > GameConsts.STAGE_HEIGHT+200)
                 {
                     deleteCurrentUnit(enemieBullets[index]);
                     enemieBullets.splice(index,  1);
@@ -165,7 +168,7 @@ package de.mediadesign.gd1011.studiof.services
             }
             for (var index2:int = 0; index2<enemies.length; index2++)
             {
-                if (enemies[index2].position.x < -300)
+                if (enemies[index2].position.x < -300 || enemies[index2].position.y > GameConsts.STAGE_HEIGHT+200)
                 {
                     deleteCurrentUnit(enemies[index2]);
                     enemies.splice(index2,  1);
@@ -173,7 +176,7 @@ package de.mediadesign.gd1011.studiof.services
             }
             for (var index3:int = 0; index3<player.ammunition.length; index3++)
             {
-                if (player.ammunition[index3].position.x > GameConsts.STAGE_WIDTH+300)
+                if (player.ammunition[index3].position.x > GameConsts.STAGE_WIDTH+300 || player.ammunition[index3].position.y > GameConsts.STAGE_HEIGHT+200)
                 {
                     deleteCurrentUnit(player.ammunition[index3]);
                     player.ammunition.splice(index3,  1);
@@ -183,7 +186,7 @@ package de.mediadesign.gd1011.studiof.services
             {
                 for (var index4:int = 0; index4<boss.ammunition.length; index4++)
                 {
-                    if (boss.ammunition[index4].position.x < -300)
+                    if (boss.ammunition[index4].position.x < -300 || boss.ammunition[index4].position.y > GameConsts.STAGE_HEIGHT+200)
                     {
                         deleteCurrentUnit(boss.ammunition[index4]);
                         boss.ammunition.splice(index4, 1);
@@ -245,7 +248,10 @@ package de.mediadesign.gd1011.studiof.services
             if (boss.healthPoints <= 0 && boss.initialized)
             {
                 if (currentLevel != maxLevel) {
-                    initNextLevel();
+                    _currentLevel+=1;
+                    clearLevel();
+                    var a:GameEvent = new GameEvent(ViewConsts.SHOW_HIGHSCORE, score);
+                    dispatcher.dispatchEvent(a);
                 }
                 else
                 {
@@ -291,12 +297,9 @@ package de.mediadesign.gd1011.studiof.services
             player.lastState = player.state;
         }
 
-        private function initNextLevel():void
+        private function clearLevel():void
         {
-            _currentLevel+=1;
             stopScrollLevel();
-
-
 
 			_bgLayer01.dispose();
 			_bgLayer02.dispose();
@@ -325,7 +328,6 @@ package de.mediadesign.gd1011.studiof.services
             {
                 enemyPositions.pop();
             }
-            newLevel(_currentLevel);
         }
 
         public function deleteEndboss(unit:IEndboss):void
@@ -380,10 +382,10 @@ package de.mediadesign.gd1011.studiof.services
                 var ab:GameEvent = new GameEvent(ViewConsts.LOAD_LEVEL2);
                 dispatcher.dispatchEvent(ab);
             }
-            initTheLevel();
+            initializeLevel();
         }
 
-        public function initTheLevel():void
+        public function initializeLevel():void
         {
 
             setPlayer(new Player(this));
