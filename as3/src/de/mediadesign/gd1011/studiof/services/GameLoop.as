@@ -19,7 +19,8 @@ package de.mediadesign.gd1011.studiof.services
 
         public function registerProcess(process:IProcess):void
         {
-            _processes.push(process);
+			if(_processes.indexOf(process) == -1)
+            	_processes.push(process);
         }
 
         public function update(e:EnterFrameEvent):void
