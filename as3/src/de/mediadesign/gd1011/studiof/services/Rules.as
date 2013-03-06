@@ -76,7 +76,7 @@ package de.mediadesign.gd1011.studiof.services
                 collisionTolerance = JSONNAUT["collisionTolerance"];
             }
 
-            if (unit2.position.x < GameConsts.STAGE_WIDTH)
+            if (unit2.position.x < GameConsts.STAGE_WIDTH - 50)
             {
                 if (unit1.currentPlatform == unit2.currentPlatform
                         && unit1.position.x + collisionTolerance >= unit2.position.x)

@@ -76,9 +76,13 @@ package de.mediadesign.gd1011.studiof.services
 
                     if (rules.isDead(level.enemies[j]))
                     {
-                        var updatePointsEvent:GameEvent = new GameEvent(ViewConsts.ENEMY_KILLED);
-                        dispatcher.dispatchEvent(updatePointsEvent);
-                        level.currentScore+=1;
+                        if (!level.boss.initialized)
+                        {
+                            level.currentScore+=1;
+                            var updatePointsEvent:GameEvent = new GameEvent(ViewConsts.ENEMY_KILLED, level.currentScore);
+                            dispatcher.dispatchEvent(updatePointsEvent);
+                        }
+
                         if (level.enemies[j].currentPlatform == 2)
                         {
                             var explosionEvent:GameEvent = new GameEvent(ViewConsts.EXPLOSION, level.enemies[j]);
@@ -129,9 +133,8 @@ package de.mediadesign.gd1011.studiof.services
                 if (rules.isDead(level.enemieBullets[i]))
                 {
                     deleteUnits(level.enemieBullets, i);
-                    var updatePointsEvent:GameEvent = new GameEvent(ViewConsts.ENEMY_KILLED);
-                    dispatcher.dispatchEvent(updatePointsEvent);
-                    level.currentScore+=1;
+//                    var updatePointsEvent:GameEvent = new GameEvent(ViewConsts.ENEMY_KILLED);
+//                    dispatcher.dispatchEvent(updatePointsEvent);
                     break;
                     break;
                 }
