@@ -109,7 +109,10 @@ package de.mediadesign.gd1011.studiof.services
 			if(_bgSoundQueue.length > 0)
 			{
 				_bgSound = _bgSoundQueue[0][0].play();
-				setInterval(watchBGSound,_delay*0.1);
+				if(_bgSound!= null)
+				{
+					setInterval(watchBGSound,_delay*0.1);
+				}
 			}
 
 		}
