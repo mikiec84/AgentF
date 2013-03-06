@@ -39,6 +39,7 @@ package de.mediadesign.gd1011.studiof.services
 		{
 			_soundFX = new Vector.<SoundChannel>();
 			_soundFXSounds = new Vector.<Sound>;
+			_soundFXVolume = new Vector.<Number>();
 			_bgSoundQueue = new Array();
 			_bgLoopSettings = new Array();
 			_pausePositions = new Vector.<int>();
