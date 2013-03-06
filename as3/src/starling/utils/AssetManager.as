@@ -93,8 +93,8 @@ package starling.utils
 			else
 				for each(var element:Object in soundConfig)
 				{
-					for each(var soundname:String in element)
-						enqueue("assets/"+soundname+".mp3");
+					for each(var s:String in element)
+						enqueue("assets/"+s+".mp3");
 				}
 
 			if(onLoad != null)
