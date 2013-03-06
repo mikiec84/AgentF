@@ -100,8 +100,8 @@
           "xml":["Lvl1_Interface.xml","Level1.xml","TileSystemLevel1_1.xml","TileSystemLevel1_2.xml","TileSystemLevel1_3.xml","ClackLow.xml","ClackHigh.xml","FortFoxHigh.xml"]
       },
       "level_2":{
-          "classnames":["Level2", "TileSystemLevel2_1","TileSystemLevel2_2","TileSystemLevel2_3", "Nautilus_Change_texture", "Nautilus_Idle_texture", "Nautilus_Shot_texture", "SeaMine_texture"],
-          "xml":["Level2.xml","TileSystemLevel2_1.xml","TileSystemLevel2_2.xml","TileSystemLevel2_3.xml","Nautilus_Change_texture.xml","Nautilus_Idle_texture.xml","Nautilus_Shot_texture.xml","SeaMine_texture.xml"]
+          "classnames":["Lvl2_Interface","Level2", "TileSystemLevel2_1","TileSystemLevel2_2","TileSystemLevel2_3", "Nautilus_Change_texture", "Nautilus_Idle_texture", "Nautilus_Shot_texture", "SeaMine_texture"],
+          "xml":["Lvl2_Interface.xml","Level2.xml","TileSystemLevel2_1.xml","TileSystemLevel2_2.xml","TileSystemLevel2_3.xml","Nautilus_Change_texture.xml","Nautilus_Idle_texture.xml","Nautilus_Shot_texture.xml","SeaMine_texture.xml"]
       }
     }
 }

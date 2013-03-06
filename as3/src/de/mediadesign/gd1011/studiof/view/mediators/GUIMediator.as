@@ -51,6 +51,7 @@ package de.mediadesign.gd1011.studiof.view.mediators
 			contextView.pauseButton.addEventListener(Event.TRIGGERED,onPause);
 
 			contextView.lifepoints = new LifePointsView(assets, level.currentLevel);
+			contextView.scaleGame(contextView.lifepoints);
 			contextView.addChild(contextView.lifepoints);
 
 		}

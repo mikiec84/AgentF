@@ -65,8 +65,7 @@ package de.mediadesign.gd1011.studiof.view
 			_gameView.x = _appLeftOffset;
 			_gameView.y = _appTopOffset;
 
-			_ui = new GUI();
-			_ui.scaleX = _ui.scaleY = _guiScale;
+			_ui = new GUI(_guiScale,_appScale);
 
 			addChild(_gameView);
 			addChild(_ui);

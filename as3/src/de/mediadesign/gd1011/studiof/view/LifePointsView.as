@@ -9,11 +9,8 @@ package de.mediadesign.gd1011.studiof.view
 {
 	import de.mediadesign.gd1011.studiof.services.JSONReader;
 
-	import flash.display.BitmapData;
-
 	import starling.display.Image;
 	import starling.display.Sprite;
-	import starling.textures.Texture;
 	import starling.utils.AssetManager;
 
 	public class LifePointsView extends Sprite

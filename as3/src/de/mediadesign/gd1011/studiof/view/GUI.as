@@ -32,6 +32,9 @@ package de.mediadesign.gd1011.studiof.view
 		private var _topRight:Sprite;
 		private var _centerCenter:Sprite;
 
+		private var _guiScale:Number = 1;
+		private var _appScale:Number = 1;
+
 		public var lifepoints:LifePointsView;
 		private var _gameOverScreen:TextField;
         private var _enemiesKilled:Image;
@@ -39,8 +42,10 @@ package de.mediadesign.gd1011.studiof.view
 
         private var enemyKilledCounter:Number = 0;
 
-		public function GUI()
+		public function GUI(guiScale:Number,appScale:Number):void
         {
+			_guiScale = guiScale;
+			_appScale = appScale;
             _config = JSONReader.read("viewconfig")["gui"];
             _enemyConfig = JSONReader.read("enemy")["ENEMY"];
 
@@ -48,6 +53,7 @@ package de.mediadesign.gd1011.studiof.view
 			_topCenter 		= new Sprite();
 			_topRight 		= new Sprite();
 			_centerCenter 	= new Sprite();
+			_topLeft.scaleX = _topLeft.scaleY = _topCenter.scaleX = _topCenter.scaleY =_topRight.scaleX = _topRight.scaleY =_centerCenter.scaleX = _centerCenter.scaleY = guiScale;
 			addChild(_topLeft);
 			addChild(_topCenter);
 			addChild(_topRight);
@@ -65,6 +71,16 @@ package de.mediadesign.gd1011.studiof.view
 				addEventListener(Event.ADDED_TO_STAGE,adjust);
 
         }
+
+		public function scaleGUI(object:DisplayObject):void
+		{
+			object.scaleX = object.scaleY = _guiScale;
+		}
+
+		public function scaleGame(object:DisplayObject):void
+		{
+			object.scaleX = object.scaleY = _appScale;
+		}
 
 		public function addAdjusted(object:DisplayObject, vAlign:String, hAlign:String):void
 		{
