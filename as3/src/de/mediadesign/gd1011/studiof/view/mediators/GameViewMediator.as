@@ -1,13 +1,13 @@
 package de.mediadesign.gd1011.studiof.view.mediators
 {
     import de.mediadesign.gd1011.studiof.consts.GameConsts;
-	import de.mediadesign.gd1011.studiof.consts.ViewConsts;
-	import de.mediadesign.gd1011.studiof.events.GameEvent;
-    import de.mediadesign.gd1011.studiof.model.components.PositionComponent;
-	import de.mediadesign.gd1011.studiof.services.GameJuggler;
-	import de.mediadesign.gd1011.studiof.services.LevelProcess;
+    import de.mediadesign.gd1011.studiof.consts.ViewConsts;
+    import de.mediadesign.gd1011.studiof.events.GameEvent;
+    import de.mediadesign.gd1011.studiof.services.GameJuggler;
     import de.mediadesign.gd1011.studiof.services.GameLoop;
     import de.mediadesign.gd1011.studiof.services.JSONReader;
+    import de.mediadesign.gd1011.studiof.services.LevelProcess;
+    import de.mediadesign.gd1011.studiof.services.Sounds;
     import de.mediadesign.gd1011.studiof.view.BackgroundView;
     import de.mediadesign.gd1011.studiof.view.GameView;
 
@@ -16,14 +16,11 @@ package de.mediadesign.gd1011.studiof.view.mediators
 
     import robotlegs.extensions.starlingViewMap.impl.StarlingMediator;
 
-	import starling.core.Starling;
-
-	import starling.display.DisplayObject;
+    import starling.display.DisplayObject;
     import starling.display.Image;
     import starling.display.MovieClip;
-
-	import starling.display.Sprite;
-	import starling.events.EnterFrameEvent;
+    import starling.display.Sprite;
+    import starling.events.EnterFrameEvent;
     import starling.events.Touch;
     import starling.events.TouchEvent;
     import starling.events.TouchPhase;
@@ -45,6 +42,9 @@ package de.mediadesign.gd1011.studiof.view.mediators
 
 		[Inject]
 		public var assets:AssetManager;
+
+        [Inject]
+        public var sounds:Sounds;
 
         private var splashImage:MovieClip;
         private var explosions:Vector.<MovieClip>;
@@ -192,34 +192,47 @@ package de.mediadesign.gd1011.studiof.view.mediators
         public function showExplosion(event:GameEvent):void
         {
             var explosionImg:MovieClip;
-
+            // Bomb
             if (event.dataObj.verticalBullet)
             {
                 if (event.dataObj.position.y <= GameConsts.STAGE_HEIGHT/2)
+                {
                     explosionImg = new MovieClip(assets.getTextures("exp_"), 30);
+                    explosionImg.x = event.dataObj.position.x - 156;
+                    explosionImg.y = event.dataObj.position.y - 256;
+                    sounds.play("explosion",0.5);
+                }
                 else
+                {
                     explosionImg = new MovieClip(assets.getTextures("wExp_"), 30);
-
-                explosionImg.x = event.dataObj.position.x - 156;
-                explosionImg.y = event.dataObj.position.y - 256;
+                    explosionImg.x = event.dataObj.position.x - 156;
+                    explosionImg.y = event.dataObj.position.y - 100;
+                    sounds.play("waterexplosion");
+                }
             }
+            // Minen und Fässer
             else
             {
                 if (event.dataObj.currentPlatform == 2)
+                {
                     explosionImg = new MovieClip(assets.getTextures("exp_"), 30);
+                    explosionImg.x = event.dataObj.position.x - 156;
+                    explosionImg.y = event.dataObj.position.y - 256;
+                    sounds.play("explosion",0.5);
+                }
                 else if (event.dataObj.currentPlatform >= 3)
+                {
                     explosionImg = new MovieClip(assets.getTextures("wExp_"), 30);
+                    explosionImg.x = event.dataObj.position.x - 156;
+                    explosionImg.y = event.dataObj.position.y - 164;
+                    sounds.play("waterexplosion");
+                }
 
-                explosionImg.x = event.dataObj.position.x - 156;
-                explosionImg.y = event.dataObj.position.y - 256;
             }
-
 			GameJuggler.add(explosionImg);
             explosionImg.loop = false;
             explosionImg.play();
-
             explosions.push(explosionImg);
-
             contextView.addChild(explosionImg);
         }
 

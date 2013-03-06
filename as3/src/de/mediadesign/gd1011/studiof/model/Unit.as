@@ -8,7 +8,6 @@
 package de.mediadesign.gd1011.studiof.model
 {
     import de.mediadesign.gd1011.studiof.consts.GameConsts;
-    import de.mediadesign.gd1011.studiof.consts.ViewConsts;
     import de.mediadesign.gd1011.studiof.model.components.PositionComponent;
     import de.mediadesign.gd1011.studiof.model.components.VelocityComponent;
     import de.mediadesign.gd1011.studiof.services.JSONReader;
@@ -53,13 +52,13 @@ package de.mediadesign.gd1011.studiof.model
                 position.x = 160;
             }
             this._currentLevel = currentLevel;
-
             _position.y = currentPlatform * GameConsts.PLATFORM_HEIGHT;
             config = JSONReader.read("enemy")["ENEMY"];
             fireRateEnemy = config["fireRateEnemy"];
             enemyRange = config["enemyRange"];
             if (verticalBullet)
-            {   this.verticalBullet = true;
+            {
+                this.verticalBullet = true;
                 healthPoints = 1;
                 velocity.verticalVelocity = true;
                 velocity.velocityY = 400;
@@ -205,7 +204,7 @@ package de.mediadesign.gd1011.studiof.model
                 cooldown = 0;
                 return bullet;
             }
-
+            //Bombe
             if (!doNotShootAnymore && currentPlatform < 2
                     && cooldown >= (1 / fireRateEnemy)
                     && position.x<enemyRange && healthPoints > 0

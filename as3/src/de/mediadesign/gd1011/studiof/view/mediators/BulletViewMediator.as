@@ -10,21 +10,17 @@ package de.mediadesign.gd1011.studiof.view.mediators
     import de.mediadesign.gd1011.studiof.model.FortFoxBoss;
     import de.mediadesign.gd1011.studiof.model.NautilusBoss;
     import de.mediadesign.gd1011.studiof.model.Player;
-	import de.mediadesign.gd1011.studiof.services.GameJuggler;
-	import de.mediadesign.gd1011.studiof.view.BulletView;
+    import de.mediadesign.gd1011.studiof.services.GameJuggler;
+    import de.mediadesign.gd1011.studiof.services.Sounds;
+    import de.mediadesign.gd1011.studiof.view.BulletView;
 
     import flash.events.IEventDispatcher;
-    import flash.media.Sound;
 
     import robotlegs.extensions.starlingViewMap.impl.StarlingMediator;
 
-    import starling.core.Starling;
-
     import starling.display.Image;
     import starling.display.MovieClip;
-	import starling.filters.BlurFilter;
-
-	import starling.utils.AssetManager;
+    import starling.utils.AssetManager;
 
     public class BulletViewMediator extends StarlingMediator
     {
@@ -37,16 +33,18 @@ package de.mediadesign.gd1011.studiof.view.mediators
         [Inject]
         public var assets:AssetManager;
 
+        [Inject]
+        public var sounds:Sounds;
+
         override public function initialize():void
         {
             if (bulletView.master is Player)
             {
+                sounds.play("shot", 0.5);
                 var img:Image = new Image(assets.getTexture("Bullet"));
-                var shot:Sound;
                 img.y = 20;
                 bulletView.addChild(img);
 
-                //shot.play();
             }
             else if (bulletView.master is NautilusBoss)
             {
@@ -61,12 +59,14 @@ package de.mediadesign.gd1011.studiof.view.mediators
                 switch(bulletView.master.currentPlatform)
                 {
                     case(0):
+                        sounds.play("laugh", 0.8);
                         var img:Image = new Image(assets.getTexture("Bomb"));
                         img.x = -140;
                         img.y = -160;
                         bulletView.addChild(img);
                         break;
                     case(1):
+                        sounds.play("laugh", 0.8);
                         var img:Image = new Image(assets.getTexture("Bomb"));
                         img.x = -140;
                         img.y = -160;

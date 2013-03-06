@@ -61,6 +61,7 @@
         "delay":100,
         "general":{
             "shot":"Shot",
+            "laugh":"E1_Shot",
             "explosion":"Explosion",
             "waterexplosion":"WaterExplosion"
         },
