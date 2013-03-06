@@ -28,7 +28,7 @@ package de.mediadesign.gd1011.studiof.services
 		private var _bgLoopSettings:Array;
 		private var _soundFX:Vector.<SoundChannel>;
 		private var _soundFXSounds:Vector.<Sound>;
-		private var _soundFXVolume:Vector.<Number>;
+		private var _soundFXVolume:Vector.<SoundTransform>;
 		private var _pausePositions:Vector.<int>;
 		private var _soundConfig:Object;
 
@@ -39,7 +39,7 @@ package de.mediadesign.gd1011.studiof.services
 		{
 			_soundFX = new Vector.<SoundChannel>();
 			_soundFXSounds = new Vector.<Sound>;
-			_soundFXVolume = new Vector.<Number>();
+			_soundFXVolume = new Vector.<SoundTransform>();
 			_bgSoundQueue = new Array();
 			_bgLoopSettings = new Array();
 			_pausePositions = new Vector.<int>();
@@ -56,7 +56,7 @@ package de.mediadesign.gd1011.studiof.services
 			_soundFX.push(sound.play());
 			var volumeControl:SoundTransform = new SoundTransform();
 			volumeControl.volume = volume;
-			_soundFXVolume.push(volume);
+			_soundFXVolume.push(volumeControl);
 			_soundFX[_soundFX.length-1].soundTransform = volumeControl;
 			_soundFX[_soundFX.length-1].addEventListener(Event.SOUND_COMPLETE, stopFX);
 		}
@@ -162,7 +162,7 @@ package de.mediadesign.gd1011.studiof.services
 			for each (var sound:Sound in _soundFXSounds)
 			{
 				_soundFX.push(sound.play(_pausePositions.shift()));
-				_soundFX[_soundFX.length-1].soundTransform.volume = _soundFXVolume[_soundFX.indexOf(sound)];
+				_soundFX[_soundFX.length-1].soundTransform = _soundFXVolume[_soundFX.indexOf(sound)];
 				_soundFX[_soundFX.length-1].addEventListener(Event.SOUND_COMPLETE, stopFX);
 			}
 		}
