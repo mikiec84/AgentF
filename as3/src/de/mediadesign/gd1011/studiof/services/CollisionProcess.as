@@ -114,25 +114,25 @@ package de.mediadesign.gd1011.studiof.services
                     break;
                 }
             }
-            for (var i:int = 0; i < level.enemieBullets.length; i++)
+            for (var i:int = 0; i < level.enemyBullets.length; i++)
             {
-                if (!level.enemieBullets[i].verticalBullet)
+                if (!level.enemyBullets[i].verticalBullet)
                 {
-                    rules.collisionDetection(level.player, level.enemieBullets[i]);
+                    rules.collisionDetection(level.player, level.enemyBullets[i]);
                 }
                 else
                 {
-                    if (level.enemieBullets[i].healthPoints > 0 && level.enemieBullets[i].position.y > level.player.position.y)
+                    if (level.enemyBullets[i].healthPoints > 0 && level.enemyBullets[i].position.y > level.player.position.y)
                     {
-                        level.enemieBullets[i].healthPoints-=1;
+                        level.enemyBullets[i].healthPoints-=1;
                         level.player.healthPoints-=1;
-                        var a:GameEvent = new GameEvent(ViewConsts.EXPLOSION, level.enemieBullets[i]);
+                        var a:GameEvent = new GameEvent(ViewConsts.EXPLOSION, level.enemyBullets[i]);
                         dispatcher.dispatchEvent(a);
                     }
                 }
-                if (rules.isDead(level.enemieBullets[i]))
+                if (rules.isDead(level.enemyBullets[i]))
                 {
-                    deleteUnits(level.enemieBullets, i);
+                    deleteUnits(level.enemyBullets, i);
 //                    var updatePointsEvent:GameEvent = new GameEvent(ViewConsts.ENEMY_KILLED);
 //                    dispatcher.dispatchEvent(updatePointsEvent);
                     break;

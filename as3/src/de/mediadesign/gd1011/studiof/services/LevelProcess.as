@@ -218,12 +218,12 @@ package de.mediadesign.gd1011.studiof.services
 
         public function deleteOffscreenUnits():void
         {
-            for (var index:int = 0; index<enemieBullets.length; index++)
+            for (var index:int = 0; index<enemyBullets.length; index++)
             {
-                if (enemieBullets[index].position.x < -300 || enemieBullets[index].position.y > GameConsts.STAGE_HEIGHT+200)
+                if (enemyBullets[index].position.x < -300 || enemyBullets[index].position.y > GameConsts.STAGE_HEIGHT+200)
                 {
-                    deleteUnit(enemieBullets[index]);
-                    enemieBullets.splice(index,  1);
+                    deleteUnit(enemyBullets[index]);
+                    enemyBullets.splice(index,  1);
                 }
             }
             for (var index2:int = 0; index2<enemies.length; index2++)
@@ -409,12 +409,10 @@ package de.mediadesign.gd1011.studiof.services
                     deleteUnit(enemies[i]);
                 }
             }
-            for (var i:int = 0; i<enemieBullets.length; i++)
+            for (var i:int = 0; i<enemyBullets.length; i++)
             {
-                if (enemieBullets[i] is Unit)
-                {
-                    deleteUnit(enemieBullets[i]);
-                }
+                if (enemyBullets[i] is Unit)
+                    deleteUnit(enemyBullets[i]);
             }
             while(enemyPositions.length > 0)
             {
@@ -581,12 +579,12 @@ package de.mediadesign.gd1011.studiof.services
             _running = false;
         }
 
-        public function get enemieBullets():Vector.<Unit>
+        public function get enemyBullets():Vector.<Unit>
         {
             return _enemyBullets;
         }
 
-        public function set enemieBullets(value:Vector.<Unit>):void
+        public function set enemyBullets(value:Vector.<Unit>):void
         {
             _enemyBullets = value;
         }

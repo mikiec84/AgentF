@@ -214,7 +214,7 @@ package de.mediadesign.gd1011.studiof.model
             {
                 var bullet:Unit = new Unit(1, currentPlatform, -600, position.x, _currentLevel, false, false);
                 bullet.position.y += 100;
-                _currentLevel.enemieBullets.push(bullet);
+                _currentLevel.enemyBullets.push(bullet);
                 cooldown = 0;
                 return bullet;
             }
@@ -227,7 +227,7 @@ package de.mediadesign.gd1011.studiof.model
                 doNotShootAnymore = true;
                 var bullet:Unit = new Unit(1, currentPlatform, 0, position.x+150, _currentLevel, true, false);
                 bullet.position.y += 10;
-                _currentLevel.enemieBullets.push(bullet);
+                _currentLevel.enemyBullets.push(bullet);
                 cooldown = 0;
                 return bullet;
             }
