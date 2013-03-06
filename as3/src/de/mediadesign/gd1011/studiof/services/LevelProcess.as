@@ -74,7 +74,7 @@ package de.mediadesign.gd1011.studiof.services
 
         ///CHEATS
         public var onlyThreeMobs:Boolean = true;
-        public var bossHaveLowLife:Boolean = false;
+        public var bossHaveLowLife:Boolean = true;
         /////////
 
         private var maxLevel:int = 1;
@@ -259,6 +259,7 @@ package de.mediadesign.gd1011.studiof.services
                     _currentLevel+=1;
                     clearLevel();
                     var showHighScoreEvent:GameEvent = new GameEvent(ViewConsts.SHOW_HIGHSCORE, currentScore);
+					trace("Score = "+currentScore);
                     dispatcher.dispatchEvent(showHighScoreEvent);
                 }
                 //Win

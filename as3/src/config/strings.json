@@ -3,12 +3,16 @@
         "new game":"Neues Spiel",
         "options":"Optionen",
         "highscore":"Highscore",
-        "credits":"Credits"
+        "credits":"Credits",
+        "points":"Punkte",
+        "next level":"weiter ..."
     },
     "en":{
         "new game":"New Game",
         "options":"Options",
         "highscore":"Highscore",
-        "credits":"Credits"
+        "credits":"Credits",
+        "points":"points",
+        "next level":"next ..."
     }
 }

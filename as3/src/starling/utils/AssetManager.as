@@ -54,6 +54,8 @@ package starling.utils
         private var mTextures:Dictionary;
         private var mAtlases:Dictionary;
         private var mSounds:Dictionary;
+
+		private var mAssetPackages:Vector.<String>;
         
         /** helper objects */
         private var sNames:Vector.<String> = new <String>[];
@@ -64,6 +66,13 @@ package starling.utils
 
 		public function loadAssetPackage(key:String, onLoad:Function = null):void
 		{
+			if(mAssetPackages.indexOf(key) == -1)
+				mAssetPackages.push(key);
+			else if(onLoad != null)
+				loadQueue(onLoad);
+			else
+				return;
+
 			var loadingConfig:Object = JSONReader.read("viewconfig")["loadingsets"][key];
 			var soundConfig:Object = JSONReader.read("viewconfig")["soundsets"][key];
 			for each(var classname:String in loadingConfig["classnames"])
@@ -86,6 +95,9 @@ package starling.utils
 
 		public function removeAssetPackage(key:String):void
 		{
+			if(mAssetPackages.indexOf(key) == -1)
+				return;
+			mAssetPackages.splice(mAssetPackages.indexOf(key),1);
 			var loadingConfig:Object = JSONReader.read("viewconfig")["loadingsets"][key];
 			var soundConfig:Object = JSONReader.read("viewconfig")["soundsets"][key];
 			for each(var classname:String in loadingConfig["classnames"])
@@ -110,6 +122,7 @@ package starling.utils
             mTextures = new Dictionary();
             mAtlases = new Dictionary();
             mSounds = new Dictionary();
+			mAssetPackages = new Vector.<String>();
         }
         
         /** Disposes all contained textures. */

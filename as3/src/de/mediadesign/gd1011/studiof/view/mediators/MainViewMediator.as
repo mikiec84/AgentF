@@ -28,11 +28,12 @@ package de.mediadesign.gd1011.studiof.view.mediators
 		private function showHighScore(e:GameEvent):void
 		{
 			contextView.removeGameView();
-			contextView.showHighscore();
+			contextView.showHighscore(e.dataObj as Number);
 		}
 
 		private function loadGameView(e:GameEvent):void
 		{
+			assets.removeAssetPackage("level_"+(e.dataObj as Number));
 			contextView.loadWithScreen(assets, contextView.initGameView, "general", "level_"+((e.dataObj as Number)+1));
 		}
 

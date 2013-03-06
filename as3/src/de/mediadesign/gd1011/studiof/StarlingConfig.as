@@ -32,6 +32,7 @@ package de.mediadesign.gd1011.studiof
 	import de.mediadesign.gd1011.studiof.view.EnemyView;
     import de.mediadesign.gd1011.studiof.view.GUI;
 	import de.mediadesign.gd1011.studiof.view.GameView;
+	import de.mediadesign.gd1011.studiof.view.LevelEndScreen;
 	import de.mediadesign.gd1011.studiof.view.MainView;
 	import de.mediadesign.gd1011.studiof.view.ScrollBackgroundView;
 	import de.mediadesign.gd1011.studiof.view.StartScreenView;
@@ -40,6 +41,7 @@ package de.mediadesign.gd1011.studiof
 	import de.mediadesign.gd1011.studiof.view.mediators.EnemyViewMediator;
     import de.mediadesign.gd1011.studiof.view.mediators.GUIMediator;
 	import de.mediadesign.gd1011.studiof.view.mediators.GameViewMediator;
+	import de.mediadesign.gd1011.studiof.view.mediators.LevelEndScreenMediator;
 	import de.mediadesign.gd1011.studiof.view.mediators.LoadingScreen;
 	import de.mediadesign.gd1011.studiof.view.mediators.LoadingScreenMediator;
 	import de.mediadesign.gd1011.studiof.view.mediators.MainViewMediator;
@@ -115,6 +117,7 @@ package de.mediadesign.gd1011.studiof
 			mediatorMap.map(ScrollBackgroundView).toMediator(ScrollBackgroundViewMediator);
             mediatorMap.map(BulletView).toMediator(BulletViewMediator);
 			mediatorMap.map(LoadingScreen).toMediator(LoadingScreenMediator);
+			mediatorMap.map(LevelEndScreen).toMediator(LevelEndScreenMediator);
         }
     }
 }

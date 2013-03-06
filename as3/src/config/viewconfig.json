@@ -11,7 +11,8 @@
         "border-width":20,
         "padding":50,
         "button-offset":150,
-        "capture-size":120,
+        "title-size":120,
+        "score-size":250,
         "button-size":90,
         "vSpace":40
     },

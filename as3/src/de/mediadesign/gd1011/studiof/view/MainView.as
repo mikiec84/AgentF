@@ -120,6 +120,8 @@ package de.mediadesign.gd1011.studiof.view
 			addChild(_loadingScreen);
 			if(_startScreen!= null)
 			removeChild(_startScreen);
+			if(_highscore!= null)
+				removeChild(_highscore);
 			for each(var s:String in rest)
 			{
 				_loadingScreen.addAssetPackages(s);
@@ -127,9 +129,10 @@ package de.mediadesign.gd1011.studiof.view
 			_loadingScreen.load(onLoad);
 		}
 
-		public function showHighscore():void
+		public function showHighscore(score:Number):void
 		{
-			_highscore = new LevelEndScreen();
+			_highscore = new LevelEndScreen(_appWidth,_appHeight,score);
+			_highscore.scaleX = _highscore.scaleY = _appScale;
 			addChild(_highscore);
 		}
 	}
