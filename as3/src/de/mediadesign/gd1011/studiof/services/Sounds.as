@@ -156,7 +156,7 @@ package de.mediadesign.gd1011.studiof.services
 			{
 				_bgSound = _bgSoundQueue[0][0].play(_pausePositions.shift());
 				if(_bgSound!= null)
-					_bgSound.addEventListener(Event.SOUND_COMPLETE, loopBGSound);
+					setInterval(watchBGSound,_delay*0.1);
 			}
 
 			for each (var sound:Sound in _soundFXSounds)
