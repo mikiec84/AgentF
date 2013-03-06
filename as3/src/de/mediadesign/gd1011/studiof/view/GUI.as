@@ -36,6 +36,7 @@ package de.mediadesign.gd1011.studiof.view
 		private var _appScale:Number = 1;
 
 		public var lifepoints:LifePointsView;
+		public var pauseMenu:PauseMenuView;
 		private var _gameOverScreen:TextField;
         private var _enemiesKilled:Image;
 		public var pauseButton:Button;
@@ -94,6 +95,14 @@ package de.mediadesign.gd1011.studiof.view
 							break;
 					}
 					break;
+				case (VAlign.CENTER):
+					switch (hAlign)
+					{
+						case (HAlign.CENTER):
+							_centerCenter.addChild(object);
+							break;
+					}
+					break;
 			}
 		}
 		private function adjust(e:Event=null):void
@@ -140,6 +149,7 @@ package de.mediadesign.gd1011.studiof.view
 			_enemiesKilled = newGraphic;
 
         }
+
 
 		public function showGameOver(won:Boolean):void
 		{

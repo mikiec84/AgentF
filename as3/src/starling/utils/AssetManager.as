@@ -83,11 +83,19 @@ package starling.utils
 			{
 				enqueue("config/atlasxml/"+xml);
 			}
-			for each(var element:Object in soundConfig)
+			if(key == "general")
 			{
-				for each(var soundname:String in element)
-					enqueue("assets/"+soundname+".mp3");
+				for each(var soundname:Object in soundConfig)
+				{
+						enqueue("assets/"+soundname+".mp3");
+				}
 			}
+			else
+				for each(var element:Object in soundConfig)
+				{
+					for each(var soundname:String in element)
+						enqueue("assets/"+soundname+".mp3");
+				}
 
 			if(onLoad != null)
 				loadQueue(onLoad);

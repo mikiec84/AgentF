@@ -13,6 +13,7 @@ package de.mediadesign.gd1011.studiof.view.mediators
 	import de.mediadesign.gd1011.studiof.services.LevelProcess;
 	import de.mediadesign.gd1011.studiof.view.GUI;
 	import de.mediadesign.gd1011.studiof.view.LifePointsView;
+	import de.mediadesign.gd1011.studiof.view.PauseMenuView;
 
 	import flash.events.IEventDispatcher;
 
@@ -59,6 +60,8 @@ package de.mediadesign.gd1011.studiof.view.mediators
 		private function onPause(e:Event):void
 		{
 			disparcher.dispatchEvent(new GameEvent(GameConsts.PAUSE));
+			contextView.pauseMenu = new PauseMenuView(assets,level.currentLevel);
+			contextView.addAdjusted(contextView.pauseMenu,VAlign.CENTER,HAlign.CENTER);
 		}
 
         private function updateEnemyKilled(e:GameEvent):void
