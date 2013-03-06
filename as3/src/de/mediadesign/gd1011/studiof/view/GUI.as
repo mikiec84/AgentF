@@ -32,7 +32,7 @@ package de.mediadesign.gd1011.studiof.view
 		private var _topRight:Sprite;
 		private var _centerCenter:Sprite;
 
-		private var _lifepoints:TextField;
+		public var lifepoints:LifePointsView;
 		private var _gameOverScreen:TextField;
         private var _enemiesKilled:Image;
 		public var pauseButton:Button;
@@ -53,15 +53,12 @@ package de.mediadesign.gd1011.studiof.view
 			addChild(_topRight);
 			addChild(_centerCenter);
 
-			_lifepoints = new TextField(200,100,"3","Verdana",60,0xffffff,true);
-			_topLeft.addChild(_lifepoints);
 			var bmpData:BitmapData = new TopSecretTexture("0",60);
 			var texture:Texture = Texture.fromBitmapData(bmpData);
 			bmpData.dispose();
             _enemiesKilled = new Image(texture);
             _topCenter.addChild(_enemiesKilled);
             _enemiesKilled.x -= _enemiesKilled.width/2;
-            _lifepoints.y -= 20;
 			if(stage)
 				adjust();
 			else
@@ -110,7 +107,7 @@ package de.mediadesign.gd1011.studiof.view
 
 		public function setLifepoints(points:int):void
 		{
-			_lifepoints.text=points.toString();
+			lifepoints.points = points;
 		}
 
 

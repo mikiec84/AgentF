@@ -12,7 +12,7 @@
         "padding":50,
         "button-offset":150,
         "title-size":120,
-        "score-size":250,
+        "score-size":200,
         "button-size":90,
         "vSpace":40
     },
@@ -33,12 +33,27 @@
             "background":{
                 "layer01":["Level1_1","Level1_2","Level1_3"],
                 "layer02":["TileA", "TileB","TileC","TileD","TileE","TileF"]
+            },
+            "lifepoints":{
+                "top1":80,
+                "top2":60,
+                "top3":40,
+                "left-offset":20,
+                "padding":5
             }
         },
         "level_2":{
             "background":{
                 "layer01":["Level2_1","Level2_2","Level2_3"],
                 "layer02":["CaveTileA", "CaveTileB","CaveTileC","CaveTileD","CaveTileE","CaveTileF"]
+
+            },
+            "lifepoints":{
+                "top1":0,
+                "top2":0,
+                "top3":0,
+                "left-offset":20,
+                "padding":5
             }
         }
     },

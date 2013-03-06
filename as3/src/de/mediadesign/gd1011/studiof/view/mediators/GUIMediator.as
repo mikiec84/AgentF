@@ -12,6 +12,7 @@ package de.mediadesign.gd1011.studiof.view.mediators
 	import de.mediadesign.gd1011.studiof.events.GameEvent;
 	import de.mediadesign.gd1011.studiof.services.LevelProcess;
 	import de.mediadesign.gd1011.studiof.view.GUI;
+	import de.mediadesign.gd1011.studiof.view.LifePointsView;
 
 	import flash.events.IEventDispatcher;
 
@@ -43,10 +44,15 @@ package de.mediadesign.gd1011.studiof.view.mediators
 			addContextListener(ViewConsts.UPDATE_LIFEPOINTS,updateLifepoints);
 			addContextListener(ViewConsts.SHOW_GAMEOVER,showGameOver);
             addContextListener(ViewConsts.ENEMY_KILLED, updateEnemyKilled);
-			contextView.pauseButton = new Button(assets.getTexture("Lv"+(level.currentLevel+1)+"PauseButton"));
+
+			contextView.pauseButton = new Button(assets.getTexture("Lv"+(level.currentLevel+1)+"_PauseButton"));
 			contextView.pauseButton.x = -contextView.pauseButton.width;
 			contextView.addAdjusted(contextView.pauseButton,VAlign.TOP,HAlign.RIGHT);
 			contextView.pauseButton.addEventListener(Event.TRIGGERED,onPause);
+
+			contextView.lifepoints = new LifePointsView(assets, level.currentLevel);
+			contextView.addChild(contextView.lifepoints);
+
 		}
 
 		private function onPause(e:Event):void
