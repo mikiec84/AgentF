@@ -45,6 +45,7 @@ package de.mediadesign.gd1011.studiof.view.mediators
 		[Inject]
 		public var assets:AssetManager;
 
+        private var splashImage:MovieClip;
         private var explosions:Vector.<MovieClip>;
 
 		private var _touchConfig:Object;
@@ -76,6 +77,7 @@ package de.mediadesign.gd1011.studiof.view.mediators
             addContextListener(ViewConsts.ADD_SPRITE_TO_GAME, add);
 			addContextListener(ViewConsts.REMOVE_SPRITE_FROM_GAME, remove);
             addContextListener(ViewConsts.CREATE_FORTBG, createFort);
+            addContextListener(ViewConsts.SPLASH, showSplash);
             addContextListener(ViewConsts.EXPLOSION, showExplosion);
             addContextListener(ViewConsts.REMOVE_EXP, removeExplosions);
 
@@ -173,6 +175,19 @@ package de.mediadesign.gd1011.studiof.view.mediators
                 doorO.currentFrame = 0;
             }
         }
+
+        private function showSplash(event:GameEvent):void
+        {
+            splashImage = new MovieClip(assets.getTextures("Splash_"), 15);
+            splashImage.alpha = 0.5;
+            splashImage.x = -30;
+            splashImage.y = GameConsts.STAGE_HEIGHT/2 - 156;
+            Starling.juggler.add(splashImage);
+            splashImage.loop = false;
+            splashImage.play();
+            contextView.addChild(splashImage);
+        }
+
         public function showExplosion(event:GameEvent):void
         {
             var explosionImg:MovieClip;
@@ -216,6 +231,10 @@ package de.mediadesign.gd1011.studiof.view.mediators
                     contextView.removeChild(explosions[i]);
                     explosions.splice(i, 1);
                 }
+            }
+            if (splashImage != null && splashImage.currentFrame >= 6)
+            {
+                contextView.removeChild(splashImage);
             }
         }
 

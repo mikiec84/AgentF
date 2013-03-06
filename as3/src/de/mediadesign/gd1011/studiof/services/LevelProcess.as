@@ -386,6 +386,11 @@ package de.mediadesign.gd1011.studiof.services
             {
                 var changeStateEvent:GameEvent = new GameEvent(GameConsts.CHANGE_STATE, player);
                 dispatcher.dispatchEvent(changeStateEvent);
+                if (player.state == GameConsts.IDLE)
+                {
+                    var splashEvent:GameEvent = new GameEvent(ViewConsts.SPLASH, player);
+                    dispatcher.dispatchEvent(splashEvent);
+                }
             }
             player.lastState = player.state;
         }

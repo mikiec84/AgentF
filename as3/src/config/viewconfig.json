@@ -77,8 +77,8 @@
 
       },
       "general":{
-          "classnames":["Water", "AgentF_Idle_texture", "AgentF_Fall_texture", "AgentF_Jump_texture", "Barrel_texture", "FlyCoon_texture", "FlyCoon_Shoot", "SwimCoon_texture", "Arrow", "Bomb", "Bullet", "FassExplosion", "WasserExplosion"],
-          "xml":["Water.xml","AgentF_Idle_texture.xml","AgentF_Fall_texture.xml", "AgentF_Jump_texture.xml", "Barrel_texture.xml", "FlyCoon_texture.xml","FlyCoon_Shoot.xml", "SwimCoon_texture.xml","FassExplosion.xml","WasserExplosion.xml"]
+          "classnames":["Water", "AgentF_Idle_texture", "AgentF_Fall_texture", "AgentF_Jump_texture", "Barrel_texture", "FlyCoon_texture", "FlyCoon_Shoot", "SwimCoon_texture", "Arrow", "Bomb", "Bullet", "FassExplosion", "WasserExplosion", "Splash"],
+          "xml":["Water.xml","AgentF_Idle_texture.xml","AgentF_Fall_texture.xml", "AgentF_Jump_texture.xml", "Barrel_texture.xml", "FlyCoon_texture.xml","FlyCoon_Shoot.xml", "SwimCoon_texture.xml","FassExplosion.xml","WasserExplosion.xml", "Splash.xml"]
       },
       "level_1":{
           "classnames":["Level1","TileSystemLevel1_1","TileSystemLevel1_2","TileSystemLevel1_3", "ClackLow", "ClackHigh", "FortFoxHigh", "Fort_BackLayer", "Fort_MidLayer", "Fort_UpperLayer"],

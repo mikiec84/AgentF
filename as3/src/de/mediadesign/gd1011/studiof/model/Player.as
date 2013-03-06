@@ -8,7 +8,6 @@
 package de.mediadesign.gd1011.studiof.model {
     import de.mediadesign.gd1011.studiof.consts.GameConsts;
     import de.mediadesign.gd1011.studiof.consts.ViewConsts;
-    import de.mediadesign.gd1011.studiof.events.GameEvent;
     import de.mediadesign.gd1011.studiof.model.components.PositionComponent;
     import de.mediadesign.gd1011.studiof.services.JSONReader;
     import de.mediadesign.gd1011.studiof.services.LevelProcess;
@@ -35,24 +34,29 @@ package de.mediadesign.gd1011.studiof.model {
         private var _up:Tween;
         private var _down:Tween;
         private var _landing:Tween;
+
+        private var comeDownIsntRunningBuffer:Boolean = true;
+        private var landNow:Boolean = false;
         private var _comeDownIsntRunning:Boolean = true;
         private var _landIsntRunning:Boolean = true;
         private var _landStillInJuggler:Boolean = false;
         private var _anyTweensInMotion:Boolean = false;
-        private var _targetPlatform:int = 2;
-        private var _tweenedPosition:PositionComponent;
-        private var _checkTargetPlatform:int = 2;
         private var _moveTowardsMouseAsSoonAsYouCan:Boolean = false;
-        private var _currentLevel:LevelProcess;
         private var _accelerateTowardsFinger:Boolean = false;
         private var _swiped:Boolean = false;
         private var startLandTweenAfterThis:Boolean = false;
+        private var upIsRunning:Boolean = false;
+
+        private var _targetPlatform:int = 2;
+        private var _tweenedPosition:PositionComponent;
+        private var _checkTargetPlatform:int = 2;
+
+        private var _currentLevel:LevelProcess;
+
         private var yOffset:int = 2;
 
-        private var upIsRunning:Boolean = false;
         public var counter:int = 0;
-        private var comeDownIsntRunningBuffer:Boolean = true;
-        private var landNow:Boolean = false;
+
         public var ammunition:Vector.<Unit>;
 
         public function Player(currentLevel:LevelProcess)
@@ -87,16 +91,15 @@ package de.mediadesign.gd1011.studiof.model {
         }
 
         override public function move(time:Number):void
-        {   //trace("my x is", position.x);
-            if (!stopped) {
-                if (position.y<1000) {
+        {
+            if (!stopped)
+            {
+                if (position.y < 1000)
+                {
                     if (assertCorrectInitialization())
                     {
-
                         checkPlayerPosition();
-
                         initializeVariables();
-
                         administerTweens(time);
 
                         if (!_anyTweensInMotion)
@@ -105,11 +108,10 @@ package de.mediadesign.gd1011.studiof.model {
                         }
                         else
                         {
-                            position.y = _tweenedPosition.y; //trace("POS.Y: "+position.y);
+                            position.y = _tweenedPosition.y;
                             if (_targetPlatform == 6) ignoreMouseInput();
                         }
                     }
-                    else trace("----------Function Move failed, because Player not correctly initialized. Additional Info: "+position.x+","+position.y+","+velocity+","+currentPlatform+","+this+","+_tweenedPosition.x+","+_tweenedPosition.y);
                 }
             }
         }
@@ -130,7 +132,8 @@ package de.mediadesign.gd1011.studiof.model {
             if (comeDownIsntRunningBuffer != _comeDownIsntRunning)
             {
                 comeDownIsntRunningBuffer = _comeDownIsntRunning;
-                if (comeDownIsntRunningBuffer) landNow = true;
+                if (comeDownIsntRunningBuffer)
+                    landNow = true;
             }
 
             _landIsntRunning = !(_landing != null && !_landing.isComplete);
@@ -149,18 +152,15 @@ package de.mediadesign.gd1011.studiof.model {
             {
                 Starling.juggler.remove(_landing);
             }
-            if (position.y > 190 && position.y < GameConsts.PLATFORM_HEIGHT*2 && !_anyTweensInMotion && currentPlatform == 1) {/*
-             _anyTweensInMotion = true;
-             _landIsntRunning = false;*/
-                position.y = GameConsts.STAGE_HEIGHT/3+yOffset+10;/*
-                 land();
-                 _landStillInJuggler = Starling.juggler.contains(_landing);*/
+            if (position.y > 190 && position.y < GameConsts.PLATFORM_HEIGHT*2 && !_anyTweensInMotion && currentPlatform == 1)
+            {
+                position.y = GameConsts.STAGE_HEIGHT/3+yOffset+10;
             }
         }
 
         private function checkPlayerPosition():void
         {
-            if (position.y<0)
+            if (position.y < 0)
             {
                 position.y = GameConsts.PLATFORM_HEIGHT*2;
                 currentPlatform = 2;
@@ -169,8 +169,9 @@ package de.mediadesign.gd1011.studiof.model {
 
         private function administerPlayerTowardsMouseMovement(time:Number):void
         {
-            if (_targetPlatform>1 && !(currentPlatform == 5 && _targetPlatform == 6)) {
-                if (currentPlatform<_targetPlatform)
+            if (_targetPlatform>1 && !(currentPlatform == 5 && _targetPlatform == 6))
+            {
+                if (currentPlatform < _targetPlatform)
                 {
                     if((observePlatform(speedTowardsMouse*time+position.y)<_targetPlatform))
                     {
@@ -183,19 +184,24 @@ package de.mediadesign.gd1011.studiof.model {
                 }
                 else
                 {
-                    if (currentPlatform>=_targetPlatform) {
+                    if (currentPlatform>=_targetPlatform)
+                    {
                         if(observePlatform(position.y-speedTowardsMouse*time)>=_targetPlatform)
                         {
                             setNewPosition(yOffset+position.y-speedTowardsMouse*time);
-                        } else {
-                            if (currentPlatform == 2) {
+                        }
+                        else
+                        {
+                            if (currentPlatform == 2)
+                            {
                                 position.y = GameConsts.PLATFORM_HEIGHT*_targetPlatform+yOffset;
                             }
                         }
                     }
                 }
             }
-            if ((currentPlatform == 5 && _targetPlatform == 6) && swiped) {
+            if ((currentPlatform == 5 && _targetPlatform == 6) && swiped)
+            {
                 swiped = false;
                 startJump();
             }
@@ -226,7 +232,6 @@ package de.mediadesign.gd1011.studiof.model {
                 Starling.juggler.remove(_landing);
                 _landing = null;
             }
-
 
             if (_checkTargetPlatform != _targetPlatform)
             {
@@ -305,14 +310,8 @@ package de.mediadesign.gd1011.studiof.model {
 
         public function set targetPlatform(value:int):void
         {
-            if (value<2 || value>6)
-            {
-                //trace("Trying to set Player targetPlatform to "+value+". Value not accepted.");
-            }
-            else
-            {
+            if ((!value<2 || value>6))
                 _targetPlatform = value;
-            }
         }
 
         override public function shoot(time:Number):Unit

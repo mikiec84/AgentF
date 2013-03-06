@@ -49,12 +49,11 @@ package de.mediadesign.gd1011.studiof.consts
         public static const BOMBE:String = "BOMBE";
         public static const MINE:String = "MINE";
 
+        public static const SPLASH:String = "SPLASH";
         public static const EXPLOSION:String = "EXPLOSION";
         public static const REMOVE_EXP:String = "REMOVE_EXP";
 
         public static const LOAD_LEVEL:String = "LOAD_LEVEL";
         public static const DELETE_LEVEL:String = "DELETE_LEVEL";
-
-
 	}
 }

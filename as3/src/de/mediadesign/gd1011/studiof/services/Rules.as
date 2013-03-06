@@ -78,7 +78,10 @@ package de.mediadesign.gd1011.studiof.services
                         && unit1.position.x + collisionTolerance >= unit2.position.x)
                 {
                     unit1.healthPoints--;
-                    unit2.healthPoints--;
+                    if (!(unit1 is Player))
+                        unit2.healthPoints--;
+                    else
+                        unit2.healthPoints = 0;
 
                     var damageUnitEvent:GameEvent = new GameEvent(GameConsts.DAMAGE_UNIT, unit2);
                     dispatcher.dispatchEvent(damageUnitEvent);
