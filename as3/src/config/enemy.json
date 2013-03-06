@@ -10,32 +10,6 @@
         "collisionToleranceDiving":40
     },
 
-    "FORT_FOX":
-    {
-        "idleTimeFrame":3,
-        "idleXPosition":820,
-        "startingPlatform":0,
-        "changePosTime":2,
-        "backMovementDistance":30,
-        "healthPoints":10,
-        "enemyRate":750,
-        "collisionTolerance":-490
-    },
-
-    "NAUTILUS":
-    {
-        "idleTimeFrame":3,
-        "idleXPosition":1000,
-        "startingPlatform":4,
-        "changePosTime":1,
-        "xOffset":500,
-        "changePosMovementSpeed":200,
-        "attackSpeed":0.5,
-        "healthPoints":20,
-        "enemyRate":1500,
-        "collisionTolerance":50
-    },
-
     "BOSS_SPAWN":
     {
         "1":"Fort_Fox",

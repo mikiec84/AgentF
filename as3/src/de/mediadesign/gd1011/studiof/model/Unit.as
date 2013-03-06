@@ -30,7 +30,7 @@ package de.mediadesign.gd1011.studiof.model
         private var _ID:String;
 
         public var cooldown:Number = 0;
-        public var JSONExtractedInformation:Object;
+        public var config:Object;
         public var stopped:Boolean = false;
         public var isPlayer:Boolean = false;
         public var verticalBullet:Boolean = false;
@@ -55,9 +55,9 @@ package de.mediadesign.gd1011.studiof.model
             this._currentLevel = currentLevel;
 
             _position.y = currentPlatform * GameConsts.PLATFORM_HEIGHT;
-            JSONExtractedInformation = JSONReader.read("enemy")["ENEMY"];
-            fireRateEnemy = JSONExtractedInformation["fireRateEnemy"];
-            enemyRange = JSONExtractedInformation["enemyRange"];
+            config = JSONReader.read("enemy")["ENEMY"];
+            fireRateEnemy = config["fireRateEnemy"];
+            enemyRange = config["enemyRange"];
             if (verticalBullet)
             {   this.verticalBullet = true;
                 healthPoints = 1;

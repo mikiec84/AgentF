@@ -39,24 +39,23 @@ package de.mediadesign.gd1011.studiof.model
         private var _idleState:Boolean = false;
 
 
-        public function FortFoxBoss(currentLevel:LevelProcess)
+        public function FortFoxBoss(currentLevel:LevelProcess, config:Object)
         {
-            var JSONExtractedInformation:Object = JSONReader.read("enemy")["FORT_FOX"];
-            idleXPosition = JSONExtractedInformation["idleXPosition"];
+            idleXPosition = config["idleXPosition"];
 
-            super(JSONExtractedInformation["healthpoints"],
-                  JSONExtractedInformation["startingPlatform"],
+            super(config["healthpoints"],
+                  config["startingPlatform"],
                   0 ,idleXPosition, currentLevel, false, GameConsts.BOSS_SPAWN);
 
-            idleTimeFrame = JSONExtractedInformation["idleTimeFrame"];
-            changePosTime = JSONExtractedInformation["changePosTime"];
-            backMovementDistance = JSONExtractedInformation["backMovementDistance"];
+            idleTimeFrame = config["idleTimeFrame"];
+            changePosTime = config["changePosTime"];
+            backMovementDistance = config["backMovementDistance"];
 
             movementSpeed = Math.round((backMovementDistance*2)/changePosTime);
 
             position.x = idleXPosition+backMovementDistance;
             level = currentLevel;
-            healthPoints = JSONExtractedInformation["healthPoints"];
+            healthPoints = config["healthPoints"];
             if (currentLevel.bossHaveLowLife)
                 healthPoints = 2;
             ID = GameConsts.BOSS_SPAWN;
@@ -201,8 +200,8 @@ package de.mediadesign.gd1011.studiof.model
         {
             position.x = idleXPosition+backMovementDistance;
             _initialized = false;
-            healthPoints = JSONExtractedInformation["healthpoints"];
-            position.y = JSONExtractedInformation["startingPlatform"]*GameConsts.PLATFORM_HEIGHT+yOffset;
+            healthPoints = config["healthpoints"];
+            position.y = config["startingPlatform"]*GameConsts.PLATFORM_HEIGHT+yOffset;
         }
 
         public function update(time:Number):void

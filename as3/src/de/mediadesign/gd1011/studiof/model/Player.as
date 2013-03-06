@@ -64,23 +64,23 @@ package de.mediadesign.gd1011.studiof.model {
             state = GameConsts.IDLE;
             ID = ViewConsts.PLAYER;
 
-            JSONExtractedInformation = JSONReader.read("config")["PLAYER"];
-            currentPlatform = JSONExtractedInformation["platform"];
-            healthPoints = JSONExtractedInformation["healthPoints"];
-            fireRate = JSONExtractedInformation["fireRate"];
-            einpendelStaerkeKlein = JSONExtractedInformation["einpendelStaerkeKlein"];
-            einpendelStaerkeGross = JSONExtractedInformation["einpendelStaerkeGross"];
-            einpendelStaerkeWinzig = JSONExtractedInformation["einpendelStaerkeWinzig"];
-            jumpSpeedBeimSprungWinzig = JSONExtractedInformation["jumpSpeedBeimSprungWinzig"];
+            config = JSONReader.read("config")["PLAYER"];
+            currentPlatform = config["platform"];
+            healthPoints = config["healthPoints"];
+            fireRate = config["fireRate"];
+            einpendelStaerkeKlein = config["einpendelStaerkeKlein"];
+            einpendelStaerkeGross = config["einpendelStaerkeGross"];
+            einpendelStaerkeWinzig = config["einpendelStaerkeWinzig"];
+            jumpSpeedBeimSprungWinzig = config["jumpSpeedBeimSprungWinzig"];
             if (einpendelStaerkeWinzig>GameConsts.PLATFORM_HEIGHT-1)
             {
                 einpendelStaerkeWinzig = GameConsts.PLATFORM_HEIGHT-1;
             }
-            speedTowardsMouse = JSONExtractedInformation["speedTowardsMouse"];
-            jumpSpeedBeimSprung = JSONExtractedInformation["jumpSpeedBeimSprung"];
-            jumpSpeedBeimFall = JSONExtractedInformation["jumpSpeedBeimFall"];
-            jumpSpeedBeimEinpendeln = JSONExtractedInformation["jumpSpeedBeimEinpendeln"];
-            accelerationSpeed = JSONExtractedInformation["accelerationSpeed"];
+            speedTowardsMouse = config["speedTowardsMouse"];
+            jumpSpeedBeimSprung = config["jumpSpeedBeimSprung"];
+            jumpSpeedBeimFall = config["jumpSpeedBeimFall"];
+            jumpSpeedBeimEinpendeln = config["jumpSpeedBeimEinpendeln"];
+            accelerationSpeed = config["accelerationSpeed"];
             _tweenedPosition = new PositionComponent();
             position.y = currentPlatform * GameConsts.PLATFORM_HEIGHT;
             isPlayer = true;

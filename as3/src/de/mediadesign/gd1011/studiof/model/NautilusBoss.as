@@ -35,22 +35,21 @@ package de.mediadesign.gd1011.studiof.model
         private var _scrollLevel:Boolean = true;
         private var _idleState:Boolean = true;
 
-        public function NautilusBoss(currentLevel:LevelProcess)
+        public function NautilusBoss(currentLevel:LevelProcess, config:Object)
         {
             _ammunition = new Vector.<Unit>();
-            JSONExtractedInformation = JSONReader.read("enemy")["NAUTILUS"];
-            changePosMovementSpeed = JSONExtractedInformation["changePosMovementSpeed"];
-            changePosTime = JSONExtractedInformation["changePosTime"];
-            xOffset = JSONExtractedInformation["xOffset"];
-            idleXPosition = JSONExtractedInformation["idleXPosition"];
-            idleTimeFrame = JSONExtractedInformation["idleTimeFrame"];
-            attackSpeed = JSONExtractedInformation["attackSpeed"];
+            changePosMovementSpeed = config["changePosMovementSpeed"];
+            changePosTime = config["changePosTime"];
+            xOffset = config["xOffset"];
+            idleXPosition = config["idleXPosition"];
+            idleTimeFrame = config["idleTimeFrame"];
+            attackSpeed = config["attackSpeed"];
             backMovementDistance = GameConsts.STAGE_WIDTH+xOffset-idleXPosition;
             //trace("backMovementDistance im konstruktor: "+backMovementDistance);
             movementSpeed = backMovementDistance/changePosTime;
             level = currentLevel;
             _ammunition = new Vector.<Unit>();
-            super(JSONExtractedInformation["healthPoints"],JSONExtractedInformation["startingPlatform"],0,idleXPosition, currentLevel, false, false, GameConsts.BOSS_SPAWN);
+            super(config["healthPoints"],config["startingPlatform"],0,idleXPosition, currentLevel, false, false, GameConsts.BOSS_SPAWN);
             position.x = GameConsts.STAGE_WIDTH+xOffset;
             state = GameConsts.IDLE;
             if (currentLevel.bossHaveLowLife) {
@@ -70,10 +69,10 @@ package de.mediadesign.gd1011.studiof.model
 
 		public function reset():void
         {
-            position.x = GameConsts.STAGE_WIDTH+JSONExtractedInformation["xOffset"];
+            position.x = GameConsts.STAGE_WIDTH+config["xOffset"];
             _initialized = false;
-            healthPoints = JSONExtractedInformation["healthpoints"];
-            position.y = JSONExtractedInformation["startingPlatform"]*GameConsts.PLATFORM_HEIGHT+yOffset;
+            healthPoints = config["healthpoints"];
+            position.y = config["startingPlatform"]*GameConsts.PLATFORM_HEIGHT+yOffset;
         }
 
         public function start():void

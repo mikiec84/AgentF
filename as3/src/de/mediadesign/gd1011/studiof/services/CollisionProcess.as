@@ -142,7 +142,7 @@ package de.mediadesign.gd1011.studiof.services
         }
         public function deleteUnits(units:Vector.<Unit>, index:int):void
         {
-            level.deleteCurrentUnit(units[index]);
+            level.deleteUnit(units[index]);
             units.splice(index,  1);
         }
         public function start():void

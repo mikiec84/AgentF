@@ -26,22 +26,18 @@ package de.mediadesign.gd1011.studiof.services
         [Inject]
         public var dispatcher:IEventDispatcher;
 
-        private var JSONExtractedInformation:Object;
+        private var _enemyConfig:Object;
 
         public var collisionToleranceFlying:int;
         public var collisionToleranceFloating:int;
         public var collisionToleranceDiving:int;
-        public var JSONNAUT:Object;
-        public var JSONFORT:Object;
 
         public function Rules():void
         {
-            JSONExtractedInformation = JSONReader.read("enemy")["ENEMY"];
-            collisionToleranceFlying = JSONExtractedInformation["collisionToleranceFlying"];
-            collisionToleranceFloating = JSONExtractedInformation["collisionToleranceFloating"];
-            collisionToleranceDiving = JSONExtractedInformation["collisionToleranceDiving"];
-            JSONNAUT = JSONReader.read("enemy")["NAUTILUS"];
-            JSONFORT = JSONReader.read("enemy")["FORT_FOX"];
+            _enemyConfig = JSONReader.read("enemy")["ENEMY"];
+            collisionToleranceFlying = _enemyConfig["collisionToleranceFlying"];
+            collisionToleranceFloating = _enemyConfig["collisionToleranceFloating"];
+            collisionToleranceDiving = _enemyConfig["collisionToleranceDiving"];
 
         }
 
@@ -68,12 +64,12 @@ package de.mediadesign.gd1011.studiof.services
 
             if (unit2 is FortFoxBoss)
             {
-                collisionTolerance = JSONFORT["collisionTolerance"];
+                collisionTolerance = JSONReader.read("level/level")[0][0]["endboss"]["collisionTolerance"];
             }
 
             if (unit2 is NautilusBoss)
             {
-                collisionTolerance = JSONNAUT["collisionTolerance"];
+                collisionTolerance = JSONReader.read("level/level")[0][1]["endboss"]["collisionTolerance"];
             }
 
             if (unit2.position.x < GameConsts.STAGE_WIDTH - 50)

@@ -8,7 +8,17 @@
          		   {"pattern":2, "count":2},
           		   {"pattern":3, "count":2}
                         ],
-           "endboss":"FortFoxBoss"
+           "endboss":{
+               "classname":"FortFoxBoss",
+               "idleTimeFrame":3,
+               "idleXPosition":820,
+               "startingPlatform":0,
+               "changePosTime":2,
+               "backMovementDistance":30,
+               "healthPoints":10,
+               "enemyRate":750,
+               "collisionTolerance":-490
+           }
 
         },
         {
@@ -19,7 +29,19 @@
         		    {"pattern":6, "count":2},
          		    {"pattern":7, "count":2}
                         ],
-            "endboss":"NautilusBoss"
+            "endboss":{
+                "classname":"NautilusBoss",
+                "idleTimeFrame":3,
+                "idleXPosition":1000,
+                "startingPlatform":4,
+                "changePosTime":1,
+                "xOffset":500,
+                "changePosMovementSpeed":200,
+                "attackSpeed":0.5,
+                "healthPoints":20,
+                "enemyRate":1500,
+                "collisionTolerance":50
+            }
         }
     ]
 ]
