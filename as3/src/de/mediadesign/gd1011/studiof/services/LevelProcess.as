@@ -40,15 +40,13 @@ package de.mediadesign.gd1011.studiof.services
         [Inject]
         public var assets:AssetManager;
 
-        [Inject]
-        public var score:Score;
-
         private var _running:Boolean = true;
         private var _enemies:Vector.<Unit>;
         private var _enemieBullets:Vector.<Unit>;
         private var _player:Player;
         private var _boss:IEndboss;
         private var _currentLevel:int = 0;
+        public var currentScore:int = 0;
 
         private var JSONExtractedInformation:Object;
         private var JSONFORT:Object;
@@ -251,7 +249,7 @@ package de.mediadesign.gd1011.studiof.services
 					sounds.setBGSound(currentLevel,"outro",true, false);
                     _currentLevel+=1;
                     clearLevel();
-                    var showHighScoreEvent:GameEvent = new GameEvent(ViewConsts.SHOW_HIGHSCORE, score);
+                    var showHighScoreEvent:GameEvent = new GameEvent(ViewConsts.SHOW_HIGHSCORE, currentScore);
                     dispatcher.dispatchEvent(showHighScoreEvent);
                 }
                 //Win
@@ -271,8 +269,15 @@ package de.mediadesign.gd1011.studiof.services
                 if(!boss.initialized)
                 {
                     if (!boss.scrollLevel)
-                        stopScrollLevel();
-                    spawnBoss();
+                        stopScrollLevel();/*
+                    if (boss is FortFoxBoss) {
+                        var a:GameEvent = new GameEvent(ViewConsts.SPAWN_FORT_FOX)
+                        dispatcher.dispatchEvent(a);
+                    }
+                    else
+                    {*/
+                        spawnBoss();
+                    //}
                 }
             }
         }
@@ -312,7 +317,7 @@ package de.mediadesign.gd1011.studiof.services
         {
 
             stopScrollLevel();
-
+            currentScore = 0;
 			_bgLayer01.dispose();
 			_bgLayer02.dispose();
 
