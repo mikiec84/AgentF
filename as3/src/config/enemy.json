@@ -19,7 +19,7 @@
         "backMovementDistance":30,
         "healthPoints":10,
         "enemyRate":750,
-        "collisionTolerance":50
+        "collisionTolerance":-490
     },
 
     "NAUTILUS":

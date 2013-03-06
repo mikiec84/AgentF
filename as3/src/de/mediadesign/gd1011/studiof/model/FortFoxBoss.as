@@ -59,6 +59,7 @@ package de.mediadesign.gd1011.studiof.model
             healthPoints = JSONExtractedInformation["healthPoints"];
             if (currentLevel.bossHaveLowLife)
                 healthPoints = 2;
+            ID = GameConsts.BOSS_SPAWN;
         }
 
         public function start():void

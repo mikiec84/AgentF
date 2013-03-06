@@ -253,7 +253,8 @@ package de.mediadesign.gd1011.studiof.services
             // new level
             if (boss.healthPoints <= 0 && boss.initialized)
             {
-                if (currentLevel != maxLevel) {
+                if (currentLevel != maxLevel)
+                {
 					sounds.setBGSound(currentLevel,"outro",true, false);
                     _currentLevel+=1;
                     clearLevel();
@@ -276,22 +277,29 @@ package de.mediadesign.gd1011.studiof.services
             {
                 if(!boss.initialized)
                 {
-                    if (fortFox.position.x <= GameConsts.STAGE_WIDTH - 885)
+                    if (currentLevel == 0)
                     {
-                        fortFox.position.x = GameConsts.STAGE_WIDTH - 890;
-                        fortFox.stop();
-                        spawnBoss();
-                        stopScrollLevel();
-                        var addFortEvent:GameEvent = new GameEvent(ViewConsts.CREATE_FORTBG);
-                        dispatcher.dispatchEvent(addFortEvent);
-                        var removeFortEvent:GameEvent = new GameEvent(GameConsts.DELETE_UNIT, fortFox);
-                        dispatcher.dispatchEvent(removeFortEvent);
+                        if (fortFox.position.x <= GameConsts.STAGE_WIDTH - 885)
+                        {
+                            fortFox.position.x = GameConsts.STAGE_WIDTH - 890;
+                            fortFox.stop();
+
+                            stopScrollLevel();
+                            var addFortEvent:GameEvent = new GameEvent(ViewConsts.CREATE_FORTBG);
+                            dispatcher.dispatchEvent(addFortEvent);
+                            var removeFortEvent:GameEvent = new GameEvent(GameConsts.DELETE_UNIT, fortFox);
+                            dispatcher.dispatchEvent(removeFortEvent);
+                        }
+                        if (!fortFoxStarted)
+                        {
+                            fortFoxStarted = true;
+                            var registerFortEvent:GameEvent = new GameEvent(GameConsts.REGISTER_FORT);
+                            dispatcher.dispatchEvent(registerFortEvent);
+                        }
                     }
-                    if (currentLevel == 0 && !fortFoxStarted)
+                    else
                     {
-                        fortFoxStarted = true;
-                        var registerFortEvent:GameEvent = new GameEvent(GameConsts.REGISTER_FORT);
-                        dispatcher.dispatchEvent(registerFortEvent);
+                        spawnBoss();
                     }
                 }
             }

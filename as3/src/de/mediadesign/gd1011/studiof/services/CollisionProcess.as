@@ -105,9 +105,7 @@ package de.mediadesign.gd1011.studiof.services
 
                 if (rules.isDead(level.enemies[i]))
                 {
-                    deleteUnits(level.enemies, i);/*
-                    var updatePointsEvent:GameEvent = new GameEvent(ViewConsts.ENEMY_KILLED);
-                    dispatcher.dispatchEvent(updatePointsEvent);*/
+                    deleteUnits(level.enemies, i);
                     break;
                     break;
                 }
@@ -130,9 +128,10 @@ package de.mediadesign.gd1011.studiof.services
                 }
                 if (rules.isDead(level.enemieBullets[i]))
                 {
-                    deleteUnits(level.enemieBullets, i);/*
+                    deleteUnits(level.enemieBullets, i);
                     var updatePointsEvent:GameEvent = new GameEvent(ViewConsts.ENEMY_KILLED);
-                    dispatcher.dispatchEvent(updatePointsEvent);*/
+                    dispatcher.dispatchEvent(updatePointsEvent);
+                    level.currentScore+=1;
                     break;
                     break;
                 }
