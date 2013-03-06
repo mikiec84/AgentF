@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker http://texturepacker.com-->
+<!-- $TexturePacker:SmartUpdate:95fd6a91c15faef2095f6aaa8e7e86b7$ -->
+<TextureAtlas imagePath="Splash.png">
+    <SubTexture name="Splash1" x="2" y="463" width="272" height="109" frameX="-84" frameY="-188" frameWidth="410" frameHeight="331"/>
+    <SubTexture name="Splash2" x="662" y="315" width="302" height="133" frameX="-73" frameY="-168" frameWidth="410" frameHeight="331"/>
+    <SubTexture name="Splash3" x="2" y="181" width="334" height="147" frameX="-46" frameY="-152" frameWidth="410" frameHeight="331"/>
+    <SubTexture name="Splash4" x="414" y="2" width="366" height="157" frameX="-10" frameY="-131" frameWidth="410" frameHeight="331"/>
+    <SubTexture name="Splash5" x="2" y="2" width="410" height="177" frameX="0" frameY="-97" frameWidth="410" frameHeight="331"/>
+    <SubTexture name="Splash6" x="414" y="161" width="336" height="145" frameX="-50" frameY="-142" frameWidth="410" frameHeight="331"/>
+    <SubTexture name="Splash7" x="2" y="330" width="310" height="131" frameX="-54" frameY="-152" frameWidth="410" frameHeight="331"/>
+    <SubTexture name="SplashBomb1" x="782" y="109" width="214" height="85" frameX="-75" frameY="-211" frameWidth="410" frameHeight="331"/>
+    <SubTexture name="SplashBomb2" x="782" y="2" width="238" height="105" frameX="-60" frameY="-195" frameWidth="410" frameHeight="331"/>
+    <SubTexture name="SplashBomb3" x="752" y="196" width="264" height="117" frameX="-56" frameY="-181" frameWidth="410" frameHeight="331"/>
+    <SubTexture name="SplashBomb4" x="314" y="449" width="288" height="123" frameX="-60" frameY="-166" frameWidth="410" frameHeight="331"/>
+    <SubTexture name="SplashBomb5" x="338" y="308" width="322" height="139" frameX="-33" frameY="-139" frameWidth="410" frameHeight="331"/>
+    <SubTexture name="SplashBomb6" x="604" y="450" width="264" height="115" frameX="-52" frameY="-173" frameWidth="410" frameHeight="331"/>
+    <SubTexture name="SplashBomb7" x="604" y="567" width="244" height="103" frameX="-69" frameY="-182" frameWidth="410" frameHeight="331"/>
+</TextureAtlas>
