@@ -220,7 +220,7 @@ package de.mediadesign.gd1011.studiof.services
         {
             for (var index:int = 0; index<enemyBullets.length; index++)
             {
-                if (enemyBullets[index].position.x < -300 || enemyBullets[index].position.y > GameConsts.STAGE_HEIGHT+200)
+                if (enemyBullets[index].position.x < -50 || enemyBullets[index].position.y > GameConsts.STAGE_HEIGHT+200)
                 {
                     deleteUnit(enemyBullets[index]);
                     enemyBullets.splice(index,  1);
@@ -228,7 +228,7 @@ package de.mediadesign.gd1011.studiof.services
             }
             for (var index2:int = 0; index2<enemies.length; index2++)
             {
-                if (enemies[index2].position.x < -300 || enemies[index2].position.y > GameConsts.STAGE_HEIGHT+200)
+                if (enemies[index2].position.x < - 250 || enemies[index2].position.y > GameConsts.STAGE_HEIGHT+200)
                 {
                     deleteUnit(enemies[index2]);
                     enemies.splice(index2,  1);
@@ -236,7 +236,7 @@ package de.mediadesign.gd1011.studiof.services
             }
             for (var index3:int = 0; index3<player.ammunition.length; index3++)
             {
-                if (player.ammunition[index3].position.x > GameConsts.STAGE_WIDTH+300 || player.ammunition[index3].position.y > GameConsts.STAGE_HEIGHT+200)
+                if (player.ammunition[index3].position.x > GameConsts.STAGE_WIDTH  || player.ammunition[index3].position.y > GameConsts.STAGE_HEIGHT+200)
                 {
                     deleteUnit(player.ammunition[index3]);
                     player.ammunition.splice(index3,  1);
