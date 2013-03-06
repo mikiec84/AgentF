@@ -161,9 +161,10 @@ package de.mediadesign.gd1011.studiof.services
 
 			for each (var sound:Sound in _soundFXSounds)
 			{
-				_soundFX.push(sound.play(_pausePositions.shift()));
-				_soundFX[_soundFX.length-1].soundTransform = _soundFXVolume[_soundFX.indexOf(sound)];
-				_soundFX[_soundFX.length-1].addEventListener(Event.SOUND_COMPLETE, stopFX);
+				var channel:SoundChannel = sound.play(_pausePositions.shift());
+				_soundFX.push(channel);
+				channel.soundTransform = _soundFXVolume[_soundFXSounds.indexOf(sound)];
+				channel.addEventListener(Event.SOUND_COMPLETE, stopFX);
 			}
 		}
 
