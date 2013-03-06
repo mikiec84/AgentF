@@ -68,7 +68,7 @@ package de.mediadesign.gd1011.studiof.services
 
         ///CHEATS
         public var onlyThreeMobs:Boolean = true;
-        public var bossHaveLowLife:Boolean = false;
+        public var bossHaveLowLife:Boolean = true;
         /////////
 
         private var maxLevel:int = 1;
@@ -248,6 +248,7 @@ package de.mediadesign.gd1011.studiof.services
             if (boss.healthPoints <= 0 && boss.initialized)
             {
                 if (currentLevel != maxLevel) {
+					sounds.setBGSound(currentLevel,"outro",true, false);
                     _currentLevel+=1;
                     clearLevel();
                     var showHighScoreEvent:GameEvent = new GameEvent(ViewConsts.SHOW_HIGHSCORE, score);
@@ -309,6 +310,7 @@ package de.mediadesign.gd1011.studiof.services
 
         private function clearLevel():void
         {
+
             stopScrollLevel();
 
 			_bgLayer01.dispose();
@@ -414,7 +416,7 @@ package de.mediadesign.gd1011.studiof.services
             _bgLayer01 = new BGScroller("layer01",dispatcher, currentLevel, false);
             _bgLayer02 = new BGScroller("layer02",dispatcher, currentLevel);
 
-            sounds.setBGSound(currentLevel,"intro");
+            sounds.setBGSound(currentLevel,"intro",true);
             sounds.setBGSound(currentLevel,"bg-loop");
 
             _enemySequence =  lvlConfig.getEnemySequence(0, currentLevel);
