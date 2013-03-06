@@ -52,6 +52,7 @@ package de.mediadesign.gd1011.studiof.services
         private var _player:Player;
         private var _boss:IEndboss;
         private var _currentLevel:int = 0;
+        public var currentScore:int = 0;
 
         private var JSONExtractedInformation:Object;
         private var JSONFORT:Object;
@@ -253,9 +254,10 @@ package de.mediadesign.gd1011.studiof.services
             if (boss.healthPoints <= 0 && boss.initialized)
             {
                 if (currentLevel != maxLevel) {
+					sounds.setBGSound(currentLevel,"outro",true, false);
                     _currentLevel+=1;
                     clearLevel();
-                    var showHighScoreEvent:GameEvent = new GameEvent(ViewConsts.SHOW_HIGHSCORE, score);
+                    var showHighScoreEvent:GameEvent = new GameEvent(ViewConsts.SHOW_HIGHSCORE, currentScore);
                     dispatcher.dispatchEvent(showHighScoreEvent);
                 }
                 //Win
@@ -328,8 +330,9 @@ package de.mediadesign.gd1011.studiof.services
 
         private function clearLevel():void
         {
-            stopScrollLevel();
 
+            stopScrollLevel();
+            currentScore = 0;
 			_bgLayer01.dispose();
 			_bgLayer02.dispose();
 
@@ -434,7 +437,7 @@ package de.mediadesign.gd1011.studiof.services
             _bgLayer01 = new BGScroller("layer01",dispatcher, currentLevel, false);
             _bgLayer02 = new BGScroller("layer02",dispatcher, currentLevel);
 
-            sounds.setBGSound(currentLevel,"intro");
+            sounds.setBGSound(currentLevel,"intro",true);
             sounds.setBGSound(currentLevel,"bg-loop");
 
             _enemySequence =  lvlConfig.getEnemySequence(0, currentLevel);

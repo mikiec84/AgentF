@@ -10,6 +10,7 @@ package de.mediadesign.gd1011.studiof.view.mediators
 	import de.mediadesign.gd1011.studiof.consts.ViewConsts;
 	import de.mediadesign.gd1011.studiof.events.GameEvent;
 	import de.mediadesign.gd1011.studiof.services.JSONReader;
+	import de.mediadesign.gd1011.studiof.services.LevelProcess;
 	import de.mediadesign.gd1011.studiof.view.Localization;
 	import de.mediadesign.gd1011.studiof.view.StartScreenView;
 	import de.mediadesign.gd1011.studiof.view.TopSecretButton;
@@ -36,6 +37,10 @@ package de.mediadesign.gd1011.studiof.view.mediators
 		[Inject]
 		public var assets:AssetManager;
 
+		//For Debugging
+		[Inject]
+		public var level:LevelProcess;
+
         private var loaded:Boolean = false;
 
 		override public function initialize():void
@@ -50,7 +55,7 @@ package de.mediadesign.gd1011.studiof.view.mediators
 		{
             if (!loaded) {
                 loaded = true;
-                dispatcher.dispatchEvent(new GameEvent(ViewConsts.LOAD_GAMEVIEW, 0));
+                dispatcher.dispatchEvent(new GameEvent(ViewConsts.LOAD_GAMEVIEW, level.currentLevel));
             }
 		}
 

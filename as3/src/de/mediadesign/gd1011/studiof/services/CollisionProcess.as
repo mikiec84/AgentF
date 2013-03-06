@@ -76,13 +76,14 @@ package de.mediadesign.gd1011.studiof.services
 
                     if (rules.isDead(level.enemies[j]))
                     {
+                        var updatePointsEvent:GameEvent = new GameEvent(ViewConsts.ENEMY_KILLED);
+                        dispatcher.dispatchEvent(updatePointsEvent);
+                        level.currentScore+=1;
                         if (level.enemies[j].currentPlatform == 2)
                         {
                             var explosionEvent:GameEvent = new GameEvent(ViewConsts.EXPLOSION, level.enemies[j]);
                             dispatcher.dispatchEvent(explosionEvent);
                             deleteUnits(level.enemies, j);
-                            var updatePointsEvent:GameEvent = new GameEvent(ViewConsts.ENEMY_KILLED);
-                            dispatcher.dispatchEvent(updatePointsEvent);
                         }
                         else
                             level.enemies.splice(j, 1);

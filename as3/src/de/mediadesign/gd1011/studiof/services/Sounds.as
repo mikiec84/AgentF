@@ -24,6 +24,7 @@ package de.mediadesign.gd1011.studiof.services
 
 		private var _bgSound:SoundChannel;
 		private var _bgSoundQueue:Array;
+		private var _bgLoopSettings:Array;
 		private var _soundFX:Vector.<SoundChannel>;
 		private var _soundFXSounds:Vector.<Sound>;
 		private var _pausePositions:Vector.<int>;
@@ -37,6 +38,7 @@ package de.mediadesign.gd1011.studiof.services
 			_soundFX = new Vector.<SoundChannel>();
 			_soundFXSounds = new Vector.<Sound>;
 			_bgSoundQueue = new Array();
+			_bgLoopSettings = new Array();
 			_pausePositions = new Vector.<int>();
 			_soundConfig = JSONReader.read("viewconfig")["soundsets"];
 			_delay = _soundConfig["delay"];
@@ -52,7 +54,7 @@ package de.mediadesign.gd1011.studiof.services
 			_soundFX[_soundFX.length-1].addEventListener(Event.SOUND_COMPLETE, stopFX);
 		}
 
-		public function setBGSound(level,key:String):void
+		public function setBGSound(level,key:String, forceCompleteLoop:Boolean = false, loop:Boolean = true):void
 		{
 			var soundNames:Array = _soundConfig["level_"+(level+1)][key];
 			var loopSounds:Vector.<Sound> = new Vector.<Sound>();
@@ -63,6 +65,8 @@ package de.mediadesign.gd1011.studiof.services
 			}
 			if(loopSounds.length==0)
 				return;
+			var loopSettings:Array = new Array(0,forceCompleteLoop,loop);
+			_bgLoopSettings.push(loopSettings);
 
 			_bgSoundQueue.push(loopSounds);
 
@@ -72,28 +76,47 @@ package de.mediadesign.gd1011.studiof.services
 				if(_bgSound!= null)
 				{
 					setInterval(watchBGSound,_delay*0.1);
-					//_bgSound.addEventListener(Event.SOUND_COMPLETE, loopBGSound);
 				}
 			}
 		}
 
-		private function loopBGSound(e:Event = null):void
+		//Alternative Complete-Event
+		private function loopBGSound():void
 		{
 
-			_bgSound.removeEventListener(Event.SOUND_COMPLETE, loopBGSound);
-			if(_bgSoundQueue.length > 1)
+			if((_bgSoundQueue.length > 1) &&
+			   (_bgLoopSettings[0][1] == false || _bgLoopSettings[0][0] == _bgSoundQueue[0].length-1))//If no complete loop forced or at the end of the loop, skip rest
+			{
 				_bgSoundQueue.shift();
+				_bgLoopSettings.shift();
+			}
 			else
+			{
 				_bgSoundQueue[0].push(_bgSoundQueue[0].shift());
+				_bgLoopSettings[0][0]++;
+			}
 
-			_bgSound = _bgSoundQueue[0][0].play();
-			setInterval(watchBGSound,_delay*0.1);
-			//_bgSound.addEventListener(Event.SOUND_COMPLETE, loopBGSound);
+			if(_bgLoopSettings[0][2] == false && _bgLoopSettings[0][0] == _bgSoundQueue[0].length)
+			{
+				_bgSoundQueue.shift();
+				_bgLoopSettings.shift();
+			}
+			else
+			{
+				_bgLoopSettings[0][0]=_bgLoopSettings[0][0]%_bgSoundQueue[0].length;
+			}
+
+			if(_bgSoundQueue.length > 0)
+			{
+				_bgSound = _bgSoundQueue[0][0].play();
+				setInterval(watchBGSound,_delay*0.1);
+			}
+
 		}
 
 		private function watchBGSound():void
 		{
-			if(_bgSound==null)
+			if(_bgSound==null || _bgSoundQueue[0] == null)
 				return;
 			if(_bgSoundQueue[0][0].length-_bgSound.position <=_delay )
 				loopBGSound();

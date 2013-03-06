@@ -7,19 +7,20 @@
  */
 package de.mediadesign.gd1011.studiof.view
 {
+	import de.mediadesign.gd1011.studiof.services.JSONReader;
 	import de.mediadesign.gd1011.studiof.view.mediators.TopSecretTexture;
 
 	import starling.display.Image;
-	import starling.display.Quad;
 	import starling.display.Sprite;
-	import starling.text.TextField;
 	import starling.textures.Texture;
 
 	public class LevelEndScreen extends Sprite
 	{
 		public function LevelEndScreen()
 		{
-			var text:Image = new Image(Texture.fromBitmapData(new TopSecretTexture("Highscore",60)));
+			var viewconfig:Object = JSONReader.read("viewconfig")["startscreen"];
+			var text:Image = new Image(Texture.fromBitmapData(new TopSecretTexture("Highscore",viewconfig["capture-size"])));
+			text.x = text.y = viewconfig["border-width"];
 			addChild(text);
 		}
 	}
