@@ -16,7 +16,11 @@ package de.mediadesign.gd1011.studiof.command
 
     import robotlegs.bender.bundles.mvcs.Command;
 
+    import starling.display.Image;
+    import starling.display.MovieClip;
+
     import starling.display.Sprite;
+    import starling.utils.AssetManager;
 
     public class SpawnBossCommand extends Command
     {
@@ -36,16 +40,13 @@ package de.mediadesign.gd1011.studiof.command
         {
             if (level.boss is FortFoxBoss)
             {
-                var addFortEvent:GameEvent = new GameEvent(ViewConsts.CREATE_FORTBG);
-                dispatcher.dispatchEvent(addFortEvent);
                 var bossView:Sprite = new EnemyView(ViewConsts.FORTFOX, GameConsts.BOSS_SPAWN);
-
             }
             else
             {
                 var bossView:Sprite = new EnemyView(ViewConsts.NAUTILUS, GameConsts.BOSS_SPAWN);
-            }
 
+            }
             moveProcess.addEntity(level.boss as Unit);
             renderProcess.registerRenderable(new Renderable(level.boss.position, bossView));
 

@@ -40,7 +40,7 @@ package de.mediadesign.gd1011.studiof.command
 
         override public function execute():void
         {
-            var unit:Unit = event.dataObj;
+            var unit:Object = event.dataObj;
             var view:Sprite = null;
 
             // delete Renderable in Vector

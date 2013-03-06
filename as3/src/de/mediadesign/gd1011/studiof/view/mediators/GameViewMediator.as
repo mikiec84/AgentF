@@ -89,17 +89,21 @@ package de.mediadesign.gd1011.studiof.view.mediators
             removeContextListener(ViewConsts.CREATE_FORTBG, createFort);
             var fortBackLayer:Image = new Image(assets.getTexture("Fort_BackLayer"));
             fortBackLayer.x = GameConsts.STAGE_WIDTH - 890;
+            fortBackLayer.y = 0;
             contextView.addChildAt(fortBackLayer, contextView.numChildren-2);
             var fortMiddleLayer:Image = new Image(assets.getTexture("Fort_MidLayer"));
             fortMiddleLayer.x = GameConsts.STAGE_WIDTH - 890;
+            fortMiddleLayer.y = 0;
             contextView.addChildAt(fortMiddleLayer, contextView.numChildren-2);
             var fortUpperLayer:Image = new Image(assets.getTexture("Fort_UpperLayer"));
             fortUpperLayer.x = GameConsts.STAGE_WIDTH - 890;
+            fortUpperLayer.y = 0;
             contextView.addChildAt(fortUpperLayer, contextView.numChildren-1);
 
             doorO = new MovieClip(assets.getTextures("Clack_High_"),30);
             Starling.juggler.add(doorO as MovieClip);
             doorO.x = GameConsts.STAGE_WIDTH - 890;
+            doorO.y = 0;
             (doorO as MovieClip).stop();
             doorO.loop = false;
             contextView.addChild(doorO);
@@ -107,12 +111,14 @@ package de.mediadesign.gd1011.studiof.view.mediators
             doorO2 = assets.getMCReverse("Clack_High_");
             Starling.juggler.add(doorO2 as MovieClip);
             doorO2.x = GameConsts.STAGE_WIDTH - 890;
+            doorO2.y = 0;
             (doorO2 as MovieClip).stop();
             doorO2.loop = false;
 
             doorU = new MovieClip(assets.getTextures("Clack_Low_"),30);
             Starling.juggler.add(doorU as MovieClip);
             doorU.x = GameConsts.STAGE_WIDTH - 890;
+            doorU.y = 0;
             (doorU as MovieClip).stop();
             doorU.loop = false;
             contextView.addChild(doorU);
@@ -120,6 +126,7 @@ package de.mediadesign.gd1011.studiof.view.mediators
             doorU2 = assets.getMCReverse("Clack_Low_");
             Starling.juggler.add(doorU2 as MovieClip);
             doorU2.x = GameConsts.STAGE_WIDTH - 890;
+            doorU2.y = 0;
             (doorU2 as MovieClip).stop();
             doorU2.loop = false;
 

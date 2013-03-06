@@ -47,20 +47,17 @@ package de.mediadesign.gd1011.studiof.model
         {
             view.alpha = 1;
             view.x = position.x;
-            if (((view is EnemyView) && (view as EnemyView).enemyType == ViewConsts.PLAYER) || (view is BulletView && (view as BulletView).master.isPlayer))
+            if (((view is EnemyView) && (view as EnemyView).enemyType == ViewConsts.PLAYER)
+                    || (view is BulletView && (view as BulletView).master.isPlayer))
             {
                 view.y = position.y+swimmingOffset;
             }
             else
             {
                 if (observePlatform(position.y)<2)
-                {
                     view.y = position.y-flyingOffset;
-                }
                 else
-                {
                     view.y = position.y+swimmingOffset;
-                }
             }
         }
 

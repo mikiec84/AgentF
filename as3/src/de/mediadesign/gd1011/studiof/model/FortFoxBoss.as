@@ -19,8 +19,6 @@ package de.mediadesign.gd1011.studiof.model
         private var timeCounter:Number = 0;
         private var idleTimeFrame:Number;
 
-        private var fortPosition:PositionComponent;
-
         private var changePosTime:Number;
         private var backMovementDistance:int;
         private var idleXPosition:int;
@@ -61,13 +59,11 @@ package de.mediadesign.gd1011.studiof.model
             healthPoints = JSONExtractedInformation["healthPoints"];
             if (currentLevel.bossHaveLowLife)
                 healthPoints = 2;
-
-            fortPosition = new PositionComponent();
-            fortPosition.x = GameConsts.STAGE_WIDTH;
         }
 
         public function start():void
-        {   trace("FORTFOX SPAWNED");
+        {
+            trace("FORTFOX SPAWNED");
             _moveLeftRunning = true;
             var a:GameEvent = new GameEvent(GameConsts.BOSS_SPAWN);
             level.dispatcher.dispatchEvent(a);
@@ -191,14 +187,6 @@ package de.mediadesign.gd1011.studiof.model
                 upMovementRunning = false;
                 var ac:GameEvent = new GameEvent(ViewConsts.FORT_FOX_BOSS_MOVEMENT, this);
                 level.dispatcher.dispatchEvent(ac);
-            }
-        }
-
-        public function stopScrollFort():void
-        {
-            if (fortPosition.x <= GameConsts.STAGE_WIDTH - 870)
-            {
-                fortPosition.x = GameConsts.STAGE_WIDTH - 890;
             }
         }
 

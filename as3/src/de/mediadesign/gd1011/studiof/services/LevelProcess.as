@@ -43,6 +43,9 @@ package de.mediadesign.gd1011.studiof.services
         [Inject]
         public var score:Score;
 
+        [Inject]
+        public var fortFox:FortFox;
+
         private var _running:Boolean = true;
         private var _enemies:Vector.<Unit>;
         private var _enemieBullets:Vector.<Unit>;
@@ -61,6 +64,8 @@ package de.mediadesign.gd1011.studiof.services
         private var allUnitsStopped:Boolean = false;
         private var gameIsOver:Boolean = false;
         private var _scrollLevel:Boolean = true;
+
+        private var fortFoxStarted:Boolean = false;
 
         public var currentXKoord:int = GameConsts.STAGE_WIDTH;
         public var enemyPositions:Vector.<EnemyInitPositioning>;
@@ -269,9 +274,23 @@ package de.mediadesign.gd1011.studiof.services
             {
                 if(!boss.initialized)
                 {
-                    if (!boss.scrollLevel)
+                    if (fortFox.position.x <= GameConsts.STAGE_WIDTH - 885)
+                    {
+                        fortFox.position.x = GameConsts.STAGE_WIDTH - 890;
+                        fortFox.stop();
+                        spawnBoss();
                         stopScrollLevel();
-                    spawnBoss();
+                        var addFortEvent:GameEvent = new GameEvent(ViewConsts.CREATE_FORTBG);
+                        dispatcher.dispatchEvent(addFortEvent);
+                        var removeFortEvent:GameEvent = new GameEvent(GameConsts.DELETE_UNIT, fortFox);
+                        dispatcher.dispatchEvent(removeFortEvent);
+                    }
+                    if (currentLevel == 0 && !fortFoxStarted)
+                    {
+                        fortFoxStarted = true;
+                        var registerFortEvent:GameEvent = new GameEvent(GameConsts.REGISTER_FORT);
+                        dispatcher.dispatchEvent(registerFortEvent);
+                    }
                 }
             }
         }
@@ -368,6 +387,7 @@ package de.mediadesign.gd1011.studiof.services
 
         public function newLevel(currentLevel:int):void
         {
+            fortFoxStarted = false;
             if (currentLevel == 0)
             {
                 if (assets.getTexture("TileSystemLevel2_1") != null)
@@ -443,7 +463,7 @@ package de.mediadesign.gd1011.studiof.services
         {
 			if (!boss.initialized && !boss.moveLeftRunning)
 			{
-				boss.start();
+                boss.start();
 				sounds.setBGSound(currentLevel,"boss-intro");
 				sounds.setBGSound(currentLevel,"boss-loop1");
 			}

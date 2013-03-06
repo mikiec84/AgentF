@@ -13,10 +13,12 @@ package de.mediadesign.gd1011.studiof
 	import de.mediadesign.gd1011.studiof.command.DeleteUnitCommand;
 	import de.mediadesign.gd1011.studiof.command.InitGameCommand;
 	import de.mediadesign.gd1011.studiof.command.RegisterBulletCommand;
-	import de.mediadesign.gd1011.studiof.command.RemoveFromMoveprocessCommand;
+    import de.mediadesign.gd1011.studiof.command.RegsiterFortCommand;
+    import de.mediadesign.gd1011.studiof.command.RemoveFromMoveprocessCommand;
 	import de.mediadesign.gd1011.studiof.command.SpawnBossCommand;
     import de.mediadesign.gd1011.studiof.consts.GameConsts;
-	import de.mediadesign.gd1011.studiof.model.LevelConfiguration;
+    import de.mediadesign.gd1011.studiof.model.FortFox;
+    import de.mediadesign.gd1011.studiof.model.LevelConfiguration;
 	import de.mediadesign.gd1011.studiof.model.Score;
 	import de.mediadesign.gd1011.studiof.services.CollisionProcess;
 	import de.mediadesign.gd1011.studiof.services.GameLoop;
@@ -86,6 +88,7 @@ package de.mediadesign.gd1011.studiof
 
 			modelMap.map(AssetManager).asSingleton();
 			modelMap.map(Sounds).asSingleton();
+            modelMap.map(FortFox).asSingleton();
         }
 
         private function initCommands():void
@@ -98,6 +101,7 @@ package de.mediadesign.gd1011.studiof
             commandMap.map(GameConsts.BOSS_SPAWN).toCommand(SpawnBossCommand);
             commandMap.map(GameConsts.CHANGE_STATE).toCommand(ChangeUnitStateCommand);
             commandMap.map(GameConsts.REMOVE_FROM_MOVEPROCESS).toCommand(RemoveFromMoveprocessCommand);
+            commandMap.map(GameConsts.REGISTER_FORT).toCommand(RegsiterFortCommand);
         }
 
         public function initMediators() : void

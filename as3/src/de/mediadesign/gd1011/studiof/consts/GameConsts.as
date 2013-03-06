@@ -21,6 +21,7 @@ package de.mediadesign.gd1011.studiof.consts
         public static const DAMAGE_UNIT:String = "DAMAGE_UNIT";
         public static const CHANGE_STATE:String ="CHANGE_STATE";
 		public static const REMOVE_FROM_MOVEPROCESS:String = "REMOVE_FROM_MOVEPROCESS";
+        public static const REGISTER_FORT:String = "REGISTER_FORT";
 
 		public static const CREATE_BG:String = "CREATE_BG";
 
