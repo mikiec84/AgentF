@@ -510,9 +510,14 @@ package starling.utils
                 if (asset is Sound)
                     addSound(name, asset as Sound);
                 else if (asset is Bitmap)
-                    addTexture(name, Texture.fromBitmap(asset as Bitmap, mUseMipMaps, false, mScaleFactor));
+				{
+					addTexture(name, Texture.fromBitmap(asset as Bitmap, mUseMipMaps, false, mScaleFactor));
+				}
 				else if (asset is BitmapData)
+				{
 					addTexture(name, Texture.fromBitmapData(asset as BitmapData, mUseMipMaps, false, mScaleFactor));
+					(asset as BitmapData).dispose();
+				}
                 else if (asset is ByteArray)
                 {
                     var bytes:ByteArray = asset as ByteArray;
@@ -530,7 +535,6 @@ package starling.utils
                 var url:String = rawAsset as String;
                 extension = url.split(".").pop().toLowerCase();
                	var filename = url.split(".").shift().split("/").pop();
-				trace(filename, extension);
 				if(extension == "mp3" && filename in mSounds)
 				{
 					onComplete();
