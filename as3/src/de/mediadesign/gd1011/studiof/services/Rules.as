@@ -26,12 +26,17 @@ package de.mediadesign.gd1011.studiof.services
         [Inject]
         public var dispatcher:IEventDispatcher;
 
+        [Inject]
+        public var level:LevelProcess;
+
         private var _enemyConfig:Object;
         private var cheat:Boolean = true;
 
-        public var collisionToleranceFlying:int;
-        public var collisionToleranceFloating:int;
-        public var collisionToleranceDiving:int;
+        private var collisionToleranceFlying:int;
+        private var collisionToleranceFloating:int;
+        private var collisionToleranceDiving:int;
+
+        private var caveTolerance:int = 0;
 
         public function Rules():void
         {
@@ -48,17 +53,17 @@ package de.mediadesign.gd1011.studiof.services
         {
             var collisionTolerance:int;
 
-            if (unit1.observePlatform(unit1.position.y)<2)
+            if (unit1.observePlatform(unit1.currentPlatform)<2)
             {
                 collisionTolerance = collisionToleranceFlying;
             }
 
-            if (unit1.observePlatform(unit1.position.y)==2)
+            if (unit1.observePlatform(unit1.currentPlatform)==2)
             {
                 collisionTolerance = collisionToleranceFloating;
             }
 
-            if (unit1.observePlatform(unit1.position.y)>2)
+            if (unit1.observePlatform(unit1.currentPlatform)>2)
             {
                 collisionTolerance = collisionToleranceDiving;
             }
@@ -73,7 +78,12 @@ package de.mediadesign.gd1011.studiof.services
                 collisionTolerance = JSONReader.read("level/level")[0][1]["endboss"]["collisionTolerance"];
             }
 
-            if (unit2.position.x < GameConsts.STAGE_WIDTH - 50)
+            if (level.boss.initialized && level.currentLevel == 0)
+                caveTolerance = 400;
+            else
+                caveTolerance = 0;
+
+            if (unit2.position.x < GameConsts.STAGE_WIDTH - 50 -caveTolerance)
             {
                 if (unit1.currentPlatform == unit2.currentPlatform
                         && unit1.position.x + collisionTolerance >= unit2.position.x)
@@ -87,6 +97,7 @@ package de.mediadesign.gd1011.studiof.services
                     var damageUnitEvent:GameEvent = new GameEvent(GameConsts.DAMAGE_UNIT, unit2);
                     dispatcher.dispatchEvent(damageUnitEvent);
                 }
+                // Luftballonheini kann in 2 ebenen abgeschossen werden
                 if (unit2.currentPlatform == 1 && cheat)
                 {
                     if (unit1.currentPlatform == unit2.currentPlatform - 1

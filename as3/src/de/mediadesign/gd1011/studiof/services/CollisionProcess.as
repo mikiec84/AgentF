@@ -50,10 +50,12 @@ package de.mediadesign.gd1011.studiof.services
                 {
                     if (level.boss.idleState)
                         rules.collisionDetection(level.player.ammunition[i], level.boss as Unit);
+
                     if (level.boss is NautilusBoss)
                     {
                         for (var j:int = 0; j < (level.boss as NautilusBoss).ammunition.length; j++)
                         {
+                            // collision SeaMine , Player
                             rules.collisionDetection(level.player, (level.boss as NautilusBoss).ammunition[j]);
                             rules.collisionDetection(level.player.ammunition[i], (level.boss as NautilusBoss).ammunition[j]);
 
@@ -68,7 +70,6 @@ package de.mediadesign.gd1011.studiof.services
                         }
                     }
                 }
-                // collision SeaMine , Player
                 for (var j:int = 0; j < level.enemies.length; j++)
                 {
                     //collision playerbullet, enemy
@@ -103,12 +104,17 @@ package de.mediadesign.gd1011.studiof.services
 
             for (var i:int = 0; i < level.enemies.length; i++)
             {
-                //collision player, enemy
+                //collision player, enemy NUR FASS
                 if (level.enemies[i].currentPlatform == 2)
                     rules.collisionDetection(level.player, level.enemies[i]);
 
                 if (rules.isDead(level.enemies[i]))
                 {
+                    if (level.enemies[i].currentPlatform == 2)
+                    {
+                        var explosionEvent:GameEvent = new GameEvent(ViewConsts.EXPLOSION, level.enemies[i]);
+                        dispatcher.dispatchEvent(explosionEvent);
+                    }
                     deleteUnits(level.enemies, i);
                     break;
                     break;
@@ -126,15 +132,13 @@ package de.mediadesign.gd1011.studiof.services
                     {
                         level.enemyBullets[i].healthPoints-=1;
                         level.player.healthPoints-=1;
-                        var a:GameEvent = new GameEvent(ViewConsts.EXPLOSION, level.enemyBullets[i]);
-                        dispatcher.dispatchEvent(a);
+                        var explosionEvent:GameEvent = new GameEvent(ViewConsts.EXPLOSION, level.enemyBullets[i]);
+                        dispatcher.dispatchEvent(explosionEvent);
                     }
                 }
                 if (rules.isDead(level.enemyBullets[i]))
                 {
                     deleteUnits(level.enemyBullets, i);
-//                    var updatePointsEvent:GameEvent = new GameEvent(ViewConsts.ENEMY_KILLED);
-//                    dispatcher.dispatchEvent(updatePointsEvent);
                     break;
                     break;
                 }

@@ -210,7 +210,7 @@ package de.mediadesign.gd1011.studiof.view.mediators
                 else if (event.dataObj.currentPlatform >= 3)
                     explosionImg = new MovieClip(assets.getTextures("wExp_"), 30);
 
-                explosionImg.x = event.dataObj.position.x - 256;
+                explosionImg.x = event.dataObj.position.x - 156;
                 explosionImg.y = event.dataObj.position.y - 256;
             }
 
