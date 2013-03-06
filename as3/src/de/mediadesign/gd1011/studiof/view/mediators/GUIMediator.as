@@ -38,7 +38,7 @@ package de.mediadesign.gd1011.studiof.view.mediators
 		public var assets:AssetManager;
 
 		[Inject]
-		public var disparcher:IEventDispatcher;
+		public var dispatcher:IEventDispatcher;
 
 		override public function initialize():void
 		{
@@ -59,12 +59,27 @@ package de.mediadesign.gd1011.studiof.view.mediators
 
 		private function onPause(e:Event):void
 		{
-			disparcher.dispatchEvent(new GameEvent(GameConsts.PAUSE));
-			contextView.pauseMenu = new PauseMenuView(assets,level.currentLevel);
-			contextView.pauseMenu.x = -contextView.pauseMenu.width/2;
-			contextView.pauseMenu.y = -contextView.pauseMenu.height/2;
-			contextView.addAdjusted(contextView.pauseMenu,VAlign.CENTER,HAlign.CENTER);
+			dispatcher.dispatchEvent(new GameEvent(GameConsts.PAUSE));
+			if(contextView.pauseMenu == null)
+			{
+				contextView.pauseMenu = new PauseMenuView(assets,level.currentLevel);
+				contextView.pauseMenu.x = -contextView.pauseMenu.width/2;
+				contextView.pauseMenu.y = -contextView.pauseMenu.height/2;
+				contextView.addAdjusted(contextView.pauseMenu,VAlign.CENTER,HAlign.CENTER);
+				contextView.pauseMenu.continueButton.addEventListener(Event.TRIGGERED,onContinue);
+			}
+			else
+				contextView.pauseMenu.visible = true;
+			contextView.pauseButton.visible = false;
 
+
+		}
+
+		private function onContinue(e:Event):void
+		{
+			contextView.pauseButton.visible = true;
+			contextView.pauseMenu.visible = false;
+			dispatcher.dispatchEvent(new GameEvent(GameConsts.CONTINUE));
 		}
 
         private function updateEnemyKilled(e:GameEvent):void
