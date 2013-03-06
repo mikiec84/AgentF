@@ -283,7 +283,7 @@ package de.mediadesign.gd1011.studiof.services
                         {
                             fortFox.position.x = GameConsts.STAGE_WIDTH - 890;
                             fortFox.stop();
-
+                            spawnBoss();
                             stopScrollLevel();
                             var addFortEvent:GameEvent = new GameEvent(ViewConsts.CREATE_FORTBG);
                             dispatcher.dispatchEvent(addFortEvent);
