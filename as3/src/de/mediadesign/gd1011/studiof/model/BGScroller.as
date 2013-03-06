@@ -105,5 +105,12 @@ package de.mediadesign.gd1011.studiof.model
 			for each(var bg:BGTile in _scrollBGs)
 				bg.stop();
 		}
+
+		public function resumeScrolling():void
+		{
+			_scrolling = true;
+			for each(var bg:BGTile in _scrollBGs)
+				bg.resume();
+		}
 	}
 }

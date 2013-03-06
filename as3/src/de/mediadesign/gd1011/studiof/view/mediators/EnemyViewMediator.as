@@ -11,7 +11,8 @@ package de.mediadesign.gd1011.studiof.view.mediators
     import de.mediadesign.gd1011.studiof.consts.ViewConsts;
     import de.mediadesign.gd1011.studiof.events.GameEvent;
     import de.mediadesign.gd1011.studiof.model.FortFoxBoss;
-    import de.mediadesign.gd1011.studiof.view.EnemyView;
+	import de.mediadesign.gd1011.studiof.services.GameJuggler;
+	import de.mediadesign.gd1011.studiof.view.EnemyView;
 
     import flash.events.IEventDispatcher;
 
@@ -44,7 +45,7 @@ package de.mediadesign.gd1011.studiof.view.mediators
                     // ###### Default state ######
                     images = new Vector.<Image>();
                     currentImg = new MovieClip(assets.getTextures("Player_Idle_"),30);
-                    Starling.juggler.add(currentImg as MovieClip);
+					GameJuggler.add(currentImg as MovieClip);
                     images.push(currentImg);
                     (currentImg as MovieClip).play();
                     currentImg.x = -140;
@@ -54,18 +55,18 @@ package de.mediadesign.gd1011.studiof.view.mediators
                     currentImg = new MovieClip(assets.getTextures("Player_Fall_"),30);
                     currentImg.x = -140;
                     images.push(currentImg);
-                    Starling.juggler.add(currentImg as MovieClip);
+					GameJuggler.add(currentImg as MovieClip);
                     currentImg = new MovieClip(assets.getTextures("Player_Jump_"),30);
                     currentImg.x = -140;
                     images.push(currentImg);
-                    Starling.juggler.add(currentImg as MovieClip);
+					GameJuggler.add(currentImg as MovieClip);
                     addContextListener(ViewConsts.CHANGE_ANIM, changeAnimation);
                     break;
                 case(ViewConsts.FLYING_ENEMY):
                     // ###### Default state ######
                     images = new Vector.<Image>();
                     currentImg = new MovieClip(assets.getTextures("E1 Idle_"),30);
-                    Starling.juggler.add(currentImg as MovieClip);
+					GameJuggler.add(currentImg as MovieClip);
                     images.push(currentImg);
                     (currentImg as MovieClip).play();
                     currentImg.y = -150;
@@ -74,26 +75,26 @@ package de.mediadesign.gd1011.studiof.view.mediators
                     currentImg = new MovieClip(assets.getTextures("E1 Shot_"),30);
                     currentImg.y = -150;
                     images.push(currentImg);
-                    Starling.juggler.add(currentImg as MovieClip);
+					GameJuggler.add(currentImg as MovieClip);
                     addContextListener(ViewConsts.CHANGE_ANIM, changeAnimation);
                     break;
                 case(ViewConsts.FLOATING_ENEMY):
                     currentImg = new MovieClip(assets.getTextures("Barrel_"),30);
-                    Starling.juggler.add(currentImg as MovieClip);
+					GameJuggler.add(currentImg as MovieClip);
                     (currentImg as MovieClip).play();
                     currentImg.y = -50;
                     enemyView.addChild(currentImg);
                     break;
                 case(ViewConsts.UNDERWATER_ENEMY):
                     currentImg = new MovieClip(assets.getTextures("E3 Idle_"),30);
-                    Starling.juggler.add(currentImg as MovieClip);
+					GameJuggler.add(currentImg as MovieClip);
                     (currentImg as MovieClip).play();
                     currentImg.y = 50;
                     enemyView.addChild(currentImg);
                     break;
                 case(ViewConsts.FORTFOX):
                     currentImg = new MovieClip(assets.getTextures("Boss_High_"),30);
-                    Starling.juggler.add(currentImg as MovieClip);
+					GameJuggler.add(currentImg as MovieClip);
                     (currentImg as MovieClip).loop = false;
                     (currentImg as MovieClip).play();
                     currentImg.y = 50;
@@ -102,7 +103,7 @@ package de.mediadesign.gd1011.studiof.view.mediators
                 case(ViewConsts.NAUTILUS):
                     images = new Vector.<Image>();
                     currentImg = new MovieClip(assets.getTextures("Nautilus_Idle_"),30);
-                    Starling.juggler.add(currentImg as MovieClip);
+					GameJuggler.add(currentImg as MovieClip);
                     images.push(currentImg);
                     (currentImg as MovieClip).play();
                     currentImg.y = -50;
@@ -111,11 +112,11 @@ package de.mediadesign.gd1011.studiof.view.mediators
                     currentImg = new MovieClip(assets.getTextures("Nautilus_Shot_"),30);
                     images.push(currentImg);
                     currentImg.y = -50;
-                    Starling.juggler.add(currentImg as MovieClip);
+					GameJuggler.add(currentImg as MovieClip);
                     currentImg = new MovieClip(assets.getTextures("Nautilus_Change_"),30);
                     images.push(currentImg);
                     currentImg.y = -50;
-                    Starling.juggler.add(currentImg as MovieClip);
+					GameJuggler.add(currentImg as MovieClip);
                     addContextListener(ViewConsts.CHANGE_ANIM, changeAnimation);
                     break;
             }

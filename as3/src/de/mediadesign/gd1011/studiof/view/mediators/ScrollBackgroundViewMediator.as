@@ -7,6 +7,7 @@
  */
 package de.mediadesign.gd1011.studiof.view.mediators
 {
+	import de.mediadesign.gd1011.studiof.services.GameJuggler;
 	import de.mediadesign.gd1011.studiof.services.JSONReader;
 	import de.mediadesign.gd1011.studiof.services.LevelProcess;
 	import de.mediadesign.gd1011.studiof.view.ScrollBackgroundView;
@@ -44,7 +45,7 @@ package de.mediadesign.gd1011.studiof.view.mediators
 				if(bgImage is MovieClip)
 				{
 					(bgImage as MovieClip).fps = 5;
-					Starling.juggler.add(bgImage as MovieClip);
+					GameJuggler.add(bgImage as MovieClip);
 					(bgImage as MovieClip).play();
 				}
 			}

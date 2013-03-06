@@ -4,7 +4,8 @@ package de.mediadesign.gd1011.studiof.view.mediators
 	import de.mediadesign.gd1011.studiof.consts.ViewConsts;
 	import de.mediadesign.gd1011.studiof.events.GameEvent;
     import de.mediadesign.gd1011.studiof.model.components.PositionComponent;
-    import de.mediadesign.gd1011.studiof.services.LevelProcess;
+	import de.mediadesign.gd1011.studiof.services.GameJuggler;
+	import de.mediadesign.gd1011.studiof.services.LevelProcess;
     import de.mediadesign.gd1011.studiof.services.GameLoop;
     import de.mediadesign.gd1011.studiof.services.JSONReader;
     import de.mediadesign.gd1011.studiof.view.BackgroundView;
@@ -103,7 +104,7 @@ package de.mediadesign.gd1011.studiof.view.mediators
             contextView.addChildAt(fortUpperLayer, contextView.numChildren-1);
 
             doorO = new MovieClip(assets.getTextures("Clack_High_"),30);
-            Starling.juggler.add(doorO as MovieClip);
+			GameJuggler.add(doorO as MovieClip);
             doorO.x = GameConsts.STAGE_WIDTH - 890;
             doorO.y = 0;
             (doorO as MovieClip).stop();
@@ -111,14 +112,14 @@ package de.mediadesign.gd1011.studiof.view.mediators
             contextView.addChild(doorO);
 
             doorO2 = assets.getMCReverse("Clack_High_");
-            Starling.juggler.add(doorO2 as MovieClip);
+			GameJuggler.add(doorO2 as MovieClip);
             doorO2.x = GameConsts.STAGE_WIDTH - 890;
             doorO2.y = 0;
             (doorO2 as MovieClip).stop();
             doorO2.loop = false;
 
             doorU = new MovieClip(assets.getTextures("Clack_Low_"),30);
-            Starling.juggler.add(doorU as MovieClip);
+			GameJuggler.add(doorU as MovieClip);
             doorU.x = GameConsts.STAGE_WIDTH - 890;
             doorU.y = 0;
             (doorU as MovieClip).stop();
@@ -126,7 +127,7 @@ package de.mediadesign.gd1011.studiof.view.mediators
             contextView.addChild(doorU);
 
             doorU2 = assets.getMCReverse("Clack_Low_");
-            Starling.juggler.add(doorU2 as MovieClip);
+			GameJuggler.add(doorU2 as MovieClip);
             doorU2.x = GameConsts.STAGE_WIDTH - 890;
             doorU2.y = 0;
             (doorU2 as MovieClip).stop();
@@ -182,7 +183,7 @@ package de.mediadesign.gd1011.studiof.view.mediators
             splashImage.alpha = 0.5;
             splashImage.x = -30;
             splashImage.y = GameConsts.STAGE_HEIGHT/2 - 156;
-            Starling.juggler.add(splashImage);
+            GameJuggler.add(splashImage);
             splashImage.loop = false;
             splashImage.play();
             contextView.addChild(splashImage);
@@ -213,7 +214,7 @@ package de.mediadesign.gd1011.studiof.view.mediators
                 explosionImg.y = event.dataObj.position.y - 256;
             }
 
-            Starling.juggler.add(explosionImg);
+			GameJuggler.add(explosionImg);
             explosionImg.loop = false;
             explosionImg.play();
 
@@ -244,7 +245,7 @@ package de.mediadesign.gd1011.studiof.view.mediators
             water.fps = 5;
             water.y = 455;
             water.alpha = 0.5;
-            Starling.juggler.add(water);
+			GameJuggler.add(water);
             contextView.addChild(water);
             water.play();
         }

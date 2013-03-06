@@ -10,7 +10,8 @@ package de.mediadesign.gd1011.studiof.view.mediators
     import de.mediadesign.gd1011.studiof.model.FortFoxBoss;
     import de.mediadesign.gd1011.studiof.model.NautilusBoss;
     import de.mediadesign.gd1011.studiof.model.Player;
-    import de.mediadesign.gd1011.studiof.view.BulletView;
+	import de.mediadesign.gd1011.studiof.services.GameJuggler;
+	import de.mediadesign.gd1011.studiof.view.BulletView;
 
     import flash.events.IEventDispatcher;
     import flash.media.Sound;
@@ -21,8 +22,9 @@ package de.mediadesign.gd1011.studiof.view.mediators
 
     import starling.display.Image;
     import starling.display.MovieClip;
+	import starling.filters.BlurFilter;
 
-    import starling.utils.AssetManager;
+	import starling.utils.AssetManager;
 
     public class BulletViewMediator extends StarlingMediator
     {
@@ -49,7 +51,7 @@ package de.mediadesign.gd1011.studiof.view.mediators
             else if (bulletView.master is NautilusBoss)
             {
                 var img:Image = new MovieClip(assets.getTextures("SeaMine_"), 30);
-                Starling.juggler.add(img as MovieClip);
+				GameJuggler.add(img as MovieClip);
                 (img as MovieClip).play();
                 img.y = -60;
                 bulletView.addChild(img);

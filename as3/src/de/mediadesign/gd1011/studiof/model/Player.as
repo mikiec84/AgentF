@@ -9,7 +9,8 @@ package de.mediadesign.gd1011.studiof.model {
     import de.mediadesign.gd1011.studiof.consts.GameConsts;
     import de.mediadesign.gd1011.studiof.consts.ViewConsts;
     import de.mediadesign.gd1011.studiof.model.components.PositionComponent;
-    import de.mediadesign.gd1011.studiof.services.JSONReader;
+	import de.mediadesign.gd1011.studiof.services.GameJuggler;
+	import de.mediadesign.gd1011.studiof.services.JSONReader;
     import de.mediadesign.gd1011.studiof.services.LevelProcess;
 
     import starling.animation.Transitions;
@@ -267,7 +268,7 @@ package de.mediadesign.gd1011.studiof.model {
                     // ********************************
                     state = GameConsts.JUMP;
                     // ********************************
-                    Starling.juggler.add(_up);
+                    GameJuggler.add(_up);
                 } //else trace("startJump in Player has been used but there are Tweens in Motion right now, or currentPlatform is smaller/equal than 2. Request Denied.");
             }
         }
@@ -288,7 +289,7 @@ package de.mediadesign.gd1011.studiof.model {
                 // ********************************
                 state = GameConsts.FALL;
                 // ********************************
-                Starling.juggler.add(_down);
+				GameJuggler.add(_down);
             }
         }
 
@@ -300,7 +301,7 @@ package de.mediadesign.gd1011.studiof.model {
 
             _landing = new Tween(_tweenedPosition, jumpSpeedBeimEinpendeln, Transitions.EASE_OUT_ELASTIC);
             _landing.moveTo(_tweenedPosition.x, GameConsts.STAGE_HEIGHT/3+yOffset);
-            Starling.juggler.add(_landing);
+			GameJuggler.add(_landing);
         }
 
         public function get targetPlatform():int

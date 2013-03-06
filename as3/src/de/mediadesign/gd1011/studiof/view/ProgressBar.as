@@ -36,9 +36,9 @@ package de.mediadesign.gd1011.studiof.view
 			_border = borderAsset;
 			var q:Quad = new Quad(_width,_height,JSONReader.read("viewconfig")["startscreen"]["progressbar"]["color"]);
 			_bar = new Sprite();
-			_bar.addChild(q);
-			_border.y = _height-1;
+			_border.y = _height-3;
 			_bar.addChild(_border);
+			_bar.addChild(q);
 			_bar.y = -_bar.height
 			addChild(_bar);
 

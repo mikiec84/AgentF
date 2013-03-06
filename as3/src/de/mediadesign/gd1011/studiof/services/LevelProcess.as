@@ -302,7 +302,7 @@ package de.mediadesign.gd1011.studiof.services
             {
                 var gameOverEvent:GameEvent = new GameEvent(ViewConsts.SHOW_GAMEOVER, false);
                 dispatcher.dispatchEvent(gameOverEvent);
-                stopAllUnits();
+				stop();
             }
             // new level
             if (boss.healthPoints <= 0 && boss.initialized)
@@ -398,13 +398,10 @@ package de.mediadesign.gd1011.studiof.services
         private function clearLevel():void
         {
 			stop();
-            stopScrollLevel();
             currentScore = 0;
 			_bgLayer01.dispose();
 			_bgLayer02.dispose();
-
             deleteUnit(player);
-
             deleteEndboss(boss);
 
             for (var i:int = 0; i<enemies.length; i++)
@@ -553,6 +550,13 @@ package de.mediadesign.gd1011.studiof.services
             _bgLayer02.stopScrolling();
         }
 
+		public function resumeScrollLevel():void
+		{
+			_scrollLevel = true;
+			_bgLayer01.resumeScrolling();
+			_bgLayer02.resumeScrolling();
+		}
+
 
         public function get boss():IEndboss
         {
@@ -577,11 +581,17 @@ package de.mediadesign.gd1011.studiof.services
         public function start():void
         {
             _running = true;
+			GameJuggler.start();
+			resumeAllUnits();
+			resumeScrollLevel();
         }
 
         public function stop():void
         {
             _running = false;
+			GameJuggler.stop();
+			stopAllUnits();
+			stopScrollLevel();
         }
 
         public function get enemyBullets():Vector.<Unit>
