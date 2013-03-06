@@ -8,10 +8,19 @@
 package de.mediadesign.gd1011.studiof.view
 {
 	import de.mediadesign.gd1011.studiof.services.JSONReader;
+	import de.mediadesign.gd1011.studiof.view.mediators.TopSecretTexture;
 
+	import flash.display.BitmapData;
+
+	import starling.display.Button;
+	import starling.display.DisplayObject;
+	import starling.display.Image;
 	import starling.display.Sprite;
 	import starling.events.Event;
 	import starling.text.TextField;
+	import starling.textures.Texture;
+	import starling.utils.HAlign;
+	import starling.utils.VAlign;
 
 	public class GUI extends Sprite
     {
@@ -25,9 +34,10 @@ package de.mediadesign.gd1011.studiof.view
 
 		private var _lifepoints:TextField;
 		private var _gameOverScreen:TextField;
-        private var _enemiesKilled:TextField;
+        private var _enemiesKilled:Image;
+		public var pauseButton:Button;
 
-        private var enemyKilledCounter:int = 0;
+        private var enemyKilledCounter:Number = 0;
 
 		public function GUI()
         {
@@ -45,10 +55,12 @@ package de.mediadesign.gd1011.studiof.view
 
 			_lifepoints = new TextField(200,100,"3","Verdana",60,0xffffff,true);
 			_topLeft.addChild(_lifepoints);
-            _enemiesKilled = new TextField(1000, 100, "Enemies killed: 0", "Verdana", 60, 0xffffff, true); ///"+_enemyConfig["enemyCount"]
+			var bmpData:BitmapData = new TopSecretTexture("0",60);
+			var texture:Texture = Texture.fromBitmapData(bmpData);
+			bmpData.dispose();
+            _enemiesKilled = new Image(texture);
             _topCenter.addChild(_enemiesKilled);
-            _enemiesKilled.x -= 500;
-            _enemiesKilled.y -= 20;
+            _enemiesKilled.x -= _enemiesKilled.width/2;
             _lifepoints.y -= 20;
 			if(stage)
 				adjust();
@@ -57,6 +69,20 @@ package de.mediadesign.gd1011.studiof.view
 
         }
 
+		public function addAdjusted(object:DisplayObject, vAlign:String, hAlign:String):void
+		{
+			switch (vAlign)
+			{
+				case (VAlign.TOP):
+					switch (hAlign)
+					{
+						case (HAlign.RIGHT):
+							_topRight.addChild(object);
+							break;
+					}
+					break;
+			}
+		}
 		private function adjust(e:Event=null):void
 		{   removeEventListener(Event.ADDED_TO_STAGE, adjust);
 			_topLeft.x											= _config["padding"];
@@ -66,6 +92,7 @@ package de.mediadesign.gd1011.studiof.view
 			_centerCenter.y 									= getHeight()/2;
 
 		}
+
 
 		private function getWidth():Number
 		{
@@ -86,9 +113,19 @@ package de.mediadesign.gd1011.studiof.view
 			_lifepoints.text=points.toString();
 		}
 
+
         public function setEnemiesKilled(points:int):void
         {   ++enemyKilledCounter;
-            _enemiesKilled.text = "Enemies killed: "+enemyKilledCounter.toString(); //+"/"+_enemyConfig["enemyCount"]
+
+			var bmpData:BitmapData = new TopSecretTexture(enemyKilledCounter+"00",60);
+			var texture:Texture = Texture.fromBitmapData(bmpData);
+			bmpData.dispose();
+			var newGraphic:Image = new Image(texture);
+			newGraphic.x -= newGraphic.width/2;
+			_topCenter.addChild(newGraphic);
+			_topCenter.removeChild(_enemiesKilled);
+			_enemiesKilled = newGraphic;
+
         }
 
 		public function showGameOver(won:Boolean):void

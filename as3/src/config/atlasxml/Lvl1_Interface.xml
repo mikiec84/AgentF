@@ -5,5 +5,5 @@
     <SubTexture name="Lv1Ast" x="1635" y="2" width="402" height="257" frameX="0" frameY="0" frameWidth="412" frameHeight="261"/>
     <SubTexture name="Lv1Frucht" x="149" y="824" width="64" height="134" frameX="-2" frameY="-8" frameWidth="74" frameHeight="146"/>
     <SubTexture name="Lv1PausenmenüHG" x="2" y="2" width="1631" height="820" frameX="-1" frameY="-28" frameWidth="1709" frameHeight="868"/>
-    <SubTexture name="PauseButton" x="2" y="824" width="145" height="145" frameX="-8" frameY="-7" frameWidth="169" frameHeight="165"/>
+    <SubTexture name="Lv1PauseButton" x="2" y="824" width="145" height="145" frameX="-8" frameY="-7" frameWidth="169" frameHeight="165"/>
 </TextureAtlas>

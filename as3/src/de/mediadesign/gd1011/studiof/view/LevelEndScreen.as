@@ -7,19 +7,12 @@
  */
 package de.mediadesign.gd1011.studiof.view
 {
-	import de.mediadesign.gd1011.studiof.consts.GameConsts;
-	import de.mediadesign.gd1011.studiof.consts.ViewConsts;
-	import de.mediadesign.gd1011.studiof.events.GameEvent;
 	import de.mediadesign.gd1011.studiof.services.JSONReader;
 	import de.mediadesign.gd1011.studiof.view.mediators.TopSecretTexture;
 
-	import flash.events.Event;
-
 	import starling.display.Button;
-
 	import starling.display.Image;
 	import starling.display.Sprite;
-	import starling.events.Event;
 	import starling.textures.Texture;
 
 	public class LevelEndScreen extends Sprite
@@ -32,7 +25,7 @@ package de.mediadesign.gd1011.studiof.view
 			title.x = title.y = viewconfig["padding"];
 			addChild(title);
 
-			var points:Image = new Image(Texture.fromBitmapData(new TopSecretTexture(score+" "+Localization.getString("points"),viewconfig["score-size"])));
+			var points:Image = new Image(Texture.fromBitmapData(new TopSecretTexture(score+"00 "+Localization.getString("points"),viewconfig["score-size"])));
 			points.x = (width-points.width)/2;
 			points.y = (height-points.height)/2;
 			addChild(points);

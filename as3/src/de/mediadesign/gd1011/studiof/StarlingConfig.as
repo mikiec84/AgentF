@@ -12,6 +12,7 @@ package de.mediadesign.gd1011.studiof
 	import de.mediadesign.gd1011.studiof.command.DamageUnitCommand;
 	import de.mediadesign.gd1011.studiof.command.DeleteUnitCommand;
 	import de.mediadesign.gd1011.studiof.command.InitGameCommand;
+	import de.mediadesign.gd1011.studiof.command.PauseGameCommand;
 	import de.mediadesign.gd1011.studiof.command.RegisterBulletCommand;
     import de.mediadesign.gd1011.studiof.command.RegsiterFortCommand;
     import de.mediadesign.gd1011.studiof.command.RemoveFromMoveprocessCommand;
@@ -96,6 +97,7 @@ package de.mediadesign.gd1011.studiof
         private function initCommands():void
         {
             commandMap.map(GameConsts.INIT_GAME).toCommand(InitGameCommand);
+			commandMap.map(GameConsts.PAUSE).toCommand(PauseGameCommand);
             commandMap.map(GameConsts.CREATE_BG).toCommand(CreateBackgroundCommand);
             commandMap.map(GameConsts.REGISTER_UNIT).toCommand(RegisterBulletCommand);
             commandMap.map(GameConsts.DELETE_UNIT).toCommand(DeleteUnitCommand);
