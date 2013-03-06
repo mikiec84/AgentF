@@ -257,10 +257,9 @@ package de.mediadesign.gd1011.studiof.services
                 {
 					sounds.setBGSound(currentLevel,"outro",true, false);
                     _currentLevel+=1;
-                    clearLevel();
                     var showHighScoreEvent:GameEvent = new GameEvent(ViewConsts.SHOW_HIGHSCORE, currentScore);
-					trace("Score = "+currentScore);
                     dispatcher.dispatchEvent(showHighScoreEvent);
+					clearLevel();
                 }
                 //Win
                 else
@@ -313,7 +312,7 @@ package de.mediadesign.gd1011.studiof.services
                 if (enemies[i].currentPlatform < 2)
                 {
                     if (enemies[i].lastState != enemies[i].state)
-                    {;
+                    {
                         var changeStateEvent:GameEvent = new GameEvent(GameConsts.CHANGE_STATE, enemies[i]);
                         dispatcher.dispatchEvent(changeStateEvent);
                     }
@@ -339,7 +338,6 @@ package de.mediadesign.gd1011.studiof.services
 
         private function clearLevel():void
         {
-
             stopScrollLevel();
             currentScore = 0;
 			_bgLayer01.dispose();
