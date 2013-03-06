@@ -5,7 +5,7 @@
         "enemySpeed":350,
         "fireRateEnemy":0.4,
         "enemyRange":1500,
-        "collisionToleranceFlying":20,
+        "collisionToleranceFlying":-160,
         "collisionToleranceFloating":40,
         "collisionToleranceDiving":40
     },

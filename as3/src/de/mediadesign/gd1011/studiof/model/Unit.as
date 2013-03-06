@@ -73,13 +73,9 @@ package de.mediadesign.gd1011.studiof.model
                 if (currentLevel.boss != null)
                 {
                     if (currentLevel.boss is NautilusBoss)
-                    {
                         position.y = (Math.round(Math.random()*2))*GameConsts.PLATFORM_HEIGHT+5;
-                    }
                     else
-                    {
                         position.y = (Math.round(Math.random())+4)*GameConsts.PLATFORM_HEIGHT+5;
-                    }
                 }
             }
             if (observePlatform(position.y) == 2 && velocity.velocityX < 0)
@@ -94,7 +90,6 @@ package de.mediadesign.gd1011.studiof.model
 
         public function stop():void
         {
-
             stopped = true;
         }
 
@@ -132,7 +127,7 @@ package de.mediadesign.gd1011.studiof.model
                     }
                 }
             }
-            if (currentPlatform < 2 && position.x < 200 && state != GameConsts.SHOT)
+            if (currentPlatform < 2 && position.x < 210 && state != GameConsts.SHOT)
                 state = GameConsts.SHOT;
         }
 
@@ -163,11 +158,8 @@ package de.mediadesign.gd1011.studiof.model
 
         public function set healthPoints(value:int):void
         {
-            if (value<0)
-            {
-                trace("Trying to set healthpoints below 0. Value "+value+" not accepted.");
-            }
-            else _healthPoints = value;
+            if (!(value < 0))
+                _healthPoints = value;
         }
 
         public function get currentPlatform():int
@@ -177,11 +169,8 @@ package de.mediadesign.gd1011.studiof.model
 
         public function set currentPlatform(value:int):void
         {
-            if (value<0 || value>5)
-            {
-                trace("Trying to set currentPlatform below 0 or beyond 5. Value "+value+" not accepted.");
-            }
-            else _currentPlatform = value;
+            if (!(value<0 || value>5))
+                _currentPlatform = value;
         }
 
         public function set position(value:PositionComponent):void
@@ -202,9 +191,7 @@ package de.mediadesign.gd1011.studiof.model
         public function setNewPosition(y:int):void
         {
             if (y>=GameConsts.PLATFORM_HEIGHT*2 && y<=GameConsts.PLATFORM_HEIGHT*6)
-            {
                 _position.y = y;
-            }
         }
         public function shoot(time:Number):Unit
         {

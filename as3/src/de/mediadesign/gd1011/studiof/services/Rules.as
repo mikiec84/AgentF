@@ -27,6 +27,7 @@ package de.mediadesign.gd1011.studiof.services
         public var dispatcher:IEventDispatcher;
 
         private var _enemyConfig:Object;
+        private var cheat:Boolean = true;
 
         public var collisionToleranceFlying:int;
         public var collisionToleranceFloating:int;
@@ -85,6 +86,18 @@ package de.mediadesign.gd1011.studiof.services
 
                     var damageUnitEvent:GameEvent = new GameEvent(GameConsts.DAMAGE_UNIT, unit2);
                     dispatcher.dispatchEvent(damageUnitEvent);
+                }
+                if (unit2.currentPlatform == 1 && cheat)
+                {
+                    if (unit1.currentPlatform == unit2.currentPlatform - 1
+                            && unit1.position.x + collisionTolerance >= unit2.position.x)
+                    {
+                        unit1.healthPoints--;
+                        if (!(unit1 is Player))
+                            unit2.healthPoints--;
+                        else
+                            unit2.healthPoints = 0;
+                    }
                 }
                 else if (unit2 is NautilusBoss
                         && unit1.currentPlatform == unit2.currentPlatform+1
