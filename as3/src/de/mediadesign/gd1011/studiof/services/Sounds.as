@@ -54,8 +54,10 @@ package de.mediadesign.gd1011.studiof.services
 			var sound:Sound = assets.getSound(name);
 			_soundFXSounds.push(sound);
 			_soundFX.push(sound.play());
+			var volumeControl:SoundTransform = new SoundTransform();
+			volumeControl.volume = volume;
 			_soundFXVolume.push(volume);
-			_soundFX[_soundFX.length-1].soundTransform.volume = volume;
+			_soundFX[_soundFX.length-1].soundTransform = volumeControl;
 			_soundFX[_soundFX.length-1].addEventListener(Event.SOUND_COMPLETE, stopFX);
 		}
 
