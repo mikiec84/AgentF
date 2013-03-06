@@ -2,7 +2,8 @@
 <!-- Created with TexturePacker http://texturepacker.com-->
 <!-- $TexturePacker:SmartUpdate:3f55c2883c5610ccebf976e9f1e8f2d2$ -->
 <TextureAtlas imagePath="Lvl2_Interface.png">
-    <SubTexture name="Lv2PauseButton" x="2" y="852" width="99" height="165" frameX="-8" frameY="-7" frameWidth="113" frameHeight="179"/>
-    <SubTexture name="Lv2PausenmenüHG" x="2" y="2" width="1629" height="848" frameX="-3" frameY="-7" frameWidth="1709" frameHeight="868"/>
-    <SubTexture name="Lv2Stalagtit" x="1633" y="2" width="85" height="175" frameX="-9" frameY="0" frameWidth="101" frameHeight="183"/>
+    <SubTexture name="Lv2_Ast" x="0" y="0" width="2" height="2" frameX="2" frameY="2" frameWidth="2" frameHeight="2"/>
+    <SubTexture name="Lv2_PauseButton" x="2" y="852" width="99" height="165" frameX="-8" frameY="-7" frameWidth="113" frameHeight="179"/>
+    <SubTexture name="Lv2_PausenmenüHG" x="2" y="2" width="1629" height="848" frameX="-3" frameY="-7" frameWidth="1709" frameHeight="868"/>
+    <SubTexture name="Lv2_Frucht" x="1633" y="2" width="85" height="175" frameX="-9" frameY="0" frameWidth="101" frameHeight="183"/>
 </TextureAtlas>
