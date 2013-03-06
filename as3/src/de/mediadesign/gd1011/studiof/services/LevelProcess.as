@@ -514,7 +514,7 @@ package de.mediadesign.gd1011.studiof.services
             }
             for (var index2:int = 0; index2 < _enemyBullets.length; index2++)
             {
-                _enemyBullets[index2].stop();
+                _enemyBullets[index2].resume();
             }
             player.resume();
             for (var index3:int = 0;index3<player.ammunition.length; index3++)
