@@ -10,6 +10,7 @@ package de.mediadesign.gd1011.studiof.services
 	import flash.events.Event;
 	import flash.media.Sound;
 	import flash.media.SoundChannel;
+	import flash.media.SoundTransform;
 	import flash.utils.setInterval;
 	import flash.utils.setTimeout;
 
@@ -27,6 +28,7 @@ package de.mediadesign.gd1011.studiof.services
 		private var _bgLoopSettings:Array;
 		private var _soundFX:Vector.<SoundChannel>;
 		private var _soundFXSounds:Vector.<Sound>;
+		private var _soundFXVolume:Vector.<Number>;
 		private var _pausePositions:Vector.<int>;
 		private var _soundConfig:Object;
 
@@ -45,12 +47,14 @@ package de.mediadesign.gd1011.studiof.services
 			Starling.current.stage3D.addEventListener(Event.DEACTIVATE, stage_deactivateHandler, false, 0, true);
 		}
 
-		public function play(key:String):void
+		public function play(key:String, volume:Number = 1.0):void
 		{
 			var name:String = _soundConfig["general"][key];
 			var sound:Sound = assets.getSound(name);
 			_soundFXSounds.push(sound);
 			_soundFX.push(sound.play());
+			_soundFXVolume.push(volume);
+			_soundFX[_soundFX.length-1].soundTransform.volume = volume;
 			_soundFX[_soundFX.length-1].addEventListener(Event.SOUND_COMPLETE, stopFX);
 		}
 
@@ -155,6 +159,7 @@ package de.mediadesign.gd1011.studiof.services
 			for each (var sound:Sound in _soundFXSounds)
 			{
 				_soundFX.push(sound.play(_pausePositions.shift()));
+				_soundFX[_soundFX.length-1].soundTransform.volume = _soundFXVolume[_soundFX.indexOf(sound)];
 				_soundFX[_soundFX.length-1].addEventListener(Event.SOUND_COMPLETE, stopFX);
 			}
 		}
@@ -164,6 +169,7 @@ package de.mediadesign.gd1011.studiof.services
 			var soundchannel:SoundChannel = e.currentTarget as SoundChannel;
 			var id:int = _soundFX.indexOf(soundchannel);
 			_soundFX.splice(id, 1);
+			_soundFXVolume.splice(id, 1);
 			_soundFXSounds.splice(id,1);
 		}
 	}

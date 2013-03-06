@@ -53,7 +53,7 @@ package de.mediadesign.gd1011.studiof.view.mediators
 
 			contextView.lifepoints = new LifePointsView(assets, level.currentLevel);
 			contextView.scaleGame(contextView.lifepoints);
-			contextView.addChild(contextView.lifepoints);
+			contextView.addChildAt(contextView.lifepoints,0);
 
 		}
 
@@ -61,7 +61,10 @@ package de.mediadesign.gd1011.studiof.view.mediators
 		{
 			disparcher.dispatchEvent(new GameEvent(GameConsts.PAUSE));
 			contextView.pauseMenu = new PauseMenuView(assets,level.currentLevel);
+			contextView.pauseMenu.x = -contextView.pauseMenu.width/2;
+			contextView.pauseMenu.y = -contextView.pauseMenu.height/2;
 			contextView.addAdjusted(contextView.pauseMenu,VAlign.CENTER,HAlign.CENTER);
+
 		}
 
         private function updateEnemyKilled(e:GameEvent):void
