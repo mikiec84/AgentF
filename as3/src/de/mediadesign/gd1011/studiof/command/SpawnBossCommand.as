@@ -39,6 +39,7 @@ package de.mediadesign.gd1011.studiof.command
                 var addFortEvent:GameEvent = new GameEvent(ViewConsts.CREATE_FORTBG);
                 dispatcher.dispatchEvent(addFortEvent);
                 var bossView:Sprite = new EnemyView(ViewConsts.FORTFOX, GameConsts.BOSS_SPAWN);
+
             }
             else
             {

@@ -5,10 +5,12 @@
  * Time: 11:04
  * To change this template use File | Settings | File Templates.
  */
-package de.mediadesign.gd1011.studiof.model {
+package de.mediadesign.gd1011.studiof.model
+{
     import de.mediadesign.gd1011.studiof.consts.GameConsts;
     import de.mediadesign.gd1011.studiof.consts.ViewConsts;
     import de.mediadesign.gd1011.studiof.events.GameEvent;
+    import de.mediadesign.gd1011.studiof.model.components.PositionComponent;
     import de.mediadesign.gd1011.studiof.services.JSONReader;
     import de.mediadesign.gd1011.studiof.services.LevelProcess;
 
@@ -16,23 +18,28 @@ package de.mediadesign.gd1011.studiof.model {
     {
         private var timeCounter:Number = 0;
         private var idleTimeFrame:Number;
-        private var upMovementRunning:Boolean = false;
-        private var upMovementRunningBuffer:Boolean = false;
-        private var downMovementRunning:Boolean = false;
-        private var downMovementRunningBuffer:Boolean = false;
+
+        private var fortPosition:PositionComponent;
+
         private var changePosTime:Number;
         private var backMovementDistance:int;
         private var idleXPosition:int;
         private var movementSpeed:int;
         private var yOffset:int = 2;
-        private var _moveLeftRunning:Boolean = false;
-        private var _initialized:Boolean = false;
+
         private var level:LevelProcess;
-        private var _scrollLevel:Boolean = false;
-        private var _idleState:Boolean = false;
+
         private var _ammunition:Vector.<Unit>;
 
-        private var doorState:int = 0;
+        private var _moveLeftRunning:Boolean = false;
+        private var _initialized:Boolean = false;
+        private var upMovementRunning:Boolean = false;
+        private var upMovementRunningBuffer:Boolean = false;
+        private var downMovementRunning:Boolean = false;
+        private var downMovementRunningBuffer:Boolean = false;
+        private var _scrollLevel:Boolean = false;
+        private var _idleState:Boolean = false;
+
 
         public function FortFoxBoss(currentLevel:LevelProcess)
         {
@@ -54,6 +61,9 @@ package de.mediadesign.gd1011.studiof.model {
             healthPoints = JSONExtractedInformation["healthPoints"];
             if (currentLevel.bossHaveLowLife)
                 healthPoints = 2;
+
+            fortPosition = new PositionComponent();
+            fortPosition.x = GameConsts.STAGE_WIDTH;
         }
 
         public function start():void
@@ -181,6 +191,14 @@ package de.mediadesign.gd1011.studiof.model {
                 upMovementRunning = false;
                 var ac:GameEvent = new GameEvent(ViewConsts.FORT_FOX_BOSS_MOVEMENT, this);
                 level.dispatcher.dispatchEvent(ac);
+            }
+        }
+
+        public function stopScrollFort():void
+        {
+            if (fortPosition.x <= GameConsts.STAGE_WIDTH - 870)
+            {
+                fortPosition.x = GameConsts.STAGE_WIDTH - 890;
             }
         }
 

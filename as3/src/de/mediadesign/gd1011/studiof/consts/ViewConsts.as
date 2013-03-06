@@ -38,7 +38,6 @@ package de.mediadesign.gd1011.studiof.consts
         public static const FORTFOX:String = "FORTFOX";
         public static const NETHER_DOOR:String = "NETHER_DOOR";
         public static const FORT_FOX_BOSS_MOVEMENT:String = "FORT_FOX_BOSS_MOVEMENT";
-        public static const SPAWN_FORT_FOX:String = "SPAWN_FORT_FOX";
         public static const UPPER_DOOR:String = "UPPER_DOOR";
 
         public static const HANDLE_DOOR:String = "HANDLE_DOOR";
@@ -53,10 +52,8 @@ package de.mediadesign.gd1011.studiof.consts
         public static const EXPLOSION:String = "EXPLOSION";
         public static const REMOVE_EXP:String = "REMOVE_EXP";
 
-        public static const LOAD_LEVEL1:String = "LOAD_LEVEL1";
-        public static const LOAD_LEVEL2:String = "LOAD_LEVEL2";
-        public static const DELETE_LEVEL1:String = "DELETE_LEVEL1";
-        public static const DELETE_LEVEL2:String = "DELETE_LEVEL2";
+        public static const LOAD_LEVEL:String = "LOAD_LEVEL";
+        public static const DELETE_LEVEL:String = "DELETE_LEVEL";
 
 
 	}

@@ -15,7 +15,6 @@ package de.mediadesign.gd1011.studiof
 	import de.mediadesign.gd1011.studiof.command.RegisterBulletCommand;
 	import de.mediadesign.gd1011.studiof.command.RemoveFromMoveprocessCommand;
 	import de.mediadesign.gd1011.studiof.command.SpawnBossCommand;
-    import de.mediadesign.gd1011.studiof.command.SpawnFortFoxCommand;
     import de.mediadesign.gd1011.studiof.consts.GameConsts;
 	import de.mediadesign.gd1011.studiof.model.LevelConfiguration;
 	import de.mediadesign.gd1011.studiof.model.Score;
@@ -29,7 +28,7 @@ package de.mediadesign.gd1011.studiof
 	import de.mediadesign.gd1011.studiof.view.BackgroundView;
 	import de.mediadesign.gd1011.studiof.view.BulletView;
 	import de.mediadesign.gd1011.studiof.view.EnemyView;
-	import de.mediadesign.gd1011.studiof.view.GUI;
+    import de.mediadesign.gd1011.studiof.view.GUI;
 	import de.mediadesign.gd1011.studiof.view.GameView;
 	import de.mediadesign.gd1011.studiof.view.MainView;
 	import de.mediadesign.gd1011.studiof.view.ScrollBackgroundView;
@@ -37,7 +36,7 @@ package de.mediadesign.gd1011.studiof
 	import de.mediadesign.gd1011.studiof.view.mediators.BackgroundViewMediator;
 	import de.mediadesign.gd1011.studiof.view.mediators.BulletViewMediator;
 	import de.mediadesign.gd1011.studiof.view.mediators.EnemyViewMediator;
-	import de.mediadesign.gd1011.studiof.view.mediators.GUIMediator;
+    import de.mediadesign.gd1011.studiof.view.mediators.GUIMediator;
 	import de.mediadesign.gd1011.studiof.view.mediators.GameViewMediator;
 	import de.mediadesign.gd1011.studiof.view.mediators.LoadingScreen;
 	import de.mediadesign.gd1011.studiof.view.mediators.LoadingScreenMediator;
@@ -99,7 +98,6 @@ package de.mediadesign.gd1011.studiof
             commandMap.map(GameConsts.BOSS_SPAWN).toCommand(SpawnBossCommand);
             commandMap.map(GameConsts.CHANGE_STATE).toCommand(ChangeUnitStateCommand);
             commandMap.map(GameConsts.REMOVE_FROM_MOVEPROCESS).toCommand(RemoveFromMoveprocessCommand);
-            commandMap.map(GameConsts.SPAWN_FORT_FOX_COMMAND).toCommand(SpawnFortFoxCommand);
         }
 
         public function initMediators() : void

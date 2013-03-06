@@ -237,7 +237,7 @@ package de.mediadesign.gd1011.studiof.services
 
         public function checkStatus():void
         {
-            //Lost
+            //Loose
             if (player.healthPoints<1)
             {
                 var gameOverEvent:GameEvent = new GameEvent(ViewConsts.SHOW_GAMEOVER, false);
@@ -250,16 +250,17 @@ package de.mediadesign.gd1011.studiof.services
                 if (currentLevel != maxLevel) {
                     _currentLevel+=1;
                     clearLevel();
-                    var a:GameEvent = new GameEvent(ViewConsts.SHOW_HIGHSCORE, score);
-                    dispatcher.dispatchEvent(a);
+                    var showHighScoreEvent:GameEvent = new GameEvent(ViewConsts.SHOW_HIGHSCORE, score);
+                    dispatcher.dispatchEvent(showHighScoreEvent);
                 }
+                //Win
                 else
                 {
                     if (!gameIsOver)
                     {
                         gameIsOver = true;
-                        var a:GameEvent = new GameEvent(ViewConsts.SHOW_GAMEOVER, true);
-                        dispatcher.dispatchEvent(a);
+                        var gameOverEvent:GameEvent = new GameEvent(ViewConsts.SHOW_GAMEOVER, true);
+                        dispatcher.dispatchEvent(gameOverEvent);
                     }
                 }
             }
@@ -270,18 +271,11 @@ package de.mediadesign.gd1011.studiof.services
                 {
                     if (!boss.scrollLevel)
                         stopScrollLevel();
-                    if (boss is FortFoxBoss) {
-                        var a:GameEvent = new GameEvent(ViewConsts.SPAWN_FORT_FOX)
-                        dispatcher.dispatchEvent(a);
-                    }
-                    else
-                    {
-                        spawnBoss();
-                    }
+                    spawnBoss();
                 }
             }
         }
-
+        // change states of different Units
         private function checkStates():void
         {
             for (var i:int = 0; i < enemies.length; i++)
@@ -296,7 +290,6 @@ package de.mediadesign.gd1011.studiof.services
                     enemies[i].lastState = enemies[i].state
                 }
             }
-            // change states of different Units
             if (boss.initialized && boss is NautilusBoss)
             {
                 if ((boss as NautilusBoss).lastState != (boss as NautilusBoss).state)
@@ -306,8 +299,6 @@ package de.mediadesign.gd1011.studiof.services
                 }
                 (boss as NautilusBoss).lastState = (boss as NautilusBoss).state;
             }
-
-
             if (player.lastState != player.state)
             {
                 var changeStateEvent:GameEvent = new GameEvent(GameConsts.CHANGE_STATE, player);
@@ -334,7 +325,6 @@ package de.mediadesign.gd1011.studiof.services
                     deleteCurrentUnit(enemies[i]);
                 }
             }
-
             for (var i:int = 0; i<enemieBullets.length; i++)
             {
                 if (enemieBullets[i] is Unit)
@@ -342,7 +332,6 @@ package de.mediadesign.gd1011.studiof.services
                     deleteCurrentUnit(enemieBullets[i]);
                 }
             }
-
             while(enemyPositions.length > 0)
             {
                 enemyPositions.pop();
@@ -362,7 +351,6 @@ package de.mediadesign.gd1011.studiof.services
                     renderProcess.deleteRenderableByID(i);
                 }
             }
-
             // delete Movable in Vector
             for (var i:int = 0; i < moveProcess.targets.length; i++)
             {
@@ -371,7 +359,6 @@ package de.mediadesign.gd1011.studiof.services
                     moveProcess.removeEntity(i);
                 }
             }
-
             if (view != null)
             {
                 var removeFromGameEvent:GameEvent = new GameEvent(ViewConsts.REMOVE_SPRITE_FROM_GAME, view);
@@ -385,21 +372,21 @@ package de.mediadesign.gd1011.studiof.services
             {
                 if (assets.getTexture("TileSystemLevel2_1") != null)
                 {
-                    var a:GameEvent = new GameEvent(ViewConsts.DELETE_LEVEL2);
-                    dispatcher.dispatchEvent(a);
+                    var deleteLevelEvent:GameEvent = new GameEvent(ViewConsts.DELETE_LEVEL, currentLevel+1);
+                    dispatcher.dispatchEvent(deleteLevelEvent);
                 }
-                var ab:GameEvent = new GameEvent(ViewConsts.LOAD_LEVEL1);
-                dispatcher.dispatchEvent(ab);
+                var loadLevelEvent:GameEvent = new GameEvent(ViewConsts.LOAD_LEVEL, currentLevel);
+                dispatcher.dispatchEvent(loadLevelEvent);
             }
             else if (currentLevel == 1)
             {
                 if (assets.getTexture("TileSystemLevel1_1") != null)
                 {
-                    var a:GameEvent = new GameEvent(ViewConsts.DELETE_LEVEL1);
-                    dispatcher.dispatchEvent(a);
+                    var deleteLevelEvent:GameEvent = new GameEvent(ViewConsts.DELETE_LEVEL, currentLevel-1);
+                    dispatcher.dispatchEvent(deleteLevelEvent);
                 }
-                var ab:GameEvent = new GameEvent(ViewConsts.LOAD_LEVEL2);
-                dispatcher.dispatchEvent(ab);
+                var loadLevelEvent:GameEvent = new GameEvent(ViewConsts.LOAD_LEVEL, currentLevel);
+                dispatcher.dispatchEvent(loadLevelEvent);
             }
             initializeLevel();
         }
@@ -438,7 +425,8 @@ package de.mediadesign.gd1011.studiof.services
                 enemyPositions.push(new EnemyInitPositioning(false, GameConsts.STAGE_WIDTH+((1+index)*JSONExtractedInformation["enemyRate"])));
             }
             //////////// CHEAT ///////////////
-            if (onlyThreeMobs) {
+            if (onlyThreeMobs)
+            {
                 while(enemyPositions.length > 10)
                 {
                     enemyPositions.pop();
@@ -446,21 +434,19 @@ package de.mediadesign.gd1011.studiof.services
                 trace("ENEMY POSITION LENGTH: "+enemyPositions.length);
             }
             //////////////////////////////////
-            var abc:GameEvent = new GameEvent(ViewConsts.ADD_WATER_TO_GAME);
-            dispatcher.dispatchEvent(abc);
+            var addWaterEvent:GameEvent = new GameEvent(ViewConsts.ADD_WATER_TO_GAME);
+            dispatcher.dispatchEvent(addWaterEvent);
         }
 
 
         public function spawnBoss():void
         {
-
 			if (!boss.initialized && !boss.moveLeftRunning)
 			{
 				boss.start();
 				sounds.setBGSound(currentLevel,"boss-intro");
 				sounds.setBGSound(currentLevel,"boss-loop1");
 			}
-            //else trace("Es wird versucht ein Level Endboss zu starten, der in der JSON nicht eingetragen ist.");
         }
 
         public function get enemies():Vector.<Unit>

@@ -3,6 +3,7 @@ package de.mediadesign.gd1011.studiof.view.mediators
     import de.mediadesign.gd1011.studiof.consts.GameConsts;
 	import de.mediadesign.gd1011.studiof.consts.ViewConsts;
 	import de.mediadesign.gd1011.studiof.events.GameEvent;
+    import de.mediadesign.gd1011.studiof.model.components.PositionComponent;
     import de.mediadesign.gd1011.studiof.services.LevelProcess;
     import de.mediadesign.gd1011.studiof.services.GameLoop;
     import de.mediadesign.gd1011.studiof.services.JSONReader;
@@ -44,17 +45,17 @@ package de.mediadesign.gd1011.studiof.view.mediators
 		[Inject]
 		public var assets:AssetManager;
 
-        private var doorO:MovieClip;
-        private var doorO2:MovieClip;
-        private var doorU:MovieClip;
-        private var doorU2:MovieClip;
-
         private var explosions:Vector.<MovieClip>;
 
 		private var _touchConfig:Object;
 		private var _validTouchID:int = -1;
 		private var _startTouchPos:Point;
 		private var _timeStamp:Number;
+
+        private var doorO:MovieClip;
+        private var doorO2:MovieClip;
+        private var doorU:MovieClip;
+        private var doorU2:MovieClip;
 		
 		override public function initialize():void
 		{
@@ -82,52 +83,6 @@ package de.mediadesign.gd1011.studiof.view.mediators
 			dispatcher.dispatchEvent(initGameEvent);
 			contextView.visible = true;
 		}
-
-        public function showExplosion(event:GameEvent):void
-        {
-            var explosionImg:MovieClip;
-
-            if (event.dataObj.verticalBullet)
-            {
-                if (event.dataObj.position.y <= GameConsts.STAGE_HEIGHT/2)
-                    explosionImg = new MovieClip(assets.getTextures("exp_"), 30);
-                else
-                    explosionImg = new MovieClip(assets.getTextures("wExp_"), 30);
-
-                explosionImg.x = event.dataObj.position.x - 156;
-                explosionImg.y = event.dataObj.position.y - 256;
-            }
-            else
-            {
-                if (event.dataObj.currentPlatform == 2)
-                    explosionImg = new MovieClip(assets.getTextures("exp_"), 30);
-                else if (event.dataObj.currentPlatform >= 3)
-                    explosionImg = new MovieClip(assets.getTextures("wExp_"), 30);
-
-                explosionImg.x = event.dataObj.position.x - 256;
-                explosionImg.y = event.dataObj.position.y - 256;
-            }
-
-            Starling.juggler.add(explosionImg);
-            explosionImg.loop = false;
-            explosionImg.play();
-
-            explosions.push(explosionImg);
-
-            contextView.addChild(explosionImg);
-        }
-
-        public function removeExplosions(event:GameEvent):void
-        {
-            for (var i:int = 0; i < explosions.length; i++)
-            {
-                if (explosions[i].currentFrame == 11)
-                {
-                    contextView.removeChild(explosions[i]);
-                    explosions.splice(i, 1);
-                }
-            }
-        }
 
         private function createFort(event:GameEvent):void
         {
@@ -209,6 +164,51 @@ package de.mediadesign.gd1011.studiof.view.mediators
                 doorO2.play();
                 doorO.stop();
                 doorO.currentFrame = 0;
+            }
+        }
+        public function showExplosion(event:GameEvent):void
+        {
+            var explosionImg:MovieClip;
+
+            if (event.dataObj.verticalBullet)
+            {
+                if (event.dataObj.position.y <= GameConsts.STAGE_HEIGHT/2)
+                    explosionImg = new MovieClip(assets.getTextures("exp_"), 30);
+                else
+                    explosionImg = new MovieClip(assets.getTextures("wExp_"), 30);
+
+                explosionImg.x = event.dataObj.position.x - 156;
+                explosionImg.y = event.dataObj.position.y - 256;
+            }
+            else
+            {
+                if (event.dataObj.currentPlatform == 2)
+                    explosionImg = new MovieClip(assets.getTextures("exp_"), 30);
+                else if (event.dataObj.currentPlatform >= 3)
+                    explosionImg = new MovieClip(assets.getTextures("wExp_"), 30);
+
+                explosionImg.x = event.dataObj.position.x - 256;
+                explosionImg.y = event.dataObj.position.y - 256;
+            }
+
+            Starling.juggler.add(explosionImg);
+            explosionImg.loop = false;
+            explosionImg.play();
+
+            explosions.push(explosionImg);
+
+            contextView.addChild(explosionImg);
+        }
+
+        public function removeExplosions(event:GameEvent):void
+        {
+            for (var i:int = 0; i < explosions.length; i++)
+            {
+                if (explosions[i].currentFrame == 11)
+                {
+                    contextView.removeChild(explosions[i]);
+                    explosions.splice(i, 1);
+                }
             }
         }
 

@@ -5,7 +5,8 @@
  * Time: 11:04
  * To change this template use File | Settings | File Templates.
  */
-package de.mediadesign.gd1011.studiof.model {
+package de.mediadesign.gd1011.studiof.model
+{
     import de.mediadesign.gd1011.studiof.consts.GameConsts;
     import de.mediadesign.gd1011.studiof.consts.ViewConsts;
     import de.mediadesign.gd1011.studiof.events.GameEvent;
@@ -85,7 +86,8 @@ package de.mediadesign.gd1011.studiof.model {
         override public function move(time:Number):void
         {
             currentPlatform = observePlatform(position.y);
-            if (!stopped) {
+            if (!stopped)
+            {
                 if (!upMovementRunning && !downMovementRunning && !_moveLeftRunning && _initialized)
                 {
                     timeCounter+=time;
