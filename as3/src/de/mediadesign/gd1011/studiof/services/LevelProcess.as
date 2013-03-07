@@ -267,11 +267,11 @@ package de.mediadesign.gd1011.studiof.services
         {   // enemies vector
             if (boss != null && boss.initialized)
             {
-                _enemies.push(new Unit(1, -1, (-1)*_enemyConfig["enemySpeed"], GameConsts.STAGE_WIDTH+300, this, false, true, index.toString()));
+                _enemies.push(new Unit(1, -1, (-1)*_enemyConfig["enemySpeed"], GameConsts.STAGE_WIDTH+1452, this, false, true, index.toString()));
             }
             else
             {
-                _enemies.push(new Unit(1, _enemySequence[index], (-1)*_enemyConfig["enemySpeed"], GameConsts.STAGE_WIDTH+300, this, false, false, index.toString()));
+                _enemies.push(new Unit(1, _enemySequence[index], (-1)*_enemyConfig["enemySpeed"], GameConsts.STAGE_WIDTH+1452, this, false, false, index.toString()));
             }
             // moveProcess
             moveProcess.addEntity(_enemies[_enemies.length-1]);
@@ -449,11 +449,6 @@ package de.mediadesign.gd1011.studiof.services
                 dispatcher.dispatchEvent(removeFromGameEvent);
             }
         }
-
-
-
-
-
 
         public function spawnBoss():void
         {

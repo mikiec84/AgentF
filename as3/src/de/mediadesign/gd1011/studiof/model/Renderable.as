@@ -15,6 +15,8 @@ package de.mediadesign.gd1011.studiof.model
 	import de.mediadesign.gd1011.studiof.view.BulletView;
     import de.mediadesign.gd1011.studiof.view.EnemyView;
 
+    import starling.display.MovieClip;
+
     import starling.display.Sprite;
 
     public class Renderable
@@ -58,6 +60,11 @@ package de.mediadesign.gd1011.studiof.model
                     view.y = position.y-flyingOffset;
                 else
                     view.y = position.y+swimmingOffset;
+            }
+            if ( observePlatform(view.y) < 2 && view is EnemyView
+                    && (view.getChildAt(0) as MovieClip).currentFrame == 126)
+            {
+                trace(view.x);
             }
         }
 

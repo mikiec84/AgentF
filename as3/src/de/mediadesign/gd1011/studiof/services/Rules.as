@@ -54,29 +54,15 @@ package de.mediadesign.gd1011.studiof.services
             var collisionTolerance:int;
 
             if (unit1.observePlatform(unit1.currentPlatform)<2)
-            {
                 collisionTolerance = collisionToleranceFlying;
-            }
-
             if (unit1.observePlatform(unit1.currentPlatform)==2)
-            {
                 collisionTolerance = collisionToleranceFloating;
-            }
-
             if (unit1.observePlatform(unit1.currentPlatform)>2)
-            {
                 collisionTolerance = collisionToleranceDiving;
-            }
-
             if (unit2 is FortFoxBoss)
-            {
                 collisionTolerance = JSONReader.read("level/level")[0][0]["endboss"]["collisionTolerance"];
-            }
-
             if (unit2 is NautilusBoss)
-            {
                 collisionTolerance = JSONReader.read("level/level")[0][1]["endboss"]["collisionTolerance"];
-            }
 
             if (level.boss.initialized && level.currentLevel == 0)
                 caveTolerance = 400;
@@ -86,7 +72,8 @@ package de.mediadesign.gd1011.studiof.services
             if (unit2.position.x < GameConsts.STAGE_WIDTH - 50 -caveTolerance)
             {
                 if (unit1.currentPlatform == unit2.currentPlatform
-                        && unit1.position.x + collisionTolerance >= unit2.position.x)
+                        && unit1.position.x + collisionTolerance >= unit2.position.x
+                        && unit1.position.x < unit2.position.x - collisionTolerance*2)
                 {
                     unit1.healthPoints--;
                     if (!(unit1 is Player))
@@ -94,6 +81,8 @@ package de.mediadesign.gd1011.studiof.services
                     else
                         unit2.healthPoints = 0;
 
+                    var damageUnitEvent:GameEvent = new GameEvent(GameConsts.DAMAGE_UNIT, unit1);
+                    dispatcher.dispatchEvent(damageUnitEvent);
                     var damageUnitEvent:GameEvent = new GameEvent(GameConsts.DAMAGE_UNIT, unit2);
                     dispatcher.dispatchEvent(damageUnitEvent);
                 }
@@ -110,6 +99,7 @@ package de.mediadesign.gd1011.studiof.services
                             unit2.healthPoints = 0;
                     }
                 }
+                //Nautilus kann in 2 ebenen abgeschossen werden
                 else if (unit2 is NautilusBoss
                         && unit1.currentPlatform == unit2.currentPlatform+1
                         && unit1.position.x + collisionTolerance >= unit2.position.x)
@@ -117,6 +107,8 @@ package de.mediadesign.gd1011.studiof.services
                     unit1.healthPoints--;
                     unit2.healthPoints--;
 
+                    var damageUnitEvent:GameEvent = new GameEvent(GameConsts.DAMAGE_UNIT, unit1);
+                    dispatcher.dispatchEvent(damageUnitEvent);
                     var damageUnitEvent:GameEvent = new GameEvent(GameConsts.DAMAGE_UNIT, unit2);
                     dispatcher.dispatchEvent(damageUnitEvent);
                 }
