@@ -11,7 +11,8 @@ package de.mediadesign.gd1011.studiof.view.mediators
 	import de.mediadesign.gd1011.studiof.events.GameEvent;
 	import de.mediadesign.gd1011.studiof.services.JSONReader;
 	import de.mediadesign.gd1011.studiof.services.LevelProcess;
-	import de.mediadesign.gd1011.studiof.view.Localization;
+    import de.mediadesign.gd1011.studiof.services.Sounds;
+    import de.mediadesign.gd1011.studiof.view.Localization;
 	import de.mediadesign.gd1011.studiof.view.StartScreenView;
 	import de.mediadesign.gd1011.studiof.view.TopSecretButton;
 
@@ -37,6 +38,9 @@ package de.mediadesign.gd1011.studiof.view.mediators
 		[Inject]
 		public var assets:AssetManager;
 
+        [Inject]
+        public var sounds:Sounds;
+
 		//For Debugging
 		[Inject]
 		public var level:LevelProcess;
@@ -53,8 +57,10 @@ package de.mediadesign.gd1011.studiof.view.mediators
 
 		private function changeToGameView(e:Event):void
 		{
-            if (!loaded) {
+            if (!loaded)
+            {
                 loaded = true;
+                //sounds.play("shot");
                 dispatcher.dispatchEvent(new GameEvent(ViewConsts.LOAD_GAMEVIEW, level.currentLevel));
             }
 		}

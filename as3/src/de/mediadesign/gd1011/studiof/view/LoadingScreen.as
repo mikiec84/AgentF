@@ -5,7 +5,7 @@
  * Time: 15:02
  * To change this template use File | Settings | File Templates.
  */
-package de.mediadesign.gd1011.studiof.view.mediators
+package de.mediadesign.gd1011.studiof.view
 {
 	import de.mediadesign.gd1011.studiof.services.JSONReader;
 	import de.mediadesign.gd1011.studiof.view.ProgressBar;
