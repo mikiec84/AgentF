@@ -98,11 +98,11 @@ package de.mediadesign.gd1011.studiof.view.mediators
 			contextView.addAdjusted(contextView.gameOverScreen, VAlign.CENTER,HAlign.CENTER);
 			contextView.pauseButton.visible = false;
 			contextView.gameOverScreen.restartButton.addEventListener(Event.TRIGGERED,onRestart);
+			sounds.setBGSound(level.currentLevel,"outro",true, false);
 		}
 
 		private function onRestart(e:Event):void
 		{
-			sounds.setBGSound(level.currentLevel,"outro",true, false);
 			level.clearLevel();
 			dispatcher.dispatchEvent(new GameEvent(GameConsts.RESTART));
 		}
