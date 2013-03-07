@@ -65,8 +65,8 @@ package de.mediadesign.gd1011.studiof.model
         {
             trace("FORTFOX SPAWNED");
             _moveLeftRunning = true;
-            var a:GameEvent = new GameEvent(GameConsts.BOSS_SPAWN);
-            level.dispatcher.dispatchEvent(a);
+            var spawnEvent:GameEvent = new GameEvent(GameConsts.BOSS_SPAWN);
+            level.dispatcher.dispatchEvent(spawnEvent);
         }
 
         override public function move(time:Number):void
@@ -193,15 +193,6 @@ package de.mediadesign.gd1011.studiof.model
         override public function shoot(time:Number):Unit
         {
             return null;
-        }
-
-
-        public function reset():void
-        {
-            position.x = idleXPosition+backMovementDistance;
-            _initialized = false;
-            healthPoints = config["healthpoints"];
-            position.y = config["startingPlatform"]*GameConsts.PLATFORM_HEIGHT+yOffset;
         }
 
         public function update(time:Number):void

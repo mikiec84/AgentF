@@ -104,7 +104,7 @@ package de.mediadesign.gd1011.studiof.view.mediators
 
 		private function onRestart(e:Event):void
 		{
-			level.clearLevel();
+			level.clear();
 			dispatcher.dispatchEvent(new GameEvent(GameConsts.RESTART));
 		}
 

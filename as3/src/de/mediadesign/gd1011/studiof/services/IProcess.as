@@ -14,5 +14,7 @@ package de.mediadesign.gd1011.studiof.services
         function start():void
 
         function stop():void
+
+		function clear():void;
     }
 }

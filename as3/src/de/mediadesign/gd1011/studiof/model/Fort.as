@@ -11,13 +11,13 @@ package de.mediadesign.gd1011.studiof.model
     import de.mediadesign.gd1011.studiof.model.components.PositionComponent;
     import de.mediadesign.gd1011.studiof.services.JSONReader;
 
-    public class FortFox implements IMovable
+    public class Fort implements IMovable
     {
         private var _running:Boolean = true;
         public var position:PositionComponent;
         private var fortVelocity:Number;
 
-        public function FortFox()
+        public function Fort()
         {
             position = new PositionComponent();
             position.x = GameConsts.STAGE_WIDTH;
