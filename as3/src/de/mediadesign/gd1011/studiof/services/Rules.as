@@ -53,11 +53,11 @@ package de.mediadesign.gd1011.studiof.services
         {
             var collisionTolerance:int;
 
-            if (unit1.observePlatform(unit1.currentPlatform)<2)
+            if (unit2.currentPlatform<2)
                 collisionTolerance = collisionToleranceFlying;
-            if (unit1.observePlatform(unit1.currentPlatform)==2)
+            if (unit2.currentPlatform==2)
                 collisionTolerance = collisionToleranceFloating;
-            if (unit1.observePlatform(unit1.currentPlatform)>2)
+            if (unit2.currentPlatform>2)
                 collisionTolerance = collisionToleranceDiving;
             if (unit2 is FortFoxBoss)
                 collisionTolerance = JSONReader.read("level/level")[0][0]["endboss"]["collisionTolerance"];
