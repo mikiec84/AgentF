@@ -307,24 +307,12 @@ package de.mediadesign.gd1011.studiof.services
             // new level
             if (boss.healthPoints <= 0 && boss.initialized)
             {
-//                if (currentLevel != maxLevel)
-//                {
-					sounds.setBGSound(currentLevel,"outro",true, false);
-                    _currentLevel+=1;
-                    var showHighScoreEvent:GameEvent = new GameEvent(ViewConsts.SHOW_HIGHSCORE, currentScore);
-                    dispatcher.dispatchEvent(showHighScoreEvent);
-					clearLevel();
-//                }
-//                //Win
-//                else
-//                {
-//                    if (!gameIsOver)
-//                    {
-//                        gameIsOver = true;
-//                        var gameOverEvent:GameEvent = new GameEvent(ViewConsts.SHOW_GAMEOVER, true);
-//                        dispatcher.dispatchEvent(gameOverEvent);
-//                    }
-//                }
+				sounds.setBGSound(currentLevel,"outro",true, false);
+				_currentLevel+=1;
+				var showHighScoreEvent:GameEvent = new GameEvent(ViewConsts.SHOW_HIGHSCORE, currentScore);
+				dispatcher.dispatchEvent(showHighScoreEvent);
+				clearLevel();
+
             }
             //Boss Spawn
             else if (enemies.length == 0 && shouldBossSpawn())
@@ -395,7 +383,7 @@ package de.mediadesign.gd1011.studiof.services
             player.lastState = player.state;
         }
 
-        private function clearLevel():void
+        public function clearLevel():void
         {
 			stop();
             currentScore = 0;

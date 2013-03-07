@@ -11,7 +11,9 @@ package de.mediadesign.gd1011.studiof.view.mediators
 	import de.mediadesign.gd1011.studiof.consts.ViewConsts;
 	import de.mediadesign.gd1011.studiof.events.GameEvent;
 	import de.mediadesign.gd1011.studiof.services.LevelProcess;
+	import de.mediadesign.gd1011.studiof.services.Sounds;
 	import de.mediadesign.gd1011.studiof.view.GUI;
+	import de.mediadesign.gd1011.studiof.view.GameOverScreenView;
 	import de.mediadesign.gd1011.studiof.view.LifePointsView;
 	import de.mediadesign.gd1011.studiof.view.PauseMenuView;
 
@@ -33,6 +35,9 @@ package de.mediadesign.gd1011.studiof.view.mediators
 
 		[Inject]
 		public var level:LevelProcess;
+
+		[Inject]
+		public var sounds:Sounds;
 
 		[Inject]
 		public var assets:AssetManager;
@@ -89,7 +94,17 @@ package de.mediadesign.gd1011.studiof.view.mediators
 
 		private function showGameOver(e:GameEvent):void
 		{
-			contextView.showGameOver(e.dataObj as Boolean);
+			contextView.gameOverScreen = new GameOverScreenView(assets,level.currentLevel);
+			contextView.addAdjusted(contextView.gameOverScreen, VAlign.CENTER,HAlign.CENTER);
+			contextView.pauseButton.visible = false;
+			contextView.gameOverScreen.restartButton.addEventListener(Event.TRIGGERED,onRestart);
+		}
+
+		private function onRestart(e:Event):void
+		{
+			sounds.setBGSound(level.currentLevel,"outro",true, false);
+			level.clearLevel();
+			dispatcher.dispatchEvent(new GameEvent(GameConsts.RESTART));
 		}
 
 		private function updateLifepoints(e:GameEvent):void

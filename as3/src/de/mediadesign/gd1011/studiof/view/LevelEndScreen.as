@@ -8,7 +8,7 @@
 package de.mediadesign.gd1011.studiof.view
 {
 	import de.mediadesign.gd1011.studiof.services.JSONReader;
-	import de.mediadesign.gd1011.studiof.view.mediators.TopSecretTexture;
+	import de.mediadesign.gd1011.studiof.view.TopSecretTexture;
 
 	import starling.display.Button;
 	import starling.display.Image;

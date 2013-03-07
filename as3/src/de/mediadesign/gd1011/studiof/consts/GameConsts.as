@@ -37,6 +37,7 @@ package de.mediadesign.gd1011.studiof.consts
         public static const ENEMY_SPRITE_WIDTH:int = 300;
 		public static const PAUSE:String = "PAUSE";
 		public static const CONTINUE:String = "CONTINUE";
+		public static const RESTART:String = "RESTART";
 
     }
 }

@@ -8,7 +8,7 @@
 package de.mediadesign.gd1011.studiof.view
 {
 	import de.mediadesign.gd1011.studiof.services.JSONReader;
-	import de.mediadesign.gd1011.studiof.view.mediators.TopSecretTexture;
+	import de.mediadesign.gd1011.studiof.view.TopSecretTexture;
 
 	import flash.display.BitmapData;
 
@@ -37,8 +37,8 @@ package de.mediadesign.gd1011.studiof.view
 
 		public var lifepoints:LifePointsView;
 		public var pauseMenu:PauseMenuView;
-		private var _gameOverScreen:TextField;
-        private var _enemiesKilled:Image;
+		public var gameOverScreen:GameOverScreenView;
+        private var _enemiesKilled:TopSecretTextfield;
 		public var pauseButton:Button;
 
         private var enemyKilledCounter:Number = 0;
@@ -62,12 +62,8 @@ package de.mediadesign.gd1011.studiof.view
 			addChild(_topRight);
 			addChild(_centerCenter);
 
-			var bmpData:BitmapData = new TopSecretTexture("0",60);
-			var texture:Texture = Texture.fromBitmapData(bmpData);
-			bmpData.dispose();
-            _enemiesKilled = new Image(texture);
+            _enemiesKilled = new TopSecretTextfield("0",60,0xcb1d01,HAlign.CENTER);
             _topCenter.addChild(_enemiesKilled);
-            _enemiesKilled.x -= _enemiesKilled.width/2;
 			if(stage)
 				adjust();
 			else
@@ -102,6 +98,8 @@ package de.mediadesign.gd1011.studiof.view
 					{
 						case (HAlign.CENTER):
 							_centerCenter.addChild(object);
+							object.x = -object.width/2;
+							object.y = -object.height/2;
 							break;
 					}
 					break;
@@ -140,29 +138,9 @@ package de.mediadesign.gd1011.studiof.view
 
         public function setEnemiesKilled(points:int):void
         {   ++enemyKilledCounter;
-
-			var bmpData:BitmapData = new TopSecretTexture(enemyKilledCounter+"00",60);
-			var texture:Texture = Texture.fromBitmapData(bmpData);
-			bmpData.dispose();
-			var newGraphic:Image = new Image(texture);
-			newGraphic.x -= newGraphic.width/2;
-			_topCenter.addChild(newGraphic);
-			_topCenter.removeChild(_enemiesKilled);
-			_enemiesKilled = newGraphic;
+			_enemiesKilled.text = enemyKilledCounter+"00";
 
         }
 
-
-		public function showGameOver(won:Boolean):void
-		{
-			_gameOverScreen = new TextField(1000,200,"","Verdana",60,0xffffff,true);
-			_gameOverScreen.x = -_gameOverScreen.width/2;
-			_gameOverScreen.y = -_gameOverScreen.height/2;
-			if(won)
-				_gameOverScreen.text="Your victory is now fact.";
-			else
-				_gameOverScreen.text="Your loss is assured!"
-			_centerCenter.addChild(_gameOverScreen);
-		}
     }
 }

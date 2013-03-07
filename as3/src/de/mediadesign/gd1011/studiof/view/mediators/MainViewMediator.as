@@ -1,5 +1,6 @@
 package de.mediadesign.gd1011.studiof.view.mediators
 {
+	import de.mediadesign.gd1011.studiof.consts.GameConsts;
 	import de.mediadesign.gd1011.studiof.consts.ViewConsts;
 	import de.mediadesign.gd1011.studiof.events.GameEvent;
 	import de.mediadesign.gd1011.studiof.view.MainView;
@@ -22,12 +23,12 @@ package de.mediadesign.gd1011.studiof.view.mediators
 		override public function initialize():void
 		{
 			addContextListener(ViewConsts.LOAD_GAMEVIEW,loadGameView);
+			addContextListener(GameConsts.RESTART,contextView.initGameView);
 			addContextListener(ViewConsts.SHOW_HIGHSCORE,showHighScore);
 		}
 
 		private function showHighScore(e:GameEvent):void
 		{
-			contextView.removeGameView();
 			contextView.showHighscore(e.dataObj as Number);
 		}
 

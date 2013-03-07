@@ -8,6 +8,7 @@
 package de.mediadesign.gd1011.studiof.view
 {
 	import de.mediadesign.gd1011.studiof.SystemInfo;
+	import de.mediadesign.gd1011.studiof.events.GameEvent;
 	import de.mediadesign.gd1011.studiof.services.JSONReader;
 	import de.mediadesign.gd1011.studiof.view.mediators.LoadingScreen;
 
@@ -57,9 +58,9 @@ package de.mediadesign.gd1011.studiof.view
 			addChild(_startScreen);
 		}
 
-		public function initGameView():void
+		public function initGameView(e:GameEvent = null):void
 		{
-
+			removeGameView();
 			_gameView = new GameView();
 			_gameView.scaleX = _gameView.scaleY = _appScale;
 			_gameView.x = _appLeftOffset;
@@ -73,7 +74,7 @@ package de.mediadesign.gd1011.studiof.view
 				removeChild(_loadingScreen);
 		}
 
-		public function removeGameView():void
+		private function removeGameView():void
 		{
 			if(_gameView != null)
 				removeChild(_gameView);

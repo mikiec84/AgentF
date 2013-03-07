@@ -7,7 +7,7 @@
  */
 package de.mediadesign.gd1011.studiof.view
 {
-	import de.mediadesign.gd1011.studiof.view.mediators.TopSecretTexture;
+	import de.mediadesign.gd1011.studiof.view.TopSecretTexture;
 
 	import flash.display.BitmapData;
 	import flash.text.Font;

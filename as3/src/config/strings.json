@@ -6,7 +6,9 @@
         "credits":"Credits",
         "points":"Punkte",
         "next level":"weiter ...",
-        "continue":"Fortsetzen"
+        "continue":"Fortsetzen",
+        "restart":"nochmal",
+        "lose game":"Mission gescheitert!"
     },
     "en":{
         "new game":"New Game",
@@ -15,6 +17,8 @@
         "credits":"Credits",
         "points":"points",
         "next level":"next ...",
-        "continue":"Continue"
+        "continue":"Continue",
+        "restart":"retry",
+        "lose game":"Mission failed!"
     }
 }
