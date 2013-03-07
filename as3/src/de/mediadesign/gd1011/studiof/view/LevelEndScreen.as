@@ -21,7 +21,7 @@ package de.mediadesign.gd1011.studiof.view
 		public function LevelEndScreen(width:Number, height:Number,  score:Number)
 		{
 			var viewconfig:Object = JSONReader.read("viewconfig")["startscreen"];
-			var title:Image = new Image(Texture.fromBitmapData(new TopSecretTexture(Localization.getString("highscore"),viewconfig["title-size"])));
+			var title:TopSecretTextfield = new TopSecretTextfield(Localization.getString("highscore"),viewconfig["title-size"]);
 			title.x = title.y = viewconfig["padding"];
 			addChild(title);
 

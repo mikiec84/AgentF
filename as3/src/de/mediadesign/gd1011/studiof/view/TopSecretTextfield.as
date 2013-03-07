@@ -29,9 +29,9 @@ package de.mediadesign.gd1011.studiof.view
 		private var _bgColor:uint;
 		private var _border:Boolean;
 		private var _opaque:Boolean;
-		public function TopSecretTextfield(label:String,size:Number, color:uint = 0xcb1d01, align:String = HAlign.LEFT, bgColor:uint = 0x0, border:Boolean = true, opaque:Boolean = true)
+		public function TopSecretTextfield(text:String,size:Number, color:uint = 0xcb1d01, align:String = HAlign.LEFT, bgColor:uint = 0x0, border:Boolean = true, opaque:Boolean = true)
 		{
-			_text = label;
+			_text = text;
 			_size = size;
 			_color = color;
 			_align = align;
