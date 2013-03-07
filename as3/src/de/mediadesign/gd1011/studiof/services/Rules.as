@@ -100,9 +100,11 @@ package de.mediadesign.gd1011.studiof.services
                     }
                 }
                 //Nautilus kann in 2 ebenen abgeschossen werden
-                if (unit2 is NautilusBoss
-                        && unit1.currentPlatform == unit2.currentPlatform+1
+                else if (unit2 is NautilusBoss
+                        && ((unit1.currentPlatform == unit2.currentPlatform+1
                         && unit1.position.x + collisionTolerance >= unit2.position.x)
+                        || (unit1.currentPlatform == unit2.currentPlatform
+                        && unit1.position.x + collisionTolerance >= unit2.position.x)))
                 {
                     unit1.healthPoints--;
                     unit2.healthPoints--;
