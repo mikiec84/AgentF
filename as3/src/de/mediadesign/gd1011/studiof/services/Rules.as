@@ -54,29 +54,15 @@ package de.mediadesign.gd1011.studiof.services
             var collisionTolerance:int;
 
             if (unit1.observePlatform(unit1.currentPlatform)<2)
-            {
                 collisionTolerance = collisionToleranceFlying;
-            }
-
             if (unit1.observePlatform(unit1.currentPlatform)==2)
-            {
                 collisionTolerance = collisionToleranceFloating;
-            }
-
             if (unit1.observePlatform(unit1.currentPlatform)>2)
-            {
                 collisionTolerance = collisionToleranceDiving;
-            }
-
             if (unit2 is FortFoxBoss)
-            {
                 collisionTolerance = JSONReader.read("level/level")[0][0]["endboss"]["collisionTolerance"];
-            }
-
             if (unit2 is NautilusBoss)
-            {
                 collisionTolerance = JSONReader.read("level/level")[0][1]["endboss"]["collisionTolerance"];
-            }
 
             if (level.boss.initialized && level.currentLevel == 0)
                 caveTolerance = 400;
@@ -95,6 +81,8 @@ package de.mediadesign.gd1011.studiof.services
                     else
                         unit2.healthPoints = 0;
 
+                    var damageUnitEvent:GameEvent = new GameEvent(GameConsts.DAMAGE_UNIT, unit1);
+                    dispatcher.dispatchEvent(damageUnitEvent);
                     var damageUnitEvent:GameEvent = new GameEvent(GameConsts.DAMAGE_UNIT, unit2);
                     dispatcher.dispatchEvent(damageUnitEvent);
                 }
@@ -119,6 +107,8 @@ package de.mediadesign.gd1011.studiof.services
                     unit1.healthPoints--;
                     unit2.healthPoints--;
 
+                    var damageUnitEvent:GameEvent = new GameEvent(GameConsts.DAMAGE_UNIT, unit1);
+                    dispatcher.dispatchEvent(damageUnitEvent);
                     var damageUnitEvent:GameEvent = new GameEvent(GameConsts.DAMAGE_UNIT, unit2);
                     dispatcher.dispatchEvent(damageUnitEvent);
                 }
