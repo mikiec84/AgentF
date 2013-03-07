@@ -311,7 +311,7 @@ package de.mediadesign.gd1011.studiof.services
 				stop();
             }
             // new level
-            if (boss.healthPoints <= 0 && boss.initialized)
+            if (boss != null && boss.healthPoints <= 0 && boss.initialized)
             {
 				sounds.setBGSound(currentLevel,"outro",true, false);
 				var showHighScoreEvent:GameEvent = new GameEvent(ViewConsts.SHOW_HIGHSCORE, currentScore);
@@ -322,7 +322,7 @@ package de.mediadesign.gd1011.studiof.services
             //Boss Spawn
             else if (enemies.length == 0 && shouldBossSpawn())
             {
-                if(!boss.initialized)
+                if(boss != null && !boss.initialized)
                 {
                     if (currentLevel == 0)
                     {
@@ -366,7 +366,7 @@ package de.mediadesign.gd1011.studiof.services
                     enemies[i].lastState = enemies[i].state
                 }
             }
-            if (boss.initialized && boss is NautilusBoss)
+            if (boss != null && boss.initialized && boss is NautilusBoss)
             {
                 if ((boss as NautilusBoss).lastState != (boss as NautilusBoss).state)
                 {
