@@ -16,6 +16,11 @@
         "button-size":90,
         "vSpace":40
     },
+    "pausemenu":{
+        "x":500,
+        "y":350,
+        "padding":50
+    },
     "gui":{
         "scale":0.75,
         "padding":20,

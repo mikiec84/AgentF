@@ -72,6 +72,7 @@ package de.mediadesign.gd1011.studiof.view.mediators
 				contextView.pauseMenu.y = -contextView.pauseMenu.height/2;
 				contextView.addAdjusted(contextView.pauseMenu,VAlign.CENTER,HAlign.CENTER);
 				contextView.pauseMenu.continueButton.addEventListener(Event.TRIGGERED,onContinue);
+				contextView.pauseMenu.restartButton.addEventListener(Event.TRIGGERED,onRestart);
 			}
 			else
 				contextView.pauseMenu.visible = true;

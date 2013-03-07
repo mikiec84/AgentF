@@ -16,14 +16,20 @@ package de.mediadesign.gd1011.studiof.view
 	public class PauseMenuView extends Sprite
 	{
 		public var continueButton:Button;
+		public var restartButton:Button;
 		public function PauseMenuView(assets:AssetManager, level:Number)
 		{
 			addChild(assets.getImage("Lv"+(level+1)+"_PausenmenüHG"));
 
 			continueButton = new TopSecretButton(Localization.getString("continue"),JSONReader.read("viewconfig")["startscreen"]["button-size"]);
-			continueButton.x = (this.width-continueButton.width)/2;
-			continueButton.y = (this.height-continueButton.height)/2;
+			continueButton.x = 500;
+			continueButton.y = 350;
 			addChild(continueButton);
+
+			restartButton = new TopSecretButton(Localization.getString("restart"),JSONReader.read("viewconfig")["startscreen"]["button-size"]);
+			restartButton.x = continueButton.x ;
+			restartButton.y = continueButton.y+ continueButton.height + 50;
+			addChild(restartButton);
 		}
 	}
 }
