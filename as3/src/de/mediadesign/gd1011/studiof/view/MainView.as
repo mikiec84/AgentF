@@ -8,9 +8,9 @@
 package de.mediadesign.gd1011.studiof.view
 {
 	import de.mediadesign.gd1011.studiof.SystemInfo;
+    import de.mediadesign.gd1011.studiof.model.Score;
 	import de.mediadesign.gd1011.studiof.events.GameEvent;
 	import de.mediadesign.gd1011.studiof.services.JSONReader;
-	import de.mediadesign.gd1011.studiof.view.LoadingScreen;
 
 	import starling.display.Sprite;
 	import starling.events.Event;
@@ -74,7 +74,7 @@ package de.mediadesign.gd1011.studiof.view
 				removeChild(_loadingScreen);
 		}
 
-		private function removeGameView():void
+		public function removeGameView():void
 		{
 			if(_gameView != null)
 				removeChild(_gameView);
@@ -129,9 +129,9 @@ package de.mediadesign.gd1011.studiof.view
 			_loadingScreen.load(onLoad);
 		}
 
-		public function showHighscore(score:Number):void
+		public function showHighscore(score:Number, entireScore:Score):void
 		{
-			_highscore = new LevelEndScreen(_appWidth,_appHeight,score);
+			_highscore = new LevelEndScreen(_appWidth,_appHeight,score, entireScore);
 			_highscore.scaleX = _highscore.scaleY = _appScale;
 			addChild(_highscore);
 		}

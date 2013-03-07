@@ -3,7 +3,8 @@ package de.mediadesign.gd1011.studiof.view.mediators
 	import de.mediadesign.gd1011.studiof.consts.GameConsts;
 	import de.mediadesign.gd1011.studiof.consts.ViewConsts;
 	import de.mediadesign.gd1011.studiof.events.GameEvent;
-	import de.mediadesign.gd1011.studiof.view.MainView;
+    import de.mediadesign.gd1011.studiof.model.Score;
+    import de.mediadesign.gd1011.studiof.view.MainView;
 
 	import flash.events.Event;
 
@@ -20,6 +21,9 @@ package de.mediadesign.gd1011.studiof.view.mediators
 		[Inject]
 		public var assets:AssetManager;
 
+        [Inject]
+        public var score:Score;
+
 		override public function initialize():void
 		{
 			addContextListener(ViewConsts.LOAD_GAMEVIEW,loadGameView);
@@ -29,7 +33,8 @@ package de.mediadesign.gd1011.studiof.view.mediators
 
 		private function showHighScore(e:GameEvent):void
 		{
-			contextView.showHighscore(e.dataObj as Number);
+            contextView.removeGameView();
+            contextView.showHighscore(e.dataObj as Number, score);
 		}
 
 		private function loadGameView(e:GameEvent):void

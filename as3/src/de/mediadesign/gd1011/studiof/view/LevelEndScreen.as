@@ -7,28 +7,42 @@
  */
 package de.mediadesign.gd1011.studiof.view
 {
+    import de.mediadesign.gd1011.studiof.model.Score;
 	import de.mediadesign.gd1011.studiof.services.JSONReader;
-	import de.mediadesign.gd1011.studiof.view.TopSecretTexture;
 
 	import starling.display.Button;
-	import starling.display.Image;
 	import starling.display.Sprite;
-	import starling.textures.Texture;
 
 	public class LevelEndScreen extends Sprite
 	{
 		public var nextButton:Button;
-		public function LevelEndScreen(width:Number, height:Number,  score:Number)
+		public function LevelEndScreen(width:Number, height:Number,  score:Number, highscore:Score)
 		{
+            highscore.inputScore("AgentF", score);
+            highscore.saveScore();
+
 			var viewconfig:Object = JSONReader.read("viewconfig")["startscreen"];
 			var title:TopSecretTextfield = new TopSecretTextfield(Localization.getString("highscore"),viewconfig["title-size"]);
 			title.x = title.y = viewconfig["padding"];
 			addChild(title);
 
-			var points:Image = new Image(Texture.fromBitmapData(new TopSecretTexture(score+"00 "+Localization.getString("points"),viewconfig["score-size"])));
-			points.x = (width-points.width)/2;
-			points.y = (height-points.height)/2;
-			addChild(points);
+            for (var i:int = 0; i<highscore.entries.length; i++)
+            {
+                var content:String;
+
+                if (i == 9)
+                {
+                    content = (i+1).toString()+": "+highscore.entries[i].name+" "+highscore.entries[i].points+"00";
+                }
+                else
+                {
+                    content = (i+1).toString()+":  "+highscore.entries[i].name+" "+highscore.entries[i].points+"00";
+                }
+                var points:TopSecretTextfield = new TopSecretTextfield(content, 60);
+                points.x = 400;
+                points.y = (i+1)*70+150;
+                addChild(points);
+            }
 
 			nextButton = new TopSecretButton(Localization.getString("next level"),viewconfig["button-size"]);
 			nextButton.x = width-nextButton.width-viewconfig["padding"];
