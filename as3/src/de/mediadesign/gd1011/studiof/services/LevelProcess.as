@@ -70,7 +70,7 @@ package de.mediadesign.gd1011.studiof.services
 		private var _enemySequence:Array;
 
         ///CHEATS
-        public var onlyThreeMobs:Boolean = true;
+        public var onlyThreeMobs:Boolean = false;
         public var bossHaveLowLife:Boolean = false;
         /////////
 
@@ -396,6 +396,7 @@ package de.mediadesign.gd1011.studiof.services
 			_bgLayer02.dispose();
             deleteUnit(player);
             deleteEndboss(boss);
+			boss = null;
 
             for (var i:int = 0; i<enemies.length; i++)
             {
