@@ -50,6 +50,7 @@ package de.mediadesign.gd1011.studiof.view.mediators
 		{
             if (!loaded) {
                 loaded = true;
+				level.currentLevel++;
                 dispatcher.dispatchEvent(new GameEvent(ViewConsts.LOAD_GAMEVIEW, level.currentLevel));
             }
 		}

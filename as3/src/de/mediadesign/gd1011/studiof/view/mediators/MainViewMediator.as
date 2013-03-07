@@ -4,7 +4,9 @@ package de.mediadesign.gd1011.studiof.view.mediators
 	import de.mediadesign.gd1011.studiof.consts.ViewConsts;
 	import de.mediadesign.gd1011.studiof.events.GameEvent;
     import de.mediadesign.gd1011.studiof.model.Score;
-    import de.mediadesign.gd1011.studiof.view.MainView;
+	import de.mediadesign.gd1011.studiof.services.JSONReader;
+	import de.mediadesign.gd1011.studiof.services.LevelProcess;
+	import de.mediadesign.gd1011.studiof.view.MainView;
 
 	import flash.events.Event;
 
@@ -24,6 +26,9 @@ package de.mediadesign.gd1011.studiof.view.mediators
         [Inject]
         public var score:Score;
 
+		[Inject]
+		public var level:LevelProcess;
+
 		override public function initialize():void
 		{
 			addContextListener(ViewConsts.LOAD_GAMEVIEW,loadGameView);
@@ -34,6 +39,8 @@ package de.mediadesign.gd1011.studiof.view.mediators
 		private function showHighScore(e:GameEvent):void
 		{
             contextView.removeGameView();
+			if(level.currentLevel == JSONReader.read("level/level")[0].length-1)
+				contextView.disableNextLevel();
             contextView.showHighscore(e.dataObj as Number, score);
 		}
 

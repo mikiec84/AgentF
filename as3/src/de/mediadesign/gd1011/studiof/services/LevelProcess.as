@@ -308,7 +308,6 @@ package de.mediadesign.gd1011.studiof.services
             if (boss.healthPoints <= 0 && boss.initialized)
             {
 				sounds.setBGSound(currentLevel,"outro",true, false);
-				_currentLevel+=1;
 				var showHighScoreEvent:GameEvent = new GameEvent(ViewConsts.SHOW_HIGHSCORE, currentScore);
 				dispatcher.dispatchEvent(showHighScoreEvent);
 				clearLevel();

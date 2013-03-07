@@ -20,15 +20,15 @@ package de.mediadesign.gd1011.studiof.view
 		public function PauseMenuView(assets:AssetManager, level:Number)
 		{
 			addChild(assets.getImage("Lv"+(level+1)+"_PausenmenüHG"));
-
+			var config:Object = JSONReader.read("viewconfig")["pausemenu"];
 			continueButton = new TopSecretButton(Localization.getString("continue"),JSONReader.read("viewconfig")["startscreen"]["button-size"]);
-			continueButton.x = 500;
-			continueButton.y = 350;
+			continueButton.x = config.x;
+			continueButton.y = config.y;
 			addChild(continueButton);
 
 			restartButton = new TopSecretButton(Localization.getString("restart"),JSONReader.read("viewconfig")["startscreen"]["button-size"]);
 			restartButton.x = continueButton.x ;
-			restartButton.y = continueButton.y+ continueButton.height + 50;
+			restartButton.y = continueButton.y+ continueButton.height + config.padding;
 			addChild(restartButton);
 		}
 	}

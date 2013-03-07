@@ -135,5 +135,10 @@ package de.mediadesign.gd1011.studiof.view
 			_highscore.scaleX = _highscore.scaleY = _appScale;
 			addChild(_highscore);
 		}
+
+		public function disableNextLevel():void
+		{
+			_highscore.nextButton.visible = false;
+		}
 	}
 }
