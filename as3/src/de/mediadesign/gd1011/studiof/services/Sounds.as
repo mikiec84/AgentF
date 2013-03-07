@@ -67,6 +67,22 @@ package de.mediadesign.gd1011.studiof.services
 			}
 		}
 
+		public function stopAll():void
+		{
+			if(_bgSound != null)
+				_bgSound.stop();
+			_bgSound = null;
+			for each(var channel:SoundChannel in _soundFX)
+				if(channel!= null)
+					channel.stop();
+			_soundFX = new Vector.<SoundChannel>();
+			_soundFXSounds = new Vector.<Sound>;
+			_soundFXVolume = new Vector.<SoundTransform>();
+			_bgSoundQueue = new Array();
+			_bgLoopSettings = new Array();
+			_pausePositions = new Vector.<int>();
+		}
+
 		public function setBGSound(level,key:String, forceCompleteLoop:Boolean = false, loop:Boolean = true):void
 		{
 			var soundNames:Array = _soundConfig["level_"+(level+1)][key];
