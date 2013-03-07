@@ -19,7 +19,6 @@ package de.mediadesign.gd1011.studiof.model
         private var _currentPlatform:int;
         private var _position:PositionComponent;
         private var _velocity:VelocityComponent;
-        private var _weapon:String;
 
         private var _currentLevel:LevelProcess;
         private var doNotShootAnymore:Boolean = false;
@@ -40,7 +39,6 @@ package de.mediadesign.gd1011.studiof.model
 
         public function Unit(healthpoints:int, startingPlatform:int, xVel:int, startingXPosition:int, currentLevel:LevelProcess, verticalBullet:Boolean, bossEnemy:Boolean, ID:String = "")
         {
-            _weapon = "default";
             _currentPlatform = startingPlatform;
             _healthPoints = healthpoints;
             _position = new PositionComponent();
@@ -195,10 +193,10 @@ package de.mediadesign.gd1011.studiof.model
         public function shoot(time:Number):Unit
         {
             cooldown += time;
-
+            // Arrow
             if (currentPlatform > 2 && cooldown >= (1 / fireRateEnemy) && position.x<enemyRange && position.x>0 && healthPoints > 0)
             {
-                var bullet:Unit = new Unit(1, currentPlatform, -600, position.x, _currentLevel, false, false);
+                var bullet:Unit = new Unit(1, currentPlatform, -600, position.x-200, _currentLevel, false, false);
                 bullet.position.y += 100;
                 _currentLevel.enemyBullets.push(bullet);
                 cooldown = 0;
