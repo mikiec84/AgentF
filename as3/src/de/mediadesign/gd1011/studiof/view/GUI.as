@@ -54,7 +54,9 @@ package de.mediadesign.gd1011.studiof.view
 			_topCenter 		= new Sprite();
 			_topRight 		= new Sprite();
 			_centerCenter 	= new Sprite();
-			_topLeft.scaleX = _topLeft.scaleY = _topCenter.scaleX = _topCenter.scaleY =_topRight.scaleX = _topRight.scaleY =_centerCenter.scaleX = _centerCenter.scaleY = guiScale;
+			_topLeft.scaleX = _topLeft.scaleY = _topCenter.scaleX = _topCenter.scaleY =_topRight.scaleX = _topRight.scaleY = guiScale;
+			scaleGame(_centerCenter);
+
 			addChild(_topLeft);
 			addChild(_topCenter);
 			addChild(_topRight);

@@ -52,13 +52,19 @@ package de.mediadesign.gd1011.studiof.services
 		{
 			var name:String = _soundConfig["general"][key];
 			var sound:Sound = assets.getSound(name);
-			_soundFXSounds.push(sound);
-			_soundFX.push(sound.play());
 			var volumeControl:SoundTransform = new SoundTransform();
 			volumeControl.volume = volume;
+
+			_soundFXSounds.push(sound);
 			_soundFXVolume.push(volumeControl);
-			_soundFX[_soundFX.length-1].soundTransform = volumeControl;
-			_soundFX[_soundFX.length-1].addEventListener(Event.SOUND_COMPLETE, stopFX);
+
+			var channel:SoundChannel = sound.play();
+			if(channel != null)
+			{
+				_soundFX.push(channel);
+				channel.soundTransform = volumeControl;
+				channel.addEventListener(Event.SOUND_COMPLETE, stopFX);
+			}
 		}
 
 		public function setBGSound(level,key:String, forceCompleteLoop:Boolean = false, loop:Boolean = true):void
@@ -162,9 +168,12 @@ package de.mediadesign.gd1011.studiof.services
 			for each (var sound:Sound in _soundFXSounds)
 			{
 				var channel:SoundChannel = sound.play(_pausePositions.shift());
-				_soundFX.push(channel);
-				channel.soundTransform = _soundFXVolume[_soundFXSounds.indexOf(sound)];
-				channel.addEventListener(Event.SOUND_COMPLETE, stopFX);
+				if(channel != null)
+				{
+					_soundFX.push(channel);
+					channel.soundTransform = _soundFXVolume[_soundFXSounds.indexOf(sound)];
+					channel.addEventListener(Event.SOUND_COMPLETE, stopFX);
+				}
 			}
 		}
 
