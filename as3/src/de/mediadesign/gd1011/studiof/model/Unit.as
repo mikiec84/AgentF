@@ -33,6 +33,7 @@ package de.mediadesign.gd1011.studiof.model
         public var isPlayer:Boolean = false;
         public var verticalBullet:Boolean = false;
         public var bossEnemy:Boolean = false;
+        public var killed:Boolean = false;
 
         public var state:String;
         public var lastState:String;
@@ -98,6 +99,7 @@ package de.mediadesign.gd1011.studiof.model
         public function move(time:Number):void
         {
             if (velocity.velocityX <= 0)
+                // fällt runter, wenn tot
                 if (healthPoints <= 0
                         && (currentPlatform == 0 || currentPlatform == 1
                         || (currentPlatform >= 3 && currentPlatform <= 5) ))
@@ -144,7 +146,6 @@ package de.mediadesign.gd1011.studiof.model
             if (y+1>GameConsts.STAGE_HEIGHT*(2/3))                               {newEbene = 4;}
             if (y+1>GameConsts.STAGE_HEIGHT*(5/6) && y<=GameConsts.STAGE_HEIGHT) {newEbene = 5;}
             if (newEbene == 10) trace("observePlatform hat folgende unzulässige Eingabe erhalten: "+y);
-            //trace(newEbene+","+y);
             return newEbene;
         }
 

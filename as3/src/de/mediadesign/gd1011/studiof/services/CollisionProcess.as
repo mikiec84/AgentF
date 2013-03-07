@@ -55,7 +55,7 @@ package de.mediadesign.gd1011.studiof.services
                     {
                         for (var j:int = 0; j < (level.boss as NautilusBoss).ammunition.length; j++)
                         {
-                            // collision SeaMine , Player
+                            // collision SeaMine , Player and PlayerAmmunition
                             rules.collisionDetection(level.player, (level.boss as NautilusBoss).ammunition[j]);
                             rules.collisionDetection(level.player.ammunition[i], (level.boss as NautilusBoss).ammunition[j]);
 
@@ -77,8 +77,9 @@ package de.mediadesign.gd1011.studiof.services
 
                     if (rules.isDead(level.enemies[j]))
                     {
-                        if (!level.boss.initialized)
+                        if (!level.boss.initialized && !level.enemies[j].killed)
                         {
+                            level.enemies[j].killed = true;
                             level.currentScore+=1;
                             var updatePointsEvent:GameEvent = new GameEvent(ViewConsts.ENEMY_KILLED, level.currentScore);
                             dispatcher.dispatchEvent(updatePointsEvent);
@@ -90,8 +91,6 @@ package de.mediadesign.gd1011.studiof.services
                             dispatcher.dispatchEvent(explosionEvent);
                             deleteUnits(level.enemies, j);
                         }
-                        else
-                            level.enemies.splice(j, 1);
                         break;
                         break;
                     }
@@ -114,8 +113,8 @@ package de.mediadesign.gd1011.studiof.services
                     {
                         var explosionEvent:GameEvent = new GameEvent(ViewConsts.EXPLOSION, level.enemies[i]);
                         dispatcher.dispatchEvent(explosionEvent);
+                        deleteUnits(level.enemies, i);
                     }
-                    deleteUnits(level.enemies, i);
                     break;
                     break;
                 }
@@ -130,8 +129,8 @@ package de.mediadesign.gd1011.studiof.services
                 {
                     if (level.enemyBullets[i].healthPoints > 0 && level.enemyBullets[i].position.y > level.player.position.y)
                     {
-                        level.enemyBullets[i].healthPoints-=1;
-                        level.player.healthPoints-=1;
+                        level.enemyBullets[i].healthPoints--;
+                        level.player.healthPoints--;
                         var explosionEvent:GameEvent = new GameEvent(ViewConsts.EXPLOSION, level.enemyBullets[i]);
                         dispatcher.dispatchEvent(explosionEvent);
                     }

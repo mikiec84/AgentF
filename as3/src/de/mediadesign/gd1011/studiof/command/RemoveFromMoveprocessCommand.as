@@ -28,6 +28,9 @@ package de.mediadesign.gd1011.studiof.command
         public var moveProcess:MoveProcess;
 
         [Inject]
+        public var renderProcess:RenderProcess;
+
+        [Inject]
         public var event:GameEvent;
 
 
@@ -35,6 +38,13 @@ package de.mediadesign.gd1011.studiof.command
         {
             var bg:BGTile = event.dataObj;
 			moveProcess.removeEntity(bg);
+
+            for each (var target:Renderable in renderProcess.targets)
+            {
+                if (bg.position == target.position)
+                    renderProcess.deleteRenderable(target);
+            }
+
         }
     }
 }
