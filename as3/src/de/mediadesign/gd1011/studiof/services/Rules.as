@@ -86,7 +86,8 @@ package de.mediadesign.gd1011.studiof.services
             if (unit2.position.x < GameConsts.STAGE_WIDTH - 50 -caveTolerance)
             {
                 if (unit1.currentPlatform == unit2.currentPlatform
-                        && unit1.position.x + collisionTolerance >= unit2.position.x)
+                        && unit1.position.x + collisionTolerance >= unit2.position.x
+                        && unit1.position.x < unit2.position.x - collisionTolerance*2)
                 {
                     unit1.healthPoints--;
                     if (!(unit1 is Player))
@@ -110,6 +111,7 @@ package de.mediadesign.gd1011.studiof.services
                             unit2.healthPoints = 0;
                     }
                 }
+                //Nautilus kann in 2 ebenen abgeschossen werden
                 else if (unit2 is NautilusBoss
                         && unit1.currentPlatform == unit2.currentPlatform+1
                         && unit1.position.x + collisionTolerance >= unit2.position.x)
