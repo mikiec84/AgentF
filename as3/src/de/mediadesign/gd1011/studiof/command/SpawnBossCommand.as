@@ -1,28 +1,23 @@
 package de.mediadesign.gd1011.studiof.command
 {
-    import de.mediadesign.gd1011.studiof.consts.GameConsts;
-    import de.mediadesign.gd1011.studiof.consts.ViewConsts;
-    import de.mediadesign.gd1011.studiof.events.GameEvent;
-    import de.mediadesign.gd1011.studiof.model.FortFoxBoss;
-    import de.mediadesign.gd1011.studiof.model.Unit;
+	import de.mediadesign.gd1011.studiof.consts.GameConsts;
+	import de.mediadesign.gd1011.studiof.consts.ViewConsts;
+	import de.mediadesign.gd1011.studiof.events.GameEvent;
+	import de.mediadesign.gd1011.studiof.model.FortFoxBoss;
+	import de.mediadesign.gd1011.studiof.model.Renderable;
+	import de.mediadesign.gd1011.studiof.model.Unit;
 	import de.mediadesign.gd1011.studiof.services.LevelProcess;
-    import de.mediadesign.gd1011.studiof.model.Renderable;
-    import de.mediadesign.gd1011.studiof.services.GameLoop;
-    import de.mediadesign.gd1011.studiof.services.MoveProcess;
-    import de.mediadesign.gd1011.studiof.services.RenderProcess;
-    import de.mediadesign.gd1011.studiof.view.EnemyView;
+	import de.mediadesign.gd1011.studiof.services.MoveProcess;
+	import de.mediadesign.gd1011.studiof.services.RenderProcess;
+	import de.mediadesign.gd1011.studiof.view.EnemyView;
 
-    import flash.events.IEventDispatcher;
+	import flash.events.IEventDispatcher;
 
-    import robotlegs.bender.bundles.mvcs.Command;
+	import robotlegs.bender.bundles.mvcs.Command;
 
-    import starling.display.Image;
-    import starling.display.MovieClip;
+	import starling.display.Sprite;
 
-    import starling.display.Sprite;
-    import starling.utils.AssetManager;
-
-    public class SpawnBossCommand extends Command
+	public class SpawnBossCommand extends Command
     {
         [Inject]
         public var moveProcess:MoveProcess;

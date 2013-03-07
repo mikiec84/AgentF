@@ -156,5 +156,9 @@ package de.mediadesign.gd1011.studiof.services
         {
             _running = false;
         }
-    }
+
+		public function clear():void
+		{
+		}
+	}
 }

@@ -13,7 +13,6 @@ package de.mediadesign.gd1011.studiof.model {
         function start():void;              //startet den boss und aktiviert die spawnbosscommand
 		function stop():void;
 		function resume():void;
-        function reset():void;              //resettet nur interne Werte, muss noch woanders von moveProcess, renderProcess und stage entfernt werden!
 		function move(time:Number):void;
 		function get initialized():Boolean;
 		function get healthPoints():int;

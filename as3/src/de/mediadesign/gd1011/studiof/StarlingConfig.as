@@ -15,11 +15,14 @@ package de.mediadesign.gd1011.studiof
 	import de.mediadesign.gd1011.studiof.command.InitGameCommand;
 	import de.mediadesign.gd1011.studiof.command.PauseGameCommand;
 	import de.mediadesign.gd1011.studiof.command.RegisterBulletCommand;
-    import de.mediadesign.gd1011.studiof.command.RegsiterFortCommand;
+	import de.mediadesign.gd1011.studiof.consts.GameConsts;
+	import de.mediadesign.gd1011.studiof.consts.GameConsts;
+	import de.mediadesign.gd1011.studiof.consts.ViewConsts;
+	import de.mediadesign.gd1011.studiof.command.CreateFortCommand;
     import de.mediadesign.gd1011.studiof.command.RemoveFromMoveprocessCommand;
 	import de.mediadesign.gd1011.studiof.command.SpawnBossCommand;
     import de.mediadesign.gd1011.studiof.consts.GameConsts;
-    import de.mediadesign.gd1011.studiof.model.FortFox;
+    import de.mediadesign.gd1011.studiof.model.Fort;
     import de.mediadesign.gd1011.studiof.model.LevelConfiguration;
 	import de.mediadesign.gd1011.studiof.model.Score;
 	import de.mediadesign.gd1011.studiof.services.CollisionProcess;
@@ -92,7 +95,6 @@ package de.mediadesign.gd1011.studiof
 
 			modelMap.map(AssetManager).asSingleton();
 			modelMap.map(Sounds).asSingleton();
-            modelMap.map(FortFox).asSingleton();
         }
 
         private function initCommands():void
@@ -107,7 +109,7 @@ package de.mediadesign.gd1011.studiof
             commandMap.map(GameConsts.BOSS_SPAWN).toCommand(SpawnBossCommand);
             commandMap.map(GameConsts.CHANGE_STATE).toCommand(ChangeUnitStateCommand);
             commandMap.map(GameConsts.REMOVE_FROM_MOVEPROCESS).toCommand(RemoveFromMoveprocessCommand);
-            commandMap.map(GameConsts.REGISTER_FORT).toCommand(RegsiterFortCommand);
+			commandMap.map(GameConsts.REGISTER_FORT).toCommand(CreateFortCommand);
         }
 
         public function initMediators() : void
@@ -122,6 +124,7 @@ package de.mediadesign.gd1011.studiof
             mediatorMap.map(BulletView).toMediator(BulletViewMediator);
 			mediatorMap.map(LoadingScreen).toMediator(LoadingScreenMediator);
 			mediatorMap.map(LevelEndScreen).toMediator(LevelEndScreenMediator);
+
         }
     }
 }

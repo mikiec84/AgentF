@@ -11,7 +11,8 @@ package de.mediadesign.gd1011.studiof.services
     import de.mediadesign.gd1011.studiof.consts.ViewConsts;
     import de.mediadesign.gd1011.studiof.events.GameEvent;
     import de.mediadesign.gd1011.studiof.model.*;
-    import de.mediadesign.gd1011.studiof.model.components.EnemyInitPositioning;
+	import de.mediadesign.gd1011.studiof.model.Fort;
+	import de.mediadesign.gd1011.studiof.model.components.EnemyInitPositioning;
     import de.mediadesign.gd1011.studiof.view.EnemyView;
 
     import flash.events.IEventDispatcher;
@@ -43,9 +44,6 @@ package de.mediadesign.gd1011.studiof.services
         [Inject]
         public var score:Score;
 
-        [Inject]
-        public var fortFox:FortFox;
-
         private var _running:Boolean = false;
         private var _enemies:Vector.<Unit>;
         private var _enemyBullets:Vector.<Unit>;
@@ -64,18 +62,19 @@ package de.mediadesign.gd1011.studiof.services
         private var allUnitsStopped:Boolean = false;
         private var _scrollLevel:Boolean = true;
 
-        private var fortFoxStarted:Boolean = false;
+        private var _fortFoxStarted:Boolean = false;
+		private var _fort:Fort;
 
-        public var currentXKoord:int = GameConsts.STAGE_WIDTH;
+        public var currentXKoord:Number;
         public var enemyPositions:Vector.<EnemyInitPositioning>;
 		private var _enemySequence:Array;
 
         ///CHEATS
-        public var onlyThreeMobs:Boolean = false;
+        public var onlyThreeMobs:Boolean = true;
         public var bossHaveLowLife:Boolean = false;
         /////////
 
-        private var bossEnemiesSpawnCounter:int = 0;
+        private var _bossEnemiesSpawnCounter:int;
 
         public function LevelProcess()
         {
@@ -84,7 +83,9 @@ package de.mediadesign.gd1011.studiof.services
 
 		public function newLevel(currentLevel:int):void
 		{
-			fortFoxStarted = false;
+			currentXKoord = GameConsts.STAGE_WIDTH;
+			_bossEnemiesSpawnCounter=0;
+			_fortFoxStarted = false;
 			if (currentLevel == 0)
 			{
 				if (assets.getTexture("TileSystemLevel2_1") != null)
@@ -121,6 +122,9 @@ package de.mediadesign.gd1011.studiof.services
 			dispatcher.dispatchEvent(addSpriteToGameEvent);
 			_bossConfig = JSONReader.read("level/level")[0][currentLevel]["endboss"];
 			boss = new (getDefinitionByName("de.mediadesign.gd1011.studiof.model."+_bossConfig["classname"]) as Class)(this, _bossConfig);
+
+			if(boss is FortFoxBoss)
+				_fort = new Fort();
 
 			enemyPositions = new Vector.<EnemyInitPositioning>;
 			_enemies = new Vector.<Unit>();
@@ -211,8 +215,8 @@ package de.mediadesign.gd1011.studiof.services
 
             if (enemyPositions.length == 0 || boss.initialized && (enemyPositions[enemyPositions.length-1].spawned))
             {
-                bossEnemiesSpawnCounter = currentXKoord+_bossConfig["enemyRate"];
-                enemyPositions.push(new EnemyInitPositioning(false, bossEnemiesSpawnCounter));
+                _bossEnemiesSpawnCounter = currentXKoord+_bossConfig["enemyRate"];
+                enemyPositions.push(new EnemyInitPositioning(false, _bossEnemiesSpawnCounter));
             }
         }
 
@@ -311,7 +315,7 @@ package de.mediadesign.gd1011.studiof.services
 				sounds.setBGSound(currentLevel,"outro",true, false);
 				var showHighScoreEvent:GameEvent = new GameEvent(ViewConsts.SHOW_HIGHSCORE, currentScore);
 				dispatcher.dispatchEvent(showHighScoreEvent);
-				clearLevel();
+				clear();
 
             }
             //Boss Spawn
@@ -321,21 +325,21 @@ package de.mediadesign.gd1011.studiof.services
                 {
                     if (currentLevel == 0)
                     {
-                        if (fortFox.position.x <= GameConsts.STAGE_WIDTH - 885)
+                        if (_fort.position.x <= GameConsts.STAGE_WIDTH - 885)
                         {
-                            fortFox.position.x = GameConsts.STAGE_WIDTH - 890;
-                            fortFox.stop();
+                            _fort.position.x = GameConsts.STAGE_WIDTH - 890;
+                            _fort.stop();
                             spawnBoss();
                             stopScrollLevel();
                             var addFortEvent:GameEvent = new GameEvent(ViewConsts.CREATE_FORTBG);
                             dispatcher.dispatchEvent(addFortEvent);
-                            var removeFortEvent:GameEvent = new GameEvent(GameConsts.DELETE_UNIT, fortFox);
+                            var removeFortEvent:GameEvent = new GameEvent(GameConsts.DELETE_UNIT, _fort);
                             dispatcher.dispatchEvent(removeFortEvent);
                         }
-                        if (!fortFoxStarted)
+                        if (!_fortFoxStarted)
                         {
-                            fortFoxStarted = true;
-                            var registerFortEvent:GameEvent = new GameEvent(GameConsts.REGISTER_FORT);
+                            _fortFoxStarted = true;
+                            var registerFortEvent:GameEvent = new GameEvent(GameConsts.REGISTER_FORT, _fort);
                             dispatcher.dispatchEvent(registerFortEvent);
                         }
                     }
@@ -383,7 +387,7 @@ package de.mediadesign.gd1011.studiof.services
             player.lastState = player.state;
         }
 
-        public function clearLevel():void
+        public function clear():void
         {
 			stop();
             currentScore = 0;
