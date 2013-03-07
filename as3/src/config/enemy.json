@@ -6,8 +6,8 @@
         "fireRateEnemy":0.4,
         "enemyRange":1500,
         "collisionToleranceFlying":-160,
-        "collisionToleranceFloating":40,
-        "collisionToleranceDiving":40
+        "collisionToleranceFloating":-100,
+        "collisionToleranceDiving":-40
     },
 
     "BOSS_SPAWN":
