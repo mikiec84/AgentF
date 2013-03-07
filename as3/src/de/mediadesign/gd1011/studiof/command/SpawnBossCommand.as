@@ -40,7 +40,6 @@ package de.mediadesign.gd1011.studiof.command
             else
             {
                 var bossView:Sprite = new EnemyView(ViewConsts.NAUTILUS, GameConsts.BOSS_SPAWN);
-
             }
             moveProcess.addEntity(level.boss as Unit);
             renderProcess.registerRenderable(new Renderable(level.boss.position, bossView));

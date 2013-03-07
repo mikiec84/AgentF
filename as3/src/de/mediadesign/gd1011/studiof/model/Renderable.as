@@ -61,11 +61,6 @@ package de.mediadesign.gd1011.studiof.model
                 else
                     view.y = position.y+swimmingOffset;
             }
-            if ( observePlatform(view.y) < 2 && view is EnemyView
-                    && (view.getChildAt(0) as MovieClip).currentFrame == 126)
-            {
-                trace(view.x);
-            }
         }
 
         public function observePlatform(y:int):int

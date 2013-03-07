@@ -59,7 +59,10 @@ package de.mediadesign.gd1011.studiof.model
 			if (_scrollBGs.length > 0	&&
 					((_bgConfig["speed"]>0 && _scrollBGs[0].position.x < -_bgConfig["width"])	||			//If it moves left and ...
 				 	 ( _scrollBGs[0].position.x >= JSONReader.read("config")["gamebounds"]["width"])))		//or it moves right and ...
-				_scrollBGs.shift();
+            {
+                _dispatcher.dispatchEvent(new GameEvent(GameConsts.REMOVE_FROM_MOVEPROCESS, _scrollBGs[0]));
+                _scrollBGs.shift().dispose();
+            }
 
 			while(_scrollBGs.length < _maxTiles)
 				addScrollableBG();
