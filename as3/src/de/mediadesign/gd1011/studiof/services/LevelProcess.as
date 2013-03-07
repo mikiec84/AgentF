@@ -539,7 +539,6 @@ package de.mediadesign.gd1011.studiof.services
 			_bgLayer02.resumeScrolling();
 		}
 
-
         public function get boss():IEndboss
         {
             return _boss;
@@ -580,11 +579,5 @@ package de.mediadesign.gd1011.studiof.services
         {
             return _enemyBullets;
         }
-
-        public function set enemyBullets(value:Vector.<Unit>):void
-        {
-            _enemyBullets = value;
-        }
     }
 }
-
