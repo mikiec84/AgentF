@@ -49,7 +49,7 @@ package de.mediadesign.gd1011.studiof.services
         private var _enemyBullets:Vector.<Unit>;
         private var _player:Player;
         private var _boss:IEndboss;
-        private var _currentLevel:int = 1;
+        private var _currentLevel:int = 0;
         public var currentScore:int = 0;
 
         private var _enemyConfig:Object;
