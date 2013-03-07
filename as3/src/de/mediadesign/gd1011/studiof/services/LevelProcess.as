@@ -220,7 +220,7 @@ package de.mediadesign.gd1011.studiof.services
         {
             for (var index:int = 0; index<enemyBullets.length; index++)
             {
-                if (enemyBullets[index].position.x < -50 || enemyBullets[index].position.y > GameConsts.STAGE_HEIGHT+200)
+                if (enemyBullets[index].position.x < -250 || enemyBullets[index].position.y > GameConsts.STAGE_HEIGHT+200)
                 {
                     deleteUnit(enemyBullets[index]);
                     enemyBullets.splice(index,  1);
@@ -512,7 +512,6 @@ package de.mediadesign.gd1011.studiof.services
 
         public function register(bullet:Unit, shootingUnit:Unit):void
         {
-			//sounds.play("shot");
             var infos:Array = new Array();
             infos.push(bullet);
             infos.push(shootingUnit);

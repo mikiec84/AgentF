@@ -44,7 +44,7 @@ package de.mediadesign.gd1011.studiof
     import de.mediadesign.gd1011.studiof.view.mediators.GUIMediator;
 	import de.mediadesign.gd1011.studiof.view.mediators.GameViewMediator;
 	import de.mediadesign.gd1011.studiof.view.mediators.LevelEndScreenMediator;
-	import de.mediadesign.gd1011.studiof.view.mediators.LoadingScreen;
+	import de.mediadesign.gd1011.studiof.view.LoadingScreen;
 	import de.mediadesign.gd1011.studiof.view.mediators.LoadingScreenMediator;
 	import de.mediadesign.gd1011.studiof.view.mediators.MainViewMediator;
 	import de.mediadesign.gd1011.studiof.view.mediators.ScrollBackgroundViewMediator;

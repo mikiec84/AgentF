@@ -10,7 +10,7 @@ package de.mediadesign.gd1011.studiof.view
 	import de.mediadesign.gd1011.studiof.SystemInfo;
 	import de.mediadesign.gd1011.studiof.events.GameEvent;
 	import de.mediadesign.gd1011.studiof.services.JSONReader;
-	import de.mediadesign.gd1011.studiof.view.mediators.LoadingScreen;
+	import de.mediadesign.gd1011.studiof.view.LoadingScreen;
 
 	import starling.display.Sprite;
 	import starling.events.Event;
