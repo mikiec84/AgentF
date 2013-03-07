@@ -20,6 +20,7 @@
           <files-to-package>
             <FilePathAndPathInPackage file-path="$MODULE_DIR$/src/config" path-in-package="config" />
             <FilePathAndPathInPackage file-path="$MODULE_DIR$/src/assets" path-in-package="assets" />
+            <FilePathAndPathInPackage file-path="$MODULE_DIR$/icons" path-in-package="icons" />
           </files-to-package>
         </packaging-android>
         <packaging-ios package-file-name="AgentF" />
