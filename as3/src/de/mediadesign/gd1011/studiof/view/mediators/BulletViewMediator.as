@@ -73,16 +73,19 @@ package de.mediadesign.gd1011.studiof.view.mediators
                         bulletView.addChild(img);
                         break;
                     case(3):
+                        sounds.play("harpune", 1);
                         var img:Image = new Image(assets.getTexture("Arrow"));
                         img.y = 60;
                         bulletView.addChild(img);
                         break;
                     case(4):
+                        sounds.play("harpune", 1);
                         var img:Image = new Image(assets.getTexture("Arrow"));
                         img.y = 60;
                         bulletView.addChild(img);
                         break;
                     case(5):
+                        sounds.play("harpune", 1);
                         var img:Image = new Image(assets.getTexture("Arrow"));
                         img.y = 60;
                         bulletView.addChild(img);

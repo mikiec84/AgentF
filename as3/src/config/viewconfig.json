@@ -63,7 +63,14 @@
             "shot":"Shot",
             "laugh":"E1_Shot",
             "explosion":"Explosion",
-            "waterexplosion":"WaterExplosion"
+            "waterexplosion":"WaterExplosion",
+            "harpune":"Harpune",
+            "watersplash":"Water_Splash",
+            "fort-hit":"Fort_Hit",
+            "nauti-hit":"Nautilus_Hit",
+            "nauti-idle":"Nautilus_Idle",
+            "player-hit":"Fox_Hit",
+            "enemy-hit":"Coon_Hit"
         },
         "level_1":{
             "intro":["Lvl1_Part_07"],
@@ -71,6 +78,7 @@
             "boss-intro":["Lvl1_Part_11"],
             "boss-loop1":["Lvl1_Part_08","Lvl1_Part_09","Lvl1_Part_10","Lvl1_Part_13"],
             "outro":["Lvl1_Part_11","Lvl1_Part_12"]
+
         },
         "level_2":{
             "intro":["Lvl2_Part_01","Lvl2_Part_02","Lvl2_Part_03","Lvl2_Part_04","Lvl2_Part_05"],
@@ -78,6 +86,7 @@
             "boss-intro":["Lvl2_Part_12"],
             "boss-loop1":["Lvl2_Part_08","Lvl2_Part_09","Lvl2_Part_10","Lvl2_Part_11"],
             "outro":["Lvl2_Part_12","Lvl2_Part_13"]
+
         }
     },
     "viewOffsets":

@@ -11,8 +11,12 @@ package de.mediadesign.gd1011.studiof.view.mediators
     import de.mediadesign.gd1011.studiof.consts.ViewConsts;
     import de.mediadesign.gd1011.studiof.events.GameEvent;
     import de.mediadesign.gd1011.studiof.model.FortFoxBoss;
-	import de.mediadesign.gd1011.studiof.services.GameJuggler;
-	import de.mediadesign.gd1011.studiof.view.EnemyView;
+    import de.mediadesign.gd1011.studiof.model.IEndboss;
+    import de.mediadesign.gd1011.studiof.model.NautilusBoss;
+    import de.mediadesign.gd1011.studiof.model.Player;
+    import de.mediadesign.gd1011.studiof.services.GameJuggler;
+    import de.mediadesign.gd1011.studiof.services.Sounds;
+    import de.mediadesign.gd1011.studiof.view.EnemyView;
 
     import flash.events.IEventDispatcher;
 
@@ -33,6 +37,9 @@ package de.mediadesign.gd1011.studiof.view.mediators
 
         [Inject]
         public var assets:AssetManager;
+
+        [Inject]
+        public var sounds:Sounds;
 
         public var images:Vector.<Image>;
         private var currentImg:Image;
@@ -101,6 +108,7 @@ package de.mediadesign.gd1011.studiof.view.mediators
                     enemyView.addChild(currentImg);
                     break;
                 case(ViewConsts.NAUTILUS):
+                    //sounds.play("nauti-idle");
                     images = new Vector.<Image>();
                     currentImg = new MovieClip(assets.getTextures("Nautilus_Idle_"),30);
 					GameJuggler.add(currentImg as MovieClip);
@@ -169,6 +177,14 @@ package de.mediadesign.gd1011.studiof.view.mediators
             if (enemyView.ID == e.dataObj.ID)
             {
                 enemyView.getDamage();
+                if (e.dataObj is FortFoxBoss)
+                    sounds.play("fort-hit", 1);
+                else if (e.dataObj is NautilusBoss)
+                    sounds.play("nauti-hit", 1);
+                else if (e.dataObj is Player)
+                    sounds.play("player-hit");
+                else if (e.dataObj.currentPlatform != 2)
+                    sounds.play("enemy-hit");
             }
         }
     }

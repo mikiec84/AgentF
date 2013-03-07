@@ -246,7 +246,7 @@ package de.mediadesign.gd1011.studiof.services
             {
                 for (var index4:int = 0; index4<boss.ammunition.length; index4++)
                 {
-                    if (boss.ammunition[index4].position.x < -300 || boss.ammunition[index4].position.y > GameConsts.STAGE_HEIGHT+200)
+                    if (boss.ammunition[index4].position.x < 0 || boss.ammunition[index4].position.y > GameConsts.STAGE_HEIGHT+200)
                     {
                         deleteUnit(boss.ammunition[index4]);
                         boss.ammunition.splice(index4, 1);

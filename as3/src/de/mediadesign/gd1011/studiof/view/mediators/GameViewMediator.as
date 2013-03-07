@@ -179,6 +179,7 @@ package de.mediadesign.gd1011.studiof.view.mediators
 
         private function showSplash(event:GameEvent):void
         {
+            sounds.play("watersplash",1);
             splashImage = new MovieClip(assets.getTextures("Splash_"), 15);
             splashImage.alpha = 0.5;
             splashImage.x = -30;
