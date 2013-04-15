@@ -12,7 +12,9 @@
             "jumpSpeedBeimFall":1,
             "jumpSpeedBeimEinpendeln":4,
             "fireRate":2,
-            "jumpSpeedBeimSprungWinzig":0.4
+            "jumpSpeedBeimSprungWinzig":0.4,
+            "playerApexJumpDelay":1,
+            "timeBetweenShotsOnApex":1.7
     },
     "gamebounds":
     {

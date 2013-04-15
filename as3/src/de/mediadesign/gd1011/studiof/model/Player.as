@@ -31,10 +31,16 @@ package de.mediadesign.gd1011.studiof.model {
         private var accelerationSpeed:int; // Die zusätzliche Anzahl an Pixel die der Spieler nach unten bewegt wird wenn er im fall nach unten gezogen wird
         private var fireRate:Number; // Feuer Rate: Kugeln pro Sekunde
         private var jumpSpeedBeimSprungWinzig:Number; // Dauer des UP tweens wenn von ebene 3 losgelassen
+        private var playerApexJumpDelay:Number; // Wie lange der Agent am höchsten Punkt des Sprunges verhart bevor er weiterfällt
+        private var timeBetweenShotsOnApex:Number; // Die Zeit zwischen den Schüssen während der Spieler am höchsten Punkt des Sprunges ist
         ////////////////////////////
         private var _up:Tween;
         private var _down:Tween;
         private var _landing:Tween;
+
+        private var apexCoolDown:Number = 0;
+        public var apexDelayFall:Boolean = false;
+        private var apexFirstShot:Boolean = true;
 
         private var comeDownIsntRunningBuffer:Boolean = true;
         private var landNow:Boolean = false;
@@ -60,6 +66,8 @@ package de.mediadesign.gd1011.studiof.model {
 
         public var ammunition:Vector.<Unit>;
 
+        private var passedTime:Number = 0;
+
         public function Player(currentLevel:LevelProcess)
         {
             super(1, 1, 1, -1, currentLevel, false, false);
@@ -77,6 +85,8 @@ package de.mediadesign.gd1011.studiof.model {
             einpendelStaerkeGross = config["einpendelStaerkeGross"];
             einpendelStaerkeWinzig = config["einpendelStaerkeWinzig"];
             jumpSpeedBeimSprungWinzig = config["jumpSpeedBeimSprungWinzig"];
+            playerApexJumpDelay = config["playerApexJumpDelay"];
+            timeBetweenShotsOnApex = config["timeBetweenShotsOnApex"];
             if (einpendelStaerkeWinzig>GameConsts.PLATFORM_HEIGHT-1)
             {
                 einpendelStaerkeWinzig = GameConsts.PLATFORM_HEIGHT-1;
@@ -99,6 +109,8 @@ package de.mediadesign.gd1011.studiof.model {
                 {
                     if (assertCorrectInitialization())
                     {
+                        passedTime = time;
+                        trace("apexCoolDown:",apexCoolDown+", playerApexJumpDelay:",playerApexJumpDelay+", apexDelayFall:",apexDelayFall+", currentPlatform",currentPlatform+", passedTime",passedTime);
                         checkPlayerPosition();
                         initializeVariables();
                         administerTweens(time);
@@ -153,7 +165,7 @@ package de.mediadesign.gd1011.studiof.model {
             {
                 Starling.juggler.remove(_landing);
             }
-            if (position.y > 190 && position.y < GameConsts.PLATFORM_HEIGHT*2 && !_anyTweensInMotion && currentPlatform == 1)
+            if (position.y > 190 && position.y < GameConsts.PLATFORM_HEIGHT*2 && !_anyTweensInMotion && currentPlatform == 1 && apexCoolDown==0)
             {
                 position.y = GameConsts.STAGE_HEIGHT/3+yOffset+10;
             }
@@ -212,8 +224,26 @@ package de.mediadesign.gd1011.studiof.model {
         {
             if (!upIsRunning && _comeDownIsntRunning && position.y < GameConsts.PLATFORM_HEIGHT*2-50 && _landIsntRunning)
             {
-                shootBullet(time);
-                comeDown();
+                apexDelayFall = true;
+                shootAtApex();
+
+                //##################
+                state = GameConsts.HANGING_ON_APEX;
+                //##################
+
+                if (apexCoolDown >= playerApexJumpDelay)
+                {
+                    apexCoolDown = 0;
+                    apexDelayFall = false;
+                    comeDown();
+                    apexFirstShot = true;
+                }
+            }
+
+            if (currentPlatform < 2 && apexDelayFall)
+            {
+                //position.y+=0.2;
+                apexCoolDown+=passedTime;
             }
 
             if (landNow)
@@ -289,7 +319,7 @@ package de.mediadesign.gd1011.studiof.model {
                 // ********************************
                 state = GameConsts.FALL;
                 // ********************************
-				GameJuggler.add(_down);
+                GameJuggler.add(_down);
             }
         }
 
@@ -313,6 +343,20 @@ package de.mediadesign.gd1011.studiof.model {
         {
             if ((!value<2 || value>6))
                 _targetPlatform = value;
+        }
+
+        private function shootAtApex():void
+        {
+            cooldown += passedTime;
+            if (cooldown >= timeBetweenShotsOnApex || apexFirstShot)
+            {
+                apexFirstShot = false;
+                var bullet:Unit = new Unit(1, currentPlatform, 600, 200, _currentLevel, false, false);
+                bullet.position.y += 100;
+                ammunition.push(bullet);
+                cooldown = 0;
+                _currentLevel.register(bullet, this);
+            }
         }
 
         override public function shoot(time:Number):Unit
@@ -375,6 +419,11 @@ package de.mediadesign.gd1011.studiof.model {
         public function set swiped(value:Boolean):void
         {
             _swiped = value;
+        }
+
+        public function apexDelayIncreasedByKlick():void
+        {
+            apexCoolDown = 0;
         }
     }
 }
