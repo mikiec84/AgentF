@@ -122,21 +122,16 @@
 
     <!-- The icon the system uses for the application. For at least one resolution, specify the path to a PNG file included in the AIR package. Optional. -->
     <icon>
-        <!--<image16x16></image16x16>-->
-        <!--<image29x29></image29x29>-->
-        <!--<image32x32></image32x32>-->
+        <image16x16>icons/Icon_x16.png</image16x16>
+        <image29x29>icons/Icon_x29.png</image29x29>
+        <image32x32>icons/Icon_x32.png</image32x32>
         <image36x36>icons/Icon_LD.png</image36x36>
         <image48x48>icons/Icon_MD.png</image48x48>
-        <!--<image50x50></image50x50>-->
-        <!--<image57x57></image57x57>-->
-        <!--<image58x58></image58x58>-->
+        <image57x57>icons/Icon_x57.png</image57x57>
         <image72x72>icons/Icon_HD.png</image72x72>
-        <!--<image96x96>icons/Icon_xHD</image96x96>-->
-        <!--<image114x114></image114x114>-->
-        <!--<image128x128></image128x128>-->
-        <!--<image144x144></image144x144>-->
-        <!--<image512x512></image512x512>-->
-        <!--<image1024x1024></image1024x1024>-->
+        <image114x114>icons/Icon_x114.png</image114x114>
+        <image128x128>icons/Icon_x128.png</image128x128>
+        <image512x512>icons/Icon_x512.png</image512x512>
     </icon>
 
     <!-- Whether the application handles the update when a user double-clicks an update version of the AIR file (true),
